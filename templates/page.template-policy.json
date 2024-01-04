@@ -2,11 +2,52 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "custom_css": [
+        "h1 {text-align: center;}"
+      ],
       "settings": {
+      }
+    },
+    "ae9aafda-caa2-4457-9a76-2a3da2017283": {
+      "type": "custom-text-block",
+      "settings": {
+        "container": "1170",
+        "padding_full_width": 0,
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "brand_bg": "#fff",
+        "brand_bg_gradient": "",
+        "brand_title": "Title xxx",
+        "color_title": "#232323",
+        "fontsize_title": 16,
+        "fontsize_title_mb": 16,
+        "brand_des": "",
+        "color_des": "#3c3c3c",
+        "fontsize_des": 16,
+        "title_align": "center",
+        "menu": "",
+        "grid_gap": 5,
+        "padding_vertical": 5,
+        "padding_hozi": 5,
+        "border_radius": 5,
+        "fontsize_tab": 16,
+        "color_tab": "#232323",
+        "border_color": "#f9ede1",
+        "bg_color_tab": "#f9ede1",
+        "bg_color_gradient_tab": "",
+        "color_active": "#232323",
+        "border_color_active": "#f9ede1",
+        "bg_color_active": "#f9ede1",
+        "bg_color_gradient_active": ""
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "ae9aafda-caa2-4457-9a76-2a3da2017283"
   ]
 }
