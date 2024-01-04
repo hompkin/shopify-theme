@@ -13,6 +13,7 @@
       "type": "page",
       "custom_css": [
         ".container-1170 {display: grid; justify-items: center; width: 60%;}",
+        "@media (max-width: 551px) {.container-1170 {display: grid; justify-items: center; }}",
         ".container-1170 .rte {font-size: 15px;}"
       ],
       "settings": {
