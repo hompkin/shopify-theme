@@ -11,6 +11,9 @@
     },
     "38852818-c0bb-442e-9165-1330c56c47fa": {
       "type": "page",
+      "custom_css": [
+        ".container-1170 {display: grid; justify-items: center;}"
+      ],
       "settings": {
         "page": "contact",
         "container": "1170",
