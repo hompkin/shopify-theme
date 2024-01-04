@@ -17,7 +17,7 @@
         ".container-1170 .rte {font-size: 15px;}"
       ],
       "settings": {
-        "page": "privacy-policy",
+        "page": "{{ page }}",
         "container": "1170",
         "padding_full_width": 0,
         "mg_top_desktop": 50,
@@ -28,7 +28,7 @@
         "mg_bottom_mobile": 50,
         "heading_size": 30,
         "heading_size_mb": 24,
-        "heading_color": "#000"
+        "heading_color": "#000000"
       }
     }
   },
