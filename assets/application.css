@@ -1,0 +1,63 @@
+
+.region-container .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/* Container for each region */
+.region-container {
+    width: 100%;
+    margin-top:12px;
+    line-height: 1.2; 
+    box-sizing: border-box;
+}
+
+/* Each country container */
+.country-container {
+    width: 33.3%;
+    box-sizing: border-box;
+    float: left;
+    height: 42px; /* Adjust the height as needed */
+    display: flex;
+    align-items: flex-start;
+}
+
+/* 产品页 Click And View Delivery Area */
+.region-table .region-container {
+    width: 100%;
+    margin-top:6px;
+    line-height: 1.1; 
+    box-sizing: border-box;
+}
+
+.region-table .country-container {
+    width: 33.3%;
+    box-sizing: border-box;
+    float: left;
+    height: 28px; /* Adjust the height as needed */
+    display: flex;
+    align-items: flex-start;
+}
+
+
+@media only screen and (min-width: 768px) {
+  /* Container for each region */
+  .region-container {
+      width: 80%;
+      margin-top:4px;
+      line-height: 1.1; 
+      box-sizing: border-box;
+  }
+  
+  /* Each country container */
+  .country-container {
+      width: 25%;
+      box-sizing: border-box;
+      float: left;
+      height: 30px; /* Adjust the height as needed */
+      display: flex;
+      align-items: flex-start;
+  }
+}
