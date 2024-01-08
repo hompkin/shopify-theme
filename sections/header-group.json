@@ -2,256 +2,99 @@
   "type": "header",
   "name": "Header Group",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "52cc81e8-30d0-4f7b-b3a2-c97c000cee1b": {
+      "type": "header-navigation-hamburger",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "<div class=\"message\">\n  MID-SEASON SALE UP TO 70% OFF. <a href=\"\/collections\/all\" alt=\"Shop Now\">SHOP NOW<\/a>\n<\/div>",
-            "btn_color": "#cc0e14",
-            "btn_border_color": "#2da116",
-            "btn_bg_color": "#727272",
-            "btn_bg_color_gradient": "linear-gradient(46deg, rgba(52, 133, 236, 1) 13%, rgba(170, 248, 219, 1) 86%)"
-          }
-        }
-      },
-      "block_order": [
-        "announcement-bar-0"
-      ],
-      "settings": {
-        "enable_announcement": true,
-        "layout": "slider",
-        "enable_close": true,
-        "color_text": "#b05d5d",
-        "bg_color_text": "#ffe8e8",
-        "bg_color_text_gradient": "",
-        "font_size_text": 12,
-        "font_style_text": "normal",
-        "font_weight_text": "500",
-        "arrow_active": false,
-        "content_max_width": 38,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "header-classic": {
-      "type": "header-classic",
-      "blocks": {
-        "a2e4ea2e-73e5-4452-8129-d86dbbae584d": {
+        "sections--14682829619277__52cc81e8-30d0-4f7b-b3a2-c97c000cee1b-1680873556fdad5cf4-0": {
           "type": "logo",
           "settings": {
-            "logo_width": 90,
-            "logo_text": "",
-            "logo_font_size": 30,
-            "logo_font_weight": "900",
-            "logo_text_transform": "uppercase",
-            "logo_color": "#232323",
-            "spacing": 5
-          }
-        },
-        "fde2cc21-cbc9-4c9a-ad68-7cc53ec68280": {
-          "type": "service",
-          "settings": {
-            "customer_service_text": "<p>Customer Service 091 234-ELLA<\/p>",
-            "text_color": "#323232",
-            "show_language_currency": true,
-            "language_currency_color": "#323232",
-            "show_search": true,
-            "search_color": "#323232",
-            "bg_search_color": "#fafafa",
-            "search_border_color": "#e7e7e7",
-            "search_icon_color": "#323232",
-            "spacing": 14
-          }
-        },
-        "5939cbc0-a9fd-48e0-adcd-1d945e05dc99": {
-          "type": "text",
-          "settings": {
-            "free_shipping_text": "<p>Free shipping on All Orders. No Minimum Purchase<\/p>",
-            "text_color": "#232323",
-            "spacing": 15
-          }
-        },
-        "04e85927-4a9b-4543-93b7-cf1b32370bd4": {
-          "type": "group",
-          "settings": {
-            "show_cart": true,
-            "cart_color": "#323232",
-            "cart_color_item": "#323232",
-            "cart_bg_item": "#ffe5e8",
-            "show_wishlist": true,
-            "wishlist_color": "#323232",
-            "show_customer": true,
-            "customer_color": "#323232",
-            "spacing": 0
-          }
-        }
-      },
-      "block_order": [
-        "a2e4ea2e-73e5-4452-8129-d86dbbae584d",
-        "fde2cc21-cbc9-4c9a-ad68-7cc53ec68280",
-        "5939cbc0-a9fd-48e0-adcd-1d945e05dc99",
-        "04e85927-4a9b-4543-93b7-cf1b32370bd4"
-      ],
-      "settings": {
-        "container": "default",
-        "padding_full_width": 0,
-        "background": "#ffffff",
-        "gradient": "",
-        "padding_top": 15,
-        "padding_bottom": 16
-      }
-    },
-    "9c03747e-b054-4db8-8194-5a35c71f82ca": {
-      "type": "header-navigation-plain",
-      "blocks": {
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-0": {
-          "type": "logo",
-          "settings": {
-            "logo_position": "sticky_menu",
-            "logo_width": 90,
-            "logo_width_fixed": 55,
+            "logo_position": "always",
+            "logo": "shopify:\/\/shop_images\/logo_27d531c5-ed5c-4c36-b168-5d76ff7a26a2.png",
+            "logo_width": 70,
+            "logo_width_fixed": 100,
             "logo_text": "",
             "logo_font_size": 20,
             "logo_font_weight": "900",
             "logo_text_transform": "uppercase",
-            "logo_color": "#ffffff"
+            "logo_color": "#000000"
           }
         },
-        "54786c97-e881-45f5-a30a-6fdb552a963e": {
+        "sections--14682829619277__52cc81e8-30d0-4f7b-b3a2-c97c000cee1b-1680873556fdad5cf4-1": {
           "type": "main_menu",
           "settings": {
-            "menu": "main-menu",
-            "menu_top_spacing": 11,
-            "menu_bottom_spacing": 12,
+            "menu": "main-menu-home-bicyle",
+            "menu_top_spacing": 23,
+            "menu_bottom_spacing": 23,
             "grid_gap_menu_item": 20,
-            "alignment": "left",
+            "alignment": "center",
             "bg_mega_menu": "#ffffff",
             "bg_mega_menu_gradient": "",
-            "lv_1_color": "#ffffff",
-            "lv_1_color_hover": "#ffffff",
-            "lv_2_color": "#232323",
-            "lv_2_color_hover": "#232323",
-            "lv_3_color": "#3c3c3c",
-            "lv_3_color_hover": "#3c3c3c",
+            "lv_1_color": "#232323",
+            "lv_1_color_hover": "#232323",
+            "lv_2_color": "#000000",
+            "lv_2_color_hover": "#000000",
+            "lv_3_color": "#000000",
+            "lv_3_color_hover": "#000000",
             "sale_item_1": "",
             "sale_item_2": "",
             "sale_item_3": "",
-            "sale_item_color": "#d12442",
+            "sale_item_color": "#f6231a",
             "label_position": "main_menu",
-            "show_label_blink": false,
+            "show_label_blink": true,
             "new_label_1": "",
             "new_label_2": "",
-            "new_label_3": "",
+            "new_label_3": "Home 21 - Yoga, Home 22 - Eyes Wears, Home 23 - Plant+ Garden, Home 24 - Bicycle, Mobile Sticky Toolbar, Home 25 - Swimwear 2,\nSticky Promotion, Marquee Function, Wishlist page (Grid view)",
             "new_label_color": "#ffffff",
-            "new_label_bg": "#bae4ed",
+            "new_label_bg": "#06bfe2",
             "new_label_bg_gradient": "",
             "sale_label_1": "",
             "sale_label_2": "",
             "sale_label_3": "",
             "sale_label_color": "#ffffff",
-            "sale_label_bg": "#d12442",
+            "sale_label_bg": "#ef6454",
             "sale_label_bg_gradient": "",
             "hot_label_1": "",
             "hot_label_2": "",
-            "hot_label_3": "",
+            "hot_label_3": "Home 02 - Trendy style, Home 04 - High Fashion, Home 06 - SuperMarket, Home 09 - Pet supplies, Home 15 - Automotive 2, Different Mobile Menu, Bundle - Upsell, Notify Me (Out of stock), Variant Image Grouped, Color Comparison, Custom Options, Product Combo, RTL Layout, Store Locator Page",
             "hot_label_color": "#ffffff",
-            "hot_label_bg": "#fff993",
+            "hot_label_bg": "#00bb49",
             "hot_label_bg_gradient": ""
           }
         },
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-2": {
+        "sections--14682829619277__52cc81e8-30d0-4f7b-b3a2-c97c000cee1b-1680873556fdad5cf4-2": {
           "type": "header_icons",
           "settings": {
-            "show_language_currency": false,
-            "show_search": false,
-            "show_customer": false,
-            "show_wishlist": false,
-            "show_cart": false,
-            "text_font_size": 14,
-            "show_language_currency_sticky": false,
+            "icons_width": 24,
+            "icons_bold": "bold",
+            "show_search": true,
+            "search_icon": "1",
+            "search_dropdown": "default",
+            "show_customer": true,
+            "customer_icon": "1",
+            "text_font_size": 16,
+            "show_wishlist": true,
+            "wishlist_icon": "1",
+            "show_cart": true,
+            "cart_icon": "5",
+            "show_language_currency": true,
+            "lang_cur_icon": "1",
             "show_search_sticky": true,
-            "show_customer_sticky": false,
-            "show_wishlist_sticky": false,
+            "show_customer_sticky": true,
+            "show_wishlist_sticky": true,
             "show_cart_sticky": true,
-            "header_icons_color": "#ffffff",
-            "header_icons_color_hover": "#ffffff",
-            "header_icons_border_color": "rgba(0,0,0,0)",
-            "header_icons_border_sticky_color": "#232323",
-            "cart_count_bubble_color": "#323232",
-            "cart_count_bubble_bg": "#ffe5e8",
+            "show_language_currency_sticky": true,
+            "header_icons_color": "#232323",
+            "header_icons_color_hover": "#232323",
+            "cart_count_bubble_color": "#ffffff",
+            "cart_count_bubble_bg": "#fb0202",
             "cart_count_bubble_bg_gradient": ""
           }
         },
-        "d3131109-9329-42fa-bbb5-d25d01fd698b": {
+        "2d3383cf-a9b6-4b56-b34a-4bfe543bffd6": {
           "type": "megamenu_style_1",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "item": "new in",
-            "column": 3,
-            "show_banner_1": true,
-            "banner_url_1": "shopify:\/\/collections\/blazero",
-            "show_product": true,
-            "product_title": "Featured Products",
-            "product_collection": "naminos-dementus-a-dincidunto-5"
-          }
-        },
-        "0e4cbbf3-fe5e-4e10-a837-c7651f114767": {
-          "type": "megamenu_style_2",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "item": "trend",
-            "column": 3,
-            "show_banner_1": true,
-            "banner_url_1": "shopify:\/\/collections\/congue",
-            "show_banner_2": true,
-            "banner_url_2": "shopify:\/\/collections\/cosmopolis",
-            "show_banner_3": true,
-            "banner_url_3": "shopify:\/\/collections\/cosmopolitan"
-          }
-        },
-        "4d022900-5ec2-41b0-89c1-edea75a13c28": {
-          "type": "megamenu_style_3",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "mega_tyle": "style1",
-            "item": "collections",
-            "column": 5,
-            "show_banner_1": true,
-            "banner_url_1": "shopify:\/\/products\/dempus-lortis-cosmo-sapiendo",
-            "show_banner_2": true,
-            "banner_url_2": "shopify:\/\/products\/dempus-lortis-cosmo-sapiendo-1",
-            "show_banner_3": true,
-            "banner_url_3": "shopify:\/\/products\/dempus-lortis-cosmo-sapiendo-2",
-            "show_banner_4": true,
-            "banner_url_4": "shopify:\/\/products\/dempus-lortis-cosmo-sapiendo-3",
-            "show_banner_5": true,
-            "banner_url_5": "shopify:\/\/products\/dempus-an-lortis-tempus-sapiendos"
-          }
-        },
-        "23b6fa6d-4f30-4a97-8dc1-2c516f8a7f0e": {
-          "type": "megamenu_style_1",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "item": "demo",
-            "column": 5,
-            "show_banner_1": false,
-            "banner_url_1": "shopify:\/\/products\/dempus-lortis-cosmo-sapiendo-4",
-            "show_product": false,
-            "product_title": "On Sale Products",
-            "product_collection": "dempus-an-lortis-tempus-sapiendos"
-          }
-        },
-        "3d2520ed-30fc-4694-a7bd-8479ad2d6892": {
-          "type": "megamenu_style_1",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
+            "header_custom_width_size": 1400,
             "item": "Theme Demo",
             "column": 5,
             "show_banner_1": false,
@@ -261,7 +104,7 @@
             "product_collection": ""
           }
         },
-        "01014ccc-ffe5-4c78-b814-da3ff7d8b45c": {
+        "0ac11c63-0fa0-4b10-acd3-9fac9d4cf1cd": {
           "type": "megamenu_style_1",
           "settings": {
             "layout_block": "custom_width",
@@ -275,11 +118,11 @@
             "product_collection": ""
           }
         },
-        "ec0f7e9f-1012-463e-a1fd-f9225f7f1cc3": {
+        "30b2d952-bac4-4f1b-9896-fb9a4ff98297": {
           "type": "megamenu_style_1",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
+            "header_custom_width_size": 1400,
             "item": "Product",
             "column": 5,
             "show_banner_1": false,
@@ -288,30 +131,89 @@
             "product_title": "Featured Products",
             "product_collection": ""
           }
+        },
+        "5428d1aa-6693-4360-afbe-0e0db0f19196": {
+          "type": "megamenu_style_1",
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "item": "New In",
+            "column": 3,
+            "show_banner_1": true,
+            "banner_1": "shopify:\/\/shop_images\/Col-Banner-compressor_224x_ebd2b70c-e4c8-45b4-842a-4f31f67c7eb7.jpg",
+            "banner_url_1": "",
+            "show_product": true,
+            "product_title": "Featured Products",
+            "product_collection": "copy-of-sample-naminos-elementum-an-disus-tincidunts-1"
+          }
+        },
+        "ab515fe6-d19a-41b2-bfd0-6d88039851cd": {
+          "type": "megamenu_style_2",
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "item": "Bikes",
+            "column": 3,
+            "show_banner_1": true,
+            "banner_1": "shopify:\/\/shop_images\/menu-2_4887335d-e2f3-4b2e-8eb5-8b3dcab0bc5e.jpg",
+            "banner_url_1": "",
+            "show_banner_2": true,
+            "banner_2": "shopify:\/\/shop_images\/menu-1_d456b541-8294-474a-9856-61801af39329.jpg",
+            "banner_url_2": "",
+            "show_banner_3": true,
+            "banner_3": "shopify:\/\/shop_images\/Image_3_420x_cc5db38c-6ea2-4638-b8f8-9d47e633e0a2.jpg",
+            "banner_url_3": ""
+          }
+        },
+        "e067f286-b737-4211-acfe-12ae11bdbd2e": {
+          "type": "megamenu_style_4",
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "item": "Sale",
+            "column": 5,
+            "menu_text_left": "custom-mega-menu",
+            "menu_text_left_sale": "On Sale",
+            "show_banner_1": true,
+            "banner_1": "shopify:\/\/shop_images\/menu-bicycle-1_75adb0bb-99dc-48ac-a742-d5cd7dc4fb8f.jpg",
+            "banner_url_1": "",
+            "show_banner_2": true,
+            "banner_2": "shopify:\/\/shop_images\/menu-bicycle-2_863fcb75-c52a-4bd8-a195-070ac0550557.jpg",
+            "banner_url_2": "",
+            "show_az_brand": true,
+            "az_brand_title": "All Brands A-Z",
+            "az_brand_link_text": "See All Brands",
+            "az_brand_url": "",
+            "bg_mega_menu_bottom": "#f8f8f8",
+            "az_brand_link_text_color": "#000"
+          }
         }
       },
       "block_order": [
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-0",
-        "54786c97-e881-45f5-a30a-6fdb552a963e",
-        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-2",
-        "d3131109-9329-42fa-bbb5-d25d01fd698b",
-        "0e4cbbf3-fe5e-4e10-a837-c7651f114767",
-        "4d022900-5ec2-41b0-89c1-edea75a13c28",
-        "23b6fa6d-4f30-4a97-8dc1-2c516f8a7f0e",
-        "3d2520ed-30fc-4694-a7bd-8479ad2d6892",
-        "01014ccc-ffe5-4c78-b814-da3ff7d8b45c",
-        "ec0f7e9f-1012-463e-a1fd-f9225f7f1cc3"
+        "sections--14682829619277__52cc81e8-30d0-4f7b-b3a2-c97c000cee1b-1680873556fdad5cf4-0",
+        "sections--14682829619277__52cc81e8-30d0-4f7b-b3a2-c97c000cee1b-1680873556fdad5cf4-1",
+        "sections--14682829619277__52cc81e8-30d0-4f7b-b3a2-c97c000cee1b-1680873556fdad5cf4-2",
+        "2d3383cf-a9b6-4b56-b34a-4bfe543bffd6",
+        "0ac11c63-0fa0-4b10-acd3-9fac9d4cf1cd",
+        "30b2d952-bac4-4f1b-9896-fb9a4ff98297",
+        "5428d1aa-6693-4360-afbe-0e0db0f19196",
+        "ab515fe6-d19a-41b2-bfd0-6d88039851cd",
+        "e067f286-b737-4211-acfe-12ae11bdbd2e"
       ],
       "settings": {
-        "container": "1170",
+        "container": "1770",
         "padding_full_width": 0,
-        "header_navigation_bg": "#000000",
+        "header_layout_style": "style_1",
+        "header_navigation_bg": "#ffffff",
         "header_navigation_bg_gradient": "",
         "sticky_header_type": "on_scroll",
-        "sticky_header_width": "full",
+        "sticky_header_width": "default",
         "enable_transparent": false,
         "transparent_color": "#ffffff",
-        "transparent_color_hover": "#ffffff"
+        "transparent_color_hover": "#ffffff",
+        "border_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "header-mobile": {
@@ -332,6 +234,7 @@
         "550fbd21-75fb-4051-9dee-77d91b5239f0": {
           "type": "logo",
           "settings": {
+            "logo_mobile": "shopify:\/\/shop_images\/Ella-black.jpg",
             "logo_width_mobile": 65,
             "logo_text": "",
             "logo_font_size": 20,
@@ -350,7 +253,7 @@
         "633f9dae-3f65-4bda-9ca8-9d3e231aaf9d": {
           "type": "cart",
           "settings": {
-            "icon": "2",
+            "icon": "4",
             "color": "#232323",
             "color_bubble": "#ffffff",
             "bg_bubble": "#232323"
@@ -374,9 +277,7 @@
     }
   },
   "order": [
-    "announcement-bar",
-    "header-classic",
-    "9c03747e-b054-4db8-8194-5a35c71f82ca",
+    "52cc81e8-30d0-4f7b-b3a2-c97c000cee1b",
     "header-mobile"
   ]
 }
