@@ -9,7 +9,6 @@
           "type": "logo",
           "settings": {
             "logo_position": "always",
-            "logo": "shopify:\/\/shop_images\/logo_27d531c5-ed5c-4c36-b168-5d76ff7a26a2.png",
             "logo_width": 70,
             "logo_width_fixed": 100,
             "logo_text": "",
@@ -22,7 +21,7 @@
         "sections--14682829619277__52cc81e8-30d0-4f7b-b3a2-c97c000cee1b-1680873556fdad5cf4-1": {
           "type": "main_menu",
           "settings": {
-            "menu": "main-menu-home-bicyle",
+            "menu": "main-menu",
             "menu_top_spacing": 23,
             "menu_bottom_spacing": 23,
             "grid_gap_menu_item": 20,
@@ -140,7 +139,6 @@
             "item": "New In",
             "column": 3,
             "show_banner_1": true,
-            "banner_1": "shopify:\/\/shop_images\/Col-Banner-compressor_224x_ebd2b70c-e4c8-45b4-842a-4f31f67c7eb7.jpg",
             "banner_url_1": "",
             "show_product": true,
             "product_title": "Featured Products",
@@ -155,13 +153,10 @@
             "item": "Bikes",
             "column": 3,
             "show_banner_1": true,
-            "banner_1": "shopify:\/\/shop_images\/menu-2_4887335d-e2f3-4b2e-8eb5-8b3dcab0bc5e.jpg",
             "banner_url_1": "",
             "show_banner_2": true,
-            "banner_2": "shopify:\/\/shop_images\/menu-1_d456b541-8294-474a-9856-61801af39329.jpg",
             "banner_url_2": "",
             "show_banner_3": true,
-            "banner_3": "shopify:\/\/shop_images\/Image_3_420x_cc5db38c-6ea2-4638-b8f8-9d47e633e0a2.jpg",
             "banner_url_3": ""
           }
         },
@@ -172,20 +167,18 @@
             "header_custom_width_size": 1200,
             "item": "Sale",
             "column": 5,
-            "menu_text_left": "custom-mega-menu",
+            "menu_text_left": "",
             "menu_text_left_sale": "On Sale",
             "show_banner_1": true,
-            "banner_1": "shopify:\/\/shop_images\/menu-bicycle-1_75adb0bb-99dc-48ac-a742-d5cd7dc4fb8f.jpg",
             "banner_url_1": "",
             "show_banner_2": true,
-            "banner_2": "shopify:\/\/shop_images\/menu-bicycle-2_863fcb75-c52a-4bd8-a195-070ac0550557.jpg",
             "banner_url_2": "",
             "show_az_brand": true,
             "az_brand_title": "All Brands A-Z",
             "az_brand_link_text": "See All Brands",
             "az_brand_url": "",
             "bg_mega_menu_bottom": "#f8f8f8",
-            "az_brand_link_text_color": "#000"
+            "az_brand_link_text_color": "#000000"
           }
         }
       },
@@ -234,7 +227,6 @@
         "550fbd21-75fb-4051-9dee-77d91b5239f0": {
           "type": "logo",
           "settings": {
-            "logo_mobile": "shopify:\/\/shop_images\/Ella-black.jpg",
             "logo_width_mobile": 65,
             "logo_text": "",
             "logo_font_size": 20,
