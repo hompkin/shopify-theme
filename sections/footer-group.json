@@ -2,69 +2,101 @@
   "type": "footer",
   "name": "Footer Group",
   "sections": {
-    "footer-1": {
+    "8287fc28-a3b8-420f-8d43-e6588b3a6cb5": {
+      "type": "newsletter",
+      "blocks": {
+        "3c71eb67-386f-4ca9-93b5-6a9071eaf804": {
+          "type": "newsletter",
+          "settings": {
+            "section_title": "Join Our Mailing List",
+            "section_title_font_size": 20,
+            "section_title_font_size_mb": 16,
+            "section_title_font_weight": "700",
+            "section_title_text_transform": "uppercase",
+            "section_title_font_style": "normal",
+            "section_title_color": "#ffffff",
+            "mg_bottom_title": 25,
+            "mg_bottom_title_mb": 25,
+            "section_description": "",
+            "section_description_font_size": 14,
+            "section_description_font_size_mb": 14,
+            "section_description_font_weight": "400",
+            "section_description_color": "#232323",
+            "margin_bottom_des": 20,
+            "des_line_height": 34,
+            "show_input_field": true,
+            "input_style": "style_1",
+            "input_width": 410,
+            "input_border_radius": 0,
+            "input_text_font_size": 14,
+            "button_text": "SUBSCRIBE",
+            "button_font_size": 16,
+            "button_width": 170,
+            "button_text_color": "#000000",
+            "button_border_color": "#b7ff00",
+            "button_background_color": "#b7ff00",
+            "button_gradient_color": "",
+            "button_text_color_hover": "#ffffff",
+            "button_border_color_hover": "#232323",
+            "button_background_color_hover": "#232323",
+            "button_gradient_color_hover": "",
+            "button_text_transform": "uppercase",
+            "button_font_weight": "600",
+            "input_placeholder": "Your email address",
+            "input_placeholder_color": "#464646",
+            "input_background_color": "#fafafa",
+            "input_border_color": "#fafafa",
+            "form_gap": 10,
+            "newsletter_content_direction": "column",
+            "newsletter_form_justify_content": "center",
+            "input_width_behavior": "auto"
+          }
+        }
+      },
+      "block_order": [
+        "3c71eb67-386f-4ca9-93b5-6a9071eaf804"
+      ],
+      "settings": {
+        "container": "1770",
+        "padding_full_width": 0,
+        "background": "#1d1c1b",
+        "background_gradient": "",
+        "mg_top_desktop": 70,
+        "mg_top_tablet": 30,
+        "mg_top_mobile": 70,
+        "mg_bottom_desktop": 15,
+        "mg_bottom_tablet": 20,
+        "mg_bottom_mobile": 0,
+        "section_text_align": "center",
+        "justify_section_content": "center",
+        "section_item_distance": 20
+      }
+    },
+    "d227442f-0f49-489a-b209-b0553d2a0159": {
       "type": "footer-01",
       "blocks": {
-        "592a8373-a70d-47d3-a311-321a645e1f14": {
-          "type": "link_list",
+        "8a9143f3-a953-4578-b8b2-c2c0c895c846": {
+          "type": "text",
           "settings": {
             "custom_width": "20",
-            "heading": "Shop",
-            "menu": "main-menu",
-            "mg_bottom": 0
-          }
-        },
-        "a6e74cd6-bd47-4ada-98b5-15e28b94aef6": {
-          "type": "link_list",
-          "settings": {
-            "custom_width": "20",
-            "heading": "Information",
-            "menu": "footer",
-            "mg_bottom": 0
-          }
-        },
-        "2265e00a-3824-4d57-af37-fa00fa88a555": {
-          "type": "link_list",
-          "settings": {
-            "custom_width": "20",
-            "heading": "Customer Service",
-            "menu": "main-menu",
-            "mg_bottom": 0
-          }
-        },
-        "d935a709-71e0-48ff-8d74-5a367ae6d12d": {
-          "type": "newsletter_with_social",
-          "settings": {
-            "custom_width": "40",
-            "show_newsletter": true,
-            "newsletter_margin_bottom": 45,
-            "newsletter_padding_bottom": 0,
-            "heading": "Newsletter Sign Up",
-            "subtext": "<p>Sign up for exclusive updates, new arrivals & insider only discounts<\/p>",
-            "mg_top_des": 0,
-            "mg_bottom_des": 10,
-            "spacing_input": 10,
-            "newsletter_form_width": 420,
-            "input_text": "enter your email address",
-            "input_color": "#cfcfcf",
-            "input_color_bg": "#232323",
-            "input_color_border": "#d3d3d3",
-            "button_text": "Submit",
-            "button_width": 150,
-            "button_color": "#232323",
-            "button_color_border": "#ffffff",
-            "button_color_bg": "#ffffff",
-            "button_color_bg_gradient": "",
-            "button_color_hover": "#ffffff",
-            "button_color_border_hover": "#000000",
-            "button_color_bg_hover": "#000000",
-            "button_color_bg_gradient_hover": "",
-            "check_text": "",
-            "check_text_color": "#808080",
-            "check_text_fontsize": 14,
-            "check_input_color": "#ffffff",
-            "show_social": true,
-            "swap_social_position": false,
+            "heading": "",
+            "logo": "shopify:\/\/shop_images\/home-gym-footer-logo.png",
+            "logo_margin_bottom": 28,
+            "subtext": "",
+            "address_icon": "point_icon",
+            "show_address_icon": false,
+            "address_text": "",
+            "phone_icon": "message_icon",
+            "show_phone_icon": false,
+            "phone_text": "",
+            "email_icon": "envelope_icon",
+            "show_email_icon": false,
+            "email_text": "",
+            "icon_size": 16,
+            "icon_color": "",
+            "content_spacing": 1,
+            "mg_bottom": 0,
+            "show_social": false,
             "social_heading": "",
             "enable_bg_social": false,
             "social_margin_top": 35,
@@ -80,27 +112,89 @@
             "social_border_color_hover": "#ffffff",
             "social_background_color_hover": "#ffffff",
             "social_background_color_gradient_hover": "",
-            "social_box_hover_color": "#ffffff",
-            "show_app_store": false,
-            "app_store_heading": "",
-            "app_store_link_1": "",
-            "app_store_link_2": ""
+            "social_box_hover_color": "#ffffff"
           }
         },
-        "41adb6e5-e71d-422b-a1e1-d2034c83869c": {
+        "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-0": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "20",
+            "heading": "Shop",
+            "menu": "main-menu",
+            "mg_bottom": 0
+          }
+        },
+        "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-1": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "20",
+            "heading": "Information",
+            "menu": "main-menu",
+            "mg_bottom": 0
+          }
+        },
+        "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-2": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "20",
+            "heading": "Customer Service",
+            "menu": "main-menu",
+            "mg_bottom": 0
+          }
+        },
+        "78d789d0-fcbb-45fe-8339-de1135a2a967": {
+          "type": "text",
+          "settings": {
+            "custom_width": "20",
+            "heading": "Info",
+            "logo_margin_bottom": 28,
+            "subtext": "<p>685 MARKET STREET <\/p><p>SAN FRANCISCO, CA 94105<\/p><p>CALL US AT (091) 123-TRIBES<\/p>",
+            "address_icon": "point_icon",
+            "show_address_icon": false,
+            "address_text": "",
+            "phone_icon": "message_icon",
+            "show_phone_icon": false,
+            "phone_text": "",
+            "email_icon": "envelope_icon",
+            "show_email_icon": false,
+            "email_text": "",
+            "icon_size": 16,
+            "icon_color": "",
+            "content_spacing": 1,
+            "mg_bottom": 0,
+            "show_social": true,
+            "social_heading": "",
+            "enable_bg_social": false,
+            "social_margin_top": 35,
+            "social_icon_width": 18,
+            "social_icon_padding": 5,
+            "social_icon_border_width": 1,
+            "social_icon_margin_right": 15,
+            "social_color": "#ffffff",
+            "social_border_color": "rgba(0,0,0,0)",
+            "social_background_color": "rgba(0,0,0,0)",
+            "social_background_color_gradient": "",
+            "social_color_hover": "#282828",
+            "social_border_color_hover": "#ffffff",
+            "social_background_color_hover": "#ffffff",
+            "social_background_color_gradient_hover": "",
+            "social_box_hover_color": "#ffffff"
+          }
+        },
+        "9b087943-9d42-4617-bc02-1686d5190641": {
           "type": "footer_bottom",
           "settings": {
-            "pdtop_footer_bottom": 20,
+            "pdtop_footer_bottom": 25,
             "pdbottom_footer_bottom": 40,
             "border_top": true,
-            "footer_bottom_color": "#cfcfcf",
+            "footer_bottom_color": "#808080",
             "border_top_color": "#282828",
             "footer_bottom_bg": "#232323",
             "footer_bottom_bg_gradient": "",
             "show_copyright": true,
-            "show_shop_name": true,
+            "show_shop_name": false,
             "enable_layout_grid": true,
-            "copyright_content": "<p>Ella Demo. All Rights Reserved. Powered by Shopify.<br\/>Shopify Themes by HaloThemes.net<\/p>",
+            "copyright_content": "<p>© 2022 Ella Demo. Powered by Shopify. Shopify Themes by HaloThemes.com<\/p>",
             "copyright_content_color": "#cfcfcf",
             "shop_name": "",
             "show_payment": true,
@@ -110,8 +204,8 @@
             "show_payment_master": true,
             "show_payment_maestro": true,
             "show_payment_american_express": true,
-            "show_payment_apple_pay": true,
-            "show_payment_bitcoin": true,
+            "show_payment_apple_pay": false,
+            "show_payment_bitcoin": false,
             "show_payment_dankort": false,
             "show_payment_diners_club": false,
             "show_payment_discover": false,
@@ -132,39 +226,40 @@
         }
       },
       "block_order": [
-        "592a8373-a70d-47d3-a311-321a645e1f14",
-        "a6e74cd6-bd47-4ada-98b5-15e28b94aef6",
-        "2265e00a-3824-4d57-af37-fa00fa88a555",
-        "d935a709-71e0-48ff-8d74-5a367ae6d12d",
-        "41adb6e5-e71d-422b-a1e1-d2034c83869c"
+        "8a9143f3-a953-4578-b8b2-c2c0c895c846",
+        "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-0",
+        "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-1",
+        "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-2",
+        "78d789d0-fcbb-45fe-8339-de1135a2a967",
+        "9b087943-9d42-4617-bc02-1686d5190641"
       ],
       "settings": {
-        "container": "1170",
-        "padding_full_width": 60,
+        "container": "1770",
+        "padding_full_width": 0,
         "type_footer_heading": "font_1",
-        "type_footer_heading_font_size": 15,
+        "type_footer_heading_font_size": 16,
         "type_footer_heading_font_weight": "600",
         "type_footer_heading_text_transform": "uppercase",
-        "type_footer_heading_line_height": 22,
-        "type_footer_heading_letter_spacing": ".05em",
+        "type_footer_heading_line_height": 20,
+        "type_footer_heading_letter_spacing": ".02em",
         "type_footer_link": "font_1",
-        "type_footer_link_font_size": 12,
+        "type_footer_link_font_size": 16,
         "type_footer_link_font_weight": "400",
         "type_footer_link_text_transform": "capitalize",
-        "type_footer_link_line_height": 28,
+        "type_footer_link_line_height": 40,
         "type_footer_link_letter_spacing": ".02em",
         "enable_border_footer_top": false,
         "border_footer_top_color": "#282828",
-        "pdtop_footer_top": 35,
-        "pdbottom_footer_top": 40,
-        "footer_top_bg": "#232323",
+        "pdtop_footer_top": 65,
+        "pdbottom_footer_top": 70,
+        "footer_top_bg": "#1d1c1b",
         "footer_top_bg_gradient": "",
         "show_footer_top_bg_img": false,
         "footer_top_bg_position_x": "center",
         "footer_top_bg_position_y": "center",
         "footer_top_bg_repeat": "no-repeat",
         "footer_top_bg_attachment": "fixed",
-        "footer_top_bg_size": "cover",
+        "footer_top_bg_size": "contain",
         "footer_top_text_align": "left",
         "footer_top_title_color": "#ffffff",
         "footer_top_color_link": "#cfcfcf",
@@ -175,6 +270,7 @@
     }
   },
   "order": [
-    "footer-1"
+    "8287fc28-a3b8-420f-8d43-e6588b3a6cb5",
+    "d227442f-0f49-489a-b209-b0553d2a0159"
   ]
 }
