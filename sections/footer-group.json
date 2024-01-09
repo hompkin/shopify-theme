@@ -130,7 +130,7 @@
           "settings": {
             "custom_width": "20",
             "heading": "Information",
-            "menu": "main-menu",
+            "menu": "footer",
             "mg_bottom": 0
           }
         },
