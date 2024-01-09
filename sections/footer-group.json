@@ -79,7 +79,7 @@
         "030ecce3-438a-412c-8eb5-1c4fa044c9f7": {
           "type": "text",
           "settings": {
-            "custom_width": "10",
+            "custom_width": "8",
             "heading": "",
             "logo_margin_bottom": 28,
             "subtext": "",
@@ -146,7 +146,7 @@
         "78d789d0-fcbb-45fe-8339-de1135a2a967": {
           "type": "text",
           "settings": {
-            "custom_width": "32",
+            "custom_width": "24",
             "heading": "Info",
             "logo_margin_bottom": 28,
             "subtext": "<p>685 MARKET STREET <\/p><p>SAN FRANCISCO, CA 94105<\/p><p>CALL US AT (091) 123-TRIBES<\/p>",
