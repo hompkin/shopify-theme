@@ -236,7 +236,7 @@
         "9b087943-9d42-4617-bc02-1686d5190641"
       ],
       "custom_css": [
-
+        ".footer-block__details .rte .content-piece a {cursor: pointer; border: none; box-shadow: none; text-decoration: none;}"
       ],
       "settings": {
         "container": "1770",
