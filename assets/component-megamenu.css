@@ -641,9 +641,9 @@
     .section-header-navigation .header-logo .header__heading-logo,
     .section-header-navigation .header-icons .header__icon,
     .section-header-navigation .sticky_effect {
-        animation-name: fadeInUp;
+        /* animation-name: fadeInUp;
         animation-duration: 0.7s;
-        animation-fill-mode: both;
+        animation-fill-mode: both; */
     }
     .scrolled-past-header [data-sticky-type="always"] .menu-lv-1__action,
     .scrolled-past-header [data-sticky-type="always"] .header__heading-logo,
