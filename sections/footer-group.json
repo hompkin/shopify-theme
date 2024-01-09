@@ -158,7 +158,7 @@
             "phone_text": "",
             "email_icon": "envelope_icon",
             "show_email_icon": false,
-            "email_text": "<p><strong>Email:<\/strong> support@hompkin.com<\/p>",
+            "email_text": "<p><strong>Email:<\/strong> <a href=\"https:\/\/hompkin.com\/pages\/contact-us\" target=\"_blank\" title=\"support@hompkin.com\">support@hompkin.com<\/a><\/p>",
             "icon_size": 17,
             "icon_color": "#f8f8f8",
             "content_spacing": 6,
