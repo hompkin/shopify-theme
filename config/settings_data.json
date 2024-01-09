@@ -256,7 +256,7 @@
     "calculator_free_shipping_message_bg_1": "#f44336",
     "calculator_free_shipping_message_bg_2": "#ffc206",
     "show_someone_purchase": false,
-    "show_someone_purchase_mobile": true,
+    "show_someone_purchase_mobile": false,
     "someone_purchase_position": "right",
     "show_gdpr_cookie_consent": false,
     "gdpr_cookie_consent_type": "left",
