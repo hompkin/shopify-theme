@@ -76,6 +76,46 @@
     "d227442f-0f49-489a-b209-b0553d2a0159": {
       "type": "footer-01",
       "blocks": {
+        "030ecce3-438a-412c-8eb5-1c4fa044c9f7": {
+          "type": "text",
+          "settings": {
+            "custom_width": "10",
+            "heading": "",
+            "logo_margin_bottom": 28,
+            "subtext": "",
+            "address_icon": "point_icon",
+            "show_address_icon": false,
+            "address_text": "",
+            "phone_icon": "message_icon",
+            "show_phone_icon": false,
+            "phone_text": "",
+            "email_icon": "envelope_icon",
+            "show_email_icon": false,
+            "email_text": "",
+            "icon_size": 16,
+            "icon_color": "",
+            "content_spacing": 1,
+            "mg_bottom": 0,
+            "enable_custom_position_icon": false,
+            "show_social": false,
+            "social_heading": "",
+            "enable_bg_social": false,
+            "social_margin_top": 35,
+            "social_icon_width": 12,
+            "social_icon_padding": 12,
+            "social_icon_border_width": 1,
+            "social_icon_margin_right": 15,
+            "social_color": "#282828",
+            "social_border_color": "#fff",
+            "social_background_color": "#fff",
+            "social_background_color_gradient": "",
+            "social_color_hover": "#282828",
+            "social_border_color_hover": "#fff",
+            "social_background_color_hover": "#fff",
+            "social_background_color_gradient_hover": "",
+            "social_box_hover_color": "#fff"
+          }
+        },
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-0": {
           "type": "link_list",
           "settings": {
@@ -188,6 +228,7 @@
         }
       },
       "block_order": [
+        "030ecce3-438a-412c-8eb5-1c4fa044c9f7",
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-0",
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-1",
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-2",
