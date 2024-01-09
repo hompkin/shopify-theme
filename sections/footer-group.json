@@ -69,52 +69,13 @@
         "mg_bottom_mobile": 0,
         "section_text_align": "center",
         "justify_section_content": "center",
-        "section_item_distance": 20
+        "section_item_distance": 20,
+        "enable_social_media_below": false
       }
     },
     "d227442f-0f49-489a-b209-b0553d2a0159": {
       "type": "footer-01",
       "blocks": {
-        "8a9143f3-a953-4578-b8b2-c2c0c895c846": {
-          "type": "text",
-          "settings": {
-            "custom_width": "20",
-            "heading": "",
-            "logo": "shopify:\/\/shop_images\/home-gym-footer-logo.png",
-            "logo_margin_bottom": 28,
-            "subtext": "",
-            "address_icon": "point_icon",
-            "show_address_icon": false,
-            "address_text": "",
-            "phone_icon": "message_icon",
-            "show_phone_icon": false,
-            "phone_text": "",
-            "email_icon": "envelope_icon",
-            "show_email_icon": false,
-            "email_text": "",
-            "icon_size": 16,
-            "icon_color": "",
-            "content_spacing": 1,
-            "mg_bottom": 0,
-            "show_social": false,
-            "social_heading": "",
-            "enable_bg_social": false,
-            "social_margin_top": 35,
-            "social_icon_width": 12,
-            "social_icon_padding": 12,
-            "social_icon_border_width": 1,
-            "social_icon_margin_right": 15,
-            "social_color": "#282828",
-            "social_border_color": "#ffffff",
-            "social_background_color": "#ffffff",
-            "social_background_color_gradient": "",
-            "social_color_hover": "#282828",
-            "social_border_color_hover": "#ffffff",
-            "social_background_color_hover": "#ffffff",
-            "social_background_color_gradient_hover": "",
-            "social_box_hover_color": "#ffffff"
-          }
-        },
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-0": {
           "type": "link_list",
           "settings": {
@@ -145,7 +106,7 @@
         "78d789d0-fcbb-45fe-8339-de1135a2a967": {
           "type": "text",
           "settings": {
-            "custom_width": "20",
+            "custom_width": "32",
             "heading": "Info",
             "logo_margin_bottom": 28,
             "subtext": "<p>685 MARKET STREET <\/p><p>SAN FRANCISCO, CA 94105<\/p><p>CALL US AT (091) 123-TRIBES<\/p>",
@@ -162,6 +123,7 @@
             "icon_color": "",
             "content_spacing": 1,
             "mg_bottom": 0,
+            "enable_custom_position_icon": false,
             "show_social": true,
             "social_heading": "",
             "enable_bg_social": false,
@@ -194,7 +156,7 @@
             "show_copyright": true,
             "show_shop_name": false,
             "enable_layout_grid": true,
-            "copyright_content": "<p>© 2022 Ella Demo. Powered by Shopify. Shopify Themes by HaloThemes.com<\/p>",
+            "copyright_content": "<p>Copyright © 2024 Hompkin. All Rights Reserved.<\/p>",
             "copyright_content_color": "#cfcfcf",
             "shop_name": "",
             "show_payment": true,
@@ -209,7 +171,7 @@
             "show_payment_dankort": false,
             "show_payment_diners_club": false,
             "show_payment_discover": false,
-            "show_payment_paypal": false,
+            "show_payment_paypal": true,
             "show_payment_dogecoin": false,
             "show_payment_dwolla": false,
             "show_payment_forbrugsforeningen": false,
@@ -220,13 +182,12 @@
             "show_payment_ideal": false,
             "show_payment_klarna": false,
             "show_payment_klarna-pay-later": false,
-            "show_payment_shopify_pay": false,
+            "show_payment_shopify_pay": true,
             "show_payment_sofort": false
           }
         }
       },
       "block_order": [
-        "8a9143f3-a953-4578-b8b2-c2c0c895c846",
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-0",
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-1",
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-2",
