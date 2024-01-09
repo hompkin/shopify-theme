@@ -641,7 +641,7 @@
     .section-header-navigation .header-logo .header__heading-logo,
     .section-header-navigation .header-icons .header__icon,
     .section-header-navigation .sticky_effect {
-        animation-name: fadeInUp;
+        animation-name: none;
         animation-duration: 0.7s;
         animation-fill-mode: both;
     }
