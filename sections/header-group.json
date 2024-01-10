@@ -85,7 +85,7 @@
             "header_icons_color": "#232323",
             "header_icons_color_hover": "#232323",
             "cart_count_bubble_color": "#ffffff",
-            "cart_count_bubble_bg": "#fb0202",
+            "cart_count_bubble_bg": "{{ shop.brand.colors.secondary[0].background }}",
             "cart_count_bubble_bg_gradient": ""
           }
         },
