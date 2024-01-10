@@ -353,7 +353,7 @@
     "btn_1_border": "{{ shop.brand.colors.secondary[0].background }}",
     "btn_1_bg": "{{ shop.brand.colors.secondary[0].background }}",
     "btn_1_color_hover": "{{ shop.brand.colors.secondary[0].background }}",
-    "btn_1_border_hover": "#fff",
+    "btn_1_border_hover": "{{ shop.brand.colors.secondary[1].background }}",
     "btn_1_bg_hover": "#fff",
     "btn_2_color": "#232323",
     "btn_2_border": "#727272",
