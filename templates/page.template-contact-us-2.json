@@ -2,6 +2,9 @@
   "sections": {
     "main": {
       "type": "main-contact-us-2",
+      "custom_css": [
+        ".button.button-1,.button.button--primary {background: #ffffff; border-color: #FD8600; color: #FD8600; background-origin: border-box;}"
+      ],
       "settings": {
         "show_breadcrumb": false,
         "breadcrumb_alignment": "center",
