@@ -86,7 +86,7 @@
         "message_method_text_2": "Contact Us",
         "contact_content_text": "Unable to find satisfactory answers ?",
         "contact_text": "Contact Us",
-        "contact_link": "shopify:\/\/pages\/contact-us-2",
+        "contact_link": "shopify:\/\/pages\/contact-us",
         "contact_color": "#ffffff",
         "contact_color_border": "{{ shop.brand.colors.secondary[0].background }}",
         "contact_color_bg": "{{ shop.brand.colors.secondary[0].background }}",
