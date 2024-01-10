@@ -106,14 +106,14 @@
             "social_icon_border_width": 1,
             "social_icon_margin_right": 15,
             "social_color": "#282828",
-            "social_border_color": "#fff",
-            "social_background_color": "#fff",
+            "social_border_color": "#ffffff",
+            "social_background_color": "#ffffff",
             "social_background_color_gradient": "",
             "social_color_hover": "#282828",
-            "social_border_color_hover": "#fff",
-            "social_background_color_hover": "#fff",
+            "social_border_color_hover": "#ffffff",
+            "social_background_color_hover": "#ffffff",
             "social_background_color_gradient_hover": "",
-            "social_box_hover_color": "#fff"
+            "social_box_hover_color": "#ffffff"
           }
         },
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-0": {
@@ -210,7 +210,7 @@
             "show_payment_bitcoin": false,
             "show_payment_dankort": false,
             "show_payment_diners_club": false,
-            "show_payment_discover": false,
+            "show_payment_discover": true,
             "show_payment_paypal": true,
             "show_payment_dogecoin": false,
             "show_payment_dwolla": false,
@@ -220,7 +220,7 @@
             "show_payment_afterpay": false,
             "show_payment_google_pay": false,
             "show_payment_ideal": false,
-            "show_payment_klarna": false,
+            "show_payment_klarna": true,
             "show_payment_klarna-pay-later": false,
             "show_payment_shopify_pay": true,
             "show_payment_sofort": false
