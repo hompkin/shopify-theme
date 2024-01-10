@@ -48,9 +48,9 @@
         "btn_bg_color_hover_gradient": "",
         "btn_max_width": 205,
         "btn_link": "shopify:\/\/pages\/contact-us-1",
-        "contact_info_address": "<div><p><strong>Address:<\/strong> 686 Market Street<br>San Francisco, CA 94108,<br>United States<\/p><\/div>",
+        "contact_info_address": "<div><p><strong>Address:<br><\/strong> 686 Market Street<br>San Francisco, CA 94108,<br>United States<\/p><\/div>",
         "contact_info_content_1": "",
-        "contact_info_content_2": "<p>Opening Hours:\n<br>\nMON to SAT: \n9:00AM - 10:00PM\n<br>\nSUN: 10:00AM - 6:00PM<\/p>"
+        "contact_info_content_2": "<p><strong>Opening Hours:<\/strong>\n<br>\nMON to SAT: \n9:00AM - 10:00PM\n<br>\nSUN: 10:00AM - 6:00PM<\/p>"
       }
     }
   },
