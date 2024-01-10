@@ -33,7 +33,7 @@
         "contact_bg_image_height": 400,
         "contact_bg_image_height_mb": 360,
         "enable_parallax": true,
-        "form_container": "fullwidth",
+        "form_container": "1170",
         "contact_form_title": "Get In Touch",
         "contact_form_title_alignment": "center",
         "contact_form_heading": "Send Email",
