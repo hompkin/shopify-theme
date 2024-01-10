@@ -30,7 +30,7 @@
         "menu_item_background_color_h": "#818181",
         "menu_item_text_color_h": "#232323",
         "contact_bg_image": "shopify:\/\/shop_images\/pexels-public-domain-pictures-41964.png",
-        "contact_bg_image_height": 200,
+        "contact_bg_image_height": 360,
         "contact_bg_image_height_mb": 360,
         "enable_parallax": true,
         "form_container": "1170",
