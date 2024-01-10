@@ -61,7 +61,8 @@
         "f4d12560-a07c-4bd4-a934-2a8eddeaccc9"
       ],
       "custom_css": [
-        ".faqs .faqs-title:after {background-color: #ff8b21;}"
+        ".faqs .faqs-title:after {background-color: #ff8b21;}",
+        ".faqs .faqs-item .card-header .title:after {background-color: #fba94c;}"
       ],
       "settings": {
         "show_breadcrumb": true,
