@@ -6,8 +6,8 @@
         "15d9d2f4-1bdd-49c8-9a99-58246020f05c": {
           "type": "paragraph",
           "settings": {
-            "title": "Pre Sale Questions",
-            "question_1": "Q: “Will your template be fully compatible with Shopify?”",
+            "title": "Shipping Questions",
+            "question_1": "",
             "answer_1": "<p>Yes it will be<\/p>",
             "question_2": "Q: “What is included in the theme package?”",
             "answer_2": "<p>Please make sure that you follow below steps:\n<br><br>\n1\/ Download the package from themeforest.net (The file is in zip format)\n<br><br>\n2\/ Extract the file you've just downloaded (Don't forget this step).\n<br><br>\n3\/ Find this file: ella-x.x.x-sections-ready.zip in the folder Ella Sections Ready x.x.x, then you just need to upload ella-x.x.x-sections-ready.zip file to your Shopify store.\n<br><br>\n- If you would like to use Ella RTL version. Please find this file: ella-x.x.x-sections-ready-rtl.zip in the folder Ella Sections Ready x.x.x RTL, then you just need to upload ella-x.x.x-sections-ready-rtl.zip file to your Shopify store\n<br><br>\n- If you want to install child theme, please go to the corresponding theme folder<\/p>",
