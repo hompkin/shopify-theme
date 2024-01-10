@@ -15,7 +15,7 @@
         "header_text_color": "#ffffff",
         "content_max_width": 540,
         "content_alignment": "center",
-        "container": "1770",
+        "container": "fullwidth",
         "mg_top_desktop": 15,
         "mg_top_tablet": 0,
         "mg_top_mobile": 5,
