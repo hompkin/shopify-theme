@@ -32,7 +32,7 @@
         "contact_bg_image": "shopify:\/\/shop_images\/pexels-public-domain-pictures-41964.jpg",
         "contact_bg_image_height": 600,
         "contact_bg_image_height_mb": 360,
-        "enable_parallax": true,
+        "enable_parallax": false,
         "form_container": "1170",
         "contact_form_title": "Get In Touch",
         "contact_form_title_alignment": "center",
