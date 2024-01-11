@@ -52,7 +52,7 @@
             "text_size": 17,
             "text_line_height": 1,
             "margin_top_text": 20,
-            "text_color": "#000",
+            "text_color": "#000000",
             "text_width": "880px"
           }
         }
@@ -198,7 +198,7 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": true,
-            "image": "shopify:\/\/shop_images\/Untitled_design_17.png",
+            "image": "shopify:\/\/shop_images\/df34351b179ea29014706aa83780f8b4.jpg",
             "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
