@@ -220,6 +220,7 @@
         },
         "163e2cb5-14f2-4af6-9ac3-77193c082f53": {
           "type": "search",
+          "disabled": true,
           "settings": {
             "color": "#232323"
           }
