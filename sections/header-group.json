@@ -9,7 +9,7 @@
           "type": "logo",
           "settings": {
             "logo_position": "always",
-            "logo_width": 70,
+            "logo_width": 50,
             "logo_width_fixed": 100,
             "logo_text": "",
             "logo_font_size": 22,
