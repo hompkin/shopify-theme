@@ -20,7 +20,7 @@
         "mg_bottom_desktop": 0,
         "mg_bottom_tablet": 0,
         "mg_bottom_mobile": 0,
-        "menu": "main-menu",
+        "menu": "footer",
         "menu_bar_background": "#fafafa",
         "menu_bar_border": "rgba(0,0,0,0)",
         "menu_item_background": "",
