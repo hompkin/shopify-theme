@@ -45,12 +45,12 @@
         "text_ceLYLT": {
           "type": "text",
           "settings": {
-            "text": "At Hompkin, we believe that a home is not just a place, it’s an emotion, a sanctuary of warmth and comfort. <br>Derived from the fusion of “Home” and “Pumpkin,” our brand symbolizes the coziness and inviting atmosphere that every home should exude.",
+            "text": "At Hompkin, we believe that a home is not just a place, it’s an emotion, a sanctuary of warmth and comfort. <br>Derived from the fusion of “Home” and “Pumpkin,” our brand symbolizes the coziness and inviting atmosphere that every home should exude.\n<br>\nDiscover the art of creating a home that resonates with your personality – choose Hompkin for an unparalleled fusion of style, comfort, and quality. Elevate your living spaces with us, and let your home be a true reflection of you.",
             "text_size": 17,
             "text_line_height": 1,
             "margin_top_text": 20,
             "text_color": "#000",
-            "text_width": "800px"
+            "text_width": "880px"
           }
         }
       },
@@ -410,43 +410,6 @@
         "enable_dots": false,
         "enable_autoplay": false
       }
-    },
-    "custom_text_block_q9iDzn": {
-      "type": "custom-text-block",
-      "settings": {
-        "container": "1170",
-        "padding_full_width": 50,
-        "mg_top_desktop": 0,
-        "mg_top_tablet": 0,
-        "mg_top_mobile": 0,
-        "mg_bottom_desktop": 0,
-        "mg_bottom_tablet": 0,
-        "mg_bottom_mobile": 0,
-        "brand_bg": "#fff",
-        "brand_bg_gradient": "",
-        "brand_title": "",
-        "color_title": "#232323",
-        "fontsize_title": 17,
-        "fontsize_title_mb": 13,
-        "brand_des": "Discover the art of creating a home that resonates with your personality.\n<br>Choose Hompkin for an unparalleled fusion of style, comfort, and quality. <br>Elevate your living spaces with us, and let your home be a true reflection of you.",
-        "color_des": "#3c3c3c",
-        "fontsize_des": 17,
-        "title_align": "center",
-        "menu": "",
-        "grid_gap": 5,
-        "padding_vertical": 5,
-        "padding_hozi": 5,
-        "border_radius": 5,
-        "fontsize_tab": 16,
-        "color_tab": "#232323",
-        "border_color": "#f9ede1",
-        "bg_color_tab": "#f9ede1",
-        "bg_color_gradient_tab": "",
-        "color_active": "#232323",
-        "border_color_active": "#f9ede1",
-        "bg_color_active": "#f9ede1",
-        "bg_color_gradient_active": ""
-      }
     }
   },
   "order": [
@@ -454,7 +417,6 @@
     "1647318656cd128338",
     "16473179044a870c08",
     "16474839872eb210cf",
-    "1647339296880bf6ed",
-    "custom_text_block_q9iDzn"
+    "1647339296880bf6ed"
   ]
 }
