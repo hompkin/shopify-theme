@@ -238,6 +238,7 @@
         },
         "20dae707-64c0-4ea3-a05e-561cae9836d8": {
           "type": "customer",
+          "disabled": true,
           "settings": {
             "icon": "1",
             "color": "#232323"
