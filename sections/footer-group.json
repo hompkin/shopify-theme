@@ -237,7 +237,8 @@
       ],
       "custom_css": [
         ".footer-block__details .rte .content-piece a {cursor: pointer; border: none; box-shadow: none; text-decoration: none;}",
-        ".footer-block__details .rte .content-piece a:hover {color: #fff; cursor: pointer; border: none; box-shadow: none; text-decoration: underline;}"
+        ".footer-block__details .rte .content-piece a:hover {color: #fff; cursor: pointer; border: none; box-shadow: none; text-decoration: underline;}",
+        "@media (max-width: 767px){.footer-1 .footer__content-top {padding-bottom: 0px;}}"
       ],
       "settings": {
         "container": "1770",
