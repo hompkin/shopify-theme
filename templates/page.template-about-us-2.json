@@ -198,7 +198,7 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": true,
-            "image": "shopify:\/\/shop_images\/df34351b179ea29014706aa83780f8b4.jpg",
+            "image": "shopify:\/\/shop_images\/WechatIMG536.png",
             "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
@@ -311,7 +311,7 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": false,
-            "image": "shopify:\/\/shop_images\/WechatIMG534.png",
+            "image": "shopify:\/\/shop_images\/WechatIMG535.png",
             "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
