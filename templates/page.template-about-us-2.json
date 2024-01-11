@@ -165,7 +165,7 @@
         "mg_top_tablet": 0,
         "mg_top_mobile": 0,
         "mg_bottom_desktop": 100,
-        "mg_bottom_tablet": 20,
+        "mg_bottom_tablet": 100,
         "mg_bottom_mobile": 10,
         "image_banner_title": "",
         "enable_border_title": false,
