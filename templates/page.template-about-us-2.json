@@ -35,16 +35,28 @@
         "164731865614d84454-0": {
           "type": "heading",
           "settings": {
-            "heading": "BEHIND THE SCENE",
+            "heading": "Welcome to Hompkin",
             "heading_size": 30,
             "heading_size_mb": 24,
             "heading_line_height": 1,
             "heading_color": "#232323"
           }
+        },
+        "text_ceLYLT": {
+          "type": "text",
+          "settings": {
+            "text": "At Hompkin, we believe that a home is not just a place; it’s an emotion, a sanctuary of warmth and comfort. Derived from the fusion of “Home” and “Pumpkin,” our brand symbolizes the coziness and inviting atmosphere that every home should exude.",
+            "text_size": 17,
+            "text_line_height": 1,
+            "margin_top_text": 20,
+            "text_color": "#000",
+            "text_width": "800px"
+          }
         }
       },
       "block_order": [
-        "164731865614d84454-0"
+        "164731865614d84454-0",
+        "text_ceLYLT"
       ],
       "settings": {
         "container": "container",
