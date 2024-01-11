@@ -35,7 +35,7 @@
         "164731865614d84454-0": {
           "type": "heading",
           "settings": {
-            "heading": "Welcome to Hompkin",
+            "heading": "About Hompkin",
             "heading_size": 30,
             "heading_size_mb": 24,
             "heading_line_height": 1,
@@ -83,7 +83,7 @@
           "settings": {
             "row_reverse": false,
             "image": "shopify:\/\/shop_images\/Untitled_design_15.png",
-            "small_img_block_style": "style_4",
+            "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
             "divider_bg_color": "",
@@ -196,7 +196,7 @@
           "settings": {
             "row_reverse": true,
             "image": "shopify:\/\/shop_images\/Untitled_design_12.png",
-            "small_img_block_style": "style_4",
+            "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
             "divider_bg_color": "",
@@ -309,7 +309,7 @@
           "settings": {
             "row_reverse": false,
             "image": "shopify:\/\/shop_images\/Untitled_design_11.png",
-            "small_img_block_style": "style_4",
+            "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
             "divider_bg_color": "#232323",
