@@ -2,6 +2,9 @@
   "sections": {
     "main": {
       "type": "main-about-2-page",
+      "custom_css": [
+        ".has-bg-image, .about-navigation-container {max-width: calc(100% - 100px);}"
+      ],
       "settings": {
         "show_breadcrumb": true,
         "breadcrumb_color": "#ffffff",
