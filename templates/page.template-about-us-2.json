@@ -2,32 +2,17 @@
   "sections": {
     "main": {
       "type": "main-about-2-page",
-      "blocks": {
-        "d4bab6c1-ab4b-442b-8884-47890038f054": {
-          "type": "content",
-          "settings": {
-            "title": "",
-            "content": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque non nulla nulla de tincidunt risus morbi ultricies est ditae odio mmultrices.",
-            "content_max_width": 550,
-            "align": "center",
-            "content_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "d4bab6c1-ab4b-442b-8884-47890038f054"
-      ],
       "settings": {
-        "show_breadcrumb": false,
+        "show_breadcrumb": true,
         "breadcrumb_color": "#ffffff",
-        "breadcrumb_alignment": "center",
-        "show_page_title": true,
+        "breadcrumb_alignment": "left",
+        "show_page_title": false,
         "page_title_color": "#ffffff",
         "page_title_alignment": "center",
         "container": "full",
         "side_padding_full_width": 0,
         "about_bg_image": "shopify:\/\/shop_images\/osy8010_Create_a_captivating_facade_for_a_flagship_furniture_st_f94c0bfa-7348-4842-8cdc-9081d3f33db1.png",
-        "about_bg_image_height": 700,
+        "about_bg_image_height": 590,
         "enable_parallax": true,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
@@ -602,26 +587,26 @@
         "item_radius": 4,
         "grid_gap": 30,
         "enable_block_bottom": false,
-        "bg_block_bottom": "#000",
+        "bg_block_bottom": "#000000",
         "btn_text_block_bottom": "Shop Now",
         "button_link_block_bottom": "",
         "button_1_width_block_bottom": 235,
-        "button_color_block_bottom": "#fff",
+        "button_color_block_bottom": "#ffffff",
         "button_border_block_bottom": "#232323",
         "button_background_block_bottom": "#232323",
         "button_background_gradient_block_bottom": "",
-        "button_color_hover_block_bottom": "#fff",
+        "button_color_hover_block_bottom": "#ffffff",
         "button_border_hover_block_bottom": "#232323",
         "button_background_hover_block_bottom": "#232323",
         "button_background_gradient_hover_block_bottom": "",
         "btn_2_text_block_bottom": "Shop Now",
         "button_link_2_block_bottom": "",
         "button_2_width_block_bottom": 235,
-        "button_2_color_block_bottom": "#fff",
+        "button_2_color_block_bottom": "#ffffff",
         "button_2_border_block_bottom": "#232323",
         "button_2_background_block_bottom": "#232323",
         "button_2_background_gradient_block_bottom": "",
-        "button_2_color_hover_block_bottom": "#fff",
+        "button_2_color_hover_block_bottom": "#ffffff",
         "button_2_border_hover_block_bottom": "#232323",
         "button_2_background_hover_block_bottom": "#232323",
         "button_2_background_gradient_hover_block_bottom": ""
