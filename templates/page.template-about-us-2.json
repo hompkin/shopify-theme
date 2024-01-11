@@ -415,7 +415,7 @@
       "type": "custom-text-block",
       "settings": {
         "container": "1170",
-        "padding_full_width": 0,
+        "padding_full_width": 50,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
         "mg_top_mobile": 0,
@@ -428,7 +428,7 @@
         "color_title": "#232323",
         "fontsize_title": 17,
         "fontsize_title_mb": 13,
-        "brand_des": "Discover the art of creating a home that resonates with your personality.\n<br>Choose Hompkin for an unparalleled fusion of style, comfort, and quality. Elevate your living spaces with us, and let your home be a true reflection of you.",
+        "brand_des": "Discover the art of creating a home that resonates with your personality.\n<br>Choose Hompkin for an unparalleled fusion of style, comfort, and quality. <br>Elevate your living spaces with us, and let your home be a true reflection of you.",
         "color_des": "#3c3c3c",
         "fontsize_des": 17,
         "title_align": "center",
