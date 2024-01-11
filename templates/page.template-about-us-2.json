@@ -3,7 +3,7 @@
     "main": {
       "type": "main-about-2-page",
       "custom_css": [
-        "@media (max-width: 767px) {.has-bg-image {height:280px;}}"
+        "@media (max-width: 767px) {.has-bg-image {height: 280px; }}"
       ],
       "settings": {
         "show_breadcrumb": true,
@@ -85,7 +85,7 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": false,
-            "image": "shopify:\/\/shop_images\/Untitled_design_16.png",
+            "image": "shopify:\/\/shop_images\/2C6B32D4-6134-44C1-AD71-CC64FEE2D8E9.jpg",
             "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
