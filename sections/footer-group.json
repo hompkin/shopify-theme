@@ -56,6 +56,9 @@
       "block_order": [
         "3c71eb67-386f-4ca9-93b5-6a9071eaf804"
       ],
+      "custom_css": [
+        "@media (max-width: 767px) {.newsletter-section .section-content.flex-direction-column {flex-direction: row;}}"
+      ],
       "settings": {
         "container": "1770",
         "padding_full_width": 0,
@@ -238,7 +241,7 @@
       "custom_css": [
         ".footer-block__details .rte .content-piece a {cursor: pointer; border: none; box-shadow: none; text-decoration: none;}",
         ".footer-block__details .rte .content-piece a:hover {color: #fff; cursor: pointer; border: none; box-shadow: none; text-decoration: underline;}",
-        "@media (max-width: 767px){.footer-1 .footer__content-top {padding-bottom: 0px;}}"
+        "@media (max-width: 767px) {.footer-1 .footer__content-top {padding-bottom: 0px; }}"
       ],
       "settings": {
         "container": "1770",
