@@ -62,14 +62,14 @@
             "enable_border_bottom": false,
             "color_border": "#e6e6e6",
             "spacing_top": 0,
-            "spacing_bottom": 18
+            "spacing_bottom": 0
           }
         },
         "4f95b592-8369-4ab0-b30d-24e463fb6890": {
           "type": "price",
           "settings": {
-            "fontsize_text": 18,
-            "spacing_top": 0,
+            "fontsize_text": 24,
+            "spacing_top": 16,
             "spacing_bottom": 22
           }
         },
