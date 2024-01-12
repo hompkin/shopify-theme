@@ -288,7 +288,7 @@
         "product_image_ratio": "square",
         "portrait_aspect_ratio": 148,
         "zoomed_image": true,
-        "media_fit": "unset",
+        "media_fit": "cover",
         "product_image_popup": "fancybox",
         "video_layout": "popup",
         "show_badge": true,
