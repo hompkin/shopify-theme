@@ -253,8 +253,8 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "custom_css": [
-        "@media (min-width: 1025px) {.container-1170 {max-width: 1440px;}}",
-        "@media (min-width: 1200px) {.halo-productView-left {width: 52.4%; padding-right: 0px;}}"
+        "@media (min-width: 1025px) {.container-1170 {max-width: 1440px; }}",
+        "@media (min-width: 1200px) {.halo-productView-left {width: 42.4%; padding-right: 0px; }}"
       ],
       "settings": {
         "container": "1170",
