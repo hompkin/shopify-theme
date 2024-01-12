@@ -253,8 +253,7 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "custom_css": [
-        "@media (min-width: 1280px) {.productView.layout-1 .productView-image-wrapper, .productView.layout-2 .productView-image-wrapper {width: calc(100% - 150px); }}",
-        "@media (min-width: 1280px) {.productView.layout-1 .productView-thumbnail-wrapper, .productView.layout-2 .productView-thumbnail-wrapper {width: 150px; }}"
+
       ],
       "settings": {
         "container": "1770",
