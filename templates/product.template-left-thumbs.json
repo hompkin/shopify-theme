@@ -253,9 +253,9 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "custom_css": [
-        "@media (min-width: 1025px){.container-1770 {max-width: 1780px; padding-left: 40px; padding-right: 40px; margin-left: auto; margin-right: auto;}}",
-        "@media (min-width: 1200px) {.halo-productView-left {width: 52.4%; padding-right: 48px;}}",
-        "@media (min-width: 1200px) {.halo-productView-right {width: 47.6%;}}"
+        "@media (min-width: 1025px) {.container-1770 {max-width: 1780px; padding-left: 40px; padding-right: 40px; margin-left: auto; margin-right: auto; }}",
+        "@media (min-width: 1200px) {.halo-productView-left {width: 52.4%; padding-right: 48px; }}",
+        "@media (min-width: 1200px) {.halo-productView-right {width: 47.6%; }}"
       ],
       "settings": {
         "container": "1770",
@@ -275,7 +275,7 @@
         "main_image_position": "left",
         "main_image_layout": "1",
         "main_image_show_custom_cursor": true,
-        "count_color": "#191919",
+        "count_color": "{{ shop.brand.colors.secondary[0].background }}",
         "icon_color": "#000000",
         "show_thumbnail_mobile": true,
         "thumnail_layout": "1",
