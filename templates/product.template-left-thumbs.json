@@ -106,11 +106,11 @@
           "settings": {
             "spacing_top": 0,
             "spacing_bottom": 22,
-            "show_size_chart": true,
+            "show_size_chart": false,
             "size_chart_type": "custom_image",
             "size_chart_image_type": "jpg",
-            "show_compare_color": true,
-            "show_compare_color_drop_drap": true,
+            "show_compare_color": false,
+            "show_compare_color_drop_drap": false,
             "compare_layout": "1"
           }
         },
