@@ -253,12 +253,12 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "custom_css": [
-        "@media (min-width: 1025px) {.container-1170 {max-width: 1440px;}}",
-        "@media (min-width: 1200px) {.halo-productView-left {width: 52.4%; padding-right: 30px;}}",
-        "@media (min-width: 1200px) {.halo-productView-right {width: 47.6%;}}"
+        "@media (min-width: 1025px) {.container-1170 {max-width: 1440px; }}",
+        "@media (min-width: 1200px) {.halo-productView-left {width: 52.4%; padding-right: 30px; }}",
+        "@media (min-width: 1200px) {.halo-productView-right {width: 47.6%; }}"
       ],
       "settings": {
-        "container": "1170",
+        "container": "1770",
         "padding_full_width": 50,
         "show_sticky_info": true,
         "mg_top_desktop": 0,
