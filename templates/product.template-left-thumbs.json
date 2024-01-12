@@ -44,7 +44,7 @@
           "type": "short_description",
           "settings": {
             "word_number": "17",
-            "fontsize_text": 12,
+            "fontsize_text": 15,
             "color_text": "#3c3c3c",
             "spacing_top": 0,
             "spacing_bottom": 13
