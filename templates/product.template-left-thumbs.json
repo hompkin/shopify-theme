@@ -253,7 +253,7 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "settings": {
-        "container": "1770",
+        "container": "container",
         "padding_full_width": 0,
         "show_sticky_info": true,
         "mg_top_desktop": 0,
@@ -286,7 +286,7 @@
         "sidebar_heading_font_weight": "700",
         "sidebar_heading_text_transform": "uppercase",
         "product_image_ratio": "portrait",
-        "portrait_aspect_ratio": 148,
+        "portrait_aspect_ratio": 125,
         "zoomed_image": true,
         "media_fit": "unset",
         "product_image_popup": "fancybox",
