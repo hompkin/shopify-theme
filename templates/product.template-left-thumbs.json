@@ -254,7 +254,7 @@
       ],
       "custom_css": [
         "@media (min-width: 1025px) {.container-1170 {max-width: 1440px;}}",
-        "@media (min-width: 1200px) {.halo-productView-left {width: 52.4%; padding-right: 0px;}}",
+        "@media (min-width: 1200px) {.halo-productView-left {width: 52.4%; padding-right: 30px;}}",
         "@media (min-width: 1200px) {.halo-productView-right {width: 47.6%;}}"
       ],
       "settings": {
