@@ -312,7 +312,7 @@
         "font_weight_title": "600",
         "title_text_transform": "none",
         "title_padding_top_bottom": 15,
-        "tab_border_color": "{{ shop.brand.colors.secondary[0].background }}",
+        "tab_border_color": "{{ shop.brand.colors.secondary[1].background }}",
         "tab_border_color_rgb": "",
         "show_product_bundle": true,
         "background_color": "#f8f8f8",
