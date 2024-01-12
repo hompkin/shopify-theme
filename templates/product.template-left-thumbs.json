@@ -286,7 +286,7 @@
         "sidebar_heading_font_weight": "700",
         "sidebar_heading_text_transform": "uppercase",
         "product_image_ratio": "square",
-        "portrait_aspect_ratio": 148,
+        "portrait_aspect_ratio": 101,
         "zoomed_image": true,
         "media_fit": "cover",
         "product_image_popup": "fancybox",
