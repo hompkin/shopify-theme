@@ -253,8 +253,8 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "custom_css": [
-        "@media (min-width: 1280px) {.productView.layout-1 .productView-image-wrapper, .productView.layout-2 .productView-image-wrapper {width: calc(100% - 150px);}}",
-        "@media (min-width: 1280px) {.productView.layout-1 .productView-thumbnail-wrapper, .productView.layout-2 .productView-thumbnail-wrapper {width: 150px;}}"
+        "@media (min-width: 1280px) {.productView.layout-1 .productView-image-wrapper, .productView.layout-2 .productView-image-wrapper {width: calc(100% - 150px); }}",
+        "@media (min-width: 1280px) {.productView.layout-1 .productView-thumbnail-wrapper, .productView.layout-2 .productView-thumbnail-wrapper {width: 150px; }}"
       ],
       "settings": {
         "container": "1770",
@@ -278,7 +278,7 @@
         "icon_color": "#000000",
         "show_thumbnail_mobile": true,
         "thumnail_layout": "1",
-        "thumbnail_to_show": 6,
+        "thumbnail_to_show": 4,
         "show_sidebar": false,
         "show_sidebar_collapse": true,
         "enable_sticky": false,
