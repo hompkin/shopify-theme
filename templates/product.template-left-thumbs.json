@@ -253,7 +253,7 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "settings": {
-        "container": "fullwidth",
+        "container": "1770",
         "padding_full_width": 50,
         "show_sticky_info": true,
         "mg_top_desktop": 0,
@@ -287,8 +287,8 @@
         "sidebar_heading_text_transform": "uppercase",
         "product_image_ratio": "square",
         "portrait_aspect_ratio": 135,
-        "zoomed_image": true,
-        "media_fit": "cover",
+        "zoomed_image": false,
+        "media_fit": "contain",
         "product_image_popup": "fancybox",
         "video_layout": "popup",
         "show_badge": true,
