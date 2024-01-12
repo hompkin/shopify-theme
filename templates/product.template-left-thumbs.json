@@ -256,7 +256,8 @@
         "@media (min-width: 1025px) {.container-1770 {max-width: 1780px; padding-left: 40px; padding-right: 40px; margin-left: auto; margin-right: auto; }}",
         "@media (min-width: 1200px) {.halo-productView-left {width: 52.4%; padding-right: 48px; }}",
         "@media (min-width: 1200px) {.halo-productView-right {width: 47.6%; }}",
-        ".price--on-sale .price__sale {color: #686868;}"
+        ".price--on-sale .price__sale {color: #686868;}",
+        ".price-item {font-weight:600;}"
       ],
       "settings": {
         "container": "1770",
