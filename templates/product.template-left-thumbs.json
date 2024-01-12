@@ -43,7 +43,7 @@
         "b87b5d94-d9c5-4d66-a99b-da56e65d25e9": {
           "type": "short_description",
           "settings": {
-            "word_number": "32",
+            "word_number": "30",
             "fontsize_text": 15,
             "color_text": "#3c3c3c",
             "spacing_top": 0,
@@ -53,10 +53,10 @@
         "4e59f24a-8859-4579-a80a-d70e6f1bf66b": {
           "type": "info",
           "settings": {
-            "show_vendor": true,
+            "show_vendor": false,
             "show_sku": true,
-            "show_availability": true,
-            "show_product_type": true,
+            "show_availability": false,
+            "show_product_type": false,
             "stock_level_display": "none",
             "enable_border_top": false,
             "enable_border_bottom": false,
