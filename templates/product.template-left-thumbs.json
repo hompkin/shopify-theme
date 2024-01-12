@@ -276,7 +276,7 @@
         "count_color": "#191919",
         "icon_color": "#000000",
         "show_thumbnail_mobile": true,
-        "thumnail_layout": "3",
+        "thumnail_layout": "1",
         "thumbnail_to_show": 6,
         "show_sidebar": false,
         "show_sidebar_collapse": true,
