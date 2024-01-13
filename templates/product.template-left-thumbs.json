@@ -245,7 +245,7 @@
         "@media (min-width: 1200px) {.halo-productView-right {width: 47.6%; }}",
         ".price--on-sale .price__sale {color: #686868;}",
         ".price-item {font-weight: 600;}",
-        "@media (min-width: 551px) {[data-vertical=\"sidebar\"] .tab-content .toggle-content {width: 600px; max-width: 60vw; }}"
+        "@media (min-width: 551px) {[data-vertical=\"sidebar\"] .tab-content .toggle-content {width: 660px; max-width: 66vw; }}"
       ],
       "settings": {
         "container": "1770",
