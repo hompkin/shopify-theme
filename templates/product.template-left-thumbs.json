@@ -175,19 +175,6 @@
             "maximum_des_to_show": 300
           }
         },
-        "247f7d3d-8e14-4ecd-9670-ea489f65d490": {
-          "type": "custom",
-          "settings": {
-            "open_tab_mobile": false,
-            "title": "Additional Information",
-            "type": "all",
-            "content": "<p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut risus. Sedcus faucibus an sullamcorper mattis drostique des commodo pharetras loremos.Donec pretium egestas sapien et mollis. Pellentesque diam dolor cosmopolis etos lobortis.<\/p>\n<dl>\n<dt>Comodous:<\/dt>\n<dd>Comodous in tempor ullamcorper miaculis<\/dd>\n<\/dl>\n<dl>\n<dt>Mattis laoreet:<\/dt>\n<dd>Pellentesque vitae neque mollis urna mattis laoreet.<\/dd>\n<\/dl>\n<dl>\n<dt>Divamus de ametos:<\/dt>\n<dd>Divamus sit amet purus justo.<\/dd>\n<\/dl>\n<dl>\n<dt>Molestie:<\/dt>\n<dd>Proin molestie egestas orci ac suscipit risus posuere loremous<\/dd>\n<\/dl>",
-            "enable_btn_show_more": false,
-            "maximum_des_to_show": 300,
-            "product_custom_source": "dynamic",
-            "product_tab_key_metafield": ""
-          }
-        },
         "3d9ea84d-5527-4bce-abe6-5debef3ec955": {
           "type": "custom",
           "settings": {
@@ -247,7 +234,6 @@
         "19de9abb-17c8-4d67-941d-b32706ed06fd",
         "10093fcf-2053-47e9-bedb-841bb0d046fa",
         "bd066b80-c8e3-4f3e-8280-b27fbf6e9423",
-        "247f7d3d-8e14-4ecd-9670-ea489f65d490",
         "3d9ea84d-5527-4bce-abe6-5debef3ec955",
         "b9d6eb19-10f4-41f8-bfdc-ea10e8b3182a",
         "faebbc78-6094-4bc0-a917-80dbfbf5ef3c",
