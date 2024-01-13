@@ -45,7 +45,7 @@
 @media only screen and (min-width: 768px) {
   /* Container for each region */
   .region-container {
-      width: 100%;
+      width: 80%;
       margin-top:4px;
       line-height: 1.1; 
       box-sizing: border-box;
