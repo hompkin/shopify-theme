@@ -55,7 +55,8 @@
 
 .halo-text-format p + ul,
 .halo-text-format p + ol{
-    margin-top: 18px;
+   /* 去掉产品页policy h 标签高度问题 */
+    /* margin-top: 18px; */
 }
 
 .halo-text-format h1,
