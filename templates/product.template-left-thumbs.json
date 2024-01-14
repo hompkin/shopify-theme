@@ -21,11 +21,11 @@
         "b0ea69b7-8a54-4a3c-9abd-0fcceeabaaa0": {
           "type": "title",
           "settings": {
-            "fontsize_text": 22,
-            "fontsize_text_mb": 20,
+            "fontsize_text": 18,
+            "fontsize_text_mb": 15,
             "color_title": "#232323",
             "spacing_top": 0,
-            "spacing_bottom": 10
+            "spacing_bottom": 0
           }
         },
         "0e4ea696-4820-4c98-aaa6-806d41782a3d": {
@@ -44,7 +44,7 @@
           "type": "short_description",
           "settings": {
             "word_number": "28",
-            "fontsize_text": 16,
+            "fontsize_text": 14,
             "color_text": "#3c3c3c",
             "spacing_top": 0,
             "spacing_bottom": 13
