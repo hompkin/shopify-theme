@@ -55,8 +55,6 @@
 
 .halo-text-format p + ul,
 .halo-text-format p + ol{
-   /* 去掉产品页policy h 标签高度问题 */
-    margin-bottom: 0px;
     margin-top: 18px;
 }
 
@@ -100,7 +98,9 @@
 .halo-text-format ul,
 .halo-text-format ol{
     margin: 0 0 10px 17px;
-    padding: 0 0 22px 0;
+  /* 去掉产品页policy h 标签高度问题 */
+    /* padding: 0 0 22px 0; */
+    padding: 0 0 0 0;
     list-style: inherit;
 }
 
