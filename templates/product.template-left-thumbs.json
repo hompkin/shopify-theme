@@ -297,7 +297,7 @@
         "tab_layout": "vertical_sidebar",
         "tab_layout_mobile": "vertical_sidebar",
         "icon_style_layout": "style_2",
-        "title_font_size": 15,
+        "title_font_size": 16,
         "title_font_size_mb": 14,
         "font_weight_title": "500",
         "title_text_transform": "capitalize",
