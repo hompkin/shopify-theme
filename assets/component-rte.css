@@ -64,7 +64,7 @@
 .halo-text-format h6{
   /* 去掉产品页policy h 标签高度问题 */
     /* margin-top: 0; */
-    margin-bottom: 7px;
+    margin-bottom: 6px;
 }
 
 .halo-text-format h1 + p,
