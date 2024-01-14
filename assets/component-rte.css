@@ -44,7 +44,9 @@
 }
 
 .halo-text-format p{
-    margin-bottom: 0;
+  /* 去掉产品页policy h 标签高度问题 */
+    /* margin-bottom: 0; */
+    
 }
 
 .halo-text-format p + p{
