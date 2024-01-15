@@ -3332,7 +3332,7 @@ quantity-input.disabled {
   /* 调整产品页图片区域比例 */
     .halo-productView-left{
         width: 58%;
-        padding-right: 48px;
+        padding-right: 42px;
     }
 
     .halo-productView-right{
