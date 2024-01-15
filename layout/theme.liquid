@@ -24,9 +24,9 @@
         <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
         <!-- 链接自定义的样式 -->
         <link href="{{ 'application.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
-        <link href="{{ 'fontawesome.min.css' | asset_url }}" rel="stylesheet" >
-        <link href="{{ 'solid.min.css' | asset_url }}" rel="stylesheet">
-        <link href="{{ 'brands.min.css' | asset_url }}" rel="stylesheet">
+        <script defer src={{ 'brands.js' | asset_url }}></script>
+        <script defer src={{ 'solid.js' | asset_url }}></script>
+        <script defer src={{ 'fontawesome.js' | asset_url }}></script>
         <title>{{ page_title }} {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%} {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%} {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}</title>
 
         {%- if page_description -%}
