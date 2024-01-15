@@ -23,7 +23,8 @@ async function getUserZipCode() {
       } else {
         const locResponse = await fetch(`https://service-e9wt99ba-1252698119.hk.tencentapigw.cn/release/get-location?user_ip=${ip}`);
         const json = await locResponse.json();
-        console.log(`ip=${ip}, state_prov=${json.state_prov} json=${json}`);
+        const state_prov=json.state_prov;
+        console.log(`ip=${ip}, state_prov=${state_prov} json=${json}`);
         setCookie('state_prov', state_prov, 1); // 缓存邮编 1 天
         return state_prov;
       }
