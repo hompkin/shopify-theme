@@ -25,7 +25,7 @@ async function getUserZipCode() {
         const state_prov = locResponse.state_prov;
         console.log(`state_prov=${state_prov}`);
         setCookie('state_prov', state_prov, 1); // 缓存邮编 1 天
-        return zipcode;
+        return state_prov;
       }
 
     } catch (error) {
