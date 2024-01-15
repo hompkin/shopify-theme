@@ -1530,12 +1530,13 @@
     font-size: 40px;
     font-weight: 600;
 }
-.price__compare{
+*/
+.dd .price__compare{
     font-size: var(--fontsize-text)/2;
     font-weight: 500;
     color: #999999;
 }
- */
+
 .productView-countDown-wrapper {
     overflow: hidden;
 }
