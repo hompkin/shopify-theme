@@ -1,34 +1,43 @@
-// async function getUserZipCode() {
-//     try {
-//       const ipResponse = await fetch('https://api64.ipify.org?format=json');
-//       const ipData = await ipResponse.json();
-//       const ip = ipData.ip;
-//       const apiKey='8f6e7f9fc6a04c8c86c257a7e1b913cd'
-//       const cachedIp = localStorage.getItem('user_ip');
-//       const state_prov = localStorage.getItem('state_prov');
-//       if (false && cachedIp === ip && state_prov) {
-//         console.log(`use local cache. cachedIp=${cachedIp} state_prov=${state_prov}`)
-//         return state_prov;
-//       } else {
-//         localStorage.setItem('user_ip', ip);
-//         const locationResponse = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${ip}`);
-//         const locationData = await locationResponse.json();
-//         const state_prov = locationData.state_prov;
-//         localStorage.setItem('state_prov', state_prov);
-//         return state_prov;
-//       }
+function getCookie(name) {
+    const value = '; ' + document.cookie;
+    const parts = value.split('; ' + name + '=');
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
 
-//     } catch (error) {
-//       console.error('Error fetching IP or location data:', error);
-//       return null;
-//     }
-// }
+function setCookie(name, value, hours) {
+  const date = new Date();
+  date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+  const expires = '; expires=' + date.toUTCString();
+  document.cookie = name + '=' + value + expires + '; path=/';
+}
 
-// // 获取ip地址对应的邮编
-// getUserZipCode().then(state_prov => {
-//   if (state_prov) {
-//     console.log(`The state_prov for the user's IP is ${state_prov}`);
-//   } else {
-//     console.log('Unable to determine state_prov');
-//   }
-// });
+async function getUserZipCode() {
+    try {
+      const ipResponse = await fetch('https://api64.ipify.org?format=json');
+      const ipData = await ipResponse.json();
+      const ip = ipData.ip;
+       const cachedZip = getCookie('state_prov');
+
+      if (cachedIp === ip && cachedZip) {
+        return cachedZip;
+      } else {
+        const locResponse = await fetch(`https://service-e9wt99ba-1252698119.hk.tencentapigw.cn/release/get-location?user_ip=${ip}`);
+        const state_prov = locResponse.state_prov;
+        setCookie('state_prov', state_prov, 1); // 缓存邮编 1 天
+        return zipcode;
+      }
+
+    } catch (error) {
+      console.error('Error fetching IP or location data:', error);
+      return null;
+    }
+}
+
+// 获取ip地址对应的邮编
+getUserZipCode().then(state_prov => {
+  if (state_prov) {
+    console.log(`The state_prov for the user's IP is ${state_prov}`);
+  } else {
+    console.log('Unable to determine state_prov');
+  }
+});
