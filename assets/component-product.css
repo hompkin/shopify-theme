@@ -2527,11 +2527,11 @@ quantity-input.disabled {
 }
 
 .productView-price .price__saved {
-    font-size: calc(var(--fontsize-text, var(--product-price-font-size)) -10);
+    font-size: calc(var(--fontsize-text, var(--product-price-font-size))/2);
     padding: 5px 11px 5px;
     color: var(--product-sale-price-color);
     background-color: #f9f4ee;
-    border-radius: 6px;
+    border-radius: 4px;
     line-height: 1;
     /* align-self: start; */
     margin-left: 10px;
