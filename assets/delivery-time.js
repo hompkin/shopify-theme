@@ -35,11 +35,11 @@ async function getUserZipCode() {
     }
 }
 
-// 获取ip地址对应的邮编
-getUserZipCode().then(state_prov => {
-  if (state_prov) {
-    console.log(`The state_prov for the user's IP is ${state_prov}`);
-  } else {
-    console.log('Unable to determine state_prov');
-  }
-});
+  // getUserZipCode().then(zipcode => {
+  //   const placeholder = document.getElementById('zipcode-placeholder');
+  //   if (zipcode) {
+  //     placeholder.textContent = `The zipcode for the user's IP is ${zipcode}`;
+  //   } else {
+  //     placeholder.textContent = 'Unable to determine zipcode';
+  //   }
+  // });
