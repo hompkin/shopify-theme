@@ -3356,11 +3356,6 @@ quantity-input.disabled {
 }
 
 @media (min-width: 1280px) {
-    /* 调整产品页图片区域比例 */
-    .halo-productView-left{
-        width: 58%;
-        padding-right: 48px;
-    }
 
     .productView.layout-1 .productView-images-wrapper,
     .productView.layout-2 .productView-images-wrapper{
@@ -3372,8 +3367,7 @@ quantity-input.disabled {
 
     .productView.layout-1 .productView-image-wrapper,
     .productView.layout-2 .productView-image-wrapper{
-      /* 调整图片缩略图大小 */
-        width: calc(100% - 116px);
+        width: calc(100% - 100px);
     }
 
     .productView.layout-2 .productView-image-wrapper{
@@ -3384,7 +3378,7 @@ quantity-input.disabled {
     .productView.layout-2 .productView-thumbnail-wrapper{
         display: inline-block;
         vertical-align: top;
-        width: 116px;
+        width: 100px;
         margin-top: 0;
         order: -1;
     }
@@ -3477,6 +3471,28 @@ quantity-input.disabled {
 }
 
 @media (min-width: 1500px) {
+      /* 调整产品页图片区域比例 */
+    .halo-productView-left{
+        width: 58%;
+        padding-right: 48px;
+    }
+
+    .productView.layout-1 .productView-image-wrapper,
+    .productView.layout-2 .productView-image-wrapper{
+      /* 调整图片缩略图大小 */
+        width: calc(100% - 116px);
+    }
+
+    .productView.layout-1 .productView-thumbnail-wrapper,
+    .productView.layout-2 .productView-thumbnail-wrapper{
+        display: inline-block;
+        vertical-align: top;
+      /* 调整图片缩略图大小 */
+        width: 116px;
+        margin-top: 0;
+        order: -1;
+    }
+
     .product-horizontal-tabs .halo-productView-left {
         width: 70.4155%;
     }
