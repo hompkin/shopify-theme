@@ -265,7 +265,7 @@
         "main_image_show_custom_cursor": true,
         "count_color": "{{ shop.brand.colors.secondary[0].background }}",
         "icon_color": "{{ shop.brand.colors.secondary[0].background }}",
-        "show_thumbnail_mobile": true,
+        "show_thumbnail_mobile": false,
         "thumnail_layout": "1",
         "thumbnail_to_show": 6,
         "show_sidebar": false,
