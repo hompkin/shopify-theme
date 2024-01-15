@@ -2531,7 +2531,7 @@ quantity-input.disabled {
     font-weight:440;
     padding: 6px 12px 6px;
     color: var(--product-sale-price-color);
-    background-color: #f3e3d0;
+    background-color: #eff8ea;
     border-radius: 5px;
     line-height: 1;
     /* align-self: start; */
