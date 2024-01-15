@@ -26,7 +26,7 @@
         <link href="{{ 'application.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
         <link href="{{ 'fontawesome.min.css' | asset_url }}" rel="stylesheet">
         <link href="{{ 'solid.min.css' | asset_url }}" rel="stylesheet">
-
+        <link href="{{ 'brands.min.css' | asset_url }}" rel="stylesheet">
         <title>{{ page_title }} {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%} {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%} {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}</title>
 
         {%- if page_description -%}
