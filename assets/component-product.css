@@ -3329,7 +3329,8 @@ quantity-input.disabled {
 }
 
 @media (min-width: 1200px) {
-   .halo-productView-left{
+    .halo-productView-left{
+        width: 58%;
         padding-right: 30px;
     }
     .halo-productView-right{
@@ -3359,9 +3360,7 @@ quantity-input.disabled {
 }
 
 @media (min-width: 1280px) {
-    .halo-productView-left{
-        padding-right: 30px;
-    }
+
     .productView.layout-1 .productView-images-wrapper,
     .productView.layout-2 .productView-images-wrapper{
         display: flex;
