@@ -2527,9 +2527,9 @@ quantity-input.disabled {
 }
 
 .productView-price .price__saved {
-    font-size: calc(var(--fontsize-text, var(--product-price-font-size)) - 5px);
+    font-size: calc(var(--fontsize-text, var(--product-price-font-size)) - 6px);
     padding: 5px 10px 4px;
-    background-color: var(--product-sale-price-color);
+    background-color: #f1c46496;
     border-radius: 5px;
     line-height: 1;
     align-self: start;
