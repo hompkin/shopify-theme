@@ -267,7 +267,7 @@
         "icon_color": "{{ shop.brand.colors.secondary[0].background }}",
         "show_thumbnail_mobile": true,
         "thumnail_layout": "1",
-        "thumbnail_to_show": 5,
+        "thumbnail_to_show": 6,
         "show_sidebar": false,
         "show_sidebar_collapse": true,
         "enable_sticky": false,
