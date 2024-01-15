@@ -1534,9 +1534,6 @@ s.price-item.price-item--regular {
     color: #999999;
 } 
 
-span.price-item.price-item--sale {
-  font-size: var(--fontsize-text)*2;
-}
 
 .productView-countDown-wrapper {
     overflow: hidden;
