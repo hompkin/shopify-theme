@@ -2553,7 +2553,7 @@ quantity-input.disabled {
 .productView-price .price.price--medium .price-item--saved .money {
     font-size: calc(var(--fontsize-text)/2);
     /* color: white;    */
-    font-weight: var(--font-weight-normal); 
+    /* font-weight: var(--font-weight-normal);  */
     text-transform: uppercase;
     line-height: 1;
 }
