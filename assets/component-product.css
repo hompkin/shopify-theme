@@ -1533,6 +1533,7 @@
 .price__compare{
     font-size: var(--fontsize-text)/2;
     font-weight: 500;
+    color: #999999;
 }
 
 .productView-countDown-wrapper {
