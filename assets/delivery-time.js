@@ -18,7 +18,7 @@ async function getUserZipCode() {
       const ip = ipData.ip;
       const cachedZip = getCookie('state_prov');
 
-      if (cachedIp === ip && cachedZip) {
+      if (cachedZip) {
         return cachedZip;
       } else {
         const locResponse = await fetch(`https://service-e9wt99ba-1252698119.hk.tencentapigw.cn/release/get-location?user_ip=${ip}`);
