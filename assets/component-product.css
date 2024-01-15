@@ -3331,7 +3331,7 @@ quantity-input.disabled {
 @media (min-width: 1200px) {
     .halo-productView-left{
         width: 55%;
-        padding-right: 32px;
+        padding-right: 30px;
     }
 
     .halo-productView-right{
