@@ -3371,7 +3371,7 @@ quantity-input.disabled {
 
     .productView.layout-1 .productView-image-wrapper,
     .productView.layout-2 .productView-image-wrapper{
-        width: calc(100% - 105px);
+        width: calc(100% - 125px);
     }
 
     .productView.layout-2 .productView-image-wrapper{
@@ -3382,7 +3382,7 @@ quantity-input.disabled {
     .productView.layout-2 .productView-thumbnail-wrapper{
         display: inline-block;
         vertical-align: top;
-        width: 105px;
+        width: 125px;
         margin-top: 0;
         order: -1;
     }
