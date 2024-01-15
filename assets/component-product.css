@@ -1527,7 +1527,7 @@
     line-height: 1.2;
 }
 .price__last{
-    font-size: var(--fontsize-text);
+    font-size: 40px;
     font-weight: 600;
 }
 .price__compare{
