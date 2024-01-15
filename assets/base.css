@@ -683,6 +683,15 @@ option.soldout {
     }
 /* END: SVG Icon */
 
+.fa-globe:before {
+    content: "\f0ac";
+}
+
+.fa-solid .fa-truck-fast:before {
+    content: "\f48b";
+}
+
+
 /* START: Background Overlay */
     .background-overlay,
     .background-overlay1 {
