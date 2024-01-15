@@ -1527,10 +1527,10 @@
     line-height: 1.2;
 }
 .price__last{
-    font-size: var(--font-body-size);
+    font-size: var(--fontsize-text);
 }
 .price__compare{
-    font-size: var(--fontsize-text);
+    font-size: var(--fontsize-text)/2;
 }
 
 .productView-countDown-wrapper {
