@@ -5802,8 +5802,10 @@ summary::-webkit-details-marker {
 
         .container-1770{
             max-width: 1800px;
-            padding-left: 15px;
-            padding-right: 15px;
+            /* padding-left: 15px; */
+            /* padding-right: 15px; */
+            padding-left: 64px;
+            padding-right: 64px;
             margin-left: auto;
             margin-right: auto;
         }
