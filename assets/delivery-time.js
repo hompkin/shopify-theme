@@ -4,12 +4,13 @@ async function getUserZipCode() {
       const ipData = await ipResponse.json();
       const ip = ipData.ip;
       const apiKey='8f6e7f9fc6a04c8c86c257a7e1b913cd'
-      const cachedIp = localStorage.getItem('userIp');
-      const cachedZip = localStorage.getItem('userZip');
-      if (cachedIp === ip && cachedZip) {
-        return cachedZip;
+      const cachedIp = localStorage.getItem('user_ip');
+      const state_prov = localStorage.getItem('state_prov');
+      if (cachedIp === ip && state_prov) {
+        console.log("use local cache. cachedIp=${cachedIp} state_prov=${state_prov}")
+        return state_prov;
       } else {
-        localStorage.setItem('userIp', ip);
+        localStorage.setItem('user_ip', ip);
         const locationResponse = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${ip}`);
         const locationData = await locationResponse.json();
         const state_prov = locationData.state_prov;
