@@ -12,3 +12,8 @@
 .fa-globe:before {
     content: "\f0ac";
 }
+
+.fa-solid .fa-truck-fast:before {
+    content: "\f48b";
+}
+
