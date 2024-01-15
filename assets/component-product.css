@@ -3328,7 +3328,7 @@ quantity-input.disabled {
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1600px) {
   /* 调整产品页图片区域比例 */
     .halo-productView-left{
         width: 58%;
