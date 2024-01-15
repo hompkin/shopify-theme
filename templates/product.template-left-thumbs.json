@@ -240,7 +240,6 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "custom_css": [
-        "@media (min-width: 1025px) {.container-1770 {max-width: 1780px; padding-left: 40px; padding-right: 40px; }}",
         "@media (min-width: 1200px) {.halo-productView-left {width: 52.4%; padding-right: 48px; } .halo-productView-right {width: 47.6%; }}",
         ".price--on-sale .price__sale {color: #686868;}",
         ".price-item {font-weight: 600;}",
