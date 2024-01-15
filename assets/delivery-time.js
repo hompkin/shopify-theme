@@ -6,8 +6,8 @@ async function getUserZipCode() {
       const apiKey='8f6e7f9fc6a04c8c86c257a7e1b913cd'
       const cachedIp = localStorage.getItem('user_ip');
       const state_prov = localStorage.getItem('state_prov');
-      if (cachedIp === ip && state_prov) {
-        console.log("use local cache. cachedIp=${cachedIp} state_prov=${state_prov}")
+      if (false && cachedIp === ip && state_prov) {
+        console.log(`use local cache. cachedIp=${cachedIp} state_prov=${state_prov}`)
         return state_prov;
       } else {
         localStorage.setItem('user_ip', ip);
