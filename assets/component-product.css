@@ -1528,9 +1528,11 @@
 }
 .price__last{
     font-size: var(--fontsize-text);
+    font-weight: 600;
 }
 .price__compare{
     font-size: var(--fontsize-text)/2;
+    font-weight: 500;
 }
 
 .productView-countDown-wrapper {
