@@ -3330,12 +3330,12 @@ quantity-input.disabled {
 
 @media (min-width: 1200px) {
     .halo-productView-left{
-        width: 55%;
+        width: 58%;
         padding-right: 64px;
     }
 
     .halo-productView-right{
-        width: 45%;
+        width: 42%;
     }
 
     .product-full-width .halo-productView-left{
@@ -3371,7 +3371,7 @@ quantity-input.disabled {
 
     .productView.layout-1 .productView-image-wrapper,
     .productView.layout-2 .productView-image-wrapper{
-        width: calc(100% - 125px);
+        width: calc(100% - 128px);
     }
 
     .productView.layout-2 .productView-image-wrapper{
@@ -3382,7 +3382,7 @@ quantity-input.disabled {
     .productView.layout-2 .productView-thumbnail-wrapper{
         display: inline-block;
         vertical-align: top;
-        width: 125px;
+        width: 128px;
         margin-top: 0;
         order: -1;
     }
