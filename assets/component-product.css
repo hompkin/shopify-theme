@@ -2533,7 +2533,7 @@ quantity-input.disabled {
     background-color: #f1c46496;
     border-radius: 5px;
     line-height: 1;
-    align-self: start;
+    /* align-self: start; */
     margin-left: 10px;
 }
 
