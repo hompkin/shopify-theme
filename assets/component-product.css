@@ -3371,7 +3371,7 @@ quantity-input.disabled {
 
     .productView.layout-1 .productView-image-wrapper,
     .productView.layout-2 .productView-image-wrapper{
-        width: calc(100% - 100px);
+        width: calc(100% - 160px);
     }
 
     .productView.layout-2 .productView-image-wrapper{
@@ -3382,7 +3382,7 @@ quantity-input.disabled {
     .productView.layout-2 .productView-thumbnail-wrapper{
         display: inline-block;
         vertical-align: top;
-        width: 100px;
+        width: 160px;
         margin-top: 0;
         order: -1;
     }
@@ -3397,7 +3397,7 @@ quantity-input.disabled {
 
     .productView.layout-1 .productView-thumbnail-wrapper .productView-for,
     .productView.layout-2 .productView-thumbnail-wrapper .productView-for{
-        padding: 0px 0 38px 0;
+        padding: 30px 0 38px 0;
     }
 
     .productView.layout-1 .productView-thumbnail,
