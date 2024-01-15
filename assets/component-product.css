@@ -1519,7 +1519,7 @@
 
 .productView-price .price {
     justify-content: flex-start;
-    align-items:center;
+    align-items:flex-end;
 }
 
 .productView-price .price.price--medium .price-item,
