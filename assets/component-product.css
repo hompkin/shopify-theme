@@ -3372,6 +3372,7 @@ quantity-input.disabled {
 
     .productView.layout-1 .productView-image-wrapper,
     .productView.layout-2 .productView-image-wrapper{
+      /* 调整图片缩略图大小 */
         width: calc(100% - 124px);
     }
 
