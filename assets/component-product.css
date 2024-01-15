@@ -2529,10 +2529,10 @@ quantity-input.disabled {
 .productView-price .price__saved {
     font-size: calc(var(--fontsize-text, var(--product-price-font-size)) -8);
     font-weight:400;
-    padding: 6px 12px 6px;
+    padding: 8px 12px 8px;
     color: var(--product-sale-price-color);
     background-color: #f9f4ee;
-    border-radius: 5px;
+    border-radius: 6px;
     line-height: 1;
     /* align-self: start; */
     margin-left: 10px;
