@@ -3065,7 +3065,7 @@ quantity-input.disabled {
     .halo-productView-left{
         display: inline-block;
         vertical-align: top;
-        width: 45%;
+        width: 50%;
         margin-bottom: 0;
         padding-right: 30px;
     }
@@ -3073,7 +3073,7 @@ quantity-input.disabled {
     .halo-productView-right{
         display: inline-block;
         vertical-align: top;
-        width: 55%;
+        width: 50%;
     }
 
     .product-horizontal-tabs .halo-productView-left {
@@ -3330,12 +3330,12 @@ quantity-input.disabled {
 
 @media (min-width: 1200px) {
     .halo-productView-left{
-        width: 62.4%;
+        width: 55%;
         padding-right: 60px;
     }
 
     .halo-productView-right{
-        width: 37.6%;
+        width: 45%;
     }
 
     .product-full-width .halo-productView-left{
