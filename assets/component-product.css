@@ -1523,10 +1523,10 @@
 
 .productView-price .price.price--medium .price-item,
 .productView-price .price.price--medium .price-item .money {
-    /* font-size: var(--fontsize-text); */
+    font-size: var(--fontsize-text);
     line-height: 1.2;
 }
-.price__last{
+/* .price__last{
     font-size: 40px;
     font-weight: 600;
 }
@@ -1535,7 +1535,7 @@
     font-weight: 500;
     color: #999999;
 }
-
+ */
 .productView-countDown-wrapper {
     overflow: hidden;
 }
