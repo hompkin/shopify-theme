@@ -254,8 +254,6 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "custom_css": [
-        ".price--on-sale .price__sale {color: #999999;}",
-        ".price-item {font-weight: 600;}",
         "@media (min-width: 551px) {[data-vertical=\"sidebar\"] .tab-content .toggle-content {width: 660px; max-width: 66vw; }}",
         "@media only screen and (min-width: 768px) {\/* Container for each region *\/ .region-container {width: 100%; }}"
       ],
