@@ -1531,7 +1531,8 @@
     font-weight: 600;
 }
 */
-.dd .price__compare{
+
+.s.price-item.price-item--regular {
     font-size: var(--fontsize-text)/2;
     font-weight: 500;
     color: #999999;
