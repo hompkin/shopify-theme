@@ -3373,7 +3373,7 @@ quantity-input.disabled {
     .productView.layout-1 .productView-image-wrapper,
     .productView.layout-2 .productView-image-wrapper{
       /* 调整图片缩略图大小 */
-        width: calc(100% - 124px);
+        width: calc(100% - 120px);
     }
 
     .productView.layout-2 .productView-image-wrapper{
@@ -3384,7 +3384,7 @@ quantity-input.disabled {
     .productView.layout-2 .productView-thumbnail-wrapper{
         display: inline-block;
         vertical-align: top;
-        width: 124px;
+        width: 120px;
         margin-top: 0;
         order: -1;
     }
