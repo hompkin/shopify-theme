@@ -1533,9 +1533,6 @@ s.price-item.price-item--regular {
     font-weight: 500;
     color: #888888;
 } 
-.price-item--sale, .price.price--on-sale .price-item--sale .money {
-    font-size: var(--fontsize-text)*2;
-}
 
 .productView-countDown-wrapper {
     overflow: hidden;
