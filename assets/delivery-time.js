@@ -4,12 +4,19 @@ async function getUserZipCode() {
       const ipData = await ipResponse.json();
       const ip = ipData.ip;
       const apiKey='8f6e7f9fc6a04c8c86c257a7e1b913cd'
+      const cachedIp = localStorage.getItem('userIp');
+      const cachedZip = localStorage.getItem('userZip');
+      if (cachedIp === ip && cachedZip) {
+        return cachedZip;
+      } else {
+        localStorage.setItem('userIp', ip);
+        const locationResponse = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${ip}`);
+        const locationData = await locationResponse.json();
+        const state_prov = locationData.state_prov;
+        localStorage.setItem('state_prov', state_prov);
+        return state_prov;
+      }
 
-      const locationResponse = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${ip}`);
-      const locationData = await locationResponse.json();
-      const state_prov = locationData.state_prov;
-
-      return state_prov;
     } catch (error) {
       console.error('Error fetching IP or location data:', error);
       return null;
