@@ -2527,7 +2527,7 @@ quantity-input.disabled {
 }
 
 .productView-price .price__saved {
-    font-size: calc(var(--fontsize-text, var(--product-price-font-size)) - 6px);
+    font-size: calc(var(--fontsize-text, var(--product-price-font-size)) - 7px);
     padding: 5px 10px 4px;
     color: var(--product-sale-price-color);
     background-color: #f1c46496;
@@ -2550,8 +2550,8 @@ quantity-input.disabled {
 
 .productView-price .price.price--medium .price-item--saved, 
 .productView-price .price.price--medium .price-item--saved .money {
-    font-size: calc(var(--fontsize-text) - 5px);
-    color: white;   
+    font-size: calc(var(--fontsize-text) - 7px);
+    /* color: white;    */
     font-weight: var(--font-weight-normal); 
     text-transform: uppercase;
     line-height: 1;
