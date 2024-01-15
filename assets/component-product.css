@@ -2528,7 +2528,6 @@ quantity-input.disabled {
 
 .productView-price .price__saved {
     font-size: calc(var(--fontsize-text, var(--product-price-font-size)) -8);
-    font-weight:420;
     padding: 6px 11px 6px;
     color: var(--product-sale-price-color);
     background-color: #f9f4ee;
@@ -2553,7 +2552,7 @@ quantity-input.disabled {
 .productView-price .price.price--medium .price-item--saved .money {
     font-size: calc(var(--fontsize-text)-8);
     /* color: white;    */
-    /* font-weight: var(--font-weight-normal);  */
+    font-weight: 450; 
     text-transform: uppercase;
     line-height: 1;
 }
