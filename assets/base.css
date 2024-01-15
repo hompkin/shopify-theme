@@ -5801,11 +5801,12 @@ summary::-webkit-details-marker {
         }
 
         .container-1770{
-            max-width: 1670px;
+            width: 80%;
+            max-width: 1770px;
             /* padding-left: 15px; */
             /* padding-right: 15px; */
-            padding-left: 64px;
-            padding-right: 64px;
+            padding-left: 72px;
+            padding-right: 72px;
             margin-left: auto;
             margin-right: auto;
         }
