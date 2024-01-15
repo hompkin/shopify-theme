@@ -1527,7 +1527,9 @@
     /* font-size: var(--fontsize-text); */
     line-height: 1.2;
 }
-
+.price-item--sale {
+      font-size: var(--fontsize-text)+8;
+}
 s.price-item.price-item--regular {
     font-size: var(--fontsize-text)/2;
     font-weight: 500;
