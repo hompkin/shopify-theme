@@ -16,13 +16,14 @@ async function getUserZipCode() {
       const ipResponse = await fetch('https://api64.ipify.org?format=json');
       const ipData = await ipResponse.json();
       const ip = ipData.ip;
-       const cachedZip = getCookie('state_prov');
+      const cachedZip = getCookie('state_prov');
 
       if (cachedIp === ip && cachedZip) {
         return cachedZip;
       } else {
         const locResponse = await fetch(`https://service-e9wt99ba-1252698119.hk.tencentapigw.cn/release/get-location?user_ip=${ip}`);
         const state_prov = locResponse.state_prov;
+        console.log(`state_prov=${$state_prov}`);
         setCookie('state_prov', state_prov, 1); // 缓存邮编 1 天
         return zipcode;
       }
