@@ -1322,7 +1322,9 @@
 {%- endif -%}
 <script src="{{ 'delivery-time.js' | asset_url }}" defer="defer"></script>
 <script>
-loadUserDeliveryTime("test...")
+  document.addEventListener('DOMContentLoaded', function() {
+    loadUserDeliveryTime("test...");
+  });
 </script>
 <script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
 {%- if show_sticky_add_to_cart -%}
