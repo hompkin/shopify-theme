@@ -105,7 +105,7 @@ function loadUserDeliveryTime(params) {
     deliveryTimeLayout.style.display = "flex";
   
     if (json) {
-      deliveryTimePrefixView.textContent = "Delivered to";
+      deliveryTimePrefixView.textContent = params.prefix_title;
       if (zipcode) {
         addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
       } else {
@@ -115,8 +115,8 @@ function loadUserDeliveryTime(params) {
       deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
     } else {
       addressTextView.textContent = "";
-      deliveryTimePrefixView.textContent = "Delivery time is";
-      deliveryTimeView.textContent = " 4-6 weeks";
+      deliveryTimePrefixView.textContent = params.prefix_title_unknown;
+      deliveryTimeView.textContent = params.XXX;
     }
   });
 }
