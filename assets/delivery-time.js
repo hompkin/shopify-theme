@@ -81,19 +81,15 @@ getUserDeliveryLocation().then((json) => {
   const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
   const addressTextView = document.getElementById("address_text_id");
   const deliveryTimeView = document.getElementById("delivery_time_id");
-  const deliveryTimePrefixView = document.getElementById(
-    "delivery_time_prefix_id"
-  );
+  const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
   deliveryTimeLayout.style.display = "flex";
 
   if (json) {
     deliveryTimePrefixView.textContent = "Delivered to";
     if (zipcode) {
-      addressTextView.textContent = `${removeHyphenAndNumbersAfter(
-        zipcode
-      )}-${city}`;
+      addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
     } else {
-      addressTextView.textContent = `${city}`;
+      addressTextView.textContent = city;
     }
 
     deliveryTime.textContent = ": ${targetDeliveryTime}";
