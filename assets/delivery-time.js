@@ -62,7 +62,7 @@ async function getUserDeliveryLocation() {
 }
 
 function removeHyphenAndNumbersAfter(inputString) {
-  const hyphenIndex = inputString.indexOf('-');
+  const hyphenIndex = inputString.indexOf("-");
 
   if (hyphenIndex !== -1) {
     return inputString.slice(0, hyphenIndex);
@@ -77,21 +77,25 @@ getUserDeliveryLocation().then((json) => {
   const zipcode = json.zipcode;
   const category = getZipCodeCategory(countryCode, zipcode);
   const targetDeliveryTime = getDeliveryTime(countryCode, category);
-  
+
   const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
   const addressTextView = document.getElementById("address_text_id");
   const deliveryTimeView = document.getElementById("delivery_time_id");
-  const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
+  const deliveryTimePrefixView = document.getElementById(
+    "delivery_time_prefix_id"
+  );
   deliveryTimeLayout.style.display = "flex";
 
   if (json) {
     deliveryTimePrefixView.textContent = "Delivered to";
     if (zipcode) {
+      addressTextView.textContent = `${removeHyphenAndNumbersAfter(
+        zipcode
+      )}-${city}`;
+    } else {
       addressTextView.textContent = `${city}`;
-    }else {
-      addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
     }
-    
+
     deliveryTime.textContent = ": ${targetDeliveryTime}";
   } else {
     addressTextView.textContent = "";
