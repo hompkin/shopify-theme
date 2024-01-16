@@ -61,3 +61,11 @@
       align-items: flex-start;
   }
 }
+
+/* 运输时长预览 */
+.productView-DeliveryTimePreviewing .icon{
+    width: 19px;
+    height: 19px;
+    margin: -2px 10px 0 0;
+    fill: var(--icon);
+}
