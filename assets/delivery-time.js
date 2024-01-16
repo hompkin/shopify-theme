@@ -103,7 +103,7 @@ function loadUserDeliveryTime(params) {
     const deliveryTimeView = document.getElementById("delivery_time_id");
     const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
     deliveryTimeLayout.style.display = "flex";
-    if (params.countryCode) {
+    if (params.hasOwnProperty(countryCode)) {
       deliveryTimePrefixView.textContent = params.prefix_title;
       if (zipcode) {
         addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
