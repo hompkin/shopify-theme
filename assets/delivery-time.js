@@ -43,7 +43,7 @@ async function getUserZipCode() {
 
 getUserZipCode().then((result) => {
   const placeholder = document.getElementById("address_text_id");
-  if (result) {
+  if (false && result) {
     placeholder.textContent = result;
   } else {
     placeholder.textContent = "";
