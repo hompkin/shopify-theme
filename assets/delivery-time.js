@@ -46,7 +46,7 @@ function getZipCodeCategory(countryCode, zipCode) {
   }
 }
 
-function getDeliveryTime(countryCode, category) {
+function getDeliveryTime(countryCode, category, config) {
   return "";
 }
 
@@ -96,7 +96,7 @@ function loadUserDeliveryTime(params) {
     const zipcode = json.zipcode;
     console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
     const category = getZipCodeCategory(countryCode, zipcode);
-    const targetDeliveryTime = getDeliveryTime(countryCode, category);
+    const targetDeliveryTime = getDeliveryTime(countryCode, category, params);
   
     const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
     const addressTextView = document.getElementById("address_text_id");
