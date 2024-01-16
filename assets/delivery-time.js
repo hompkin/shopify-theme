@@ -86,7 +86,12 @@ getUserDeliveryLocation().then((json) => {
 
   if (json) {
     deliveryTimePrefixView.textContent = "Delivered to";
-    addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
+    if (zipcode) {
+      addressTextView.textContent = `${city}`;
+    }else {
+      addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
+    }
+    
     deliveryTime.textContent = ": ${targetDeliveryTime}";
   } else {
     addressTextView.textContent = "";
