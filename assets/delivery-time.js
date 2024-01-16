@@ -50,8 +50,8 @@ getUserZipCode().then((result) => {
   
   if (result) {
     deliveryTimePrefix.textContent = "Delivered to";
-    addressText.textContent = `${result}`;
-    deliveryTime.textContent = ": 4-6 weeks"
+    addressText.textContent = result;
+    deliveryTime.textContent = ": "+"4-6 weeks"
   } else {
     addressText.textContent = "";
     if (deliveryTimePrefix) {
