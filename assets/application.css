@@ -84,11 +84,15 @@
 }
 
 .productView-DeliveryTime .address_text{
-    color: var(--text-cart);
+    color: var(--color-link);
     text-decoration: underline;
     cursor: pointer;
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);
     letter-spacing: var(--body-letter-spacing);
     line-height: var(--body-line-height);
+}
+
+.productView-DeliveryTime .address_text:hover{
+    color: var(--color-link-hover);
 }
