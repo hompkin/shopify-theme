@@ -47,10 +47,8 @@ getUserZipCode().then((result) => {
     placeholder.textContent = result;
   } else {
     placeholder.textContent = "";
-    const deliveryTimePrefix = document.getElementById(
-      "delivery_time_prefix_id"
-    );
-    if (delivery_time_prefix) {
+    const deliveryTimePrefix = document.getElementById("delivery_time_prefix_id");
+    if (deliveryTimePrefix) {
       deliveryTimePrefix.textContent = "Delivery time is";
     }
   }
