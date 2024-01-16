@@ -16,6 +16,7 @@ async function getUserZipCode() {
       const ipResponse = await fetch('https://api64.ipify.org?format=json');
       const ipData = await ipResponse.json();
       const ip = ipData.ip;
+      console.log(`fetch ip=${ip}`);
       const cachedZip = getCookie('zipcode-city');
       // debug
       if (false && cachedZip) {
