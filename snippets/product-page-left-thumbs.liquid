@@ -1059,6 +1059,15 @@
                                                 %}
                                             </div>
                                         {% endunless %}
+                                    <!-- 增加派送时长提示 -->
+                                    <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
+                                            style="--spacing-top: {{ spacing_top | append: 'px' }};
+                                            --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
+                                        >
+                                            {% render 'delivery-time-previewing',
+                                                block: block
+                                            %}
+                                      </div>
                                     {%- when 'customer_viewing' -%}
                                         <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                                             style="--spacing-top: {{ spacing_top | append: 'px' }};
@@ -1312,6 +1321,7 @@
     %}
 {%- endif -%}
 <script src="{{ 'delivery-time.js' | asset_url }}" defer="defer"></script>
+loadUserDeliveryTime("load delivery time...")
 <script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
 {%- if show_sticky_add_to_cart -%}
     <script src="{{ 'sticky-add-to-cart.js' | asset_url }}" defer="defer"></script>
