@@ -13,7 +13,7 @@ function setCookie(name, value, hours) {
 
 async function getUserZipCode() {
     try {
-      const ipResponse = await fetch('https://api64.ipify.org?format=json');
+      const ipResponse = await fetch('https://api.ipgeolocation.io/getip?format=json');
       const ipData = await ipResponse.json();
       const ip = ipData.ip;
       console.log(`fetch ip=${ip}`);
