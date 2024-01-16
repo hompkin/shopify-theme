@@ -1,15 +1,33 @@
-function getCookie(name) {
-  const value = "; " + document.cookie;
-  const parts = value.split("; " + name + "=");
-  if (parts.length === 2) return parts.pop().split(";").shift();
+function getCookieJson(cookieName) {
+  const name = cookieName + "=";
+  const decodedCookies = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookies.split(';');
+
+  for (let i = 0; i< cookieArray.length; i++) {
+    let cookie = cookieArray[i].trim();
+
+    if (cookie.indexOf(name) === 0) {
+      const jsonString = cookie.substring(name.length, cookie.length);
+      const jsonData = JSON.parse(jsonString);
+      return jsonData;
+    }
+  }
+
+  return null;
 }
 
-function setCookie(name, value, hours) {
+function setCookieJson(cookieName, jsonData, expiredHours) {
+  const jsonString = JSON.stringify(jsonData);
+  const encodedJson = encodeURIComponent(jsonString);
+
   const date = new Date();
-  date.setTime(date.getTime() + hours * 60 * 60 * 1000);
-  const expires = "; expires=" + date.toUTCString();
-  document.cookie = name + "=" + value + expires + "; path=/";
+  date.setTime(date.getTime() + (expiredHours * 60 * 60 * 1000));
+  const expires = "expires=" + date.toUTCString();
+
+  document.cookie = cookieName + "=" + encodedJson + ";" + expires + ";path=/";
 }
+
+
 
 function getZipCodeCategory(countryCode, zipCode) {
   if (countryCode != "US") {
@@ -39,10 +57,10 @@ async function getUserDeliveryLocation() {
     );
     const ipData = await ipResponse.json();
     const ip = ipData.ip;
-    const cacheKey = "user-delivery-location";
+    const cacheKey = "user-delivery-location-key";
     console.log(`fetch ip=${ip}`);
-    const location = getCookie(cacheKey);
-    if (false && location) {
+    const location = getCookieJson(cacheKey);
+    if (location) {
       return location;
     } else {
       const locResponse = await fetch(
@@ -52,7 +70,7 @@ async function getUserDeliveryLocation() {
       const zipcode = json.zipcode;
       const city = json.city;
       console.log(`ip=${ip}, zipcode=${zipcode} city=${city}`);
-      setCookie(cacheKey, json, 12);
+      setCookieJson(cacheKey, json, 12);
       return json;
     }
   } catch (error) {
