@@ -94,7 +94,7 @@ function loadUserDeliveryTime(params) {
     const countryCode = json.country_code2;
     const city = json.city;
     const zipcode = json.zipcode;
-    console.log(`countryCode=${countryCode},${params.countryCode} zipcode=${zipcode} city=${city}`);
+    console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
     const category = getZipCodeCategory(countryCode, zipcode);
     const targetDeliveryTime = getDeliveryTime(countryCode, category);
   
