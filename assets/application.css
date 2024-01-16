@@ -86,6 +86,7 @@
 .productView-DeliveryTime .address_text{
     color: var(--text-cart);
     text-decoration: underline;
+    cursor: pointer;
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);
     letter-spacing: var(--body-letter-spacing);
