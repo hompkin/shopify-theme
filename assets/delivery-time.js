@@ -21,6 +21,7 @@ async function getUserZipCode() {
     console.log(`fetch ip=${ip}`);
     const cachedZip = getCookie("zipcode-city");
     if (cachedZip) {
+      console.log(`use cache ip=${ip} is ${cachedZip}`);
       return cachedZip;
     } else {
       const locResponse = await fetch(
