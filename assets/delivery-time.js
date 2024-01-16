@@ -11,8 +11,8 @@ function setCookie(name, value, hours) {
   document.cookie = name + "=" + value + expires + "; path=/";
 }
 
-function getZipCodeCategory(country_code, zipCode) {
-  if (country_code != 'US') {
+function getZipCodeCategory(countryCode, zipCode) {
+  if (countryCode != 'US') {
     return null;
   }
   const firstDigit = parseInt(zipCode.charAt(0), 10);
@@ -26,6 +26,10 @@ function getZipCodeCategory(country_code, zipCode) {
   } else {
     return 4;
   }
+}
+
+function getDeliveryTime(countryCode, category){
+  return "";
 }
 
 async function getUserZipCode() {
