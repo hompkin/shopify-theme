@@ -56,7 +56,7 @@ getUserZipCode().then((result) => {
     addressText.textContent = "";
     if (deliveryTimePrefix) {
       deliveryTimePrefix.textContent = "Delivery time is";
-      deliveryTime.textContent = "4-6 weeks"
+      deliveryTime.textContent = " 4-6 weeks"
     }
   }
 });
