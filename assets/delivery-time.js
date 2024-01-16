@@ -58,7 +58,6 @@ async function getUserDeliveryLocation() {
     const ipData = await ipResponse.json();
     const ip = ipData.ip;
     const cacheKey = "user-delivery-location-key";
-    console.log(`fetch ip=${ip}`);
     const location = getCookieJson(cacheKey);
     if (location) {
       return location;
@@ -69,7 +68,7 @@ async function getUserDeliveryLocation() {
       const json = await locResponse.json();
       const zipcode = json.zipcode;
       const city = json.city;
-      console.log(`ip=${ip}, zipcode=${zipcode} city=${city}`);
+      console.log(`fetch ip=${ip}, zipcode=${zipcode} city=${city}`);
       setCookieJson(cacheKey, json, 12);
       return json;
     }
@@ -95,6 +94,7 @@ function loadUserDeliveryTime(params) {
     const countryCode = json.country_code2;
     const city = json.city;
     const zipcode = json.zipcode;
+    console.log(`countryCode=${countryCode}, zipcode=${zipcode} city=${city}`);
     const category = getZipCodeCategory(countryCode, zipcode);
     const targetDeliveryTime = getDeliveryTime(countryCode, category);
   
