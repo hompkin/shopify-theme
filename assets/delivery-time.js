@@ -90,7 +90,8 @@ function removeHyphenAndNumbersAfter(inputString) {
 }
 
 function loadUserDeliveryTime(params) {
-  console.log(`fetch ip=${params.prefix_title}`);
+  const config = params.delivery-time-pjebzpu6.config.value;
+  console.log(`fetch ip=${config.prefix_title}`);
   getUserDeliveryLocation().then((json) => {
     const countryCode = json.country_code2;
     const city = json.city;
@@ -105,7 +106,7 @@ function loadUserDeliveryTime(params) {
     deliveryTimeLayout.style.display = "flex";
   
     if (json) {
-      deliveryTimePrefixView.textContent = params.prefix_title;
+      deliveryTimePrefixView.textContent = config.prefix_title;
       if (zipcode) {
         addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
       } else {
@@ -115,8 +116,8 @@ function loadUserDeliveryTime(params) {
       deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
     } else {
       addressTextView.textContent = "";
-      deliveryTimePrefixView.textContent = params.prefix_title_unknown;
-      deliveryTimeView.textContent = params.XXX;
+      deliveryTimePrefixView.textContent = config.prefix_title_unknown;
+      deliveryTimeView.textContent = config.XXX;
     }
   });
 }
