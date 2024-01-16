@@ -80,7 +80,7 @@
     font-family: var(--font-body-family);
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);
-    letter-spacing: var(--body-letter-spacing);
+    letter-spacing: 4px;
     line-height: var(--body-line-height);
 }
 
@@ -92,7 +92,7 @@
     cursor: pointer;
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);
-    
+    letter-spacing: var(--body-letter-spacing);
     line-height: var(--body-line-height);
 }
 
