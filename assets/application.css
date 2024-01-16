@@ -61,18 +61,3 @@
       align-items: flex-start;
   }
 }
-
-/* 运输时长预览 */
-.productView-DeliveryTimePreviewing .icon{
-    width: 19px;
-    height: 19px;
-    margin: -2px 10px 0 0;
-    fill: var(--icon);
-}
-.productView-DeliveryTimePreviewing .text{
-    color: var(--text-cart);
-    font-size: var(--font-body-size);
-    font-weight: var(--font-weight-normal);
-    letter-spacing: var(--body-letter-spacing);
-    line-height: var(--body-line-height);
-}
