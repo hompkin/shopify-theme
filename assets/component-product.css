@@ -2534,7 +2534,7 @@ quantity-input.disabled {
     border-radius: 4px;
     line-height: 1;
     /* align-self: start; */
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 #halo-quickshop-popup-option-3 .productView-price .price__saved {
