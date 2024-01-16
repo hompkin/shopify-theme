@@ -90,7 +90,7 @@ function removeHyphenAndNumbersAfter(inputString) {
 }
 
 function loadUserDeliveryTime(params) {
-  console.log(`fetch ip=${params.prefix_title}`);
+  
   getUserDeliveryLocation().then((json) => {
     const countryCode = json.country_code2;
     const city = json.city;
@@ -103,7 +103,7 @@ function loadUserDeliveryTime(params) {
     const deliveryTimeView = document.getElementById("delivery_time_id");
     const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
     deliveryTimeLayout.style.display = "flex";
-  
+    
     if (json) {
       deliveryTimePrefixView.textContent = params.prefix_title;
       if (zipcode) {
