@@ -1,6 +1,6 @@
 {%- liquid 
     assign delivery_area = "94534-SanmdNone"
-    assign delivery_time = "4-6 weeks"
+    assign delivery_time = "4-6 Weeks"
 -%}
 <div class="productView-DeliveryTime">
   <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -8,6 +8,6 @@
   </svg>
   <span class="text">Delivered to&nbsp</span>
   <span class="address_text">{{ delivery_area | default: ' ' }}</span>
-  <span class="text">&nbsp{{ delivery_time | default: ' ' }}</span>
+  <span class="text">:&nbsp{{ delivery_time | default: ' ' }}</span>
       
 </div>
