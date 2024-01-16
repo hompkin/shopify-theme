@@ -46,16 +46,19 @@ function getZipCodeCategory(countryCode, zipCode) {
 
 function getDeliveryTime(countryCode, config) {
   if (countryCode != "US") {
+    console.log("111")
     if(config.hasOwnProperty(countryCode)) {
+          console.log("333")
          return config.countryCode;
     } else {
+       console.log("444")
         return config.XXX;
     }
   } else {
+     console.log("222")
     const category = getZipCodeCategory(countryCode, zipcode);
     return config.countryCode.category
   }
-  
   return null;
 }
 
