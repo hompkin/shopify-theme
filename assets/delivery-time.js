@@ -90,6 +90,7 @@ function removeHyphenAndNumbersAfter(inputString) {
 }
 
 function loadUserDeliveryTime(params) {
+  console.log(`fetch .....`);
   const config = params.delivery-time-pjebzpu6.config.value;
   console.log(`fetch ip=${config.prefix_title}`);
   getUserDeliveryLocation().then((json) => {
