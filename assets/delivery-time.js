@@ -11,6 +11,23 @@ function setCookie(name, value, hours) {
   document.cookie = name + "=" + value + expires + "; path=/";
 }
 
+function getZipCodeCategory(country_code, zipCode) {
+  if (country_code != 'US') {
+    return null;
+  }
+  const firstDigit = parseInt(zipCode.charAt(0), 10);
+
+  if (firstDigit >= 90 && firstDigit <= 92) {
+    return 1;
+  } else if (firstDigit === 8 || firstDigit === 9) {
+    return 2;
+  } else if (firstDigit >= 5 && firstDigit <= 7) {
+    return 3;
+  } else {
+    return 4;
+  }
+}
+
 async function getUserZipCode() {
   try {
     const ipResponse = await fetch(
