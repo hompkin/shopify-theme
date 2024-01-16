@@ -89,32 +89,34 @@ function removeHyphenAndNumbersAfter(inputString) {
   }
 }
 
-getUserDeliveryLocation().then((json) => {
+function loadUserDeliveryTime(params) {
+  console.log(`fetch ip=${params}`);
+  getUserDeliveryLocation().then((json) => {
+    const countryCode = json.country_code2;
+    const city = json.city;
+    const zipcode = json.zipcode;
+    const category = getZipCodeCategory(countryCode, zipcode);
+    const targetDeliveryTime = getDeliveryTime(countryCode, category);
   
-  const countryCode = json.country_code2;
-  const city = json.city;
-  const zipcode = json.zipcode;
-  const category = getZipCodeCategory(countryCode, zipcode);
-  const targetDeliveryTime = getDeliveryTime(countryCode, category);
-
-  const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
-  const addressTextView = document.getElementById("address_text_id");
-  const deliveryTimeView = document.getElementById("delivery_time_id");
-  const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
-  deliveryTimeLayout.style.display = "flex";
-
-  if (json) {
-    deliveryTimePrefixView.textContent = "Delivered to";
-    if (zipcode) {
-      addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
+    const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
+    const addressTextView = document.getElementById("address_text_id");
+    const deliveryTimeView = document.getElementById("delivery_time_id");
+    const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
+    deliveryTimeLayout.style.display = "flex";
+  
+    if (json) {
+      deliveryTimePrefixView.textContent = "Delivered to";
+      if (zipcode) {
+        addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
+      } else {
+        addressTextView.textContent = city;
+      }
+  
+      deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
     } else {
-      addressTextView.textContent = city;
+      addressTextView.textContent = "";
+      deliveryTimePrefixView.textContent = "Delivery time is";
+      deliveryTimeView.textContent = " 4-6 weeks";
     }
-
-    deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
-  } else {
-    addressTextView.textContent = "";
-    deliveryTimePrefixView.textContent = "Delivery time is";
-    deliveryTimeView.textContent = " 4-6 weeks";
-  }
-});
+  });
+}
