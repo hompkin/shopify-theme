@@ -92,7 +92,7 @@ getUserDeliveryLocation().then((json) => {
       addressTextView.textContent = city;
     }
 
-    deliveryTimeView.textContent = ": ${targetDeliveryTime}";
+    deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
   } else {
     addressTextView.textContent = "";
     deliveryTimePrefixView.textContent = "Delivery time is";
