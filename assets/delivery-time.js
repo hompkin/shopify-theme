@@ -47,12 +47,12 @@ getUserZipCode().then((result) => {
   const deliveryTimePrefix = document.getElementById("delivery_time_prefix_id");
   
   if (result) {
-    deliveryTimePrefix.textContent = "Delivered to&nbsp";
+    deliveryTimePrefix.textContent = "Delivered to ";
     addressText.textContent = result;
   } else {
     addressText.textContent = "";
     if (deliveryTimePrefix) {
-      deliveryTimePrefix.textContent = "Delivery time is&nbsp";
+      deliveryTimePrefix.textContent = "Delivery time is ";
     }
   }
 });
