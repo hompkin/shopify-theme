@@ -47,16 +47,16 @@ getUserZipCode().then((result) => {
   const addressText = document.getElementById("address_text_id");
   const deliveryTime = document.getElementById("delivery_time_id");
   const deliveryTimePrefix = document.getElementById("delivery_time_prefix_id");
-  
+
   if (result) {
     deliveryTimePrefix.textContent = "Delivered to";
-    addressText.textContent = ` ${result}`;
-    deliveryTime.textContent = ": "+"4-6 weeks"
+    addressText.textContent = result;
+    deliveryTime.textContent = ": " + "4-6 weeks";
   } else {
     addressText.textContent = "";
     if (deliveryTimePrefix) {
       deliveryTimePrefix.textContent = "Delivery time is";
-      deliveryTime.textContent = " 4-6 weeks"
+      deliveryTime.textContent = " 4-6 weeks";
     }
   }
 });
