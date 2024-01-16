@@ -43,7 +43,7 @@ async function getUserZipCode() {
 
 getUserZipCode().then((result) => {
   const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
-  deliveryTimeLayout.style.display = "";
+  deliveryTimeLayout.style.display = "flex";
   const addressText = document.getElementById("address_text_id");
   const deliveryTime = document.getElementById("delivery_time_id");
   const deliveryTimePrefix = document.getElementById("delivery_time_prefix_id");
