@@ -12,7 +12,7 @@ function setCookie(name, value, hours) {
 }
 
 function getZipCodeCategory(countryCode, zipCode) {
-  if (countryCode != 'US') {
+  if (countryCode != "US") {
     return null;
   }
   const firstDigit = parseInt(zipCode.charAt(0), 10);
@@ -28,22 +28,22 @@ function getZipCodeCategory(countryCode, zipCode) {
   }
 }
 
-function getDeliveryTime(countryCode, category){
+function getDeliveryTime(countryCode, category) {
   return "";
 }
 
-async function getUserZipCode() {
+async function getUserDeliveryLocation() {
   try {
     const ipResponse = await fetch(
       "https://api.ipgeolocation.io/getip?format=json"
     );
     const ipData = await ipResponse.json();
     const ip = ipData.ip;
+    const cacheKey = "user-delivery-location";
     console.log(`fetch ip=${ip}`);
-    const cachedZip = getCookie("zipcode-city");
-    if (cachedZip) {
-      console.log(`use cache ip=${ip} is ${cachedZip}`);
-      return cachedZip;
+    const location = getCookie(cacheKey);
+    if (location) {
+      return location;
     } else {
       const locResponse = await fetch(
         `https://service-e9wt99ba-1252698119.hk.tencentapigw.cn/release/get-location?user_ip=${ip}`
@@ -52,9 +52,8 @@ async function getUserZipCode() {
       const zipcode = json.zipcode;
       const city = json.city;
       console.log(`ip=${ip}, zipcode=${zipcode} city=${city}`);
-      const result = zipcode + city;
-      setCookie("zipcode-city", result, 12);
-      return result;
+      setCookie(cacheKey, json, 12);
+      return json;
     }
   } catch (error) {
     console.error("Error fetching IP or location data:", error);
@@ -62,23 +61,36 @@ async function getUserZipCode() {
   }
 }
 
-getUserZipCode().then((result) => {
-  // const countryCode = result
-  const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
-  deliveryTimeLayout.style.display = "flex";
-  const addressText = document.getElementById("address_text_id");
-  const deliveryTime = document.getElementById("delivery_time_id");
-  const deliveryTimePrefix = document.getElementById("delivery_time_prefix_id");
+function removeHyphenAndNumbersAfter(inputString) {
+  const hyphenIndex = inputString.indexOf('-');
 
-  if (result) {
-    deliveryTimePrefix.textContent = "Delivered to";
-    addressText.textContent = result;
-    deliveryTime.textContent = ": " + "4-6 weeks";
+  if (hyphenIndex !== -1) {
+    return inputString.slice(0, hyphenIndex);
   } else {
-    addressText.textContent = "";
-    if (deliveryTimePrefix) {
-      deliveryTimePrefix.textContent = "Delivery time is";
-      deliveryTime.textContent = " 4-6 weeks";
-    }
+    return inputString;
+  }
+}
+
+getUserDeliveryLocation().then((json) => {
+  const countryCode = json.country_code2;
+  const city = json.city;
+  const zipcode = json.zipcode;
+  const category = getZipCodeCategory(countryCode, zipcode);
+  const targetDeliveryTime = getDeliveryTime(countryCode, category);
+  
+  const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
+  const addressTextView = document.getElementById("address_text_id");
+  const deliveryTimeView = document.getElementById("delivery_time_id");
+  const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
+  deliveryTimeLayout.style.display = "flex";
+
+  if (json) {
+    deliveryTimePrefixView.textContent = "Delivered to";
+    addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
+    deliveryTime.textContent = ": ${targetDeliveryTime}";
+  } else {
+    addressTextView.textContent = "";
+    deliveryTimePrefixView.textContent = "Delivery time is";
+    deliveryTime.textContent = " 4-6 weeks";
   }
 });
