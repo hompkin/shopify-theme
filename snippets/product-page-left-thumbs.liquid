@@ -1324,8 +1324,8 @@
 <script src="{{ 'delivery-time.js' | asset_url }}" defer="defer"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    {% for item in shop.metaobjects.delivery_time.values %}
-      console.log(`${item.value}`);
+    {% for delivery_time in shop.metaobjects.delivery_time.values %}
+      console.log(`${delivery_time.value}`);
     {% endfor %}
     console.log(`${shop.metaobjects.delivery-time-pjebzpu6.value}`);
     loadUserDeliveryTime({{ shop.metaobjects.delivery-time-pjebzpu6.value}});
