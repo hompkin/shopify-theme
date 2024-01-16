@@ -77,6 +77,7 @@
 
 .productView-DeliveryTime .text{
     color: var(--text-cart);
+    
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);
     letter-spacing: var(--body-letter-spacing);
@@ -86,6 +87,7 @@
 .productView-DeliveryTime .address_text{
     color: var(--color-link);
     text-decoration: underline;
+  font-family: var(--font-body-family);
     text-underline-offset: 3px;
     cursor: pointer;
     font-size: var(--font-body-size);
