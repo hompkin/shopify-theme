@@ -143,8 +143,8 @@
         "683f2b15-db3b-4f63-8d0f-e688cc678581": {
           "type": "customer_viewing",
           "settings": {
-            "customer_viewing_number": "0,1,2,3,5,6,8,9,10,16,18,20,24,26,28,32,66,88",
-            "customer_viewing_time": 8,
+            "customer_viewing_number": "1,2,3,5,6,8,9,10,16,18,20,24,26,28,32,66,88",
+            "customer_viewing_time": 12,
             "spacing_top": 0,
             "spacing_bottom": 22
           }
