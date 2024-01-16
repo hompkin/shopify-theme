@@ -90,7 +90,7 @@ function removeHyphenAndNumbersAfter(inputString) {
 }
 
 getUserDeliveryLocation().then((json) => {
-  console.log(`fetch ip=${json}`);
+  
   const countryCode = json.country_code2;
   const city = json.city;
   const zipcode = json.zipcode;
