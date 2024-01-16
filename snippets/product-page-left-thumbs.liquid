@@ -1320,9 +1320,11 @@
         index: index
     %}
 {%- endif -%}
-<script src="{{ 'delivery-time.js' | asset_url }}" defer="defer">
-    document.addEventListener('DOMContentLoaded', function() {
-    loadUserDeliveryTime("test...");
+<!-- 插入派送时间布局 -->
+<script src="{{ 'delivery-time.js' | asset_url }}" defer="defer"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    loadUserDeliveryTime({{ product.id }});
   });
 </script>
 
