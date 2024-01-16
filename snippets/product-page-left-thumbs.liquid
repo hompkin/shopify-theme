@@ -1320,8 +1320,10 @@
         index: index
     %}
 {%- endif -%}
-<script src="{{ 'delivery-time.js' | asset_url }}" defer="defer"></script>
-loadUserDeliveryTime("load delivery time...");
+<script src="{{ 'delivery-time.js' | asset_url }}" defer="defer">
+  loadUserDeliveryTime("load delivery time...");
+</script>
+
 <script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
 {%- if show_sticky_add_to_cart -%}
     <script src="{{ 'sticky-add-to-cart.js' | asset_url }}" defer="defer"></script>
