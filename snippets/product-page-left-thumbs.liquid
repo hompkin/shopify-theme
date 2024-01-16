@@ -1324,7 +1324,10 @@
 <script src="{{ 'delivery-time.js' | asset_url }}" defer="defer"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    loadUserDeliveryTime({{ shop.metaobjects.delivery_time.values.length() }});
+    {% for delivery in shop.metaobjects.delivery_time.values %}
+      <span>11111</span>
+    {% endfor %}
+    // loadUserDeliveryTime({{ shop.metaobjects.delivery_time.values}});
   });
 </script>
 
