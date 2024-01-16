@@ -63,6 +63,7 @@ async function getUserZipCode() {
 }
 
 getUserZipCode().then((result) => {
+  // const countryCode = result
   const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
   deliveryTimeLayout.style.display = "flex";
   const addressText = document.getElementById("address_text_id");
