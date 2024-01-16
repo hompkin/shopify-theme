@@ -1327,8 +1327,8 @@
     {% for delivery_time in shop.metaobjects.delivery_time.values %}
       // console.log(`${delivery_time.config}`);
     {% endfor %}
-    const test = ">>>>>>" + {{ shop.metaobjects.delivery_time.config.delivery-time-pjebzpu6.value }};
-    console.log(`${test}`);
+    const test = {{ shop.metaobjects.delivery_time.config.delivery-time-pjebzpu6.value }};
+    console.log(`>>>>>>${test}`);
     // loadUserDeliveryTime({{ shop.metaobjects.delivery_time.config.delivery-time-pjebzpu6.value}});
   });
 </script>
