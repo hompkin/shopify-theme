@@ -30,9 +30,7 @@ function setCookieJson(cookieName, jsonData, expiredHours) {
 
 
 function getZipCodeCategory(countryCode, zipCode) {
-  if (countryCode != "US") {
-    return null;
-  }
+
   const firstDigit = parseInt(zipCode.charAt(0), 10);
 
   if (firstDigit >= 90 && firstDigit <= 92) {
@@ -46,8 +44,19 @@ function getZipCodeCategory(countryCode, zipCode) {
   }
 }
 
-function getDeliveryTime(countryCode, category, config) {
-  return "";
+function getDeliveryTime(countryCode, config) {
+  if (countryCode != "US") {
+    if(config.hasOwnProperty(countryCode)) {
+         return config.countryCode;
+    } else {
+        return config.XXX;
+    }
+  } else {
+    const category = getZipCodeCategory(countryCode, zipcode);
+    return config.countryCode.category
+  }
+  
+  return null;
 }
 
 async function getUserDeliveryLocation() {
@@ -95,8 +104,7 @@ function loadUserDeliveryTime(params) {
     const city = json.city;
     const zipcode = json.zipcode;
     console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
-    const category = getZipCodeCategory(countryCode, zipcode);
-    const targetDeliveryTime = getDeliveryTime(countryCode, category, params);
+    const targetDeliveryTime = getDeliveryTime(countryCode, params);
   
     const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
     const addressTextView = document.getElementById("address_text_id");
