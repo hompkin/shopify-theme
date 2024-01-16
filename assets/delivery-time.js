@@ -92,10 +92,10 @@ getUserDeliveryLocation().then((json) => {
       addressTextView.textContent = city;
     }
 
-    deliveryTime.textContent = ": ${targetDeliveryTime}";
+    deliveryTimeView.textContent = ": ${targetDeliveryTime}";
   } else {
     addressTextView.textContent = "";
     deliveryTimePrefixView.textContent = "Delivery time is";
-    deliveryTime.textContent = " 4-6 weeks";
+    deliveryTimeView.textContent = " 4-6 weeks";
   }
 });
