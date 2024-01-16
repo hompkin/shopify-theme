@@ -13,20 +13,22 @@ function setCookie(name, value, hours) {
 
 async function getUserZipCode() {
     try {
-      const ipResponse = await fetch('https://api64.ipify.org?format=json');
+      const ipResponse = await fetch('https://api.ipgeolocation.io/getip?format=json');
       const ipData = await ipResponse.json();
       const ip = ipData.ip;
-      const cachedZip = getCookie('state_prov');
-
+      const cachedZip = getCookie('zipcode-city');
+      // debug
       if (false && cachedZip) {
         return cachedZip;
       } else {
         const locResponse = await fetch(`https://service-e9wt99ba-1252698119.hk.tencentapigw.cn/release/get-location?user_ip=${ip}`);
         const json = await locResponse.json();
-        const state_prov=json.state_prov;
-        console.log(`ip=${ip}, state_prov=${state_prov} json=${json}`);
-        setCookie('state_prov', state_prov, 1); // 缓存邮编 1 天
-        return state_prov;
+        const zipcode = json.zipcode;
+        const city = json.city;
+        console.log(`ip=${ip}, zipcode=${zipcode} city=${city}`);
+        const result = zipcode + city;
+        setCookie('zipcode-city', result, 12);
+        return result;
       }
 
     } catch (error) {
@@ -35,11 +37,12 @@ async function getUserZipCode() {
     }
 }
 
-  // getUserZipCode().then(zipcode => {
-  //   const placeholder = document.getElementById('zipcode-placeholder');
-  //   if (zipcode) {
-  //     placeholder.textContent = `The zipcode for the user's IP is ${zipcode}`;
-  //   } else {
-  //     placeholder.textContent = 'Unable to determine zipcode';
-  //   }
-  // });
+getUserZipCode().then(result => {
+  const placeholder = document.getElementById('address_text_id');
+  if (result) {
+    placeholder.textContent = result;
+  } else {
+    placeholder.textContent = 'Unkonw Address';
+  }
+});
+
