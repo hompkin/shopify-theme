@@ -48,7 +48,7 @@ function getDeliveryTime(countryCode, config) {
   if (countryCode != "US") {
     console.log("111")
     if(config.hasOwnProperty(countryCode)) {
-          console.log("333")
+          console.log(`countryCode=${countryCode}`)
          return config.countryCode;
     } else {
        console.log("444")
