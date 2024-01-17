@@ -77,7 +77,7 @@
   margin-left: 10px;
 }
 
-.productView-DeliveryTimeUpdate .update-button {
+.update-button {
   width: var(--button-width);
   font-size: var(--button-font-size);
   font-weight: var(--button-font-weight);
