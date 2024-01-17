@@ -152,8 +152,12 @@ document.addEventListener("DOMContentLoaded", function () {
 function onClickUpdate(params) {
   console.log("onClickUpdate");
    const cacheKey = "user-delivery-location-key";
-  const json = "{"country_code2":"", "":"",}";
-   setCookieJson(cacheKey, json, 12);
+  var countrySelect = document.getElementById("country-select");
+  var zipcodeInput = document.getElementById("zipcode-input");
+
+  const json = "{/"country_code2/":`${countrySelect.value}`, /"zipcode/":`${zipcodeInput.value}`}";
+    console.log("onClickUpdate:", json);
+   // setCookieJson(cacheKey, json, 12);
   refreshView(params,json)
 }
 
