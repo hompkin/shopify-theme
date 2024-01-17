@@ -119,11 +119,9 @@ function refreshView(params, json) {
       addressTextView.textContent = `${removeHyphenAndNumbersAfter(
         zipcode
       )}-${city}`;
-    } else if(zipcode){
-     addressTextView.textContent = `${removeHyphenAndNumbersAfter(
-        zipcode
-      )}`;
-    }else {
+    } else if (zipcode) {
+      addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}`;
+    } else {
       addressTextView.textContent = city;
     }
 
@@ -146,19 +144,18 @@ document.addEventListener("DOMContentLoaded", function () {
   if (zipcodeInput) {
     zipcodeInput.addEventListener("input", onInputChange);
   }
-
 });
 
 function onClickUpdate(params) {
   console.log("onClickUpdate");
-   const cacheKey = "user-delivery-location-key";
+  const cacheKey = "user-delivery-location-key";
   var countrySelect = document.getElementById("country-select");
   var zipcodeInput = document.getElementById("zipcode-input");
 
-  const json = "{/"country_code2/":`${countrySelect.value}`, /"zipcode/":`${zipcodeInput.value}`}";
-    console.log("onClickUpdate:", json);
-   // setCookieJson(cacheKey, json, 12);
-  refreshView(params,json)
+  const json = `{"country_code2":"${countrySelectValue}", "zipcode":"${zipcodeInputValue}"}`;
+  console.log("onClickUpdate:", json);
+  // setCookieJson(cacheKey, json, 12);
+  refreshView(params, json);
 }
 
 function onInputChange(event) {
