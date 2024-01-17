@@ -135,13 +135,26 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+function setPlaceholderColor(element, color) {
+  var styleElement = document.getElementById(element);
+  var css = `
+    .input-with-hint::-webkit-input-placeholder { color: ${color}; }
+    .input-with-hint:-ms-input-placeholder { color: ${color}; }
+    .input-with-hint::-ms-input-placeholder { color: ${color}; }
+    .input-with-hint::placeholder { color: ${color}; }
+  `;
+  styleElement.textContent = css;
+}
+
+
 function onCountryChange(event) {
   console.log('Selected country:', event.target.value);
    var zipcodeInput = document.getElementById('zipcode-input');
   if (event.target.value == "🇺🇸 US") {
     zipcodeInput.disabled="";
+    setPlaceholderColor('zipcode-input', "#868686")
   } else {
-    zipcodeInput.text=""
+    setPlaceholderColor('zipcode-input', "#aa868686")
     zipcodeInput.disabled="disabled";
   }
 }
