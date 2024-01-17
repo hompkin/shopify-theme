@@ -1,9 +1,9 @@
 function getCookieJson(cookieName) {
   const name = cookieName + "=";
   const decodedCookies = decodeURIComponent(document.cookie);
-  const cookieArray = decodedCookies.split(';');
+  const cookieArray = decodedCookies.split(";");
 
-  for (let i = 0; i< cookieArray.length; i++) {
+  for (let i = 0; i < cookieArray.length; i++) {
     let cookie = cookieArray[i].trim();
 
     if (cookie.indexOf(name) === 0) {
@@ -21,16 +21,13 @@ function setCookieJson(cookieName, jsonData, expiredHours) {
   const encodedJson = encodeURIComponent(jsonString);
 
   const date = new Date();
-  date.setTime(date.getTime() + (expiredHours * 60 * 60 * 1000));
+  date.setTime(date.getTime() + expiredHours * 60 * 60 * 1000);
   const expires = "expires=" + date.toUTCString();
 
   document.cookie = cookieName + "=" + encodedJson + ";" + expires + ";path=/";
 }
 
-
-
 function getZipCodeCategory(countryCode, zipCode) {
-
   const firstDigit = parseInt(zipCode.charAt(0), 10);
 
   if (firstDigit >= 90 && firstDigit <= 92) {
@@ -46,14 +43,14 @@ function getZipCodeCategory(countryCode, zipCode) {
 
 function getDeliveryTime(countryCode, config) {
   if (countryCode != "US") {
-    if(config.hasOwnProperty(countryCode)) {
-        return config[`${countryCode}`];
+    if (config.hasOwnProperty(countryCode)) {
+      return config[`${countryCode}`];
     } else {
-        return config["XXX"];
+      return config["XXX"];
     }
   } else {
     const category = getZipCodeCategory(countryCode, zipcode);
-    return config.countryCode.category
+    return config.countryCode.category;
   }
   return null;
 }
@@ -97,27 +94,32 @@ function removeHyphenAndNumbersAfter(inputString) {
 }
 
 function loadUserDeliveryTime(params) {
-  
   getUserDeliveryLocation().then((json) => {
     const countryCode = json.country_code2;
     const city = json.city;
     const zipcode = json.zipcode;
     console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
     const targetDeliveryTime = getDeliveryTime(countryCode, params);
-  
-    const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
+
+    const deliveryTimeLayout = document.getElementById(
+      "delivery_time_layout_id"
+    );
     const addressTextView = document.getElementById("address_text_id");
     const deliveryTimeView = document.getElementById("delivery_time_id");
-    const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
+    const deliveryTimePrefixView = document.getElementById(
+      "delivery_time_prefix_id"
+    );
     deliveryTimeLayout.style.display = "";
     if (params.hasOwnProperty(countryCode)) {
       deliveryTimePrefixView.textContent = params.prefix_title;
       if (zipcode) {
-        addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}-${city}`;
+        addressTextView.textContent = `${removeHyphenAndNumbersAfter(
+          zipcode
+        )}-${city}`;
       } else {
         addressTextView.textContent = city;
       }
-  
+
       deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
     } else {
       addressTextView.textContent = "";
@@ -127,31 +129,22 @@ function loadUserDeliveryTime(params) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  var countrySelect = document.getElementById('country-select');
-  
+document.addEventListener("DOMContentLoaded", function () {
+  var countrySelect = document.getElementById("country-select");
+
   if (countrySelect) {
-    countrySelect.addEventListener('change', onCountryChange);
+    countrySelect.addEventListener("change", onCountryChange);
   }
 });
 
-function setPlaceholderColor(element, color) {
-  var styleElement = document.getElementById(element);
-  var css = `
-    .input-with-hint::placeholder { color: ${color}; }
-  `;
-  styleElement.textContent = css;
-}
-
 
 function onCountryChange(event) {
-  console.log('Selected country:', event.target.value);
-   var zipcodeInput = document.getElementById('zipcode-input');
+  console.log("Selected country:", event.target.value);
+  var zipcodeInput = document.getElementById("zipcode-input");
+  zipcodeInput.value = "";
   if (event.target.value == "🇺🇸 US") {
-    zipcodeInput.disabled="";
-    setPlaceholderColor('zipcode-input', "#868686")
+    zipcodeInput.disabled = "";
   } else {
-    setPlaceholderColor('zipcode-input', "#aa868686")
-    zipcodeInput.disabled="disabled";
+    zipcodeInput.disabled = "disabled";
   }
 }
