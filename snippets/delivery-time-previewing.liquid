@@ -12,7 +12,7 @@
     <select @change="onCountryChange" class="select__select">
       {%- assign configJson = shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value | json -%}
       {%- assign option = configJson.option_country -%}
-       {%- for value in option -%}
+       <!-- {%- for value in option.values -%}
       <option
         value="{{ value | escape }}"
         {% if option.value == 'US' %}
@@ -21,7 +21,7 @@
       >
         {{ 'US' | escape }}
       </option>
-        {%- endfor -%}
+        {%- endfor -%} -->
     </select>
 
     <input
