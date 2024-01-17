@@ -77,27 +77,9 @@
   margin-left: 10px;
 }
 
-.productView-DeliveryTimeUpdate .update-button {
-  margin-left: 10px;
-  width: 72px;
-  font-size: var(--font-body-size);
-  font-weight: var(--font-weight-normal);
-  font-family: var(--font-body-family);
-  color: var(--btn-1-color);
-  border: 1px solid var(--btn-1-border);
-  background: var(--btn-1-bg);
-  background-origin: border-box;
-}
-
-.productView-DeliveryTimeUpdate .update-button:hover{
-  color: var(--btn-1-color-hover);
-  border: 1px solid var(--btn-1-border-hover);
-  background: var(--btn-1-bg-hover);
-}
-
 .productView-DeliveryTimeUpdate select,
 .el-input__inner,
-.update-button {
+.productView-DeliveryTimeUpdate .product-form__submit .button .button--primary {
   height: 40px;
 }
 
