@@ -78,11 +78,9 @@
 }
 
 .productView-DeliveryTimeUpdate .update-button {
-    color: var(--atc-color);
-    background: var(--atc-bg-color);
-    border-color: var(--atc-border-color);
   margin-left: 10px;
 }
+
 
 .productView-DeliveryTimeUpdate select,
 .el-input__inner,
