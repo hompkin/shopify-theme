@@ -71,13 +71,13 @@
   margin-top: 10px;
 }
 
-.productView-DeliveryTimeUpdate select__select,
+.productView-DeliveryTimeUpdate select.select__select,
 .productView-DeliveryTimeUpdate input.field__input,
 .productView-DeliveryTimeUpdate .button.button.button-1 {
   height: 40px;
 }
 
-.productView-DeliveryTimeUpdate select__select{
+.productView-DeliveryTimeUpdate select.select__select{
   min-width: 0;
   width: 64px;
 }
