@@ -83,8 +83,8 @@ async function getUserDeliveryLocation() {
   }
 }
 
-function removeHyphenAndNumbersAfter(inputString) {
-  const hyphenIndex = inputString.indexOf("-");
+function removeAfter(inputString, index) {
+  const hyphenIndex = inputString.indexOf(index);
 
   if (hyphenIndex !== -1) {
     return inputString.slice(0, hyphenIndex);
@@ -116,11 +116,9 @@ function refreshView(params, json) {
   if (params.hasOwnProperty(countryCode)) {
     deliveryTimePrefixView.textContent = params.prefix_title;
     if (zipcode && city) {
-      addressTextView.textContent = `${removeHyphenAndNumbersAfter(
-        zipcode
-      )}-${city}`;
+      addressTextView.textContent = `${removeAfter(zipcode, "-")}-${city}`;
     } else if (zipcode) {
-      addressTextView.textContent = `${removeHyphenAndNumbersAfter(zipcode)}`;
+      addressTextView.textContent = `${removeAfter(zipcode, "-")}`;
     } else {
       addressTextView.textContent = city;
     }
