@@ -150,7 +150,7 @@ function onClickUpdate(params) {
   var countrySelect = document.getElementById("country-select");
   var zipcodeInput = document.getElementById("zipcode-input");
 
-  const json = `{"country_code2":"${countrySelect.value}", "zipcode":"${zipcodeInput.value}"}`;
+  const json = `{"country_code2":"${removeAfter(countrySelect.value," ")}", "zipcode":"${zipcodeInput.value}"}`;
   console.log("onClickUpdate:", json);
   // setCookieJson(cacheKey, json, 12);
   refreshView(params, JSON.parse(json));
