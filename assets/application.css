@@ -77,6 +77,11 @@
   margin-left: 10px;
 }
 
+.productView-DeliveryTimeUpdate .update-button {
+  margin-left: 10px;
+}
+
+
 .productView-DeliveryTimeUpdate select,
 .el-input__inner,
 .el-button {
