@@ -97,12 +97,6 @@
   width: 94px;
 }
 
-.productView-DeliveryTimeUpdate .button.button.button-1.is-disabled, 
-.productView-DeliveryTimeUpdate .button.button.button-1.is-disabled:focus, 
-.productView-DeliveryTimeUpdate .button.button.button-1.is-disabled:hover{
-  cursor: not-allowed;
-}
-
 .productView-DeliveryTime .icon {
   width: 20px;
   height: 20px;
