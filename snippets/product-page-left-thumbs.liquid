@@ -1323,12 +1323,13 @@
 <!-- 插入派送时间布局 -->
 <script src="{{ 'delivery-time-previewing.js' | asset_url }}" defer="defer"></script>
 <script>
+  const deliveryConfig = shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value;
   document.addEventListener('DOMContentLoaded', function() {
-    loadUserDeliveryTime({{ shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value | json }});
+    loadUserDeliveryTime({{ deliveryConfig | json }});
   });
   var buttonElement = document.getElementById("update-button");
   if (buttonElement) {
-    buttonElement.addEventListener("click", onClickUpdate({{ shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value | json }}));
+    buttonElement.addEventListener("click", onClickUpdate({{ deliveryConfig | json }}));
   }
 </script>
 
