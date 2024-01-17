@@ -1321,7 +1321,7 @@
     %}
 {%- endif -%}
 <!-- 插入派送时间布局 -->
-<script src="{{ 'delivery-time.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'delivery-time-previewing.js' | asset_url }}" defer="defer"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     loadUserDeliveryTime({{ shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value | json }});
