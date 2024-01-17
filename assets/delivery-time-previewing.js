@@ -146,7 +146,7 @@ function refreshView(params, json) {
       deliveryTimeUpdateLayout.style.display = "flex";
     }
   });
-  // deliveryTimeLayout.style.display = "";
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {
