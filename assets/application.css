@@ -78,16 +78,9 @@
 }
 
 .productView-DeliveryTimeUpdate .update-button {
-  width: var(--button-width);
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
-  text-transform: var(--button-text-transform);
-  color: var(--button-text-color);
-  border: 1px solid var(--button-border-color);
-  background: var(--button-background);
-  min-width: unset;
-  max-width: unset;
-  background-origin: border-box;
+    color: var(--atc-color);
+    background: var(--atc-bg-color);
+    border-color: var(--atc-border-color);
   margin-left: 10px;
 }
 
