@@ -11,9 +11,9 @@
   <div class="productView-DeliveryTimeUpdate">
     <select @change="onCountryChange" class="select__select">
       {%- assign configJson = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value | json -%}
-      {%- assign options = configJson[option_country] -%}
+      {%- assign options = configJson.option_country -%}
         <script>
-          console.log('>>>configJson:', '{{ configJson }}');
+          console.log('>>>options:', '{{ options }}');
         </script>
    
       {%- for value in options.values -%}
