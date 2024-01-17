@@ -139,8 +139,8 @@ function onCountryChange(event) {
   console.log('Selected country:', event.target.value);
    var zipcodeInput = document.getElementById('zipcode-input');
   if (event.target.value == "🇺🇸 US") {
-    zipcodeInput.display="block";
+    zipcodeInput.disabled="";
   } else {
-    zipcodeInput.display="";
+    zipcodeInput.disabled="disabled";
   }
 }
