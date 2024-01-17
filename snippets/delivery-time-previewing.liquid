@@ -15,16 +15,14 @@
       </select>
     </div>
 
-    <div class="el-input">
-      <input
-        type="text"
-        autocomplete="off"
-        placeholder="Zip Code"
-        class="field__input"
-        v-model="zipCode"
-        :disabled="selectedCountry !== '🇺🇸'"
-      >
-    </div>
+    <input
+      type="text"
+      autocomplete="off"
+      placeholder="Zip Code"
+      class="field__input"
+      v-model="zipCode"
+      :disabled="selectedCountry !== '🇺🇸'"
+    >
     <button
       :disabled="!zipCode || selectedCountry !== '🇺🇸'"
       type="button"
