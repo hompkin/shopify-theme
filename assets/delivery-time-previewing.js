@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function onClickUpdate(params) {
+  console.log("onClickUpdate");
   refreshView(params,"{}")
 }
 
