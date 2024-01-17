@@ -41,7 +41,7 @@ function getZipCodeCategory(countryCode, zipCode) {
   }
 }
 
-function getDeliveryTime(countryCode, config) {
+function getDeliveryTime(countryCode, zipcode, config) {
   if (countryCode != "US") {
     if (config.hasOwnProperty(countryCode)) {
       return config[`${countryCode}`];
@@ -114,7 +114,7 @@ function refreshView(params, json) {
   const city = json.city;
   const zipcode = json.zipcode;
   console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
-  const targetDeliveryTime = getDeliveryTime(countryCode, params);
+  const targetDeliveryTime = getDeliveryTime(countryCode, zipcode, params);
 
   const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
   const addressTextView = document.getElementById("address_text_id");
