@@ -13,7 +13,7 @@
       {%- assign options = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value.option_country -%}   
       {%- for value in options -%}
         <option
-          value="{{ value }}"
+          value="{{ value | escape }}"
           {% if option.value == '🇺🇸 US' %}
             selected="selected"
           {% endif %}
