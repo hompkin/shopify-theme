@@ -127,8 +127,14 @@ function loadUserDeliveryTime(params) {
   });
 }
 
-methods: {
-  onCountryChange(event) {
-    console.log('Selected country:', event.target.value);
+document.addEventListener('DOMContentLoaded', function() {
+  var countrySelect = document.getElementById('country-select');
+  
+  if (countrySelect) {
+    countrySelect.addEventListener('change', onCountryChange);
   }
+});
+
+function onCountryChange(event) {
+  console.log('Selected country:', event.target.value);
 }
