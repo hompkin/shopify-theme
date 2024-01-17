@@ -143,13 +143,11 @@ document.addEventListener("DOMContentLoaded", function () {
     zipcodeInput.addEventListener("input", onInputChange);
   }
 
-  var buttonElement = document.getElementById("my-button");
-  if (buttonElement) {
-    buttonElement.addEventListener("click", onClickUpdate);
-  }
 });
 
-function onClickUpdate() {}
+function onClickUpdate(params) {
+  refreshView(params,"{}")
+}
 
 function onInputChange(event) {
   var countrySelect = document.getElementById("country-select");
