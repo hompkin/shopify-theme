@@ -64,7 +64,7 @@ async function getUserDeliveryLocation() {
     const ip = ipData.ip;
     const cacheKey = "user-delivery-location-key";
     const location = getCookieJson(cacheKey);
-    if (location) {
+    if (false && location) {
       return location;
     } else {
       const locResponse = await fetch(
@@ -119,9 +119,7 @@ function refreshView(params, json) {
   const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
   const addressTextView = document.getElementById("address_text_id");
   const deliveryTimeView = document.getElementById("delivery_time_id");
-  const deliveryTimePrefixView = document.getElementById(
-    "delivery_time_prefix_id"
-  );
+  const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
   if (params.hasOwnProperty(countryCode)) {
     deliveryTimePrefixView.textContent = params.prefix_title;
     if (zipcode && city) {
