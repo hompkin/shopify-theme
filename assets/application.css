@@ -75,7 +75,7 @@
 .productView-DeliveryTimeUpdate input.field__input,
 .productView-DeliveryTimeUpdate .button.button.button-1 {
   height: 36px;
-  min-height:0;
+  min-height: 0;
 }
 
 .productView-DeliveryTimeUpdate select.select__select {
@@ -88,13 +88,16 @@
   max-width: 144px;
   margin-left: 10px;
 }
+.productView-DeliveryTimeUpdate input.field__input:disabled {
+  cursor: not-allowed;
+}
 
 .productView-DeliveryTimeUpdate .button.button.button-1 {
   padding-top: 0;
   padding-bottom: 0;
   margin-left: 10px;
   min-width: 0;
-  font-weight:var(--font-body-weight);
+  font-weight: var(--font-body-weight);
   width: 94px;
 }
 
