@@ -95,7 +95,12 @@ function removeHyphenAndNumbersAfter(inputString) {
 
 function loadUserDeliveryTime(params) {
   getUserDeliveryLocation().then((json) => {
-    const countryCode = json.country_code2;
+    refreshView(params, json);
+  });
+}
+
+function refreshView(params, json) {
+  const countryCode = json.country_code2;
     const city = json.city;
     const zipcode = json.zipcode;
     console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
@@ -140,7 +145,17 @@ document.addEventListener("DOMContentLoaded", function () {
   if (zipcodeInput) {
     zipcodeInput.addEventListener("input", onInputChange);
   }
+
+  var buttonElement = document.getElementById('my-button');
+  if(buttonElement){
+    buttonElement.addEventListener('click', onClickUpdate);
+  }
+
 });
+
+function onClickUpdate() {
+  
+}
 
 function onInputChange(event) {
   var countrySelect = document.getElementById("country-select");
