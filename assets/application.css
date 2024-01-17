@@ -80,10 +80,10 @@
 .productView-DeliveryTimeUpdate select,
 .el-input__inner, 
 .update-button {
-  height: 20px;
+  height: 40px;
 }
 
-.botton .botton-1 .update-button {
+.productView-DeliveryTimeUpdate .botton {
   padding-top: 0;
   padding-bottom: 0;
 }
