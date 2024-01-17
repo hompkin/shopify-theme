@@ -148,7 +148,7 @@ function refreshView(params, json) {
       "delivery-time-Update-container"
     );
     if (deliveryTimeUpdateLayout) {
-      deliveryTimeUpdateLayout.style.display = "";
+      deliveryTimeUpdateLayout.style.display = "flex";
     }
   });
 }
