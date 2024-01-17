@@ -68,6 +68,11 @@
     align-items: center;
 }
 
+.productView-DeliveryTimeUpdate{
+    display: flex;
+    align-items: center;
+}
+
 .productView-DeliveryTime .icon{
     width: 20px;
     height: 20px;
