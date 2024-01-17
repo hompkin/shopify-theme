@@ -83,7 +83,6 @@
     width: 68px;
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);
-    text-transform: var(--button-text-transform);
     color: var(--btn-1-color);
     border: 1px solid var(--btn-1-border);
     background: var(--btn-1-bg);
