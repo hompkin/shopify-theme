@@ -89,11 +89,10 @@
   background-origin: border-box;
 }
 
-.productView-DeliveryTimeUpdate .update-button :hover{
+.productView-DeliveryTimeUpdate .update-button:hover{
   color: var(--btn-1-color-hover);
   border: 1px solid var(--btn-1-border-hover);
   background: var(--btn-1-bg-hover);
-  background-origin: border-box;
 }
 
 .productView-DeliveryTimeUpdate select,
