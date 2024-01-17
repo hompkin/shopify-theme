@@ -93,7 +93,7 @@
   padding-bottom: 0;
   margin-left: 10px;
   min-width: 0;
-  font-weight:500;
+  font-weight:var(--font-body-weight);
   width: 94px;
 }
 
