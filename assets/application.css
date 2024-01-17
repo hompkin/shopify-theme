@@ -71,12 +71,6 @@
   margin-top: 10px;
 }
 
-.productView-DeliveryTimeUpdate .inputBox {
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-}
-
 .productView-DeliveryTimeUpdate select,
 .field__input,
 .productView-DeliveryTimeUpdate .inputBox .button.button.button-1 {
