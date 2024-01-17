@@ -60,7 +60,7 @@
 }
 
 .productView-DeliveryTime {
-  display: flex;
+  display: none;
   white-space: nowrap;
   align-items: center;
 }
