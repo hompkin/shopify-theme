@@ -22,10 +22,9 @@
       :disabled="selectedCountry !== '🇺🇸'"
     >
     <button
-      :disabled="!zipCode || selectedCountry !== '🇺🇸'"
+      disabled="disabled"
       type="button"
       class="button button-1"
-      :class="{'is-disabled': !zipCode || selectedCountry !== '🇺🇸'}"
       @click="updateZipCode"
     >
       <span>update</span>
