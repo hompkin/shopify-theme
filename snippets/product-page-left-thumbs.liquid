@@ -1325,7 +1325,7 @@
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
-    const deliveryConfig = {{ shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value }};
+    var deliveryConfig = shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value;
     loadUserDeliveryTime({{ deliveryConfig | json }});
     var buttonElement = document.getElementById("update-button");
     if (buttonElement) {
