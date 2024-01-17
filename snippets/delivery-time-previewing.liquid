@@ -28,7 +28,7 @@
       <button
         :disabled="!zipCode || selectedCountry !== '🇺🇸'"
         type="button"
-        class="update-button"
+        class="product-form__submit button button--primary an-none"
         :class="{'is-disabled': !zipCode || selectedCountry !== '🇺🇸'}"
         @click="updateZipCode"
       >
