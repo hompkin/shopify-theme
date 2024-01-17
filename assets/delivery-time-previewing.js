@@ -127,7 +127,8 @@ function loadUserDeliveryTime(params) {
   });
 }
 
-function onCountryChange(params) {
-  consolo.log(`params=${params}`);
-  
+methods: {
+  onCountryChange(event) {
+    console.log('Selected country:', event.target.value);
+  }
 }
