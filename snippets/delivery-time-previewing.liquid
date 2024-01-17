@@ -11,8 +11,8 @@
   <div class="productView-DeliveryTimeUpdate">
     <select @change="onCountryChange" class="select__select">
       {%- assign configJson = shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value | json -%}
-      {%- assign option = configJson.option_country -%}
-       <!-- {%- for value in option.values -%}
+      {%- assign options = configJson[option_country] -%}
+       {%- for value in options.values -%}
       <option
         value="{{ value | escape }}"
         {% if option.value == 'US' %}
@@ -21,7 +21,7 @@
       >
         {{ 'US' | escape }}
       </option>
-        {%- endfor -%} -->
+        {%- endfor -%}
     </select>
 
     <input
