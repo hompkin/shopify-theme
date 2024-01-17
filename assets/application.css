@@ -79,18 +79,16 @@
 
 .productView-DeliveryTimeUpdate .update-button {
   margin-left: 10px;
- 
-    width: 68px;
-    font-size: var(--font-body-size);
-    font-weight: var(--font-weight-normal);
-    color: var(--btn-1-color);
-    border: 1px solid var(--btn-1-border);
-    background: var(--btn-1-bg);
-    min-width: unset;
-    max-width: unset;
-    background-origin: border-box;
-}
 
+  width: 68px;
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-normal);
+  color: var(--btn-1-color);
+  border: 1px solid var(--btn-1-border);
+  background: var(--btn-1-bg);
+  background-origin: border-box;
+  padding: 10px, 0, 0, 0;
+}
 
 .productView-DeliveryTimeUpdate select,
 .el-input__inner,
