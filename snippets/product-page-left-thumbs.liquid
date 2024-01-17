@@ -1329,7 +1329,9 @@
     loadUserDeliveryTime(deliveryConfig);
     var buttonElement = document.getElementById("update-button");
     if (buttonElement) {
-      buttonElement.addEventListener("click", onClickUpdate(deliveryConfig));
+      buttonElement.addEventListener("click", function(){
+        onClickUpdate(deliveryConfig);
+      });
     }
   });
 
