@@ -138,9 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function setPlaceholderColor(element, color) {
   var styleElement = document.getElementById(element);
   var css = `
-    .input-with-hint::-webkit-input-placeholder { color: ${color}; }
-    .input-with-hint:-ms-input-placeholder { color: ${color}; }
-    .input-with-hint::-ms-input-placeholder { color: ${color}; }
     .input-with-hint::placeholder { color: ${color}; }
   `;
   styleElement.textContent = css;
