@@ -170,13 +170,13 @@ function onClickUpdate(params) {
   var countrySelect = document.getElementById("country-select");
   var zipcodeInput = document.getElementById("zipcode-input");
 
-  const json = `{"country_code2":"${removeBefore(
+  const json = JSON.parse(`{"country_code2":"${removeBefore(
     countrySelect.value,
     " "
-  )}", "zipcode":"${zipcodeInput.value}"}`;
+  )}", "zipcode":"${zipcodeInput.value}"}`);
   console.log("onClickUpdate:", json);
   setCookieJson(cacheKey, json, 12);
-  refreshView(params, JSON.parse(json));
+  refreshView(params, json);
 }
 
 function onInputChange(event) {
