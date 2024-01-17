@@ -141,10 +141,13 @@ document.addEventListener("DOMContentLoaded", function () {
 function onCountryChange(event) {
   console.log("Selected country:", event.target.value);
   var zipcodeInput = document.getElementById("zipcode-input");
+  var updateButton = document.getElementById("update-button");
+ 
   zipcodeInput.value = "";
   if (event.target.value == "🇺🇸 US") {
     zipcodeInput.disabled = "";
   } else {
+    updateButton.disabled = "";
     zipcodeInput.disabled = "disabled";
   }
 }
