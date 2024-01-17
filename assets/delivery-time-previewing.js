@@ -93,6 +93,16 @@ function removeAfter(inputString, index) {
   }
 }
 
+function removeBefore(inputString, index) {
+  const hyphenIndex = inputString.indexOf(index);
+
+  if (hyphenIndex !== -1) {
+    return inputString.slice(hyphenIndex);
+  } else {
+    return inputString;
+  }
+}
+
 function loadUserDeliveryTime(params) {
   getUserDeliveryLocation().then((json) => {
     refreshView(params, json);
@@ -150,7 +160,7 @@ function onClickUpdate(params) {
   var countrySelect = document.getElementById("country-select");
   var zipcodeInput = document.getElementById("zipcode-input");
 
-  const json = `{"country_code2":"${removeAfter(countrySelect.value," ")}", "zipcode":"${zipcodeInput.value}"}`;
+  const json = `{"country_code2":"${removeBefore(countrySelect.value," ")}", "zipcode":"${zipcodeInput.value}"}`;
   console.log("onClickUpdate:", json);
   // setCookieJson(cacheKey, json, 12);
   refreshView(params, JSON.parse(json));
