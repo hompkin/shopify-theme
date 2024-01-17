@@ -128,7 +128,7 @@ function refreshView(params, json) {
     if (zipcode && city) {
       addressTextView.textContent = `${removeAfter(zipcode, "-")}-${city}`;
     } else if (zipcode) {
-      addressTextView.textContent = `${removeAfter(zipcode, "-")}`;
+      addressTextView.textContent = `${countryCode}-${removeAfter(zipcode, "-")}`;
     } else {
       addressTextView.textContent = city;
     }
