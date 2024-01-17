@@ -135,17 +135,36 @@ document.addEventListener("DOMContentLoaded", function () {
   if (countrySelect) {
     countrySelect.addEventListener("change", onCountryChange);
   }
+
+  var zipcodeInput = document.getElementById("zipcode-input");
+  if (zipcodeInput) {
+    zipcodeInput.addEventListener("input", onInputChange);
+  }
 });
 
+function onInputChange(event) {
+  console.log("zipcode change:", event.target.value);
+  var countrySelect = document.getElementById("country-select");
+  var zipcodeInput = document.getElementById("zipcode-input");
+  var updateButton = document.getElementById("update-button");
+  if (countrySelect.value == "🇺🇸 US") {
+    if (zipcodeInput.value) {
+      updateButton.disabled = "";
+    } else {
+      updateButton.disabled = "disabled";
+    }
+  }
+}
 
 function onCountryChange(event) {
   console.log("Selected country:", event.target.value);
   var zipcodeInput = document.getElementById("zipcode-input");
   var updateButton = document.getElementById("update-button");
- 
+
   zipcodeInput.value = "";
   if (event.target.value == "🇺🇸 US") {
     zipcodeInput.disabled = "";
+    updateButton.disabled = "disabled";
   } else {
     updateButton.disabled = "";
     zipcodeInput.disabled = "disabled";
