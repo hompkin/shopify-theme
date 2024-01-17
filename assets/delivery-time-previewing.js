@@ -50,7 +50,7 @@ function getDeliveryTime(countryCode, zipcode, config) {
     }
   } else {
     const category = getZipCodeCategory(countryCode, zipcode);
-    return config.countryCode.category;
+    return config.countryCode[category];
   }
   return null;
 }
