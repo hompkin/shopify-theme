@@ -14,26 +14,25 @@
         <option v-for="country in countries" :value="country">{{ country }}</option>
       </select>
     </div>
-    <div class="inputBox">
-      <div class="el-input">
-        <input
-          type="text"
-          autocomplete="off"
-          placeholder="Zip Code"
-          class="field__input"
-          v-model="zipCode"
-          :disabled="selectedCountry !== '🇺🇸'"
-        >
-      </div>
-      <button
-        :disabled="!zipCode || selectedCountry !== '🇺🇸'"
-        type="button"
-        class="button button-1"
-        :class="{'is-disabled': !zipCode || selectedCountry !== '🇺🇸'}"
-        @click="updateZipCode"
+
+    <div class="el-input">
+      <input
+        type="text"
+        autocomplete="off"
+        placeholder="Zip Code"
+        class="field__input"
+        v-model="zipCode"
+        :disabled="selectedCountry !== '🇺🇸'"
       >
-        <span>update</span>
-      </button>
     </div>
+    <button
+      :disabled="!zipCode || selectedCountry !== '🇺🇸'"
+      type="button"
+      class="button button-1"
+      :class="{'is-disabled': !zipCode || selectedCountry !== '🇺🇸'}"
+      @click="updateZipCode"
+    >
+      <span>update</span>
+    </button>
   </div>
 </div>
