@@ -9,8 +9,17 @@
     <span class="text" id="delivery_time_id"></span>
   </div>
   <div class="productView-DeliveryTimeUpdate">
-    <select v-model="selectedCountry" @change="onCountryChange" class="select__select">
-      <option v-for="country in countries" :value="country">{{ country }}</option>
+    <select @change="onCountryChange" class="select__select">
+      {%- for option in results.sort_options -%}
+        <option
+          value="{{ option.value | escape }}"
+          {% if option.value == sort_by %}
+            selected="selected"
+          {% endif %}
+        >
+          {{ option.name | escape }}
+        </option>
+      {%- endfor -%}
     </select>
 
     <input
