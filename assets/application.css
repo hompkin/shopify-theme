@@ -78,10 +78,15 @@
 }
 
 .productView-DeliveryTimeUpdate select,
-.el-input__inner,
-.product-form__submit .button .button--primary .an-none {
+.el-input__inner, 
+.productView-DeliveryTimeUpdate .product-form__submit .button .button--primary .an-none {
   height: 40px;
 }
+
+.productView-DeliveryTimeUpdate .product-form__submit .button .button--primary .an-none {
+  padding: 0,0,0,0;
+}
+  
 
 .productView-DeliveryTime .icon {
   width: 20px;
