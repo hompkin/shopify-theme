@@ -68,6 +68,7 @@
 .productView-DeliveryTimeUpdate {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 .productView-DeliveryTimeUpdate .inputBox {
