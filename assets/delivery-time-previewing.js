@@ -115,11 +115,15 @@ function refreshView(params, json) {
   deliveryTimeLayout.style.display = "";
   if (params.hasOwnProperty(countryCode)) {
     deliveryTimePrefixView.textContent = params.prefix_title;
-    if (zipcode) {
+    if (zipcode && city) {
       addressTextView.textContent = `${removeHyphenAndNumbersAfter(
         zipcode
       )}-${city}`;
-    } else {
+    } else if(zipcode){
+     addressTextView.textContent = `${removeHyphenAndNumbersAfter(
+        zipcode
+      )}`;
+    }else {
       addressTextView.textContent = city;
     }
 
@@ -147,7 +151,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function onClickUpdate(params) {
   console.log("onClickUpdate");
-  refreshView(params,"{}")
+   const cacheKey = "user-delivery-location-key";
+  const json = "{"country_code2":"", "":"",}";
+   setCookieJson(cacheKey, json, 12);
+  refreshView(params,json)
 }
 
 function onInputChange(event) {
