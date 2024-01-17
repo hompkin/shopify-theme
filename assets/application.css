@@ -74,7 +74,8 @@
 .productView-DeliveryTimeUpdate select.select__select,
 .productView-DeliveryTimeUpdate input.field__input,
 .productView-DeliveryTimeUpdate .button.button.button-1 {
-  height: 45px;
+  height: 36px;
+  min-height:0;
 }
 
 .productView-DeliveryTimeUpdate select.select__select {
