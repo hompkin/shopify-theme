@@ -80,7 +80,7 @@
 .productView-DeliveryTimeUpdate select,
 .el-input__inner,
 .product-form__submit .button .button--primary .an-none {
-  height: 20px;
+  height: 40px;
 }
 
 .productView-DeliveryTime .icon {
