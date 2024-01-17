@@ -88,6 +88,14 @@
   padding-bottom: 0;
   margin-left:10px;
 }
+
+
+.productView-DeliveryTimeUpdate .inputBox .input.field__input {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-left:10px;
+}
+  
   
 
 .productView-DeliveryTime .icon {
