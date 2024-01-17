@@ -22,16 +22,15 @@
           placeholder="Zip Code"
           class="el-input__inner"
           v-model="zipCode"
-          :disabled="selectedCountry !== '美国'"
+          :disabled="selectedCountry !== '🇺🇸'"
         >
       </div>
       <button
-        :disabled="!zipCode || selectedCountry !== '美国'"
+        :disabled="!zipCode || selectedCountry !== '🇺🇸'"
         type="button"
         class="el-button btn el-button--default"
-        :class="{'is-disabled': !zipCode || selectedCountry !== '美国'}"
+        :class="{'is-disabled': !zipCode || selectedCountry !== '🇺🇸'}"
         @click="updateZipCode"
-        style="margin-left: 10px;"
       >
         <span>Update</span>
       </button>
