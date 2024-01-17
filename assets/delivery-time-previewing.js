@@ -97,7 +97,7 @@ function removeBefore(inputString, index) {
   const hyphenIndex = inputString.indexOf(index);
 
   if (hyphenIndex !== -1) {
-    return inputString.slice(hyphenIndex);
+    return inputString.slice(hyphenIndex+1);
   } else {
     return inputString;
   }
