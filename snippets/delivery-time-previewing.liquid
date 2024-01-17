@@ -13,7 +13,7 @@
       {%- assign configJson = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value | json -%}
       {%- assign options = configJson[option_country] -%}
         <script>
-          console.log('>>>options:', '{{ options }}');
+          console.log('>>>configJson:', '{{ configJson }}');
         </script>
    
       {%- for value in options.values -%}
