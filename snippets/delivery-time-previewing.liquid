@@ -9,11 +9,9 @@
     <span class="text" id="delivery_time_id"></span>
   </div>
   <div class="productView-DeliveryTimeUpdate">
-    <div>
-      <select v-model="selectedCountry" @change="onCountryChange" class="select__select">
-        <option v-for="country in countries" :value="country">{{ country }}</option>
-      </select>
-    </div>
+    <select v-model="selectedCountry" @change="onCountryChange" class="select__select">
+      <option v-for="country in countries" :value="country">{{ country }}</option>
+    </select>
 
     <input
       type="text"
