@@ -79,7 +79,7 @@
 
 .productView-DeliveryTimeUpdate select,
 .el-input__inner,
-.product-form__submit button button--primary an-none {
+.product-form__submit .button .button--primary .an-none {
   height: 40px;
 }
 
