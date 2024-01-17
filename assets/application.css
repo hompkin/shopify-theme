@@ -1,106 +1,115 @@
-
 .region-container .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
+  content: "";
+  clear: both;
+  display: table;
 }
-
 
 /* Container for each region */
 .region-container {
-    width: 100%;
-    margin-top:12px;
-    line-height: 1.2; 
-    box-sizing: border-box;
+  width: 100%;
+  margin-top: 12px;
+  line-height: 1.2;
+  box-sizing: border-box;
 }
 
 /* Each country container */
 .country-container {
-    width: 33.3%;
-    box-sizing: border-box;
-    float: left;
-    height: 42px; /* Adjust the height as needed */
-    display: flex;
-    align-items: flex-start;
+  width: 33.3%;
+  box-sizing: border-box;
+  float: left;
+  height: 42px; /* Adjust the height as needed */
+  display: flex;
+  align-items: flex-start;
 }
 
 /* 产品页 Click And View Delivery Area */
 .region-table .region-container {
-    width: 100%;
-    margin-top:6px;
-    line-height: 1.1; 
-    box-sizing: border-box;
+  width: 100%;
+  margin-top: 6px;
+  line-height: 1.1;
+  box-sizing: border-box;
 }
 
 .region-table .country-container {
-    width: 33.3%;
-    box-sizing: border-box;
-    float: left;
-    height: 28px; /* Adjust the height as needed */
-    display: flex;
-    align-items: flex-start;
+  width: 33.3%;
+  box-sizing: border-box;
+  float: left;
+  height: 28px; /* Adjust the height as needed */
+  display: flex;
+  align-items: flex-start;
 }
-
 
 @media only screen and (min-width: 768px) {
   /* Container for each region */
   .region-container {
-      width: 80%;
-      margin-top:4px;
-      line-height: 1.1; 
-      box-sizing: border-box;
+    width: 80%;
+    margin-top: 4px;
+    line-height: 1.1;
+    box-sizing: border-box;
   }
-  
+
   /* Each country container */
   .country-container {
-      width: 25%;
-      box-sizing: border-box;
-      float: left;
-      height: 30px; /* Adjust the height as needed */
-      display: flex;
-      align-items: flex-start;
+    width: 25%;
+    box-sizing: border-box;
+    float: left;
+    height: 30px; /* Adjust the height as needed */
+    display: flex;
+    align-items: flex-start;
   }
 }
 
-.productView-DeliveryTime{
-    display: none;
-    white-space: nowrap;
-    align-items: center;
+.productView-DeliveryTime {
+  display: none;
+  white-space: nowrap;
+  align-items: center;
 }
 
-.productView-DeliveryTimeUpdate{
-    display: flex;
-    align-items: center;
+.productView-DeliveryTimeUpdate {
+  display: flex;
+  align-items: center;
 }
 
-.productView-DeliveryTime .icon{
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    fill: var(--icon);
+.productView-DeliveryTimeUpdate .inputBox {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
 
-.productView-DeliveryTime .text{
-    color: var(--text-cart);
-    font-family: var(--font-body-family);
-    font-size: var(--font-body-size);
-    font-weight: var(--font-weight-normal);
-    letter-spacing: var(--body-letter-spacing);
-    line-height: var(--body-line-height);
+.productView-DeliveryTimeUpdate select,
+.el-input__inner,
+.el-button {
+  height: 40px;
 }
 
-.productView-DeliveryTime .address_text{
-    color: var(--color-link);
-    text-decoration: underline;
-    font-family: var(--font-body-family);
-    text-underline-offset: 4px;
-    cursor: pointer;
-    font-size: var(--font-body-size);
-    font-weight: var(--font-weight-normal);
-    letter-spacing: var(--body-letter-spacing);
-    line-height: var(--body-line-height);
+.productView-DeliveryTime .icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  fill: var(--icon);
 }
 
-.productView-DeliveryTime .address_text:hover{
-    color: var(--color-link-hover);
+.productView-DeliveryTime .text {
+  color: var(--text-cart);
+  font-family: var(--font-body-family);
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
+.productView-DeliveryTime .address_text {
+  color: var(--color-link);
+  text-decoration: underline;
+  font-family: var(--font-body-family);
+  text-underline-offset: 4px;
+  cursor: pointer;
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
+.productView-DeliveryTime .address_text:hover {
+  color: var(--color-link-hover);
 }
