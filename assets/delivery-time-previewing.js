@@ -116,7 +116,7 @@ function refreshView(params, json) {
   console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
   const targetDeliveryTime = getDeliveryTime(countryCode, zipcode, params);
 
-  const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
+  const deliveryTimeContainer = document.getElementById("delivery_time_layout_id");
   const addressTextView = document.getElementById("address_text_id");
   const deliveryTimeView = document.getElementById("delivery_time_id");
   const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
@@ -146,7 +146,7 @@ function refreshView(params, json) {
       deliveryTimeUpdateLayout.style.display = "flex";
     }
   });
-  deliveryTimeLayout.style.display = "flex";
+  deliveryTimeContainer.style.display = "flex";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
