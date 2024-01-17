@@ -10,16 +10,14 @@
   </div>
   <div class="productView-DeliveryTimeUpdate">
     <select @change="onCountryChange" class="select__select">
-      {%- for option in results.sort_options -%}
-        <option
-          value="{{ "US" | escape }}"
-          {% if option.value == "US" %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ "US" | escape }}
-        </option>
-      {%- endfor -%}
+      <option
+        value="{{ "US" | escape }}"
+        {% if option.value == 'US' %}
+          selected="selected"
+        {% endif %}
+      >
+        {{ 'US' | escape }}
+      </option>
     </select>
 
     <input
