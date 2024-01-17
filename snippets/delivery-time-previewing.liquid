@@ -10,10 +10,10 @@
   </div>
   <div class="productView-DeliveryTimeUpdate">
     <select @change="onCountryChange" class="select__select">
-      {%- assign configJson = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value | json -%}
-      {%- assign options = configJson[option_country] | json -%}
+      {%- assign configJson = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value.option_country | json -%}
+      {%- assign options = configJson.option_country | json -%}
         <script>
-          console.log('>>>options:', '{{ options }}');
+          console.log('>>>configJson:', '{{configJson }}');
         </script>
    
       {%- for value in options.values -%}
