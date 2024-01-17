@@ -10,18 +10,19 @@
   </div>
   <div class="productView-DeliveryTimeUpdate">
     <select @change="onCountryChange" class="select__select">
-      {%- assign configJson = shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value | json -%}
+      {%- assign configJson = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value | json -%}
       {%- assign options = configJson[option_country] -%}
-       {%- for value in options.values -%}
-      <option
-        value="{{ value | escape }}"
-        {% if option.value == 'US' %}
-          selected="selected"
-        {% endif %}
-      >
-        {{ 'US' | escape }}
-      </option>
-        {%- endfor -%}
+      {%- for value in options.values -%}
+        {%- comment -%}Value: {{ value }}{%- endcomment -%}
+        <option
+          value="{{ value | escape }}"
+          {% if option.value == 'US' %}
+            selected="selected"
+          {% endif %}
+        >
+          {{ 'US' | escape }}
+        </option>
+      {%- endfor -%}
     </select>
 
     <input
