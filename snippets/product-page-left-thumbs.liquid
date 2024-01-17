@@ -1326,6 +1326,10 @@
   document.addEventListener('DOMContentLoaded', function() {
     loadUserDeliveryTime({{ shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value | json }});
   });
+  var buttonElement = document.getElementById("update-button");
+  if (buttonElement) {
+    buttonElement.addEventListener("click", onClickUpdate({{ shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value | json }}));
+  }
 </script>
 
 <script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
