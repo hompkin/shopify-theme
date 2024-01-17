@@ -12,10 +12,10 @@
     <select @change="onCountryChange" class="select__select">
       {%- assign options = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value.option_country | json -%}
         <script>
-          console.log('>>>configJson:', '{{configJson }}');
+          console.log('>>>configJson:', '{{ options.size }}');
         </script>
    
-      {%- for value in options.values -%}
+      {%- for value in options -%}
          <script>
           console.log('>>>value:', '{{ value }}');
         </script>
