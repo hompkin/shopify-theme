@@ -31,13 +31,13 @@ function getZipCodeCategory(countryCode, zipCode) {
   const firstDigit = parseInt(zipCode.charAt(0), 10);
 
   if (firstDigit >= 90 && firstDigit <= 92) {
-    return 1;
+    return "1";
   } else if (firstDigit === 8 || firstDigit === 9) {
-    return 2;
+    return "2";
   } else if (firstDigit >= 5 && firstDigit <= 7) {
-    return 3;
+    return "3";
   } else {
-    return 4;
+    return "4";
   }
 }
 
@@ -50,7 +50,7 @@ function getDeliveryTime(countryCode, zipcode, config) {
     }
   } else {
     const category = getZipCodeCategory(countryCode, zipcode);
-    return config.countryCode[`${category}`];
+    return config.countryCode.category;
   }
   return null;
 }
