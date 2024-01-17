@@ -143,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function onInputChange(event) {
-  console.log("zipcode change:", event.target.value);
   var countrySelect = document.getElementById("country-select");
   var zipcodeInput = document.getElementById("zipcode-input");
   var updateButton = document.getElementById("update-button");
