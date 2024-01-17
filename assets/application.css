@@ -83,8 +83,9 @@
   height: 40px;
 }
 
-.button .update-button {
+.update-button {
   padding-top: 0;
+  padding-bottom: 0;
 }
   
 
