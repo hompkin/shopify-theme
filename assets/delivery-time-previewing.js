@@ -141,6 +141,7 @@ function onCountryChange(event) {
   if (event.target.value == "🇺🇸 US") {
     zipcodeInput.disabled="";
   } else {
+    zipcodeInput.text=""
     zipcodeInput.disabled="disabled";
   }
 }
