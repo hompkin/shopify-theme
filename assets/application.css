@@ -78,7 +78,7 @@
 }
 
 .productView-DeliveryTimeUpdate select,
-.field__input, 
+.productView-DeliveryTimeUpdate .inputBox .input.field__input,
 .productView-DeliveryTimeUpdate .inputBox .button.button.button-1 {
   height: 40px;
 }
@@ -93,7 +93,7 @@
 .productView-DeliveryTimeUpdate .inputBox .input.field__input {
   padding-top: 0;
   padding-bottom: 0;
-  margin-left:10px;
+  margin-left:30px;
 }
   
   
