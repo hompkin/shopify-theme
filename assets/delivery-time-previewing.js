@@ -155,7 +155,7 @@ function onClickUpdate(params) {
   const json = `{"country_code2":"${countrySelect.value}", "zipcode":"${zipcodeInput.value}"}`;
   console.log("onClickUpdate:", json);
   // setCookieJson(cacheKey, json, 12);
-  refreshView(params, json);
+  refreshView(params, JSON.parse(json));
 }
 
 function onInputChange(event) {
