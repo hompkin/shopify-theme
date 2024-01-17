@@ -143,10 +143,8 @@ function refreshView(params, json) {
     deliveryTimeView.textContent = params.XXX;
   }
 
-  deliveryTimeView.addEventListener("click", function () {
-    const deliveryTimeUpdateLayout = document.getElementById(
-      "delivery-time-Update-container"
-    );
+  addressTextView.addEventListener("click", function () {
+    const deliveryTimeUpdateLayout = document.getElementById("delivery-time-Update-container");
     if (deliveryTimeUpdateLayout) {
       deliveryTimeUpdateLayout.style.display = "flex";
     }
