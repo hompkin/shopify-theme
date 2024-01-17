@@ -79,11 +79,11 @@
 
 .productView-DeliveryTimeUpdate select,
 .el-input__inner, 
-.productView-DeliveryTimeUpdate .button .button-1{
+.button .button-1 .update-button {
   height: 40px;
 }
 
-.productView-DeliveryTimeUpdate .button .button-1 {
+.button .button-1 .update-button {
   padding-top: 0;
 }
   
