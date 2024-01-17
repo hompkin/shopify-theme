@@ -97,7 +97,7 @@ function removeBefore(inputString, index) {
   const hyphenIndex = inputString.indexOf(index);
 
   if (hyphenIndex !== -1) {
-    return inputString.slice(hyphenIndex+1);
+    return inputString.slice(hyphenIndex + 1);
   } else {
     return inputString;
   }
@@ -128,7 +128,10 @@ function refreshView(params, json) {
     if (zipcode && city) {
       addressTextView.textContent = `${removeAfter(zipcode, "-")}-${city}`;
     } else if (zipcode) {
-      addressTextView.textContent = `${countryCode}-${removeAfter(zipcode, "-")}`;
+      addressTextView.textContent = `${countryCode}-${removeAfter(
+        zipcode,
+        "-"
+      )}`;
     } else {
       addressTextView.textContent = city;
     }
@@ -139,6 +142,15 @@ function refreshView(params, json) {
     deliveryTimePrefixView.textContent = params.prefix_title_unknown;
     deliveryTimeView.textContent = params.XXX;
   }
+
+  deliveryTimeView.addEventListener("click", function () {
+    const deliveryTimeUpdateLayout = document.getElementById(
+      "delivery-time-Update-container"
+    );
+    if (deliveryTimeUpdateLayout) {
+      deliveryTimeUpdateLayout.style.display = "";
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -160,7 +172,10 @@ function onClickUpdate(params) {
   var countrySelect = document.getElementById("country-select");
   var zipcodeInput = document.getElementById("zipcode-input");
 
-  const json = `{"country_code2":"${removeBefore(countrySelect.value," ")}", "zipcode":"${zipcodeInput.value}"}`;
+  const json = `{"country_code2":"${removeBefore(
+    countrySelect.value,
+    " "
+  )}", "zipcode":"${zipcodeInput.value}"}`;
   console.log("onClickUpdate:", json);
   // setCookieJson(cacheKey, json, 12);
   refreshView(params, JSON.parse(json));
