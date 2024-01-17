@@ -175,7 +175,7 @@ function onClickUpdate(params) {
     " "
   )}", "zipcode":"${zipcodeInput.value}"}`;
   console.log("onClickUpdate:", json);
-  // setCookieJson(cacheKey, json, 12);
+  setCookieJson(cacheKey, json, 12);
   refreshView(params, JSON.parse(json));
 }
 
