@@ -12,6 +12,7 @@
     <select @change="onCountryChange" class="select__select">
       {%- assign configJson = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value | json -%}
       {%- assign options = configJson[option_country] -%}
+      {%- comment -%}###########11111{%- endcomment -%}
       {%- for value in options.values -%}
         {%- comment -%}Value: {{ value }}{%- endcomment -%}
         <option
