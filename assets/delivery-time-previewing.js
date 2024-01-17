@@ -101,37 +101,34 @@ function loadUserDeliveryTime(params) {
 
 function refreshView(params, json) {
   const countryCode = json.country_code2;
-    const city = json.city;
-    const zipcode = json.zipcode;
-    console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
-    const targetDeliveryTime = getDeliveryTime(countryCode, params);
+  const city = json.city;
+  const zipcode = json.zipcode;
+  console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
+  const targetDeliveryTime = getDeliveryTime(countryCode, params);
 
-    const deliveryTimeLayout = document.getElementById(
-      "delivery_time_layout_id"
-    );
-    const addressTextView = document.getElementById("address_text_id");
-    const deliveryTimeView = document.getElementById("delivery_time_id");
-    const deliveryTimePrefixView = document.getElementById(
-      "delivery_time_prefix_id"
-    );
-    deliveryTimeLayout.style.display = "";
-    if (params.hasOwnProperty(countryCode)) {
-      deliveryTimePrefixView.textContent = params.prefix_title;
-      if (zipcode) {
-        addressTextView.textContent = `${removeHyphenAndNumbersAfter(
-          zipcode
-        )}-${city}`;
-      } else {
-        addressTextView.textContent = city;
-      }
-
-      deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
+  const deliveryTimeLayout = document.getElementById("delivery_time_layout_id");
+  const addressTextView = document.getElementById("address_text_id");
+  const deliveryTimeView = document.getElementById("delivery_time_id");
+  const deliveryTimePrefixView = document.getElementById(
+    "delivery_time_prefix_id"
+  );
+  deliveryTimeLayout.style.display = "";
+  if (params.hasOwnProperty(countryCode)) {
+    deliveryTimePrefixView.textContent = params.prefix_title;
+    if (zipcode) {
+      addressTextView.textContent = `${removeHyphenAndNumbersAfter(
+        zipcode
+      )}-${city}`;
     } else {
-      addressTextView.textContent = "";
-      deliveryTimePrefixView.textContent = params.prefix_title_unknown;
-      deliveryTimeView.textContent = params.XXX;
+      addressTextView.textContent = city;
     }
-  });
+
+    deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
+  } else {
+    addressTextView.textContent = "";
+    deliveryTimePrefixView.textContent = params.prefix_title_unknown;
+    deliveryTimeView.textContent = params.XXX;
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -146,16 +143,13 @@ document.addEventListener("DOMContentLoaded", function () {
     zipcodeInput.addEventListener("input", onInputChange);
   }
 
-  var buttonElement = document.getElementById('my-button');
-  if(buttonElement){
-    buttonElement.addEventListener('click', onClickUpdate);
+  var buttonElement = document.getElementById("my-button");
+  if (buttonElement) {
+    buttonElement.addEventListener("click", onClickUpdate);
   }
-
 });
 
-function onClickUpdate() {
-  
-}
+function onClickUpdate() {}
 
 function onInputChange(event) {
   var countrySelect = document.getElementById("country-select");
