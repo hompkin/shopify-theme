@@ -78,7 +78,7 @@
 }
 
 .productView-DeliveryTimeUpdate select,
-.productView-DeliveryTimeUpdate .inputBox .input.field__input,
+.field__input,
 .productView-DeliveryTimeUpdate .inputBox .button.button.button-1 {
   height: 40px;
 }
