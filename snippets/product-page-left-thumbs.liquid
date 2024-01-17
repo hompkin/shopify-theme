@@ -1326,10 +1326,10 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     var deliveryConfig = {{ shop.metaobjects.delivery_time.delivery-time-pjebzpu6.config.value | json }};
-    loadUserDeliveryTime({{ deliveryConfig | json }});
+    loadUserDeliveryTime(deliveryConfig);
     var buttonElement = document.getElementById("update-button");
     if (buttonElement) {
-      buttonElement.addEventListener("click", onClickUpdate({{ deliveryConfig | json }}));
+      buttonElement.addEventListener("click", onClickUpdate(deliveryConfig));
     }
   });
 
