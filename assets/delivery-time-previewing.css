@@ -1,0 +1,74 @@
+
+.productView-DeliveryTime {
+  display: none;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.productView-DeliveryTimeUpdate {
+  display: none;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.productView-DeliveryTimeUpdate select.select__select,
+.productView-DeliveryTimeUpdate input.field__input,
+.productView-DeliveryTimeUpdate .button.button.button-1 {
+  height: 32px;
+  min-height: 0;
+}
+
+.productView-DeliveryTimeUpdate select.select__select {
+  min-width: 0;
+  width: 94px;
+  padding: 2px 12px 2px;
+}
+
+.productView-DeliveryTimeUpdate input.field__input {
+  max-width: 144px;
+  margin-left: 10px;
+}
+.productView-DeliveryTimeUpdate input.field__input:disabled {
+  cursor: not-allowed;
+}
+
+.productView-DeliveryTimeUpdate .button.button.button-1 {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-left: 10px;
+  min-width: 0;
+  font-weight: var(--font-body-weight);
+  width: 94px;
+}
+
+.productView-DeliveryTime .icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  fill: var(--icon);
+}
+
+.productView-DeliveryTime .text {
+  color: var(--text-cart);
+  font-family: var(--font-body-family);
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
+.productView-DeliveryTime .address_text {
+  color: var(--color-link);
+  text-decoration: underline;
+  font-family: var(--font-body-family);
+  text-underline-offset: 4px;
+  cursor: pointer;
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
+.productView-DeliveryTime .address_text:hover {
+  color: var(--color-link-hover);
+}
