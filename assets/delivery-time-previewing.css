@@ -54,6 +54,7 @@
   margin-left: 6px;
   margin-right: 4px;
   fill: var(--color-link);
+  cursor: pointer;
 }
 
 .productView-DeliveryTime .text {
