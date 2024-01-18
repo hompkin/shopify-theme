@@ -18,7 +18,7 @@
     </svg>
     <span class="text" id="delivery_time_id"></span>
   </div>
-  <div class="productView-DeliveryTimeUpdate" id="delivery-time-Update-container">
+  <div class="productView-DeliveryTimeUpdate" id="delivery-time-update-container">
     <select id="country-select" class="select__select">
       {%- assign options = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value.option_country -%}
       {%- for value in options -%}
@@ -46,7 +46,7 @@
       <span>update</span>
     </button>
   </div>
-  <div class="productView-DeliveryTimeExpedited">
-    <span class="text">If You Need Expedited Shipping Service, Please&nbsp</span><span class="link">Contact Us.</span>
+  <div class="productView-DeliveryTimeExpedited" id= "delivery-time-expedited-container">
+    <span class="text">If you need expedited shipping service, please&nbsp</span><span class="link">contact us.</span>
   </div>
 </div>
