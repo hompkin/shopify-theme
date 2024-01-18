@@ -149,12 +149,16 @@ function refreshView(params, json) {
     }
   }
 
-  addressTextView.addEventListener("click", function () {
+  const clickFun = function () {
     const deliveryTimeUpdateLayout = document.getElementById("delivery-time-Update-container");
     if (deliveryTimeUpdateLayout) {
       deliveryTimeUpdateLayout.style.display = "flex";
     }
-  });
+  };
+  addressTextView.addEventListener("click", clickFun);
+
+  addressTextView.addEventListener("click",clickFun);
+  
   deliveryTimeContainer.style.display = "flex";
 }
 
