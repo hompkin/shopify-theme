@@ -147,14 +147,14 @@ function refreshView(params, json) {
     deliveryTimePrefixView.textContent = params.prefix_title_unknown;
     deliveryTimeView.textContent = params.XXX;
     // 显示选择框出来
-    const deliveryTimeUpdateLayout = document.getElementById("delivery-time-Update-container");
+    const deliveryTimeUpdateLayout = document.getElementById("delivery-time-update-container");
     if (deliveryTimeUpdateLayout) {
       deliveryTimeUpdateLayout.style.display = "flex";
     }
   }
 
   const clickFun = function () {
-    const deliveryTimeUpdateLayout = document.getElementById("delivery-time-Update-container");
+    const deliveryTimeUpdateLayout = document.getElementById("delivery-time-update-container");
     if (deliveryTimeUpdateLayout) {
       deliveryTimeUpdateLayout.style.display = "flex";
     }
