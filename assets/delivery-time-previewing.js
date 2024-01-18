@@ -120,6 +120,13 @@ function refreshView(params, json) {
   const addressTextView = document.getElementById("address_text_id");
   const deliveryTimeView = document.getElementById("delivery_time_id");
   const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
+  var countrySelect = document.getElementById("country-select");
+  
+  for (let name of params.option_country) {
+    if (countrySelect && name.endsWith(countryCode)) {
+      countrySelect.selected="selected";
+    }
+  }
   if (params.hasOwnProperty(countryCode)) {
     deliveryTimePrefixView.textContent = params.prefix_title;
     if (zipcode && city) {
