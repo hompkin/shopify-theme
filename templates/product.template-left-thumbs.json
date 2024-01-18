@@ -169,9 +169,10 @@
         },
         "bd066b80-c8e3-4f3e-8280-b27fbf6e9423": {
           "type": "description",
+          "disabled": true,
           "settings": {
             "open_tab_mobile": true,
-            "title": "Product Details",
+            "title": "Description",
             "enable_btn_show_more": true,
             "maximum_des_to_show": 300
           }
