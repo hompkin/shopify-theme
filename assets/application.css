@@ -74,14 +74,14 @@
 .productView-DeliveryTimeUpdate select.select__select,
 .productView-DeliveryTimeUpdate input.field__input,
 .productView-DeliveryTimeUpdate .button.button.button-1 {
-  height: 36px;
+  height: 32px;
   min-height: 0;
 }
 
 .productView-DeliveryTimeUpdate select.select__select {
   min-width: 0;
   width: 94px;
-  padding: 2px 15px 2px;
+  padding: 2px 12px 2px;
 }
 
 .productView-DeliveryTimeUpdate input.field__input {
