@@ -12,7 +12,7 @@
 }
 
 .productView-DeliveryTimeExpedited {
-  display: flex;
+  display: none;
   margin-top: 3px;
   white-space: nowrap;
   align-items: center;
