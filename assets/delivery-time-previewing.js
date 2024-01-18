@@ -123,6 +123,7 @@ function refreshView(params, json) {
   var countrySelect = document.getElementById("country-select");
   for (let index = 0; index < bound; index++) {
     const name = params.option_country[index];
+     console.log(`>>>>> name=${name} index=${index}`);
     if (countrySelect && name.endsWith(countryCode)) {
       countrySelect.selectedIndex = index;
     }
