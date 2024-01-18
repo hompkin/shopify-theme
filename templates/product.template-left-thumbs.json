@@ -169,7 +169,6 @@
         },
         "bd066b80-c8e3-4f3e-8280-b27fbf6e9423": {
           "type": "description",
-          "disabled": true,
           "settings": {
             "open_tab_mobile": true,
             "title": "Description",
@@ -203,6 +202,13 @@
             "product_tab_key_metafield": ""
           }
         },
+        "faebbc78-6094-4bc0-a917-80dbfbf5ef3c": {
+          "type": "review",
+          "settings": {
+            "open_tab_mobile": false,
+            "title": "Customer Reviews"
+          }
+        },
         "3d9ea84d-5527-4bce-abe6-5debef3ec955": {
           "type": "custom",
           "settings": {
@@ -227,13 +233,6 @@
             "maximum_des_to_show": 300,
             "product_custom_source": "dynamic",
             "product_tab_key_metafield": ""
-          }
-        },
-        "faebbc78-6094-4bc0-a917-80dbfbf5ef3c": {
-          "type": "review",
-          "settings": {
-            "open_tab_mobile": false,
-            "title": "Customer Reviews"
           }
         },
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3": {
@@ -264,9 +263,9 @@
         "bd066b80-c8e3-4f3e-8280-b27fbf6e9423",
         "custom_TJBD6L",
         "custom_84pYrk",
+        "faebbc78-6094-4bc0-a917-80dbfbf5ef3c",
         "3d9ea84d-5527-4bce-abe6-5debef3ec955",
         "b9d6eb19-10f4-41f8-bfdc-ea10e8b3182a",
-        "faebbc78-6094-4bc0-a917-80dbfbf5ef3c",
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "custom_css": [
