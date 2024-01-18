@@ -122,20 +122,22 @@ function refreshView(params, json) {
   const deliveryTimeView = document.getElementById("delivery_time_id");
   const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
   var countrySelect = document.getElementById("country-select");
+  var country = "";
   for (let index = 0; index < params.option_country.length; index++) {
-    const name = params.option_country[index];
-    if (countrySelect && name.endsWith(countryCode)) {
+    country = params.option_country[index];
+    if (countrySelect && country.endsWith(countryCode)) {
       countrySelect.selectedIndex = index;
     }
   }
   if (params.hasOwnProperty(countryCode)) {
     deliveryTimePrefixView.textContent = params.prefix_title;
+
     if (zipcode && city) {
       addressTextView.textContent = `${removeAfter(zipcode, "-")}-${city}`;
     } else if (zipcode) {
-      addressTextView.textContent = `${countryCode}-${removeAfter(zipcode,"-")}`;
+      addressTextView.textContent = `${country}-${removeAfter(zipcode,"-")}`;
     } else {
-      addressTextView.textContent = countryCode;
+      addressTextView.textContent = country;
     }
 
     deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
