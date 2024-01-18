@@ -11,6 +11,12 @@
   margin-top: 10px;
 }
 
+.productView-DeliveryTimeExpedited {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+}
+
 .productView-DeliveryTimeUpdate select.select__select,
 .productView-DeliveryTimeUpdate input.field__input,
 .productView-DeliveryTimeUpdate .button.button.button-1 {
