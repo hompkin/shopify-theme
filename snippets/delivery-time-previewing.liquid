@@ -12,12 +12,7 @@
     <select id="country-select" class="select__select">
       {%- assign options = shop.metaobjects.delivery_time['delivery-time-pjebzpu6'].config.value.option_country -%}   
       {%- for value in options -%}
-        <option
-          value="{{ value | escape }}"
-          {% if value == '🇺🇸 US' %}
-            selected="selected"
-          {% endif %}
-        >
+        <option value="{{ value | escape }}">
           {{ value | escape }}
         </option>
       {%- endfor -%}
