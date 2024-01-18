@@ -124,9 +124,10 @@ function refreshView(params, json) {
   var countrySelect = document.getElementById("country-select");
   var country = "";
   for (let index = 0; index < params.option_country.length; index++) {
-    country = params.option_country[index];
-    if (countrySelect && country.endsWith(countryCode)) {
+    const name = params.option_country[index];
+    if (countrySelect && name.endsWith(countryCode)) {
       countrySelect.selectedIndex = index;
+      country = name;
     }
   }
   if (params.hasOwnProperty(countryCode)) {
