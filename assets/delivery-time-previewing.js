@@ -118,7 +118,7 @@ function refreshView(params, json) {
 
   const deliveryTimeContainer = document.getElementById("delivery_time_layout_id");
   const addressTextView = document.getElementById("address_text_id");
-  const sureIcon = document.getElementById("sure_id");
+  const sureIcon = document.getElementById("sure_icon_id");
   const deliveryTimeView = document.getElementById("delivery_time_id");
   const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
   var countrySelect = document.getElementById("country-select");
