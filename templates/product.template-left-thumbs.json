@@ -194,12 +194,12 @@
           "settings": {
             "open_tab_mobile": true,
             "title": "Dimensions",
-            "type": "all",
+            "type": "metafield",
             "content": "",
             "enable_btn_show_more": false,
             "maximum_des_to_show": 300,
-            "product_custom_source": "dynamic",
-            "product_tab_key_metafield": ""
+            "product_custom_source": "key_text",
+            "product_tab_key_metafield": "Dimensions"
           }
         },
         "faebbc78-6094-4bc0-a917-80dbfbf5ef3c": {
