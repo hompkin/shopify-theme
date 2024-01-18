@@ -125,10 +125,7 @@ function refreshView(params, json) {
     if (zipcode && city) {
       addressTextView.textContent = `${removeAfter(zipcode, "-")}-${city}`;
     } else if (zipcode) {
-      addressTextView.textContent = `${countryCode}-${removeAfter(
-        zipcode,
-        "-"
-      )}`;
+      addressTextView.textContent = `${countryCode}-${removeAfter(zipcode,"-")}`;
     } else {
       addressTextView.textContent = city;
     }
@@ -138,6 +135,11 @@ function refreshView(params, json) {
     addressTextView.textContent = "";
     deliveryTimePrefixView.textContent = params.prefix_title_unknown;
     deliveryTimeView.textContent = params.XXX;
+    // 显示选择框出来
+    const deliveryTimeUpdateLayout = document.getElementById("delivery-time-Update-container");
+    if (deliveryTimeUpdateLayout) {
+      deliveryTimeUpdateLayout.style.display = "flex";
+    }
   }
 
   addressTextView.addEventListener("click", function () {
@@ -168,10 +170,7 @@ function onClickUpdate(params) {
   var countrySelect = document.getElementById("country-select");
   var zipcodeInput = document.getElementById("zipcode-input");
 
-  const json = JSON.parse(`{"country_code2":"${removeBefore(
-    countrySelect.value,
-    " "
-  )}", "zipcode":"${zipcodeInput.value}"}`);
+  const json = JSON.parse(`{"country_code2":"${removeBefore(countrySelect.value," ")}", "zipcode":"${zipcodeInput.value}"}`);
   console.log("onClickUpdate:", json);
   setCookieJson(cacheKey, json, 12);
   refreshView(params, json);
