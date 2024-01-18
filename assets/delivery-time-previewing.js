@@ -121,10 +121,10 @@ function refreshView(params, json) {
   const deliveryTimeView = document.getElementById("delivery_time_id");
   const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
   var countrySelect = document.getElementById("country-select");
-  
-  for (let name of params.option_country) {
+  for (let index = 0; index < bound; index++) {
+    const name = params.option_country[index];
     if (countrySelect && name.endsWith(countryCode)) {
-      countrySelect.selected="selected";
+      countrySelect.selectedIndex = index;
     }
   }
   if (params.hasOwnProperty(countryCode)) {
