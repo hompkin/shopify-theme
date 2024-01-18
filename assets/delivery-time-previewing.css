@@ -68,7 +68,7 @@
 
 .productView-DeliveryTime .address_text {
   color: var(--color-link);
-  text-decoration: underline;
+  /* text-decoration: underline; */
   font-family: var(--font-body-family);
   text-underline-offset: 4px;
   cursor: pointer;
