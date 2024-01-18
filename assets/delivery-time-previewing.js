@@ -121,7 +121,7 @@ function refreshView(params, json) {
   const deliveryTimeView = document.getElementById("delivery_time_id");
   const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
   var countrySelect = document.getElementById("country-select");
-  for (let index = 0; index < params.option_country.length(); index++) {
+  for (let index = 0; index < params.option_country.length; index++) {
     const name = params.option_country[index];
      console.log(`>>>>> name=${name} index=${index}`);
     if (countrySelect && name.endsWith(countryCode)) {
