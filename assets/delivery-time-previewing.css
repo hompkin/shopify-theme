@@ -45,12 +45,12 @@
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  fill: var(--color-link);
+  fill: var(--icon);
 }
 
-.productView-DeliveryTime .icon--small {
-  width: 22px;
-  height: 20px;
+.productView-DeliveryTime .icon.small {
+  width: 17px;
+  height: 17px;
   margin-left: 6px;
   margin-right: 4px;
   fill: var(--color-link);
