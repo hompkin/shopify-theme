@@ -148,15 +148,23 @@ function refreshView(params, json) {
     deliveryTimeView.textContent = params.XXX;
     // 显示选择框出来
     const deliveryTimeUpdateLayout = document.getElementById("delivery-time-update-container");
+    const deliveryTimeExpeditedLayout = document.getElementById("delivery-time-expedited-container");
     if (deliveryTimeUpdateLayout) {
       deliveryTimeUpdateLayout.style.display = "flex";
+    }
+    if (deliveryTimeExpeditedLayout) {
+      deliveryTimeExpeditedLayout.style.display = "flex";
     }
   }
 
   const clickFun = function () {
     const deliveryTimeUpdateLayout = document.getElementById("delivery-time-update-container");
+    const deliveryTimeExpeditedLayout = document.getElementById("delivery-time-expedited-container");
     if (deliveryTimeUpdateLayout) {
       deliveryTimeUpdateLayout.style.display = "flex";
+    }
+    if (deliveryTimeExpeditedLayout) {
+      deliveryTimeExpeditedLayout.style.display = "flex";
     }
   };
   addressTextView.addEventListener("click", clickFun);
