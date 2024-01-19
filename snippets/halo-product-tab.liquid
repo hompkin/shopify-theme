@@ -154,7 +154,42 @@
 							{%- if block.type == 'review' -%}
 								<div class="productView-review" id="shopify-product-reviews" data-id="{{ product.id }}">
 							{%- endif -%}
-							{{ content }}
+                            
+                            {%- liquid
+                                assign title = block.settings.title
+                                assign key = block.settings.product_tab_key_metafield
+                                assign source = block.settings.product_custom_source
+                                assign has_meta_ref_tab = false
+                            
+                                if source == 'dynamic'
+                                   assign meta_ref = key
+                                else
+                                    if product.metafields.custom
+                                        if product.metafields.custom[key] != blank
+                                            assign meta_ref = product.metafields.custom[key]
+                                        endif
+                                    endif
+                                endif 
+                               
+                                if block.type == 'custom'
+                                    if block.settings.type == 'metafield'
+                                        if meta_ref
+                                             assign has_meta_ref_tab = true
+                                        endif
+                                    else
+                                        assign has_meta_ref_tab = false
+                                    endif
+                                else
+                                    assign has_meta_ref_tab = false
+                                endif
+                            -%}
+                            
+                            {%- if has_meta_ref_tab -%}
+                                {% render 'delivery-time-previewing', block: block %}
+                            {%- else -%}
+                                {{ content }}
+                            {%- endif -%}
+              
 							{%- if block.settings.enable_btn_show_more -%}
 								{% assign letter = content | size %}
 								<div class="tab-showMore is-show" data-letter="{{ letter }}" data-des-max="{{ block.settings.maximum_des_to_show }}">
