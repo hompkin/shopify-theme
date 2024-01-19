@@ -160,20 +160,10 @@
                                 assign key = block.settings.product_tab_key_metafield
                                 assign source = block.settings.product_custom_source
                                 assign has_meta_ref_tab = false
-                            
-                                if source == 'dynamic'
-                                   assign meta_ref = key
-                                else
-                                    if product.metafields.custom
-                                        if product.metafields.custom[key] != blank
-                                            assign meta_ref = product.metafields.custom[key]
-                                        endif
-                                    endif
-                                endif 
-                               
+
                                 if block.type == 'custom'
                                     if block.settings.type == 'metafield'
-                                        if meta_ref
+                                        if key
                                              assign has_meta_ref_tab = true
                                         endif
                                     else
