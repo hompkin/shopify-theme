@@ -154,14 +154,8 @@
 							{%- if block.type == 'review' -%}
 								<div class="productView-review" id="shopify-product-reviews" data-id="{{ product.id }}">
 							{%- endif -%}
-                            
-                            {%- liquid
-                                assign title = block.settings.title
-                                assign key = block.settings.product_tab_key_metafield
-                                assign source = block.settings.product_custom_source
-                            -%}
-                            
-                            {%- if key == 'product_specification_dimensions' -%}
+
+                            {%- if key == 'product_dimensions' -%}
                               {% render 'custom-meta-ref-tab', block: block %}
                             {%- else -%}
                                 {{ content }}
