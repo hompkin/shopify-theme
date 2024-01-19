@@ -159,25 +159,10 @@
                                 assign title = block.settings.title
                                 assign key = block.settings.product_tab_key_metafield
                                 assign source = block.settings.product_custom_source
-                                assign has_meta_ref_tab = false
-
-                                if block.type == 'custom'
-                                    if block.settings.type == 'metafield'
-                                        if key
-                                             assign has_meta_ref_tab = true
-                                        endif
-                                    else
-                                        assign has_meta_ref_tab = false
-                                    endif
-                                else
-                                    assign has_meta_ref_tab = false
-                                endif
                             -%}
                             
-                            {%- if has_meta_ref_tab -%}
-                                {%- if key == 'product_specification_dimensions' -%}
-                                  {% render 'custom-meta-ref-tab', block: block %}
-                                {%- endif -%}
+                            {%- if key == 'product_specification_dimensions' -%}
+                              {% render 'custom-meta-ref-tab', block: block %}
                             {%- else -%}
                                 {{ content }}
                             {%- endif -%}
