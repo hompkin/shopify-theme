@@ -180,13 +180,26 @@
           "type": "custom",
           "settings": {
             "open_tab_mobile": true,
-            "title": "specification & dimensions",
+            "title": "Specification & Dimensions",
             "type": "metafield",
             "content": "",
             "enable_btn_show_more": false,
             "maximum_des_to_show": 300,
             "product_custom_source": "key_text",
             "product_tab_key_metafield": "product_weight_dimensions"
+          }
+        },
+        "custom_mkLJDa": {
+          "type": "custom",
+          "settings": {
+            "open_tab_mobile": true,
+            "title": "Note & Care",
+            "type": "all",
+            "content": "",
+            "enable_btn_show_more": false,
+            "maximum_des_to_show": 300,
+            "product_custom_source": "key_text",
+            "product_tab_key_metafield": ""
           }
         },
         "faebbc78-6094-4bc0-a917-80dbfbf5ef3c": {
@@ -249,6 +262,7 @@
         "10093fcf-2053-47e9-bedb-841bb0d046fa",
         "bd066b80-c8e3-4f3e-8280-b27fbf6e9423",
         "custom_84pYrk",
+        "custom_mkLJDa",
         "faebbc78-6094-4bc0-a917-80dbfbf5ef3c",
         "3d9ea84d-5527-4bce-abe6-5debef3ec955",
         "b9d6eb19-10f4-41f8-bfdc-ea10e8b3182a",
