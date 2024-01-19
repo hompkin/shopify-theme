@@ -212,7 +212,6 @@
         },
         "3d9ea84d-5527-4bce-abe6-5debef3ec955": {
           "type": "custom",
-          "disabled": true,
           "settings": {
             "open_tab_mobile": true,
             "title": "Shipping Policy",
