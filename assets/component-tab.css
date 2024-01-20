@@ -120,6 +120,12 @@
     border-top: 1px solid #d3d3d3;
 }
 
+.tabs-contents-vertical-shipping .tab-content + .tab-content,
+.tabs-contents-vertical-shipping_sidebar .tab-content + .tab-content {
+
+}
+
+
 .tab-showMore.is-show {
     display: block;
     text-align: center;
