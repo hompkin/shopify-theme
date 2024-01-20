@@ -21,9 +21,9 @@ class ProductTabs extends HTMLElement {
             
         for (let i = 0; i < this.link.length; i++) {
 
-           var href = this.link[i].textContent;
+           var href = this.link[i].textContent.trim();
                      console.log(`>>>>> ${href}`)
-            if (href.endsWith("tab-shipping-policy-mobile") || href.endsWith("tab-shipping-policy")) {
+            if (href == "Shipping Policy") {
               this.link[i].style.display = "none";
             }
             this.link[i].addEventListener(
