@@ -10,9 +10,9 @@ class ProductTabs extends HTMLElement {
         this.tabClose = this.querySelectorAll('.pdViewTab-close');
         this.isVerticalPopup = this.dataset.vertical === 'sidebar'
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
-
+console.log(`>>>>>`)
         for (let i = 0; i < this.tab.length; i++) {
-          console.log(`>>>>> ${this.tab[i].value}`)
+          
             this.tab[i].addEventListener(
                 'click',
                 this.tabActive.bind(this)
