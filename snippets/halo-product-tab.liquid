@@ -53,13 +53,13 @@
 						assign has_tab = true
 					endif
 				-%}
-				{%- if has_tab and title != blank and title != "Shipping Policy" -%}
+				<!-- {%- if has_tab and title != blank and title != "Shipping Policy" -%}
 					<li class="tab">
 			            <a class="tab-title{% if block.type == 'description' and tab_layout == 'horizontal' %} is-open{% endif %}" href="#tab-{{ block.settings.title | escape | handleize }}" style="--border-color: {{ border_color }}">
 			                {{ block.settings.title | escape }}
 			            </a>
 			        </li>
-			    {%- endif -%}
+			    {%- endif -%} -->
 			{%- endfor -%}
 		</ul>
 	{%- endif -%}
