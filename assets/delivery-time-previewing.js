@@ -173,7 +173,7 @@ function refreshView(params, json) {
 
   sureIcon.addEventListener("click",clickFun);
   
-  deliveryTimeContainer.style.display = "flex";
+  sureIcon.style.display = "";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
