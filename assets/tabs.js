@@ -20,10 +20,10 @@ class ProductTabs extends HTMLElement {
         }
             
         for (let i = 0; i < this.link.length; i++) {
+
             var href = this.link[i].textContent.trim();
             if (href == "Shipping Policy") {
-              this.link[i].parentElement.style.display = "none";
-              this.link[i].parentElement.parentElement.style.border-top = "";
+              this.link[i].style.display = "none";
             }
             this.link[i].addEventListener(
                 'click',
