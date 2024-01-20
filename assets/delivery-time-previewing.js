@@ -193,10 +193,10 @@ document.addEventListener("DOMContentLoaded", function () {
     shippingPolicy.addEventListener("click", function () {
         console.log("click....");
         var link = document.querySelectorAll('.toggleLink');
-        for (let i = 0; i < this.link.length; i++) {
-                var href = this.link[i].textContent.trim();
+        for (let i = 0; i < link.length; i++) {
+                var href = link[i].textContent.trim();
                 if (href == "Shipping Policy") {
-                  this.link[i].click();
+                  link[i].click();
                 }
           }
     });
