@@ -12,6 +12,7 @@ class ProductTabs extends HTMLElement {
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
 
         for (let i = 0; i < this.tab.length; i++) {
+          console.log(`>>>>> ${this.tab[i].value}`)
             this.tab[i].addEventListener(
                 'click',
                 this.tabActive.bind(this)
