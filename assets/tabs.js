@@ -21,6 +21,8 @@ class ProductTabs extends HTMLElement {
             
         for (let i = 0; i < this.link.length; i++) {
            console.log(`>>>>> ${this.link[i]}`)
+            if（this.link[i].endsWith("tab-shipping-policy-mobile") || this.link[i].endsWith("tab-shipping-policy")）
+            this.link[i].style.display = "none";
             this.link[i].addEventListener(
                 'click',
                 this.tabToggle.bind(this)
