@@ -173,7 +173,6 @@ function refreshView(params, json) {
 
   sureIcon.addEventListener("click",clickFun);
   
-  sureIcon.style.display = "";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
