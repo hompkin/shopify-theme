@@ -122,7 +122,7 @@
 				endif
 			-%}
 			{%- if has_tab and title != blank -%}
-				<div class="tab-content{% if block.type == 'description' %}{% if tab_layout == 'vertical' or tab_layout == 'horizontal' %} is-active{% endif %}{% endif %}" id="tab-{{ title | escape | handleize }}">
+				<div class="tab-content{%- if title == "Shipping Policy" -%}-shipping{% endif %}{% if block.type == 'description' %}{% if tab_layout == 'vertical' or tab_layout == 'horizontal' %} is-active{% endif %}{% endif %}" id="tab-{{ title | escape | handleize }}">
     			{%- if title != "Shipping Policy" -%}
                   <div class="toggle-title{% if settings.product_page_layout == 'full_width_2' or template.suffix == 'template-full-width-2' %} title-content-full{% endif %}">
 		                <a class="toggleLink{% if style_mobile %} {{ style_mobile }}{% endif %}{% if block.type == 'description' and tab_layout == 'vertical' %} is-open{% endif %}" data-collapsible href="#tab-{{ title | escape | handleize }}-mobile">
