@@ -21,11 +21,11 @@ class ProductTabs extends HTMLElement {
             
         for (let i = 0; i < this.link.length; i++) {
 
-            var href = this.link[i].textContent.trim();
-            if (href == "Shipping Policy") {
-              this.link[i].parentElement.style.display = "none";
-              this.link[i].parentElement.parentElement.style.borderTop="none";
-            }
+            // var href = this.link[i].textContent.trim();
+            // if (href == "Shipping Policy") {
+            //   this.link[i].parentElement.style.display = "none";
+            //   this.link[i].parentElement.parentElement.style.borderTop="none";
+            // }
             this.link[i].addEventListener(
                 'click',
                 this.tabToggle.bind(this)
@@ -204,3 +204,14 @@ class ProductTabs extends HTMLElement {
 }
 
 customElements.define('product-tab', ProductTabs);
+
+document.addEventListener("DOMContentLoaded", function () {
+   var link = document.querySelectorAll('.toggleLink');
+   for (let i = 0; i < link.length; i++) {
+        var href = link[i].textContent.trim();
+        if (href == "Shipping Policy") {
+          link[i].parentElement.style.display = "none";
+          link[i].parentElement.parentElement.style.borderTop="none";
+        }
+    }
+};
