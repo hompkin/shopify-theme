@@ -59,6 +59,7 @@
 
 .productView-DeliveryTime .icon.small {
   width: 15px;
+  display:"none"
   height: 15px;
   margin-left: 6px;
   margin-right: 4px;
