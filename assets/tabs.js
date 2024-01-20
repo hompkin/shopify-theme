@@ -23,7 +23,7 @@ class ProductTabs extends HTMLElement {
 
             var href = this.link[i].textContent.trim();
             if (href == "Shipping Policy") {
-              this.link[i].style.display = "none";
+              this.link[i].parentElement.style.display = "none";
             }
             this.link[i].addEventListener(
                 'click',
