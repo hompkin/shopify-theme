@@ -20,7 +20,7 @@ class ProductTabs extends HTMLElement {
         }
             
         for (let i = 0; i < this.link.length; i++) {
-           console.log(`>>>>> ${this.link[i].value}`)
+           console.log(`>>>>> ${this.link[i]}`)
             this.link[i].addEventListener(
                 'click',
                 this.tabToggle.bind(this)
