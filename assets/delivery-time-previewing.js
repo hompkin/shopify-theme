@@ -197,10 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (href == "Shipping Policy") {
                   this.link[i].style.display = "none";
                 }
-                this.link[i].addEventListener(
-                    'click',
-                    this.tabToggle.bind(this)
-                );
           }
     });
   }
