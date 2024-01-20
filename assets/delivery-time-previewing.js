@@ -187,6 +187,25 @@ document.addEventListener("DOMContentLoaded", function () {
   if (zipcodeInput) {
     zipcodeInput.addEventListener("input", onInputChange);
   }
+
+  var shippingPolicy = document.getElementById("shipping_policy_id");
+  if (shippingPolicy) {
+    shippingPolicy.addEventListener("click", function () {
+        var link = document.querySelectorAll('.toggleLink');
+        for (let i = 0; i < this.link.length; i++) {
+                var href = this.link[i].textContent.trim();
+                if (href == "Shipping Policy") {
+                  this.link[i].style.display = "none";
+                }
+                this.link[i].addEventListener(
+                    'click',
+                    this.tabToggle.bind(this)
+                );
+          }
+    });
+  }
+
+
 });
 
 function onClickUpdate(params) {
