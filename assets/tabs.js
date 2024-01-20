@@ -216,4 +216,4 @@ document.addEventListener("DOMContentLoaded", function () {
           link[i].parentElement.parentElement.style.borderTop="none";
         }
     }
-};
+});
