@@ -76,6 +76,7 @@
   line-height: var(--body-line-height);
 }
 
+.productView-DeliveryTime .link ,
 .productView-DeliveryTimeExpedited .link {
   color: var(--text-cart);
   font-family: var(--font-body-family);
