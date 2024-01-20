@@ -110,6 +110,6 @@
     width: 1px;
     margin-left:4px;
     margin-right:4px;
-    height: auto;
+    height: var(--font-body-size);
     background: #000;
 }
