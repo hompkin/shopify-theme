@@ -206,14 +206,13 @@ class ProductTabs extends HTMLElement {
 customElements.define('product-tab', ProductTabs);
 
 document.addEventListener("DOMContentLoaded", function () {
-       console.log(`>>>> DOMContentLoaded`);
    var link = document.querySelectorAll('.toggleLink');
    for (let i = 0; i < link.length; i++) {
         var href = link[i].textContent.trim();
-       console.log(`>>>> href=${href}`);
         if (href == "Shipping Policy") {
           link[i].parentElement.style.display = "none";
           link[i].parentElement.parentElement.style.borderTop="none";
+          break;
         }
     }
 });
