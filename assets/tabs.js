@@ -205,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
    for (let i = 0; i < link.length; i++) {
         var href = link[i].textContent.trim();
         if (href == "Shipping Policy") {
-          link[i].parentElement.style.display = "none";
           link[i].parentElement.parentElement.style.borderTop="none";
           break;
         }
