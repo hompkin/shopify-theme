@@ -205,7 +205,7 @@ class ProductTabs extends HTMLElement {
 
 customElements.define('product-tab', ProductTabs);
 
-document.addEventListener("DOMContentLoaded", function () {
+window.onload = function() {
    var link = document.querySelectorAll('.toggleLink');
    for (let i = 0; i < link.length; i++) {
         var href = link[i].textContent.trim();
@@ -215,4 +215,4 @@ document.addEventListener("DOMContentLoaded", function () {
           break;
         }
     }
-});
+};
