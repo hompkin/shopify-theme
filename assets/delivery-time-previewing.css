@@ -76,8 +76,7 @@
   line-height: var(--body-line-height);
 }
 
-.productView-DeliveryTime .link ,
-.productView-DeliveryTimeExpedited .link {
+.productView-DeliveryTime .link{
   color: var(--text-cart);
   font-family: var(--font-body-family);
   font-size: var(--font-body-size);
@@ -86,7 +85,7 @@
   line-height: var(--body-line-height);
   cursor: pointer;
   color: var(--color-link);
-  text-decoration-line: underline;
+  /* text-decoration-line: underline; */
 
 }
 
