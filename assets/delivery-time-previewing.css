@@ -108,6 +108,8 @@
 
 .productView-DeliveryTime .vertical-line {
     width: 1px;
+  margin-left:4px;
+  margin-right:4px;
     height: auto;
     background: #eee;
 }
