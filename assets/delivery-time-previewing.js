@@ -187,23 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
     zipcodeInput.addEventListener("input", onInputChange);
   }
 
-  var shippingPolicy = document.getElementById("shipping_policy_id");
-  if (shippingPolicy) {
-    shippingPolicy.addEventListener("click", function () {
-       
-        var link = document.querySelectorAll('.toggleLink');
-        for (let i = 0; i < link.length; i++) {
-            var href = link[i].textContent.trim();
-          console.log(`click.... ${href}`);
-            if (href == "Shipping Policy") {
-              link[i].click();
-              break;
-            }
-        }
-    });
-  }
-
-
 });
 
 function onClickUpdate(params) {
