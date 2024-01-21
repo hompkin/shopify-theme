@@ -11,21 +11,22 @@ class ProductTabs extends HTMLElement {
         this.isVerticalPopup = this.dataset.vertical === 'sidebar'
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
 
-      
-      document.getElementById("shipping_policy_id").addEventListener(
-        'click',
-         function() {
-            console.log("click...");
-           for (let i = 0; i < this.link.length; i++) {
-            var href = this.link[i].textContent.trim();
-            console.log(`href=${href}`);
-            if(href == "Shipping Policy") {
-              this.link[i].click();
-              break;
+        for (let i = 0; i < this.link.length; i++) {
+              var href = this.link[i].textContent.trim();
+              console.log(`href=${href}`);
+              if(href == "Shipping Policy") {
+                this.shippingPolicyLink = this.link[i];
+                break;
+              }
             }
-          }
-         }
-      );
+      
+        document.getElementById("shipping_policy_id").addEventListener(
+          'click',
+           function() {
+            console.log("click...");
+             this.shippingPolicyLink.click();
+           }
+        );
 
         for (let i = 0; i < this.tab.length; i++) {
          
