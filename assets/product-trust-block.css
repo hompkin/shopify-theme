@@ -14,6 +14,7 @@
 
 .productView-trust .service-instruction {
   display: flex;
+  margin-start:12px;
   flex-direction: column;
   align-content: flex-start;
   width: calc(100% - 54px);
