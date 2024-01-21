@@ -121,8 +121,8 @@
     border-top: 1px solid #d3d3d3;
 }
 
-.tabs-contents-vertical .shipping-policy + .tab-content,
-.tabs-contents-vertical_sidebar .shipping-policy + .tab-content{
+.tabs-contents-vertical .tab-content + .shipping-policy,
+.tabs-contents-vertical_sidebar .tab-content + .shipping-policy{
   border-top: "";
 }
 
