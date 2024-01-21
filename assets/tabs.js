@@ -10,12 +10,12 @@ class ProductTabs extends HTMLElement {
         this.tabClose = this.querySelectorAll('.pdViewTab-close');
         this.isVerticalPopup = this.dataset.vertical === 'sidebar'
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
-      console.log(">>>>>222222");
-        if (document.getElementById("shipping_policy_id")) {
-          console.log(">>>>>");
-        }
+
         document.addEventListener("DOMContentLoaded", function () {
-           document.getElementById("shipping_policy_id").addEventListener('click', this.tabToggle.bind(this));
+           document.getElementById("shipping_policy_id").addEventListener('click', function(){
+                       console.log(">>>>>");
+              this.tabToggle.bind(this)
+           });
         });
         for (let i = 0; i < this.tab.length; i++) {
          
