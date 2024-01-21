@@ -14,6 +14,25 @@
 .productView-trust .icon {
   margin-right: 12px;
 }
+
+.productView-trust .title {
+  color: var(--text-cart);
+  font-family: var(--font-body-family);
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
+.productView-trust .sub-title {
+  color: var(--text-cart);
+  font-family: var(--font-body-family);
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
 .productView-trust .service-instruction {
   display: flex;
 
