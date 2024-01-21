@@ -34,8 +34,8 @@
             "word_number": "12",
             "fontsize_text": 14,
             "color_text": "#3c3c3c",
-            "spacing_top": 4,
-            "spacing_bottom": 8
+            "spacing_top": 0,
+            "spacing_bottom": 0
           }
         },
         "0e4ea696-4820-4c98-aaa6-806d41782a3d": {
