@@ -16,6 +16,7 @@ class ProductTabs extends HTMLElement {
         'click',
          for (let i = 0; i < this.link.length; i++) {
             var href = this.link[i].textContent.trim();
+            console.log(`href=${href}`);
             if(href == "Shipping Policy") {
               this.link[i].click();
               break;
