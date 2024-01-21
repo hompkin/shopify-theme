@@ -46,6 +46,10 @@
     transition: var(--anchor-transition);
 }
 
+.tabs-contents .shipping{
+    padding: 0,0,0,0;
+}
+
 .tabs-contents .toggleLink .icon-plus{
     font-size: 0;
     display: inline-block;
