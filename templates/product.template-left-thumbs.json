@@ -41,7 +41,7 @@
         "0e4ea696-4820-4c98-aaa6-806d41782a3d": {
           "type": "meta",
           "settings": {
-            "spacing_top": 0,
+            "spacing_top": 4,
             "spacing_bottom": 4,
             "show_review": false,
             "show_sold_in": true,
