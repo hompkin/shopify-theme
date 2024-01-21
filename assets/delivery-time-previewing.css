@@ -90,6 +90,11 @@
   line-height: var(--body-line-height);
 }
 
+.productView-DeliveryTime .link:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline; 
+}
+
 .productView-DeliveryTime .address_text:hover {
   color: var(--color-link-hover);
 }
