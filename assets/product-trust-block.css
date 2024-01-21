@@ -25,7 +25,7 @@
 }
 
 .productView-trust .sub-title {
-  color: var(--text-cart);
+  color: var(--color-grey);
   font-family: var(--font-body-family);
   font-size: var(--font-body-size);
   font-weight: var(--font-weight-normal);
