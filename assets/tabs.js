@@ -23,8 +23,7 @@ class ProductTabs extends HTMLElement {
         document.getElementById("shipping_policy_id").addEventListener(
           'click',
            function() {
-            console.log("click...");
-             this.shippingPolicyLink.click();
+              document.getElementById("href-shipping-policy-id").click();
            }
         );
 
