@@ -27,7 +27,7 @@
 .productView-trust .sub-title {
   color: var(--color-grey);
   font-family: var(--font-body-family);
-  font-size: var(--badge-font-size);
+  font-size: var(--font-body-size)*0.3;
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--body-letter-spacing);
   line-height: var(--body-line-height);
