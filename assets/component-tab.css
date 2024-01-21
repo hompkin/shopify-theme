@@ -115,11 +115,15 @@
     border-bottom: 1px solid #d3d3d3;
 }
 
-.tabs-contents-vertical .shipping-policy + .tab-content,
-.tabs-contents-vertical_sidebar .shipping-policy + .tab-content,
+
 .tabs-contents-vertical .tab-content + .tab-content,
 .tabs-contents-vertical_sidebar .tab-content + .tab-content {
     border-top: 1px solid #d3d3d3;
+}
+
+.tabs-contents-vertical .shipping-policy + .tab-content,
+.tabs-contents-vertical_sidebar .shipping-policy + .tab-content{
+  border-top: "";
 }
 
 .tabs-contents .shipping-policy {
