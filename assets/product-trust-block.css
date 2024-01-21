@@ -3,3 +3,11 @@
   white-space: nowrap;
   align-items: center;
 }
+
+.productView-trust .service-item {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 8px;
+  padding-right: 8px;
+}
