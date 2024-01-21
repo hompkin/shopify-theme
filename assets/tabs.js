@@ -12,7 +12,7 @@ class ProductTabs extends HTMLElement {
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
         this shippingPolicy = document.getElementById("shipping_policy_id");
 
-        shippingPolicy.addEventListener('click',this.tabToggle.bind(this));
+        this.shippingPolicy.addEventListener('click', this.tabToggle.bind(this));
   
         for (let i = 0; i < this.tab.length; i++) {
          
