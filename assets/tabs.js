@@ -15,6 +15,7 @@ class ProductTabs extends HTMLElement {
       document.getElementById("shipping_policy_id").addEventListener(
         'click',
          function() {
+            console.log("click...");
            for (let i = 0; i < this.link.length; i++) {
             var href = this.link[i].textContent.trim();
             console.log(`href=${href}`);
@@ -22,7 +23,7 @@ class ProductTabs extends HTMLElement {
               this.link[i].click();
               break;
             }
-        }
+          }
          }
       );
 
