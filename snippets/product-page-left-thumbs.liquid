@@ -1066,9 +1066,13 @@
                                             style="--spacing-top: {{ spacing_top | append: 'px' }};
                                             --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
                                         >
-                                            {% render 'delivery-time-previewing',
-                                                block: block
-                                            %}
+                                            {% render 'delivery-time-previewing', block: block %}
+                                      </div>
+                                   <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
+                                            style="--spacing-top: {{ spacing_top | append: 'px' }};
+                                            --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
+                                        >
+                                            {% render 'product-trust-block', block: block %}
                                       </div>
                                   
                                     {%- when 'customer_viewing' -%}
