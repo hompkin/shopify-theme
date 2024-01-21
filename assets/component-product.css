@@ -2049,7 +2049,7 @@ s.price-item.price-item--regular {
 
 .productView-info.has-border-top {
     display: block;
-    padding-top: 12px;
+    padding-top: 16px;
     border-top: 1px solid var(--color-border);
 }
 
