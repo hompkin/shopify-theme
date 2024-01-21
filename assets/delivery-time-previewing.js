@@ -190,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var shippingPolicy = document.getElementById("shipping_policy_id");
   if (shippingPolicy) {
     shippingPolicy.addEventListener("click", function () {
+       console.log("click....");
         var link = document.querySelectorAll('.toggleLink');
         for (let i = 0; i < link.length; i++) {
             var href = link[i].textContent.trim();
