@@ -76,14 +76,27 @@
   line-height: var(--body-line-height);
 }
 
-.productView-DeliveryTime .link,
+
 .productView-DeliveryTime .address_text {
   color: var(--color-link);
   /* text-decoration: underline; */
   font-family: var(--font-body-family);
   text-underline-offset: 4px;
   cursor: pointer;
-  margin-left:16px;
+  margin-left:8px;
+  font-size: var(--font-body-size);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
+.productView-DeliveryTime .link{
+    color: var(--color-link);
+  /* text-decoration: underline; */
+  font-family: var(--font-body-family);
+  text-underline-offset: 4px;
+  cursor: pointer;
+  margin-left:12px;
   font-size: var(--font-body-size);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--body-letter-spacing);
@@ -101,7 +114,7 @@
 
 .productView-DeliveryTime .vertical-line {
     width: 1px;
-    margin-left:16px;
+    margin-left:12px;
     height: var(--font-body-size);
     background: #d3d3d3;
 }
