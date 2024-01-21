@@ -46,7 +46,7 @@
     transition: var(--anchor-transition);
 }
 
-.tabs-contents .shipping{
+.tabs-contents .shipping-policy {
     padding: 0,0,0,0;
 }
 
@@ -124,7 +124,7 @@
     border-top: 1px solid #d3d3d3;
 }
 
-.tab-content.shipping {
+.tab-content.shipping-policy {
 
 }
 
