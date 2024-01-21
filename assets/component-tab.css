@@ -124,8 +124,7 @@
     border-top: 1px solid #d3d3d3;
 }
 
-.tabs-contents-vertical .shipping,
-.tabs-contents-vertical_sidebar .shipping {
+.tab-content.shipping {
 
 }
 
