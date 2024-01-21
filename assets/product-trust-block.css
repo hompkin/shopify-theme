@@ -21,7 +21,7 @@
   font-size: var(--font-body-size);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--body-letter-spacing);
-  line-height: var(--body-line-height);
+
 }
 
 .productView-trust .sub-title {
@@ -30,7 +30,7 @@
   font-size: calc(var(--font-body-size)*0.9);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--body-letter-spacing);
-  line-height: var(--body-line-height);
+
 }
 
 .productView-trust .service-instruction {
