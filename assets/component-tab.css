@@ -115,15 +115,15 @@
     border-bottom: 1px solid #d3d3d3;
 }
 
-.tabs-contents-vertical .tab-content-shipping + .tab-content,
-.tabs-contents-vertical_sidebar .tab-content-shipping + .tab-content,
+.tabs-contents-vertical .tab-content shipping + .tab-content,
+.tabs-contents-vertical_sidebar .tab-content shipping + .tab-content,
 .tabs-contents-vertical .tab-content + .tab-content,
 .tabs-contents-vertical_sidebar .tab-content + .tab-content {
     border-top: 1px solid #d3d3d3;
 }
 
-.tabs-contents-vertical .tab-content + .tab-content-shipping,
-.tabs-contents-vertical_sidebar .tab-content + .tab-content-shipping {
+.tabs-contents-vertical .tab-content + .tab-content shipping,
+.tabs-contents-vertical_sidebar .tab-content + .tab-content shipping {
 
 }
 
