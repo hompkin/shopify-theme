@@ -116,5 +116,5 @@
     width: 1px;
     margin-left:12px;
     height: var(--font-body-size);
-    background: var(--color-border);
+    background: #d3d3d3;
 }
