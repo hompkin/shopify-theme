@@ -61,7 +61,7 @@
             "enable_border_top": false,
             "enable_border_bottom": false,
             "color_border": "#e6e6e6",
-            "spacing_top": 0,
+            "spacing_top": 8,
             "spacing_bottom": 0
           }
         },
