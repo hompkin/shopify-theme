@@ -10,11 +10,8 @@ class ProductTabs extends HTMLElement {
         this.tabClose = this.querySelectorAll('.pdViewTab-close');
         this.isVerticalPopup = this.dataset.vertical === 'sidebar'
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
-        this shippingPolicy = document.getElementById("shipping_policy_id");
-        if(shippingPolicy){
-          console.log(">>>>>>22");
-          this.shippingPolicy.addEventListener('click', this.tabToggle.bind(this));
-        }
+      
+        document.getElementById("shipping_policy_id").addEventListener('click', this.tabToggle.bind(this));
 
   
         for (let i = 0; i < this.tab.length; i++) {
