@@ -38,6 +38,18 @@
             "spacing_bottom": 0
           }
         },
+        "0e4ea696-4820-4c98-aaa6-806d41782a3d": {
+          "type": "meta",
+          "settings": {
+            "spacing_top": 4,
+            "spacing_bottom": 4,
+            "show_review": false,
+            "show_sold_in": true,
+            "sold_in_number": "1,2,3,5,6,7,8",
+            "sold_in_hours": "48",
+            "color_text_sold_in": "{{ shop.brand.colors.secondary[0].background }}"
+          }
+        },
         "4e59f24a-8859-4579-a80a-d70e6f1bf66b": {
           "type": "info",
           "settings": {
@@ -51,18 +63,6 @@
             "color_border": "#e6e6e6",
             "spacing_top": 6,
             "spacing_bottom": 0
-          }
-        },
-        "0e4ea696-4820-4c98-aaa6-806d41782a3d": {
-          "type": "meta",
-          "settings": {
-            "spacing_top": 4,
-            "spacing_bottom": 4,
-            "show_review": false,
-            "show_sold_in": true,
-            "sold_in_number": "1,2,3,5,6,7,8",
-            "sold_in_hours": "48",
-            "color_text_sold_in": "{{ shop.brand.colors.secondary[0].background }}"
           }
         },
         "4f95b592-8369-4ab0-b30d-24e463fb6890": {
@@ -249,8 +249,8 @@
         "2e8c7c14-a0ad-4930-a1d8-3def05310426",
         "b0ea69b7-8a54-4a3c-9abd-0fcceeabaaa0",
         "b87b5d94-d9c5-4d66-a99b-da56e65d25e9",
-        "4e59f24a-8859-4579-a80a-d70e6f1bf66b",
         "0e4ea696-4820-4c98-aaa6-806d41782a3d",
+        "4e59f24a-8859-4579-a80a-d70e6f1bf66b",
         "4f95b592-8369-4ab0-b30d-24e463fb6890",
         "bd3a641e-98d0-4da1-ab57-d5e4b0391995",
         "d98e243b-3682-495a-965a-1c7f7d460880",
