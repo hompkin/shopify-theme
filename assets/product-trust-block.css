@@ -11,3 +11,10 @@
   margin-bottom: 8px;
   padding-right: 8px;
 }
+
+.productView-trust .service-instruction {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  width: calc(100% - 54px);
+}
