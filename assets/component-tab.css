@@ -116,11 +116,13 @@
 }
 
 .tabs-contents-vertical .tab-content + .tab-content,
+.tabs-contents-vertical_sidebar .tab-content + .tab-content,
+.tabs-contents-vertical .tab-content + .tab-content,
 .tabs-contents-vertical_sidebar .tab-content + .tab-content {
     border-top: 1px solid #d3d3d3;
 }
 
-.tab-content.shipping-policy {
+.tabs-contents.shipping-policy {
 
 }
 
