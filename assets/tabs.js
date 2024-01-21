@@ -12,16 +12,16 @@ class ProductTabs extends HTMLElement {
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
 
       
-        document.getElementById("shipping_policy_id").addEventListener(
-          'click',
-          this.tabToggle.bind(this)
-        );
-      
-        document.addEventListener("DOMContentLoaded", function () {
-           document.getElementById("shipping_policy_id").addEventListener('click', function(){
-              document.getElementById("shipping-placeholder").click(); 
-           });
-        });
+      document.getElementById("shipping_policy_id").addEventListener(
+        'click',
+         for (let i = 0; i < this.link.length; i++) {
+            var href = this.link[i].textContent.trim();
+            if(href == "Shipping Policy") {
+              this.link[i].click();
+              break;
+            }
+        }
+      );
 
         for (let i = 0; i < this.tab.length; i++) {
          
