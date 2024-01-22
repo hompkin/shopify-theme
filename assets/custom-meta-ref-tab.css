@@ -1,3 +1,11 @@
+.custom-meta {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom:48px;
+}
+
 .custom-meta-block {
   display: flex;
   white-space: nowrap;
@@ -7,7 +15,6 @@
   margin-top: 16px;
   border: 1px solid #d3d3d3;
 }
-
 
 .custom-meta-block .img {
   margin-top: 24px;
