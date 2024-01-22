@@ -3,7 +3,7 @@
   <table class="custom-meta">
     <tbody>
       {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
-        <div>
+ 
           {% for attr in item.attrs %}
             <tr>
               <td>
@@ -14,8 +14,8 @@
               </td>
             </tr>
           {% endfor %}
-        <img src="{{item.img_url}}" style="width:80%;"></img>
-        </div>
+          <span>ttttt</span>
+          <img src="{{item.img_url}}" style="width:80%;"></img>
       {% endfor %}
     </tbody>
   </table>
