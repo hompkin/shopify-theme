@@ -159,7 +159,7 @@
 								<div class="productView-review" id="shopify-product-reviews" data-id="{{ product.id }}">
 							{%- endif -%}
 
-                            {%- if key == 'product_weight_dimensions' or key == 'product_specification' -%}
+                            {%- if key == 'product_weight_dimensions' -%}
                               {% render 'custom-meta-ref-tab', product: product %}
                             {%- else -%}
                                 {{ content }}
