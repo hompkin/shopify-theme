@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 66px;
+    margin-top: 16px;
 }
 
 .custom-meta-block .img {
