@@ -5,7 +5,11 @@
   flex-direction: column;
   margin-bottom:64px;
 }
-
+.custom-meta-div .text{
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
 .custom-meta-block {
   width:100%;
   display: flex;
