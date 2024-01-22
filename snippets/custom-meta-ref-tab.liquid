@@ -3,7 +3,7 @@
 {% if product.metafields.custom.product_weight_dimensions -%}
   <table class="custom-meta">
     <tbody>
-      {% for attr in product.metafields.custom.product_weight_dimensions.value.dimension_attr %}
+      {% for attr in product.metafields.custom.product_weight_dimensions.value.attrs %}
         <tr>
           <td>{{ attr.key }}</td>
           <td>{{ attr.value }}</td>
