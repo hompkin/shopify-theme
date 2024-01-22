@@ -4,12 +4,20 @@
   <table class="custom-meta">
     <tbody>
       {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
-         {% for attr in item.attrs %}
-        <tr>
-          <td> <span class="text">{{ attr.key }}</span></td>
-          <td> <span class="text">{{ attr.value }}</span></td>
-        </tr>
-       {% endfor %}
+        {% for url in item.img_urls %}
+           <img src="{{url}}" style="width:60%;"></img>
+        {% endfor %}
+
+        {% for attr in item.attrs %}
+          <tr>
+            <td>
+              <span class="text">{{ attr.key }}</span>
+            </td>
+            <td>
+              <span class="text">{{ attr.value }}</span>
+            </td>
+          </tr>
+        {% endfor %}
       {% endfor %}
     </tbody>
   </table>
