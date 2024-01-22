@@ -3,11 +3,10 @@
   white-space: nowrap;
   align-items: center;
   flex-direction: column;
-  margin-top:16px;
   margin-bottom:64px;
 }
 .custom-meta-div .text{
-    font-size: 20px;
+    font-size: 24px;
     margin-top:24px;
     margin-bottom:24px;
     font-weight: 600;
