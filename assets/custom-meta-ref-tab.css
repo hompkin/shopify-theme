@@ -23,7 +23,7 @@
 }
 
 .custom-meta-block .horizen-line {
-    width: auto;
+    width: 100%;
     height: 1px;
     background: #d3d3d3;
 }
