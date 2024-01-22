@@ -160,7 +160,7 @@
 							{%- endif -%}
 
                             {%- if key == 'product_weight_dimensions' -%}
-                              {% render 'custom-meta-ref-tab', block: block %}
+                              {% render 'custom-meta-ref-tab', product: product %}
                             {%- else -%}
                                 {{ content }}
                             {%- endif -%}
