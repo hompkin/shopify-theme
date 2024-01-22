@@ -58,7 +58,7 @@
             "show_availability": false,
             "show_product_type": false,
             "stock_level_display": "none",
-            "enable_border_top": true,
+            "enable_border_top": false,
             "enable_border_bottom": false,
             "color_border": "#e6e6e6",
             "spacing_top": 6,
