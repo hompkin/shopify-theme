@@ -25,5 +25,5 @@
 .custom-meta-block .horizen-line {
     width: 100%;
     height: 1px;
-  border: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
 }
