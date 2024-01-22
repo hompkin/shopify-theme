@@ -4,6 +4,7 @@
     <tbody>
       {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
         <div>
+            <img src="{{item.img_url}}" style="width:80%;"></img>
           {% for attr in item.attrs %}
             <tr>
               <td>
