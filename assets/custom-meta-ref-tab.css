@@ -1,0 +1,25 @@
+.custom-meta .table {
+  width: 50%;
+  border-collapse: collapse;
+}
+
+.custom-meta .table, 
+.custom-meta .th, 
+.custom-meta .td {
+  border: 1px solid #4a4a4a;
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-meta .th {
+  background-color: #4a4a4a;
+  color: white;
+}
+
+.custom-meta .tr:nth-child(even) {
+  background-color: #cccccc;
+}
+
+.custom-meta .tr:nth-child(odd) {
+  background-color: #e6e6e6;
+}
