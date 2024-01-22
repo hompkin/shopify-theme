@@ -11,7 +11,7 @@
     {% assign test = '{"key1":"value1","key2":"value2","key3":"value3"}' | json %}
     {% for item in test %}
        <tr>
-      <th>Key+</th>
+      <th>{{ item }}</th>
       <th>Value+</th>
     </tr>
     <tr>
