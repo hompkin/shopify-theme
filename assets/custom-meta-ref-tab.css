@@ -21,3 +21,9 @@
   letter-spacing: var(--body-letter-spacing);
   line-height: var(--body-line-height);
 }
+
+.custom-meta-block .horizen-line {
+    width: auto;
+    height: 1px;
+    background: #d3d3d3;
+}
