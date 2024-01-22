@@ -4,7 +4,7 @@
   <table class="custom-meta">
     <tbody>
       {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
-        {% for url in item.img_urls %}
+        {% for url in item.img_url %}
            <img src="{{url}}" style="width:60%;"></img>
         {% endfor %}
 
