@@ -715,7 +715,7 @@
                             </div>
                             {%- if thumnail_layout != '4' -%}
                                 <div class="productView-thumbnail-wrapper{% unless show_thumbnail_mobile %} is-hidden-mobile{% endunless %}">
-                                    <div class="productView-for clearfix" data-max-thumbnail-to-show="{{ max_thumbnail_to_show+1}}">
+                                    <div class="productView-for clearfix" data-max-thumbnail-to-show="{{ calc(max_thumbnail_to_show) }}">
                                         {%- for media in product.media -%}
                                             {%- case media.media_type -%}
                                                 {%- when 'image' -%}
