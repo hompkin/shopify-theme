@@ -2,3 +2,19 @@
 
 {% assign test = '{"key":"value","key2":"value2","key3":"value3"}' | json %}
 
+<table class="custom-meta">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in test %}
+    <tr>
+      <td>{{ item.key }}</td>
+      <td>{{ item.value }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
