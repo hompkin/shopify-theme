@@ -3,12 +3,11 @@
   white-space: nowrap;
   align-items: left;
   flex-direction: column;
-  margin-bottom: 24px;
-  margin-top: 24px;
+  margin-bottom: 32px;
+  margin-top: 16px;
 }
 .custom-meta-div .text {
   font-size: 21px;
-
   font-weight: 600;
   text-transform: capitalize;
 }
