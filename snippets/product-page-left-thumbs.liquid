@@ -20,7 +20,7 @@
     assign main_image_show_zoom_icon_mb = section.settings.main_image_show_zoom_icon_mb
     assign main_image_layout = section.settings.main_image_layout
     assign show_thumbnail_mobile = section.settings.show_thumbnail_mobile
-    assign max_thumbnail_to_show = section.settings.thumbnail_to_show
+    assign max_thumbnail_to_show = section.settings.thumbnail_to_show | plus: 1
     assign current_variant = product.selected_or_first_available_variant
     assign variantCount = product.variants | size
     assign featured_media_aspect_ratio = product.featured_media.aspect_ratio
@@ -715,7 +715,7 @@
                             </div>
                             {%- if thumnail_layout != '4' -%}
                                 <div class="productView-thumbnail-wrapper{% unless show_thumbnail_mobile %} is-hidden-mobile{% endunless %}">
-                                    <div class="productView-for clearfix" data-max-thumbnail-to-show="{{ calc(max_thumbnail_to_show) }}">
+                                    <div class="productView-for clearfix" data-max-thumbnail-to-show="{{ max_thumbnail_to_show}}">
                                         {%- for media in product.media -%}
                                             {%- case media.media_type -%}
                                                 {%- when 'image' -%}
