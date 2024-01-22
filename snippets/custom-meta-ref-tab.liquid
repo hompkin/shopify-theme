@@ -1,20 +1,22 @@
 <link href="{{ 'custom-meta-ref-tab.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
 {% if product.metafields.custom.product_weight_dimensions -%}
   {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
-    <table class="custom-meta">
-      <tbody>
-        {% for attr in item.attrs %}
-          <tr>
-            <td>
-              <span class="text">{{ attr.key }}</span>
-            </td>
-            <td>
-              <span class="text">{{ attr.value }}</span>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-              <img src="{{item.img_url}}" style="width:80%;"></img>
+    <div class="custom-meta-block">
+      <table>
+        <tbody>
+          {% for attr in item.attrs %}
+            <tr>
+              <td>
+                <span class="text">{{ attr.key }}</span>
+              </td>
+              <td>
+                <span class="text">{{ attr.value }}</span>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <img src="{{item.img_url}}" alt="product dimension and weight" width="80%" height="80%">
+    </div>
   {% endfor %}
 {% endif %}
