@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    {% assign test = '{"key1":"value1","key2":"value2","key3":"value3"}' | json %}
+    {% assign test = '{"key1":"value1","key2":"value2","key3":"value3"}' | parse_json %}
     {% for item in test %}
        <tr>
       <th>{{ item }}</th>
