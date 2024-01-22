@@ -1,55 +1,61 @@
 <link href="{{ 'custom-meta-ref-tab.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
 <div class="custom-meta-div">
-{% if product.metafields.custom.product_specification -%}
-  <span class="text">Specification</span>
-  {% for item in product.metafields.custom.product_specification.value.content %}
-    <div class="custom-meta-block">
-      <table>
-        <tbody>
-          {% for attr in item.attrs %}
-            {% if attr.value %}
-              <tr>
-                <td>
-                  <span class="key-text">{{ attr.key }}</span>
-                </td>
-                <td>
-                  <span class="value-text">{{ attr.value }}</span>
-                </td>
-              </tr>
-            {% endif %}
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  {% endfor %}
-{% endif %}
+  {% if product.metafields.custom.product_specification -%}
+    <span class="text">Specification</span>
+    {% for item in product.metafields.custom.product_specification.value.content %}
+      <div class="custom-meta-block">
+        <table>
+          <tbody>
+            {% for attr in item.attrs %}
+              {% if attr.value %}
+                <tr>
+                  <td>
+                    <span class="key-text">{{ attr.key }}</span>
+                  </td>
+                  <td>
+                    <span class="value-text">{{ attr.value }}</span>
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endfor %}
+  {% endif %}
 
-{% if product.metafields.custom.product_weight_dimensions -%}
-  <h3>Dimensions</h3>
-  {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
-    <div class="custom-meta-block">
-      <table>
-        <tbody>
-          {% for attr in item.attrs %}
-            {% if attr.value %}
-              <tr>
-                <td>
-                  <span class="key-text">{{ attr.key }}</span>
-                </td>
-                <td>
-                  <span class="value-text">{{ attr.value }}</span>
-                </td>
-              </tr>
-            {% endif %}
-          {% endfor %}
-        </tbody>
-      </table>
-      {% if item.img_url %}
-        <div class="horizen-line"> </div>
-        <img class="img" src="{{item.img_url}}" loading="lazy" alt="product dimension and weight" width="100%" height="100%">
-      {% endif %}
-    </div>
-  {% endfor %}
-{% endif %}
+  {% if product.metafields.custom.product_weight_dimensions -%}
+    <span class="text">Dimensions</span>
+    {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
+      <div class="custom-meta-block">
+        <table>
+          <tbody>
+            {% for attr in item.attrs %}
+              {% if attr.value %}
+                <tr>
+                  <td>
+                    <span class="key-text">{{ attr.key }}</span>
+                  </td>
+                  <td>
+                    <span class="value-text">{{ attr.value }}</span>
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+        {% if item.img_url %}
+          <div class="horizen-line"></div>
+          <img
+            class="img"
+            src="{{item.img_url}}"
+            loading="lazy"
+            alt="product dimension and weight"
+            width="100%"
+            height="100%"
+          >
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endif %}
 </div>
-
