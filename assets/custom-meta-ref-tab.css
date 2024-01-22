@@ -5,7 +5,9 @@
   flex-direction: column;
   margin-bottom: 66px;
   margin-top: 16px;
+    border: 1px solid black;
 }
+
 
 .custom-meta-block .img {
   margin-top: 24px;
