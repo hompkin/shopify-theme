@@ -2,12 +2,6 @@
 
 {% if product.metafields.custom.product_weight_dimensions -%}
   <table class="custom-meta">
-    <thead>
-      <tr>
-        <th>Key</th>
-        <th>Value</th>
-      </tr>
-    </thead>
     <tbody>
       {% for attr in product.metafields.custom.product_weight_dimensions.value.dimension_attr %}
         <tr>
