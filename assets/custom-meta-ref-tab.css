@@ -1,7 +1,7 @@
 .custom-meta-div {
   display: flex;
   white-space: nowrap;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   margin-bottom:64px;
 }
