@@ -5804,10 +5804,10 @@ summary::-webkit-details-marker {
         .container-1770{
             width: 100%;
             max-width: 1770px;
-            /* padding-left: 15px; */
-            /* padding-right: 15px; */
-            padding-left: 88px;
-            padding-right: 88px;
+            padding-left: 15px;
+            padding-right: 15px;
+            /* padding-left: 88px; */
+            /* padding-right: 88px; */
             margin-left: auto;
             margin-right: auto;
         }
