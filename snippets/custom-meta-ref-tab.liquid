@@ -1,20 +1,20 @@
 <link href="{{ 'custom-meta-ref-tab.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
-{% assign dimensions = product.metafields.custom.product_weight_dimensions %}
-<p>{{ dimensions | json }}</p>
-<p>{{ dimensions.dimension_attr | json }}</p>
-<table class="custom-meta">
-  <thead>
-    <tr>
-      <th>Key</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for attr in product.metafields.custom.product_weight_dimensions.dimension_attr %}
-    <tr>
-      <td>{{ attr.key }}</td>
-      <td>{{ attr.value }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+
+{% if (product.metafields.custom.product_weight_dimensions) -%}
+  <table class="custom-meta">
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for attr in product.metafields.custom.product_weight_dimensions.value.dimension_attr %}
+        <tr>
+          <td>{{ attr.key }}</td>
+          <td>{{ attr.value }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
