@@ -8,7 +8,8 @@
     </tr>
   </thead>
   <tbody>
-    {% for attr in product.metafields.custom.product_weight_dimensions["dimension_attr"] %}
+    {% for attr in product.metafields.custom.product_weight_dimensions.dimension_attr %}
+      <p>{{ attr }}</p>
           <tr>
       <th>{{ attr }}</th>
       <th>Value</th>
