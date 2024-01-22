@@ -5,3 +5,8 @@
   align-items: center;
   flex-direction: column;
 }
+
+
+.custom-meta-block .img{
+  margin-top:24px;
+}
