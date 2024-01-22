@@ -3,19 +3,21 @@
   white-space: nowrap;
   align-items: left;
   flex-direction: column;
-  margin-bottom:64px;
+  margin-bottom: 64px;
+  margin-top: 24px;
 }
-.custom-meta-div .text{
-    font-size: 21px;
-    margin-top:24px;
-    margin-bottom:18px;
-    font-weight: 600;
-    text-transform: capitalize;
+.custom-meta-div .text {
+  font-size: 21px;
+
+  margin-bottom: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
 }
 .custom-meta-block {
-  width:100%;
+  width: 100%;
   display: flex;
   white-space: nowrap;
+  margin-top: 24px;
   align-items: center;
   flex-direction: column;
   border: 1px solid #d3d3d3;
