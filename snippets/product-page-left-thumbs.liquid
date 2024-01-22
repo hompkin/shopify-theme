@@ -20,7 +20,7 @@
     assign main_image_show_zoom_icon_mb = section.settings.main_image_show_zoom_icon_mb
     assign main_image_layout = section.settings.main_image_layout
     assign show_thumbnail_mobile = section.settings.show_thumbnail_mobile
-    assign max_thumbnail_to_show = section.settings.thumbnail_to_show | plus: 1
+    assign max_thumbnail_to_show = section.settings.thumbnail_to_show 
     assign current_variant = product.selected_or_first_available_variant
     assign variantCount = product.variants | size
     assign featured_media_aspect_ratio = product.featured_media.aspect_ratio
