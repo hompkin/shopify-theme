@@ -5,14 +5,16 @@
       <table>
         <tbody>
           {% for attr in item.attrs %}
-            <tr>
-              <td>
-                <span class="text">{{ attr.key }}</span>
-              </td>
-              <td>
-                <span class="text">{{ attr.value }}</span>
-              </td>
-            </tr>
+            {% if attr.value %}
+              <tr>
+                <td>
+                  <span class="text">{{ attr.key }}</span>
+                </td>
+                <td>
+                  <span class="text">{{ attr.value }}</span>
+                </td>
+              </tr>
+            {% endif %}
           {% endfor %}
         </tbody>
       </table>
