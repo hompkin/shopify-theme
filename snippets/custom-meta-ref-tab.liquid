@@ -1,7 +1,7 @@
 <link href="{{ 'custom-meta-ref-tab.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
 <div class="custom-meta-div">
 {% if product.metafields.custom.product_specification -%}
-  <h2>Specification</h2>
+  <span class="text">Specification</span>
   {% for item in product.metafields.custom.product_specification.value.content %}
     <div class="custom-meta-block">
       <table>
