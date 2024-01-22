@@ -1,8 +1,9 @@
 <link href="{{ 'custom-meta-ref-tab.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
-<h3>Dimensions</h3>
+
 {% if product.metafields.custom.product_weight_dimensions -%}
   {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
     <div class="custom-meta-block">
+      <h3>Dimensions</h3>
       <table>
         <tbody>
           {% for attr in item.attrs %}
