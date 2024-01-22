@@ -3,11 +3,13 @@
 {% if product.metafields.custom.product_weight_dimensions -%}
   <table class="custom-meta">
     <tbody>
-      {% for attr in product.metafields.custom.product_weight_dimensions.value.content.attrs %}
+      {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
+         {% for attr in item.attrs %}
         <tr>
           <td> <span class="text">{{ attr.key }}</span></td>
           <td> <span class="text">{{ attr.value }}</span></td>
         </tr>
+       {% endfor %}
       {% endfor %}
     </tbody>
   </table>
