@@ -10,7 +10,7 @@
   margin-top: 24px;
 }
 
-.custom-meta-block .table.tbody.tr.td.key-text {
+.key-text {
   color: var(--text-cart);
   font-family: var(--font-body-family);
   font-size: var(--font-body-size);
