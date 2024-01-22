@@ -1,5 +1,5 @@
 <link href="{{ 'custom-meta-ref-tab.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
-{% assign dimensions =  product.metafields.custom.product_weight_dimensions | json %}
+{% assign dimensions =  product.metafields.custom.product_weight_dimensions %}
 <p>{{ dimensions }}</p>
 <table class="custom-meta">
   <thead>
