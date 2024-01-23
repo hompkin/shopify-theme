@@ -489,7 +489,7 @@
                                     data-arrows-desk="{{ main_image_arrows_desktop }}"
                                     data-arrows-mobi="{{ main_image_arrows_mobile }}"
                                     data-counter-mobi="{{ main_image_counter_mobile }}"
-                                    data-media-count="{{ product.media.size }}"
+                                    data-media-count="{{ product.media.size | plus:-1 }}"
                                 >
                                     {%- for media in product.media -%}
                                         {%- case media.media_type -%}
