@@ -492,6 +492,10 @@
                                     data-media-count="{{ product.media.size | plus:-1 }}"
                                 >
                                     {%- for media in product.media -%}
+                                        {% assign filename = preview_image_url | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
+                                        {% if filename == 'size' %}
+                                          {% continue; %}
+                                        {% endif %}
                                         {%- case media.media_type -%}
                                             {%- when 'image' -%}
                                                 <div class="productView-image productView-image-{{ media_size }}{% if show_variant_image_group %} filter-{{ media.alt | handle }}{% endif %} fit-{{ media_fit }}" data-index="{{ forloop.index }}">
