@@ -186,7 +186,7 @@
             "enable_btn_show_more": false,
             "maximum_des_to_show": 300,
             "product_custom_source": "key_text",
-            "product_tab_key_metafield": "product_weight_dimensions"
+            "product_tab_key_metafield": "product_specification_dimensions"
           }
         },
         "faebbc78-6094-4bc0-a917-80dbfbf5ef3c": {
