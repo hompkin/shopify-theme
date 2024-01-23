@@ -161,9 +161,9 @@
 							{%- endif -%}
                             <!-- 自定义tab 显示内容 by changelcai -->
                             {%- if key == 'product_weight_dimensions' -%}
-                              {% render 'custom-meta-ref-tab', product: product %}
+                              {% render 'custom-weight-dimensions-tab', product: product %}
                             {%- elsif key == 'product_note_care' -%}
-                              {% render 'custom-meta-ref-tab', product: product %}
+                              {% render 'product-note-care-tab', product: product %}
                             {%- else -%}
                                 {{ content }}
                             {%- endif -%}
