@@ -724,8 +724,11 @@
                                 <div class="productView-thumbnail-wrapper{% unless show_thumbnail_mobile %} is-hidden-mobile{% endunless %}">
                                     <div class="productView-for clearfix" data-max-thumbnail-to-show="{{ max_thumbnail_to_show}}">
                                         {%- for media in product.media -%}
+                                        <!-- 去除展示尺寸图 -->
                                             {% assign filename = media | img_url: 'master' | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
-                                            {% if filename == 'size' %}
+                                            {% assign startsWith = 'size' %}
+                                            {% assign checkArray = filename | split:startsWith %}
+                                            {% if checkArray[0] == blank %}
                                               {% continue; %}
                                             {% endif %}
                                             {%- case media.media_type -%}
