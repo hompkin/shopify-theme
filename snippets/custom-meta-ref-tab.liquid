@@ -49,6 +49,7 @@
           <div class="horizen-line">&nbsp</div>
           {%- for media in product.media -%}
             {% assign preview_image_url = media.preview_image | img_url: 'master' %}
+            <span>{{ preview_image_url }}</span>
             {%- if media.media_type =='image' and preview_image_url.endswith("size.jpg") -%}
                 <img class="img" src="{{ preview_image_url }}" loading="lazy" alt="{{ media.alt | escape }}" width="100%" height="100%" >
                 {% break; %}
