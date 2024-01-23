@@ -195,11 +195,11 @@
             "open_tab_mobile": true,
             "title": "Specification & Dimensions",
             "type": "metafield",
-            "content": "<ol>\n<li rel=\"1\"><p>Natural materials exhibit subtle variations in color tone, surface texture, and veining. These inherent differences are not indicative of product defects and do not affect normal use.<\/p><\/li>\n<li rel=\"2\"><p>Chromatic aberrations may occur due to variations in shooting lights and display resolutions. Please be aware that there might be differences between the picture and the actual product. The images on our website serve as references, and we recommend cautious consideration before making a purchase if this is a concern.<\/p><\/li>\n<li rel=\"3\"><p>Our product dimensions are manually measured, and there may be a margin of error of ± 0.8 inches compared to the recorded measurement data. The provided measurement data is for reference purposes only.<\/p><\/li>\n<\/ol>",
+            "content": "",
             "enable_btn_show_more": false,
             "maximum_des_to_show": 300,
             "product_custom_source": "key_text",
-            "product_tab_key_metafield": "product_note_care"
+            "product_tab_key_metafield": "product_weight_dimensions"
           }
         },
         "faebbc78-6094-4bc0-a917-80dbfbf5ef3c": {
