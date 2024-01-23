@@ -162,7 +162,7 @@
         "10093fcf-2053-47e9-bedb-841bb0d046fa": {
           "type": "trust_image",
           "settings": {
-            "show_trust_image": true,
+            "show_trust_image": false,
             "spacing_top": 0,
             "spacing_bottom": 0
           }
