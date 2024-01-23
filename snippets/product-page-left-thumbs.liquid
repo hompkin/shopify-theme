@@ -724,7 +724,7 @@
                                 <div class="productView-thumbnail-wrapper{% unless show_thumbnail_mobile %} is-hidden-mobile{% endunless %}">
                                     <div class="productView-for clearfix" data-max-thumbnail-to-show="{{ max_thumbnail_to_show}}">
                                         {%- for media in product.media -%}
-                                        <!-- 去除展示尺寸图 -->
+                                        <!-- 去除展示尺寸图 by changelcai -->
                                             {% assign filename = media | img_url: 'master' | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
                                             {% assign startsWith = 'size' %}
                                             {% assign checkArray = filename | split:startsWith %}
@@ -1072,7 +1072,7 @@
                                                 %}
                                             </div>
                                         {% endunless %}
-                                    <!-- 增加派送时长提示 -->
+                                    <!-- 增加派送时长提示 by changelcai -->
                                     <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                                             style="--spacing-top: {{ spacing_top | append: 'px' }};
                                             --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
