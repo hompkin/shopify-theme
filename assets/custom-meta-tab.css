@@ -5,6 +5,7 @@
   flex-direction: column;
   margin-bottom: 48px;
   margin-top: 16px;
+  width:100%;
 }
 .custom-meta-div .text {
   font-size: 21px;
