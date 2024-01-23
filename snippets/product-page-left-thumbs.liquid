@@ -493,7 +493,6 @@
                                 >
                                     {%- for media in product.media -%}
                                         {% assign filename = preview_image_url | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
-                                        <span>{{ filename }}</span>
                                         {% if filename == 'size' %}
                                           {% continue; %}
                                         {% endif %}
