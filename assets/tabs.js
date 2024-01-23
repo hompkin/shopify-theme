@@ -10,7 +10,7 @@ class ProductTabs extends HTMLElement {
         this.tabClose = this.querySelectorAll('.pdViewTab-close');
         this.isVerticalPopup = this.dataset.vertical === 'sidebar'
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
-      
+        // 处理 delivery-time-previewing 中 Shipping Policy 的点击事件
         document.getElementById("shipping_policy_id").addEventListener(
           'click',
            function() {
