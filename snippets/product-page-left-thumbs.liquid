@@ -274,7 +274,8 @@
         assign customization_option_2 = settings.customization_option_2
     endif
 -%}
-
+<!-- 导入自定义tab的css by changelcai -->
+<link href="{{ 'custom-meta-tab.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
 {%- if first_3d_model -%}
     <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ 'component-product-model.css' | asset_url }}" media="print" onload="this.media='all'">
