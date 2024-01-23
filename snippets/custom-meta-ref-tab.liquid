@@ -50,7 +50,7 @@
           {%- for media in product.media -%}
             {% assign preview_image_url = media.preview_image | img_url: 'master' %}}
             {%- if media.media_type =='image' and preview_image_url.endswith(item.img_url) -%}
-                <img class="img" src="{{item.img_url}}" loading="lazy" alt="{{ media.alt | escape }} width="100%" height="100%" >
+                <img class="img" src="{{ preview_image_url }}" loading="lazy" alt="{{ media.alt | escape }} width="100%" height="100%" >
               break;
             {%- endif -%}
           {%- endfor -%}
