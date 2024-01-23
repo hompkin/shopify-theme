@@ -4,9 +4,13 @@
 {% if shop.metaobjects.note_care['note-care-gdfo4yyo'].default.value -%}
   {{ shop.metaobjects.note_care['note-care-gdfo4yyo'].default.value }}
 {% endif %}
-<span class="text">Care</span>
-  
-{% if shop.metaobjects.note_care['note-care-gdfo4yyo'].bathtub.value -%}
+
+
+{% assign meat = product.metafields.custom.product_specification.value %}}
+
+  <span class="text">{{ product.type }}</span>
+{% if product.type == 'bathtub' and shop.metaobjects.note_care['note-care-gdfo4yyo'].bathtub.value -%}
+  <span class="text">Care</span>
   {{ shop.metaobjects.note_care['note-care-gdfo4yyo'].bathtub.value }}
 {% endif %}
 </div>
