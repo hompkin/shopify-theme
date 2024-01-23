@@ -5,8 +5,13 @@
   flex-direction: column;
   margin-bottom: 48px;
   margin-top: 16px;
-  width:100%;
 }
+
+.product-note-care{
+  margin-bottom: 48px;
+  margin-top: 16px;
+}
+
 .product-note-care .text,
 .custom-meta-div .text {
   font-size: 21px;
