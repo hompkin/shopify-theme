@@ -57,7 +57,7 @@
   line-height: var(--body-line-height);
 }
 
-.custom-meta-block .table .tbody .tr .td {
+.halo-text-format .table .td {
    max-width:50%;
 }
 
