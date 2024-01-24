@@ -52,7 +52,7 @@
     text-transform: capitalize;
     color: var(--variant-color);
     background-color: var(--variant-bg);
-    border: 1px solid var(--swatch-border);
+    border: 2px solid var(--swatch-border);
     text-align: center;
     transition: var(--anchor-transition);
 }
