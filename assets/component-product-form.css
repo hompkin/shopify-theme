@@ -178,7 +178,7 @@
     font-size: 0;
     width: var(--product-swatch-color-width);
     height: var(--product-swatch-color-height);
-    border: 1px solid var(--swatch-border);
+    border: 2px solid var(--swatch-border);
     background: 0 0;
     cursor: pointer;
     padding: 3px;
