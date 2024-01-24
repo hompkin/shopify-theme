@@ -163,8 +163,7 @@
 .product-form__radio:checked + .product-form__label .text{
     color: var(--variant-color-active);
     background-color: var(--variant-bg-active);
-    border-color: var(--swatch-border-active);
-    border: 1.5px solid var(--swatch-border);
+    border: 1.5px solid var(--swatch-border-active);
 }
 
 .product-form__swatch .form__label{
