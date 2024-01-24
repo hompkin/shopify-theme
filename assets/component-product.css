@@ -3428,7 +3428,7 @@ quantity-input.disabled {
     .productView.layout-2 .productView-thumbnail-wrapper .slick-arrow.slick-prev{
         top: -5px;
         left: 50% !important;
-        transform: translateX(-50%) rotate(-90deg);
+        transform: translateX(-50%) rotate(90deg);
     }
 
     .productView.layout-1 .productView-thumbnail-wrapper .slick-arrow.slick-next,
