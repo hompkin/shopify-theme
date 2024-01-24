@@ -57,6 +57,11 @@
   line-height: var(--body-line-height);
 }
 
+.halo-text-format table td{
+    padding: 11px 13px 8px 13px;
+    text-align: center;
+}
+
 
 .custom-meta-block .horizen-line {
   width: 100%;
