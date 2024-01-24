@@ -41,7 +41,7 @@
   line-height: var(--body-line-height);
 }
 
-.key-value {
+.span .key-value {
   max-width: 100px; 
   display: inline-block;
   overflow: hidden;
