@@ -358,7 +358,7 @@
     "swatch_border": "{{ shop.brand.colors.secondary[0].background }}",
     "swatch_border-active": "{{ shop.brand.colors.secondary[0].background }}",
     "variant_bg": "#ffffff",
-    "variant_color": "{{ shop.brand.colors.secondary[0].background }}",
+    "variant_color": "{{ shop.brand.colors.secondary[1].background }}",
     "variant_bg_active": "#ffffff",
     "variant_color_active": "{{ shop.brand.colors.secondary[0].background }}",
     "btn_1_color": "#FFFFFF",
