@@ -57,7 +57,7 @@
   line-height: var(--body-line-height);
 }
 
-.halo-text-format .table .td {
+.halo-text-format table td {
    max-width:50%;
 }
 
