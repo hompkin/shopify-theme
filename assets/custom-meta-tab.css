@@ -33,6 +33,10 @@
 }
 
 .key-text {
+  width:200px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: normal;
   color: var(--text-cart);
   font-family: var(--font-body-family);
   font-size: var(--font-body-size);
@@ -42,7 +46,6 @@
 }
 
 .value-text {
-  max-width: 100px; 
   display: inline-block;
   overflow: hidden;
   white-space: normal;
