@@ -57,9 +57,6 @@
   line-height: var(--body-line-height);
 }
 
-.custom-meta-td {
-   max-width:50%;
-}
 
 .custom-meta-block .horizen-line {
   width: 100%;
