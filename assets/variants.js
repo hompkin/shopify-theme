@@ -11,6 +11,7 @@ class VariantSelects extends HTMLElement {
     onVariantInit(){
         this.updateOptions();
         this.updateMasterId();
+        // 屏蔽进入产品页自动选中对应的option图片 by changelcai
         // this.updateMedia(1500);
         // this.updateURL();
         this.renderProductAjaxInfo();
