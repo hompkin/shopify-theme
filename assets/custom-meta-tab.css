@@ -41,6 +41,18 @@
   line-height: var(--body-line-height);
 }
 
+.key-value {
+  max-width: 100px; 
+  display: inline-block;
+  overflow: hidden;
+  white-space: normal;
+  color: var(--text-cart);
+  font-family: var(--font-body-family);
+  font-size: var(--font-body-size);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
 .custom-meta-block .horizen-line {
   width: 100%;
   height: 1px;
