@@ -356,7 +356,7 @@
     "pagination_arrow_border_color_active": "#000000",
     "pagination_arrow_bg_color_active": "#000000",
     "swatch_border": "#cbcbcb",
-    "swatch_border-active": "{{ shop.brand.colors.secondary[0].background }}",
+    "swatch_border-active": "#232323",
     "variant_bg": "#ffffff",
     "variant_color": "#232323",
     "variant_bg_active": "#ffffff",
