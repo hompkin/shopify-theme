@@ -57,8 +57,12 @@
   line-height: var(--body-line-height);
 }
 
-.custom-meta-div table td.value-text-td {
-    width:50%;
+.custom-meta-div table td.value-td {
+    width:60%;
+}
+
+.custom-meta-div table td.key-td {
+    width:40%;
 }
 
 
