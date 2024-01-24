@@ -11,7 +11,7 @@ class VariantSelects extends HTMLElement {
     onVariantInit(){
         this.updateOptions();
         this.updateMasterId();
-        this.updateMedia(1500);
+        // this.updateMedia(1500);
         // this.updateURL();
         this.renderProductAjaxInfo();
         this.renderProductInfo();
