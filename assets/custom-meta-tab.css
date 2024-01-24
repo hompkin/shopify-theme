@@ -46,6 +46,7 @@
 }
 
 .value-text {
+  max-width:300px;
   display: inline-block;
   overflow: hidden;
   white-space: normal;
