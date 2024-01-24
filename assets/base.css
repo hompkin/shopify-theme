@@ -1514,6 +1514,10 @@ polygon:empty {
     display: block;
 }
 
+#shopify-chat inbox-online-store-chat {
+  display: block;
+}
+
 a{
     color: var(--color-link);
     cursor: pointer;
