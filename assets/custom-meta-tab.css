@@ -57,7 +57,7 @@
   line-height: var(--body-line-height);
 }
 
-.custom-meta-div table td .value-text-td {
+.custom-meta-div table td.value-text-td {
     width:50%;
 }
 
