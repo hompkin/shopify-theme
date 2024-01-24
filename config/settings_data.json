@@ -312,7 +312,7 @@
     "product_price_sale_color": "{{ shop.brand.colors.secondary[0].background }}",
     "product_price_compare_color": "#3c3c3c",
     "product_review_full_color": "{{ shop.brand.colors.secondary[0].background }}",
-    "product_swatch_border": "#cbcbcb",
+    "product_swatch_border": "{{ shop.brand.colors.secondary[0].background }}",
     "product_swatch_border_active": "{{ shop.brand.colors.secondary[0].background }}",
     "product_hot_stock_color": "#d62828",
     "product_wishlist_border": "#eeeeee",
