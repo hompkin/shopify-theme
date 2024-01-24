@@ -360,7 +360,7 @@
     "variant_bg": "#ffffff",
     "variant_color": "#232323",
     "variant_bg_active": "#ffffff",
-    "variant_color_active": "{{ shop.brand.colors.secondary[1].background }}",
+    "variant_color_active": "{{ shop.brand.colors.secondary[0].background }}",
     "btn_1_color": "#FFFFFF",
     "btn_1_border": "{{ shop.brand.colors.secondary[0].background }}",
     "btn_1_bg": "{{ shop.brand.colors.secondary[0].background }}",
