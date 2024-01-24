@@ -33,7 +33,7 @@
 }
 
 .key-text {
-  max-width:50vw;
+  max-width:100%;
   display: inline-block;
   overflow: hidden;
   white-space: normal;
@@ -46,7 +46,7 @@
 }
 
 .value-text {
-  max-width:50vw;
+  max-width:100%;
   display: inline-block;
   overflow: hidden;
   white-space: normal;
@@ -55,6 +55,10 @@
   font-size: var(--font-body-size);
   letter-spacing: var(--body-letter-spacing);
   line-height: var(--body-line-height);
+}
+
+.custom-meta-block .table .tbody .tr .td {
+   max-width:50%;
 }
 
 .custom-meta-block .horizen-line {
