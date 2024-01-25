@@ -72,7 +72,7 @@
         "3978fd59-b580-49e1-9893-38d762f48f10": {
           "type": "product_block",
           "settings": {
-            "show_block": true,
+            "show_block": false,
             "heading": "Featured Products",
             "product_block_collection": "collection-home-1-2",
             "product_block_layout": "slider",
