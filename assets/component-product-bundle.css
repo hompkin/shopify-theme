@@ -14,9 +14,19 @@
 .halo-product-bundle {
     display: block;
     margin-bottom: 35px; 
-    padding-left:74px;
-    padding-right:74px;
+    padding-left:15px;
+    padding-right:15px;
 }
+
+@media (min-width: 1025px){
+    .halo-product-bundle {
+      display: block;
+      margin-bottom: 35px; 
+      padding-left:74px;
+      padding-right:74px;
+  }
+}
+
 
 .bundle-product-wrapper,
 .bundle-product-checkbox,
