@@ -132,7 +132,7 @@
         "show_sidebar": true,
         "show_sidebar_collapse": true,
         "enable_sticky": false,
-        "sidebar_layout": "layout_1",
+        "sidebar_layout": "layout_2",
         "sidebar_collapse_default": "expand",
         "sidebar_type": "vertical",
         "sidebar_position": "left",
