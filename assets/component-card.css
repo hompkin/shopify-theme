@@ -2797,7 +2797,8 @@ s.price-item.price-item--regular {
     margin-left: 0;
 }
 
-.card-price .price-item--saved {
+.card-price .price.price .price-item--saved {
+
     font-size: calc(var(--fontsize-text)-10);
     font-weight: 450;
     text-transform: uppercase;
