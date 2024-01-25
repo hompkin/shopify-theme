@@ -184,11 +184,11 @@
 }
 
 .bundle-product-checkbox input[type="checkbox"] + label:before{
-    top: 1px;
+    top: 4px;
 }
 
 .bundle-product-checkbox input[type="checkbox"] + label:after{
-    top: 4px;
+    top: 0px;
 }
 
 .bundle-product-checkbox input[type="checkbox"]:checked + label{
