@@ -27,7 +27,7 @@
     text-align: left;
     text-transform: capitalize;
     font-weight: var(--font-weight-semibold);
-    font-size: calc(var(--font-heading-size) + 2px);
+    font-size: calc(var(--font-menu-lv1-size) + 2px);
     letter-spacing: .02em;
 }
 
