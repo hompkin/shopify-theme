@@ -359,7 +359,7 @@
     "product-recommendations": {
       "type": "product-recommendations",
       "custom_css": [
-
+        ".halo-block-header .title .text {text-align: left; text-transform: capitalize; font-weight: var(--font-weight-semibold); font-size: calc(var(--font-menu-lv1-size) + 2px); letter-spacing: 0.02em;}"
       ],
       "settings": {
         "display_product_block": true,
@@ -377,7 +377,7 @@
         "mg_bottom_mobile": 0,
         "product_block_layout": "slider",
         "product_bg": "#ffffff",
-        "style_block_header": "style1",
+        "style_block_header": "style2",
         "product_block_title": "Related Products",
         "enable_border_title": false,
         "mg_top_title": 0,
