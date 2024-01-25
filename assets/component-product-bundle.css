@@ -672,7 +672,7 @@
 .bundle-product-totalPrice .bundle-price{
     display: inline-block;
     vertical-align: middle;
-    font-size: calc(var(--font-body-size) + 6px);
+    font-size: var(--product-price-font-size);
     font-weight: var(--font-weight-semibold);
     color: var(--product-sale-price-color);
 }
