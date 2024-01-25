@@ -1531,7 +1531,7 @@
 s.price-item.price-item--regular {
     font-size: var(--fontsize-text) -8;
     font-weight: 500;
-    color: #888888;
+    color: var(--product-compare-price-color);
 } 
 
 .productView-countDown-wrapper {
