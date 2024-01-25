@@ -2796,3 +2796,11 @@ s.price-item.price-item--regular {
     line-height: 1;
     margin-left: 0;
 }
+
+.card-price .price.price--medium .price-item--saved, 
+.card-price .price.price--medium .price-item--saved .money {
+    font-size: calc(var(--fontsize-text)-10);
+    font-weight: 450;
+    text-transform: uppercase;
+    line-height: 1;
+}
