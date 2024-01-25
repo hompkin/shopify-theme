@@ -339,7 +339,7 @@
         "padding_bottom_mobile": 30,
         "block_title": "Frequently Bought Together",
         "block_title_align": "left",
-        "block_dots": true,
+        "block_dots": false,
         "block_arrows": true,
         "product_style": "2",
         "block_image_ratio": "adapt",
