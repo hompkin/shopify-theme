@@ -673,7 +673,8 @@
     display: inline-block;
     vertical-align: middle;
     font-size: var(--product-price-font-size);
-    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--product-price-letter-spacing);
+    font-weight: var(--product-price-font-weight);
     color: var(--product-sale-price-color);
 }
 
