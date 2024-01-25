@@ -270,6 +270,10 @@
     text-decoration: line-through;
 }
 
+.bundle-product-totalPrice .old-price{
+  margin-right:6px;
+}
+
 .bundle-product-totalPrice .price,
 .bundle-product-price .special-price{
     display: inline-block;
