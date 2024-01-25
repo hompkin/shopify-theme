@@ -262,10 +262,10 @@
 .bundle-product-price .old-price{
     display: inline-block;
     vertical-align: middle;
-    font-size: calc(var(--product-price-font-size) - 2px);
-    font-weight: var(--font-weight-bold);
     color: var(--product-compare-price-color);
     margin: 0 10px 0 0;
+    font-size: var(--fontsize-text) -8;
+    font-weight: 500;
     text-decoration: line-through;
 }
 
