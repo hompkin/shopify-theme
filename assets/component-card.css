@@ -2780,3 +2780,9 @@ quickshop-update-quantity.disabled {
         padding-left: calc((1920px - 1170px) / 2);
     }
 }
+
+s.price-item.price-item--regular {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--product-compare-price-color);
+}
