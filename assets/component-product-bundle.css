@@ -193,7 +193,7 @@
 
 .bundle-product-checkbox input[type="checkbox"]:checked + label{
     font-weight: var(--font-weight-normal);
-    line-height:19px;
+    line-height:0px;
 }
 
 .bundle-product-title .product-title,
