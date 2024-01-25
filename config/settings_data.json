@@ -184,7 +184,7 @@
     "sale_badge_type": "text",
     "point_product_swatch_custom": "22px",
     "point_product_swatch_custom_mb": "15px",
-    "show_action": true,
+    "show_action": false,
     "quick_shop_type": "3",
     "product_marquee_text_style": "italic",
     "enable_layout_rtl": true,
