@@ -85,7 +85,7 @@
           "type": "image",
           "settings": {
             "show_block": true,
-            "heading": "fdsaf",
+            "heading": "",
             "link": ""
           }
         },
@@ -100,7 +100,7 @@
         "2f7f02ac-4072-40ea-844f-59943e256971": {
           "type": "text",
           "settings": {
-            "show_block": true,
+            "show_block": false,
             "heading": "Custom Block",
             "text": "<p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... or whatever you like.<\/p>\n\n<p>There are many similar sample content placeholders across the store. All editable from admin panel.<\/p>"
           }
