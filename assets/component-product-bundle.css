@@ -292,7 +292,7 @@
     display: inline-block;
     vertical-align: middle;
     color: var(--product-sale-price-color);
-    font-size: var(--product-price-font-size);
+    font-size: calc(var(--product-price-font-size)-2px);
     letter-spacing: var(--product-price-letter-spacing);
     font-weight: 600;
 }
