@@ -130,7 +130,7 @@
         "mg_bottom_tablet": 0,
         "mg_bottom_mobile": 0,
         "show_sidebar": true,
-        "show_sidebar_collapse": true,
+        "show_sidebar_collapse": false,
         "enable_sticky": false,
         "sidebar_layout": "layout_1",
         "sidebar_collapse_default": "expand",
