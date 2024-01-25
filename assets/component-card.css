@@ -2786,3 +2786,13 @@ s.price-item.price-item--regular {
     font-weight: 500;
     color: var(--product-compare-price-color);
 }
+
+.card-price .price__saved {
+    font-size: calc(var(--fontsize-text, var(--product-price-font-size))/2);
+    padding: 5px 11px;
+    color: var(--product-sale-price-color);
+    background-color: #f9f4ee;
+    border-radius: 4px;
+    line-height: 1;
+    margin-left: 0;
+}
