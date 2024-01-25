@@ -272,9 +272,10 @@
 .bundle-product-price .special-price{
     display: inline-block;
     vertical-align: middle;
-    font-size: calc(var(--product-price-font-size) + 2px);
-    font-weight: var(--font-weight-bold);
     color: var(--product-sale-price-color);
+    font-size: var(--product-price-font-size);
+    letter-spacing: var(--product-price-letter-spacing);
+    font-weight: var(--product-price-font-weight);
 }
 
 .bundle-product-item.style-3 .bundle-product-price{
