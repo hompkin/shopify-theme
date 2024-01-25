@@ -1529,7 +1529,7 @@
 }
 
 s.price-item.price-item--regular {
-    font-size: var(--fontsize-text) -8;
+    font-size: 16px;
     font-weight: 500;
     color: var(--product-compare-price-color);
 } 

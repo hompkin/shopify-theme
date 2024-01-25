@@ -264,7 +264,7 @@
     vertical-align: middle;
     color: var(--product-compare-price-color);
     margin: 0 10px 0 0;
-    font-size: var(--fontsize-text) -8;
+    font-size: 16px;
     font-weight: 500;
     text-decoration: line-through;
 }
