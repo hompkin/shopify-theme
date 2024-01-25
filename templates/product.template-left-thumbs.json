@@ -359,7 +359,7 @@
     "product-recommendations": {
       "type": "product-recommendations",
       "custom_css": [
-        ".halo-block-header .title .text{text-align: left; text-transform: capitalize; font-weight: var(--font-weight-semibold); font-size: calc(var(--font-menu-lv1-size) + 2px); letter-spacing: .02em;}"
+
       ],
       "settings": {
         "display_product_block": true,
