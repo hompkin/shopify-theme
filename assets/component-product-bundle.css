@@ -14,6 +14,8 @@
 .halo-product-bundle {
     display: block;
     margin-bottom: 35px;
+  padding-left:36px;
+  padding-right:36px;
 }
 
 .bundle-product-wrapper,
