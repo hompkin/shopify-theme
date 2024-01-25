@@ -162,7 +162,7 @@
     "product_block_image_ratio": "adapt",
     "portrait_height": "130",
     "show_image_loading": true,
-    "show_vendor": true,
+    "show_vendor": false,
     "display_item_size": false,
     "display_text_size": false,
     "style_text_color_varriant": "02",
