@@ -3483,7 +3483,7 @@ quantity-input.disabled {
 }
 
 @media (min-width: 1500px) {
-      /* 调整产品页图片区域比例 */
+      /* 调整产品页图片区域比例 by changelcai */
     .halo-productView-left{
         width: 60%;
         padding-right: 30px;
@@ -3495,7 +3495,7 @@ quantity-input.disabled {
 
     .productView.layout-1 .productView-image-wrapper,
     .productView.layout-2 .productView-image-wrapper{
-      /* 调整图片缩略图大小 */
+      /* 调整图片缩略图大小 by changelcai*/
         width: calc(100% - 116px);
     }
 
@@ -3503,7 +3503,7 @@ quantity-input.disabled {
     .productView.layout-2 .productView-thumbnail-wrapper{
         display: inline-block;
         vertical-align: top;
-      /* 调整图片缩略图大小 */
+      /* 调整图片缩略图大小 by changelcai */
         width: 116px;
         margin-top: 0;
         order: -1;
