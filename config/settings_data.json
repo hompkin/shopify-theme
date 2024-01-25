@@ -249,6 +249,8 @@
     "quick_view_product_image_ratio": "adapt",
     "show_quick_view_short_description": false,
     "show_quick_view_vendor": false,
+    "show_quick_view_availability": false,
+    "show_quick_view_product_type": false,
     "show_quick_view_qty": false,
     "show_quick_view_subtotal": false,
     "show_size_chart": false,
