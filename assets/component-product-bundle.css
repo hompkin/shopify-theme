@@ -294,7 +294,7 @@
     color: var(--product-sale-price-color);
     font-size: var(--product-price-font-size);
     letter-spacing: var(--product-price-letter-spacing);
-    font-weight: var(--product-price-font-weight);
+    font-weight: 600;
 }
 
 .bundle-product-item.style-3 .bundle-product-price{
