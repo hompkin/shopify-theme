@@ -1400,7 +1400,8 @@
     position: relative;
 }
 .style_2_text_color_varriant .card-title-change {
-    padding-right: 90px;
+  /* 去除product card 显示 variant_selected by changelcai */
+    /* padding-right: 90px; */
 }
 .style_2_text_color_varriant .card-title span[data-change-title] {
     top: 0;
