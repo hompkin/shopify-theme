@@ -307,7 +307,7 @@
     "social_vimeo_link": "",
     "product_vendor_color": "#232323",
     "product_title_color": "#232323",
-    "product_title_color_hover": "{{ shop.brand.colors.secondary[1].background }}",
+    "product_title_color_hover": "{{ shop.brand.colors.secondary[0].background }}",
     "product_price_color": "#3c3c3c",
     "product_price_sale_color": "{{ shop.brand.colors.secondary[0].background }}",
     "product_price_compare_color": "#888888",
