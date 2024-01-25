@@ -292,7 +292,7 @@
     display: inline-block;
     vertical-align: middle;
     color: var(--product-sale-price-color);
-    font-size: calc(var(--product-price-font-size) - 2px);
+    font-size: calc(var(--product-price-font-size) - 1px);
     letter-spacing: var(--product-price-letter-spacing);
     font-weight: 600;
 }
@@ -304,7 +304,7 @@
 
 .bundle-product-item.style-3 .bundle-product-price .old-price{
     font-size: calc(var(--product-price-font-size) + 2px);
-    font-weight: var(--font-weight-normal);
+    font-weight: 500;
 }
 
 .bundle-product-options{
