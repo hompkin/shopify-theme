@@ -28,7 +28,7 @@
 
 .collection-product-wrapper h2,
 .collection-product-wrapper a {
-    font-size: calc(var(--font-body-size) + 2px);
+    font-size: calc(var(--font-body-size) + 1px);
     font-weight: var(--font-weight-bold);
     line-height: var(--body-line-height);
     letter-spacing: var(--body-letter-spacing);
