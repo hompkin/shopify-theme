@@ -180,7 +180,7 @@
             "social_background_color": "rgba(0,0,0,0)",
             "social_background_color_gradient": "",
             "social_color_hover": "#232323",
-            "social_border_color_hover": "#232323",
+            "social_border_color_hover": "{{ shop.brand.colors.secondary[0].foreground }}",
             "social_background_color_hover": "#ffffff",
             "social_background_color_gradient_hover": "",
             "social_box_hover_color": "#232323"
