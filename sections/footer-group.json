@@ -200,7 +200,7 @@
             "show_shop_name": false,
             "enable_layout_grid": true,
             "copyright_content": "<p>Copyright © 2024 Hompkin. All Rights Reserved.<\/p>",
-            "copyright_content_color": "#000000",
+            "copyright_content_color": "#232323",
             "shop_name": "",
             "show_payment": true,
             "payment_margin_top": 0,
