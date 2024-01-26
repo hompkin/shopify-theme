@@ -179,11 +179,11 @@
             "social_border_color": "#000000",
             "social_background_color": "rgba(0,0,0,0)",
             "social_background_color_gradient": "",
-            "social_color_hover": "{{ shop.brand.colors.secondary[0].foreground }}",
-            "social_border_color_hover": "#ffffff",
+            "social_color_hover": "#232323",
+            "social_border_color_hover": "#232323",
             "social_background_color_hover": "#ffffff",
             "social_background_color_gradient_hover": "",
-            "social_box_hover_color": "#ffffff"
+            "social_box_hover_color": "#232323"
           }
         },
         "9b087943-9d42-4617-bc02-1686d5190641": {
