@@ -44,7 +44,7 @@
             "button_font_weight": "600",
             "input_placeholder": "Your email address",
             "input_placeholder_color": "#000000",
-            "input_background_color": "#faf9f7",
+            "input_background_color": "{{ shop.brand.colors.secondary[0].foreground }}",
             "input_border_color": "#000000",
             "form_gap": 10,
             "newsletter_content_direction": "column",
