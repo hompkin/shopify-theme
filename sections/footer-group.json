@@ -122,7 +122,7 @@
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-0": {
           "type": "link_list",
           "settings": {
-            "custom_width": "20",
+            "custom_width": "22",
             "heading": "Shop",
             "menu": "main-menu",
             "mg_bottom": 0
@@ -131,7 +131,7 @@
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-1": {
           "type": "link_list",
           "settings": {
-            "custom_width": "20",
+            "custom_width": "22",
             "heading": "Information",
             "menu": "footer",
             "mg_bottom": 0
@@ -140,7 +140,7 @@
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-2": {
           "type": "link_list",
           "settings": {
-            "custom_width": "20",
+            "custom_width": "22",
             "heading": "Customer Service",
             "menu": "customer-service",
             "mg_bottom": 0
@@ -149,7 +149,7 @@
         "78d789d0-fcbb-45fe-8339-de1135a2a967": {
           "type": "text",
           "settings": {
-            "custom_width": "30",
+            "custom_width": "32",
             "heading": "Contact us",
             "logo_margin_bottom": 28,
             "subtext": "",
