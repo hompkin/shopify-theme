@@ -193,7 +193,7 @@
             "pdbottom_footer_bottom": 40,
             "border_top": true,
             "footer_bottom_color": "#000000",
-            "border_top_color": "#000000",
+            "border_top_color": "#e8e8e8",
             "footer_bottom_bg": "{{ shop.brand.colors.secondary[0].foreground }}",
             "footer_bottom_bg_gradient": "",
             "show_copyright": true,
