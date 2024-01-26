@@ -375,7 +375,7 @@
         "mg_bottom_desktop": 0,
         "mg_bottom_tablet": 0,
         "mg_bottom_mobile": 0,
-        "product_block_layout": "slider",
+        "product_block_layout": "scroll",
         "product_bg": "#ffffff",
         "style_block_header": "style3",
         "product_block_title": "Related Products",
