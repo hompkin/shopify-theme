@@ -273,7 +273,7 @@
         "footer_top_text_align": "left",
         "footer_top_title_color": "#000000",
         "footer_top_color_link": "#000000",
-        "footer_top_color_link_hover": "#3c3c3c",
+        "footer_top_color_link_hover": "#000000",
         "show_border_item": false,
         "footer_border_item": "#808080"
       }
