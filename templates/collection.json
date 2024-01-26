@@ -30,7 +30,6 @@
           "type": "lookbook",
           "settings": {
             "show_image": true,
-            "image": "shopify:\/\/shop_images\/teal-and-grey-washroom.jpg",
             "link": "",
             "show_title": true,
             "page_title_alignment": "left",
