@@ -68,7 +68,7 @@
             "show_search": true,
             "search_icon": "1",
             "search_dropdown": "default",
-            "show_customer": true,
+            "show_customer": false,
             "customer_icon": "1",
             "text_font_size": 16,
             "show_wishlist": true,
