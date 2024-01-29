@@ -391,7 +391,7 @@
     "use_custom_js": false,
     "checkout_logo_image": "shopify:\/\/shop_images\/hompkin_0fc70f03-fcc6-454a-9719-1a74406056d0.png",
     "checkout_logo_position": "left",
-    "checkout_logo_size": "large",
+    "checkout_logo_size": "small",
     "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "checkout_accent_color": "#ff8b21",
