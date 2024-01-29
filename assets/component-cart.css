@@ -284,6 +284,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width:100px;
 }
 
 .cart-item__price-wrapper .cart-item__discounted-prices dd {
@@ -293,13 +294,12 @@
 .cart-item__price-wrapper .unit-price,
 .cart-item__price-wrapper .price {
   display: block;
-  /* font-size: calc(var(--font-body-size) + 2px); */
-  font-size: var(--font-body-size);
+  font-size: calc(var(--font-body-size) + 2px);
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
   line-height: var(--body-line-height);
   letter-spacing: var(--body-letter-spacing);
-  padding-left: 8px;
+  padding-left: 14px;
   padding-bottom: 5px;
 }
 
@@ -314,7 +314,7 @@
 .cart-item-qty {
   display: inline-block;
   vertical-align: middle;
-  width: 100px;
+  width: 110px;
   position: relative;
   padding-bottom: 6px; 
 }
@@ -325,7 +325,7 @@
 }
 
 .cart-item-qty .quantity {
-  padding: 11px 8px 10px 12px;
+  padding: 11px 16px 10px 20px;
 }
 
 .cart-item-qty input {
