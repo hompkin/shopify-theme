@@ -698,9 +698,9 @@ body.cart-sidebar-show .halo-cart-sidebar{
 .halo-cart-sidebar .previewCartItem-price .before-discount-price,
 .halo-cart-sidebar .previewCartItem-price .discounted-price {
     color: var(--product-compare-price-color);
-    font-size: calc(var(--product-price-font-size) - 4px);
+    font-size: 16px;
+    font-weight: 500;
     letter-spacing: var(--product-price-letter-spacing);
-    font-weight: var(--product-price-font-weight);
     line-height: var(--product-price-line-height);
 }
 
