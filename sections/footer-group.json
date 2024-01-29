@@ -62,7 +62,7 @@
       "settings": {
         "container": "1770",
         "padding_full_width": 0,
-        "background": "#faf9f7",
+        "background": "{{ shop.brand.colors.secondary[0].foreground }}",
         "background_gradient": "",
         "mg_top_desktop": 70,
         "mg_top_tablet": 30,
