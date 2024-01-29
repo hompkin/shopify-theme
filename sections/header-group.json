@@ -252,7 +252,7 @@
             "icon": "4",
             "color": "#232323",
             "color_bubble": "#ffffff",
-            "bg_bubble": "#232323"
+            "bg_bubble": "{{ shop.brand.colors.secondary[0].background }}"
           }
         }
       },
