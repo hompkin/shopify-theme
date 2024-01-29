@@ -293,6 +293,7 @@
 .cart-item__price-wrapper .unit-price,
 .cart-item__price-wrapper .price {
   display: block;
+  /* font-size: calc(var(--font-body-size) + 2px); */
   font-size: var(--font-body-size);
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
