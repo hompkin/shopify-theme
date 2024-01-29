@@ -229,7 +229,8 @@
         "550fbd21-75fb-4051-9dee-77d91b5239f0": {
           "type": "logo",
           "settings": {
-            "logo_width_mobile": 120,
+            "logo_mobile": "shopify:\/\/shop_images\/hompkin_0fc70f03-fcc6-454a-9719-1a74406056d0.png",
+            "logo_width_mobile": 85,
             "logo_text": "",
             "logo_font_size": 20,
             "logo_font_weight": "900",
