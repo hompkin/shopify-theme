@@ -100,12 +100,13 @@
                                         </span>
                                     {% elsif current_variant.compare_at_price > current_variant.price %}
                                         <span class="previewCartItem-saving-price saved_compare_price" data-price-from-compare>
+                                        <span class="discounted-price">
+                                                {{ current_variant.price | money }}
+                                            </span>
                                             <s class="before-discount-price">
                                                 {{ current_variant.compare_at_price | money }}
                                             </s>
-                                            <span class="discounted-price">
-                                                {{ current_variant.price | money }}
-                                            </span>
+                                          
                                         </span>
                                     {% else %}  
                                         <span data-item-final-price-display>
