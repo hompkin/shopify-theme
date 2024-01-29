@@ -166,6 +166,7 @@
     opacity: 1; 
     pointer-events: auto;
     transition: opacity var(--duration-long) ease;
+    margin-top:12px;
 }
 
 .productList .product-item.quickshop-popup-show .card-information__wrapper,
