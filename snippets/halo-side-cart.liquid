@@ -91,12 +91,12 @@
                                     {%- assign current_variant = item.variant -%}
                                     {% if item.original_price != item.final_price %}
                                         <span class="previewCartItem-saving-price">
-                                            <s class="before-discount-price" data-item-original-price-display>
-                                                {{ item.original_price | money }}
-                                            </s>
                                             <span class="discounted-price" data-item-final-price-display>
                                                 {{ item.final_price | money }}
                                             </span>
+                                            <s class="before-discount-price" data-item-original-price-display>
+                                                {{ item.original_price | money }}
+                                            </s>
                                         </span>
                                     {% elsif current_variant.compare_at_price > current_variant.price %}
                                         <span class="previewCartItem-saving-price saved_compare_price" data-price-from-compare>
