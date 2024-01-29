@@ -955,7 +955,7 @@
 .card-swatch.text-left {
     display: flex;
     justify-content: flex-start;
-    margin-top:4px;
+    margin-top: 8px;
 }
 
 .card-information__wrapper.text-right .card-price,
