@@ -9,7 +9,7 @@
         "show_page_title": true,
         "page_title_color": "#232323",
         "page_title_alignment": "left",
-        "container": "container",
+        "container": "1770",
         "side_padding_full_width": 0,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
@@ -34,7 +34,7 @@
     "16497261635f6f948e": {
       "type": "product-block",
       "settings": {
-        "container": "1770",
+        "container": "container",
         "padding_full_width": 0,
         "disable_padding_content": false,
         "enable_border_top": false,
