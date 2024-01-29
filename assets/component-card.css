@@ -2786,6 +2786,7 @@ s.price-item.price-item--regular {
     font-size: 16px;
     font-weight: 500;
     color: var(--product-compare-price-color);
+    line-height: 1.2;
 }
 
 .card-price .price__saved {
@@ -2794,7 +2795,7 @@ s.price-item.price-item--regular {
     color: var(--product-sale-price-color);
     background-color: #f9f4ee;
     border-radius: 4px;
-    line-height: 1;
+    line-height: 1.2;
     margin-left: 0;
 }
 
