@@ -95,7 +95,7 @@
 
 .price-item--sale {
     color: var(--product-sale-price-color);
-    line-height:1.2;
+    line-height:1.6;
 }
 
 .price.price--on-sale .price-item--sale .money{
