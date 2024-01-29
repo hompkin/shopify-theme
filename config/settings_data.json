@@ -244,7 +244,7 @@
     "show_cart_shipping": false,
     "shipping_rate_calculator_default_country": "United States",
     "show_shipping_note": false,
-    "show_cart_discount": false,
+    "show_cart_discount": true,
     "show_quick_cart_popular_product": false,
     "quick_cart_popular_product_title": "You May Also Like",
     "quick_cart_popular_product_collection": "collection-bicycle-3",
