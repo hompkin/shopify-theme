@@ -707,6 +707,7 @@ body.cart-sidebar-show .halo-cart-sidebar{
 .halo-cart-sidebar .previewCartItem-price .discounted-price {
     font-size: var(--product-price-font-size);
     color: var(--product-sale-price-color);
+    font-weight: var(--product-price-font-weight);
 }
 
 .previewCartTotalsPrice .cart-total-savings {
