@@ -77,7 +77,7 @@
     "product_quickview_padding_left_right": 10,
     "blog_title_font": "font_2",
     "blog_title_font_size": 24,
-    "blog_title_font_weight": "800",
+    "blog_title_font_weight": "600",
     "blog_title_text_transform": "capitalize",
     "blog_title_line_height": 29,
     "blog_title_letter_spacing": "0em",
