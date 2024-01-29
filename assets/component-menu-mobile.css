@@ -150,6 +150,8 @@
     margin: 0px;
     padding: 10px 20px;
     font-size: var(--font-body-size);
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-weight-medium);
     display: flex;
     align-items: center
 }
