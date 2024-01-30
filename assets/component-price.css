@@ -61,7 +61,7 @@
     color: var(--product-compare-price-color);
     letter-spacing: 0;
     line-height: var(--product-price-line-height);
-    margin: -2px 10px 0 0;
+    margin: -4px 0px 0 0;
 }
 
 .price-item .money{
