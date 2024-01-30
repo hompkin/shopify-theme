@@ -1,3 +1,10 @@
+{% if product.type == 'Bathtub' and shop.metaobjects.note_care['note-care-gdfo4yyo'].bathtub_install.value -%}
+  <div class="product-note-care">
+    <span class="text">Installation</span>
+    {{ shop.metaobjects.note_care['note-care-gdfo4yyo'].bathtub_install.value }}
+  </div>
+{% endif %}
+
 {% if shop.metaobjects.note_care['note-care-gdfo4yyo'].default.value -%}
   <div class="product-note-care">
     <span class="text">Note</span>
@@ -5,12 +12,7 @@
   </div>
 {% endif %}
 
-{% if product.type == 'Bathtub' and shop.metaobjects.note_care['note-care-gdfo4yyo'].bathtub_install.value -%}
-  <div class="product-note-care">
-    <span class="text">Installation</span>
-    {{ shop.metaobjects.note_care['note-care-gdfo4yyo'].bathtub_install.value }}
-  </div>
-{% endif %}
+
 
 {% if product.type == 'Bathtub' and shop.metaobjects.note_care['note-care-gdfo4yyo'].bathtub.value -%}
   <div class="product-note-care">
