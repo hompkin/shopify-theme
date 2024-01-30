@@ -47,12 +47,11 @@
                     {% endif %}
                 >
                     {%- if product.featured_media -%}
-                        <!-- {%- if variant_img != blank -%}
+                        {%- if variant_img != blank -%}
                             <img {% render 'lazyload',preview_img: variant_img, class: true  %} />
                         {%- else -%}
                             <img {% render 'lazyload',preview_img: product.featured_media, class: true  %} />
-                        {%- endif -%} -->
-                         <img {% render 'lazyload',preview_img: product.featured_media, class: true  %} />
+                        {%- endif -%}
                         {%- if product.media[1] != nil and settings.show_image_swap -%}
                             <img {% render 'lazyload',preview_img: product.media[1], class: true  %} />
                         {%- endif -%}
