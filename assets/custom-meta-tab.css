@@ -3,8 +3,8 @@
   white-space: nowrap;
   align-items: left;
   flex-direction: column;
-  margin-bottom: 48px;
-  margin-top: 10px;
+  margin-bottom: 32px;
+  /* margin-top: 10px; */
 }
 
 .product-note-care{
