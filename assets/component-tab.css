@@ -295,7 +295,7 @@ body.tab-popup-show {
         left: auto;
         z-index: 101;
         transform: translate(101%);
-        max-width: calc(100vw - 40px);
+        max-width: calc(100vw - 20px);
     }
 
     .tab-content .toggle-content.popup-mobile.is-show,
