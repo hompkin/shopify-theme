@@ -599,10 +599,10 @@ body.tab-popup-show {
         margin-bottom: 0;
         padding-bottom: 0;
     }
+}
 
-    [data-vertical="sidebar"] .tab-content .toggle-content .tab-popup-content {
-        padding: 10px 25px 42px;
-    }
+[data-vertical="sidebar"] .tab-content .toggle-content .tab-popup-content {
+    padding: 10px 25px 42px;
 }
 
 @media (min-width: 1200px) {
