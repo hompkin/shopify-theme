@@ -61,20 +61,18 @@ async function getUserDeliveryLocation() {
       "https://api.ipgeolocation.io/getip?format=json"
     );
 
-    const ipData = await ipResponse.json();
-    const ip = ipData.ip;
     const cacheKey = "user-delivery-location-key";
     const location = getCookieJson(cacheKey);
     if (false && location) {
       return location;
     } else {
       const locResponse = await fetch(
-        `https://service-e9wt99ba-1252698119.hk.tencentapigw.cn/release/get-location?user_ip=${ip}`
+        `https://service-e9wt99ba-1252698119.hk.tencentapigw.cn/release/get-location`
       );
       const json = await locResponse.json();
       const zipcode = json.zipcode;
       const city = json.city;
-      console.log(`fetch ip=${ip}, zipcode=${zipcode} city=${city}`);
+      console.log(`fetch zipcode=${zipcode} city=${city}`);
       setCookieJson(cacheKey, json, 12);
       return json;
     }
