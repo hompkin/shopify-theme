@@ -323,7 +323,7 @@ body.tab-popup-show {
 
     .toggle-content.popup-mobile .tab-popup-content,
     .toggle-content.sidebar-mobile .tab-popup-content {
-        padding: 15px 20px 66px;
+        padding: 0px 20px 66px;
         max-height: calc(100vh - 40px);
         overflow-x: hidden;
         overflow-y: auto;
