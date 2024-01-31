@@ -57,10 +57,6 @@ function getDeliveryTime(countryCode, zipcode, config) {
 
 async function getUserDeliveryLocation() {
   try {
-    const ipResponse = await fetch(
-      "https://api.ipgeolocation.io/getip?format=json"
-    );
-
     const cacheKey = "user-delivery-location-key";
     const location = getCookieJson(cacheKey);
     if (false && location) {
