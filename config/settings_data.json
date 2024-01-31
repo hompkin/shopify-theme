@@ -365,7 +365,7 @@
     "hover_colors_arrow": "#000000",
     "hover_border_colors_arrow": "rgba(0,0,0,0)",
     "hover_bg_colors_arrow": "#fff",
-    "border_colors_dots": "#ffffff",
+    "border_colors_dots": "{{ shop.brand.colors.secondary[0].background }}",
     "border_colors_dots_active": "#ffffff",
     "colors_dots_active": "#ffffff",
     "pagination_item_border_color_active": "#ffffff",
