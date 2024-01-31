@@ -401,7 +401,7 @@
         "scroll_height": 4,
         "scroll_track_bg": "#f1f1f1",
         "scroll_thumb_color": "#000000",
-        "scroll_thumb_hover_color": "#444444",
+        "scroll_thumb_hover_color": "{{ shop.brand.colors.secondary[1].background }}",
         "enable_hover_drag_icon": true,
         "enable_layout_special": false,
         "bg_card": "#ffffff",
