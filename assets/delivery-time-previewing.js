@@ -104,9 +104,9 @@ function removeBefore(inputString, index) {
 }
 
 function loadUserDeliveryTime(params) {
-    const addressTextView = document.getElementById("address_text_id");
-  addressTextView.textContent = "fdsfsd"
   getUserDeliveryLocation().then((json) => {
+        const addressTextView = document.getElementById("address_text_id");
+  addressTextView.textContent = "fdsfsd"
     refreshView(params, json);
   });
 }
