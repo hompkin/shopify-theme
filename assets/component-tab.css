@@ -351,6 +351,12 @@ body.tab-popup-show {
     .productView-tab .tab-content + .tab-content {
         border-top: 1px solid #d3d3d3;
     }
+  
+    .productView-tab .tab-content + .shipping-policy,
+    .productView-tab .tab-content + .shipping-policy{
+      border-top: none;
+    }
+
 }
 
 @media (min-width: 551px){
