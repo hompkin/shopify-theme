@@ -32,7 +32,7 @@
           "type": "meta",
           "disabled": true,
           "settings": {
-            "spacing_top": 4,
+            "spacing_top": 0,
             "spacing_bottom": 4,
             "show_review": false,
             "show_sold_in": true,
