@@ -19,18 +19,6 @@ class ProductTabs extends HTMLElement {
            }
         );
 
-        document.addEventListener('DOMContentLoaded', function() {
-          // 监听页面加载完成事件
-        
-          window.addEventListener('popstate', function(event) {
-            // 监听popstate事件，这个事件会在用户点击返回键时触发
-        
-            alert('返回键被点击了！');
-             // 阻止返回操作
-    history.pushState(null, null, document.URL);
-          });
-        });
-
         for (let i = 0; i < this.tab.length; i++) {
 
             this.tab[i].addEventListener(
