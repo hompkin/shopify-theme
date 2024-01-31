@@ -30,6 +30,14 @@
       <div class="custom-meta-block">
         <table>
           <tbody>
+           <tr>
+                <td class="key-td">
+                  <span class="key-text">SKU</span>
+                </td>
+                <td class="value-td">
+                  <span class="value-text">{{ current_variant.sku }}</span>
+                </td>
+            </tr>
             {% for attr in item.attrs %}
               {% if attr.value %}
                 <tr>
