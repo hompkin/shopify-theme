@@ -2898,7 +2898,7 @@ quantity-input.disabled {
 
     .productView-soldProduct {
         display: block;
-        margin: 10px 0 0 -2px;
+        margin: 0px 0 0 -2px;
     }
 
     .productView-tab .tab-content svg {
