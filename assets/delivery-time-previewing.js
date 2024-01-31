@@ -145,7 +145,7 @@ function refreshView(params, json) {
 
     deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
   } else {
-    addressTextView.textContent = "";
+    addressTextView.textContent = "11111";
     deliveryTimePrefixView.textContent = params.prefix_title_unknown;
     deliveryTimeView.textContent = params.XXX;
     // 显示选择框出来
