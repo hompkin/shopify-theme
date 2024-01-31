@@ -1562,11 +1562,11 @@
     min-width: auto;
 }
 
-.quick_shop_option_2 .card-action .product-card__button2 .button.add-to-cart-btn{
-    background: var(--product-action-hover);
+/* .quick_shop_option_2 .card-action .product-card__button2 .button.add-to-cart-btn{
+    background: var(--product-action-bg-hover);
     color: var(--product-action-color-hover);
     border-color: var(--product-action-border-hover);
-}
+} */
 
 .quick_shop_option_2 .card-action .selector-wrapper:not(.option-color) {
     padding: 0 0 8px;
