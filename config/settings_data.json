@@ -140,6 +140,8 @@
     "after_add_to_cart": "quick_cart",
     "enable_lazyload": true,
     "style_dots": "01",
+    "type_dots_width": 10,
+    "type_dots_height": 10,
     "style_arrows": "03",
     "type_arrow_radius": 0,
     "type_arrow_width": 60,
