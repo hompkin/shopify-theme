@@ -64,7 +64,7 @@ async function getUserDeliveryLocation() {
     const ip = ipData.ip;
     const cacheKey = "user-delivery-location-key";
     const location = getCookieJson(cacheKey);
-    if (false && location) {
+    if (location) {
       return location;
     } else {
       const locResponse = await fetch(
@@ -138,7 +138,7 @@ function refreshView(params, json) {
     } else if (zipcode) {
       addressTextView.textContent = `${country}-${removeAfter(zipcode,"-")}`;
     } else if (city) {
-      addressTextView.textContent = city;
+      addressTextView.textContent = "city";
     } else {
       addressTextView.textContent = country;
     }
