@@ -1,3 +1,7 @@
+.productView-DeliveryContainer {
+  display: block;
+  max-width:100%;
+}
 
 .productView-DeliveryTime {
   display: flex;
