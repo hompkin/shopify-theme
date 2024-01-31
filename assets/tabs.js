@@ -26,6 +26,8 @@ class ProductTabs extends HTMLElement {
             // 监听popstate事件，这个事件会在用户点击返回键时触发
         
             alert('返回键被点击了！');
+             // 阻止返回操作
+    history.pushState(null, null, document.URL);
           });
         });
 
