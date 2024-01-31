@@ -1534,6 +1534,12 @@ s.price-item.price-item--regular {
     color: var(--product-compare-price-color);
 } 
 
+@media (max-width: 1025px){
+s.price-item.price-item--regular {
+    font-size: 14px;
+  }
+}
+
 .productView-countDown-wrapper {
     overflow: hidden;
 }
