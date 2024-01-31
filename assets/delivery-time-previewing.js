@@ -56,12 +56,12 @@ function getDeliveryTime(countryCode, zipcode, config) {
 }
 
 async function getUserDeliveryLocation() {
-          const addressTextView = document.getElementById("address_text_id");
-  addressTextView.textContent = "fdsfsd"
   try {
     const ipResponse = await fetch(
       "https://api.ipgeolocation.io/getip?format=json"
     );
+              const addressTextView = document.getElementById("address_text_id");
+  addressTextView.textContent = "fdsfsd"
     const ipData = await ipResponse.json();
     const ip = ipData.ip;
     const cacheKey = "user-delivery-location-key";
