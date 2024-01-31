@@ -121,6 +121,7 @@
 .productView-DeliveryTime .vertical-line {
     width: 1px;
     margin-left:12px;
+     margin-right:12px;
     height: var(--font-body-size);
     background: #d3d3d3;
 }
