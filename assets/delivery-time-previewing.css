@@ -5,6 +5,7 @@
 
 .productView-DeliveryTime {
   display: flex;
+  justify-content: flex-start;
   white-space: nowrap;
   align-items: center;
 }
