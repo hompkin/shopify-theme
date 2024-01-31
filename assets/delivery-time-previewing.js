@@ -56,6 +56,8 @@ function getDeliveryTime(countryCode, zipcode, config) {
 }
 
 async function getUserDeliveryLocation() {
+          const addressTextView = document.getElementById("address_text_id");
+  addressTextView.textContent = "fdsfsd"
   try {
     const ipResponse = await fetch(
       "https://api.ipgeolocation.io/getip?format=json"
@@ -79,8 +81,6 @@ async function getUserDeliveryLocation() {
     }
   } catch (error) {
     console.error("Error fetching IP or location data:", error);
-            const addressTextView = document.getElementById("address_text_id");
-  addressTextView.textContent = "fdsfsd"
     return null;
   }
 }
