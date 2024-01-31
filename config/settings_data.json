@@ -297,6 +297,8 @@
     "newsletter_popup_note": "No, thanks",
     "select_button_submit": "default",
     "button_newsletter_link": "",
+    "show_recently_viewed_popup": true,
+    "recently_viewed_align_mb": "center",
     "recently_viewed_limit": 5,
     "show_before_you_leave": false,
     "before_you_leave_time": 1,
