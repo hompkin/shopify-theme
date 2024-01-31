@@ -7,13 +7,7 @@
   margin-top: 8px;
 }
 
-@media screen and (max-width: 550px) {
 
-  .custom-meta-div {
-    margin-top: 0px;
-  }
-  
-}
 
 .product-note-care{
   margin-bottom: 48px;
@@ -26,6 +20,21 @@
   font-weight: 600;
   text-transform: capitalize;
 }
+
+@media screen and (max-width: 550px) {
+
+  .custom-meta-div {
+    margin-top: 0px;
+  }
+
+  .product-note-care .text,
+  .custom-meta-div .text {
+    font-size: 17px;
+  }
+
+  
+}
+
 .custom-meta-block {
   width: 100%;
   display: flex;
