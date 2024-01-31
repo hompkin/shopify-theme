@@ -79,7 +79,7 @@
             "show_language_currency": true,
             "lang_cur_icon": "1",
             "show_search_sticky": true,
-            "show_customer_sticky": true,
+            "show_customer_sticky": false,
             "show_wishlist_sticky": true,
             "show_cart_sticky": true,
             "show_language_currency_sticky": true,
@@ -92,6 +92,7 @@
         },
         "2d3383cf-a9b6-4b56-b34a-4bfe543bffd6": {
           "type": "megamenu_style_1",
+          "disabled": true,
           "settings": {
             "layout_block": "custom_width",
             "header_custom_width_size": 1400,
