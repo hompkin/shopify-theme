@@ -301,6 +301,10 @@
   .bundle-product-price .special-price{
     font-size: 18px;
   }
+  .bundle-product-totalPrice .old-price,
+  .bundle-product-price .old-price{
+    font-size: 14px;
+  }
 }
 
 .bundle-product-item.style-3 .bundle-product-price{
