@@ -60,13 +60,12 @@ async function getUserDeliveryLocation() {
     const ipResponse = await fetch(
       "https://api.ipgeolocation.io/getip?format=json"
     );
-              const addressTextView = document.getElementById("address_text_id");
-  addressTextView.textContent = "fdsfsd"
+
     const ipData = await ipResponse.json();
     const ip = ipData.ip;
     const cacheKey = "user-delivery-location-key";
     const location = getCookieJson(cacheKey);
-    if (location) {
+    if (false && location) {
       return location;
     } else {
       const locResponse = await fetch(
