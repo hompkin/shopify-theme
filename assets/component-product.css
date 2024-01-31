@@ -1502,6 +1502,7 @@
 
 .productView-info-item .productView-info-name{
     color: var(--text-cart);
+  font-weight: var(--font-weight-bold);
 }
 
 .productView-info-item .productView-info-value{
