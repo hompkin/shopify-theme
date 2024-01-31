@@ -7,6 +7,14 @@
   margin-top: 8px;
 }
 
+@media screen and (max-width: 550px) {
+
+  .custom-meta-div {
+    margin-top: 0px;
+  }
+  
+}
+
 .product-note-care{
   margin-bottom: 48px;
   margin-top: 16px;
