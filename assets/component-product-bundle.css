@@ -178,9 +178,10 @@
 }
 
 .bundle-product-item.style-2 .bundle-product-checkbox label{
-    display: inline;
+  display: -webkit-box;
     -webkit-line-clamp: 2;
     overflow: hidden;
+     -webkit-box-orient: vertical;
 }
 
 .bundle-product-checkbox input[type="checkbox"] + label:before{
