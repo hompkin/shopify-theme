@@ -1507,7 +1507,7 @@
 
 .productView-info-item .productView-info-value{
     color: var(--color-text);
-    padding-left: 7px;
+    padding-left: 2px;
 }
 
 .productView-info-item .productView-info-value a{
