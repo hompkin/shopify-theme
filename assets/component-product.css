@@ -1501,12 +1501,12 @@
 }
 
 .productView-info-item .productView-info-name{
-    color: var(--text-cart);
+  color: var(--color-text);
   font-weight: var(--font-weight-medium);
 }
 
 .productView-info-item .productView-info-value{
-    color: var(--text-cart);
+    color: var(--color-text);
     padding-left: 7px;
 }
 
