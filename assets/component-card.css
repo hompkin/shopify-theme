@@ -1563,7 +1563,7 @@
 }
 
 .quick_shop_option_2 .card-action .product-card__button2 .button.add-to-cart-btn{
-    background: var(--product-action-bg-hover);
+    background: var(--product-action-hover);
     color: var(--product-action-color-hover);
     border-color: var(--product-action-border-hover);
 }
