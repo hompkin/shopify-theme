@@ -683,6 +683,10 @@ footer details[open] summary~* {
         margin-right: auto;
         margin-left: auto;
     }
+  
+    .footer-block__mobile .footer-block__heading {
+      border-bottom: 1px solid #c7c7c7;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
