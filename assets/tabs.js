@@ -10,6 +10,7 @@ class ProductTabs extends HTMLElement {
         this.tabClose = this.querySelectorAll('.pdViewTab-close');
         this.isVerticalPopup = this.dataset.vertical === 'sidebar'
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
+
         // 处理 delivery-time-previewing 中 Shipping Policy 的点击事件 by changelcai
         document.getElementById("shipping_policy_id").addEventListener(
           'click',
@@ -17,6 +18,16 @@ class ProductTabs extends HTMLElement {
               document.getElementById("href-shipping-policy-id").click();
            }
         );
+
+        document.addEventListener('DOMContentLoaded', function() {
+          // 监听页面加载完成事件
+        
+          window.addEventListener('popstate', function(event) {
+            // 监听popstate事件，这个事件会在用户点击返回键时触发
+        
+            alert('返回键被点击了！');
+          });
+        });
 
         for (let i = 0; i < this.tab.length; i++) {
 
