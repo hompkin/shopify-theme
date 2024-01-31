@@ -4,7 +4,7 @@
   align-items: left;
   flex-direction: column;
   margin-bottom: 48px;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .product-note-care{
@@ -22,7 +22,7 @@
   width: 100%;
   display: flex;
   white-space: nowrap;
-  margin-top: 8px;
+  margin-top: 12px;
   align-items: center;
   flex-direction: column;
   border: 1px solid #d3d3d3;
