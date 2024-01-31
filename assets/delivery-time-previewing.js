@@ -79,6 +79,8 @@ async function getUserDeliveryLocation() {
     }
   } catch (error) {
     console.error("Error fetching IP or location data:", error);
+            const addressTextView = document.getElementById("address_text_id");
+  addressTextView.textContent = "fdsfsd"
     return null;
   }
 }
@@ -105,8 +107,6 @@ function removeBefore(inputString, index) {
 
 function loadUserDeliveryTime(params) {
   getUserDeliveryLocation().then((json) => {
-        const addressTextView = document.getElementById("address_text_id");
-  addressTextView.textContent = "fdsfsd"
     refreshView(params, json);
   });
 }
