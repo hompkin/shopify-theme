@@ -601,7 +601,7 @@ body.tab-popup-show {
     }
 
     [data-vertical="sidebar"] .tab-content .toggle-content .tab-popup-content {
-        padding: 10px 25px;
+        padding: 10px 25px 42px;
     }
 }
 
