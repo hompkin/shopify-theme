@@ -295,7 +295,12 @@
     font-weight: var(--product-price-font-weight);
     line-height: var(--product-price-line-height);
 }
-
+@media (max-width: 1025px){
+  .bundle-product-totalPrice .price,
+  .bundle-product-price .special-price{
+    font-size: calc(var(--product-price-font-size) - 4px);
+  }
+}
 .bundle-product-item.style-3 .bundle-product-price{
     margin-top: 0;
     margin-bottom: 7px;
