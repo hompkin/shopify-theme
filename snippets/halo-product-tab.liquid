@@ -163,8 +163,7 @@
 							{%- endif -%}
                             <!-- 自定义tab 显示内容 by changelcai -->
                             {%- if key == 'product_weight_dimensions' -%}
-                              {% assign current_variant = product.selected_or_first_available_variant %}
-                              {% render 'custom-weight-dimensions-tab', product: product, current_variant: current_variant %}
+                              {% render 'custom-weight-dimensions-tab', product: product %}
                             {%- elsif key == 'product_note_care' -%}
                               {% render 'product-note-care-tab', product: product %}
                             {%- else -%}
