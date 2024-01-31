@@ -179,7 +179,7 @@
 
 .bundle-product-item.style-2 .bundle-product-checkbox label{
   display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     overflow: hidden;
 
 }
