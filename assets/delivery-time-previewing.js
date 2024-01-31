@@ -64,7 +64,7 @@ async function getUserDeliveryLocation() {
     const ip = ipData.ip;
     const cacheKey = "user-delivery-location-key";
     const location = getCookieJson(cacheKey);
-    if (location) {
+    if (false ) {
       return location;
     } else {
       const locResponse = await fetch(
