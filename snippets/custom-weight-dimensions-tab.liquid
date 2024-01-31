@@ -10,6 +10,7 @@
                   <span class="key-text">SKU</span>
                 </td>
                 <td class="value-td">
+                  {% assign current_variant = product.selected_or_first_available_variant %}
                   <span class="value-text">{{ current_variant.sku }}</span>
                 </td>
             </tr>
