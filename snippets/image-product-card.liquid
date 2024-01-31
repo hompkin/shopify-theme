@@ -1,7 +1,6 @@
 {%- if product_card_product.featured_media -%}
     {%- if variant_img != blank -%}
-        <!-- 不想显示option作为封面图，而且也不想显示价格区间，默认显示第一个option的价格即可，by changelcai -->
-        {%- if 1 == 1 or settings.quick_shop_type == '2' -%}
+        {%- if settings.quick_shop_type == '2' -%}
             {%- assign width = product_card_product.featured_media.width -%}
             {%- assign height = product_card_product.featured_media.width | divided_by: product_card_product.featured_media.aspect_ratio | round -%}
             <img {% render 'lazyload',preview_img: product_card_product.featured_media, class: true, width: width, height: height %} />
