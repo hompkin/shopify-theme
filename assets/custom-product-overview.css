@@ -1,0 +1,24 @@
+.overview-box {
+  margin-top: 24px;
+  background: #f9f9f9;
+  padding: 4px 6px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-overview .overview-box-item {
+    width: 50%;
+}
+
+.product-overview .overview-box img {
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
+}
+
+.product-overview .overview-box img[lazy=loaded] {
+    image-rendering: -webkit-optimize-contrast;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+}
