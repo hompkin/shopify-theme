@@ -21,7 +21,7 @@
   padding: 12px 10px;
 }
 
-@media (min-width: 551px) {
+@media (max-width: 768px) {
   .product-overview .overview-box-item {
      width: 100%;
   }
