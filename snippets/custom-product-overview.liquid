@@ -1,4 +1,5 @@
 <link href="{{ 'custom-product-overview.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+<div>
 {% if product.metafields.custom.product_overview -%}
   <div class="product-overview">
     <span class="text">Overview</span>
@@ -19,3 +20,4 @@
 {% endif %}
 <span class="desc">Descprition</span>
 {{ content }}
+</div>
