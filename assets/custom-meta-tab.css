@@ -50,6 +50,13 @@
   margin-top: 24px;
 }
 
+.custom-meta-block .img[lazy="loaded"] {
+  image-rendering: -webkit-optimize-contrast;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
 .key-text {
   max-width:100%;
   display: inline-block;
