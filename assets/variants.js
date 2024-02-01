@@ -197,6 +197,10 @@ class VariantSelects extends HTMLElement {
             this.item.find('[data-sku] .productView-info-value').text(this.currentVariant.sku);
         }
 
+        if(this.item.find('[data-tab-meta-sku]').length > 0){
+            this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
+        }
+
         var inventory = this.currentVariant?.inventory_management;
 
         if(inventory != null) {
