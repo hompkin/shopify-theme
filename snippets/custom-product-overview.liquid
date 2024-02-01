@@ -1,17 +1,19 @@
 <link href="{{ 'custom-product-overview.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
 {% if product.metafields.custom.product_overview -%}
-  <div class="overview-box">
-    <span class="text">Overview</span>
-    {% for attr in product.metafields.custom.product_overview.value.attrs %}
-      {% if attr.value %}
-        <div class="overview-box-item">
-          <img src="{{ attr.image }}" lazy="loaded" >
-          <div class="info">
-            <span class="key">{{ attr.key }}:</span>
-            <span class="value">{{ attr.value }}</span>
+  <div class="product-overview">
+    <div class="overview-box">
+      <span class="text">Overview</span>
+      {% for attr in product.metafields.custom.product_overview.value.attrs %}
+        {% if attr.value %}
+          <div class="overview-box-item">
+            <img src="{{ attr.image }}" lazy="loaded" >
+            <div class="info">
+              <span class="key">{{ attr.key }}:</span>
+              <span class="value">{{ attr.value }}</span>
+            </div>
           </div>
-        </div>
-      {% endif %}
-    {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 {% endif %}
