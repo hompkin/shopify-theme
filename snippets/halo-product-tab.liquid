@@ -167,6 +167,7 @@
                             {%- elsif key == 'product_note_care' -%}
                               {% render 'product-note-care-tab', product: product %}
                             {%- else -%}
+                                {% render 'custom-product-overview', product: product %}
                                 {{ content }}
                             {%- endif -%}
 
