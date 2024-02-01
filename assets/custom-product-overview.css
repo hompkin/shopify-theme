@@ -11,7 +11,7 @@
 }
 
 .product-overview .overview-box-item {
-  width: 100%;
+  width: 50%;
   vertical-align: baseline;
   display: flex;
   font-size: 16px;
@@ -20,6 +20,14 @@
   align-items: center;
   padding: 12px 10px;
 }
+
+@media only screen and (max-width: 768px) {
+  .product-overview .overview-box-item {
+     width: 100%;
+  }
+
+}
+  
 
 .tab-popup-content .desc,
 .product-overview .text {
