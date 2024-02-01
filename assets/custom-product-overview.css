@@ -21,11 +21,10 @@
   padding: 12px 10px;
 }
 
-@media only screen and (max-width: 551px) {
+@media (min-width: 768px) {
   .product-overview .overview-box-item {
      width: 100%;
   }
-
 }
   
 
