@@ -1,0 +1,15 @@
+{% if product.metafields.custom.product_overview -%}
+  <div class="overview-box">
+    {% for attr in product.metafields.custom.product_overview.value.attrs %}
+      {% if attr.value %}
+        <div class="overview-box-item">
+          <img src="{{ attr.image }}" lazy="loaded" >
+          <div class="info">
+            <span class="key">{{ attr.key }}:</span>
+            <span class="value">{{ attr.value }}</span>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
