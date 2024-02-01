@@ -1,3 +1,4 @@
+<link href="{{ 'custom-product-overview.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
 {% if product.metafields.custom.product_overview -%}
   <div class="overview-box">
     {% for attr in product.metafields.custom.product_overview.value.attrs %}
