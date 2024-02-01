@@ -21,13 +21,13 @@
   padding: 12px 10px;
 }
 
-.product-overview .desc,
+.tab-popup-content .desc,
 .product-overview .text {
   font-size: 21px;
   font-weight: 600;
   text-transform: capitalize;
 }
-.product-overview .desc {
+.tab-popup-content .desc {
   margin-top: 12px;
 }
 .product-overview .overview-box img {
