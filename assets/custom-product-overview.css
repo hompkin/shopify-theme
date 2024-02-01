@@ -7,23 +7,30 @@
 }
 
 .overview-box-item {
-    width: 50%;
+  width: 50%;
+  vertical-align: baseline;
+  display: flex;
+  font-size: 16px;
+  color: #222;
+  line-height: 18px;
+  align-items: center;
+  padding: 12px 10px;
 }
 
 .overview-box img {
-    width: 50px;
-    height: 50px;
-    margin-right: 8px;
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
 }
 
-.overview-box img[lazy=loaded] {
-    image-rendering: -webkit-optimize-contrast;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-name: fadeIn;
+.overview-box img[lazy="loaded"] {
+  image-rendering: -webkit-optimize-contrast;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
 }
 
 .overview-box .info {
-    flex: 1;
-    word-break: break-word;
+  flex: 1;
+  word-break: break-word;
 }
