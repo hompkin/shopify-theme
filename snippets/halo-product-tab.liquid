@@ -166,8 +166,10 @@
                               {% render 'custom-weight-dimensions-tab', product: product %}
                             {%- elsif key == 'product_note_care' -%}
                               {% render 'product-note-care-tab', product: product %}
+                            {%- elsif block.type == 'description' -%}
+                              {% render 'custom-product-overview', product: product, content:content %}
                             {%- else -%}
-                                {% render 'custom-product-overview', product: product, content:content %}
+                                {{ content }}
                             {%- endif -%}
 
 							{%- if block.settings.enable_btn_show_more -%}
