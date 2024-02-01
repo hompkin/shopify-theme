@@ -45,6 +45,10 @@
     width: 36px;
     height: 36px;
   }
+  .tab-popup-content .desc,
+  .product-overview .text {
+    font-size: 17px;
+  }
 }
 
 .product-overview .overview-box img[lazy="loaded"] {
