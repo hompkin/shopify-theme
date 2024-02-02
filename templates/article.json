@@ -15,7 +15,7 @@
         "96861bf3-10df-4b31-82bd-61aee2e9bc30": {
           "type": "recent_post",
           "settings": {
-            "show_block": true,
+            "show_block": false,
             "heading": "Recent Post",
             "number": 3
           }
@@ -37,7 +37,7 @@
         "71176645-a609-4ff4-90ca-dc2dedabac94": {
           "type": "image",
           "settings": {
-            "show_block": true,
+            "show_block": false,
             "heading": "",
             "link": ""
           }
@@ -45,7 +45,7 @@
         "f1a4c4f6-e343-45a5-93ed-33109f5942ea": {
           "type": "image",
           "settings": {
-            "show_block": true,
+            "show_block": false,
             "heading": "",
             "link": ""
           }
@@ -53,7 +53,7 @@
         "c04b7f25-8b25-4edb-a6fc-ed43934d98b4": {
           "type": "text",
           "settings": {
-            "show_block": true,
+            "show_block": false,
             "heading": "Custom Block",
             "text": "<p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... or whatever you like.<\/p>\n<p>There are many similar sample content placeholders across the store. All editable from admin panel.<\/p>"
           }
@@ -210,6 +210,7 @@
         },
         "73becaeb-c487-4f3b-93aa-39f4bef40c07": {
           "type": "block_quote",
+          "disabled": true,
           "settings": {
             "enable_bg_color": true,
             "bg_color_content": "#fafafa",
@@ -225,6 +226,7 @@
         },
         "df6f199c-e8b4-46e7-8d3f-12e6302e295c": {
           "type": "block_quote",
+          "disabled": true,
           "settings": {
             "enable_bg_color": false,
             "bg_color_content": "#fafafa",
@@ -281,7 +283,7 @@
         "show_author": false,
         "show_date": true,
         "show_tags": true,
-        "show_share": true,
+        "show_share": false,
         "show_next_prev": true,
         "background_color": "",
         "title_font": "font_2",
