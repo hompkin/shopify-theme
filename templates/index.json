@@ -8,7 +8,7 @@
           "settings": {
             "image_slide": "shopify:\/\/shop_images\/valentine_s_day_Banner_Landscape.png",
             "alignment": "left",
-            "enable_custom_position": true,
+            "enable_custom_position": false,
             "custom_horizontal": "11",
             "custom_vertical": "80",
             "enable_position_outside_image": false,
