@@ -393,7 +393,7 @@
         "shadow_spread": 0,
         "shadow_color": "transparent",
         "shadow_inset": "no",
-        "enable_plus_icon": true,
+        "enable_plus_icon": false,
         "color_plus_icon": "#ffffff",
         "enable_content_border": false,
         "content_border_color": "#e2e2e2"
