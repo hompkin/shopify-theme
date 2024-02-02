@@ -55,7 +55,7 @@
 }
 
 .halo-article-content p {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .halo-article-content .article-header {
@@ -80,7 +80,7 @@
 .halo-article-content .halo-text-format h4,
 .halo-article-content .halo-text-format h5,
 .halo-article-content .halo-text-format h6 {
-  margin-bottom: 4px;
+  margin-bottom: 0px;
 }
 
 .halo-article-content .halo-text-format ul,
