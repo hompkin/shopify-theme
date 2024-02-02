@@ -273,6 +273,7 @@
           "type": "image",
           "settings": {
             "enable_image": true,
+            "image": "shopify:\/\/shop_images\/O1CN01TQiO2I2D6WySrvTx0__27635285602.webp",
             "title_align": "center",
             "enable_absolute": true,
             "align_items": "bottom",
