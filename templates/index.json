@@ -6,8 +6,6 @@
         "1643107744958433a3-0": {
           "type": "image",
           "settings": {
-            "image_slide": "shopify:\/\/shop_images\/Home-Furniture-slider-1.jpg",
-            "image_slide_mb": "shopify:\/\/shop_images\/Home-Furniture-slider-mb-1.jpg",
             "alignment": "left",
             "enable_custom_position": true,
             "custom_horizontal": "11",
@@ -171,7 +169,6 @@
           "type": "image",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/banner-custom-1.jpg",
             "title_align": "center",
             "enable_absolute": true,
             "align_items": "bottom",
@@ -187,7 +184,7 @@
             "fontsize_sub_title": 14,
             "font_weight_sub_title": "500",
             "mg_bottom_sub_title": 10,
-            "title": "Living Room",
+            "title": "BathTub",
             "color_title": "#ffffff",
             "fontsize_title": 30,
             "fontsize_title_mb": 22,
@@ -223,7 +220,6 @@
           "type": "image",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/banner-custom-2.jpg",
             "title_align": "center",
             "enable_absolute": true,
             "align_items": "bottom",
@@ -239,7 +235,7 @@
             "fontsize_sub_title": 14,
             "font_weight_sub_title": "500",
             "mg_bottom_sub_title": 10,
-            "title": "Bedroom",
+            "title": "Faucets",
             "color_title": "#ffffff",
             "fontsize_title": 30,
             "fontsize_title_mb": 22,
@@ -275,7 +271,6 @@
           "type": "image",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/banner-custom-3.jpg",
             "title_align": "center",
             "enable_absolute": true,
             "align_items": "bottom",
@@ -291,7 +286,7 @@
             "fontsize_sub_title": 14,
             "font_weight_sub_title": "500",
             "mg_bottom_sub_title": 10,
-            "title": "Dining Room",
+            "title": "Sofa",
             "color_title": "#ffffff",
             "fontsize_title": 30,
             "fontsize_title_mb": 22,
@@ -400,249 +395,12 @@
         "content_border_color": "#e2e2e2"
       }
     },
-    "1657159369f1648d50": {
-      "type": "spotlight-block",
-      "blocks": {
-        "16342924847ce35dfd-0": {
-          "type": "image",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify:\/\/shop_images\/banner-custom-4.jpg",
-            "title_align": "center",
-            "enable_absolute": true,
-            "align_items": "bottom",
-            "align_items_spacing_top_bottom_position": 0,
-            "align_items_spacing_top_bottom_position_mb": 0,
-            "bg_color_content": "",
-            "align_items_spacing_top": 40,
-            "align_items_spacing_bottom": 40,
-            "align_items_spacing_lr": 10,
-            "sub_title": "",
-            "border_sub_title": false,
-            "color_sub_title": "#ffffff",
-            "fontsize_sub_title": 14,
-            "font_weight_sub_title": "500",
-            "mg_bottom_sub_title": 10,
-            "title": "Cafe Table & Chairs",
-            "color_title": "#ffffff",
-            "fontsize_title": 30,
-            "fontsize_title_mb": 22,
-            "font_weight_title": "500",
-            "enable_style_italic": false,
-            "border_title": "none",
-            "border_color_title": "rgba(0,0,0,0)",
-            "des": "Sale up to 30% off",
-            "color_des": "#ffffff",
-            "fontsize_des": 16,
-            "mg_top_des": 10,
-            "enable_des_hover": false,
-            "button": "Shop Now",
-            "link": "shopify:\/\/collections\/home-19-featured-products",
-            "fontsize_btn": 18,
-            "button_width": 190,
-            "color_button": "#ffffff",
-            "border_color_button": "rgba(0,0,0,0)",
-            "bg_color_button": "rgba(0,0,0,0)",
-            "bg_color_button_gradient": "",
-            "color_button_hover": "#ffffff",
-            "border_color_button_hover": "rgba(0,0,0,0)",
-            "bg_color_button_hover": "rgba(0,0,0,0)",
-            "bg_color_button_gradient_hover": "",
-            "bg_opacity_button": 0,
-            "enable_button_custom_border": false,
-            "btn_text_transform": "capitalize",
-            "btn_icon": "",
-            "mg_top_btn": 10
-          }
-        },
-        "16342924847ce35dfd-1": {
-          "type": "image",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify:\/\/shop_images\/banner-custom-5.jpg",
-            "title_align": "center",
-            "enable_absolute": true,
-            "align_items": "bottom",
-            "align_items_spacing_top_bottom_position": 0,
-            "align_items_spacing_top_bottom_position_mb": 0,
-            "bg_color_content": "",
-            "align_items_spacing_top": 40,
-            "align_items_spacing_bottom": 40,
-            "align_items_spacing_lr": 10,
-            "sub_title": "",
-            "border_sub_title": false,
-            "color_sub_title": "#ffffff",
-            "fontsize_sub_title": 14,
-            "font_weight_sub_title": "500",
-            "mg_bottom_sub_title": 10,
-            "title": "Rugs",
-            "color_title": "#ffffff",
-            "fontsize_title": 30,
-            "fontsize_title_mb": 22,
-            "font_weight_title": "500",
-            "enable_style_italic": false,
-            "border_title": "none",
-            "border_color_title": "rgba(0,0,0,0)",
-            "des": "Sale up to 50% off",
-            "color_des": "#ffffff",
-            "fontsize_des": 16,
-            "mg_top_des": 10,
-            "enable_des_hover": false,
-            "button": "Shop Now",
-            "link": "shopify:\/\/collections\/home-19-new-products",
-            "fontsize_btn": 18,
-            "button_width": 190,
-            "color_button": "#ffffff",
-            "border_color_button": "rgba(0,0,0,0)",
-            "bg_color_button": "rgba(0,0,0,0)",
-            "bg_color_button_gradient": "",
-            "color_button_hover": "#ffffff",
-            "border_color_button_hover": "rgba(0,0,0,0)",
-            "bg_color_button_hover": "rgba(0,0,0,0)",
-            "bg_color_button_gradient_hover": "",
-            "bg_opacity_button": 0,
-            "enable_button_custom_border": false,
-            "btn_text_transform": "capitalize",
-            "btn_icon": "",
-            "mg_top_btn": 10
-          }
-        },
-        "16342924847ce35dfd-2": {
-          "type": "image",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify:\/\/shop_images\/banner-custom-6.jpg",
-            "title_align": "center",
-            "enable_absolute": true,
-            "align_items": "bottom",
-            "align_items_spacing_top_bottom_position": 0,
-            "align_items_spacing_top_bottom_position_mb": 0,
-            "bg_color_content": "",
-            "align_items_spacing_top": 40,
-            "align_items_spacing_bottom": 40,
-            "align_items_spacing_lr": 10,
-            "sub_title": "",
-            "border_sub_title": false,
-            "color_sub_title": "#ffffff",
-            "fontsize_sub_title": 14,
-            "font_weight_sub_title": "500",
-            "mg_bottom_sub_title": 10,
-            "title": "Home Decór",
-            "color_title": "#ffffff",
-            "fontsize_title": 30,
-            "fontsize_title_mb": 22,
-            "font_weight_title": "500",
-            "enable_style_italic": false,
-            "border_title": "none",
-            "border_color_title": "rgba(0,0,0,0)",
-            "des": "Sale up to 70% off",
-            "color_des": "#ffffff",
-            "fontsize_des": 16,
-            "mg_top_des": 10,
-            "enable_des_hover": false,
-            "button": "Shop Now",
-            "link": "shopify:\/\/collections\/home-19-style-design",
-            "fontsize_btn": 18,
-            "button_width": 190,
-            "color_button": "#ffffff",
-            "border_color_button": "rgba(0,0,0,0)",
-            "bg_color_button": "rgba(0,0,0,0)",
-            "bg_color_button_gradient": "",
-            "color_button_hover": "#ffffff",
-            "border_color_button_hover": "rgba(0,0,0,0)",
-            "bg_color_button_hover": "rgba(0,0,0,0)",
-            "bg_color_button_gradient_hover": "",
-            "bg_opacity_button": 0,
-            "enable_button_custom_border": false,
-            "btn_text_transform": "capitalize",
-            "btn_icon": "",
-            "mg_top_btn": 10
-          }
-        }
-      },
-      "block_order": [
-        "16342924847ce35dfd-0",
-        "16342924847ce35dfd-1",
-        "16342924847ce35dfd-2"
-      ],
-      "settings": {
-        "container": "fullwidth",
-        "padding_full_width": 0,
-        "disable_padding_content": false,
-        "mg_minus_desktop": 0,
-        "block_layout": "grid",
-        "spotlight_block_swipe_on_mobile": "list",
-        "column": "3",
-        "column_mb": "1",
-        "enable_arrows": true,
-        "enable_arrows_mb": false,
-        "position_horizontal_slick_arrow": "0",
-        "enable_dots": false,
-        "enable_dots_mb": true,
-        "display_border_bottom": false,
-        "border_color": "#e3e3e3",
-        "mg_top_desktop": 0,
-        "mg_top_tablet": 0,
-        "mg_top_mobile": 0,
-        "mg_bottom_desktop": 0,
-        "mg_bottom_tablet": 0,
-        "mg_bottom_mobile": 0,
-        "spotlight_bg": "#ffffff",
-        "spotlight_bg_gradient": "",
-        "spotlight_block_title": "",
-        "enable_border_title": true,
-        "color_title": "#232323",
-        "fontsize_title": 16,
-        "fontsize_title_mb": 22,
-        "margin_bottom_title": 45,
-        "spotlight_block_des": "",
-        "color_des": "#3c3c3c",
-        "margin_bottom_des": 30,
-        "fontsize_des": 16,
-        "title_align": "center",
-        "item_distance": 0,
-        "item_radius": 0,
-        "view_all": "",
-        "view_all_fs": 12,
-        "view_all_align": "center",
-        "font_weight_view_all": "400",
-        "mg_bottom_view": 30,
-        "enable_border_view_all": true,
-        "link_view_all": "",
-        "color_view_all": "#3c3c3c",
-        "display_spotlight_button": false,
-        "spotlight_button_text": "",
-        "spotlight_button_link": "",
-        "color_button": "#ffffff",
-        "border_color_button": "#232323",
-        "bg_color_button": "#232323",
-        "bg_color_gradient_button": "",
-        "color_button_hover": "#232323",
-        "border_color_button_hover": "#ffffff",
-        "bg_color_button_hover": "#ffffff",
-        "bg_color_gradient_button_hover": "",
-        "maxwidth_button": 230,
-        "mg_top_button": 30,
-        "enable_shadow": false,
-        "shadow_horizontal_length": 0,
-        "shadow_vertical_length": 0,
-        "shadow_blur_radius": 0,
-        "shadow_spread": 0,
-        "shadow_color": "transparent",
-        "shadow_inset": "no",
-        "enable_plus_icon": true,
-        "color_plus_icon": "#ffffff",
-        "enable_content_border": false,
-        "content_border_color": "#e2e2e2"
-      }
-    },
     "16571864460cd69c62": {
       "type": "brand-slider",
       "blocks": {
         "b1d10b76-8345-438d-87a7-5a17087c36a8": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Home-Furniture-Brand-1.jpg",
             "title": "Sofas",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
@@ -654,7 +412,6 @@
         "ef133e5f-4e7f-448a-a391-7f8c009ef225": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Home-Furniture-Brand-2.jpg",
             "title": "Sectional Sofas",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
@@ -666,7 +423,6 @@
         "96ba5e66-2f5e-4fa2-83e2-3415c2a6ebe5": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Home-Furniture-Brand-3.jpg",
             "title": "Chairs",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
@@ -678,7 +434,6 @@
         "a4653c1b-fa80-478a-a7eb-bc85962cd5c8": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Home-Furniture-Brand-4.jpg",
             "title": "Bedrooms",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
@@ -690,7 +445,6 @@
         "e2700fc7-1fc8-4c31-bb16-de6d09a0b7ec": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Home-Furniture-Brand-5.jpg",
             "title": "TV Cabinet",
             "color_text": "#232323",
             "color_text_hover": "#4dac8b",
@@ -702,7 +456,6 @@
         "7f80f897-e16c-4551-8c19-2420147acf4d": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Home-Furniture-Brand-3.jpg",
             "title": "Chairs",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
@@ -714,7 +467,6 @@
         "cdf92658-b49e-4246-8462-507fb211ed39": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Home-Furniture-Brand-1.jpg",
             "title": "Sectional Sofas",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
@@ -924,7 +676,6 @@
         "ba735dc4-4f1a-468b-ac38-735f6227a869": {
           "type": "lookbook_image",
           "settings": {
-            "lookbook_image": "shopify:\/\/shop_images\/large-lookbook-2.jpg",
             "lookbook_image_action": "popup_image",
             "lookbook_image_link": "shopify:\/\/collections\/home-19-style-design",
             "product_1": "product-08-sample-furniture-and-ornaments-for-sale",
@@ -948,7 +699,6 @@
         "c3ba1c65-7e9d-41ce-8d78-4dba332b787e": {
           "type": "lookbook_image",
           "settings": {
-            "lookbook_image": "shopify:\/\/shop_images\/large-lookbook-1.jpg",
             "lookbook_image_action": "link",
             "lookbook_image_link": "shopify:\/\/collections\/home-19-style-design",
             "product_1": "product-07-sample-furniture-and-ornaments-for-sale",
@@ -1145,7 +895,6 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/image-gallery-2.jpg",
             "link": ""
           }
         },
@@ -1153,7 +902,6 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/image-gallery-3.jpg",
             "link": ""
           }
         },
@@ -1161,7 +909,6 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/image-gallery-4.jpg",
             "link": ""
           }
         },
@@ -1169,7 +916,6 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/image-gallery-1.jpg",
             "link": ""
           }
         },
@@ -1177,7 +923,6 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/image-gallery-2.jpg",
             "link": ""
           }
         },
@@ -1185,7 +930,6 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/image-gallery-3.jpg",
             "link": ""
           }
         }
@@ -1273,7 +1017,6 @@
           "type": "image",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/Home-Furniture-banner-custom-1.jpg",
             "title_align": "left",
             "enable_absolute": true,
             "align_items": "bottom",
@@ -1325,7 +1068,6 @@
           "type": "image",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/Home-Furniture-banner-custom-2.jpg",
             "title_align": "left",
             "enable_absolute": true,
             "align_items": "bottom",
@@ -1377,7 +1119,6 @@
           "type": "image",
           "settings": {
             "enable_image": true,
-            "image": "shopify:\/\/shop_images\/Home-Furniture-banner-custom-3.jpg",
             "title_align": "left",
             "enable_absolute": true,
             "align_items": "bottom",
@@ -1508,7 +1249,6 @@
         "e45b8a76-f172-432c-8975-9b06e0f49bef": {
           "type": "lookbook_image",
           "settings": {
-            "lookbook_image": "shopify:\/\/shop_images\/lookbook-collection-4.jpg",
             "lookbook_image_action": "popup_image",
             "lookbook_image_link": "",
             "product_1": "product-01-sample-furniture-and-ornaments-for-sale",
@@ -1542,7 +1282,6 @@
         "52ccf051-6ffb-49ac-8e6b-67a444b10f82": {
           "type": "lookbook_image",
           "settings": {
-            "lookbook_image": "shopify:\/\/shop_images\/lookbook1.jpg",
             "lookbook_image_action": "popup_image",
             "lookbook_image_link": "",
             "product_1": "product-01-sample-furniture-and-ornaments-for-sale",
@@ -1576,7 +1315,6 @@
         "1e060fea-4f1a-41c3-9f8d-8ac665408713": {
           "type": "lookbook_image",
           "settings": {
-            "lookbook_image": "shopify:\/\/shop_images\/lookbook2.jpg",
             "lookbook_image_action": "link",
             "lookbook_image_link": "shopify:\/\/products\/game-cover-23",
             "product_1": "product-03-sample-furniture-and-ornaments-for-sale",
@@ -1610,7 +1348,6 @@
         "c61c2d7a-4d0f-432a-a91a-0b2844893b47": {
           "type": "lookbook_image",
           "settings": {
-            "lookbook_image": "shopify:\/\/shop_images\/lookbook3.jpg",
             "lookbook_image_action": "popup_image",
             "lookbook_image_link": "",
             "product_1": "product-10-sample-furniture-and-ornaments-for-sale",
@@ -1722,7 +1459,6 @@
         "43813eee-3238-4a7e-8117-8bea328df203": {
           "type": "review",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/customer-rv-1.jpg",
             "heading": "",
             "sub_heading": "",
             "rating": "star5",
@@ -1734,7 +1470,6 @@
         "a4e9d01e-d94c-428b-b138-39460fe8d080": {
           "type": "review",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/customer-rv-2.jpg",
             "heading": "",
             "sub_heading": "",
             "rating": "star5",
@@ -1746,7 +1481,6 @@
         "2c06478c-d24e-4a71-b03b-c05a6557de5a": {
           "type": "review",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/customer-rv-3.jpg",
             "heading": "",
             "sub_heading": "",
             "rating": "star5",
@@ -1758,7 +1492,6 @@
         "20529d39-bc78-4c7c-8d3f-a7286ac7739d": {
           "type": "review",
           "settings": {
-            "avatar": "shopify:\/\/shop_images\/customer-rv-1.jpg",
             "heading": "",
             "sub_heading": "",
             "rating": "star5",
@@ -1911,7 +1644,6 @@
   "order": [
     "16426738253c0b77ec",
     "1644481465cc6ad9ac",
-    "1657159369f1648d50",
     "16571864460cd69c62",
     "16418746910626c268",
     "165761924760d2ad98",
