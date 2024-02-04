@@ -23,11 +23,11 @@
         "441f2329-1d0c-4d63-bcff-c7281f41bf54": {
           "type": "product_block",
           "settings": {
-            "show_block": true,
+            "show_block": false,
             "position": "sidebar",
             "column": "1",
             "heading": "Featured Products",
-            "product_block_collection": "bathtub",
+            "product_block_collection": "",
             "product_block_layout": "slider",
             "product_block_limit": 2,
             "product_block_dots": false,
