@@ -61,7 +61,7 @@
         "9ffcbc70-f507-4049-874d-4e9915e05726": {
           "type": "image_gallery",
           "settings": {
-            "image_gallery_swipe_on_mobile": "slider",
+            "image_gallery_swipe_on_mobile": "scroll",
             "column": "3",
             "column_mb": "1",
             "type_image_gallery": "popup_image",
