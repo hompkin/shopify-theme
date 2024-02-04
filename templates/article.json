@@ -72,7 +72,7 @@
             "margin_bottom_title": 24,
             "item_distance": 15,
             "lookbook_style": "2",
-            "enable_lookbook_width": false,
+            "enable_lookbook_width": true,
             "lookbook_width": 250,
             "dot_desktop_size": 24,
             "dot_mobile_size": 16,
