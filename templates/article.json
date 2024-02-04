@@ -27,7 +27,7 @@
             "position": "sidebar",
             "column": "1",
             "heading": "Featured Products",
-            "product_block_collection": "collection-home-1-2",
+            "product_block_collection": "bathtub",
             "product_block_layout": "slider",
             "product_block_limit": 2,
             "product_block_dots": false,
@@ -169,6 +169,7 @@
         },
         "ce82dddb-aa2f-428e-bd37-3e033250c238": {
           "type": "lookbook_banner",
+          "disabled": true,
           "settings": {
             "margin_bottom": 40,
             "content_max_width": 400,
