@@ -1457,115 +1457,6 @@
         "link_width": 335
       }
     },
-    "1657598366251549d7": {
-      "type": "customer-review-block",
-      "blocks": {
-        "43813eee-3238-4a7e-8117-8bea328df203": {
-          "type": "review",
-          "settings": {
-            "heading": "",
-            "sub_heading": "",
-            "rating": "star5",
-            "name": "<p><span style=\"font-weight: 600;\">John Smith<\/span> <span style=\"font-weight: 400\">@johnsmith<\/span><\/p>",
-            "date": "",
-            "body": "<p>\n    <span style=\"display: inline-block; width: 30px; height: 2px; background-color: #000; margin-bottom: 4px; margin-right: 9px;\"><\/span>Nam tempus turpis at metus scelerisque placerat nulla del mantos sollicitudin delos felis. Pellentesque\n    diam les dolor an elementum et lobortis at mollis.\n<\/p>"
-          }
-        },
-        "a4e9d01e-d94c-428b-b138-39460fe8d080": {
-          "type": "review",
-          "settings": {
-            "heading": "",
-            "sub_heading": "",
-            "rating": "star5",
-            "name": "<p><span style=\"font-weight: 600;\">Annie Lee<\/span> <span style=\"font-weight: 400\">@annielee<\/span><\/p>",
-            "date": "",
-            "body": "<p>\n    <span style=\"display: inline-block; width: 30px; height: 2px; background-color: #000; margin-bottom: 4px; margin-right: 9px;\"><\/span>Nam tempus turpis at metus scelerisque placerat nulla del mantos sollicitudin delos felis. Pellentesque diam les dolor an elementum et lobortis at mollis.\n<\/p>"
-          }
-        },
-        "2c06478c-d24e-4a71-b03b-c05a6557de5a": {
-          "type": "review",
-          "settings": {
-            "heading": "",
-            "sub_heading": "",
-            "rating": "star5",
-            "name": "<p><span style=\"font-weight: 600;\">John Doe<\/span> <span style=\"font-weight: 400\">@johndoe<\/span><\/p>",
-            "date": "",
-            "body": "<p>\n    <span style=\"display: inline-block; width: 30px; height: 2px; background-color: #000; margin-bottom: 4px; margin-right: 9px;\"><\/span>Nam tempus turpis at metus scelerisque placerat nulla del mantos sollicitudin delos felis. Pellentesque\n    diam les dolor an elementum et lobortis at mollis.\n<\/p>"
-          }
-        },
-        "20529d39-bc78-4c7c-8d3f-a7286ac7739d": {
-          "type": "review",
-          "settings": {
-            "heading": "",
-            "sub_heading": "",
-            "rating": "star5",
-            "name": "<p><span style=\"font-weight: 600;\">Annie Lee<\/span> <span style=\"font-weight: 400\">@annielee<\/span><\/p>",
-            "date": "",
-            "body": "<p>\n    <span style=\"display: inline-block; width: 30px; height: 2px; background-color: #000; margin-bottom: 4px; margin-right: 9px;\"><\/span>Nam tempus turpis at metus scelerisque placerat nulla del mantos sollicitudin delos felis. Pellentesque\n    diam les dolor an elementum et lobortis at mollis.\n<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "43813eee-3238-4a7e-8117-8bea328df203",
-        "a4e9d01e-d94c-428b-b138-39460fe8d080",
-        "2c06478c-d24e-4a71-b03b-c05a6557de5a",
-        "20529d39-bc78-4c7c-8d3f-a7286ac7739d"
-      ],
-      "settings": {
-        "container": "fullwidth",
-        "padding_full_width": 60,
-        "section_style": "style_2",
-        "mg_top_desktop": 75,
-        "mg_top_tablet": 50,
-        "mg_top_mobile": 40,
-        "mg_bottom_desktop": 60,
-        "mg_bottom_tablet": 45,
-        "mg_bottom_mobile": 40,
-        "review_bg": "#f6f6f6",
-        "review_bg_gradient": "",
-        "review_title": "Customer Reviews",
-        "color_title": "#000000",
-        "mg_bottom_title": 0,
-        "fontsize_title": 30,
-        "fontsize_title_mb": 24,
-        "review_des": "<p>Pellentesque ante neque, faucibus et delito an pretium vestibulum del varius quam.<\/p>\n<a href=\"javascript:void(0)\" style=\"color: #2a6876;text-decoration: underline;text-underline-offset:2px;\">\nRead all reviews\n<\/a>",
-        "color_des": "#3c3c3c",
-        "margin_bottom_des": 35,
-        "fontsize_des": 16,
-        "title_align": "center",
-        "block_layout_style": "layout2",
-        "review_rows": "3",
-        "show_arrow": true,
-        "center_mode": false,
-        "avatar_margin_bottom": 30,
-        "color_heading": "#000000",
-        "fontsize_heading": 18,
-        "heading_margin_bottom": 14,
-        "heading_font_weight": "600",
-        "color_sub_heading": "#808080",
-        "fontsize_sub_heading": 13,
-        "sub_heading_margin_bottom": 20,
-        "color_name": "#202020",
-        "fontsize_name": 14,
-        "name_margin_bottom": 0,
-        "color_date": "#808080",
-        "fontsize_date": 13,
-        "color_body": "#000000",
-        "fontsize_body": 16,
-        "body_margin_bottom": 27,
-        "color_icon": "#ffffff",
-        "bg_color_icon": "#cbcbcb",
-        "star_font_size": 25,
-        "star_margin_bottom": 14,
-        "show_avatar": true,
-        "start_position": "above_title",
-        "star_color": "#ffc206",
-        "scroll_height": 4,
-        "scroll_track_bg": "#f1f1f1",
-        "scroll_thumb_color": "#000000",
-        "scroll_thumb_hover_color": "#444444"
-      }
-    },
     "16575923090614cdb0": {
       "type": "featured-blog",
       "settings": {
@@ -1655,7 +1546,6 @@
     "165750374504bb14a3",
     "165726250754dae887",
     "16576192601b6a173a",
-    "1657598366251549d7",
     "16575923090614cdb0"
   ]
 }
