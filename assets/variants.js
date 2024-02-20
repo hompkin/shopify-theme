@@ -192,7 +192,7 @@ class VariantSelects extends HTMLElement {
         });
     }
 
-    function findElementsWithIdContainingPrefix(prefix) {
+    findElementsWithIdContainingPrefix(prefix) {
       // 使用CSS属性选择器查找具有特定前缀的元素
       const elements = document.querySelectorAll(`[id^="${prefix}"]`);
     
@@ -200,7 +200,7 @@ class VariantSelects extends HTMLElement {
       return Array.from(elements);
     }
     
-    function findElementsWithIdContainingTest(elements, id) {
+    findElementsWithIdContainingTest(elements, id) {
       // 使用Array.filter方法筛选出ID中包含"test"的元素
       const filteredElements = elements.filter(element => element.id.includes(id));
     
@@ -216,11 +216,11 @@ class VariantSelects extends HTMLElement {
         if(this.item.find('[data-tab-meta-sku]').length > 0){
             this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
         }
-        var elements = findElementsWithIdContainingPrefix('data_tab_meta_dimens_');
+        var elements = this.findElementsWithIdContainingPrefix('data_tab_meta_dimens_');
         elements.forEach(element => {
           element.style.display = "none";
         });
-        var target_element = findElementsWithIdContainingTest(elements, this.currentVariant.sku);
+        var target_element = this.findElementsWithIdContainingTest(elements, this.currentVariant.sku);
         target_element.style.display = 'block';
       
         var inventory = this.currentVariant?.inventory_management;
