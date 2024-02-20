@@ -192,6 +192,22 @@ class VariantSelects extends HTMLElement {
         });
     }
 
+    function findElementsWithIdContainingPrefix(prefix) {
+      // 使用CSS属性选择器查找具有特定前缀的元素
+      const elements = document.querySelectorAll(`[id^="${prefix}"]`);
+    
+      // 返回找到的元素数组
+      return Array.from(elements);
+    }
+    
+    function findElementsWithIdContainingTest(elements, id) {
+      // 使用Array.filter方法筛选出ID中包含"test"的元素
+      const filteredElements = elements.filter(element => element.id.includes(id));
+    
+      // 返回找到的元素数组
+      return filteredElements;
+    }
+
     renderProductInfo() {
         if(this.item.find('[data-sku]').length > 0){
             this.item.find('[data-sku] .productView-info-value').text(this.currentVariant.sku);
@@ -200,7 +216,12 @@ class VariantSelects extends HTMLElement {
         if(this.item.find('[data-tab-meta-sku]').length > 0){
             this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
         }
-        document.getElementById(`data_tab_meta_dimens_${this.currentVariant.sku}`).style.display = 'block';
+        var elements = findElementsWithIdContainingPrefix('data_tab_meta_dimens_');
+        elements.forEach(element => {
+          element.style.display = "none";
+        });
+        var target_element = findElementsWithIdContainingTest(elements, this.currentVariant.sku);
+        target_element.style.display = 'block';
       
         var inventory = this.currentVariant?.inventory_management;
 
