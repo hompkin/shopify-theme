@@ -198,8 +198,12 @@ class VariantSelects extends HTMLElement {
         }
 
         if(this.item.find('[data-tab-meta-sku]').length > 0){
-            this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
+            this.item.find('[data-tab-meta-sku] .value-text').text(this.dataset.product);
         }
+
+      // if(this.item.find('[data-tab-meta-sku-size-image]').length > 0){
+      //       this.item.find('[data-tab-meta-sku-size-image] .value-text').text(this.currentVariant.sku);
+      //   }
 
         var inventory = this.currentVariant?.inventory_management;
 
