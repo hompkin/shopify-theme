@@ -39,6 +39,7 @@
   {% if product.metafields.custom.product_weight_dimensions -%}
     <span class="text">Dimensions</span>
     {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
+      {% if item.sku contains current_variant.sku %}
       <div class="custom-meta-block">
         <table>
           <tbody>
@@ -56,7 +57,7 @@
             {% endfor %}
           </tbody>
         </table>
-        {% if item.img_url and item.sku contains current_variant.sku %}
+        {% if item.img_url %}
           <div class="horizen-line">&nbsp</div>
           {%- for media in product.media -%}
             {% assign preview_image_url = media.preview_image | img_url: 'master' %}
@@ -70,6 +71,7 @@
           
         {% endif %}
       </div>
+    {% endif %}
     {% endfor %}
   {% endif %}
 </div>
