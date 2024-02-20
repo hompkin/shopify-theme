@@ -25,7 +25,7 @@
                     <span class="key-text">{{ attr.key }}</span>
                   </td>
                    <td class="value-td">
-                    <!-- <span class="value-text">{{ attr.value }}</span> -->
+                    <span class="value-text">{{ attr.value }}</span>
                   </td>
                 </tr>
               {% endif %}
@@ -44,7 +44,7 @@
         <table>
           <tbody>
             {% for attr in item.attrs %}
-              {% if attr.value %}
+              {% if attr.value and attr.value != blank %}
                 <tr>
                   <td class="key-td">
                     <span class="key-text">{{ attr.key }}</span>
