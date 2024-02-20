@@ -220,9 +220,10 @@ class VariantSelects extends HTMLElement {
         elements.forEach(element => {
           element.style.display = "none";
         });
-        var target_element = this.findElementsWithIdContainingTest(elements, this.currentVariant.sku);
-        target_element.style.display = 'block';
-      
+        var target_elements = this.findElementsWithIdContainingTest(elements, this.currentVariant.sku);
+        target_elements.forEach(element => {
+          element.style.display = "block";
+        });
         var inventory = this.currentVariant?.inventory_management;
 
         if(inventory != null) {
