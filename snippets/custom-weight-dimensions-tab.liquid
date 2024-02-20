@@ -56,7 +56,7 @@
             {% endfor %}
           </tbody>
         </table>
-        {% if item.img_url and item.sku == current_variant.sku %}
+        {% if item.img_url and item.sku contains current_variant.sku %}
           <div class="horizen-line">&nbsp</div>
           {%- for media in product.media -%}
             {% assign preview_image_url = media.preview_image | img_url: 'master' %}
