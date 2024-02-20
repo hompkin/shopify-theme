@@ -19,7 +19,7 @@
             {% endif %}
        
             {% for attr in item.attrs %}
-              {% if attr.value %}
+              {% if attr.value and attr.value != blank %}
                 <tr>
                   <td class="key-td">
                     <span class="key-text">{{ attr.key }}</span>
