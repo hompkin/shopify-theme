@@ -201,7 +201,7 @@ class VariantSelects extends HTMLElement {
             this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
         }
       
-        document.getElementById(`data-tab-meta-dimens-${this.currentVariant.sku}`)?.style.display = 'block';
+        document.getElementById(`data-tab-meta-dimens-${this.currentVariant.sku}`);
 
         var inventory = this.currentVariant?.inventory_management;
 
