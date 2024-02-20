@@ -64,7 +64,7 @@
             {% assign filename = preview_image_url | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
             {% assign checkArray = filename | split:item.img_url %}
             {%- if media.media_type =='image' and checkArray[0] == blank -%}
-                <img class="img" src="{{ preview_image_url }}" loading="lazy" alt="{{ media.alt | escape }}" width="100%" height="100%" >
+                <img class="img" data-tab-meta-sku-size-image src="{{ preview_image_url }}" loading="lazy" alt="{{ media.alt | escape }}" width="100%" height="100%" >
                 {% break; %}
             {%- endif -%}
           {%- endfor -%}
