@@ -1,12 +1,11 @@
 <div class="custom-meta-div">
+  {% assign current_variant = product.selected_or_first_available_variant %}
   {% if product.metafields.custom.product_specification -%}
     <span class="text">Specification</span>
     {% for item in product.metafields.custom.product_specification.value.content %}
       <div class="custom-meta-block">
         <table>
           <tbody>
-          
-            {% assign current_variant = product.selected_or_first_available_variant %}
             {% if current_variant %}
                <tr>
                   <td class="key-td">
@@ -57,7 +56,7 @@
             {% endfor %}
           </tbody>
         </table>
-        {% if item.img_url %}
+        {% if item.img_url and item.sku == current_variant.sku %}
           <div class="horizen-line">&nbsp</div>
           {%- for media in product.media -%}
             {% assign preview_image_url = media.preview_image | img_url: 'master' %}
