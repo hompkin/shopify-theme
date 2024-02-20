@@ -198,7 +198,7 @@ class VariantSelects extends HTMLElement {
         }
      
         if(this.item.find('[data-tab-meta-sku]').length > 0){
-            this.item.find('[data-tab-meta-sku] .value-text').text(this.dataset.product.media);
+            this.item.find('[data-tab-meta-sku] .value-text').text(this.media);
         }
 
       // if(this.item.find('[data-tab-meta-sku-size-image]').length > 0){
