@@ -196,14 +196,11 @@ class VariantSelects extends HTMLElement {
         if(this.item.find('[data-sku]').length > 0){
             this.item.find('[data-sku] .productView-info-value').text(this.currentVariant.sku);
         }
-     
-        if(this.item.find('[data-tab-meta-sku]').length > 0){
-            this.item.find('[data-tab-meta-sku] .value-text').text(this.media);
-        }
 
-      // if(this.item.find('[data-tab-meta-sku-size-image]').length > 0){
-      //       this.item.find('[data-tab-meta-sku-size-image] .value-text').text(this.currentVariant.sku);
-      //   }
+        if(this.item.find('[data-tab-meta-sku]').length > 0){
+            this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
+        }
+       document.getElementById('data-tab-meta-dimens-${this.currentVariant.sku}').style="display:block"
 
         var inventory = this.currentVariant?.inventory_management;
 
