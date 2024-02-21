@@ -173,8 +173,8 @@ function refreshView(country_options, params, json) {
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('contact_us_id').addEventListener('click', function() {
-    const sgf = document.getElementById('button-body');
-  document.getElementById('button-body')?.click();
+    const sgf = document.getElementById('tidio-chat');
+  document.getElementById('tidio-chat')?.click();
   console.log(sgf);
   });
 
