@@ -173,8 +173,9 @@ function refreshView(country_options, params, json) {
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('contact_us_id').addEventListener('click', function() {
+    const sgf = document.getElementById('button-body');
   document.getElementById('button-body')?.click();
-  console.log('Span element clicked');
+  console.log(sgf);
   });
 
   var countrySelect = document.getElementById("country-select");
