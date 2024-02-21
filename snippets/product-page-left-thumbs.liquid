@@ -1337,12 +1337,13 @@
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
+    var deliveryBigConfig = {{ shop.metaobjects.delivery_time.delivery-time-big.config.value | json }};
     var deliveryConfig = {{ shop.metaobjects.delivery_time.delivery-time-big.config.value | json }};
-    loadUserDeliveryTime(deliveryConfig);
+    loadUserDeliveryTime(deliveryConfig, deliveryBigConfig);
     var buttonElement = document.getElementById("update-button");
     if (buttonElement) {
       buttonElement.addEventListener("click", function(){
-        onClickUpdate(deliveryConfig);
+        onClickUpdate(deliveryBigConfig);
       });
     }
   });
