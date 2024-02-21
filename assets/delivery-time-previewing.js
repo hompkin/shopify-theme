@@ -172,7 +172,7 @@ function refreshView(country_options, params, json) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById('button-body')?.addEventListener('click', function() {
+  document.getElementById('button-body').addEventListener('click', function() {
   
   console.log('Span element clicked');
   });
