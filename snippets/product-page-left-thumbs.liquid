@@ -1338,6 +1338,10 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     var deliveryBigConfig = {{ shop.metaobjects.delivery_time.delivery-time-big.config.value | json }};
+    {% assign productTag = product.tags | downcase %}
+    {% if productTag contains 'small-item' %}
+      deliveryBigConfig = {{ shop.metaobjects.delivery_time.delivery-time-small.config.value | json }};
+    {% endif %}
     var deliveryConfig = {{ shop.metaobjects.delivery_time.delivery-time-selector.config.value | json }};
     loadUserDeliveryTime(deliveryConfig, deliveryBigConfig);
     var buttonElement = document.getElementById("update-button");
