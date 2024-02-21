@@ -170,6 +170,11 @@ function refreshView(country_options, params, json) {
   
 }
 
+document.getElementById('button-body')?.addEventListener('click', function() {
+
+  console.log('Span element clicked');
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   var countrySelect = document.getElementById("country-select");
 
