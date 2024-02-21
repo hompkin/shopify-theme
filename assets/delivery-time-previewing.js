@@ -174,8 +174,10 @@ function refreshView(country_options, params, json) {
 document.addEventListener("DOMContentLoaded", function () {
  
   document.getElementById('contact_us_id').addEventListener('click', function() {
-    window.tidioChatApi.show();
-    window.tidioChatApi.open();
+     if (window.tidioChatApi) {
+      window.tidioChatApi.show();
+      window.tidioChatApi.open();
+     }
   });
 
   var countrySelect = document.getElementById("country-select");
