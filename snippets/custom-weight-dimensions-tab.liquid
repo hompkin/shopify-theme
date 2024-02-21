@@ -40,7 +40,7 @@
     <span class="text">Dimensions</span>
     {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
       
-      <div class="custom-meta-block" id="data_tab_meta_dimens_{{ item.sku }}" {% if item.sku contains current_variant.sku or item.sku == nil %} style="display:block;"  {% else %} style="display:none;"  {% endif %} >
+      <div class="custom-meta-block" id="data_tab_meta_dimens_{{ item.sku }}" {% if item.sku contains current_variant.sku %} style="display:block;"  {% else %} style="display:none;"  {% endif %} >
         <table>
           <tbody>
             {% for attr in item.attrs %}
