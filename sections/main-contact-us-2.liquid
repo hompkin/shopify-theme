@@ -168,9 +168,9 @@
                                 </div>
                             {%- endif %}
                             {%- if btn_text != blank -%}
-                                 <{% if btn_link == blank %}a href="javascript:;" onclick="tidioChatApi.display(true);tidioChatApi.open()" {%else%}button{%endif%} class="contact-btn button{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+                                 <a href="javascript:;" onclick="tidioChatApi.display(true);tidioChatApi.open()" class="contact-btn button{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                                     {{ btn_text | escape }}
-                                </{% if btn_link == blank %}a{%else%}button{%endif%}> 
+                                </a> 
                               
                             {% endif %}
                             {%- if contact_info_address != blank or contact_info_content_1 != blank or contact_info_content_2 != blank -%}
