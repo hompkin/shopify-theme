@@ -172,10 +172,11 @@ function refreshView(country_options, params, json) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  const buttonElement = document.querySelector('button[id="button-body"]');
+ 
   document.getElementById('contact_us_id').addEventListener('click', function() {
-  buttonElement?.click();
-  console.log(buttonElement);
+     const buttonElement = document.querySelector('button[id="button-body"]');
+      buttonElement?.click();
+      console.log(buttonElement);
   });
 
   var countrySelect = document.getElementById("country-select");
