@@ -23,7 +23,7 @@
   </div>
   <div class="productView-DeliveryTimeUpdate" id="delivery-time-update-container">
     <select id="country-select" class="select__select">
-      {%- assign options = shop.metaobjects.delivery_time['delivery-time-big'].config.value.option_country -%}
+      {%- assign options = shop.metaobjects.delivery_time['delivery-time-selector'].config.value.option_country -%}
       {%- for value in options -%}
         <option value="{{ value | escape }}">
           {{ value | escape }}
