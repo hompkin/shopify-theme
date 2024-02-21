@@ -104,7 +104,7 @@ function loadUserDeliveryTime(params) {
   });
 }
 
-function refreshView(params, json) {
+function refreshView(country_options, params, json) {
   const countryCode = json.country_code2;
   const city = json.city;
   const zipcode = json.zipcode;
@@ -118,8 +118,8 @@ function refreshView(params, json) {
   const deliveryTimePrefixView = document.getElementById("delivery_time_prefix_id");
   var countrySelect = document.getElementById("country-select");
   var country = "";
-  for (let index = 0; index < params.option_country.length; index++) {
-    const name = params.option_country[index];
+  for (let index = 0; index < country_options.option_country.length; index++) {
+    const name = country_options.option_country[index];
     if (countrySelect && name.endsWith(countryCode)) {
       countrySelect.selectedIndex = index;
       country = name;
