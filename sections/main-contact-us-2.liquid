@@ -168,7 +168,7 @@
                                 </div>
                             {%- endif %}
                             {%- if btn_text != blank -%}
-                                 <{% if btn_link != blank %}a href={{ btn_link.url }} {%else%}button{%endif%} class="chat-button">
+                                 <{% if btn_link != blank %}a href={{ btn_link.url }} {%else%}button{%endif%} class="contact-btn button{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                                     {{ btn_text | escape }}
                                 </{% if btn_link != blank %}a{%else%}button{%endif%}> 
                               
