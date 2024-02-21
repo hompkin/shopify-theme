@@ -98,9 +98,9 @@ function removeBefore(inputString, index) {
   }
 }
 
-function loadUserDeliveryTime(params) {
+function loadUserDeliveryTime(country_options, params) {
   getUserDeliveryLocation().then((json) => {
-    refreshView(params, json);
+    refreshView(country_options, params, json);
   });
 }
 
