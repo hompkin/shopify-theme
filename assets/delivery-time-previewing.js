@@ -172,8 +172,8 @@ function refreshView(country_options, params, json) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById('contact_us_id').addEventListener('click', function() {
   const buttonElement = document.querySelector('button[id="button-body"]');
+  document.getElementById('contact_us_id').addEventListener('click', function() {
   buttonElement?.click();
   console.log(buttonElement);
   });
