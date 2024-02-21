@@ -96,6 +96,7 @@
   line-height: var(--body-line-height);
 }
 
+.productView-DeliveryTimeExpedited .link,
 .productView-DeliveryTime .link{
     color: var(--color-link);
   /* text-decoration: underline; */
@@ -109,6 +110,7 @@
   line-height: var(--body-line-height);
 }
 
+.productView-DeliveryTimeExpedited .link:hover,
 .productView-DeliveryTime .link:hover {
   color: var(--color-link-hover);
   text-decoration: underline; 
