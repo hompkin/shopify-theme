@@ -1337,19 +1337,19 @@
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
-    var deliveryBigConfig = {{ shop.metaobjects.delivery_time.delivery-time-big.config.value | json }};
+    var deliveryConfig = {{ shop.metaobjects.delivery_time.delivery-time-big.config.value | json }};
     {% assign productTag = product.tags | downcase %}
     {% if productTag contains 'small-item' %}
-      deliveryBigConfig = {{ shop.metaobjects.delivery_time.delivery-time-small.config.value | json }};
+      deliveryConfig = {{ shop.metaobjects.delivery_time.delivery-time-small.config.value | json }};
     {% elsif productTag contains 'express-item' %}
-      deliveryBigConfig = {{ shop.metaobjects.delivery_time.delivery-time-express.config.value | json }};
+      deliveryConfig = {{ shop.metaobjects.delivery_time.delivery-time-express.config.value | json }};
     {% endif %}
-    var deliveryConfig = {{ shop.metaobjects.delivery_time.delivery-time-selector.config.value | json }};
-    loadUserDeliveryTime(deliveryConfig, deliveryBigConfig);
+    var deliveryCountryConfig = {{ shop.metaobjects.delivery_time.delivery-time-selector.config.value | json }};
+    loadUserDeliveryTime(deliveryCountryConfig, deliveryConfig);
     var buttonElement = document.getElementById("update-button");
     if (buttonElement) {
       buttonElement.addEventListener("click", function(){
-        onClickUpdate(deliveryBigConfig);
+        onClickUpdate(deliveryCountryConfig, deliveryConfig);
       });
     }
   });
