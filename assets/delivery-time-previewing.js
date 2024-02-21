@@ -174,9 +174,10 @@ function refreshView(country_options, params, json) {
 document.addEventListener("DOMContentLoaded", function () {
  
   document.getElementById('contact_us_id').addEventListener('click', function() {
-     const buttonElement = document.querySelector('button[id="button-body"]');
+  const tidio = document.getElementById('tidio-chat');
+     const buttonElement = tidio.querySelector('button[id="button-body"]');
       buttonElement?.click();
-      console.log(buttonElement);
+      console.log(tidio);
   });
 
   var countrySelect = document.getElementById("country-select");
