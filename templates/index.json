@@ -477,6 +477,7 @@
         "cdf92658-b49e-4246-8462-507fb211ed39": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Stainless_Steel_Bathtub.png",
             "title": "Stainless Steel Bathtub",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
