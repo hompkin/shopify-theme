@@ -540,7 +540,7 @@
         "enable_arrows": true,
         "enable_dots": false,
         "enable_center_mode": false,
-        "style_position_arrows": "none",
+        "style_position_arrows": "arrows_1",
         "position_horizontal_arrow": 15,
         "color_arrow": "",
         "arrow_background": "",
