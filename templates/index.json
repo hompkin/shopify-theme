@@ -578,7 +578,7 @@
     "16418746910626c268": {
       "type": "product-block",
       "settings": {
-        "container": "fullwidth",
+        "container": "container",
         "padding_full_width": 60,
         "disable_padding_content": true,
         "enable_border_top": false,
