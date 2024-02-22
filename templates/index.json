@@ -497,10 +497,10 @@
         "cdf92658-b49e-4246-8462-507fb211ed39"
       ],
       "settings": {
-        "container": "fullwidth",
+        "container": "container",
         "padding_full_width": 0,
         "brands_block_style": "style_3",
-        "brand_layout": "slider",
+        "brand_layout": "infinite",
         "scroll_from": "ltr",
         "brand_scroll_time": "20",
         "display_brand_border": true,
