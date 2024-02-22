@@ -597,7 +597,7 @@
         "product_bg": "#ffffff",
         "product_bg_gradient": "",
         "style_block_header": "style2",
-        "pd_top_title": 30,
+        "pd_top_title": 25,
         "product_block_title": "New Products",
         "enable_border_title": false,
         "enable_border_title_style2": false,
