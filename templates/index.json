@@ -465,12 +465,13 @@
         "7f80f897-e16c-4551-8c19-2420147acf4d": {
           "type": "image",
           "settings": {
-            "title": "Brass Sink Faucets",
+            "image": "shopify:\/\/shop_images\/Chrome_Bathtub_Faucets.png",
+            "title": "Chrome Bathtub Faucets",
             "color_text": "#2d2d2d",
-            "color_text_hover": "#2a6876",
+            "color_text_hover": "{{ shop.brand.colors.secondary[0].background }}",
             "description": "",
             "color_des": "#3c3c3c",
-            "link": ""
+            "link": "shopify:\/\/products\/floor-standing-bathroom-tub-faucet-set-with-dual-control-hot-cold-handheld-spray-solid-brass-matte-black"
           }
         },
         "cdf92658-b49e-4246-8462-507fb211ed39": {
