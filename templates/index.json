@@ -496,6 +496,9 @@
         "7f80f897-e16c-4551-8c19-2420147acf4d",
         "cdf92658-b49e-4246-8462-507fb211ed39"
       ],
+      "custom_css": [
+        ".halo-block-header .title {font-weight: 600;}"
+      ],
       "settings": {
         "container": "container",
         "padding_full_width": 0,
