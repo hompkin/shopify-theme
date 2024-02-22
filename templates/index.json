@@ -453,6 +453,7 @@
         "e2700fc7-1fc8-4c31-bb16-de6d09a0b7ec": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Boucle_Chair.png",
             "title": "Boucle Chair",
             "color_text": "#232323",
             "color_text_hover": "#4dac8b",
