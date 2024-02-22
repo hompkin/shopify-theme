@@ -196,8 +196,8 @@
         "e067f286-b737-4211-acfe-12ae11bdbd2e"
       ],
       "settings": {
-        "container": "1770",
-        "padding_full_width": 0,
+        "container": "full",
+        "padding_full_width": 35,
         "header_layout_style": "style_1",
         "header_navigation_bg": "#ffffff",
         "header_navigation_bg_gradient": "",
