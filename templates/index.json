@@ -500,7 +500,7 @@
         "container": "container",
         "padding_full_width": 0,
         "brands_block_style": "style_3",
-        "brand_layout": "infinite",
+        "brand_layout": "slider",
         "scroll_from": "ltr",
         "brand_scroll_time": "20",
         "display_brand_border": true,
