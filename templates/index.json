@@ -525,7 +525,7 @@
         "mg_bottom_view": 20,
         "enable_border_view_all": true,
         "link_view_all": "",
-        "color_view_all": "#2a6876",
+        "color_view_all": "{{ shop.brand.colors.secondary[0].background }}",
         "icon_view_all": "",
         "color_view_all_icon": "#eb492f",
         "view_all_icon_side": "left",
