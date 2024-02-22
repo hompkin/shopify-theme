@@ -1227,7 +1227,7 @@
         "font_weight_view_all": "400",
         "mg_bottom_view": 35,
         "enable_border_view_all": true,
-        "link_view_all": "shopify:\/\/collections\/blazero",
+        "link_view_all": "shopify:\/\/collections",
         "color_view_all": "{{ shop.brand.colors.secondary[0].background }}",
         "display_instagram_button": false,
         "instagram_button_text": "View Gallery",
