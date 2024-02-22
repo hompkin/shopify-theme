@@ -500,8 +500,8 @@
         ".halo-block-header .title {font-weight: 600;}"
       ],
       "settings": {
-        "container": "container",
-        "padding_full_width": 0,
+        "container": "fullwidth",
+        "padding_full_width": 35,
         "brands_block_style": "style_3",
         "brand_layout": "slider",
         "scroll_from": "ltr",
@@ -578,8 +578,8 @@
     "16418746910626c268": {
       "type": "product-block",
       "settings": {
-        "container": "container",
-        "padding_full_width": 60,
+        "container": "fullwidth",
+        "padding_full_width": 35,
         "disable_padding_content": true,
         "enable_border_top": false,
         "enable_border_bottom": false,
