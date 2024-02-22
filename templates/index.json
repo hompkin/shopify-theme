@@ -465,8 +465,8 @@
         "7f80f897-e16c-4551-8c19-2420147acf4d": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Chrome_Bathtub_Faucets.png",
-            "title": "Chrome Bathtub Faucets",
+            "image": "shopify:\/\/shop_images\/Black_Bathtub_Faucets.png",
+            "title": "Black Bathtub Faucets",
             "color_text": "#2d2d2d",
             "color_text_hover": "{{ shop.brand.colors.secondary[0].background }}",
             "description": "",
