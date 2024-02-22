@@ -405,12 +405,13 @@
         "b1d10b76-8345-438d-87a7-5a17087c36a8": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Brass_Bathtub_Faucets.png",
             "title": "Brass Bathtub Faucets",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
             "description": "",
             "color_des": "#3c3c3c",
-            "link": ""
+            "link": "shopify:\/\/products\/floor-mount-tub-filler-brass-freestanding-bathtub-faucet-with-hand-shower-chrome"
           }
         },
         "ef133e5f-4e7f-448a-a391-7f8c009ef225": {
