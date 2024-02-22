@@ -417,7 +417,8 @@
         "ef133e5f-4e7f-448a-a391-7f8c009ef225": {
           "type": "image",
           "settings": {
-            "title": "Single Sofa",
+            "image": "shopify:\/\/shop_images\/Single_Lounge_Sofa.png",
+            "title": "Single Lounge Sofa",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
             "description": "",
