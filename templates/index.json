@@ -429,23 +429,25 @@
         "96ba5e66-2f5e-4fa2-83e2-3415c2a6ebe5": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Resin_Soaker_Bathtub.png",
             "title": "Resin Soaker Bathtub",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
             "description": "",
             "color_des": "#3c3c3c",
-            "link": ""
+            "link": "shopify:\/\/products\/67-contemporary-oval-freestanding-stone-resin-soaking-bathtub-in-matte-white"
           }
         },
         "a4653c1b-fa80-478a-a7eb-bc85962cd5c8": {
           "type": "image",
           "settings": {
-            "title": "Deep Freestanding Bathtub",
+            "image": "shopify:\/\/shop_images\/Deep_Freestanding_Bathtub.png",
+            "title": "Japanese Soaking Bathtub",
             "color_text": "#2d2d2d",
             "color_text_hover": "#2a6876",
             "description": "",
             "color_des": "#3c3c3c",
-            "link": ""
+            "link": "shopify:\/\/products\/43-modern-oblique-deep-freestanding-light-brown-stone-resin-japanese-soaking-bathtub"
           }
         },
         "e2700fc7-1fc8-4c31-bb16-de6d09a0b7ec": {
