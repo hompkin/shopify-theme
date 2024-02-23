@@ -1147,6 +1147,14 @@
             "link": ""
           }
         },
+        "ee2004e9-0eca-4b00-ac3f-64800895b7fa": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "image": "shopify:\/\/shop_images\/Stone_Resin_Soaking_Bathtub_1.png",
+            "link": ""
+          }
+        },
         "08c0c570-4936-475c-ba58-d35acf593e0c": {
           "type": "instagram",
           "settings": {
@@ -1175,24 +1183,18 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "link": ""
-          }
-        },
-        "ee2004e9-0eca-4b00-ac3f-64800895b7fa": {
-          "type": "instagram",
-          "settings": {
-            "enable": true,
+            "image": "shopify:\/\/shop_images\/sofa_in_living_room_1.png",
             "link": ""
           }
         }
       },
       "block_order": [
         "3cb3448c-a7c7-4a54-b15b-e7088ce5a1ca",
+        "ee2004e9-0eca-4b00-ac3f-64800895b7fa",
         "08c0c570-4936-475c-ba58-d35acf593e0c",
         "53d83e6b-5ad3-40b8-9bc3-8e60fd7f2ad2",
         "09e0a626-a940-40a1-8372-7ba56ba990ec",
-        "54434343-3665-4537-b87a-fa87ae311777",
-        "ee2004e9-0eca-4b00-ac3f-64800895b7fa"
+        "54434343-3665-4537-b87a-fa87ae311777"
       ],
       "settings": {
         "container": "fullwidth",
