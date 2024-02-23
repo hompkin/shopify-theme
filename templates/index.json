@@ -1151,6 +1151,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
+            "image": "shopify:\/\/shop_images\/boucle_stool_in_living_room_1.png",
             "link": ""
           }
         },
