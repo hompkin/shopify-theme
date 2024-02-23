@@ -1167,6 +1167,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
+            "image": "shopify:\/\/shop_images\/boucle_sofa_in_living_room_2.png",
             "link": ""
           }
         },
