@@ -821,7 +821,7 @@
     "16418746910626c268": {
       "type": "product-block",
       "custom_css": [
-        ".container-full .title .text {padding-left: 10px !important padding-right: 10px !important}"
+        ".container-full .title .text {padding-left:10px !important; padding-right:10px !important;}"
       ],
       "settings": {
         "container": "fullwidth",
