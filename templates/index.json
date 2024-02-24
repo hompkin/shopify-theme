@@ -539,7 +539,7 @@
         "btn_spacing_top": 15,
         "btn_color": "#828282",
         "btn_link": "",
-        "enable_autoplay": false,
+        "enable_autoplay": true,
         "brand_speed": "3000",
         "brand_rows": "5",
         "enable_arrows": true,
