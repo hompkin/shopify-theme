@@ -1483,7 +1483,7 @@
     "16575923090614cdb0": {
       "type": "featured-blog",
       "settings": {
-        "container": "container",
+        "container": "fullwidth",
         "padding_full_width": 35,
         "mg_minus_desktop": 0,
         "mg_top_desktop": 30,
