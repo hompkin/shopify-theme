@@ -123,7 +123,7 @@
         .section-block-{{section.id}} .halo-row .halo-item{padding-left: var(--item-distance-style);padding-right: var(--item-distance-style)}
     }
     @media (min-width: 768px) and (max-width: 1199px) {.section-block-{{section.id}} {padding-top: {{ mg_top_tablet | append: 'px' }};padding-bottom: {{ mg_bottom_tablet | append: 'px' }}}}
-    @media (max-width: 1024px) {
+    /* @media (max-width: 1024px) {
         {%- if blog_bg_image != blank -%}
             .section-block-{{section.id}}{background-position: center top}
         {%- endif -%}
@@ -137,7 +137,7 @@
     @media (max-width: 767px) {
         .section-block-{{section.id}} {padding-top: {{ mg_top_mobile | append: 'px' }};padding-bottom: {{ mg_bottom_mobile | append: 'px' }}}
         .section-block-{{section.id}} .halo-block-header .title {font-size: {{ fontsize_title_mb | append: 'px' }}}
-    }
+    } */
 </style>
 <div class="featured-blog-block section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="featured-blog-{{section.id}}" data-loader-script="{{ 'halo.slide-blog.js' | asset_url }}">
     <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1170' %}container-1170{% elsif section.settings.container == '1770' %}container-1770{% else %}container{% endif %}">
