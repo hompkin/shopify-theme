@@ -104,7 +104,7 @@
       ],
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 35,
+        "padding_full_width": 50,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
         "mg_top_mobile": 0,
@@ -331,7 +331,7 @@
       ],
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 35,
+        "padding_full_width": 50,
         "disable_padding_content": false,
         "mg_minus_desktop": 0,
         "block_layout": "grid",
@@ -502,7 +502,7 @@
       ],
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 35,
+        "padding_full_width": 50,
         "brands_block_style": "style_3",
         "brand_layout": "slider",
         "scroll_from": "ltr",
@@ -743,7 +743,7 @@
       ],
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 35,
+        "padding_full_width": 50,
         "disable_padding_content": true,
         "mg_minus_desktop": 0,
         "block_layout": "grid",
@@ -816,7 +816,7 @@
       "type": "product-block",
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 35,
+        "padding_full_width": 50,
         "disable_padding_content": true,
         "enable_border_top": false,
         "enable_border_bottom": false,
@@ -978,7 +978,7 @@
       "disabled": true,
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 35,
+        "padding_full_width": 50,
         "section_bg": "#ffffff",
         "section_gradient": "",
         "mg_top_desktop": 30,
@@ -1036,7 +1036,7 @@
       "disabled": true,
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 60,
+        "padding_full_width": 50,
         "disable_padding_content": true,
         "enable_border_top": false,
         "enable_border_bottom": false,
@@ -1203,7 +1203,7 @@
       ],
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 35,
+        "padding_full_width": 50,
         "disable_padding_content": true,
         "type_instagram": "default",
         "block_layout": "slider",
@@ -1414,7 +1414,7 @@
       "disabled": true,
       "settings": {
         "container": "1770",
-        "padding_full_width": 60,
+        "padding_full_width": 50,
         "section_bg": "#ffffff",
         "section_gradient": "",
         "mg_top_desktop": 30,
@@ -1484,7 +1484,7 @@
       "type": "featured-blog",
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 35,
+        "padding_full_width": 50,
         "mg_minus_desktop": 0,
         "mg_top_desktop": 30,
         "mg_top_tablet": 30,
