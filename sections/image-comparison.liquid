@@ -84,14 +84,12 @@
         }
     }
 
-    @media (min-width: 1025px) {
-        {% if section.settings.container == 'fullwidth' %}
+    {% if section.settings.container == 'fullwidth' %}
             .section-block-{{section.id}} .container-full {
                 padding-left: {{ padding_full_width }};
                 padding-right: {{ padding_full_width }};
             }
         {% endif %}
-    }
 
     @media (min-width: 768px) and (max-width: 1199px) {
         .section-block-{{ section.id }} {
