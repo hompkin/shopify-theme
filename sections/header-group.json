@@ -197,7 +197,7 @@
       ],
       "settings": {
         "container": "full",
-        "padding_full_width": 35,
+        "padding_full_width": 50,
         "header_layout_style": "style_1",
         "header_navigation_bg": "#ffffff",
         "header_navigation_bg_gradient": "",
