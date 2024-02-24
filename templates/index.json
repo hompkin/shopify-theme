@@ -498,8 +498,7 @@
         "cdf92658-b49e-4246-8462-507fb211ed39"
       ],
       "custom_css": [
-        ".halo-block-header .title {font-weight: 600;}",
-        "@media (min-width: 1025px) {.container-full {padding-left: 10px; padding-right: 10px;}}"
+        ".halo-block-header .title {font-weight: 600;}"
       ],
       "settings": {
         "container": "fullwidth",
