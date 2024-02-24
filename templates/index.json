@@ -744,8 +744,8 @@
       ],
       "custom_css": [
         ".container-full {padding-left: 50px; padding-right: 50px;}",
-        ".container-full .halo-block-header {padding-left: 0; padding-right: 0;}",
-        "@media (max-width: 1024px) {.container-full {padding-left: 10px; padding-right: 10px; }}"
+        "@media (max-width: 1024px) {.container-full {padding-left: 10px; padding-right: 10px; }}",
+        ".container-full .halo-block-header {padding-left: 0; padding-right: 0;}"
       ],
       "settings": {
         "container": "fullwidth",
@@ -1492,7 +1492,7 @@
     "16575923090614cdb0": {
       "type": "featured-blog",
       "custom_css": [
-        ".container-full {padding-left: 10px !important; padding-right: 10px !important;}"
+        "@media (max-width: 1024px) {.container-full {padding-left: 10px!important; padding-right: 10px!important; }}"
       ],
       "settings": {
         "container": "fullwidth",
