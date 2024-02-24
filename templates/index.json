@@ -7,6 +7,7 @@
           "type": "image",
           "settings": {
             "image_slide": "shopify:\/\/shop_images\/Yellow_and_Green_Modern_Welcome_Spring_Banner_1.png",
+            "image_slide_mb": "shopify:\/\/shop_images\/Yellow_and_Green_Modern_Welcome_Spring_Banner_638_x_870_px_1.png",
             "alignment": "left",
             "enable_custom_position": false,
             "custom_horizontal": "11",
