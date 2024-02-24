@@ -127,8 +127,9 @@
         {%- if blog_bg_image != blank -%}
             .section-block-{{section.id}}{background-position: center top}
         {%- endif -%}
-         .section-block-{{ section.id }} .halo-block-header.view_all-right_title {position: relative}
         .section-block-{{ section.id }} .halo-block-header.view_all-right_title .title {margin-bottom: 10px}
+       .section-block-{{ section.id }} .halo-block-header.view_all-right_title {position: relative}
+        .section-block-{{ section.id }} .halo-block-header.view_all-right_title .view_all {position: absolute;top: 50%;right: 0;transform: translateY(-50%)}
         {%- if enable_blog_button -%}
             .section-block-{{section.id}} .halo-block-header .title {margin-bottom: {{ margin_bottom_heading | divided_by: 2 | append: 'px' }}}
             .section-block-{{section.id}} .article-card__info {padding: 22px 8px 28px}
@@ -137,8 +138,9 @@
     }
     @media (max-width: 767px) {
         .section-block-{{section.id}} {padding-top: {{ mg_top_mobile | append: 'px' }};padding-bottom: {{ mg_bottom_mobile | append: 'px' }}}
-       .section-block-{{ section.id }} .halo-block-header.view_all-right_title {position: relative}
         .section-block-{{section.id}} .halo-block-header .title {font-size: {{ fontsize_title_mb | append: 'px' }}}
+       .section-block-{{ section.id }} .halo-block-header.view_all-right_title {position: relative}
+        .section-block-{{ section.id }} .halo-block-header.view_all-right_title .view_all {position: absolute;top: 50%;right: 0;transform: translateY(-50%)}
     }
 </style>
 <div class="featured-blog-block section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="featured-blog-{{section.id}}" data-loader-script="{{ 'halo.slide-blog.js' | asset_url }}">
