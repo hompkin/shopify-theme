@@ -7,7 +7,7 @@
           "type": "image",
           "settings": {
             "image_slide": "shopify:\/\/shop_images\/Yellow_and_Green_Modern_Welcome_Spring_Banner_1.png",
-            "image_slide_mb": "shopify:\/\/shop_images\/Yellow_and_Green_Modern_Welcome_Spring_Banner_638_x_870_px_2.png",
+            "image_slide_mb": "shopify:\/\/shop_images\/Yellow_and_Green_Modern_Welcome_Spring_Banner_638_x_870_px_3.png",
             "alignment": "left",
             "enable_custom_position": false,
             "custom_horizontal": "11",
@@ -1492,7 +1492,7 @@
     "16575923090614cdb0": {
       "type": "featured-blog",
       "custom_css": [
-        "@media (max-width: 1024px) {.container-full {padding-left: 10px!important; padding-right: 10px!important; }}"
+        "@media (max-width: 1024px) {.container-full {padding-left: 10px !important; padding-right: 10px !important; }}"
       ],
       "settings": {
         "container": "fullwidth",
