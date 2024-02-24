@@ -60,6 +60,7 @@
         },
         "9ffcbc70-f507-4049-874d-4e9915e05726": {
           "type": "image_gallery",
+          "disabled": true,
           "settings": {
             "image_gallery_swipe_on_mobile": "slider",
             "column": "3",
