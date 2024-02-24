@@ -16,7 +16,7 @@
     		{%- for item in cart.items -%}
     			<li class="previewCartItem clearfix" data-item-row>
     				<a href="{{ item.url }}" class="previewCartItem-image">
-                        <img srcset="{{ item.image | img_url: '110x' }}" src="{{ item.image | img_url: '110x' }}" width="110" height="{{ 110 | divided_by: item.image.aspect_ratio | round }}" alt="{{ item.title | escape }}" sizes="auto" loading="lazy">
+                        <img srcset="{{ item.image | img_url: '110x' }}" src="{{ item.image | img_url: '110x' }}" width="110" height="{{ 110 | divided_by: item.image.aspect_ratio | round }}" alt="{{ item.title | escape }}" sizes="110px" loading="lazy">
                     </a>
                     <div class="previewCartItem-content cart-item-block-right">
                         {%- liquid

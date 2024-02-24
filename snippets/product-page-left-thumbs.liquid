@@ -527,7 +527,9 @@
                                                                 src="{{ media | img_url: 'master' }}"
                                                                 alt="{{ media.preview_image.alt | escape }}"
                                                                 title="{{ media.preview_image.alt | escape }}"
-                                                                sizes="auto"
+                                                                sizes="(min-width: 2000px) 1500px, (min-width: 1200px) 1200px, (min-width: 768px) calc((100vw - 30px) / 2), calc(100vw - 20px)"
+                                                                width="{{ media.width }}"
+                                                                height="{{ media.height }}"
                                                                 loading="lazy"
                                                                 data-sizes="auto"
                                                                 data-main-image
