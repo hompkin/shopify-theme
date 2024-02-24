@@ -104,7 +104,7 @@
       ],
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 0,
+        "padding_full_width": 35,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
         "mg_top_mobile": 0,
@@ -331,7 +331,7 @@
       ],
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 0,
+        "padding_full_width": 35,
         "disable_padding_content": false,
         "mg_minus_desktop": 0,
         "block_layout": "grid",
@@ -782,7 +782,7 @@
         "view_all_fs": 16,
         "view_all_align": "right",
         "font_weight_view_all": "400",
-        "mg_bottom_view": 30,
+        "mg_bottom_view": 24,
         "enable_border_view_all": true,
         "link_view_all": "",
         "color_view_all": "{{ shop.brand.colors.secondary[0].background }}",
