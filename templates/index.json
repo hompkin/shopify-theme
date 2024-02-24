@@ -614,7 +614,7 @@
             "mg_top_des": 0,
             "enable_des_hover": true,
             "button": "Shop Now",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/bathtub",
             "fontsize_btn": 18,
             "button_width": 190,
             "color_button": "#ffffff",
