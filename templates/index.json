@@ -975,6 +975,7 @@
         "ba735dc4-4f1a-468b-ac38-735f6227a869",
         "c3ba1c65-7e9d-41ce-8d78-4dba332b787e"
       ],
+      "disabled": true,
       "settings": {
         "container": "fullwidth",
         "padding_full_width": 35,
