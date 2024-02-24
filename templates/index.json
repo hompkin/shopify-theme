@@ -1483,7 +1483,7 @@
     "16575923090614cdb0": {
       "type": "featured-blog",
       "settings": {
-        "container": "fullwidth",
+        "container": "container",
         "padding_full_width": 35,
         "mg_minus_desktop": 0,
         "mg_top_desktop": 30,
@@ -1522,7 +1522,7 @@
         "blog_results_per_row": "3",
         "item_distance": 20,
         "post_limit": 3,
-        "limit_content_des": 16,
+        "limit_content_des": 18,
         "text_by": "by",
         "text_on": "on",
         "blog_show_author": false,
