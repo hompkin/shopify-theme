@@ -266,7 +266,8 @@
     .section-block-{{section.id}} .halo-item:hover .wrapper-image {transform: translateY(-10px);}
     {%- endif -%}
     }
-    @media (min-width: 768px) and (max-width: 1024px) {.section-block-{{section.id}} {padding-top: {{ section.settings.mg_top_tablet | append: 'px' }};padding-bottom: {{ section.settings.mg_bottom_tablet | append: 'px' }}}}
+
+    @media (min-width: 768px) and (max-width: 1024px) {.section-block-{{section.id}} {padding-left: {{ section.settings.padding_full_width | append: 'px' }};padding-right: {{ section.settings.padding_full_width | append: 'px' }}; padding-top: {{ section.settings.mg_top_tablet | append: 'px' }};padding-bottom: {{ section.settings.mg_bottom_tablet | append: 'px' }}}}
     @media (min-width: 768px) and (max-width: 991px) {.section-block-{{section.id}} .brands-slider .md-column-3:not(.slick-slider) .halo-item:nth-child(n + 4) {display: none}}
     @media (min-width: 992px) and (max-width: 1024px) {
         .section-block-{{section.id}} .brands-slider .md-column-3:not(.slick-slider) .halo-item {width: 25%}
