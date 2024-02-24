@@ -742,6 +742,9 @@
         "16342924847ce35dfd-1",
         "16342924847ce35dfd-2"
       ],
+      "custom_css": [
+        "@media (max-width: 1024px) {.container-full {padding-left: 10px; padding-right: 10px; }}"
+      ],
       "settings": {
         "container": "fullwidth",
         "padding_full_width": 50,
