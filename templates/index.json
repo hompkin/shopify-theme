@@ -634,9 +634,10 @@
           "type": "image",
           "settings": {
             "enable_image": true,
-            "title_align": "left",
+            "image": "shopify:\/\/shop_images\/sofa_in_living_room.png",
+            "title_align": "center",
             "enable_absolute": true,
-            "align_items": "bottom",
+            "align_items": "center",
             "align_items_spacing_top_bottom_position": 0,
             "align_items_spacing_top_bottom_position_mb": 0,
             "bg_color_content": "",
