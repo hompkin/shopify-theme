@@ -1262,7 +1262,7 @@
         "grid_gap": 30,
         "enable_hide_portion": true,
         "slide_ins": "centermode",
-        "display_arrow": false,
+        "display_arrow": true,
         "icon_for_image": "<svg height=\"512px\" style=\"enable-background:new 0 0 512 512;\" version=\"1.1\" viewbox=\"0 0 512 512\" width=\"50px\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xml:space=\"preserve\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><g id=\"_x37_22-_add__x2C__add_more__x2C__plus__x2C_\"><g><line style=\"fill:#fff;stroke:#fff;stroke-width:13.4167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;\" x1=\"256.486\" x2=\"256.486\" y1=\"26.814\" y2=\"486.139\"><\/line><line style=\"fill:#fff;stroke:#fff;stroke-width:13.4167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;\" x1=\"486.238\" x2=\"26.711\" y1=\"256.477\" y2=\"256.477\"><\/line><\/g><\/g><g id=\"Layer_1\"><\/g><\/svg>",
         "icon_style": "style_1",
         "effects_bg": "#232323",
