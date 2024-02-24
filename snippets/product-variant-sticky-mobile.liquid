@@ -77,7 +77,7 @@
                                             ></span>
                                             {% if swatch_type == 'variant_image' and variant.image %}
                                                 <span class="expand">
-                                                    <img srcset="{{ variant.image.src | product_img_url: '75x'}}" src="{{ variant.image.src | product_img_url: '75x'}}" sizes="auto" loading="lazy">
+                                                    <img srcset="{{ variant.image.src | product_img_url: '75x'}}" src="{{ variant.image.src | product_img_url: '75x'}}" sizes="75px" loading="lazy">
                                                 </span>
                                             {% endif %}
                                         </label>

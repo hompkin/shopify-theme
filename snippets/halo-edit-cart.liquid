@@ -22,7 +22,7 @@
             <a class="product-edit-image card-media--adapt" href="{{ product.url | within: collection }}"
                     style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;"
             >
-                <img srcset="{{ image | img_url: '270x' }}" src="{{ image | img_url: '270x' }}" alt="{{ product.title | escape }}" sizes="auto" loading="lazy">
+                <img srcset="{{ image | img_url: '270x' }}" src="{{ image | img_url: '270x' }}" alt="{{ product.title | escape }}" sizes="270px" loading="lazy">
             </a>
             <a href="javascript:void(0)" class="product-edit-remove" data-edit-cart-remove>
                 {% render 'icon-close' %}

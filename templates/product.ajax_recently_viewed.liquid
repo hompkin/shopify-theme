@@ -4,9 +4,9 @@
   <a class="first-info" href="{{ product.url | within: collection }}" data-mobile-click>
         {%- if product.featured_media -%}
             {% render 'icon-external-link' %}
-            <img srcset="{{ product.featured_media | img_url: 'master' }}" src="{{ product.featured_media | img_url: 'master' }}" alt="{{ product.featured_media.alt }}" loading="lazy" class="motion-reduce hidden-mobile" sizes="auto"/>
+            <img srcset="{{ product.featured_media | img_url: 'master' }}" src="{{ product.featured_media | img_url: 'master' }}" alt="{{ product.featured_media.alt }}" loading="lazy" class="motion-reduce hidden-mobile" sizes="100px"/>
             <a class="hidden-desktop" href="{{ product.url | within: collection }}">
-              <img srcset="{{ product.featured_media | img_url: 'master' }}" src="{{ product.featured_media | img_url: 'master' }}" alt="{{ product.featured_media.alt }}" loading="lazy" class="motion-reduce" sizes="auto"/>
+              <img srcset="{{ product.featured_media | img_url: 'master' }}" src="{{ product.featured_media | img_url: 'master' }}" alt="{{ product.featured_media.alt }}" loading="lazy" class="motion-reduce" sizes="100px"/>
             </a>
         {%- else -%}
           {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}

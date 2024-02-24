@@ -519,7 +519,9 @@
                                                                 {% if settings.enable_lazyload and forloop.index > 1 %}data-{% endif %}srcset="{{ media.preview_image | img_url: 'master' }}"
                                                                 {% unless settings.enable_lazyload and forloop.index > 1 %}src="{{ media | img_url: 'master' }}"{% endunless %}
                                                                 alt="{{ media.preview_image.alt | escape }}"
-                                                                sizes="auto"
+                                                                sizes="(min-width: 2000px) 1500px, (min-width: 1200px) 1200px, (min-width: 768px) calc((100vw - 30px) / 2), calc(100vw - 20px)"
+                                                                width="{{ media.width }}"
+                                                                height="{{ media.height }}"
                                                                 loading="lazy"
                                                                 data-sizes="auto"
                                                                 data-main-image

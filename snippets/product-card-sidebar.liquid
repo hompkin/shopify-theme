@@ -31,7 +31,7 @@
                     {%- else -%}
                         {% assign image = product_card_product.images[0].src %}
                     {%- endif -%}
-                    <img srcset="{{ image | img_url: '95x' }}" src="{{ image | img_url: '95x' }}" sizes="auto" alt="{{ image.alt | escape }}" loading="lazy" class="motion-reduce">
+                    <img srcset="{{ image | img_url: '95x' }}" src="{{ image | img_url: '95x' }}" sizes="95px" alt="{{ image.alt | escape }}" loading="lazy" class="motion-reduce">
                 {%- else -%}
                     {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
                     {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
