@@ -186,7 +186,7 @@
 
 /* Effect */
         {%- if section.settings.container == 'fullwidth' -%}
-        .section-block-{{section.id}} .container-full {padding-left: {{ section.settings.padding_full_width | append: 'px' }};padding-right: {{ section.settings.padding_full_width | append: 'px' }}}
+        .section-block-{{section.id}} .container-full {padding-left: var(--item-distance-style);padding-right: var(--item-distance-style);}
     {%- endif -%}
     .brand-layout--slider .wrapper-content.animate--slide-in { 
         animation: var(--animation-slide-in);   
