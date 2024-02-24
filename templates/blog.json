@@ -105,7 +105,7 @@
         "sidebar_heading_font_size": 13,
         "sidebar_heading_font_weight": "900",
         "sidebar_heading_text_transform": "uppercase",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "portrait_aspect_ratio": 70,
         "limit": 8,
         "item_per_row": "3",
