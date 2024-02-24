@@ -743,11 +743,12 @@
         "16342924847ce35dfd-2"
       ],
       "custom_css": [
+        ".container-full {padding-left: 50px; padding-right: 50px; }",
         "@media (max-width: 1024px) {.container-full {padding-left: 10px; padding-right: 10px; }}"
       ],
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 50,
+        "padding_full_width": 0,
         "disable_padding_content": true,
         "mg_minus_desktop": 0,
         "block_layout": "grid",
