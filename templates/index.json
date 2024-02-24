@@ -784,7 +784,7 @@
         "mg_bottom_view": 30,
         "enable_border_view_all": true,
         "link_view_all": "",
-        "color_view_all": "#2a6876",
+        "color_view_all": "{{ shop.brand.colors.secondary[0].background }}",
         "display_spotlight_button": false,
         "spotlight_button_text": "",
         "spotlight_button_link": "",
@@ -805,7 +805,7 @@
         "shadow_spread": 0,
         "shadow_color": "transparent",
         "shadow_inset": "no",
-        "enable_plus_icon": true,
+        "enable_plus_icon": false,
         "color_plus_icon": "#ffffff",
         "enable_content_border": false,
         "content_border_color": "#e2e2e2"
