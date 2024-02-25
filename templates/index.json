@@ -306,7 +306,7 @@
             "margin_bottom_des": 35,
             "color_des": "#FFFFFF",
             "content_width": 800,
-            "align": "center",
+            "align": "left",
             "enable_content_border": false,
             "content_border_color": "#FFFFFF",
             "video_link": "",
