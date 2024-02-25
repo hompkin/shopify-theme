@@ -216,7 +216,7 @@
         "dots_border_color": "#707979",
         "dots_active_color": "rgba(0,0,0,0)",
         "dots_active_border_color": "#505656",
-        "dots_direction": "bottom",
+        "dots_direction": "left",
         "dots_shape": "disc",
         "position_slick_dots": "34px",
         "dots_opacity": false,
