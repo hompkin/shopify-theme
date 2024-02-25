@@ -211,7 +211,7 @@
         "slideshow_background_image": "shopify:\/\/shop_images\/banner_background.png",
         "autoplay": false,
         "slideshow_speed": "5000",
-        "slideshow_transition": "true",
+        "slideshow_transition": "false",
         "dots": "true",
         "dots_color": "#707979",
         "dots_border_color": "#707979",
