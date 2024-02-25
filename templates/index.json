@@ -281,7 +281,7 @@
             "divider_position_from_center": 0,
             "small_banner_bg_color": "",
             "mg_bottom_icon": 25,
-            "image_behavior": "zoom-in",
+            "image_behavior": "ambient",
             "sub_title": "",
             "letter_spacing_sub_title": "",
             "font_size_sub_title": 14,
