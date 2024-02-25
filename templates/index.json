@@ -208,6 +208,7 @@
         "mg_bottom_mobile": 10,
         "slideshow_background": "",
         "slideshow_background_gradient": "",
+        "slideshow_background_image": "shopify:\/\/shop_images\/banner_background.png",
         "autoplay": false,
         "slideshow_speed": "5000",
         "slideshow_transition": "true",
