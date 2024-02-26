@@ -323,8 +323,8 @@
             "button_background": "#232323",
             "button_background_gradient": "",
             "button_color_hover": "#ffffff",
-            "button_border_hover": "#232323",
-            "button_background_hover": "#232323",
+            "button_border_hover": "#4d4a46",
+            "button_background_hover": "#4d4a46",
             "button_background_gradient_hover": "",
             "btn_2_text": "",
             "link_btn_2": "",
@@ -334,8 +334,8 @@
             "button_2_background": "#232323",
             "button_2_background_gradient": "",
             "button_2_color_hover": "#ffffff",
-            "button_2_border_hover": "#232323",
-            "button_2_background_hover": "#232323",
+            "button_2_border_hover": "#4d4a46",
+            "button_2_background_hover": "#4d4a46",
             "button_2_background_gradient_hover": "",
             "button_2_spacing_top": 10
           }
