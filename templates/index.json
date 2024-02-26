@@ -435,7 +435,7 @@
             "collection": "",
             "image": "shopify:\/\/shop_images\/WeChata7f3dd8c546671e1c82cd719db958b19.jpg",
             "content_align": "center",
-            "title": "TODO",
+            "title": "TODO Bathtub",
             "color_title": "#e8e8e8",
             "fontsize_title": 20,
             "color_des": "#e8e8e8",
@@ -461,7 +461,7 @@
         "featured_collection_Mqt3wa"
       ],
       "custom_css": [
-        "@media (min-width: 1024px) {.featured-collection-content {background-color: #000000aa;}}"
+        "@media (min-width: 1024px) {.featured-collection-content {background-color: #000000aa; }}"
       ],
       "settings": {
         "container": "fullwidth",
