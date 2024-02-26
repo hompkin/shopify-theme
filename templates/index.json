@@ -376,6 +376,114 @@
         "enable_autoplay": true
       }
     },
+    "featured_collection_Akrbr7": {
+      "type": "featured-collection",
+      "blocks": {
+        "featured_collection_Vw8kYb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "content_align": "center",
+            "title": "",
+            "color_title": "#232323",
+            "fontsize_title": 20,
+            "color_des": "#3c3c3c",
+            "color_hover_des": "#4dac8b",
+            "fontsize_des": 14,
+            "color_button": "#fff",
+            "border_color_button": "#4d4a46",
+            "bg_color_button": "#4d4a46",
+            "bg_color_gradient_button": "",
+            "color_button_hover": "#fff",
+            "border_color_button_hover": "#4d4a46",
+            "bg_color_button_hover": "#4d4a46",
+            "bg_color_gradient_button_hover": "",
+            "btn_icon": "",
+            "btn_text": "",
+            "link": ""
+          }
+        },
+        "featured_collection_YrVNdF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "content_align": "center",
+            "title": "",
+            "color_title": "#232323",
+            "fontsize_title": 20,
+            "color_des": "#3c3c3c",
+            "color_hover_des": "#4dac8b",
+            "fontsize_des": 14,
+            "color_button": "#fff",
+            "border_color_button": "#4d4a46",
+            "bg_color_button": "#4d4a46",
+            "bg_color_gradient_button": "",
+            "color_button_hover": "#fff",
+            "border_color_button_hover": "#4d4a46",
+            "bg_color_button_hover": "#4d4a46",
+            "bg_color_gradient_button_hover": "",
+            "btn_icon": "",
+            "btn_text": "",
+            "link": ""
+          }
+        },
+        "featured_collection_Mqt3wa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "content_align": "center",
+            "title": "",
+            "color_title": "#232323",
+            "fontsize_title": 20,
+            "color_des": "#3c3c3c",
+            "color_hover_des": "#4dac8b",
+            "fontsize_des": 14,
+            "color_button": "#fff",
+            "border_color_button": "#4d4a46",
+            "bg_color_button": "#4d4a46",
+            "bg_color_gradient_button": "",
+            "color_button_hover": "#fff",
+            "border_color_button_hover": "#4d4a46",
+            "bg_color_button_hover": "#4d4a46",
+            "bg_color_gradient_button_hover": "",
+            "btn_icon": "",
+            "btn_text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_Vw8kYb",
+        "featured_collection_YrVNdF",
+        "featured_collection_Mqt3wa"
+      ],
+      "settings": {
+        "container": "fullwidth",
+        "padding_full_width": 50,
+        "column": "3",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 10,
+        "mg_bottom_tablet": 10,
+        "mg_bottom_mobile": 10,
+        "featured_collection_bg": "#f5f5f5",
+        "featured_collection_bg_gradient": "",
+        "featured_collection_block_title": "Top Categories",
+        "enable_border_title": false,
+        "color_title": "#202020",
+        "fontsize_title": 40,
+        "fontsize_title_mb": 22,
+        "featured_collection_block_btn_text": "",
+        "featured_collection_block_btn_link": "",
+        "btn_color": "#3c3c3c",
+        "fontsize_btn": 16,
+        "btn_icon": "",
+        "btn_icon_color": "#eb492f",
+        "title_align": "center",
+        "featured_collection_block_swipe_on_mobile": false
+      }
+    },
     "1644481465cc6ad9ac": {
       "type": "spotlight-block",
       "blocks": {
@@ -1786,6 +1894,7 @@
   "order": [
     "16426738253c0b77ec",
     "image_banner_gPEWUR",
+    "featured_collection_Akrbr7",
     "1644481465cc6ad9ac",
     "16571864460cd69c62",
     "165726250754dae887",
