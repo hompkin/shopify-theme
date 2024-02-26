@@ -462,7 +462,7 @@
       ],
       "custom_css": [
         "@media (min-width: 1024px) {.featured-collection-content {background-color: #00000099; } .featured-collection-content .title {margin-top: 40px; }}",
-        "@media (min-width: 1770px) {.featured-collection-content .title {margin-top: 80px; }}"
+        "@media (min-width: 1540px) {.featured-collection-content .title {margin-top: 80px; }}"
       ],
       "settings": {
         "container": "fullwidth",
