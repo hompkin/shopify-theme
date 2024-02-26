@@ -460,6 +460,9 @@
         "featured_collection_YrVNdF",
         "featured_collection_Mqt3wa"
       ],
+      "custom_css": [
+        ".featured-collection-content {background-color:#000000aa;}"
+      ],
       "settings": {
         "container": "fullwidth",
         "padding_full_width": 50,
