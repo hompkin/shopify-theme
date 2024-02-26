@@ -611,7 +611,7 @@
     "image_comparison_aBYbMG": {
       "type": "image-comparison",
       "settings": {
-        "container": "container",
+        "container": "1170",
         "padding_full_width": 0,
         "mg_top_desktop": 50,
         "mg_top_tablet": 50,
@@ -645,7 +645,7 @@
         "section_description_font_weight": "500",
         "section_description_color": "#191919",
         "section_description_margin_top": 25,
-        "section_description_max_width": 160,
+        "section_description_max_width": 580,
         "section_description_letter_spacing": "0.02em",
         "button_type": "button",
         "button_link": "",
