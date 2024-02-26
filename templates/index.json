@@ -461,7 +461,7 @@
         "featured_collection_Mqt3wa"
       ],
       "custom_css": [
-        "@media (min-width: 1024px) {.featured-collection-content {background-color: #00000088; }}"
+        "@media (min-width: 1024px) {.featured-collection-content {background-color: #00000099; }}"
       ],
       "settings": {
         "container": "fullwidth",
