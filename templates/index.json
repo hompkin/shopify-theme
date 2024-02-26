@@ -705,6 +705,7 @@
         "7f80f897-e16c-4551-8c19-2420147acf4d",
         "cdf92658-b49e-4246-8462-507fb211ed39"
       ],
+      "disabled": true,
       "custom_css": [
         ".halo-block-header .title {font-weight: 600;}",
         "@media (max-width: 1024px) {.container-full {padding-left: 10px; padding-right: 10px; }}"
@@ -950,6 +951,7 @@
         "16342924847ce35dfd-1",
         "16342924847ce35dfd-2"
       ],
+      "disabled": true,
       "custom_css": [
         ".container-full {padding-left: 50px; padding-right: 50px;}",
         "@media (max-width: 1024px) {.container-full {padding-left: 10px; padding-right: 10px; }}",
@@ -1028,6 +1030,7 @@
     },
     "16418746910626c268": {
       "type": "product-block",
+      "disabled": true,
       "custom_css": [
         ".container-full .title .text {padding-left: 0px !important; padding-right: 0px !important;}"
       ],
