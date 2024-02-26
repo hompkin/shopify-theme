@@ -442,12 +442,12 @@
             "color_hover_des": "{{ shop.brand.colors.secondary[0].background }}",
             "fontsize_des": 14,
             "color_button": "#fff",
-            "border_color_button": "#4d4a46",
-            "bg_color_button": "#4d4a46",
+            "border_color_button": "#232323",
+            "bg_color_button": "#232323",
             "bg_color_gradient_button": "",
             "color_button_hover": "#fff",
-            "border_color_button_hover": "{{ shop.brand.colors.secondary[1].background }}",
-            "bg_color_button_hover": "{{ shop.brand.colors.secondary[1].background }}",
+            "border_color_button_hover": "#4d4a46",
+            "bg_color_button_hover": "#4d4a46",
             "bg_color_gradient_button_hover": "",
             "btn_icon": "",
             "btn_text": "Show Now",
@@ -461,7 +461,7 @@
         "featured_collection_Mqt3wa"
       ],
       "custom_css": [
-        "@media (min-width: 1024px) {.featured-collection-content {background-color: #000000aa; }}"
+        "@media (min-width: 1024px) {.featured-collection-content {background-color: #00000088; }}"
       ],
       "settings": {
         "container": "fullwidth",
