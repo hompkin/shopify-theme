@@ -422,7 +422,7 @@
             "margin_bottom_des": 35,
             "color_des": "#232323",
             "content_width": 625,
-            "align": "right",
+            "align": "left",
             "enable_content_border": false,
             "content_border_color": "#232323",
             "video_link": "",
