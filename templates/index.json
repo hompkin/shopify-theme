@@ -611,7 +611,7 @@
     "image_comparison_aBYbMG": {
       "type": "image-comparison",
       "settings": {
-        "container": "1770",
+        "container": "fullwidth",
         "padding_full_width": 0,
         "mg_top_desktop": 50,
         "mg_top_tablet": 50,
