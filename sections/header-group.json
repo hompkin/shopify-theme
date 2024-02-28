@@ -15,24 +15,24 @@
             "btn_bg_color_gradient": ""
           }
         },
-        "countdown_tQtAT8": {
-          "type": "countdown",
+        "announcement_9ndYyj": {
+          "type": "announcement",
           "settings": {
-            "top_message_text": "Limited-time Offer!",
-            "annou_countdown": "Dec 31, 2022 18:00:00",
-            "color_countdown_text": "#06142e",
-            "border_color_countdown": "#f7f8fa",
-            "bg_color_countdown": "#f7f8fa"
+            "text": "<p>ALL FREE SHIPPING<\/p>",
+            "btn_color": "#f84248",
+            "btn_border_color": "#ffffff",
+            "btn_bg_color": "#ffffff",
+            "btn_bg_color_gradient": ""
           }
         }
       },
       "block_order": [
         "announcement_XezgPE",
-        "countdown_tQtAT8"
+        "announcement_9ndYyj"
       ],
       "settings": {
         "enable_announcement": true,
-        "layout": "slider",
+        "layout": "scroll",
         "enable_close": false,
         "color_text": "#232323",
         "bg_color_text": "#e8e8e8",
