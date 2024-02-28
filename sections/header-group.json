@@ -24,22 +24,11 @@
             "btn_bg_color": "#ffffff",
             "btn_bg_color_gradient": ""
           }
-        },
-        "announcement_qhnpE9": {
-          "type": "announcement",
-          "settings": {
-            "text": "<p><\/p>",
-            "btn_color": "#f84248",
-            "btn_border_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_bg_color_gradient": ""
-          }
         }
       },
       "block_order": [
         "announcement_XezgPE",
-        "announcement_9ndYyj",
-        "announcement_qhnpE9"
+        "announcement_9ndYyj"
       ],
       "settings": {
         "enable_announcement": true,
