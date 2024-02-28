@@ -8,7 +8,7 @@
         "announcement_XezgPE": {
           "type": "announcement",
           "settings": {
-            "text": "<p>UP TO 30% OFF<\/p>",
+            "text": "<p>Up To 30% OFF<\/p>",
             "btn_color": "#232323",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -18,7 +18,7 @@
         "announcement_9ndYyj": {
           "type": "announcement",
           "settings": {
-            "text": "<p>ALL FREE SHIPPING<\/p>",
+            "text": "<p>All Free Shipping<\/p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
