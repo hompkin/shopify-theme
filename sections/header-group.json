@@ -2,6 +2,39 @@
   "type": "header",
   "name": "Header Group",
   "sections": {
+    "announcement_bar_hMhKRY": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_XezgPE": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>UP TO 30% OFF &amp; ALL FREE SHIPPING<\/p>",
+            "btn_color": "#232323",
+            "btn_border_color": "#ffffff",
+            "btn_bg_color": "#ffffff",
+            "btn_bg_color_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_XezgPE"
+      ],
+      "settings": {
+        "enable_announcement": true,
+        "layout": "slider",
+        "enable_close": false,
+        "color_text": "#232323",
+        "bg_color_text": "#e8e8e8",
+        "bg_color_text_gradient": "",
+        "font_size_text": 13,
+        "font_style_text": "normal",
+        "font_weight_text": "500",
+        "arrow_active": false,
+        "content_max_width": 38,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "52cc81e8-30d0-4f7b-b3a2-c97c000cee1b": {
       "type": "header-navigation-hamburger",
       "blocks": {
@@ -274,6 +307,7 @@
     }
   },
   "order": [
+    "announcement_bar_hMhKRY",
     "52cc81e8-30d0-4f7b-b3a2-c97c000cee1b",
     "header-mobile"
   ]
