@@ -84,7 +84,7 @@
         "small_img_pHxLPm"
       ],
       "custom_css": [
-        ".halo-banner-wrapper .flex-box__banner {padding-bottom:40px;}"
+        ".halo-banner-wrapper .flex-box__banner {align-items: start; padding-bottom: 40px;}"
       ],
       "settings": {
         "id_section": "",
