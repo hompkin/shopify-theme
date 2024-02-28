@@ -734,14 +734,6 @@
             "link": ""
           }
         },
-        "54434343-3665-4537-b87a-fa87ae311777": {
-          "type": "instagram",
-          "settings": {
-            "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_5.png",
-            "link": ""
-          }
-        },
         "instagram_7N4ahE": {
           "type": "instagram",
           "settings": {
@@ -757,6 +749,14 @@
             "image": "shopify:\/\/shop_images\/white_bathtub_7.png",
             "link": ""
           }
+        },
+        "54434343-3665-4537-b87a-fa87ae311777": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "image": "shopify:\/\/shop_images\/white_bathtub_5.png",
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -767,9 +767,9 @@
         "3cb3448c-a7c7-4a54-b15b-e7088ce5a1ca",
         "ee2004e9-0eca-4b00-ac3f-64800895b7fa",
         "09e0a626-a940-40a1-8372-7ba56ba990ec",
-        "54434343-3665-4537-b87a-fa87ae311777",
         "instagram_7N4ahE",
-        "instagram_nwXQdJ"
+        "instagram_nwXQdJ",
+        "54434343-3665-4537-b87a-fa87ae311777"
       ],
       "settings": {
         "container": "fullwidth",
