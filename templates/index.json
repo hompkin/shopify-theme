@@ -84,7 +84,7 @@
         "small_img_pHxLPm"
       ],
       "custom_css": [
-
+        ".halo-banner-wrapper .flex-box__banner {margin-bottom:20px; }"
       ],
       "settings": {
         "id_section": "",
