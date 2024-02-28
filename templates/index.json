@@ -84,7 +84,7 @@
         "small_img_pHxLPm"
       ],
       "custom_css": [
-        ".flex-box__banner .content-box {padding: 5px 15px;}"
+        ".flex-box__banner .content-box {padding: 55px 15px;}"
       ],
       "settings": {
         "id_section": "",
