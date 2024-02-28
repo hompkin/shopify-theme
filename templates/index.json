@@ -678,11 +678,27 @@
     "165750374504bb14a3": {
       "type": "instagram",
       "blocks": {
+        "instagram_GxyAEJ": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "image": "shopify:\/\/shop_images\/white_bathtub_6.png",
+            "link": ""
+          }
+        },
+        "08c0c570-4936-475c-ba58-d35acf593e0c": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "image": "shopify:\/\/shop_images\/white_bathtub_1.png",
+            "link": ""
+          }
+        },
         "3cb3448c-a7c7-4a54-b15b-e7088ce5a1ca": {
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/boucle_sofa_in_living_room_1_0f98f3c5-7e38-485b-9365-0a9d634f3263.png",
+            "image": "shopify:\/\/shop_images\/white_bathtub_2.png",
             "link": ""
           }
         },
@@ -694,19 +710,11 @@
             "link": ""
           }
         },
-        "08c0c570-4936-475c-ba58-d35acf593e0c": {
-          "type": "instagram",
-          "settings": {
-            "enable": true,
-            "image": "shopify:\/\/shop_images\/wooden_armchair_in_living_room_1.png",
-            "link": ""
-          }
-        },
         "53d83e6b-5ad3-40b8-9bc3-8e60fd7f2ad2": {
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/boucle_stool_in_living_room_1.png",
+            "image": "shopify:\/\/shop_images\/white_bathtub_3.png",
             "link": ""
           }
         },
@@ -714,7 +722,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/boucle_sofa_in_living_room_2.png",
+            "image": "shopify:\/\/shop_images\/white_bathtub_4.png",
             "link": ""
           }
         },
@@ -722,15 +730,16 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/sofa_in_living_room_1.png",
+            "image": "shopify:\/\/shop_images\/white_bathtub_5.png",
             "link": ""
           }
         }
       },
       "block_order": [
+        "instagram_GxyAEJ",
+        "08c0c570-4936-475c-ba58-d35acf593e0c",
         "3cb3448c-a7c7-4a54-b15b-e7088ce5a1ca",
         "ee2004e9-0eca-4b00-ac3f-64800895b7fa",
-        "08c0c570-4936-475c-ba58-d35acf593e0c",
         "53d83e6b-5ad3-40b8-9bc3-8e60fd7f2ad2",
         "09e0a626-a940-40a1-8372-7ba56ba990ec",
         "54434343-3665-4537-b87a-fa87ae311777"
