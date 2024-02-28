@@ -41,7 +41,7 @@
         "font_style_text": "normal",
         "font_weight_text": "500",
         "arrow_active": false,
-        "content_max_width": 100,
+        "content_max_width": 10,
         "padding_top": 4,
         "padding_bottom": 4
       }
