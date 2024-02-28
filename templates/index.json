@@ -800,7 +800,7 @@
         "mg_top_button": 30,
         "embed_code": "",
         "type_instagram_by_gallery": "popup_image",
-        "images_per_row": "3",
+        "images_per_row": "4",
         "instagram_item_limit": 5,
         "grid_gap": 15,
         "enable_hide_portion": true,
