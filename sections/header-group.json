@@ -32,7 +32,7 @@
       ],
       "settings": {
         "enable_announcement": true,
-        "layout": "scroll",
+        "layout": "slider",
         "enable_close": false,
         "color_text": "#232323",
         "bg_color_text": "#e8e8e8",
