@@ -83,6 +83,9 @@
       "block_order": [
         "small_img_pHxLPm"
       ],
+      "custom_css": [
+        ".halo-banner-wrapper .flex-box__banner .content-box {padding: 15px 15px;}"
+      ],
       "settings": {
         "id_section": "",
         "container": "fullwidth",
@@ -106,7 +109,7 @@
         "style_bg": "none",
         "bg_color": "",
         "bg_color_gradient": "",
-        "bg_image": "shopify:\/\/shop_images\/Blue_Navy_Minimalist_Furniture_Banner_Landscape_3.png",
+        "bg_image": "shopify:\/\/shop_images\/Blue_Navy_Minimalist_Furniture_Banner_Landscape_4.png",
         "display_type": "slide",
         "list_gap": 0,
         "enable_arrows": false,
