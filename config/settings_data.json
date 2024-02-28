@@ -183,6 +183,7 @@
     "badge_postion": "left",
     "postion_top_badge": 6,
     "postion_left_right_badge": 6,
+    "show_new_badge": false,
     "new_badge_type": "auto",
     "new_badge_time": 42,
     "show_sale_badge": true,
