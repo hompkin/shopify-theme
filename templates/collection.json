@@ -34,14 +34,14 @@
             "show_title": false,
             "page_title_alignment": "left",
             "page_title_text_transform": "none",
-            "fontsize_title": 36,
+            "fontsize_title": 46,
             "margin_top_title": 30,
             "title_color": "#232323",
             "show_collection_description": true,
             "desc_alignment": "left",
             "desc_pos": "top",
-            "fontsize_des": 15,
-            "margin_top_des": 12,
+            "fontsize_des": 18,
+            "margin_top_des": 16,
             "margin_bottom": 24,
             "des_color": "#3c3c3c"
           }
