@@ -624,7 +624,7 @@
         "color_view_all_icon": "#eb492f",
         "view_all_pos": "right_title",
         "blog_posts": "tips-ideas",
-        "blog_results_per_row": "3",
+        "blog_results_per_row": "2",
         "item_distance": 20,
         "post_limit": 3,
         "limit_content_des": 18,
