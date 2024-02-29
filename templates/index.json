@@ -269,7 +269,7 @@
             "image": "shopify:\/\/shop_images\/WeChat1861b7bcfb70a6d3e24e205c55954285.jpg",
             "content_align": "center",
             "title": "Transparent Resin Bathtub",
-            "color_title": "#e8e8e8",
+            "color_title": "#232323",
             "fontsize_title": 18,
             "color_des": "#e8e8e8",
             "color_hover_des": "{{ shop.brand.colors.secondary[0].background }}",
@@ -294,7 +294,7 @@
             "image": "shopify:\/\/shop_images\/WeChata7f3dd8c546671e1c82cd719db958b19.jpg",
             "content_align": "center",
             "title": "TODO #1 Bathtub",
-            "color_title": "#e8e8e8",
+            "color_title": "#232323",
             "fontsize_title": 18,
             "color_des": "#e8e8e8",
             "color_hover_des": "{{ shop.brand.colors.secondary[0].background }}",
@@ -319,7 +319,7 @@
         "featured_collection_Mqt3wa"
       ],
       "custom_css": [
-        ".featured-collection-content {background-color: #e8e8e8; }",
+        ".featured-collection-content {background-color: #e8e8e8;}",
         "@media (min-width: 1024px) {.featured-collection-content {background-color: #00000099; } .featured-collection-content .title {margin-top: 40px; }}",
         "@media (min-width: 1540px) {.featured-collection-content .title {margin-top: 80px; }}",
         "ul.sub-collection.custom-text-style {display: none;}"
