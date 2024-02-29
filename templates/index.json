@@ -244,7 +244,7 @@
             "image": "shopify:\/\/shop_images\/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg",
             "content_align": "center",
             "title": "Janpanese Soaking Bathub",
-            "color_title": "#e8e8e8",
+            "color_title": "#232323",
             "fontsize_title": 18,
             "color_des": "#e8e8e8",
             "color_hover_des": "{{ shop.brand.colors.secondary[0].background }}",
