@@ -319,6 +319,7 @@
         "featured_collection_Mqt3wa"
       ],
       "custom_css": [
+        ".featured-collection-content {background-color: #e8e8e8; }",
         "@media (min-width: 1024px) {.featured-collection-content {background-color: #00000099; } .featured-collection-content .title {margin-top: 40px; }}",
         "@media (min-width: 1540px) {.featured-collection-content .title {margin-top: 80px; }}",
         "ul.sub-collection.custom-text-style {display: none;}"
