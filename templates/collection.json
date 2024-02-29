@@ -134,7 +134,7 @@
         "enable_sticky": false,
         "sidebar_layout": "layout_1",
         "sidebar_collapse_default": "expand",
-        "sidebar_type": "vertical",
+        "sidebar_type": "horizontal",
         "sidebar_position": "left",
         "sidebar_heading_font": "font_1",
         "sidebar_heading_font_size": 15,
