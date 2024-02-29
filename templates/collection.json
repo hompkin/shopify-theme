@@ -31,7 +31,7 @@
           "settings": {
             "show_image": true,
             "link": "",
-            "show_title": true,
+            "show_title": false,
             "page_title_alignment": "left",
             "page_title_text_transform": "none",
             "fontsize_title": 30,
