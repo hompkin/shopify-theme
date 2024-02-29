@@ -133,7 +133,7 @@
         "show_sidebar_collapse": true,
         "enable_sticky": false,
         "sidebar_layout": "layout_2",
-        "sidebar_collapse_default": "expand",
+        "sidebar_collapse_default": "close",
         "sidebar_type": "horizontal",
         "sidebar_position": "right",
         "sidebar_heading_font": "font_1",
