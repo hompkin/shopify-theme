@@ -29,7 +29,7 @@
         "8472dad8-3289-4746-8b7f-e6ebe3175dd5": {
           "type": "lookbook",
           "settings": {
-            "show_image": true,
+            "show_image": false,
             "link": "",
             "show_title": true,
             "page_title_alignment": "left",
