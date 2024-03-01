@@ -140,7 +140,7 @@ function refreshView(country_options, params, json) {
 
     deliveryTimeView.textContent = `: ${targetDeliveryTime}`;
   } else {
-    addressTextView.textContent = "";
+    addressTextView.textContent = " ";
     sureIcon.style.display="none";
     deliveryTimePrefixView.textContent = params.prefix_title_unknown;
     deliveryTimeView.textContent = params.XXX;
