@@ -21,8 +21,9 @@
                     endif
                 -%}
                 {%- if icon != blank or text != blank -%}
-                    <li class="list-item" style="--font-size: {{ font_size }}; --font-weight: {{ font_weight }}; --icon-size: {{ icon_size }}">
-                        <a {% if link == blank %} role="link" aria-disabled="true"{% else %} href="{{ link }}"{% endif %} {% if block.type == 'content' %}data-bar-{{block.type}}{% elsif block.type == 'action' %}{% if action_icon == 'cart' %}data-cart-sidebar{% elsif action_icon == 'search' %}data-search-mobile{% elsif action_icon == 'account' %}data-open-auth-sidebar{% endif %}{% endif %}><span class="icon">{{icon}}</span> <span class="text">{{text}}</span>
+
+                    <li class="list-item{% if action_icon == 'account' %}{% unless shop.customer_accounts_enabled %} customer_accounts_disable{% endunless %}{% endif %}" style="--font-size: {{ font_size }}; --font-weight: {{ font_weight }}; --icon-size: {{ icon_size }}">
+                        <a {% if link == blank %} role="link" aria-disabled="true"{% else %} href="{{ link }}"{% endif %} {% if block.type == 'content' %}data-bar-{{block.type}}{% elsif block.type == 'action' %}{% if action_icon == 'cart' %}{% if settings.show_quick_cart %}data-cart-sidebar{% else %}href="{{ routes.cart_url }}" class="list-item-cart"{% endif %}{% elsif action_icon == 'search' %}data-search-mobile{% elsif action_icon == 'account' %}data-open-auth-sidebar{% endif %}{% endif %}><span class="icon">{{icon}}</span> <span class="text">{{text}}</span>
                             {%- if action_icon == 'cart' -%}
                                 <div class="cart-count-bubble" style="--color-bubble: {{ section.settings.bg_color }}; --bg-bubble: {{ section.settings.color_icon }}">
                                     {%- if cart.item_count < 100 -%}
@@ -39,6 +40,8 @@
                             </div>
                         {% endif %}
                     </li>
+
+
                 {%- endif -%}
             {%- endfor -%}
         </ul>

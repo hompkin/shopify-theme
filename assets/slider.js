@@ -75,7 +75,7 @@ class ProductSliderComponent extends SliderComponent {
         const resizeObserver = new ResizeObserver(entries => this.initPages());
         resizeObserver.observe(this.slider);
 
-        this.slider.addEventListener('DOMSubtreeModified', () => {
+        const observerSubtree = new MutationObserver(() => {
             this.slider = this.querySelector('.slider');
             this.sliderItems = this.querySelectorAll('.slider__slide').length ? this.querySelectorAll('.slider__slide') : this.querySelectorAll('.slider div.product');
             this.slider.addEventListener('scroll', this.update.bind(this));
@@ -84,6 +84,11 @@ class ProductSliderComponent extends SliderComponent {
             this.dotButton.forEach((button) => {
                 button.addEventListener('click', this.onDotClick.bind(this));
             });
+        });
+        
+        observerSubtree.observe(this.slider, {
+            subtree: true,
+            childList: true,
         });
 
         this.slider.addEventListener('scroll', this.update.bind(this));
@@ -106,7 +111,7 @@ class BannerSliderComponent extends SliderComponent {
         const resizeObserver = new ResizeObserver(entries => this.initPages());
         resizeObserver.observe(this.slider);
 
-        this.slider.addEventListener('DOMSubtreeModified', () => {
+        const observerSubtree = new MutationObserver(() => {
             this.slider = this.querySelector('.slider');
             this.sliderItems = this.querySelectorAll('.slider__slide');
             this.slider.addEventListener('scroll', this.update.bind(this));
@@ -115,6 +120,11 @@ class BannerSliderComponent extends SliderComponent {
             this.dotButton.forEach((button) => {
                 button.addEventListener('click', this.onDotClick.bind(this));
             });
+        });
+        
+        observerSubtree.observe(this.slider, {
+            subtree: true,
+            childList: true,
         });
         
         this.slider.addEventListener('scroll', this.update.bind(this));

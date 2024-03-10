@@ -35,6 +35,7 @@
     assign show_quick_view_vendor = settings.show_quick_view_vendor
     assign show_quick_view_availability = settings.show_quick_view_availability
     assign show_quick_view_sku = settings.show_quick_view_sku
+    assign show_quick_view_barcode = settings.show_quick_view_barcode
     assign show_quick_view_product_type = settings.show_quick_view_product_type
     assign quick_view_picker_type = settings.quick_view_picker_type
     assign stock_level_display = settings.stock_level_display
@@ -293,15 +294,21 @@
                         -%}
                     {%- endif -%}
                     {%- if desc != blank -%}
-                        <div class="productView-desc halo-text-format" style="--color_short_desc: {{ color_short_desc }};--fontsize_short_desc: {{ fontsize_short_desc | append: 'px' }}">{{ desc | truncatewords: word_number_short_desc }}</div>
+                        <div class="productView-desc halo-text-format" style="--color_short_desc: {{ color_short_desc }};--fontsize_short_desc: {{ fontsize_short_desc | append: 'px' }}">{{ desc | strip_html | truncatewords: word_number_short_desc }}</div>
                     {%- endif -%}
                 {%- endif -%}
-                {%- if show_quick_view_vendor or show_quick_view_availability or show_quick_view_sku or show_quick_view_product_type -%}
+                {%- if show_quick_view_vendor or show_quick_view_availability or show_quick_view_sku or show_quick_view_barcode or show_quick_view_product_type -%}
                     <div class="productView-info">
                         {%- if show_quick_view_sku -%}
                             <div class="productView-info-item" data-sku {% unless current_variant.sku != blank %} style="display: none;"{% endunless %}>
                                 <span class="productView-info-name">{{ 'products.product.text.sku' | t }}</span>
                                 <span class="productView-info-value">{{ current_variant.sku }}</span>
+                            </div>
+                        {%- endif -%}
+                        {%- if show_quick_view_barcode -%}
+                            <div class="productView-info-item" data-barcode {% unless current_variant.barcode != blank %} style="display: none;"{% endunless %}>
+                                <span class="productView-info-name">{{ 'products.product.text.barcode' | t }}</span>
+                                <span class="productView-info-value">{{ current_variant.barcode }}</span>
                             </div>
                         {%- endif -%}
                         {%- if show_quick_view_vendor -%}

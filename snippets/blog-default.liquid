@@ -94,7 +94,7 @@
             </div>
         {%- endif -%}
         
-        <div class="halo-blog-content halo-grid-content{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="halo-blog-content halo-grid-content">
             {%- if show_sidebar and section.blocks.size > 0 -%}
                 {{ 'component-main-sidebar.css' | asset_url | stylesheet_tag }}
                 <div class="page-sidebar page-sidebar-{{ sidebar_position }} page-sidebar--vertical sidebar--{{ section.settings.sidebar_layout }}{% if enable_sticky %} has-sticky{% endif %}" id="halo-sidebar">
@@ -107,7 +107,7 @@
                             {{ 'sections.sidebar.title' | t }}
                         </span>
                     </div>
-                    <div class="halo-sidebar-wrapper custom-scrollbar">
+                    <div class="halo-sidebar-wrapper custom-scrollbar {% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                         {% render 'sidebar',
                             section: section,
                             show_collapse: show_collapse,
@@ -117,7 +117,7 @@
                 </div>
             {%- endif -%}
             {%- paginate blog.articles by limit -%}
-                <div class="page-content main-blog">
+                <div class="page-content main-blog {% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                     {% comment %} {%- if show_sidebar and section.blocks.size > 0 -%}
                         <div class="sidebar-toogle" data-sidebar>
                             {% render 'icon-sidebar' %}

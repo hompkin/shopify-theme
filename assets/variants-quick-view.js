@@ -122,6 +122,7 @@ class VariantQuickViewSelects extends HTMLElement {
         this.quantityInput = this.item.querySelector('input[name="quantity"]');
         this.inventoryProp = this.item.querySelector('[data-inventory]');
         this.skuProp = this.item.querySelector('[data-sku]');
+        this.barcodeProp = this.item.querySelector('[data-barcode]');
         this.notifyMe = this.item.querySelector('.productView-notifyMe');
         this.hotStock = this.item.querySelector('.productView-hotStock');
         const addButton = document.getElementById(`product-quick-view-form-${this.dataset.product}`)?.querySelector('[name="add"]');
@@ -297,6 +298,10 @@ class VariantQuickViewSelects extends HTMLElement {
             
             if(this.skuProp && this.currentVariant.sku){
                 this.skuProp.querySelector('.productView-info-value').textContent = this.currentVariant.sku;
+            }
+
+            if(this.barcodeProp && this.currentVariant.barcode){
+                this.barcodeProp.querySelector('.productView-info-value').textContent = this.currentVariant.barcode;
             }
 
             productForms.forEach((productForm) => {

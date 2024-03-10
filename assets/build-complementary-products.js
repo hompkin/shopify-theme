@@ -17,7 +17,7 @@ if (typeof complementaryProductsComponent === 'undefined')
                 let text = await res.text();
                     
                 const html = document.createElement('div');
-                text = text.replaceAll('variant-selects', 'div').replaceAll('variant-radios', 'div').replaceAll('product-tab', 'div').replaceAll('compare-color', 'div');
+                text = text.replaceAll('variant-selects', 'div').replaceAll('variant-radios', 'div').replaceAll('product-tab', 'div').replaceAll('compare-color', 'div').replaceAll('breadcrumb-component', 'div');
                 html.innerHTML = text;
                 
                 const recommendations = html.querySelector('[data-complementary-product]');

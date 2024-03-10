@@ -6,11 +6,11 @@
 		    color: var(--color-white);
 		    position: fixed;
 		    right: 1rem;
-		    bottom: 7rem;
+		    bottom: 3rem;
 		    transform: scale(.95);
 		    transform-origin: bottom right;
 		    z-index: 1000;
-		    max-width: 295px;
+		    max-width: 350px;
 		    background-color: var(--bg-black);
 		    overflow: hidden;
 		}
@@ -135,6 +135,15 @@
 		    font-weight: var(--font-weight-normal);
 		}
 
+		.admin-popup-content a {
+			color: #005bd3;
+			font-weight: 700;
+		}
+
+		.admin-popup-content a:hover {
+			text-decoration: underline;
+		}
+
 		.admin-popup-content .link{
 			display: block;
 			width: 100%;
@@ -163,6 +172,20 @@
 		    height: auto;
 		    opacity: 1;
     		transform: translateY(0);
+			max-height: 70vh;
+			overflow-y: auto;
+		}
+
+		.admin-popup-iframe.is-active .admin-popup-content::-webkit-scrollbar {
+			width: 7px;
+		}
+
+		.admin-popup-iframe.is-active .admin-popup-content::-webkit-scrollbar-track {
+			background: var(--bg-black);
+		}
+
+		.admin-popup-iframe.is-active .admin-popup-content::-webkit-scrollbar-thumb {
+			background: var(--color-white);
 		}
 
 		@media (prefers-reduced-motion: no-preference) {
@@ -179,9 +202,7 @@
 	</style>
     <div class="admin-popup-iframe">
         <button class="admin-popup-btn">
-        	<span class="text">
-        		View documentation
-        	</span>
+        	<span class="text">Dear Valued Customers!</span>
         	<span class="icon">
         		<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false" role="presentation">
         			<path d="M6.902 12h6.196c.751 0 1.172-.754.708-1.268l-3.098-3.432c-.36-.399-1.055-.399-1.416 0l-3.098 3.433c-.464.513-.043 1.267.708 1.267Z"></path>
@@ -189,9 +210,17 @@
         	</span>
         </button>
         <div class="admin-popup-content">
-        	<span class="content">Get <strong>step-by-step</strong> guidance on how to best set up your theme online.</span>
+        	<p class="content">
+				We are delighted to hear that you have purchased our theme. Thank you for choosing us and for supporting our business.
+			</p>
+			<p class="content">
+				If you encounter any installation issues, our <a href="https://halosoft.gitbook.io/ella-documentation/" target="_blank">documentation page</a> is a great resource for finding answers to common questions. Additionally, if you need personalized assistance, don't hesitate to <a href="https://halosoft.ticksy.com/" target="_blank">create a new ticket</a>, and we'll be there to assist you promptly.
+			</p>
+			<p class="content">
+				If you discover any technical glitches or suggestions for enhancing our theme, or documentation, please message us at any time. We're here to ensure your experience with our theme is nothing short of excellent.
+			</p>
 	        <a href="https://halosoft.gitbook.io/ella-documentation/" class="link" target="_blank">
-    			<span class="text">Get Started</span>
+    			<span class="text">View Documentation</span>
     		</a>
         </div>
     </div>

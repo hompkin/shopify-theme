@@ -284,6 +284,8 @@
                                     {%- endif -%}
                                 </div>
                             </div>
+                        {%- else -%}
+                            {% render 'halo-currency-js' %}
                         {%- endif -%}
                     {%- endif -%}
                 </div>
@@ -551,10 +553,10 @@ if (sticky != undefined || sticky != null) {
           this.disclosures.forEach(disclosure => disclosure.close());
         }
     }
-    customElements.define('sticky-header', StickyHeader);
+    document.addEventListener('DOMContentLoaded', () => {customElements.define('sticky-header', StickyHeader)});
 }
 {% endjavascript %}
-<script> 
+<script>
     var appendPrependMenuMobile = function() {
         var headerLanguageCurrencyPC = $('.wrapper-language-currency'),
             headerLanguageCurrencyMB = $('.nav-currency-language'),

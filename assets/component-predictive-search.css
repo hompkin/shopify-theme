@@ -323,6 +323,10 @@ input::-webkit-search-decoration {
     margin: 0px;
 }
 
+.halo-sidebar_search .quickSearchResultsBlock .search-block-content .products-grid .card-information .card-title:not(.card-title-ellipsis) {
+    white-space: initial;
+}
+
 /*.halo-sidebar_search .quickSearchResultsBlock .list-item {
     max-height: 100px;
     overflow: auto;
@@ -629,7 +633,9 @@ input::-webkit-search-decoration {
 
 .quickSearchResultsWrap .products-grid .card-action,
 .quickSearchResultsWrap .products-grid .card-compare,
-.quickSearchResultsWrap .products-grid .group-right {
+.quickSearchResultsWrap .products-grid .group-right,
+.product-card-layout-01 .quickSearchResultsWrap .card .card-media.has-compare:after,
+.product-card-layout-05 .quickSearchResultsWrap .card .card-media.has-compare:after {
     display: none;
 }
 

@@ -708,11 +708,16 @@
         box-shadow: none;
     }
 
+    .menu-dropdown__column-3 .site-nav{
+      display: inline-flex;
+    }
+
     .megamenu_style_1 .menu-dropdown__column.column-full, .megamenu_style_2 .menu-dropdown__column.column-full {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         max-width: 100%;
+        display: inline-flex;
     }
 
     .megamenu_style_1 .menu-dropdown__column, .megamenu_style_2 .menu-dropdown__column{

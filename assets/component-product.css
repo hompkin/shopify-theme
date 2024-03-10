@@ -1411,7 +1411,7 @@
     letter-spacing: 0;
     color: var(--color-title);
     margin: 0;
-    line-height: 30px;
+    line-height: max(30px, 120%);
 }
 
 .productView-meta{
@@ -1859,7 +1859,8 @@ s.price-item.price-item--regular {
     clear: both;
 }
 
-.productView-payment .shopify-payment-button [data-testid="Checkout-button"] {
+.productView-payment .shopify-payment-button [data-testid="Checkout-button"],
+.productView-payment .shopify-payment-button .shopify-payment-button__button--unbranded {
     display: block;
     width: 100%;
     min-width: 130px;
@@ -1884,9 +1885,10 @@ s.price-item.price-item--regular {
     border-color: var(--bin-border-color);
     box-shadow: var(--btn-1-horizontal-length) var(--btn-1-vertical-length) var(--btn-1-blur-radius) var(--btn-1-spread) var(--btn-1-all-bg-opacity) var(--btn-1-inset);
 }
-.productView-payment .shopify-payment-button [data-testid="ShopifyPay-button"] {
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
+.productView-payment .shopify-payment-button [data-testid="ShopifyPay-button"],
+.productView-payment .shopify-payment-button .shopify-payment-button__button--unbranded {
+  padding-top: 13px !important;
+  padding-bottom: 13px !important;
 }
 .productView-payment .shopify-payment-button div[role="button"] {
   padding-top: 14px !important;
@@ -1914,6 +1916,11 @@ s.price-item.price-item--regular {
 .productView-moreItem {
     padding-top: var(--spacing-top);
     padding-bottom: var(--spacing-bottom);
+}
+
+.productView-moreItem.productView-moreItem-product-variant {
+    position: relative;
+    z-index: 2;
 }
 
 .productView-ViewingProduct{

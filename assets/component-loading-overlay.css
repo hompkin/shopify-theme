@@ -122,7 +122,7 @@ predictive-search[open] .spinner {
 /*.is-loading.button:before{
     opacity: 1;
     visibility: visible;
-    animation: spin 1.4s linear infinite;
+    animation: spin-icon 1.4s linear infinite;
     display: block; 
 }*/
 
@@ -141,7 +141,7 @@ predictive-search[open] .spinner {
     border-left: 2px solid var(--spinner-left-color);
     width: 20px;
     height: 20px;
-    animation: spin 1.4s linear infinite;
+    animation: spin-icon 1.4s linear infinite;
 }
 
 .has-halo-loader .loading-overlay--custom{
@@ -202,7 +202,7 @@ predictive-search[open] .spinner {
     background: transparent;
 }
 
-@keyframes spin{
+@keyframes spin-icon {
     0%{
         transform:translateY(-50%) rotate(0)
     }

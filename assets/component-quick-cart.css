@@ -51,6 +51,13 @@
     padding: 0 0 0 20px;
 }
 
+.previewCartItem-content .cart-item-allocation {
+    font-size: var(--font-body-size);
+    color: var(--color-text2);
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+
 .previewCartItem-name{
     overflow: hidden;
     white-space: normal;
@@ -724,7 +731,7 @@ body.cart-sidebar-show .halo-cart-sidebar{
     }
 
     .previewCartInfo{
-        padding: 5px 20px 90px 20px;
+        padding: 5px 20px 70px 20px;
     }
     
     .previewCart{

@@ -82,7 +82,7 @@ class ProductBundle extends HTMLElement {
                 attributes = data.attributes;
             }).done(async function() {
                 const addProductsToCart = async () => {
-                    await fetch(`/cart/${data}`);
+                    await fetch(`/cart/${data}`, {mode: 'no-cors'});
                 }
     
                 const updateBundleDiscountData = async () => {

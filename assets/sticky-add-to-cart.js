@@ -657,6 +657,10 @@ class VariantStickyAddToCart extends HTMLElement {
             this.item.find('[data-sku] .productView-info-value').text(this.currentVariant.sku);
         }
 
+        if(this.item.find('[data-barcode]').length > 0){
+            this.item.find('[data-barcode] .productView-info-value').text(this.currentVariant.barcode);
+        }
+
         var inventory = this.currentVariant?.inventory_management;
 
         if(inventory != null) {
@@ -728,7 +732,7 @@ class VariantStickyAddToCart extends HTMLElement {
                 price = this.currentVariant?.price;
 
             if(window.subtotal.show) {
-                let qty = quantityInput.val();
+                let qty = quantityInput.val() || 1;
               
                 subTotal = qty * price;
                 subTotal = Shopify.formatMoney(subTotal, window.money_format);
@@ -736,8 +740,16 @@ class VariantStickyAddToCart extends HTMLElement {
                
                 if (window.subtotal.style == '1') {
                     const pdView_subTotal = document.querySelector('.productView-subtotal .money') || document.querySelector('.productView-subtotal .money-subtotal');
+                    
+                    if(pdView_subTotal != null){
+                        if($('body').hasClass('disable_currencies')) {
+                            const pdView_subTotal = document.querySelector('.productView-subtotal .money-subtotal');
+                            pdView_subTotal.innerHTML = subTotal;
+                        } else {
+                            pdView_subTotal.textContent = subTotal;
+                        }
+                    }
 
-                    pdView_subTotal.textContent = subTotal;
                     if (this.currentVariant.available && maxValue <= 0 && this.currentVariant.inventory_management == "shopify") {
                         text = window.variantStrings.preOrder;
                     } else {
@@ -745,7 +757,16 @@ class VariantStickyAddToCart extends HTMLElement {
                     }
                 }
                 else if (window.subtotal.style == '2') {
-                    text = window.subtotal.text.replace('[value]', subTotal);
+                    if (this.currentVariant.available && maxValue <= 0 && this.currentVariant.inventory_management == "shopify") {
+                        text = window.variantStrings.preOrder;
+                    } else {
+                        if($('body').hasClass('disable_currencies')) {
+                            subTotal = $(subTotal).text();
+                            text = window.subtotal.text.replace('[value]', subTotal);
+                        } else {
+                            text = window.subtotal.text.replace('[value]', subTotal);
+                        }
+                    }
                 }
             } else {
                 subTotal = Shopify.formatMoney(price, window.money_format);
@@ -766,7 +787,12 @@ class VariantStickyAddToCart extends HTMLElement {
             stickyButton.textContent = text;
 
             if (subTotal != 0 && stickyPrice.length) {
-                stickyPrice.text(subTotal);
+                if($('body').hasClass('disable_currencies')) {
+                    stickyPrice = $('[data-sticky-add-to-cart] .sticky-price .money-subtotal');
+                    stickyPrice.html(subTotal);
+                } else {
+                    stickyPrice.text(subTotal);
+                }
             }
 
             const thisStickyPrice = $('[data-sticky-add-to-cart] .sticky-price');
@@ -788,7 +814,7 @@ class VariantStickyAddToCart extends HTMLElement {
             const stickyComparePrice = $('[data-sticky-add-to-cart] .money-compare-price .money');
             if (subTotal != 0 && stickyComparePrice.length && window.subtotal.show) {
                 let comparePrice = $('[data-sticky-add-to-cart] .money-compare-price').data('compare-price'),
-                    qty = quantityInput.val();
+                    qty = quantityInput.val() || 1;
                 comparePrice = qty * comparePrice;
                 comparePrice = Shopify.formatMoney(comparePrice, window.money_format);
                 comparePrice = extractContent(comparePrice);

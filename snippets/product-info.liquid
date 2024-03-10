@@ -15,6 +15,14 @@
             <span class="productView-info-value">{{ current_variant.sku }}</span>
         </div>
     {%- endif -%}
+    {%- if show_barcode -%}
+        <div class="productView-info-item" data-barcode {% unless current_variant.barcode != blank %} style="display: none;"{% endunless %}>
+            <span class="productView-info-name">
+                {{ 'products.product.text.barcode' | t }}
+            </span>
+            <span class="productView-info-value">{{ current_variant.barcode }}</span>
+        </div>
+    {%- endif -%}
     {%- if show_availability -%}
         <div class="productView-info-item" data-inventory data-stock-level="{{ stock_level_display }}">
             <span class="productView-info-name">

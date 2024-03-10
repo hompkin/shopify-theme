@@ -116,11 +116,6 @@
     left: 0;
     transition: opacity .3s cubic-bezier(.25,.46,.45,.94);
     box-shadow: 0 6px 27px 0 rgb(0, 0, 0, .2);
-    height: inherit;
-}
-
-.product-form__label .expand img{
-    height: -webkit-fill-available;
 }
 
 .product-form__label .expand:before{

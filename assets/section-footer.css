@@ -459,9 +459,14 @@ footer details[open] summary~* {
     margin: 0;
 }
 
+.footer-1 .footer__content-top.enable_border_column .footer-block__item .list-social__link.icon-facebook {
+    margin-left: 0;
+}
+
 .footer__content-top.enable_border_column .footer-block__item .list-social__link.icon-facebook {
     margin-left: -7px;
 }
+
 .footer__content-top.enable_border_column .footer-block__list-social .list-social__item {
     margin-top: 8px;
 }

@@ -121,6 +121,7 @@
                 this.NOTIFICATION_COOKIE = 'notification'
                 this.popupOpener = this.querySelector('[data-popup-opener]')
                 this.popup = document.getElementById('notification-popup')
+                this.action = this.dataset.linkAction;
                 this.closeBtn = this.querySelector('[data-close-notification-btn]')
                 this.closeBtn.addEventListener('click', this.hideNotification.bind(this))
                 this.currentScroll = 0;
@@ -140,7 +141,9 @@
                 }
                 document.addEventListener('click', this.handleDocumentClick.bind(this))
                 document.addEventListener('scroll', this.scrollHandler.bind(this))
-                this.addEventListener('click', this.handleSelfClick.bind(this))
+                if (this.action === 'popup'){
+                    this.addEventListener('click', this.handleSelfClick.bind(this))
+                }
                 this.calculateNotificationBottomPosition()
                 this.showNotificationWithTime(1500)
                 this.setTextHeightOnMobile()
@@ -151,7 +154,7 @@
                 if (e.target.matches('[data-close-notification-btn]') || e.target.closest('[data-close-notification-btn]')) return 
 
                 document.body.classList.add('show_popup_notification');
-
+                
                 const link = this.querySelector('[data-main-link]')
                 if (!link) return;
                 link.click()

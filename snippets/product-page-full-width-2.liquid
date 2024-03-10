@@ -873,13 +873,14 @@
                                             assign show_vendor = block.settings.show_vendor
                                             assign show_availability = block.settings.show_availability
                                             assign show_sku = block.settings.show_sku
+                                            assign show_barcode = block.settings.show_barcode
                                             assign show_product_type = block.settings.show_product_type
                                             assign stock_level_display = block.settings.stock_level_display
                                             assign enable_border_top = block.settings.enable_border_top
                                             assign enable_border_bottom = block.settings.enable_border_bottom
                                             assign color_border = block.settings.color_border
                                         -%}
-                                        {%- if show_vendor or show_availability or show_sku or show_product_type -%}
+                                        {%- if show_vendor or show_availability or show_sku or show_barcode or show_product_type -%}
                                             <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                                                 style="--spacing-top: {{ spacing_top | append: 'px' }};
                                                 --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
@@ -889,6 +890,7 @@
                                                     show_vendor: show_vendor,
                                                     show_availability: show_availability,
                                                     show_sku: show_sku,
+                                                    show_barcode: show_barcode,
                                                     current_variant: current_variant,
                                                     show_product_type: show_product_type,
                                                     stock_level_display: stock_level_display,
@@ -956,7 +958,7 @@
                                         {%- endif -%}
                                     {%- when 'variant_picker' -%}
                                         {% unless has_product_combo %}
-                                            <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
+                                            <div class="productView-moreItem productView-moreItem-product-variant{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                                                 style="--spacing-top: {{ spacing_top | append: 'px' }};
                                                 --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
                                             >
