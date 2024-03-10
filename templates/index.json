@@ -601,7 +601,7 @@
         "blog_bg_gradient": "",
         "featured_blog_title": "Tips & Ideas",
         "margin_bottom_heading": 12,
-        "enable_border_title": true,
+        "enable_border_title": false,
         "custom_width_title": 260,
         "border_color_title": "#000000",
         "color_title": "#232323",
