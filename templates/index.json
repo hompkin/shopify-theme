@@ -320,10 +320,9 @@
       ],
       "custom_css": [
         ".featured-collection-content {background-color: #f5f5f5ff;}",
-        "@media (min-width: 1024px) {.featured-collection-content {background-color: #00000099; } .featured-collection-content .title {margin-top: 40px; }}",
+        "@media (min-width: 1024px) {.featured-collection-content {background-color: #00000099; } .featured-collection-content .title {margin-top: 40px; }.featured-collection-content .custom-text-style a {color: #F8F8F8;}}",
         "@media (min-width: 1540px) {.featured-collection-content .title {margin-top: 80px; }}",
-        "ul.sub-collection.custom-text-style {display: none;}",
-        ".featured-collection-content .custom-text-style a {color: \"#000000\";}"
+        "ul.sub-collection.custom-text-style {display: none;}"
       ],
       "settings": {
         "container": "fullwidth",
