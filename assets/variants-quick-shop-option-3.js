@@ -396,6 +396,10 @@ class VariantQuickShopSelects extends HTMLElement {
             this.item.find('[data-sku] .productView-info-value').text(this.currentVariant.sku);
         }
 
+        if(this.item.find('[data-barcode]').length > 0){
+            this.item.find('[data-barcode] .productView-info-value').text(this.currentVariant.barcode);
+        }
+
         var inventory = this.currentVariant?.inventory_management;
 
         if(inventory != null) {
@@ -471,7 +475,7 @@ class VariantQuickShopSelects extends HTMLElement {
                 if(window.quick_view_subtotal.show && !document.body.classList.contains('quickshop-popup-show')) {
                     var price = this.currentVariant?.price,
                         subTotal = 0,
-                        qty = quantityInput.val();
+                        qty = quantityInput.val() || 1;
 
                     subTotal = qty * price;
                     subTotal = Shopify.formatMoney(subTotal, window.money_format);

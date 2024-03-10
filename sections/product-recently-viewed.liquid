@@ -365,6 +365,10 @@
 
         var cookieValue = $.cookie('shopify_recently_viewed');
 
+        if (Shopify.designMode && !cookieValue) {
+            cookieValue = localStorage.getItem('shopify_recently_viewed');
+        }
+
         if (!(cookieValue !== null && cookieValue !== undefined && cookieValue !== "")){
             $('#halo-recently-viewed-block-{{ section.id }}').remove();
         } else {

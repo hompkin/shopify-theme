@@ -41,8 +41,19 @@ class ProductTabs extends HTMLElement {
         if (this.isVerticalPopup || this.isVerticalSidebarMobile) {
             document.querySelector('.background-overlay').addEventListener('click', this.onBackgroundClick.bind(this));
         }
-    }
 
+        setTimeout(() => {
+            if (window.innerWidth > 550) {
+                const $thisContent = document.getElementById('tab-description-mobile');
+                const tabHeight = $thisContent.offsetHeight;
+                const maxHeight = parseInt($thisContent.querySelector('.tab-showMore')?.dataset.desMax);
+                if (tabHeight < maxHeight) {
+                    $thisContent.querySelector('.tab-showMore').remove();
+                }
+            }
+        })
+    }
+    
     tabActive(event){
         event.preventDefault();
         event.stopPropagation();

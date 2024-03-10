@@ -271,7 +271,7 @@
                         </h3>
                     </div>
                 {%- endif -%}
-                <div class="halo-block-content {% if layout == 'scroll' %}is-scroll{% endif %}" {% if layout == 'scroll' %}data-drag-container{% endif %}>
+                <{% if swipe %}product-slider-component{% else %}div{% endif %} class="halo-block-content {% if layout == 'scroll' %}is-scroll{% endif %}" {% if layout == 'scroll' %}data-drag-container{% endif %}>
                     {%- if layout== 'grid' -%}
                         {%- liquid
                             assign product_limit = 0
@@ -358,7 +358,7 @@
                             </div>
                         </div>
                     {%- endif -%}
-                </div>
+                </{% if swipe %}product-slider-component{% else %}div{% endif %}>
             </{% if layout == 'scroll' %}product-scroller{% else %}div{% endif %}>
         {% else %}
             <div class="wrapper-container product-recommendations-loading {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">

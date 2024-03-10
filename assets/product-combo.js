@@ -92,7 +92,7 @@ class ProductCombo extends HTMLElement {
                 
                 if (index === bundleItem.length - 1) {
                     const addProductsToCart = async () => {
-                        await fetch(`/cart/${data}`); 
+                        await fetch(`/cart/${data}`, {mode: 'no-cors'});
                     }
 
                     const updateComboDiscountData = async () => {

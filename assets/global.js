@@ -294,80 +294,42 @@ Shopify.onCartUpdate = function(cart) {
     alert('There are now ' + cart.item_count + ' items in the cart.');
 }
 
-Shopify.changeItem = function(variant_id, quantity, callback) {
-    var params = {
-        type: 'POST',
-        url: '/cart/change.js',
-        data:  'quantity='+quantity+'&id='+variant_id,
-        dataType: 'json',
-        success: function(cart) {
-            if ((typeof callback) === 'function') {
-                callback(cart);
-            } else {
-                Shopify.onCartUpdate(cart);
-            }
-        },
-        error: function(XMLHttpRequest, textStatus) {
-            // console.log(XMLHttpRequest.responseJSON.message);
-            if (XMLHttpRequest.responseJSON.message == 'nu există un id valid sau parametru de linie' || XMLHttpRequest.responseJSON.message == 'Required parameter missing or invalid: line or id param is required' || XMLHttpRequest.responseJSON.message == 'Parameter Missing or Invalid' || XMLHttpRequest.responseJSON.message == 'no valid id or line parameter') {
-                $.ajax({
-                    type: 'POST',
-                    url: '/cart/change.js',
-                    data:  'quantity='+quantity+'&id='+variant_id.split(':')[0],
-                    dataType: 'json',
-                    success: function(cart) {
-                        if ((typeof callback) === 'function') {
-                            callback(cart);
-                        } else {
-                            Shopify.onCartUpdate(cart);
-                        }
-                    }
-                })
-            } else {
-                Shopify.onError(XMLHttpRequest, textStatus);
-            }
-        }
-    };
-
-    $.ajax(params);
+Shopify.changeItem = function(variant_id, quantity, index, callback) {
+    getCartUpdate(index, quantity, callback)
 }
 
-Shopify.removeItem = function(variant_id, callback) {
-    var params = {
-        type: 'POST',
-        url: '/cart/change.js',
-        data:  'quantity=0&id='+variant_id,
-        dataType: 'json',
-        success: function(cart) {
-            if ((typeof callback) === 'function') {
-                callback(cart);
-            } else {
-                Shopify.onCartUpdate(cart);
-            }
-        },
-        error: function(XMLHttpRequest, textStatus) {
-            // console.log(XMLHttpRequest.responseJSON.message);
-            if (XMLHttpRequest.responseJSON.message == 'nu există un id valid sau parametru de linie' || XMLHttpRequest.responseJSON.message == 'Required parameter missing or invalid: line or id param is required' || XMLHttpRequest.responseJSON.message == 'Parameter Missing or Invalid' || XMLHttpRequest.responseJSON.message == 'no valid id or line parameter') {
-                $.ajax({
-                    type: 'POST',
-                    url: '/cart/change.js',
-                    data:  'quantity=0&id='+variant_id.split(':')[0],
-                    dataType: 'json',
-                    success: function(cart) {
-                        if ((typeof callback) === 'function') {
-                            callback(cart);
-                        } else {
-                            Shopify.onCartUpdate(cart);
-                        }
-                    }
-                })
-            } else {
-                Shopify.onError(XMLHttpRequest, textStatus);
-            }
-        }
-    };
+Shopify.removeItem = function(variant_id, index, callback) {
+    getCartUpdate(index, 0, callback)
+}
 
-    $.ajax(params);
+function getCartUpdate(line, quantity, callback) {
+    const body = JSON.stringify({
+        line,
+        quantity,
+        sections_url: window.location.pathname,
+    });
+
+    fetch(`${routes.cart_change_url}`, { ...fetchConfig(), ...{ body } })
+    .then((response) => {
+        return response.text();
+    })
+    .then((state) => {
+        const parsedState = JSON.parse(state);
+
+        if (parsedState.errors) {
+            showWarning('Error : ' + parsedState.errors, warningTime);
+            return;
+        }
+
+        if ((typeof callback) === 'function') {
+            callback(parsedState);
+        } else {
+            Shopify.onCartUpdate(parsedState);
+        }
+    })
+    .catch((e) => {
+        console.error(e);
+    })
 }
 
 Shopify.addItem = function(variant_id, quantity, $target, callback, input = null) {

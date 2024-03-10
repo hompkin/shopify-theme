@@ -534,6 +534,11 @@
 }
 
 @media(min-width: 1025px){
+    .spotlight-block .halo-row.column-2.block-layout-grid .halo-item:not(.slider__slide):not(:first-child):not(:nth-child(2)),
+    .spotlight-block .halo-row.column-2.block-layout-grid .halo-item:not(.slick-slide):not(:first-child):not(:nth-child(2)) {
+        margin-top: 15px;
+    }
+
     .spotlight-block .halo-row:not(.not-distance) {
         margin-left: var(--row-distance-style);
         margin-right: var(--row-distance-style);

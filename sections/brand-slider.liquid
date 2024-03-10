@@ -338,7 +338,8 @@
             .brand-slider .brand-layout--infinite.sm-column-2 .halo-item {width: 50vw !important }
             .brand-slider .brand-layout--infinite.sm-column-1 .halo-item {width: 100vw !important }
         {%- elsif section.settings.brand_layout == 'grid' -%}
-            .section-block-{{section.id}} .brand-layout--grid.sm-column-2:not(.slick-slider) .halo-item:nth-child(n+3){display: block}
+            .section-block-{{section.id}} .brand-layout--grid.sm-column-2:not(.slick-slider) .halo-item:nth-child(n+3),
+            .section-block-{{section.id}} .brand-layout--grid.sm-column-1:not(.slick-slider) .halo-item:nth-child(n+2){display: block !important}
         {%- endif -%}
         .section-block-{{section.id}} .sm-column-3:not(.slick-slider):not(.brand-layout--infinite) .halo-item:nth-child(n+4),.section-block-{{section.id}} .sm-column-2:not(.slick-slider):not(.brand-layout--infinite) .halo-item:nth-child(n+3),.section-block-{{section.id}} .sm-column-1:not(.slick-slider):not(.brand-layout--infinite) .halo-item:nth-child(n+2) {display: none}
         {%- if section.settings.brand_item_border == 'box_shadow' -%}

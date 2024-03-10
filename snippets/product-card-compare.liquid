@@ -194,7 +194,7 @@
 		-%}
 		{% if product_card_product.metafields.c_f.short_description %}
 			{%- liquid
-				assign desc = product_card_product.metafields.c_f.short_description
+				assign desc = product_card_product.metafields.c_f.short_description | strip_html
 				assign word_number = 100000
 			-%}
         {% else %}
@@ -202,7 +202,7 @@
         {% endif %}
         {%- if desc != blank -%}
             <div class="halo-text-format">
-                {{ desc | truncatewords: word_number }}
+                {{ desc | strip_html | truncatewords: word_number }}
             </div>
         {%- endif -%}
 	</td>

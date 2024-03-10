@@ -183,7 +183,7 @@
         {% if show_sidebar %}
             </div>
         {% endif %}
-        <div class="halo-article-block{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="halo-article-block">
             {%- if show_sidebar and section.blocks.size > 0 -%}
                 {{ 'component-main-sidebar.css' | asset_url | stylesheet_tag }}
                 <div class="page-sidebar page-sidebar-{{ sidebar_position }} page-sidebar--vertical sidebar--{{ section.settings.sidebar_layout }}{% if enable_sticky %} has-sticky{% endif %}" id="halo-sidebar">
@@ -196,7 +196,7 @@
                             {{ 'sections.sidebar.title' | t }}
                         </span>
                     </div>
-                    <div class="halo-sidebar-wrapper custom-scrollbar">
+                    <div class="halo-sidebar-wrapper custom-scrollbar{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                         {% render 'sidebar',
                             section: section,
                             show_collapse: show_collapse,
@@ -206,7 +206,7 @@
                 </div>
             {%- endif -%}
             <div class="page-content">
-              <div class="halo-article-content">
+              <div class="halo-article-content{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                   <div class="article-header">
                       <div class="article-heading text-left">
                           <h1 class="title">

@@ -6,7 +6,7 @@
     assign color = ''
     assign count = 0
 -%}
-{%- if variantCount > 1 and product.variants.first.title != 'Default Title' -%}
+{%- if variantCount > 0 and product.variants.first.title != 'Default Title' -%}
     <div class="card-swatch text-{{ settings.product_content_text_align }} clearfix{% if settings.quick_shop_type == '2' %} quick_shop_type_2{% endif %}" id="product-swatch-{{ product.id }}">
         <ul class="swatch list-unstyled">
             {%- for variant in product.variants -%}

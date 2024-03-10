@@ -99,7 +99,7 @@
                                                 assign values = values | split: ';'
                                             -%}
                                             <input class="product-form__radio" type="radio" id="option-edit-{{ product.id }}-{{ option.name }}-{{ forloop.index0 }}"
-                                                name="{{ option.name }}"
+                                                name="edit-cart-{{ option.name }}"
                                                 value="{{ value | escape }}"
                                                 {% if option.selected_value == value %}checked{% endif %}
                                             >

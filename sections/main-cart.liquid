@@ -118,7 +118,7 @@
                                                             {%- unless item.variant.title contains 'Default' -%}
                                                                 <div class="cart-item-option">
                                                                     <span class="cart-item-variant">{{ item.variant.title }}</span>
-                                                                    <a href="javascript:void(0);" class="cart-item-edit" data-open-edit-cart data-edit-cart-url="{{ item.url }}&view=ajax_edit_cart" data-edit-cart-id="{{ item.id }}" data-edit-cart-quantity="{{ item.quantity }}" data-line="{{ item.key }}" aria-label="{{ 'sections.cart.edit_title' | t: title: item.variant.title }}">{% render 'icon-edit' %}</a>
+                                                                    <a href="javascript:void(0);" class="cart-item-edit" data-open-edit-cart data-edit-cart-url="{{ item.url }}&view=ajax_edit_cart" data-edit-cart-id="{{ item.id }}" data-edit-cart-quantity="{{ item.quantity }}" data-line="{{ item.key }}" data-index="{{ item.index | plus: 1 }}" aria-label="{{ 'sections.cart.edit_title' | t: title: item.variant.title }}">{% render 'icon-edit' %}</a>
                                                                 </div>
                                                             {%- endunless -%}
                                                         {%- endif -%}
@@ -195,13 +195,13 @@
                                                                     <cart-update-quantity data-product="{{ item.product_id }}" class="cart-item-qty">
                                                                         <label class="form-label hiddenLabels" for="upsell-update-{{ item.id }}">{{ 'products.product.quantity.label' | t }}</label>
                                                                         <a href="javascript:void(0)" data-minus-quantity-cart="" class="minus btn-quantity"></a>
-                                                                        <input class="form-input quantity cart-item-qty-input" name="quantity" id="upsell-update-{{ item.id }}" data-qtt-id1="quantity{{ item.id }}" value="{{ item.quantity }}" type="number"{% if item.variant.inventory_management != null and item.variant.inventory_quantity > 0 %} data-inventory-quantity="{{ item.variant.inventory_quantity }}"{% endif %} data-cart-quantity data-cart-quantity-id="{{ item.id }}" data-line="{{ item.key }}" />
+                                                                        <input class="form-input quantity cart-item-qty-input" name="quantity" id="upsell-update-{{ item.id }}" data-qtt-id1="quantity{{ item.id }}" value="{{ item.quantity }}" type="number"{% if item.variant.inventory_management != null and item.variant.inventory_quantity > 0 %} data-inventory-quantity="{{ item.variant.inventory_quantity }}"{% endif %} data-cart-quantity data-cart-quantity-id="{{ item.id }}" data-line="{{ item.key }}" data-index="{{ item.index | plus: 1 }}"/>
                                                                         <a href="javascript:void(0)" data-plus-quantity-cart="" class="plus btn-quantity"></a>
                                                                     </cart-update-quantity>
                                                                 </div>
                                                             </div>
                                                             <div class="cart-item-block cart-item-remove small-screen-visible">
-                                                                <a class="cart-remove" href="javascript:void(0)" data-cart-remove data-cart-remove-id="{{ item.id }}" data-line="{{ item.key }}" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">{% render 'icon-close' %}</a>
+                                                                <a class="cart-remove" href="javascript:void(0)" data-cart-remove data-cart-remove-id="{{ item.id }}" data-line="{{ item.key }}" data-index="{{ item.index | plus: 1 }}" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">{% render 'icon-close' %}</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -245,7 +245,7 @@
                                                 <cart-update-quantity class="cart-item-qty" data-product="{{ item.product_id }}" data-variant="{{ item.variant.id }}">
                                                     <label class="form-label hiddenLabels" for="upsell-update-{{ item.id }}">{{ 'products.product.quantity.label' | t }}</label>
                                                     <a href="javascript:void(0)" data-minus-quantity-cart="" class="minus btn-quantity"></a>
-                                                    <input class="form-input quantity cart-item-qty-input" name="quantity" id="upsell-update-{{ item.id }}" data-qtt-id1="quantity{{ item.id }}" value="{{ item.quantity }}" type="number"{% if item.variant.inventory_management != null and item.variant.inventory_quantity > 0 %} data-inventory-quantity="{{ item.variant.inventory_quantity }}"{% endif %} data-cart-quantity data-cart-quantity-id="{{ item.id }}" data-line="{{ item.key }}" />
+                                                    <input class="form-input quantity cart-item-qty-input" name="quantity" id="upsell-update-{{ item.id }}" data-qtt-id1="quantity{{ item.id }}" value="{{ item.quantity }}" type="number"{% if item.variant.inventory_management != null and item.variant.inventory_quantity > 0 %} data-inventory-quantity="{{ item.variant.inventory_quantity }}"{% endif %} data-cart-quantity data-cart-quantity-id="{{ item.id }}" data-line="{{ item.key }}" data-index="{{ item.index | plus: 1 }}"/>
                                                     <a href="javascript:void(0)" data-plus-quantity-cart="" class="plus btn-quantity"></a>
                                                 </cart-update-quantity>
                                             </div>
@@ -260,7 +260,7 @@
                                                 <span class="cart-item-value" data-item-price-with-quantity-display>{{ price_to_display | times: item.quantity | money }}</span>
                                             </div>
                                             <div class="cart-item-block cart-item-remove">
-                                                <a class="cart-remove" href="javascript:void(0)" data-cart-remove data-cart-remove-id="{{ item.id }}" data-line="{{ item.key }}" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">{% render 'icon-close' %}</a>
+                                                <a class="cart-remove" href="javascript:void(0)" data-cart-remove data-cart-remove-id="{{ item.id }}" data-line="{{ item.key }}" data-index="{{ item.index | plus: 1 }}" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">{% render 'icon-close' %}</a>
                                             </div>
                                         </div>
                                     {%- endfor -%}
@@ -314,15 +314,19 @@
                                             </div>
                                         </li>
                                     {%- endif -%}
-                                    <li class="cart-discount cart-total-savings"{% if cart.total_discount == 0 %} style="display: none;"{% endif %} data-saved-discount-display>
+                                    <li class="cart-discount cart-total-savings"{% if cart.total_discount == 0 %} style="display: none;"{% endif %} data-saved-discount-display data-dis="{{ cart.total_discount }}">
                                         <div class="cart-total-label"><span class="text">{{ 'general.cart.are_saving' | t }}</span></div>
                                         <div class="cart-total-value">
                                             <span class="text" data-saved-discount-value>
-                                                {%- for discount in cart.cart_level_discount_applications -%}
-                                                    {%- render 'icon-discount' -%}
-                                                    {{ discount.title }}
-                                                    (-{{ discount.total_allocated_amount | money }})
-                                                {%- endfor -%}
+                                                {%- if cart.cart_level_discount_applications != blank -%}
+                                                    {%- for discount in cart.cart_level_discount_applications -%}
+                                                        {%- render 'icon-discount' -%}
+                                                        {{ discount.title }}
+                                                        (-{{ discount.total_allocated_amount | money }})
+                                                    {%- endfor -%}
+                                                {%- else -%}
+                                                    {{ cart.total_discount | money | prepend: '-' }}
+                                                {%- endif -%}
                                             </span>
                                         </div>  
                                     </li>

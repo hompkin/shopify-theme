@@ -68,7 +68,7 @@
         </div>
         <div class="bundle-product-information">
             <div class="bundle-product-content">
-                <div class="bundle-product-checkbox {% if settings.show_review %} halo-productReview{% endif %}">
+                <div class="bundle-product-checkbox">
                     <a class="card-title card-title-ellipsis" href="{{ product.url | within: collection }}">
                         {{ product.title | split: '|' | first }}
                         {% comment %} <span data-bundle-product-title> - {{ current_variant.title }}</span> {% endcomment %}

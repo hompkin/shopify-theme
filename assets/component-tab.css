@@ -195,10 +195,11 @@
 }
 
 .pdViewTab-close-mobile {
-    top: 14px;
+    top: 10px;
     right: 12px;
     width: 16px;
     height: 16px;
+    padding: 12px;
 }
 
 .pdViewTab-close-mobile:before {

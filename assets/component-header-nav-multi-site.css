@@ -400,6 +400,16 @@
 }
 
 @media (max-width: 551px){
+    /*.section-header-nav-multi-site {
+       z-index: 30;
+    }
+    .section-header-nav-multi-site+.section-header-mobile {
+       z-index: 22;
+    }*/
+    .header-nav-multi-site .header-top--left .header__list {
+       margin-bottom: -1px;
+       padding-bottom: 1px;
+    }
     /*  Section  */
     .policies-block .scroll-snap-mobile.not-distance .halo-item, .custom-service-block .scroll-snap-mobile.not-distance .halo-item{
         flex: 0 0 87% !important;

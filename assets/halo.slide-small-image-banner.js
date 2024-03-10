@@ -20,4 +20,8 @@
         }
     }
     halo.initSmallImgSlider();
+    if ($('body').hasClass('cursor-fixed__show')){
+        window.sharedFunctionsAnimation.onEnterButton();
+        window.sharedFunctionsAnimation.onLeaveButton();
+    }
 })(jQuery);

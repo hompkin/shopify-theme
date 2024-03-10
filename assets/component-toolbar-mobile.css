@@ -29,7 +29,8 @@
     text-align: center;
 }
 
-.bottom-bar--list li > a[data-cart-sidebar] {
+.bottom-bar--list li > a[data-cart-sidebar], 
+.bottom-bar--list li > a.list-item-cart {
     position: relative;
 }
 
@@ -93,6 +94,10 @@
 
 .bottom-bar--list .cart-count-bubble .text{
     color: var(--color-bubble);
+}
+
+.bottom-bar--list .list-item.customer_accounts_disable{
+    display: none;
 }
 
 @media (max-width: 1024px){

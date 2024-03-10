@@ -14,9 +14,9 @@
 	        </h5>
 		</div>
 		<div class="halo-popup-content halo-popup-scroll custom-scrollbar">
-			<div class="halo-size-chart text-center {{ product.metafields.c_f.size_chart }}">
+			<div class="halo-size-chart text-center">
 				{%- if size_chart_type == 'metafield' -%}
-					{% assign img = product.metafields.c_f.size_chart %}
+					{% assign img = product.metafields.c_f.size_chart | strip_html %}
 					<img srcset="{{ img }}"
 		                src="{{ img }}"
 		                loading="lazy"

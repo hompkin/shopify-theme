@@ -4,7 +4,7 @@
     <button type="button" class="halo-sidebar-close button-effect" data-close-cart-sidebar aria-label="{{ 'general.common.close' | t }}">{% render 'icon-close' %} {{ 'general.common.close' | t }}</button>
     <div class="halo-sidebar-header text-left">
 		<span class="title">{{ 'sections.cart.my_cart' | t }}</span>
-		<div class="wrapper-cartCount"><span class="cartCount" data-cart-count>{{ cart.item_count }}</span> <span>{{ 'sections.cart.items' | t }}</span></div>
+		<div class="wrapper-cartCount"><span class="cartCount" data-cart-count>{{ cart.item_count }}</span> <span data-cart-text>{% if cart.item_count == 1 %}{{ 'sections.cart.item' | t }}{% else %}{{ 'sections.cart.items' | t }}{% endif %}</span></div>
 	</div>
     <div class="halo-sidebar-wrapper custom-scrollbar {{cart.items}}">
       	{%- if settings.show_calculator_free_shipping_message -%}

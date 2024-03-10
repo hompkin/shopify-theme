@@ -12,7 +12,7 @@
         .header-full-width #shopify-section-announcement-bar .announcement-bar .layout--scroll {padding-left: 0;padding-right: 0}
         .announcement-bar .layout--scroll .row {display: inline-block;text-align: left; white-space: nowrap}
         .announcement-bar__item-scroll {display: inline-block;width: max-content;will-change: transform,width;}
-        .announcement-bar.active-screen .layout--scroll .announcement-bar__item-scroll{animation: SlideLeft {{ timeScroll }}s linear infinite}
+        .announcement-bar .layout--scroll .announcement-bar__item-scroll{animation: SlideLeft {{ timeScroll }}s linear infinite}
         .announcement-bar .layout--scroll:hover .announcement-bar__item-scroll,
         .announcement-bar .layout--scroll:focus .announcement-bar__item-scroll {animation-play-state: paused}
         .announcement-bar .layout--scroll .announcement-bar__message {width: auto;vertical-align: middle}
@@ -131,96 +131,100 @@
     </announcement-bar-component>
     
     <script>
-        class AnnouncementBar extends HTMLElement {
-            constructor() {
-                super();
-            }
-            
-            connectedCallback() {
-                this.closeAnnouncementButton = this.querySelector('[data-close-announcement]');
-                this.announcementBarSlider = this.querySelector('[data-announcement-bar]');
-                this.announcementHasSlides = this.announcementBarSlider?.querySelectorAll('.announcement-bar__message').length > 1;
-
-                if (AnnouncementBar.getCookie('announcement') == 'closed') {
-                    this.remove();
-                } else {
-                    this.style.opacity = 1;
-                    this.style.visibility = 'visible';
-                };
-                
-                this.initAnnouncementBarSlider();
-                this.closeAnnouncementButton?.addEventListener('click', this.closeAnnouncementBar.bind(this));
-            }
-    
-            closeAnnouncementBar(e) {
-                e.preventDefault();
-                e.stopPropagation();
-    
-                this.remove();
-                AnnouncementBar.setCookie('announcement', 'closed', 1);
-            }
-
-            initAnnouncementBarSlider() {
-                if (this.announcementHasSlides && !this.announcementBarSlider.classList.contains('slick-initialized')) {
-                    let showArrows;
-                    this.announcementBarSlider.dataset.arrows == 'true' || this.announcementBarSlider.dataset.arrows == true ? showArrows = true : showArrows = false;
-                    $(this.announcementBarSlider).slick({
-                        infinite: true,
-                        vertical: false,
-                        adaptiveHeight: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        dots: false,
-                        arrows: showArrows,
-                        autoplay: true,
-                        autoplaySpeed: 3000,
-                        nextArrow: '<button type="button" class="slick-next" aria-label="Next"><svg viewBox="0 0 478.448 478.448" class="icon icon-chevron-right" id="icon-chevron-right"><g><g><polygon points="131.659,0 100.494,32.035 313.804,239.232 100.494,446.373 131.65,478.448 377.954,239.232"></polygon></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></button>',
-                        prevArrow: '<button type="button" class="slick-prev" aria-label="Previous"><svg viewBox="0 0 370.814 370.814" class="icon icon-chevron-left" id="icon-chevron-left"><g><g><polygon points="292.92,24.848 268.781,0 77.895,185.401 268.781,370.814 292.92,345.961 127.638,185.401"></polygon></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></button>',
-                    });
+        if (typeof announcementBar === 'undefined'){
+            class AnnouncementBar extends HTMLElement {
+                constructor() {
+                    super();
                 }
-            }
+                
+                connectedCallback() {
+                    this.closeAnnouncementButton = this.querySelector('[data-close-announcement]');
+                    this.announcementBarSlider = this.querySelector('[data-announcement-bar]');
+                    this.announcementHasSlides = this.announcementBarSlider?.querySelectorAll('.announcement-bar__message').length > 1;
 
-            static setCookie(cname, cvalue, exdays) {
-                const d = new Date();
-                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-                const expires = 'expires=' + d.toUTCString();
-                document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
-            }
-
-            static getCookie(cname) {
-                const name = cname + '=';
-                const ca = document.cookie.split(';');
+                    if (AnnouncementBar.getCookie('announcement') == 'closed') {
+                        this.remove();
+                    } else {
+                        this.style.opacity = 1;
+                        this.style.visibility = 'visible';
+                    };
+                    
+                    this.initAnnouncementBarSlider();
+                    this.closeAnnouncementButton?.addEventListener('click', this.closeAnnouncementBar.bind(this));
+                }
         
-                for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) === ' ') {
-                        c = c.substring(1);
-                    }
-                    if (c.indexOf(name) === 0) {
-                        return c.substring(name.length, c.length);
+                closeAnnouncementBar(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+        
+                    this.remove();
+                    AnnouncementBar.setCookie('announcement', 'closed', 1);
+                }
+
+                initAnnouncementBarSlider() {
+                    if (this.announcementHasSlides && !this.announcementBarSlider.classList.contains('slick-initialized')) {
+                        let showArrows;
+                        this.announcementBarSlider.dataset.arrows == 'true' || this.announcementBarSlider.dataset.arrows == true ? showArrows = true : showArrows = false;
+                        $(this.announcementBarSlider).slick({
+                            infinite: true,
+                            vertical: false,
+                            adaptiveHeight: true,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            dots: false,
+                            arrows: showArrows,
+                            autoplay: true,
+                            autoplaySpeed: 3000,
+                            nextArrow: '<button type="button" class="slick-next" aria-label="Next"><svg viewBox="0 0 478.448 478.448" class="icon icon-chevron-right" id="icon-chevron-right"><g><g><polygon points="131.659,0 100.494,32.035 313.804,239.232 100.494,446.373 131.65,478.448 377.954,239.232"></polygon></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></button>',
+                            prevArrow: '<button type="button" class="slick-prev" aria-label="Previous"><svg viewBox="0 0 370.814 370.814" class="icon icon-chevron-left" id="icon-chevron-left"><g><g><polygon points="292.92,24.848 268.781,0 77.895,185.401 268.781,370.814 292.92,345.961 127.638,185.401"></polygon></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></button>',
+                        });
                     }
                 }
-                
-                return '';
+
+                static setCookie(cname, cvalue, exdays) {
+                    const d = new Date();
+                    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                    const expires = 'expires=' + d.toUTCString();
+                    document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+                }
+
+                static getCookie(cname) {
+                    const name = cname + '=';
+                    const ca = document.cookie.split(';');
+            
+                    for (var i = 0; i < ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) === ' ') {
+                            c = c.substring(1);
+                        }
+                        if (c.indexOf(name) === 0) {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    
+                    return '';
+                }
             }
+        
+            customElements.define('announcement-bar-component', AnnouncementBar);
+            
+            const elementToAnimate = document.querySelector('.announcement-bar');
+            function toggleActiveClass() {
+              const viewportHeight = window.innerHeight;
+              const elementRect = elementToAnimate.getBoundingClientRect();
+
+              if (elementRect.top < viewportHeight && elementRect.bottom >= 0) {
+                elementToAnimate.classList.add('active-screen');
+              } else {
+                elementToAnimate.classList.remove('active-screen');
+              }
+            }
+
+            window.addEventListener('scroll', toggleActiveClass);
+            toggleActiveClass();
+
+            var announcementBar = AnnouncementBar;
         }
-    
-        customElements.define('announcement-bar-component', AnnouncementBar);
-
-        const elementToAnimate = document.querySelector('.announcement-bar');
-        function toggleActiveClass() {
-          const viewportHeight = window.innerHeight;
-          const elementRect = elementToAnimate.getBoundingClientRect();
-
-          if (elementRect.top < viewportHeight && elementRect.bottom >= 0) {
-            elementToAnimate.classList.add('active-screen');
-          } else {
-            elementToAnimate.classList.remove('active-screen');
-          }
-        }
-
-        window.addEventListener('scroll', toggleActiveClass);
-        toggleActiveClass();
     </script>
 {%- endif -%}
 

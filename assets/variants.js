@@ -196,6 +196,10 @@ class VariantSelects extends HTMLElement {
             this.item.find('[data-sku] .productView-info-value').text(this.currentVariant.sku);
         }
 
+        if(this.item.find('[data-barcode]').length > 0){
+            this.item.find('[data-barcode] .productView-info-value').text(this.currentVariant.barcode);
+        }
+
         var inventory = this.currentVariant?.inventory_management;
 
         if(inventory != null) {
@@ -286,7 +290,7 @@ class VariantSelects extends HTMLElement {
                 const stickyComparePrice = $('[data-sticky-add-to-cart] .money-compare-price .money');
 
                 if (window.subtotal.show) {
-                    let qty = quantityInput.val();
+                    let qty = quantityInput.val() || 1;
 
                     subTotal = qty * price;
                     subTotal = Shopify.formatMoney(subTotal, window.money_format);
@@ -352,7 +356,7 @@ class VariantSelects extends HTMLElement {
 
                 if (subTotal != 0 && stickyComparePrice.length && window.subtotal.show) {
                     let comparePrice = $('[data-sticky-add-to-cart] .money-compare-price').data('compare-price'),
-                        qty = quantityInput.val();
+                        qty = quantityInput.val() || 1;
                     comparePrice = qty * comparePrice;
                     comparePrice = Shopify.formatMoney(comparePrice, window.money_format);
                     comparePrice = extractContent(comparePrice);
@@ -372,7 +376,7 @@ class VariantSelects extends HTMLElement {
                 const stickyPrice = $('[data-sticky-add-to-cart] .money-subtotal .money');
 
                 if (window.subtotal.show) {
-                    let qty = quantityInput.val();
+                    let qty = quantityInput.val() || 1;
 
                     subTotal = qty * price;
                     subTotal = Shopify.formatMoney(subTotal, window.money_format);
@@ -403,7 +407,11 @@ class VariantSelects extends HTMLElement {
                             text = window.variantStrings.addToCart;
                         }
                     } else if (window.subtotal.style == '2') {
-                        text = window.subtotal.text.replace('[value]', subTotal);
+                        if (this.currentVariant.available && maxValue <= 0 && this.currentVariant.inventory_management == "shopify") {
+                            text = window.variantStrings.preOrder;
+                        } else {
+                            text = window.subtotal.text.replace('[value]', subTotal);
+                        }
                     }
                 } else {
                     subTotal = Shopify.formatMoney(price, window.money_format);
@@ -450,7 +458,7 @@ class VariantSelects extends HTMLElement {
                 const stickyComparePrice = $('[data-sticky-add-to-cart] .money-compare-price .money');
                 if (subTotal != 0 && stickyComparePrice.length && window.subtotal.show) {
                     let comparePrice = $('[data-sticky-add-to-cart] .money-compare-price').data('compare-price'),
-                        qty = quantityInput.val();
+                        qty = quantityInput.val() || 1;
                     comparePrice = qty * comparePrice;
                     comparePrice = Shopify.formatMoney(comparePrice, window.money_format);
                     comparePrice = extractContent(comparePrice);
@@ -563,6 +571,7 @@ class VariantSelects extends HTMLElement {
         const selectedOptionOneVariants = this.variantData.filter(variant => this.querySelector(':checked').value === variant.option1);
         const inputWrappers = [...this.querySelectorAll('.product-form__input')];
         const inputLength = inputWrappers.length;
+        const variant_swatch = [...this.querySelectorAll('.product-form__swatch')];
         inputWrappers.forEach((option, index) => {
             option.querySelector('[data-header-option]').innerText = option.querySelector(':checked').value;
             if (index === 0 && inputLength > 1) return;
@@ -571,8 +580,33 @@ class VariantSelects extends HTMLElement {
             const optionInputsValue = inputLength > 1 ? selectedOptionOneVariants.filter(variant => variant[`option${ index }`] === previousOptionSelected).map(variantOption => variantOption[`option${ index + 1 }`]) : this.variantData.map(variantOption => variantOption[`option${ index + 1 }`]);
             const availableOptionInputsValue = inputLength > 1 ? selectedOptionOneVariants.filter(variant => variant.available && variant[`option${ index }`] === previousOptionSelected).map(variantOption => variantOption[`option${ index + 1 }`]) : this.variantData.filter(variant => variant.available).map(variantOption => variantOption[`option${ index + 1 }`]);
             this.setInputAvailability(optionInputs, optionInputsValue, availableOptionInputsValue)
+            if (variant_swatch.length > 1){
+                this.updateImageSwatch(selectedOptionOneVariants)
+            }
         });
     }
+
+    updateImageSwatch(selectedOptionOneVariants) {
+        const inputWrappers = [...this.querySelectorAll('.product-form__input')][1];
+        if(inputWrappers){
+            const imageSpan = inputWrappers.querySelectorAll("label>span.pattern")
+            const imageLabel = inputWrappers.querySelectorAll("label")
+            const imageSpanImage = inputWrappers.querySelectorAll("label>span.expand>img")
+            const inputList = [...this.querySelectorAll('.product-form__input')][1].querySelectorAll("input");
+            inputList.forEach((item, index) => {
+                const image = selectedOptionOneVariants.filter((tmp,index1)=>{
+                  return tmp.option2 == item.value
+                })
+                if(image.length > 0){
+                    imageLabel[index].style.display = "inline-block"
+                    imageSpan[index].style.backgroundImage = `url("${image[0].featured_image.src}")`;
+                    imageSpanImage[index].srcset = image[0].featured_image.src;
+                }else{
+                    imageLabel[index].style.display = "none"
+                }
+            })
+        }
+    }           
 
     setInputAvailability(optionInputs, optionInputsValue, availableOptionInputsValue) {
         optionInputs.forEach(input => {
