@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function onClickUpdate(params) {
+function onClickUpdate(country_options, params) {
   console.log("onClickUpdate");
   const cacheKey = "user-delivery-location-key";
   var countrySelect = document.getElementById("country-select");
@@ -203,7 +203,7 @@ function onClickUpdate(params) {
   const json = JSON.parse(`{"country_code2":"${removeBefore(countrySelect.value," ")}", "zipcode":"${zipcodeInput.value}"}`);
   console.log("onClickUpdate:", json);
   setCookieJson(cacheKey, json, 12);
-  refreshView(params, json);
+  refreshView(country_options, params, json);
 }
 
 function onInputChange(event) {
