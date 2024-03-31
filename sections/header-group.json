@@ -8,8 +8,8 @@
         "announcement_XezgPE": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Up To 20% OFF<\/p>",
-            "btn_color": "#232323",
+            "text": "<p>Up To 30% OFF<\/p>",
+            "btn_color": "#e95144",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
             "btn_bg_color_gradient": ""
