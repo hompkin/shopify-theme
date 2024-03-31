@@ -124,8 +124,8 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": false,
-            "image": "shopify:\/\/shop_images\/WeChata7f3dd8c546671e1c82cd719db958b19.jpg",
-            "image_2": "shopify:\/\/shop_images\/WeChat1861b7bcfb70a6d3e24e205c55954285.jpg",
+            "image": "shopify:\/\/shop_images\/O1CN01xFZSYI1RkkOrmUOYZ__2207671282150.jpg_Q75.jpg__1.jpg",
+            "image_2": "shopify:\/\/shop_images\/O1CN01O7V4uR1vzLU51bZuZ__2215457186243_2.jpg",
             "image_3": "shopify:\/\/shop_images\/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg",
             "small_img_block_style": "style_1",
             "smallImg_justify": "space-between",
@@ -417,6 +417,36 @@
         "image_2": "shopify:\/\/shop_images\/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg"
       }
     },
+    "video_block_B8NELq": {
+      "type": "video-block",
+      "settings": {
+        "container": "container",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "spotlight_bg": "#fff",
+        "spotlight_bg_gradient": "",
+        "video_block_title": "",
+        "color_title": "#232323",
+        "fontsize_title": 16,
+        "fontsize_title_mb": 22,
+        "margin_bottom_title": 45,
+        "video_block_des": "",
+        "color_des": "#3c3c3c",
+        "fontsize_des": 16,
+        "title_align": "center",
+        "autoplay": true,
+        "video_height": "30",
+        "style_video": "mp4",
+        "video_url": "",
+        "url_mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/e5004e3cf4444347995c9f8f09f4ef49.mp4",
+        "description": "",
+        "full_width": false
+      }
+    },
     "165750374504bb14a3": {
       "type": "instagram",
       "blocks": {
@@ -668,6 +698,7 @@
     "image_banner_XGdwEL",
     "featured_collection_Akrbr7",
     "image_comparison_aBYbMG",
+    "video_block_B8NELq",
     "165750374504bb14a3",
     "16575923090614cdb0"
   ]
