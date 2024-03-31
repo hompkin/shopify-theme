@@ -113,7 +113,7 @@
         "bg_image": "shopify:\/\/shop_images\/Blue_Navy_Minimalist_Furniture_Banner_Landscape_4.png",
         "display_type": "slide",
         "list_gap": 0,
-        "enable_arrows": false,
+        "enable_arrows": true,
         "arrows_position": "",
         "enable_dots": true,
         "enable_autoplay": true
