@@ -8,8 +8,6 @@
           "settings": {
             "row_reverse": true,
             "image": "shopify:\/\/shop_images\/O1CN01yHirSc1lPwnIYOntt__2216446814812.png__1.jpg",
-            "image_2": "shopify:\/\/shop_images\/O1CN01xFZSYI1RkkOrmUOYZ__2207671282150.jpg_Q75.jpg__1.jpg",
-            "image_3": "shopify:\/\/shop_images\/O1CN01O7V4uR1vzLU51bZuZ__2215457186243_2.jpg",
             "small_img_block_style": "style_1",
             "smallImg_justify": "space-between",
             "enable_divider": false,
@@ -115,7 +113,7 @@
         "list_gap": 0,
         "enable_arrows": true,
         "arrows_position": "",
-        "enable_dots": true,
+        "enable_dots": false,
         "enable_autoplay": true
       }
     },
