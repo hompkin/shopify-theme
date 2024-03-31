@@ -138,7 +138,7 @@
     "show_customer_login": true,
     "customer_login_btn_2": "2",
     "after_add_to_cart": "quick_cart",
-    "enable_lazyload": true,
+    "enable_lazyload": false,
     "style_dots": "01",
     "type_dots_width": 10,
     "type_dots_height": 10,
