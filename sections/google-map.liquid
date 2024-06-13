@@ -92,6 +92,10 @@
                 border: 1px solid {{ btn_border_color }};
             {% endif %}
         }
+
+        .btn_1_br_outside #custom-map-{{ section.id }} .map-btn:after {
+            border: 1px solid {{ btn_border_color }};
+        }
         
         #custom-map-{{ section.id }} .map-btn:hover {
             {% if btn_text_color_hover != blank or btn_text_color_hover != 'rgba(0,0,0,0)' %}
@@ -105,6 +109,10 @@
             {% if btn_border_color_hover != blank or btn_bg_color_hover != 'rgba(0,0,0,0)' %}
                 border: 1px solid {{ btn_border_color_hover }};
             {% endif %}
+        }
+
+        .btn_1_br_outside #custom-map-{{ section.id }} .map-btn:hover:after {
+            border: 1px solid {{ btn_border_color_hover }};
         }
 
         @media (max-width: 1024px) {

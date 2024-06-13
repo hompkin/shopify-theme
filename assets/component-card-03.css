@@ -110,10 +110,6 @@
 }
 
 @media (max-width: 1024px){
-	.product-card-layout-03 .card-wishlist, .product-card-layout-03 .card-review{
-		display: none;
-	}
-
     .product-card-layout-03 .card-wishlist.show-mb {
       display: flex;
     }

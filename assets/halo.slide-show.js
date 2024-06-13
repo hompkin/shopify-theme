@@ -1,6 +1,6 @@
 (function ($) {
-	var halo = {
-	    initSlideshow: function () {
+  var halo = {
+      initSlideshow: function () {
             var slickSlideshow = $('[data-init-slideshow]');
             if (slickSlideshow.length) {
                 slickSlideshow.each(function () {
@@ -18,6 +18,7 @@
                         // POST commands to YouTube or Vimeo API
                         function postMessageToPlayer(player, command) {
                             if (player == null || command == null) return;
+                            console.log(player.contentWindow);
                             player.contentWindow.postMessage(JSON.stringify(command), "*");
                         }
 
@@ -26,12 +27,21 @@
                             var currentSlide, player, video;
 
                             currentSlide = slick.find('.slick-current .item ');
-                            player = currentSlide.find("iframe").get(0);
+                            if($(window).width() > 551) {
+                              player = currentSlide.find("iframe.slide-pc").get(0);
+                            } else {
+                              player = currentSlide.find("iframe.slide-mobile").get(0);
+                            }
 
                             if (currentSlide.hasClass('slide-youtube')) {
-               
-                               var id = currentSlide.find('iframe').attr('id');
-                               var video_id = currentSlide.find('iframe').data('video-id');
+                              if($(window).width() > 551) {
+                                var id = currentSlide.find('iframe.slide-pc').attr('id');
+                                var video_id = currentSlide.find('iframe.slide-pc').data('video-id');
+                              } else {
+                                var id = currentSlide.find('iframe.slide-mobile').attr('id');
+                                var video_id = currentSlide.find('iframe.slide-mobile').data('video-id');
+                              }
+  
                                if (control === "play"){
                                     postMessageToPlayer(player, {
                                      "event": "command",
@@ -181,8 +191,8 @@
                 });
             };
         }
-	}
-	halo.initSlideshow();
+  }
+  halo.initSlideshow();
   if ($('body').hasClass('cursor-fixed__show')){
     window.sharedFunctionsAnimation.onEnterButton();
     window.sharedFunctionsAnimation.onLeaveButton();

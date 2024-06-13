@@ -157,7 +157,7 @@
                                             <div class="image" style="padding-top: {{ 1 | divided_by: thumbnail.aspect_ratio | times: 100 | append: '%' }}">
                                                 <img srcset="{{ thumbnail | img_url: 'master' }}"
                                                     src="{{ thumbnail | img_url: 'master' }}"
-                                                    loading="lazy"
+                                                    {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}
                                                     alt="{{ thumbnail.alt | default: shop.name | escape }}"
                                                     width="{{ thumbnail.width }}"
                                                     height="{{ thumbnail.height }}"
@@ -446,8 +446,8 @@
             {
                 "type": "range",
                 "id": "side_padding_full_width",
-                "label": "t:sections.general.settings.container.padding_full",
-                "info": "t:sections.general.settings.container.padding_full_info",
+                "label": "t:sections.layout.container.padding_full_width",
+                "info": "t:sections.layout.container.info_full_width",
                 "min": 0,
                 "max": 100,
                 "step": 1,

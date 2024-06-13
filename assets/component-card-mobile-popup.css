@@ -58,6 +58,15 @@ body.product-card-layout-07 #halo-card-mobile-popup .halo-popup-wrapper {
   height: max-content;  
 }
 
+#halo-card-mobile-popup .card-action .variants-popup-content .variants .selector-wrapper.option-color.unshow_swatch,
+.card-action .selector-wrapper.option-color.unshow_swatch {
+  display: block !important;
+}
+
+.card-action .selector-wrapper.option-color.unshow_swatch {
+  padding-bottom: 15px;
+}
+
 @media (max-width: 551px) {
   #halo-card-mobile-popup {
     min-width: 95%;

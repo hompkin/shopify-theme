@@ -48,6 +48,7 @@
         assign subtotal = current_variant.price | money
     endif
     assign show_sticky_add_to_cart = section.settings.show_sticky_add_to_cart
+    assign sticky_add_to_cart_always_mb = section.settings.enable_sticky_add_to_cart_always_mobile
     assign sticky_atc_layout = section.settings.sticky_atc_layout
     assign show_sticky_vendor = section.settings.show_sticky_vendor
     assign show_tab = section.settings.show_tab
@@ -73,7 +74,7 @@
     assign show_sidebar = section.settings.show_sidebar
     assign sidebar_type = 'vertical'
     assign sidebar_position = section.settings.sidebar_position
-    assign show_sidebar_collapse = section.settings.show_sidebar_collapse
+    assign sidebar_collapse = section.settings.sidebar_collapse
     assign sidebar_collapse_default = section.settings.sidebar_collapse_default
     if show_sidebar
         if sidebar_type == 'vertical'
@@ -451,7 +452,7 @@
                             results: collection,
                             section: section,
                             sidebar_type: sidebar_type,
-                            show_collapse: show_sidebar_collapse,
+                            show_collapse: sidebar_collapse,
                             sidebar_collapse: sidebar_collapse_default
                         %}
                     </div>
@@ -494,7 +495,7 @@
                                     {%- for media in product.media -%}
                                         {%- case media.media_type -%}
                                             {%- when 'image' -%}
-                                                <div class="productView-image productView-image-{{ media_size }} filter-{{ media.alt | handle }} fit-{{ media_fit }}" data-index="{{ forloop.index }}">
+                                                <div class="productView-image productView-image-{{ media_size }} filter-{{ media.alt | escape | downcase | replace: ' ', '-' }} fit-{{ media_fit }}" data-index="{{ forloop.index }}">
                                                     <div class="productView-img-container product-single__media" data-media-id="{{ media.id }}"
                                                         {% unless media_fit == 'unset' %}
                                                             {% if product.featured_media %}
@@ -518,6 +519,7 @@
                                                             <img id="product-featured-image-{{ media.id }}"
                                                                 {% if settings.enable_lazyload and forloop.index > 1 %}data-{% endif %}srcset="{{ media.preview_image | img_url: 'master' }}"
                                                                 {% unless settings.enable_lazyload and forloop.index > 1 %}src="{{ media | img_url: 'master' }}"{% endunless %}
+                                                                {% if settings.enable_lazyload %}data-src="{{ media | img_url: 'master' }}"{% endif %}
                                                                 alt="{{ media.preview_image.alt | escape }}"
                                                                 sizes="(min-width: 2000px) 1500px, (min-width: 1200px) 1200px, (min-width: 768px) calc((100vw - 30px) / 2), calc(100vw - 20px)"
                                                                 width="{{ media.width }}"
@@ -697,7 +699,7 @@
                                         {%- endfor -%}
                                     </div>
                                 {%- endif -%}
-                                {%- if main_image_show_zoom_icon_mb -%}
+                                {%- if main_image_show_zoom_icon_mb and product_image_popup == 'fancybox' -%}
                                     <div class="productView-iconZoom">
                                         {% render 'icon-zoom-1' %}
                                     </div>
@@ -719,14 +721,14 @@
                                         {%- for media in product.media -%}
                                             {%- case media.media_type -%}
                                                 {%- when 'image' -%}
-                                                    <div class="productView-thumbnail filter-{{ media.alt | handle }}" data-media-id="{{ section.id }}-{{ media.id }}">
+                                                    <div class="productView-thumbnail filter-{{ media.alt | escape | downcase | replace: ' ', '-' }}" data-media-id="{{ section.id }}-{{ media.id }}">
                                                         <a class="productView-thumbnail-link animated-loading" href="javascript:void(0)" data-image="{{ media | img_url: 'large' }}">
                                                             <img src="{%- if thumnail_layout == '3' -%}{{ media | img_url: 'large' }}{% else %}{{ media | img_url: 'medium' }}{% endif %}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
                                                         </a>
                                                     </div>
                                                 {%- when 'external_video' -%}
                                                     {%- if video_layout == 'thumbnail' -%}
-                                                        <div class="productView-thumbnail filter-{{ media.alt | handle }}" data-media-id="{{ section.id }}-{{ media.id }}">
+                                                        <div class="productView-thumbnail filter-{{ media.alt | escape | downcase | replace: ' ', '-' }}" data-media-id="{{ section.id }}-{{ media.id }}">
                                                             <div class="productView-thumbnail-link animated-loading">
                                                                 <img src="{%- if thumnail_layout == '3' -%}{{ media | img_url: 'large' }}{% else %}{{ media | img_url: 'medium' }}{% endif %}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
                                                             </div>
@@ -737,7 +739,7 @@
                                                     {%- endif -%}
                                                 {%- when 'video' -%}
                                                     {%- if video_layout == 'thumbnail' -%}
-                                                        <div class="productView-thumbnail filter-{{ media.alt | handle }}" data-media-id="{{ section.id }}-{{ media.id }}">
+                                                        <div class="productView-thumbnail filter-{{ media.alt | escape | downcase | replace: ' ', '-' }}" data-media-id="{{ section.id }}-{{ media.id }}">
                                                             <div class="productView-thumbnail-link animated-loading">
                                                                 <img src="{{ media | media_tag | split: 'src="' | last | split: '">' | first }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
                                                             </div>
@@ -756,7 +758,7 @@
                                                         </div>
                                                     </div>
                                                 {%- else -%}
-                                                    <div class="productView-thumbnail filter-{{ media.alt | handle }}" data-media-id="{{ section.id }}-{{ media.id }}">
+                                                    <div class="productView-thumbnail filter-{{ media.alt | escape | downcase | replace: ' ', '-' }}" data-media-id="{{ section.id }}-{{ media.id }}">
                                                         <div class="productView-thumbnail-link animated-loading">
                                                             {{ media | media_tag }}
                                                         </div>
@@ -819,24 +821,18 @@
                                         </div>
                                     {%- when 'meta' -%}
                                         {%- liquid 
-                                            assign show_review = block.settings.show_review
                                             assign show_sold_in = block.settings.show_sold_in
                                             assign sold_in_number = block.settings.sold_in_number
                                             assign sold_in_hours = block.settings.sold_in_hours
                                             assign color_text_sold_in = block.settings.color_text_sold_in
                                         -%}
-                                        {%- if show_review or show_sold_in -%}
+                                        {%- if show_sold_in -%}
                                             <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                                                 style="--spacing-top: {{ spacing_top | append: 'px' }};
                                                 --spacing-bottom: {{ spacing_bottom | append: 'px' }};
                                                 --color-text-sold-in: {{ color_text_sold_in }}"
                                             >
-                                                <div class="productView-meta{% if show_review == false and show_sold_in == false %} productView-meta-2{% endif %} clearfix">
-                                                    {%- if show_review -%}
-                                                        {% render 'product-rating',
-                                                            product: product
-                                                        %}
-                                                    {%- endif -%}
+                                                <div class="productView-meta{% if show_sold_in == false %} productView-meta-2{% endif %} clearfix">
                                                     {%- if show_sold_in -%}
                                                         {% render 'product-sold-in-last',
                                                             sold_in_number: sold_in_number,
@@ -963,6 +959,10 @@
                                                 style="--spacing-top: {{ spacing_top | append: 'px' }};
                                                 --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
                                             >
+                                                {%- if settings.enable_combined_products_listing -%}
+                                                    {% render 'combined-products-listing', product: product %}
+                                                {%- endif -%}
+                                                
                                                 {% render 'product-variant',
                                                     block: block,
                                                     product: product,
@@ -998,6 +998,31 @@
                                                 current_variant: current_variant
                                             %}
                                         {% endunless %}
+                                    {%- when 'tags' -%}
+                                        <div class="productView-moreItem productView-moreItem-product-tags{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
+                                            style="--spacing-top: {{ spacing_top | append: 'px' }};
+                                            --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
+                                        >
+                                            <div class="tags">
+                                                <strong class="text-tags">{{ 'blogs.article.tags' | t }}</strong>
+                                                {% for tag in product.tags %}
+                                                    <span class="separator">/</span>
+                                                    <a href="/collections/all/?constraint={{ tag | handle }}" rel="tag">
+                                                        <span>{{ tag | split: '|' | first }}</span>
+                                                    </a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {%- when 'positive_vibes' -%}
+                                        <div class="productView-moreItem productView-moreItem-product-positive_vibes{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
+                                            style="--spacing-top: {{ spacing_top | append: 'px' }};
+                                            --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
+                                        >
+                                            {% render 'product-positive-vibes',
+                                                block: block,
+                                                product: product
+                                            %}
+                                        </div>
                                     {%- when 'perks' -%}
                                         {% unless has_product_combo %}
                                             <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
@@ -1230,6 +1255,41 @@
                                         </div>
                                     {%- when '@app' -%}
                                         {% render block %}
+                                    {%- when 'delivery_time' -%}
+                                        {%- liquid
+                                            assign icon = block.settings.icon
+                                            assign txt = block.settings.txt
+                                            assign hr = block.settings.hr
+                                            assign min = block.settings.min
+                                            assign frm_day = block.settings.frm_day
+                                            assign exclude_day = block.settings.exclude_day
+                                            assign d_start = block.settings.d_start
+                                            assign d_end = block.settings.d_end
+                                            assign time = block.settings.time
+                                        -%}
+                                        <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
+                                            style="--spacing-top: {{ spacing_top | append: 'px' }};
+                                            --spacing-bottom: {{ spacing_bottom | append: 'px' }};"
+                                        >
+                                            <delivery-time class="productView-dlvr d-none"
+                                                data-delivery-time 
+                                                data-frm-day="{{frm_day}}"
+                                                data-exclude-day="{{exclude_day}}" 
+                                                data-estimate-start="{{d_start}}" 
+                                                data-estimate-end="{{d_end}}" 
+                                                data-time="{{time}}"
+                                                style="--color-text: {{block.settings.color_title}};--font-size: {{block.settings.fontsize_text}}px;"
+                                            >
+                                                {%- if icon != blank -%}
+                                                    <span class="productView-dlvr__icon">{{icon}}</span>
+                                                {%- endif -%}
+                                                <span class="productView-dlvr__text">
+                                                    {%- capture remainHTML -%}<span data-hour-delivery class="productView-dlvr__remaining"><span class="productView-dlvr__remaining-hr"></span> {{hr}} <span class="productView-dlvr__remaining-mins"></span> {{min}}</span>{%- endcapture -%}
+                                                    {{ txt | replace:'[hour]',remainHTML | replace:'[date_start]','<span data-start-delivery class="productView-dlvr__date-start txt-d-underline"></span>' | replace:'[date_end]','<span data-end-delivery class="productView-dlvr__date-end txt-d-underline"></b>'}}
+                                                </span>
+                                            </delivery-time>
+                                            <script src="{{ "delivery-time.js" | asset_url }}" defer="defer"></script>
+                                        </div>
                                 {%- endcase -%}
                             {%- endfor -%}
                             {%- if show_tab -%}
@@ -1261,7 +1321,8 @@
                         container: container,
                         show_qty: show_qty,
                         qty_style: qty_style,
-                        subtotal: subtotal
+                        subtotal: subtotal,
+                        sticky_add_to_cart_always_mb: sticky_add_to_cart_always_mb
                     %}
                 {%- endif -%}
             {%- endunless -%}
@@ -1297,7 +1358,8 @@
     {% render 'halo-compare-color-popup',
         product: product,
         show_compare_color_drop_drap: show_compare_color_drop_drap,
-        index: index
+        index: index,
+        load_script: true
     %}
 {%- endif -%}
 

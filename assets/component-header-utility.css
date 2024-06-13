@@ -396,10 +396,6 @@
 		top: calc(50% - 10px);
 	}
 
-	.bottom-bar--list span{
-		font-size: calc(var(--font-body-size) - 4px) !important;
-	}
-
 	.slideshow-wrapper .slide-content .slide-heading{
         margin-bottom: 14px !important;
     }

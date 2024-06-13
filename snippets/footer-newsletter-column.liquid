@@ -69,7 +69,7 @@
     {% render 'footer-social', block: block, social_is_nested: true %}
   {%- endif -%}
   {%- if show_newsletter -%}
-    <div{% if show_social and swap_social_position %} style="margin-top: 32px"{% endif %}>
+    <div{% if show_social and swap_social_position %} {% if settings.enable_button_1_border_outside %}style="margin-top: 27px"{% else %}style="margin-top: 32px"{% endif %}{% endif %}>
       {%- if subtext_before_heading -%}
         <div class="footer-block__subheading rte">{{ block.settings.subtext | default: ' ' }}
           {%- if block.settings.enable_arrow -%}

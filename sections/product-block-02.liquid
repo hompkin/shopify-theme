@@ -58,7 +58,7 @@
                                 assign arrows = section.settings.product_block_arrows
                                 assign arrows_mb = section.settings.product_block_arrows_mb
                             -%}
-                            <div class="products-carousel column-{{ column }}" data-item-to-show="{{ column }}" data-item-dots="{{ dots }}" data-item-dots-mb="{{ dots_mb }}" data-item-arrows="{{ arrows }}" data-item-arrows-mb="{{ arrows_mb }}">
+                            <div class="products-carousel column-{{ column }}" data-item-to-show="{{ column }}" data-item-dots="{{ dots }}" data-item-dots-mb="{{ dots_mb }}" data-item-arrows="{{ arrows }}" data-item-arrows-mb="{{ arrows_mb }}" data-infinite="true">
                         {%- endif -%}
                             {%- for tag in current_tags -%}
                                 {%- if tag contains 'limit=' -%}
@@ -134,7 +134,7 @@
                                 assign arrows = section.settings.product_block_arrows
                                 assign arrows_mb = section.settings.product_block_arrows_mb
                             -%}
-                            <div class="products-carousel column-{{ column }}" data-item-to-show="{{ column }}" data-item-dots="{{ dots }}" data-item-dots-mb="{{ dots_mb }}" data-item-arrows="{{ arrows }}" data-item-arrows-mb="{{ arrows_mb }}">
+                            <div class="products-carousel column-{{ column }}" data-item-to-show="{{ column }}" data-item-dots="{{ dots }}" data-item-dots-mb="{{ dots_mb }}" data-item-arrows="{{ arrows }}" data-item-arrows-mb="{{ arrows_mb }}" data-infinite="true">
                         {%- endif -%}
                             {%- for tag in current_tags -%}
                                 {%- if tag contains 'limit=' -%}
@@ -235,6 +235,7 @@
     -%}
     {%- if infinite_scroll -%}
         .section-block-{{section.id}} .product-infinite-scroll .button {background-color: {{ bg_color_button }};color: {{ color_button }};border: 1px solid {{ border_color_button }};max-width: {{ maxwidth_button }}}
+        .btn_1_br_outside .section-block-{{section.id}} .product-infinite-scroll .button:after {border: 1px solid {{ border_color_button }}}
         .section-block-{{section.id}} .product-infinite-scroll .button svg {fill: {{ color_button }}}
     {%- endif -%}
     {%- if section.settings.enable_layout_special -%}

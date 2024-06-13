@@ -45,13 +45,15 @@ class VariantQuickShopSelects extends HTMLElement {
 
     updateMedia(time) {
         if (!this.currentVariant || !this.currentVariant?.featured_media) return;
-        const newMedia = document.querySelector(
-            `[data-media-id="${this.dataset.product}-${this.currentVariant.featured_media.id}"]`
-        );
-        if (!newMedia) return;
-        window.setTimeout(() => {
-            $(newMedia).trigger('click');
-        }, time);
+        setTimeout(() => {
+            const newMedia = document.querySelector(
+                `[data-media-id="${this.dataset.product}-${this.currentVariant.featured_media.id}"]`
+            );
+            if (!newMedia) return;
+            window.setTimeout(() => {
+                $(newMedia).trigger('click');
+            }, time);
+        }, 100);
     }
 
     updateVariantInput() {

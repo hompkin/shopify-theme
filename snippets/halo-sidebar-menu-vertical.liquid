@@ -40,7 +40,7 @@
                       </div>
       			{%- endif -%}
       			{%- if settings.show_wishlist -%}
-      			    <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset">
+      			    <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset">
       			        <span class="title">
       			            {{ 'wishlist.general.title' | t }}
       			        </span>

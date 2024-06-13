@@ -69,4 +69,14 @@
             hasCountdown: hasCountdown,
             loading: loading
         %}
+    {%- when '08' -%}
+        {% render 'product-card-08',
+            product_card_product: product_card_product,
+            portrait_aspect_ratio: portrait_aspect_ratio,
+            serial: serial,
+            sectionId: sectionId,
+            media_size: media_size,
+            hasCountdown: hasCountdown,
+            loading: loading
+        %}
 {%- endcase -%}

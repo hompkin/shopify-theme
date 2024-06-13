@@ -9,7 +9,7 @@
     {{ 'component-filter.css' | asset_url | stylesheet_tag }}
     <div class="collection-filters" id="main-collection-filters" data-id="{{ section.id }}">
         <script type="text/javascript">window.show_storefront_filter = true;</script>
-
+  
         {%- liquid
             assign file_extension = 'png'
             assign filter_by_tags = section.blocks | where: "type", "filter"
@@ -29,7 +29,7 @@
             assign filter_rectangle = filter_rectangle | split: "," | strip | downcase | handle
             assign maxItemToShow = section.settings.max_item_per_filter
         -%}
-        <collection-filters-form class="facets facets-{{ sidebar_type }} filter-display-{{ section.settings.filter_display_type }}" data-filter-display="{{ section.settings.filter_display_type }}">
+        <collection-filters-form class="facets facets-{{ sidebar_type }} filter-display-{{ section.settings.filter_display_type }} filter-facets-{{show_collapse}}" data-filter-display="{{ section.settings.filter_display_type }}">
             <form id="CollectionFiltersForm" class="facets__form">
                 {%- if results.terms -%}
                     <input type="hidden" name="q" value="{{ results.terms | escape }}">
@@ -126,19 +126,32 @@
                                                 endfor
                                             -%}
                                             <div class="sidebarBlock js-filter {{ listTagsRenderSize }}" data-index="{{ indexTag | append: forloop.index }}" data-type-list="true">
-                                                {%- if show_collapse -%}
-                                                    <div class="sidebarBlock-headingWrapper">
+                                                {%- if show_collapse == 'collapse' or show_collapse == 'slide'  -%}
+                                                    <div class="sidebarBlock-headingWrapper{% if show_collapse == 'slide' %}-slide{% endif %}">
                                                 {%- endif -%}
                                                     <h2 class="sidebarBlock-heading{% if show_collapse %}{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}{% endif %}">
-                                                        <span class="facets__text">{{ listTagHeading | escape }}</span>
+                                                        <span class="facets__text">
+                                                            {{ listTagHeading | escape }}
+                                                            {%- if show_collapse == 'slide' -%}
+                                                                {% render 'icon-arrow-left' %}
+                                                            {%- endif -%}
+                                                        </span>
                                                         <span class="facets__count{% if sidebar_type == 'horizontal' %}{% if countTagActive > 0 %} custom-count{% endif %}{% endif %}" aria-hidden="true">{%- if sidebar_type == 'horizontal' -%}{%- if countTagActive > 0 -%}<span>{{ countTagActive }}</span>{%- endif -%}{% elsif sidebar_type == 'vertical' %}{%- if countTagActive > 0 -%}({{ countTagActive }}){%- endif -%}{%- endif -%}</span>
                                                     </h2>
-                                                {%- if show_collapse -%}
+                                                {%- if show_collapse == 'collapse' or show_collapse == 'slide' -%}
                                                     </div>
+                                                {%- endif -%}
+                                                {%- if show_collapse == 'collapse' -%}
                                                     <div class="sidebarBlock-contentWrapper" {% if sidebar_collapse == 'expand' %} style="display: block;"{% endif %}>
                                                 {%- endif -%}
-                                                    <div class="sidebarBlock-content sidebarBlock-content--full facets__display">
-                                                        <ul class="facets__list custom-scrollbar list-unstyled" role="list" data-max-items="{{ maxItemToShow }}" data-name="{{ listTagHeading | escape }}">
+                                                    <div class="sidebarBlock-content sidebarBlock-content--full facets__display{% if show_collapse == 'slide' %} sidebarBlock-slide__content{% endif %}">
+                                                        {%- if show_collapse == 'slide' -%}
+                                                            <button type="button" class="sidebarBlock-slide__content-close">
+                                                                {% render 'icon-arrow-left' %}
+                                                                {{ listTagHeading | escape }}
+                                                            </button>
+                                                        {%- endif -%}
+                                                        <ul class="facets__list custom-scrollbar list-unstyled {% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}" role="list" data-max-items="{{ maxItemToShow }}" data-name="{{ listTagHeading | escape }}">
                                                             {%- liquid
                                                                 assign label = listTagHeading | downcase | handle
                                                                 assign valueIndex = 0
@@ -167,7 +180,7 @@
                                                                 {%- endif -%}
                                                             {%- endfor -%}
                                                         </ul>
-                                                        <a href="{{ filter.url_to_remove }}" class="facets__reset link link-underline js-facet-remove" data-index="{{ indexTag | append: forloop.index }}" {% if countTagActive == 0 %} style="display: none;"{% endif %}><span class="text">{{ 'sections.collection_template.clear_all' | t }}</span></a>
+                                                        <a href="{{ filter.url_to_remove }}" class="facets__reset link link-underline js-facet-remove {{sidebar_type}} {{show_collapse}}" data-index="{{ indexTag | append: forloop.index }}" {% if countTagActive == 0 %} style="display: none;"{% endif %}><span class="text">{{ 'sections.collection_template.clear_all' | t }}</span></a>
                                                         {%- if sidebar_type == 'horizontal' -%}
                                                             {%- if section.settings.filter_display_type == 'show-more' -%}
                                                                 {%- if listTagsRenderSize > maxItemToShow -%}
@@ -178,11 +191,21 @@
                                                                 {%- endif -%}
                                                             {%- endif -%}
                                                         {%- endif -%}
+                                                        {%- if sidebar_type == 'vertical' and show_collapse == 'slide' -%}
+                                                            {%- if section.settings.filter_display_type == 'show-more' -%}
+                                                                {%- if listTagsRenderSize > maxItemToShow -%}
+                                                                    <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
+                                                                        <span class="icon-container">{% render 'icon-show-more' %}</span>
+                                                                        <span class="btn-text"><span data-show-more-content>{{ 'sections.collection_template.show_all' | t }}</span></span>
+                                                                    </div>
+                                                                {%- endif -%}
+                                                            {%- endif -%}
+                                                        {%- endif -%}
                                                     </div>
-                                                {%- if show_collapse -%}
+                                                {%- if show_collapse == 'collapse' -%}
                                                     </div>
                                                 {%- endif -%}
-                                                {%- unless sidebar_type == 'horizontal' -%}
+                                                {%- if sidebar_type != 'horizontal' and show_collapse != 'slide' -%}
                                                     {%- if section.settings.filter_display_type == 'show-more' -%}
                                                         {%- if listTagsRenderSize > maxItemToShow -%}
                                                             <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
@@ -191,7 +214,7 @@
                                                             </div>
                                                         {%- endif -%}
                                                     {%- endif -%}
-                                                {%- endunless -%}
+                                                {%- endif -%}
                                             </div>
                                         {%- endif -%}
                                     {%- endfor -%}
@@ -213,19 +236,31 @@
                                                 endfor
                                             -%}
                                             <div class="sidebarBlock js-filter {{ filter.label | escape }}" data-index="{{ indexTag | append: forloopIndex }}" data-type-list="true">
-                                                {%- if show_collapse -%}
-                                                    <div class="sidebarBlock-headingWrapper">
+                                                {%- if show_collapse == 'collapse' or show_collapse == 'slide'  -%}
+                                                    <div class="sidebarBlock-headingWrapper{% if show_collapse == 'slide' %}-slide{% endif %}">
                                                 {%- endif -%}
                                                     <h2 class="sidebarBlock-heading{% if show_collapse %}{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}{% endif %}">
-                                                        <span class="facets__text">{{ filter.label | escape }}</span>
+                                                        <span class="facets__text">{{ filter.label | escape }}
+                                                            {%- if show_collapse == 'slide' -%}
+                                                                {% render 'icon-arrow-left' %}
+                                                            {%- endif -%}
+                                                        </span>
                                                         <span class="facets__count{% if sidebar_type == 'horizontal' %}{% if countTagActive > 0 %} custom-count{% endif %}{% endif %}" aria-hidden="true">{%- if sidebar_type == 'horizontal' -%}{%- if countTagActive > 0 -%}<span>{{ countTagActive }}</span>{%- endif -%}{% elsif sidebar_type == 'vertical' %}{%- if countTagActive > 0 -%}({{ countTagActive }}){%- endif -%}{%- endif -%}</span>
                                                     </h2>
-                                                {%- if show_collapse -%}
+                                                {%- if show_collapse == 'collapse' or show_collapse == 'slide' -%}
                                                     </div>
+                                                {%- endif -%}
+                                                {%- if show_collapse == 'collapse' -%}
                                                     <div class="sidebarBlock-contentWrapper" {% if sidebar_collapse == 'expand' %} style="display: block;"{% endif %}>
                                                 {%- endif -%}
-                                                    <div class="sidebarBlock-content sidebarBlock-content--full facets__display">
-                                                        <ul class="facets__list custom-scrollbar list-unstyled" role="list" data-max-items="{{ maxItemToShow }}">
+                                                    <div class="sidebarBlock-content sidebarBlock-content--full facets__display{% if show_collapse == 'slide' %} sidebarBlock-slide__content{% endif %}">
+                                                        {%- if show_collapse == 'slide' -%}
+                                                            <button type="button" class="sidebarBlock-slide__content-close">
+                                                                {% render 'icon-arrow-left' %}
+                                                                {{ filter.label | escape }}
+                                                            </button>
+                                                        {%- endif -%}
+                                                        <ul class="facets__list custom-scrollbar list-unstyled {% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}" role="list" data-max-items="{{ maxItemToShow }}">
                                                             {%- liquid
                                                                 assign label = filter.label | downcase | handle
                                                                 assign valueIndex = 0
@@ -272,7 +307,7 @@
                                                                 {%- endunless -%}
                                                             {%- endfor -%}
                                                         </ul>
-                                                        <a href="{{ filter.url_to_remove }}" class="facets__reset link link-underline js-facet-remove" data-index="{{ forloop.index }}" {% if countTagActive == 0 %} style="display: none;"{% endif %}><span class="text">{{ 'sections.collection_template.clear_all' | t }}</span></a>
+                                                        <a href="{{ filter.url_to_remove }}" class="facets__reset link link-underline js-facet-remove {{sidebar_type}} {{show_collapse}}" data-index="{{ forloop.index }}" {% if countTagActive == 0 %} style="display: none;"{% endif %}><span class="text">{{ 'sections.collection_template.clear_all' | t }}</span></a>
                                                         {%- if sidebar_type == 'horizontal' -%}
                                                             {%- if section.settings.filter_display_type == 'show-more' -%}
                                                                 {%- if listTagsRenderSize > maxItemToShow -%}
@@ -283,11 +318,21 @@
                                                                 {%- endif -%}
                                                             {%- endif -%}
                                                         {%- endif -%}
+                                                        {%- if sidebar_type == 'vertical' and show_collapse == 'slide' -%}
+                                                            {%- if section.settings.filter_display_type == 'show-more' -%}
+                                                                {%- if listTagsRenderSize > maxItemToShow -%}
+                                                                    <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
+                                                                        <span class="icon-container">{% render 'icon-show-more' %}</span>
+                                                                        <span class="btn-text"><span data-show-more-content>{{ 'sections.collection_template.show_all' | t }}</span></span>
+                                                                    </div>
+                                                                {%- endif -%}
+                                                            {%- endif -%}
+                                                        {%- endif -%}
                                                     </div>
-                                                {%- if show_collapse -%}
+                                                {%- if show_collapse == 'collapse' -%}
                                                     </div>
                                                 {%- endif -%}
-                                                {%- unless sidebar_type == 'horizontal' -%}
+                                                {%- if sidebar_type != 'horizontal' and show_collapse != 'slide' -%}
                                                     {%- if section.settings.filter_display_type == 'show-more' -%}
                                                         {%- if listTagsRenderSize > maxItemToShow -%}
                                                             <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
@@ -296,24 +341,36 @@
                                                             </div>
                                                         {%- endif -%}
                                                     {%- endif -%}
-                                                {%- endunless -%}
+                                                {%- endif -%}
                                             </div>
                                         {%- endif -%}
                                     {%- else -%}
                                         <div class="sidebarBlock js-filter {{ filter.label | escape }}" data-index="{{ forloop.index }}" data-type-list="true">
-                                            {%- if show_collapse -%}
-                                                <div class="sidebarBlock-headingWrapper">
+                                            {%- if show_collapse == 'collapse' or show_collapse == 'slide'  -%}
+                                                <div class="sidebarBlock-headingWrapper{% if show_collapse == 'slide' %}-slide{% endif %}">
                                             {%- endif -%}
                                                 <h2 class="sidebarBlock-heading{% if show_collapse %}{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}{% endif %}">
-                                                    <span class="facets__text">{{ filter.label | escape }}</span>
+                                                    <span class="facets__text">{{ filter.label | escape }}
+                                                        {%- if show_collapse == 'slide' -%}
+                                                            {% render 'icon-arrow-left' %}
+                                                        {%- endif -%}
+                                                    </span>
                                                     <span class="facets__count{% if sidebar_type == 'horizontal' %}{% if filter.active_values.size > 0 %} custom-count{% endif %}{% endif %}" aria-hidden="true">{%- if sidebar_type == 'horizontal' -%}{%- if filter.active_values.size > 0 -%}<span>{{ filter.active_values.size }}</span>{%- endif -%}{% elsif sidebar_type == 'vertical' %}{%- if filter.active_values.size > 0 -%}({{ filter.active_values.size }}){%- endif -%}{%- endif -%}</span>
                                                 </h2>
-                                            {%- if show_collapse -%}
+                                            {%- if show_collapse == 'collapse' or show_collapse == 'slide' -%}
                                                 </div>
+                                            {%- endif -%}
+                                            {%- if show_collapse == 'collapse' -%}
                                                 <div class="sidebarBlock-contentWrapper" {% if sidebar_collapse == 'expand' %} style="display: block;"{% endif %}>
                                             {%- endif -%}
-                                                <div class="sidebarBlock-content sidebarBlock-content--full facets__display">
-                                                    <ul class="facets__list custom-scrollbar list-unstyled" role="list" data-max-items="{{ maxItemToShow }}">
+                                                <div class="sidebarBlock-content sidebarBlock-content--full facets__display{% if show_collapse == 'slide' %} sidebarBlock-slide__content{% endif %}">
+                                                    {%- if show_collapse == 'slide' -%}
+                                                        <button type="button" class="sidebarBlock-slide__content-close">
+                                                            {% render 'icon-arrow-left' %}
+                                                            {{ filter.label | escape }}
+                                                        </button>
+                                                    {%- endif -%}
+                                                    <ul class="facets__list custom-scrollbar list-unstyled {% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}" role="list" data-max-items="{{ maxItemToShow }}">
                                                         {%- liquid
                                                             assign label = filter.label | downcase | handle
                                                             assign filter_swatch = filter_swatch | split: "," | strip | downcase | handle
@@ -335,7 +392,7 @@
                                                             </li>
                                                         {%- endfor -%}
                                                     </ul>
-                                                    <a href="{{ filter.url_to_remove }}" class="facets__reset link link-underline js-facet-remove" data-index="{{ forloop.index }}" {% if filter.active_values.size == 0 %} style="display: none;"{% endif %}><span class="text">{{ 'sections.collection_template.clear_all' | t }}</span></a>
+                                                    <a href="{{ filter.url_to_remove }}" class="facets__reset link link-underline js-facet-remove {{sidebar_type}} {{show_collapse}}" data-index="{{ forloop.index }}" {% if filter.active_values.size == 0 %} style="display: none;"{% endif %}><span class="text">{{ 'sections.collection_template.clear_all' | t }}</span></a>
                                                     {%- if sidebar_type == 'horizontal' -%}
                                                         {%- if section.settings.filter_display_type == 'show-more' -%}
                                                             {%- if filter.values.size > maxItemToShow -%}
@@ -346,11 +403,21 @@
                                                             {%- endif -%}
                                                         {%- endif -%}
                                                     {%- endif -%}
+                                                    {%- if sidebar_type == 'vertical' and show_collapse == 'slide' -%}
+                                                        {%- if section.settings.filter_display_type == 'show-more' -%}
+                                                            {%- if filter.values.size > maxItemToShow -%}
+                                                                <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
+                                                                    <span class="icon-container">{% render 'icon-show-more' %}</span>
+                                                                    <span class="btn-text"><span data-show-more-content>{{ 'sections.collection_template.show_all' | t }}</span></span>
+                                                                </div>
+                                                            {%- endif -%}
+                                                        {%- endif -%}
+                                                    {%- endif -%}
                                                 </div>
-                                            {%- if show_collapse -%}
+                                            {%- if show_collapse == 'collapse' -%}
                                                 </div>
                                             {%- endif -%}
-                                            {%- unless sidebar_type == 'horizontal' -%}
+                                            {%- if sidebar_type != 'horizontal' and show_collapse != 'slide' -%}
                                                 {%- if section.settings.filter_display_type == 'show-more' -%}
                                                     {%- if filter.values.size > maxItemToShow -%}
                                                         <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
@@ -359,24 +426,36 @@
                                                         </div>
                                                     {%- endif -%}
                                                 {%- endif -%}
-                                            {%- endunless -%}
+                                            {%- endif -%}
                                         </div>
                                     {%- endif -%}
                                 {%- else -%}
-                                    <div class="sidebarBlock js-filter {{ filter.label | escape }}" data-index="{{ forloop.index }}" data-type-list="true">
-                                        {%- if show_collapse -%}
-                                            <div class="sidebarBlock-headingWrapper">
+                                    <div class="sidebarBlock js-filter sidebarBlock-{{show_collapse}} {{ filter.label | escape }}" data-index="{{ forloop.index }}" data-type-list="true">
+                                        {%- if show_collapse == 'collapse' or show_collapse == 'slide'  -%}
+                                            <div class="sidebarBlock-headingWrapper{% if show_collapse == 'slide' %}-slide{% endif %}">
                                         {%- endif -%}
                                             <h2 class="sidebarBlock-heading{% if show_collapse %}{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}{% endif %}">
-                                                <span class="facets__text">{{ filter.label | escape }}</span>
+                                                <span class="facets__text">{{ filter.label | escape }}
+                                                    {%- if show_collapse == 'slide' -%}
+                                                        {% render 'icon-arrow-left' %}
+                                                    {%- endif -%}
+                                                </span>
                                                 <span class="facets__count{% if sidebar_type == 'horizontal' %}{% if filter.active_values.size > 0 %} custom-count{% endif %}{% endif %}" aria-hidden="true">{%- if sidebar_type == 'horizontal' -%}{%- if filter.active_values.size > 0 -%}<span>{{ filter.active_values.size }}</span>{%- endif -%}{% elsif sidebar_type == 'vertical' %}{%- if filter.active_values.size > 0 -%}({{ filter.active_values.size }}){%- endif -%}{%- endif -%}</span>
                                             </h2>
-                                        {%- if show_collapse -%}
+                                        {%- if show_collapse == 'collapse' or show_collapse == 'slide' -%}
                                             </div>
+                                        {%- endif -%}
+                                        {%- if show_collapse == 'collapse' -%}
                                             <div class="sidebarBlock-contentWrapper" {% if sidebar_collapse == 'expand' %} style="display: block;"{% endif %}>
                                         {%- endif -%}
-                                            <div class="sidebarBlock-content sidebarBlock-content--full facets__display">
-                                                <ul class="facets__list custom-scrollbar list-unstyled" role="list" data-max-items="{{ maxItemToShow }}">
+                                            <div class="sidebarBlock-content sidebarBlock-content--full facets__display{% if show_collapse == 'slide' %} sidebarBlock-slide__content{% endif %}">
+                                                {%- if show_collapse == 'slide' -%}
+                                                    <button type="button" class="sidebarBlock-slide__content-close">
+                                                        {% render 'icon-arrow-left' %}
+                                                        {{ filter.label | escape }}
+                                                    </button>
+                                                {%- endif -%}
+                                                <ul class="facets__list custom-scrollbar list-unstyled {% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}" role="list" data-max-items="{{ maxItemToShow }}">
                                                     {%- liquid
                                                         assign label = filter.label | downcase | handle
                                                     -%}
@@ -396,7 +475,7 @@
                                                         </li>
                                                     {%- endfor -%}
                                                 </ul>
-                                                <a href="{{ filter.url_to_remove }}" class="facets__reset link link-underline js-facet-remove" data-index="{{ forloop.index }}" {% if filter.active_values.size == 0 %} style="display: none;"{% endif %}><span class="text">{{ 'sections.collection_template.clear_all' | t }}</span></a>
+                                                <a href="{{ filter.url_to_remove }}" class="facets__reset link link-underline js-facet-remove {{sidebar_type}} {{show_collapse}}" data-index="{{ forloop.index }}" {% if filter.active_values.size == 0 %} style="display: none;"{% endif %}><span class="text">{{ 'sections.collection_template.clear_all' | t }}</span></a>
                                                 {%- if sidebar_type == 'horizontal' -%}
                                                     {%- if section.settings.filter_display_type == 'show-more' -%}
                                                         {%- if filter.values.size > maxItemToShow -%}
@@ -407,11 +486,21 @@
                                                         {%- endif -%}
                                                     {%- endif -%}
                                                 {%- endif -%}
+                                                {%- if sidebar_type == 'vertical' and show_collapse == 'slide' -%}
+                                                    {%- if section.settings.filter_display_type == 'show-more' -%}
+                                                        {%- if filter.values.size > maxItemToShow -%}
+                                                            <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
+                                                                <span class="icon-container">{% render 'icon-show-more' %}</span>
+                                                                <span class="btn-text"><span data-show-more-content>{{ 'sections.collection_template.show_all' | t }}</span></span>
+                                                            </div>
+                                                        {%- endif -%}
+                                                    {%- endif -%}
+                                                {%- endif -%}
                                             </div>
-                                        {%- if show_collapse -%}
+                                        {%- if show_collapse == 'collapse' -%}
                                             </div>
                                         {%- endif -%}
-                                        {%- unless sidebar_type == 'horizontal' -%}
+                                        {%- if sidebar_type != 'horizontal' and show_collapse != 'slide' -%}
                                             {%- if section.settings.filter_display_type == 'show-more' -%}
                                                 {%- if filter.values.size > maxItemToShow -%}
                                                     <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
@@ -420,84 +509,133 @@
                                                     </div>
                                                 {%- endif -%}
                                             {%- endif -%}
-                                        {%- endunless -%}
+                                        {%- endif -%}
                                     </div>
                                 {%- endif -%}
                             {%- when 'price_range' -%}
-                                {% assign currencies_using_comma_decimals = "ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND" | split: ',' %}
-                                {% assign uses_comma_decimals = false %}
-                                {%- if currencies_using_comma_decimals contains cart.currency.iso_code -%}
-                                    {% assign uses_comma_decimals = true %}
-                                {%- endif -%}
-                                <div class="sidebarBlock js-filter" data-index="{{ forloop.index }}" data-type-price="true">
-                                    {%- if show_collapse -%}
-                                        <div class="sidebarBlock-headingWrapper">
+                                {%- liquid
+                                    assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,UYU,VES,VND' | split: ','
+                                    assign uses_comma_decimals = false
+                                    if currencies_using_comma_decimals contains cart.currency.iso_code
+                                        assign uses_comma_decimals = true
+                                    endif
+
+                                    assign money_format = shop.money_format
+
+                                    if money_format contains 'amount'
+                                        assign shop_money_format = 'amount'
+                                    endif
+
+                                    if money_format contains 'amount_no_decimals'
+                                        assign shop_money_format = 'amount_no_decimals'
+                                    endif
+
+                                    if money_format contains 'amount_with_comma_separator'
+                                        assign shop_money_format = 'amount_with_comma_separator'
+                                    endif
+
+                                    if money_format contains 'amount_no_decimals_with_comma_separator'
+                                        assign shop_money_format = 'amount_no_decimals_with_comma_separator'
+                                    endif
+
+                                    if money_format contains 'amount_with_apostrophe_separator'
+                                        assign shop_money_format = 'amount_with_apostrophe_separator'
+                                    endif
+
+                                    assign min_value = filter.min_value.value | money_without_currency | replace: ',', '' | floor
+                                    assign max_value = filter.max_value.value | money_without_currency | replace: ',', '' | ceil
+                                    assign range_max = filter.range_max | money_without_currency | replace: ',', '' | ceil
+
+                                    if uses_comma_decimals
+                                        assign min_value = filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                                        assign max_value = filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' | ceil
+                                        assign range_max = filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' | ceil
+                                    endif
+
+                                    if shop_money_format == 'amount_with_comma_separator' or shop_money_format == 'amount_no_decimals_with_comma_separator'
+                                        assign min_value = filter.min_value.value | money_without_currency | replace: '.', '' | floor
+                                        assign max_value = filter.max_value.value | money_without_currency | replace: '.', '' | ceil
+                                        assign range_max = filter.range_max | money_without_currency | replace: '.', '' | ceil
+                                    endif
+
+                                    if shop_money_format == 'amount_with_apostrophe_separator'
+                                        assign min_value = filter.min_value.value | money_without_currency | replace: "'", "" | floor
+                                        assign max_value = filter.max_value.value | money_without_currency | replace: "'", "" | ceil
+                                        assign range_max = filter.range_max | money_without_currency | replace: "'", "" | ceil
+                                    endif
+                                -%}
+                                <div class="sidebarBlock js-filter sidebarBlock-{{show_collapse}} sibarbarBlock-filter-price" data-index="{{ forloop.index }}" data-type-price="true" data-money-format="{{ shop_money_format }}">
+                                    {%- if show_collapse == 'collapse' or show_collapse == 'slide'  -%}
+                                        <div class="sidebarBlock-headingWrapper{% if show_collapse == 'slide' %}-slide{% endif %}">
                                     {%- endif -%}
                                         <h2 class="sidebarBlock-heading{% if show_collapse %}{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}{% endif %}">
-                                            <span class="facets__text">{{ filter.label | escape }}</span>
+                                            <span class="facets__text">{{ filter.label | escape }}
+                                                {%- if show_collapse == 'slide' -%}
+                                                    {% render 'icon-arrow-left' %}
+                                                {%- endif -%}
+                                            </span>
                                             <span class="facets__count" aria-hidden="true">{%- if filter.active_values.size > 0 -%}({{ filter.active_values.size }}){%- endif -%}</span>
                                         </h2>
-                                    {%- if show_collapse -%}
+                                    {%- if show_collapse == 'collapse' or show_collapse == 'slide' -%}
                                         </div>
+                                    {%- endif -%}
+                                    {%- if show_collapse == 'collapse' -%}
                                         <div class="sidebarBlock-contentWrapper" {% if sidebar_collapse == 'expand' %} style="display: block;"{% endif %}>
                                     {%- endif -%}
-                                        <div class="sidebarBlock-content sidebarBlock-content--full facets__display">
-                                            <price-range class="facets__price">
+                                        <div class="sidebarBlock-content sidebarBlock-content--full facets__display{% if show_collapse == 'slide' %} sidebarBlock-slide__content{% endif %}">
+                                            {%- if show_collapse == 'slide' -%}
+                                                <button type="button" class="sidebarBlock-slide__content-close">
+                                                    {% render 'icon-arrow-left' %}
+                                                    {{ filter.label | escape }}
+                                                </button>
+                                            {%- endif -%}
+                                            <price-range class="facets__price{% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}">
                                                 <div class="facets__price--slider">
                                                     <div class="facets__price--slide">
-                                                        <input class="filter__price_change filter__price_min" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' | replace: '.00', '' }}" step="1" type="range" 
+                                                        <input class="filter__price_change filter__price_min" min="0" step="1" type="range"
+                                                            max="{{ range_max }}"
                                                             {%- if filter.min_value.value -%}
-                                                                {%- if uses_comma_decimals -%}
-                                                                    value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' | replace: '.00', '' }}"
-                                                                {%- else -%}
-                                                                    value="{{ filter.min_value.value | money_without_currency | replace: ',', '' | replace: '.00', '' }}"
-                                                                {% endif %}
+                                                                value="{{ min_value }}"
                                                             {%- else -%}
                                                                 value="0"
                                                             {%- endif -%}
                                                             aria-label="Min">
-                                                        <input class="filter__price_change filter__price_max" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' | replace: '.00', '' }}" step="1" type="range" 
+                                                        <input class="filter__price_change filter__price_max" min="0" step="1" type="range"
+                                                            max="{{ range_max }}"
                                                             {%- if filter.max_value.value -%}
-                                                                {%- if uses_comma_decimals -%}
-                                                                    value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' | replace: '.00', '' }}"
-                                                                {%- else -%}
-                                                                    value="{{ filter.max_value.value | money_without_currency | replace: ',', '' | replace: '.00', '' }}"
-                                                                {% endif %}
+                                                                value="{{ max_value }}"
                                                             {%- else -%}
-                                                                value="{{ filter.range_max | money_without_currency | replace: ',', '' | replace: '.00', '' }}"
+                                                                value="{{ range_max }}"
                                                             {%- endif -%}
                                                             aria-label="Max">
                                                     </div>
                                                     <div class="facets__price--box price-slider clearfix">
                                                         <div class="form-field">
                                                             <span class="field__currency format-currency">{{ cart.currency.symbol }}</span>
-                                                            <span class="money format-money-input money--current-min hidden">{% if filter.min_value.value %}{{ filter.min_value.value | money_without_currency | replace: ',', '' | replace: '.00', '' }}{% else %}0{% endif %}</span>
+                                                            <span class="money format-money-input money--current-min hidden">{% if filter.min_value.value %}{{ min_value }}{% else %}0{% endif %}</span>
                                                             <label class="form-label hiddenLabels" for="Filter-Min-{{ filter.label | escape }}-{{ forloop.index }}">{{ 'sections.collection_template.min' | t }}</label>
-                                                            <input class="form-input field__input filter__price filter__price--min" name="{{ filter.min_value.param_name }}" id="Filter-Min-{{ filter.label | escape }}-{{ forloop.index }}" 
-                                                                {%- if filter.min_value.value -%}
-                                                                    {%- if uses_comma_decimals -%}
-                                                                        value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' | replace: '.00', '' }}"
-                                                                    {%- else -%}
-                                                                        value="{{ filter.min_value.value | money_without_currency | replace: ',', '' | replace: '.00', '' }}"
-                                                                    {% endif %}
-                                                                {%- endif -%}
-                                                                type="number" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' | replace: '.00', '' }}" placeholder="0">
+                                                            <input class="form-input field__input filter__price filter__price--min" name="{{ filter.min_value.param_name }}" id="Filter-Min-{{ filter.label | escape }}-{{ forloop.index }}"
+                                                            {%- if filter.min_value.value -%}
+                                                                value="{{ min_value }}"
+                                                            {%- endif -%}
+                                                            type="number" min="0" placeholder="0"
+                                                            max="{{ range_max }}"
+                                                            >
                                                         </div>
                                                         <span class="price-to-price">{{ 'sections.collection_template.to' | t }}</span>
                                                         <div class="form-field">
                                                             <span class="field__currency format-currency">{{ cart.currency.symbol }}</span>
-                                                            <span class="money format-money-input money--current-max hidden">{% if filter.max_value.value %}{{ filter.max_value.value | money_without_currency | replace: ',', '' | replace: '.00', '' }}{% else %}{{ filter.range_max | money_without_currency | replace: ',', '' | replace: '.00', '' }}{% endif %}</span>
-                                                            <span class="money format-money-input money--max hidden" data-default-max="{{ filter.range_max | money_without_currency | replace: ',', '' | replace: '.00', '' }}">{{ filter.range_max | money_without_currency | replace: ',', '' | replace: '.00', '' }}</span>
+                                                            <span class="money format-money-input money--current-max hidden">{% if filter.max_value.value %}{{ max_value }}{% else %}{{ range_max }}{% endif %}</span>
+                                                            <span class="money format-money-input money--max hidden" data-default-max="{{ range_max }}">{{ range_max }}</span>
                                                             <label class="form-label hiddenLabels" for="Filter-Max-{{ filter.label | escape }}-{{ forloop.index }}">{{ 'sections.collection_template.max' | t }}</label>
-                                                            <input class="form-input field__input filter__price filter__price--max" name="{{ filter.max_value.param_name }}" id="Filter-Max-{{ filter.label | escape }}-{{ forloop.index }}" 
+                                                            <input class="form-input field__input filter__price filter__price--max" name="{{ filter.max_value.param_name }}" id="Filter-Max-{{ filter.label | escape }}-{{ forloop.index }}"
                                                                 {%- if filter.max_value.value -%}
-                                                                    {%- if uses_comma_decimals -%}
-                                                                        value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' | replace: '.00', '' }}"
-                                                                    {%- else -%}
-                                                                        value="{{ filter.max_value.value | money_without_currency | replace: ',', '' | replace: '.00', '' }}"
-                                                                    {% endif %}
+                                                                    value="{{ max_value }}"
                                                                 {%- endif -%}
-                                                                type="number" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' | replace: '.00', '' }}" placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' | replace: '.00', '' }}">
+                                                                type="number" min="0"
+                                                                placeholder="{{ range_max }}"
+                                                                max="{{ range_max }}"
+                                                            >
                                                         </div>
                                                     </div>
                                                     <div class="form-actions">
@@ -506,7 +644,7 @@
                                                 </div>
                                             </price-range>
                                         </div>
-                                    {%- if show_collapse -%}
+                                    {%- if show_collapse == 'collapse' -%}
                                         </div>
                                     {%- endif -%}
                                 </div>

@@ -206,6 +206,10 @@ body:not(:has(predictive-search)) .quickSearchResultsWrap {
     letter-spacing: var(--body-letter-spacing);
 }
 
+.btn_1_br_outside .quickSearchResultsBlock .productViewAll .button:after {
+    content: none !important;
+}
+
 .quickSearchResultsBlock .productEmpty {
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);
@@ -470,6 +474,11 @@ input::-webkit-search-decoration {
 
     .halo-sidebar_search .quickSearchTrending .header-search-popup-close {
         display: none;
+    }
+
+    .search-modal__form .search__button .icon-search-1 {
+        fill: var(--color-text);
+        stroke: var(--color-text);
     }
 }
 

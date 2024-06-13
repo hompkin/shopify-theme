@@ -182,11 +182,6 @@
 	<td class="compareTable-item">
 		{{ current_variant.sku }}
 	</td>
-	{%- if settings.show_review -%}
-		<td class="compareTable-item halo-productReview">
-			<span class="shopify-product-reviews-badge" data-id="{{ product_card_product.id }}"></span>
-		</td>
-	{%- endif -%}
 	<td class="compareTable-item compareTable-desc">
 		{%- liquid
 			assign desc = product_card_product.description

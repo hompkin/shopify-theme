@@ -94,7 +94,7 @@
                         <div class="effect_placeholder"><span class="input_placeholder" style="font-size: var(--input-text-font-size, var(--font-body-size));{% if input_style == 'style_2' %}font-weight: 700;{% endif %}">{{ input_placeholder }}</span></div>
                       </div>
                     {%- endif -%}
-                    <button {% unless show_input_field %}data-open-newsletter-popup{% endunless %} type="{% if show_input_field %}submit{% else %}button{% endif %}" class="button newsletter-form__button" name="commit" id="Subscribe-{{ section.id }}" aria-label="{{ 'newsletter.button_label' | t }}" style="--button-width: {{ button_width }};--button-font-size: {{ button_font_size }};--button-text-color: {% if button_text_color != blank %}{{ button_text_color }}{% endif %};--button-border-color: {% if button_border_color != blank %}{{ button_border_color }}{% endif %};--button-background: {% if button_gradient_color != blank %}{{ button_gradient_color }}{% elsif button_background_color != blank %}{{ button_background_color }}{% endif %};--button-text-color-hover: {% if button_text_color_hover != blank %}{{ button_text_color_hover }}{% endif %};--button-border-color-hover: {% if button_border_color_hover != blank %}{{ button_border_color_hover }}{% endif %};--button-background-hover: {% if button_gradient_color_hover != blank %}{{ button_gradient_color_hover }}{% elsif button_background_color_hover != blank %}{{ button_background_color_hover }}{% endif %};--button-text-transform: {{ button_text_transform }};--button-font-weight: {{ button_font_weight }}">{{ button_text }}</button>
+                    <button {% unless show_input_field %}data-open-newsletter-popup{% endunless %} type="{% if show_input_field %}submit{% else %}button{% endif %}" class="button newsletter-form__button" name="commit" id="Subscribe-{{ section.id }}" aria-label="{{ 'newsletter.button_label' | t }}" style="--button-width: {{ button_width }};--button-font-size: {{ button_font_size }};--button-text-color: {% if button_text_color != blank %}{{ button_text_color }}{% endif %};--button-border-color: {% if button_border_color != blank %}{{ button_border_color }}{% endif %};--button-background: {% if button_gradient_color != blank %}{{ button_gradient_color }}{% elsif button_background_color != blank %}{{ button_background_color }}{% endif %};--button-text-color-hover: {% if button_text_color_hover != blank %}{{ button_text_color_hover }}{% endif %};--button-border-color-hover: {% if button_border_color_hover != blank %}{{ button_border_color_hover }}{% endif %};--button-background-hover: {% if button_gradient_color_hover != blank %}{{ button_gradient_color_hover }}{% elsif button_background_color_hover != blank %}{{ button_background_color_hover }}{% endif %};--button-text-transform: {{ button_text_transform }};--button-font-weight: {{ button_font_weight }}">{% if settings.enable_button_1_border_outside %}<span>{% endif %}{{ button_text }}{% if settings.enable_button_1_border_outside %}</span>{% endif %}</button>
                   </div>
                   {%- if form.errors -%}
                     <div class="newsletter-form__message newsletter-form__message--error form__message" id="ContactFooter-error">
@@ -283,7 +283,7 @@
         {
           "type": "select",
           "id": "section_title_text_transform",
-          "label": "t:settings_schema.typography.settings.typography.button_text_transform",
+          "label": "t:settings_schema.product_card.settings.product_title.label__4",
           "default": "none",
           "options": [
             {
@@ -583,7 +583,7 @@
         {
           "type": "select",
           "id": "button_font_weight",
-          "label": "t:settings_schema.typography.settings.typography.sub_title_font_weight",
+          "label": "t:settings_schema.typography.settings.typography.button_font_weight",
           "default": "600",
           "options": [
             {
@@ -764,13 +764,13 @@
         {
           "type" : "color",
           "id" : "banner_color_button",
-          "label": "t:sections.layout.color.color_title",
+          "label": "t:settings_schema.typography.settings.typography.button_color",
           "default" : "#ffffff"
         },
         {
           "type": "range",
           "id": "banner_fontsize_button",
-          "label": "t:sections.layout.fontsize.fontsize_title.label",
+          "label": "t:settings_schema.typography.settings.typography.button_font_size",
           "min": 10,
           "max": 50,
           "step": 1,

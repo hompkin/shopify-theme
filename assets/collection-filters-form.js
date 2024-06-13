@@ -3,8 +3,8 @@ class CollectionFiltersForm extends HTMLElement {
         super();
         this.filterData = [];
         this.onActiveFilterClick = this.onActiveFilterClick.bind(this);
-        this.sidebarBlocks = this.querySelectorAll('.collection-filters__item [data-type-list]'); 
-        
+        this.sidebarBlocks = this.querySelectorAll('.collection-filters__item [data-type-list]');
+
         const filterDisplayType = this.dataset.filterDisplay
 
         this.debouncedOnSubmit = debounce((event) => {
@@ -17,7 +17,7 @@ class CollectionFiltersForm extends HTMLElement {
 
         this.querySelector('form').addEventListener('input', this.debouncedOnSubmit.bind(this));
 
-        if(this.querySelector('#filter__price--apply')){
+        if (this.querySelector('#filter__price--apply')) {
             this.querySelector('#filter__price--apply').addEventListener('click', this.debouncedOnClick.bind(this));
         }
 
@@ -26,11 +26,11 @@ class CollectionFiltersForm extends HTMLElement {
         } else {
             $('.results-count .results').show();
         }
-      
+
         if (filterDisplayType === 'show-more') CollectionFiltersForm.initListShowMore(this.sidebarBlocks);
-        
+
         sessionStorage.setItem('filterDisplayType', filterDisplayType)
-        
+
         sessionStorage.setItem('productGridId', JSON.stringify(document.getElementById('main-collection-product-grid').dataset.id))
 
         CollectionFiltersForm.convertCurrency();
@@ -43,12 +43,14 @@ class CollectionFiltersForm extends HTMLElement {
             const facetListItems = facetList.querySelectorAll('.list-menu__item');
             const maxItemsNumber = parseInt(facetList.dataset.maxItems);
             let currentHeight = facetList.clientHeight;
-            
+
             if (currentHeight === 0) {
-                const contentWrapper = facetList.closest('.sidebarBlock-contentWrapper')
-                contentWrapper.style.display = 'block'   
-                currentHeight = facetList.clientHeight 
-                contentWrapper.style.display = 'none'   
+                const contentWrapper = facetList?.closest('.sidebarBlock-contentWrapper')
+                if (contentWrapper != null) {
+                    contentWrapper.style.display = 'block'
+                    currentHeight = facetList.clientHeight
+                    contentWrapper.style.display = 'none'
+                }
             }
 
             facetList.style.maxHeight = currentHeight + 'px';
@@ -67,8 +69,8 @@ class CollectionFiltersForm extends HTMLElement {
         })
 
         const showMoreButtons = document.querySelectorAll('.show-more--list_tags');
-        if(showMoreButtons) {
-            showMoreButtons.forEach( (button) => button.addEventListener('click', CollectionFiltersForm.toggleShowMore));
+        if (showMoreButtons) {
+            showMoreButtons.forEach((button) => button.addEventListener('click', CollectionFiltersForm.toggleShowMore));
         }
 
         setTimeout(() => {
@@ -103,11 +105,11 @@ class CollectionFiltersForm extends HTMLElement {
             sideBlockContent.style.maxHeight = collapsedHeight + 'px';
             facetListItems.forEach((item, index) => {
                 if (index + 1 > maxItemsNumber) item.style.opacity = '0';
-            }) 
+            })
             storedBlockData.showingMore = false
         } else {
             sideBlock.classList.add('show-more');
-            sideBlockContent.style.maxHeight = maxExpandedHeight+ 'px';
+            sideBlockContent.style.maxHeight = maxExpandedHeight + 'px';
             showMoreButtonContent.textContent = window.show_more_btn_text.show_less;
             facetListItems.forEach((item) => {
                 item.style.opacity = '1';
@@ -120,7 +122,7 @@ class CollectionFiltersForm extends HTMLElement {
 
     static renderRemainingFilters(sidebarBlocks) {
         let storedExpandedAndCollapsedHeight = JSON.parse(sessionStorage.getItem('heightData')) || []
-        
+
         sidebarBlocks.forEach((element) => {
             const htmlElement = document.querySelector(`.js-filter[data-index="${element.dataset.index}"]`)
             htmlElement.innerHTML = element.innerHTML;
@@ -134,7 +136,7 @@ class CollectionFiltersForm extends HTMLElement {
             hiddenItems.forEach(item => item.classList.remove('d-none'))
             showMoreButton?.addEventListener('click', CollectionFiltersForm.toggleShowMore)
             facetList.dataset.collapsedHeight = currentSideblockData.collapsedHeight
-            
+
             if (showMoreContent == null) return
 
             if (currentSideblockData.showingMore) {
@@ -146,17 +148,17 @@ class CollectionFiltersForm extends HTMLElement {
                 htmlElement.classList.remove('show-more')
                 showMoreContent.textContent = window.show_more_btn_text.show_all
             }
-        }) 
+        })
     }
 
     static renderPriceFilter(priceFilterBlock) {
         if (priceFilterBlock) {
             const htmlElement = document.querySelector(`.js-filter[data-index="${priceFilterBlock.dataset.index}"]`)
             htmlElement.innerHTML = priceFilterBlock.innerHTML
-            
+
             const debouncedOnClick = debounce((event) => {
                 CollectionFiltersForm.handleClick(event);
-            }, 500);    
+            }, 500);
 
             if (htmlElement.querySelector('#filter__price--apply')) {
                 htmlElement.querySelector('#filter__price--apply').addEventListener('click', debouncedOnClick);
@@ -199,7 +201,7 @@ class CollectionFiltersForm extends HTMLElement {
     }
 
     static resizeAllGridItems() {
-        
+
         allItems = document.getElementsByClassName('product-masonry-item');
 
         for (x = 0; x < allItems.length; x++) {
@@ -215,14 +217,14 @@ class CollectionFiltersForm extends HTMLElement {
         // document.getElementById('CollectionProductGrid').querySelector('.collection').classList.add('is-loading');
         document.body.classList.add('has-halo-loader');
 
-        
+
         sections.forEach((section) => {
             const url = `${window.location.pathname}?section_id=${section.section}&${searchParams}`;
             const filterDataUrl = element => element.url === url;
 
             CollectionFiltersForm.filterData.some(filterDataUrl) ?
-            CollectionFiltersForm.renderSectionFromCache(filterDataUrl, section, event) :
-            CollectionFiltersForm.renderSectionFromFetch(url, section, event);
+                CollectionFiltersForm.renderSectionFromCache(filterDataUrl, section, event) :
+                CollectionFiltersForm.renderSectionFromFetch(url, section, event);
         });
 
         if (updateURLHash) CollectionFiltersForm.updateURLHash(searchParams);
@@ -230,13 +232,13 @@ class CollectionFiltersForm extends HTMLElement {
 
     static renderSectionFromFetch(url, section, event) {
         fetch(url)
-        .then(response => response.text())
-        .then((responseText) => {
-            const html = responseText;
-            CollectionFiltersForm.filterData = [...CollectionFiltersForm.filterData, { html, url }];
-            CollectionFiltersForm.renderFilters(html, event);
-            CollectionFiltersForm.renderProductGrid(html);
-        });
+            .then(response => response.text())
+            .then((responseText) => {
+                const html = responseText;
+                CollectionFiltersForm.filterData = [...CollectionFiltersForm.filterData, { html, url }];
+                CollectionFiltersForm.renderFilters(html, event);
+                CollectionFiltersForm.renderProductGrid(html);
+            });
 
     }
 
@@ -246,12 +248,12 @@ class CollectionFiltersForm extends HTMLElement {
         this.renderProductGrid(html);
     }
 
-    static setProductForWishlist(handle){
+    static setProductForWishlist(handle) {
         var wishlistList = JSON.parse(localStorage.getItem('wishlistItem')),
-            item = $('[data-wishlist-handle="'+ handle +'"]'),
+            item = $('[data-wishlist-handle="' + handle + '"]'),
             index = wishlistList.indexOf(handle);
-        
-        if(index >= 0) {
+
+        if (index >= 0) {
             item
                 .addClass('wishlist-added')
                 .find('.text')
@@ -270,7 +272,7 @@ class CollectionFiltersForm extends HTMLElement {
 
         if (wishlistList.length > 0) {
             wishlistList = JSON.parse(localStorage.getItem('wishlistItem'));
-            
+
             wishlistList.forEach((handle) => {
                 this.setProductForWishlist(handle);
             });
@@ -282,13 +284,13 @@ class CollectionFiltersForm extends HTMLElement {
         var count = JSON.parse(localStorage.getItem('compareItem')),
             items = $('[data-product-compare-handle]');
 
-        if(count !== null){ 
-            if(items.length > 0) {
+        if (count !== null) {
+            if (items.length > 0) {
                 items.each((index, element) => {
                     var item = $(element),
                         handle = item.data('product-compare-handle');
 
-                    if(count.indexOf(handle) >= 0) {
+                    if (count.indexOf(handle) >= 0) {
                         item.find('.compare-icon').addClass('is-checked');
                         item.find('.text').text(window.compare.added);
                         item.find('input').prop('checked', true);
@@ -326,18 +328,18 @@ class CollectionFiltersForm extends HTMLElement {
             this.setActiveViewModeMediaQuery(true);
         }
 
-        if(window.compare.show){
+        if (window.compare.show) {
             this.setLocalStorageProductForCompare({
                 link: $('[data-compare-link]'),
                 onComplete: null
             });
         }
 
-        if(window.wishlist.show){
+        if (window.wishlist.show) {
             this.setLocalStorageProductForWishlist();
         }
 
-        if(window.innerWidth < 1025){
+        if (window.innerWidth < 1025) {
             // document.getElementById('CollectionProductGrid').scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
             window.scrollTo({
                 top: document.getElementById('CollectionProductGrid').getBoundingClientRect().top + window.pageYOffset - 50,
@@ -346,7 +348,7 @@ class CollectionFiltersForm extends HTMLElement {
         }
 
         document.body.classList.remove('has-halo-loader');
-        
+
         if (document.querySelector('.collection-masonry')) {
             document.getElementById('CollectionProductGrid').querySelector('.collection .halo-row--masonry').classList.add('is-show');
             CollectionFiltersForm.resizeAllGridItems();
@@ -383,7 +385,7 @@ class CollectionFiltersForm extends HTMLElement {
         const matchesIndex = (element) => element.dataset.index === indexTarget;
         const facetsToRender = Array.from(facetDetailsElements).filter(element => !matchesIndex(element));
         const countsToRender = Array.from(facetDetailsElements).find(matchesIndex);
-        
+
         facetsToRender.forEach((element) => {
             document.querySelector(`.js-filter[data-index="${element.dataset.index}"]`).innerHTML = element.innerHTML;
         });
@@ -399,7 +401,7 @@ class CollectionFiltersForm extends HTMLElement {
             const remainingSidebarBlocks = Array.from(facetDetailsElements).filter(element => element.dataset.typeList && element.dataset.index !== indexTarget)
             CollectionFiltersForm.renderRemainingFilters(remainingSidebarBlocks)
         }
-        
+
         CollectionFiltersForm.renderPriceFilter(Array.from(facetDetailsElements).find(element => element.dataset.typePrice && element.dataset.index !== indexTarget))
     }
 
@@ -436,11 +438,11 @@ class CollectionFiltersForm extends HTMLElement {
         activeFacetElementSelectors.forEach((selector) => {
             const activeFacetsElement = html.querySelector(selector);
             if (!activeFacetsElement) return;
-            
-            var refineBlock =  document.querySelector(selector);
+
+            var refineBlock = document.querySelector(selector);
             refineBlock = activeFacetsElement.innerHTML;
-            
-            if(document.querySelector(selector).querySelector('li')){
+
+            if (document.querySelector(selector).querySelector('li')) {
                 document.querySelector(selector).style.display = "block";
             } else {
                 document.querySelector(selector).style.display = "none";
@@ -450,7 +452,7 @@ class CollectionFiltersForm extends HTMLElement {
         CollectionFiltersForm.toggleActiveFacets(false);
 
         setTimeout(() => {
-            const sidebarBlocks = html.querySelectorAll('.collection-filters__item [data-type-list]'); 
+            const sidebarBlocks = html.querySelectorAll('.collection-filters__item [data-type-list]');
             // CollectionFiltersForm.initListShowMore();
         }, 500)
     }
@@ -470,7 +472,7 @@ class CollectionFiltersForm extends HTMLElement {
     static updateURLHash(searchParams) {
         history.pushState({ searchParams }, '', `${window.location.pathname}${searchParams && '?'.concat(searchParams)}`);
     }
-    
+
 
     static getSections() {
         return [{
@@ -479,7 +481,7 @@ class CollectionFiltersForm extends HTMLElement {
         }]
     }
 
-    static setActiveViewModeMediaQuery(ajaxLoading = true){
+    static setActiveViewModeMediaQuery(ajaxLoading = true) {
         var mediaView = document.querySelector('[data-view-as]'),
             mediaViewMobile = document.querySelector('[data-view-as-mobile]'),
             viewMode = mediaView?.querySelector('.icon-mode.active'),
@@ -489,8 +491,8 @@ class CollectionFiltersForm extends HTMLElement {
 
         if (!mediaView || !mediaViewMobile) return
 
-        if(column != 1){
-            if(document.querySelector('.sidebar--layout_vertical')){
+        if (column != 1) {
+            if (document.querySelector('.sidebar--layout_vertical')) {
                 if (windowWidth < 768) {
                     if (column == 3 || column == 4 || column == 5) {
                         column = 2;
@@ -524,7 +526,7 @@ class CollectionFiltersForm extends HTMLElement {
                         mediaViewMobile.querySelector('.grid-4').classList.add('active');
                     }
                 }
-            } else{
+            } else {
                 if (windowWidth < 768) {
                     if (column == 3 || column == 4 || column == 5) {
                         column = 2;
@@ -551,10 +553,10 @@ class CollectionFiltersForm extends HTMLElement {
                     }
                 }
             }
-            
+
             this.initViewModeLayout(column);
-        } else{
-            if(ajaxLoading){
+        } else {
+            if (ajaxLoading) {
                 this.initViewModeLayout(column);
             }
         }
@@ -627,7 +629,7 @@ class CollectionFiltersForm extends HTMLElement {
 
     onSubmitHandler(event) {
         event.preventDefault();
-        if(!event.target.classList.contains('filter__price')){
+        if (!event.target.classList.contains('filter__price')) {
             const formData = new FormData(event.target.closest('form'));
             let searchParams = new URLSearchParams(formData).toString();
             searchParams = this.onConvertPrice(searchParams);
@@ -635,10 +637,10 @@ class CollectionFiltersForm extends HTMLElement {
         }
     }
 
-    onSubmitHandlerFromSortBy(event, form){
+    onSubmitHandlerFromSortBy(event, form) {
         event.preventDefault();
 
-        if(!event.target.classList.contains('filter__price')){
+        if (!event.target.classList.contains('filter__price')) {
             const formData = new FormData(form);
             const searchParams = new URLSearchParams(formData).toString();
             CollectionFiltersForm.renderPage(searchParams, event);
@@ -662,18 +664,18 @@ class CollectionFiltersForm extends HTMLElement {
             let ratio = 1, params = '';
 
             if (currentMax != defaultMax && !isNaN(currentMax) && !isNaN(defaultMax)) {
-                ratio = defaultMax/currentMax;
+                ratio = defaultMax / currentMax;
 
                 $searchParams.forEach(element => {
                     const attr = element.split('=')[0];
                     const val = element.split('=')[1];
-                    switch(attr) {
+                    switch (attr) {
                         case 'filter.v.price.gte':
-                            let min = Math.round(val*ratio);
+                            let min = Math.round(val * ratio);
                             params == '' ? params = `filter.v.price.gte=${min}` : params = `${params}&filter.v.price.gte=${min}`;
                             break;
                         case 'filter.v.price.lte':
-                            let max = Math.round(val*ratio);
+                            let max = Math.round(val * ratio);
                             params == '' ? params = `filter.v.price.lte=${max}` : params = `${params}&filter.v.price.lte=${max}`;
                             break;
                         default:
@@ -705,14 +707,15 @@ class PriceRange extends HTMLElement {
         this.setMinAndMaxValues();
         const numberS = this.querySelectorAll("input[type=number]");
         let value1 = numberS[0].value;
-        let value2 = numberS[1].value ;
+        let value2 = numberS[1].value;
 
         this.updateDisplay(value1, value2);
-    }       
+    }
 
     onRangeChange(event) {
         this.adjustToValidValues(event.currentTarget);
         this.setMinAndMaxValues();
+
     }
 
     setMinAndMaxValues() {
@@ -735,25 +738,54 @@ class PriceRange extends HTMLElement {
         if (value > max) input.value = max;
     }
 
-    rangeSliderPrice(){
-        var rangeS = this.querySelectorAll("input[type=range]"),
-            numberS = this.querySelectorAll("input[type=number]");
+    rangeSliderPrice() {
+        let rangeS = this.querySelectorAll("input[type=range]"),
+            numberS = this.querySelectorAll("input[type=number]"),
+            isFireFox = typeof InstallTrigger !== 'undefined',
+            lowerSlider = rangeS[0],
+            upperSlider = rangeS[1],
+            slide = this.querySelector("input[type=range]").max/100 * (22/(this.offsetWidth/100));
+
         
-        rangeS.forEach((element) => {
-            element.oninput = () => {
-                var slide1 = parseFloat(rangeS[0].value),
-                    slide2 = parseFloat(rangeS[1].value);
+        lowerSlider.oninput = () => {
+            let slide1 = Math.floor(rangeS[0].value),
+                slide2 = Math.ceil(rangeS[1].value);
+    
+            if (slide1 > slide2 - slide) {
+                upperSlider.value = slide1 + slide;
+                numberS[1].value = slide1 + slide;
 
-                if (slide1 > slide2) {
-                    [slide1, slide2] = [slide2, slide1];
+                if (slide2 == upperSlider.max) {
+                    lowerSlider.value = parseInt(upperSlider.max) - slide;
+                    numberS[0].value = parseInt(upperSlider.max) - slide;
                 }
-
-                numberS[0].value = slide1;
-                numberS[1].value = slide2;
-                this.updateDisplay(numberS[0].value, numberS[1].value);
-                this.updatePrice(slide1, slide2);
             }
-        });
+
+            numberS[0].value = slide1;
+            numberS[1].value = slide2;
+            if (!isFireFox) this.updateDisplay(numberS[0].value, numberS[1].value);
+            this.updatePrice(slide1, slide2);
+        }
+
+        upperSlider.oninput = () => {
+            let slide1 = Math.floor(rangeS[0].value),
+                slide2 = Math.ceil(rangeS[1].value);
+
+            if (slide2 < slide1 + slide) {
+                lowerSlider.value = slide2 - slide;
+                numberS[0].value = slide2 - slide;
+
+                if (slide1 == lowerSlider.min) {
+                    upperSlider.value = slide;
+                    numberS[1].value = slide;
+                }
+            }
+
+            numberS[0].value = slide1;
+            numberS[1].value = slide2;
+            if (!isFireFox) this.updateDisplay(numberS[0].value, numberS[1].value);
+            this.updatePrice(slide1, slide2);
+        }
 
         numberS.forEach((element) => {
             element.oninput = () => {
@@ -762,19 +794,19 @@ class PriceRange extends HTMLElement {
                     number2 = parseFloat(numberS[1].value),
                     checkValue2 = number2 != number2;
 
-                if(!checkValue1){
+                if (!checkValue1) {
                     rangeS[0].value = number1;
                 }
 
-                if(!checkValue2){
+                if (!checkValue2) {
                     rangeS[1].value = number2;
-                }   
+                }
 
                 if (number1 > number2) {
-                    this.updateDisplay(number2, number1);
+                    if (!isFireFox) this.updateDisplay(number2, number1);
                     this.updatePrice(number2, number1);
                 } else {
-                    this.updateDisplay(number1, number2);
+                    if (!isFireFox) this.updateDisplay(number1, number2);
                     this.updatePrice(number1, number2);
                 }
             }
@@ -784,7 +816,7 @@ class PriceRange extends HTMLElement {
     updateDisplay(value1, value2) {
         const range = this.querySelector("input[type=range]");
         const priceSlideRangeContainer = this.querySelector('.facets__price--slide');
-        const max = range.max 
+        const max = range.max;
         const width = priceSlideRangeContainer.clientWidth;
 
         const leftSpace = (parseInt(value1) / parseInt(max)) * width + 'px'

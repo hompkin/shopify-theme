@@ -31,10 +31,18 @@
     background: var(--background-color);  
 }
 
+.btn_1_br_outside .slidable-spotlight-slide-button.button:after {
+    border: 1px solid var(--border-color);
+}
+
 .slidable-spotlight-slide-button:hover {
     color: var(--text-color-hover);
     border: 1px solid var(--border-color-hover);
     background: var(--background-color-hover); 
+}
+
+.btn_1_br_outside .slidable-spotlight-slide-button.button:hover:after {
+    border: 1px solid var(--border-color-hover);
 }
 
 .slidable-spotlight-slider .slick-prev {

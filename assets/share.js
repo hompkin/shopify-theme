@@ -1,4 +1,4 @@
-window.shareProduct = function() {
+window.shareProduct = function () {
     class ShareButton extends HTMLElement {
         constructor() {
             super();
@@ -24,7 +24,7 @@ window.shareProduct = function() {
             const url = this.elements.urlInput.getAttribute('data-url');
 
             this.getPosition();
-            // this.setProductInfoTop(this.getProductInfoPosition());
+            this.setProductInfoTop(this.getProductInfoPosition());
 
             this.elements.successMessage.classList.add('hidden');
             this.elements.urlInput.setAttribute('value', url);
@@ -50,7 +50,7 @@ window.shareProduct = function() {
                 });
             }
         }
-        
+
         closeDetails(event) {
             event.preventDefault();
             // event.stopPropagation();
@@ -61,37 +61,46 @@ window.shareProduct = function() {
             this.elements.urlInput.classList.remove('is-copy');
             this.elements.content.classList.remove('is-open');
             document.querySelector('body').classList.remove('modal-share-open')
-            // this.setProductInfoTop(0);
+            this.setProductInfoTop(0);
         }
 
         getPosition() {
-            if (window.innerWidth <= 1024 || this.elements.shareButton.closest('[data-quick-view-popup]') != null) return;
+            // if (window.innerWidth <= 1024 || this.elements.shareButton.closest('[data-quick-view-popup]') != null) return;
 
-            const shareButtonRect = this.elements.shareButton.getBoundingClientRect()
+            // const shareButtonRect = this.elements.shareButton.getBoundingClientRect()
 
-            const y = shareButtonRect.top;
-            const x = shareButtonRect.left;
-            
-            const width = this.elements.content.getBoundingClientRect().width;
-            const shareHeight = shareButtonRect.height;
-            const shareWidth = shareButtonRect.width;
+            // const y = shareButtonRect.top;
+            // const x = shareButtonRect.left;
 
-            const left = x - width + shareWidth;
-            const top = y + shareHeight + 10;
+            // const width = this.elements.content.getBoundingClientRect().width;
+            // const shareHeight = shareButtonRect.height;
+            // const shareWidth = shareButtonRect.width;
 
-            this.elements.content.style.setProperty('--share-desk-top', top + 'px');
-            this.elements.content.style.setProperty('--share-desk-left', left + 'px');
+            // const left = x - width + shareWidth;
+            // const top = y + shareHeight + 10;
+
+            // this.elements.content.style.setProperty('--share-desk-top', top + 'px');
+            // this.elements.content.style.setProperty('--share-desk-left', left + 'px');
         }
 
         getProductInfoPosition() {
-            const productDetails = document.querySelector('.productView-details')
-            return productDetails?.offsetTop
-        }   
+            // const productDetails = document.querySelector('.productView-details')
+            // return productDetails?.offsetTop;
+            const stickyElement = document.querySelector('.productView-details');
+            const parentElement = stickyElement.parentNode;
+
+            const stickyRect = stickyElement.getBoundingClientRect();
+            const parentRect = parentElement.getBoundingClientRect();
+
+            const topOffset = stickyRect.top - parentRect.top;
+
+            return topOffset;
+        }
 
         setProductInfoTop(top) {
             const productDetails = document.querySelector('.productView-details')
             productDetails?.style.setProperty('--sticky-top', top + 'px')
-        } 
+        }
     }
 
     customElements.define('share-button', ShareButton);

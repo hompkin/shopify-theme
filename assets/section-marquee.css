@@ -45,7 +45,9 @@
 }
 
 .marquee__item {
+    font-family: var(--font-tab);
     color: var(--color-mb);
+    font-weight: var(--font-weight);
     position: relative;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
@@ -56,6 +58,10 @@
 
 .marquee__item p {
     margin: 0;
+}
+
+.marquee__item.enable_border p {
+    border-bottom: 2px solid;
 }
 
 @media screen and (min-width: 1200px) {
@@ -99,11 +105,21 @@
         padding-top: var(--padding-top-tablet);
         padding-bottom: var(--padding-bottom-tablet);
     }
+
+    .marquee.thunder_light {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 }
 
 @media screen and (max-width: 550px) {
     .marquee {
         padding-top: var(--padding-top-mobile);
         padding-bottom: var(--padding-bottom-mobile);
+    }
+
+    .marquee.thunder_light {
+        padding-top: 55px;
+        padding-bottom: 55px;
     }
 }

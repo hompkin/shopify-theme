@@ -170,8 +170,8 @@
                             {%- if btn_text != blank -%}
                                  <a href="javascript:;" onclick="tidioChatApi.display(true);tidioChatApi.open()" class="contact-btn button{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                                     {{ btn_text | escape }}
-                                </a> 
-                              
+                                </a>
+
                             {% endif %}
                             {%- if contact_info_address != blank or contact_info_content_1 != blank or contact_info_content_2 != blank -%}
                                 <div class="contact-info{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
@@ -661,8 +661,7 @@
                         "value": "1770",
                         "label": "t:sections.layout.container.option3"
                     }
-                ],
-                "info": "t:sections.general.settings.container.info"
+                ]
             },
             {
                 "type": "text",

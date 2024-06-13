@@ -881,4 +881,131 @@ class SmoothScrollMenu {
 
 document.addEventListener('DOMContentLoaded', function () {
     new SmoothScrollMenu('.header__inline-menu .menu-lv-1');
+    customElements.define('details-disclosure', DetailsDisclosure);
+});
+
+class DetailsDisclosure extends HTMLElement {
+    constructor() {
+        super();
+        this.mainDetailsToggle = this.querySelector('details');
+
+        this.addEventListener('keyup', this.onKeyUp);
+        this.mainDetailsToggle.addEventListener('focusout', this.onFocusOut.bind(this));
+    }
+
+    onKeyUp(event) {
+        if (event.code.toUpperCase() !== 'ESCAPE') return;
+
+        const openDetailsElement = event.target.closest('details[open]');
+        if (!openDetailsElement) return;
+
+        const summaryElement = openDetailsElement.querySelector('summary');
+        openDetailsElement.removeAttribute('open');
+        summaryElement.focus();
+    }
+
+    onFocusOut() {
+        setTimeout(() => {
+            if (!this.contains(document.activeElement)) this.close();
+        })
+    }
+
+    close() {
+        this.mainDetailsToggle.removeAttribute('open')
+    }
+}
+
+class AccountIcon extends HTMLElement {
+  constructor() {
+    super();
+
+    this.icon = this.querySelector('.icon');
+  }
+
+  connectedCallback() {
+    document.addEventListener('storefront:signincompleted', this.handleStorefrontSignInCompleted.bind(this));
+  }
+
+  handleStorefrontSignInCompleted(event) {
+    if (event?.detail?.avatar) {
+      this.icon?.replaceWith(event.detail.avatar.cloneNode());
+    }
+  }
+}
+
+customElements.define('account-icon', AccountIcon);
+
+class PositiveVibesComponent extends HTMLElement {
+    constructor() {
+        super();
+        this.productPositiveVibes();
+    }
+
+    productPositiveVibes() {
+        const parent = this.querySelector('.text-vibes');
+        const children = this.querySelectorAll('.text-vibes--child');
+        let currentIndex = 0;
+
+        if (children.length > 1) {
+            const newDiv = document.createElement("div");
+            newDiv.classList.add("text-vibes--child");
+            newDiv.innerHTML = children[0].innerHTML;
+            parent.appendChild(newDiv);
+            
+            const childrens = parent.querySelectorAll('.text-vibes--child');
+            setInterval(() => {
+                const height = childrens[currentIndex].offsetHeight;
+                childrens.forEach((child, index) => {
+                    parent.style.cssText = `transform: translateY(${height * -currentIndex}px); transition: all .5s ease;`;
+                    if (currentIndex == 0) {
+                        parent.style.cssText = `transform: translateY(${height * -currentIndex}px); transition: none;`;
+                    }
+                });
+                currentIndex = (currentIndex + 1) % childrens.length;
+                this.heightPositive();
+            }, 3000);
+        }
+    }
+
+    heightPositive() {
+        const parent = this.querySelector('.text-vibes');
+        const childrens = this.querySelectorAll('.text-vibes--child');
+        
+        let maxHeight = 0;
+        childrens.forEach(child => {
+            maxHeight = Math.max(maxHeight, child.querySelector('p').offsetHeight);
+        });
+
+        this.style.minHeight = maxHeight + 'px';
+
+        childrens.forEach(child => {
+            child.style.minHeight = `${maxHeight}px`;
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    customElements.define('positive-vibes', PositiveVibesComponent);
+})
+
+function checkTransparentHeader() {
+    allowTransparent();
+
+    if (Shopify.designMode) {
+        document.addEventListener("shopify:section:load", allowTransparent);
+        document.addEventListener("shopify:section:unload", allowTransparent);
+        document.addEventListener("shopify:section:reorder", allowTransparent);
+    }
+}
+
+function allowTransparent() {
+    if (document.querySelector(".shopify-section:first-child [allow-transparent-header]")) {
+        return;
+    } else {
+        document.querySelector("body").removeAttribute("allow-transparency");
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    checkTransparentHeader();
 });

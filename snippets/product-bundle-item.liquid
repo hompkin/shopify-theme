@@ -94,7 +94,7 @@
                 {%- endif -%}
             {%- endif -%}
             {%- if product_style != '3' -%}
-                <div class="bundle-product-checkbox{% if settings.show_review %} halo-productReview{% endif %}">
+                <div class="bundle-product-checkbox">
                     <input type="checkbox" value="{{ product.title | split: '|' | first | handleize }}" checked autocomplete="off" id="bundle-product-item-{{ product.id }}" />
                     <label class="form-label--checkbox product-title" for="bundle-product-item-{{ product.id }}" data-bundle-checkbox>
                         {{ product.title | split: '|' | first }}
@@ -110,23 +110,6 @@
                             </div>
                         {%- endif -%}
                     {%- endif -%}
-                    {%- if settings.show_review -%}
-                        {%- liquid
-                            assign average = product.metafields.reviews.rating.value
-                            assign rating = average | replace: '', '' | plus : 0 | round
-                        -%}
-                        <span class="spr-badge" id="spr_badge_{{ product.id }}" data-rating="{{ average }}">
-                            <span class="spr-starrating spr-badge-starrating">
-                                {%- for review in (1..5) -%}
-                                    {%- if rating >= forloop.index -%}
-                                        <i class="spr-icon spr-icon-star" role="none"></i>
-                                    {%- else -%}
-                                        <i class="spr-icon spr-icon-star-empty" role="none"></i>
-                                    {%- endif -%}
-                                {%- endfor -%}
-                            </span>
-                        </span>
-                    {%- endif -%}
                 </div>
             {%- else -%}
                 <div class="bundle-product-title">
@@ -137,25 +120,6 @@
                         {%- endif -%}
                     </a>
                 </div>
-                {%- if settings.show_review -%}
-                    <div class="bundle-product-review halo-productReview">
-                        {%- liquid
-                            assign average = product.metafields.reviews.rating.value
-                            assign rating = average | replace: '', '' | plus : 0 | round
-                        -%}
-                        <span class="spr-badge" id="spr_badge_{{ product.id }}" data-rating="{{ average }}">
-                            <span class="spr-starrating spr-badge-starrating">
-                                {%- for review in (1..5) -%}
-                                    {%- if rating >= forloop.index -%}
-                                        <i class="spr-icon spr-icon-star" role="none"></i>
-                                    {%- else -%}
-                                        <i class="spr-icon spr-icon-star-empty" role="none"></i>
-                                    {%- endif -%}
-                                {%- endfor -%}
-                            </span>
-                        </span>
-                    </div>
-                {%- endif -%}
             {%- endif -%}
             <div class="bundle-product-price">
                 <div class="price-box card-price">
@@ -167,7 +131,7 @@
                             <span class="old-price">
                                 {{ product.variants[0].compare_at_price | money }}
                             </span>
-                           
+
                         </div>
                     {%- else -%}
                         <div class="price-regular">

@@ -30,7 +30,7 @@
                     {%- case block.type -%}
                         {%-  when 'logo' -%}
                             <div class="header__logo text-left clearfix">
-                                <div class="header__heading">
+                                <{% if request.page_type == 'index' %}h1{% else %}div{% endif %} class="header__heading">
                                     <a href="{{ routes.root_url }}" class="header__heading-link focus-inset">
                                         {%- if block.settings.logo != blank -%}
                                             {%- liquid 
@@ -50,7 +50,7 @@
                                             <span class="h2 {{ block.settings.logo_text_transform }}">{% if block.settings.logo_text != blank %}{{ block.settings.logo_text }}{% else %}{{ shop.name }}{% endif %}</span>
                                         {%- endif -%}
                                     </a>
-                                </div>
+                                </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                             </div>
                         {%-  when 'search' -%}
                             <div class="header__search clearfix{% if block.settings.show_box_shadow %} show-box-shadow{% endif %}" style="--bg-search-color: {{ block.settings.bg_search_color }}; --search-color: {{ block.settings.search_color }}; --search-icon-color: {{ block.settings.search_icon_color }}; --search-border-radius: {{ block.settings.search_border_radius }}px">
@@ -97,7 +97,7 @@
                         {%-  when 'wishlist' -%}
                             {%- if settings.show_wishlist -%}
                                 <div class="header__iconItem header__group" style="--color: {{ block.settings.color }}">
-                                    <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset">{% render 'icon-heart-2' %}<span class="wishlist-text">{{ 'wishlist.general.wishlist' | t }}</span></a>
+                                    <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset">{% render 'icon-heart-2' %}<span class="wishlist-text">{{ 'wishlist.general.wishlist' | t }}</span></a>
                                 </div>
                             {%- endif -%}
                         {%-  when 'gift_cards' -%}
@@ -113,16 +113,22 @@
                                         {% assign is_contained = false %}
                                     {% endif %}
                                     <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link link--text"{% if is_contained %} data-open-auth-sidebar{% endif %}>
+                                        {%- if customer and customer.has_avatar? -%}
+                                            <account-icon>
+                                                {{ customer | avatar }}
+                                            </account-icon>
+                                        {%- else -%}
                                         {% render 'icon-account-2' %}
-                                        <span class="customer-links">
-                                            {%- liquid
-                                            if customer
-                                            echo 'customer.account_fallback' | t
-                                            else
-                                            echo 'customer.sign_in' | t
-                                            endif
-                                            -%}
-                                        </span>
+                                            <span class="customer-links">
+                                                {%- liquid
+                                                if customer
+                                                echo 'customer.account_fallback' | t
+                                                else
+                                                echo 'customer.sign_in' | t
+                                                endif
+                                                -%}
+                                            </span>
+                                        {%- endif -%}
                                     </a>                               
                                 {%- endif -%}
                             </div>

@@ -68,7 +68,7 @@
     {% render 'halo-term-condition-popup' %}
 {%- endif -%}
 
-{%- if settings.quick_shop_type == '2' -%}
+{%- if settings.quick_shop_type == '1' or settings.quick_shop_type == '2' -%}
     {% render 'halo-popup-card-mobile' %}
 {%- elsif  settings.quick_shop_type == '3' -%}
     {% render 'halo-quickshop-popup' %}

@@ -13,7 +13,6 @@
     assign show_quick_view_badge = settings.show_quick_view_badge
     assign fontsize_text = settings.fontsize_text
     assign color_title = settings.color_title
-    assign show_quick_view_review = settings.show_quick_view_review
     assign word_number_short_desc = settings.word_number_short_desc
     assign fontsize_short_desc = settings.fontsize_short_desc
     assign color_short_desc = settings.color_short_desc
@@ -119,7 +118,7 @@
       {% endfor %}
    };
 </script>
-<div class="productView quickView halo-quickView layout-{{ layout }}{% if product.media.size == 0 %} productView-no-media{% endif %}" data-product-quickview-handle="{{ product.handle }}">
+<div class="kaka productView quickView halo-quickView layout-{{ layout }}{% if product.media.size == 0 %} productView-no-media{% endif %}" data-product-quickview-handle="{{ product.handle }}">
     <div class="productView-top">
         <div class="halo-productView-left halo-quickView-left productView-images clearfix" data-image-gallery>
             <div class="productView-images-wrapper">
@@ -271,11 +270,8 @@
         <div class="halo-productView-right halo-quickView-right productView-details clearfix">
             <div class="productView-product clearfix">
                 <h2 class="productView-title" style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }}"><a href="{{ product.url }}">{{ product.title | escape }}</a></h2>
-                {%- if show_quick_view_review or show_quick_view_sold_in -%}
+                {%- if show_quick_view_sold_in -%}
                     <div class="productView-meta clearfix" style="--color_short_desc: {{ color_short_desc }}; --fontsize_short_desc: {{ fontsize_short_desc | append: 'px' }}">
-                        {%- if show_quick_view_review -%}
-                            <div class="productView-rating halo-productReview"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span></div>
-                        {%- endif -%}
                         {%- if show_quick_view_sold_in -%}
                             <div class="productView-soldProduct" data-sold-out-product data-item="{{ quick_view_sold_in_number }}" data-hours="{{ quick_view_sold_in_hours }}" style="display: none;">
                                 {% render 'icon-fire-2' %}
@@ -374,7 +370,7 @@
                             endif
                         -%}
                         {%- if hasCountdown -%}
-                            <div class="productView-countDown countdown_{{ product.id }} clearfix" data-countdown-id="{{ product.id }}" data-countdown="{{ countdown_time }}">
+                            <div class="productView-countDown countdown_{{ product.id }} style-{{ countdown_style }} clearfix" data-countdown-id="{{ product.id }}" data-countdown="{{ countdown_time }}">
                                 <span class="text animated-loading"><span>{{ settings.countdown_text }}</span></span>
                                 <span class="num animated-loading"><span>151<span>D</span></span></span>
                                 <span class="num animated-loading"><span>8<span>H</span></span></span>
@@ -385,7 +381,7 @@
                     {%- else -%}
                         {%- if product.metafields.c_f.countdown -%}
                             {% assign countdown_type = product.metafields.c_f.countdown %}
-                            <div class="productView-countDown countdown_{{ product.id }} clearfix" data-countdown-id="{{ product.id }}" data-countdown="{{ countdown_type }}">
+                            <div class="productView-countDown countdown_{{ product.id }} style-{{ countdown_style }} clearfix" data-countdown-id="{{ product.id }}" data-countdown="{{ countdown_type }}">
                                 <span class="text animated-loading"><span>{{ settings.countdown_text }}</span></span>
                                 <span class="num animated-loading"><span>151<span>D</span></span></span>
                                 <span class="num animated-loading"><span>8<span>H</span></span></span>
@@ -678,7 +674,7 @@
                                 </quantity-quick-view-input>
                             {%- endif -%}
                             <div class="productView-groupTop">
-                                <div class="productView-action{% unless settings.show_wishlist %} productView-action-2{% endunless %}" style="--atc-color: #ffffff;--atc-bg-color: #232323;--atc-border-color: #232323;--atc-color-hover: #232323;--atc-bg-color-hover: #ffffff;--atc-border-color-hover: #232323">
+                                <div class="productView-action{% unless settings.show_wishlist %} productView-action-2{% endunless %}" style="--atc-color: {{ settings.atc_color }};--atc-bg-color: {% if settings.atc_bg_color_gradient != blank %}{{ settings.atc_bg_color_gradient }}{% else %}{{ settings.atc_bg_color }}{% endif %};--atc-border-color: {{ settings.atc_border_color }};--atc-color-hover: {{ settings.atc_color_hover }};--atc-bg-color-hover: {% if settings.atc_bg_color_gradient_hover != blank %}{{ settings.atc_bg_color_gradient_hover }}{% else %}{{ settings.atc_bg_color_hover }}{% endif %};--atc-border-color-hover: {{ settings.atc_border_color_hover }}">
                                     <input type="hidden" name="id" value="{{ current_variant.id }}">
                                     <div class="product-form__buttons">
                                         {%- if current_variant.available -%}
@@ -720,7 +716,7 @@
                                 </div>
                                 {%- if settings.show_wishlist -%}
                                     <div class="productView-wishlist clearfix">
-                                        <a data-wishlist href="#" data-wishlist-handle="{{ product.handle }}" data-product-id="{{ product.id }}"><span class="visually-hidden">{{ 'wishlist.general.add' | t }}</span> {% render 'icon-heart' %}</a>
+                                        <a data-wishlist href="#" data-wishlist-handle="{{ product.handle }}" data-product-id="{{ product.id }}"><span class="visually-hidden">{{ 'wishlist.general.add' | t }}</span> {% render 'icon-heart' %}{% if settings.show_wishlist_full_icon %}{% render 'icon-heart-add-2' %}{% endif %}</a>
                                     </div>
                                 {%- endif -%}
                                 {%- if show_quick_view_share -%}
@@ -743,16 +739,18 @@
                                         </div>
                                     {%- endif -%}
                                     <div class="productView-groupItem">
-                                        <div class="productView-payment" {% if settings.show_global_checkbox %} disabled="disabled"{% endif %} id="product-checkout-{{ product.id }}" style="--bin-color: #232323;--bin-bg-color: #ffffff;--bin-border-color: #acacac;--bin-color-hover: #ffffff;--bin-bg-color-hover: #232323;--bin-border-color-hover: #232323">{{ form | payment_button }}</div>
+                                        <div class="productView-payment" {% if settings.show_global_checkbox %} disabled="disabled"{% endif %} id="product-checkout-{{ product.id }}" style="--bin-color: {{ settings.bin_color }};--bin-bg-color: {% if settings.bin_bg_color_gradient != blank %}{{ settings.bin_bg_color_gradient }}{% else %}{{ settings.bin_bg_color }}{% endif %};--bin-border-color: {{ settings.bin_border_color }};--bin-color-hover: {{ settings.bin_color_hover }};--bin-bg-color-hover: {% if settings.bin_bg_color_hover_gradient != blank %}{{ settings.bin_bg_color_hover_gradient }}{% else %}{{ settings.bin_bg_color_hover }}{% endif %};--bin-border-color-hover: {{ settings.bin_border_color_hover }}">{{ form | payment_button }}</div>
                                     </div>
                                 </div>
                             {%- endif -%}
                         </div>
                     {%- endform -%}
                     {%- if settings.show_notify_form -%}
+                        {%- assign form_id = 'product-quick-view-notify-form-' | append: product.id -%}
                         <div class="productView-notifyMe halo-notifyMe" {% if product.variants.size > 1 %}style="display: none;"{% else %}{% if product.available %}style="display: none;"{% endif %}{% endif %}>
                             {% render 'halo-notify-sold-out',
                                 id: product.id,
+                                id_form: form_id,
                                 current_variant: current_variant
                             %}
                         </div>
@@ -791,9 +789,19 @@
     %}
 {%- endif -%}
 {%- if show_compare_color and isColor -%}
+    {%- liquid
+        assign load_script = true
+        if request.page_type == 'product'
+            assign load_script = false
+        endif
+    -%}
     {% render 'halo-compare-color-popup',
         product: product,
         show_compare_color_drop_drap: show_compare_color_drop_drap,
-        index: index
+        index: index,
+        load_script: load_script
     %}
+{%- endif -%}
+{%- if quick_view_zoomed_image -%}
+    <script src="{{ 'zoomed-image.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
