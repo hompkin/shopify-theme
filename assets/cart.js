@@ -157,3 +157,34 @@ class CartItems extends HTMLElement {
 
 customElements.define('cart-items', CartItems);
 
+class Accordion extends HTMLElement {
+    constructor() {
+        super();
+        this.header = this.firstElementChild;
+        this.content = this.lastElementChild;
+
+        this.header.addEventListener('click', this.onSummaryClick.bind(this));
+    }
+
+    onSummaryClick(event) {
+        event.preventDefault();
+        this.hasAttribute('open') ? this.close() : this.open(event);
+    }
+
+    open(event) {
+        this.setAttribute('open', true);
+        this.setAttribute('aria-expanded', 'true');
+        this.content.setAttribute('aria-hidden', 'false');
+        $(this.content).slideDown()
+    }
+
+    close() {
+        this.removeAttribute('open');
+        this.setAttribute('aria-expanded', 'false');
+        this.content.setAttribute('aria-hidden', 'true');
+        $(this.content).slideUp()
+    }
+}
+
+customElements.define('accordion-block', Accordion);
+

@@ -216,10 +216,6 @@
     width: auto;
 }
 
-.product-card-layout-04 .card-information__group .card-review {
-	line-height: 1;
-}
-
 .product-card-layout-04 .card-information .price.price--on-sale .price-item--regular .money{
 	font-size: calc(var(--product-price-font-size) - 4px);
 }
@@ -242,11 +238,6 @@
 /* Arrow */
 .product-card-layout-04 .slick-arrow{
 	box-shadow: 0 2px 3.4px 0.6px rgb(0 0 0 / 20%);
-}
-
-/* Search */
-.product-card-layout-04 .quickSearchResultsBlock .products-grid .card-review{
-	display: none;
 }
 
 /* Quick Shop Option 2 */
@@ -280,12 +271,7 @@ body:not(.quick_shop_option_2) .halo-product-list-view-popup .form-label+.swatch
 		text-align: center;
 	}
 
-	.product-card-layout-04 .card-information__wrapper.text-center .card-information__group-2 .card-review {
-		text-align: center;
-	}
-
-    .product-card-layout-04 .card-information__wrapper.text-right .card-information__group-2 .card-vendor, 
-	.product-card-layout-04 .card-information__wrapper.text-right .card-information__group-2 .card-review {
+    .product-card-layout-04 .card-information__wrapper.text-right .card-information__group-2 .card-vendor {
 		text-align: right;
 	}
 }
@@ -315,11 +301,6 @@ body:not(.quick_shop_option_2) .halo-product-list-view-popup .form-label+.swatch
 	.product-card-layout-04 .product-item.sold-out:not(.has-notify):hover .card-product__wrapper .card-action form,
 	.product-card-layout-04 .product-item.has-notify:hover .card-product__wrapper .card-media {
 		opacity: 0.5;
-	}
-
-	/* Search */
-	.product-card-layout-04 .header__search.layout_search--style2 .quickSearchResultsBlock .products-grid .card-review{
-		display: inline-block;
 	}
 
 	/* Page Category */
@@ -354,7 +335,7 @@ body:not(.quick_shop_option_2) .halo-product-list-view-popup .form-label+.swatch
 		display: none;
 	}
 
-	.product-card-layout-04 .card-information__group .card-review, .product-card-layout-04 .card-action-bottom.has-wishlist{
+	.product-card-layout-04 .card-action-bottom.has-wishlist{
 		display: none;
 	}
     .product-card-layout-04 .card-action-bottom.show-mb {

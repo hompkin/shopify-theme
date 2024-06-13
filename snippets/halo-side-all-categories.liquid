@@ -3,27 +3,38 @@
         assign heading = block.settings.heading
         assign type = block.settings.type
     -%}
-    <div class="sidebarBlock sidebar-categories{% if show_border %} sidebarBlock-border{% endif %}{% if show_collapse %} sidebarBlock-collapse{% endif %}">
-        {%- if show_collapse -%}
-            <div class="sidebarBlock-headingWrapper">
+    <div class="sidebarBlock sidebar-categories{% if show_border %} sidebarBlock-border{% endif %} sidebarBlock-{{show_collapse}}">
+        {%- if show_collapse == 'collapse' or show_collapse == 'slide'  -%}
+            <div class="sidebarBlock-headingWrapper{% if show_collapse == 'slide' %}-slide{% endif %}">
         {%- endif -%}
             {%- if heading != blank -%}
-                <h2 class="sidebarBlock-heading{% if show_collapse %}{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}{% endif %}">
-                    {{ heading | escape }}
-                </h2>
+                <h2 class="sidebarBlock-heading{% if show_collapse %}{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}{% endif %}">{{ heading | escape }}</h2>
             {%- else -%}
-                {%- if show_collapse -%}
-                    <h2 class="sidebarBlock-heading{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}">
-                        BLock Heading
-                    </h2>
+                {%- if show_collapse == 'collapse' or show_collapse == 'slide'  -%}
+                    <h2 class="sidebarBlock-heading{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}">BLock Heading</h2>
                 {%- endif -%}
             {%- endif -%}
-        {%- if show_collapse -%}
+            {%- if show_collapse == 'slide' -%}
+                {% render 'icon-arrow-left' %}
+            {%- endif -%}
+        {%- if show_collapse == 'collapse' or show_collapse == 'slide' -%}
             </div>
+        {%- endif -%}
+        {%- if show_collapse == 'collapse' -%}
             <div class="sidebarBlock-contentWrapper" {% if sidebar_collapse == 'expand' %} style="display: block;"{% endif %}>
         {%- endif -%}
-            <div class="sidebarBlock-content">
-                <ul class="all-categories-list list-unstyled" role="menu">
+            <div class="sidebarBlock-content{% if show_collapse == 'slide' %} sidebarBlock-slide__content{% endif %}">
+                {%- if show_collapse == 'slide' -%}
+                    <button type="button" class="sidebarBlock-slide__content-close">
+                        {% render 'icon-arrow-left' %}
+                        {%- if heading != blank -%}
+                            {{ heading | escape }}
+                        {%- else -%}
+                            BLock Heading
+                        {%- endif -%}
+                    </button>
+                {%- endif -%}
+                <ul class="all-categories-list list-unstyled{% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}" role="menu">
                     {% assign collection_list = block.settings.link_list | handleize %}
                     {%- if type == 'show_all' -%}
                         {%- for collection_list in collections limit: 20 -%}
@@ -86,7 +97,7 @@
                     {%- endif -%}
                 </ul>
             </div>
-        {%- if show_collapse -%}
+        {%- if show_collapse == 'collapse' -%}
             </div>
         {%- endif -%}
     </div>

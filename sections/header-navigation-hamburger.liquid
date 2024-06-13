@@ -10,13 +10,16 @@
         {%- endif -%}
     {%- endif -%}
     @media screen and (min-width: 1025px) {
+        body:not([allow-transparency]) .header-navigation-wrapper {position: static !important;}
         .header-nav-hamburger {padding-top: {{section.settings.padding_top | append: 'px'}};padding-bottom: {{section.settings.padding_bottom | append: 'px'}}}
         .header-nav-hamburger:not(.header-hamburger--transparent),.scrolled-past-header .header-hamburger--transparent {
             {%- if section.settings.header_navigation_bg_gradient != 'rgba(0,0,0,0)' and section.settings.header_navigation_bg_gradient != blank -%}
                  background: {{ section.settings.header_navigation_bg_gradient }}
             {%- else -%}
                 {%- if section.settings.header_navigation_bg != 'rgba(0,0,0,0)' and section.settings.header_navigation_bg != blank -%}
-                   background: {{ section.settings.header_navigation_bg }}  
+                    background: {{ section.settings.header_navigation_bg }}
+                {%- else -%}
+                    background: rgba(255,255,255,0.5);
                 {%- endif -%}
             {%- endif -%}
         }
@@ -31,6 +34,7 @@
         {%- if section.settings.enable_transparent -%}
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent {background-color: transparent;{% unless section.settings.container == 'full' %}{% if section.settings.border_color != blank %}border-bottom: 1px solid {{section.settings.border_color}}{% endif %}{% endunless %};transition: all .7s ease-in-out}
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .menu-lv-1:not(.menu-sale) .menu-lv-1__action, 
+            .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .header-icons .header__icon .text__icon, 
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .header__icon>.text, 
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .header-logo .header__heading-text {color: {{section.settings.transparent_color}}}
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .menu-lv-1:hover .menu-lv-1__action, 
@@ -41,7 +45,8 @@
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .icon-hamburger .icon-line:before {background: {{section.settings.transparent_color}}}
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .menu-lv-1 > .link-effect > .text:after, 
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .menu-lv-1:hover > .link-effect > .text:after, 
-            .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .header-icons .link-effect>span:after, 
+            .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .header-icons .link-effect>span:after,
+            .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .header-icons .link-effect>.text__icon:after,
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .icon-hamburger:hover .icon-line, 
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .icon-hamburger:hover .icon-line:after, 
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .icon-hamburger:hover .icon-line:before {background: {{section.settings.transparent_color_hover}}}
@@ -52,11 +57,13 @@
             .section-header-navigation:not(.scrolled-past-header) .header-hamburger--transparent .logo__main {display: none}
             .scrolled-past-header .header-nav-hamburger .logo--transparent{display: none}
             .shopify-section-header-hidden .header-navigation-wrapper {transform: translateY(-100%);}
+            .layout_rtl .section-header-navigation {transform: initial;}
         {%- endif -%}
         .header-navigation-wrapper{transition: transform .3s ease-out;}
         {%- if section.settings.container == 'full' -%}
             .header-nav-hamburger > .container-full {padding-left: {{ section.settings.padding_full_width | append: 'px' }};padding-right: {{ section.settings.padding_full_width | append: 'px' }}}
             .section-header-navigation:not(.scrolled-past-header) .header-nav-hamburger > .container-full:before {content: "";position: absolute;left: {{ section.settings.padding_full_width | append: 'px' }};right: {{ section.settings.padding_full_width | append: 'px' }};bottom: 0;height: 1px;{% if section.settings.enable_transparent %}{% if section.settings.border_color != blank %}background: {{section.settings.border_color}}{% endif %}{% endif %}}
+            .product-card-layout-08 .section-header-navigation:not(.scrolled-past-header) .header-nav-hamburger > .container-full:before {left: 0;right: 0}
             .sticky-search-menu-custom-open.scrolled-past-header .header-nav-hamburger > .container-full:before {display: none}
         {%- endif -%}
         .header-nav-hamburger .header-icons{gap:28px}.header-nav-hamburger .cart-count-bubble{top:-9px; right: -11px}.header-nav-hamburger .cart-count-bubble-07 {right: -14px;top:-6px}.icon-hamburger{vertical-align:middle;cursor:pointer}.icon-hamburger .icon-line{width:100%;transition: var(--anchor-transition)}.icon-hamburger .icon-line:after,.icon-hamburger .icon-line:before{display:block;width:100%;position:absolute;left:0;right:0;content:"";transition:transform .3s .2s}.icon-hamburger .icon-line,.icon-hamburger .icon-line:after,.icon-hamburger .icon-line:before{background-color:var(--header_icons_color)}.icon-hamburger .icon-line-light:before{top:-8px}.icon-hamburger .icon-line-light:after{top:8px}.header-nav-hamburger .icon-hamburger .icon-line-light,.header-nav-hamburger .icon-hamburger .icon-line-light:before, .header-nav-hamburger .icon-hamburger .icon-line-light:after {height: 2px}.icon-hamburger .icon-line-bold:before{top:-8px}.icon-hamburger .icon-line-bold:after{top:8px}.header-nav-hamburger .icon-hamburger .icon-line-bold,.header-nav-hamburger .icon-hamburger .icon-line-bold:before, .header-nav-hamburger .icon-hamburger .icon-line-bold:after {height: 3px}.icon-hamburger:hover .icon-line,.icon-hamburger:hover .icon-line:before,.icon-hamburger:hover .icon-line:after{background-color:var(--header_icons_color_hover)}
@@ -103,6 +110,12 @@
             .shopify-section-header-show.sticky-search-menu-custom-open .header-nav-hamburger .search-modal__content,
             .scrolled-past-header .header-nav-hamburger .search-modal__content {margin-top: 0px}
         {%- endif -%}
+        .main-menu-hasLabel .main-menu--wrapper .list-menu--inline{padding-top: max(18px,var(--menu_top_spacing));}
+        .header-nav-hamburger .header__icon .text__icon {color: var(--header_icons_color);font-size: var(--text_font_size);font-family: var(--font-menu-lv1-family);font-weight: var(--font-menu-lv1-weight);line-height: var(--menu-lv1-line-height);letter-spacing: var(--menu-lv1-letter-spacing);text-transform: var(--menu-lv1-text-transform);
+        }
+        .header-nav-hamburger .header-icons-text .header__icon:hover .icon{
+            transform: scale(1);
+        }
     }
     @media (min-width:1025px) and (max-width:1280px){.header-nav-hamburger--style2 .header-logo{max-width:250px}.header-nav-hamburger--style2 .header-icons,.header-nav-hamburger--style2 .main-menu{width:100%;max-width:calc((100% - 250px)/ 2)}}@media screen and (min-width:1281px){.header-nav-hamburger--style2 .header-logo{max-width:300px}.header-nav-hamburger--style2 .header-icons,.header-nav-hamburger--style2 .main-menu{width:100%;max-width:calc((100% - 300px)/ 2)}}
    </style>
@@ -121,7 +134,7 @@
         {%- case block.type -%}
             {%- when 'logo' -%}
                 <div class="header-logo header-item header-item--side d-flex flex-align-center fs-0 fg-0 pt-2 pb-5{% if block.settings.logo_position == 'main_menu'%} show-main-menu{% elsif block.settings.logo_position == 'sticky_menu'%} hide-main-menu{% else %}{% endif %}" style="--logo_font_size: {{block.settings.logo_font_size | append: 'px'}};--logo_font_weight: {{block.settings.logo_font_weight}};--logo_text_transform: {{block.settings.logo_text_transform}};--logo_text_color: {{block.settings.logo_color}};--logo_width: {{block.settings.logo_width | append: 'px'}};--logo_width_sticky: {{block.settings.logo_width_fixed | append: '%'}}">
-                    <div class="header__heading">
+                    <{% if request.page_type == 'index' %}h1{% else %}div{% endif %} class="header__heading">
                         <a href="{{ routes.root_url }}" class="header__heading-link focus-inset d-flex flex-align-center">
                             {%- liquid 
                                 assign logo_transparent = block.settings.logo_transparent
@@ -148,11 +161,11 @@
                                 <span class="header__heading-text {{ block.settings.logo_text_transform }} d-block">{{ shop.name }}</span>
                             {%- endif -%}
                         </a>
-                    </div>
+                    </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                 </div>
 
             {%- when 'main_menu' -%}
-            <div class="main-menu header-item p-static w-100{% if block.settings.label_position == 'none' %} label-none{% elsif block.settings.label_position == 'main_menu' %} label-main-menu{% if block.settings.new_label_1 != blank or block.settings.sale_label_1 != blank or block.settings.hot_label_1 != blank%} main-menu-hasLabel{% endif %}{% else %}{% endif %}{% if block.settings.menu_top_spacing <= 16 %} label-small{% endif %}">
+            <div class="main-menu header-item p-static w-100{% if block.settings.label_position == 'none' %} label-none{% elsif block.settings.label_position == 'main_menu' %} label-main-menu{% if block.settings.new_label_1 != blank or block.settings.sale_label_1 != blank or block.settings.hot_label_1 != blank%} main-menu-hasLabel{% endif %}{% else %}{% endif %}{% if block.settings.menu_top_spacing <= 16 %} label-small{% endif %}{% if block.settings.menu_top_spacing == 18 %} mg-18{% endif %}">
                 <div class="p-static container container-{{ section.settings.container }} o-unset">
                     <div class="main-menu--wrapper" id="HeaderNavigation">
                         {%- if block.settings.menu != blank -%}
@@ -175,7 +188,7 @@
             {%- if block.settings.search_dropdown == 'custom' -%}
                 {%- assign icon_search_custom =  'icon-search-custom' -%}
             {%- endif -%} 
-            <div class="header-icons header-item header-item--side d-flex flex-align-center flex-wrap fs-0 pt-2 pb-5{% if block.settings.show_search_sticky == false and block.settings.show_customer_sticky == false and block.settings.show_wishlist_sticky == false and block.settings.show_cart_sticky == false and block.settings.show_language_currency_sticky == false %} show-main-menu{% endif %}{% if block.settings.show_language_currency == false and block.settings.show_search == false and block.settings.show_customer == false and block.settings.show_wishlist == false and block.settings.show_cart == false %} hide-main-menu{% endif %}" style="--header_icons_color: {{block.settings.header_icons_color}};--header_icons_color_hover: {{block.settings.header_icons_color_hover}};--cart_count_bubble_bg: {% if block.settings.cart_count_bubble_bg_gradient != blank %}{{ block.settings.cart_count_bubble_bg_gradient }}{% else %}{{ block.settings.cart_count_bubble_bg }}{% endif %};--cart_count_bubble_color: {{block.settings.cart_count_bubble_color}};--cart_count_bubble_font_size:{% if block.settings.text_font_size <= 12 %}{{block.settings.text_font_size | append: 'px'}}{% else %}{{block.settings.text_font_size | minus: 2 | append: 'px'}}{% endif %};--text_font_size: {{block.settings.text_font_size | append: 'px' }}">
+            <div class="header-icons header-item header-item--side d-flex flex-align-center flex-wrap fs-0 pt-2 pb-5{% if block.settings.show_search_sticky == false and block.settings.show_customer_sticky == false and block.settings.show_wishlist_sticky == false and block.settings.show_cart_sticky == false and block.settings.show_language_currency_sticky == false %} show-main-menu{% endif %}{% if block.settings.show_language_currency == false and block.settings.show_search == false and block.settings.show_customer == false and block.settings.show_wishlist == false and block.settings.show_cart == false %} hide-main-menu{% endif %}{% if block.settings.icons_layout == 'text' %} header-icons-text{% endif %}" style="--header_icons_color: {{block.settings.header_icons_color}};--header_icons_color_hover: {{block.settings.header_icons_color_hover}};--cart_count_bubble_bg: {% if block.settings.cart_count_bubble_bg_gradient != blank %}{{ block.settings.cart_count_bubble_bg_gradient }}{% else %}{{ block.settings.cart_count_bubble_bg }}{% endif %};--cart_count_bubble_color: {{block.settings.cart_count_bubble_color}};--cart_count_bubble_font_size:{% if block.settings.text_font_size <= 12 %}{{block.settings.text_font_size | append: 'px'}}{% else %}{{block.settings.text_font_size | minus: 2 | append: 'px'}}{% endif %};--text_font_size: {{block.settings.text_font_size | append: 'px' }}">
                 {%- if block.settings.customer_icon == '1' -%}
                     {%- if shop.customer_accounts_enabled -%}
                         {%- if block.settings.show_customer or block.settings.show_customer_sticky -%}
@@ -185,15 +198,21 @@
                                 {%- assign is_contained = false -%}
                             {%- endif -%}
                             <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link link--text link-effect{% if block.settings.show_customer_sticky%}{% if block.settings.show_customer %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_customer %} show-main-menu{% endif %}{% endif %} text-center"{% if is_contained %} data-open-auth-sidebar{% endif %}>
-                                <span class="text p-relative{% if block.settings.icons_bold == 'bold' %} text-bold{% endif %}" style="--text_font_size: {{block.settings.text_font_size | append: 'px'}}">
-                                    {%- liquid
-                                      if customer 
-                                        echo 'customer.account_fallback' | t
-                                      else
-                                        echo 'customer.sign_in' | t
-                                      endif
-                                    -%}
-                              </span>
+                                {%- if customer and customer.has_avatar? -%}
+                                    <account-icon>
+                                        {{ customer | avatar }}
+                                    </account-icon>
+                                {%- else -%}
+                                    <span class="text p-relative{% if block.settings.icons_bold == 'bold' %} text-bold{% endif %}" style="--text_font_size: {{block.settings.text_font_size | append: 'px'}}">
+                                        {%- liquid
+                                          if customer 
+                                            echo 'customer.account_fallback' | t
+                                          else
+                                            echo 'customer.sign_in' | t
+                                          endif
+                                        -%}
+                                    </span>
+                                {%- endif -%}
                             </a> 
                         {%- endif -%}                              
                     {%- endif -%}
@@ -201,15 +220,19 @@
                 {%- if block.settings.show_search or block.settings.show_search_sticky -%}
                     <details-modal class="header__iconItem header__search{% if block.settings.show_search_sticky%}{% if block.settings.show_search %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_search %} show-main-menu{% endif %}{% endif %}{% if block.settings.search_dropdown == 'default'%} header__search-default{% else %} header__search-custom{% endif %}">
                             <details class="search_details search_details--popup">
-                                <summary class="header__icon header__icon--search header__icon--summary link link--text focus-inset modal__toggle h-100" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}" data-search-menu-sticky-form data-search-menu>
-                                    {%- case block.settings.search_icon -%}
-                                        {%-  when '1' -%}
-                                            {% render 'icon-search', class: 'modal__toggle-open icon icon-search', width: width_icons_pls_2, stroke: stroke, icon_custom: icon_search_custom %}
-                                        {%-  when '2' -%}
-                                            {% render 'icon-search-06', class: 'stroke-icon modal__toggle-open icon icon-search', width: width_icons_pls_2, stroke: stroke, icon_custom: icon_search_custom %}
-                                        {%-  when '3' -%}
-                                            {% render 'icon-search-05', class: 'modal__toggle-open icon icon-search', width: width_icons, stroke: stroke, icon_custom: icon_search_custom %}
-                                    {%- endcase -%}
+                                <summary class="header__icon header__icon--search header__icon--summary link link--text focus-inset modal__toggle h-100{% if block.settings.icons_layout == 'text' %} link-effect{% endif %}" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}" data-search-menu-sticky-form data-search-menu>
+                                    {%- if block.settings.icons_layout == 'text' -%}
+                                        <span class="text__icon modal__toggle-open icon icon-search">{{ 'general.search.title' | t }}</span>
+                                    {%- else -%}
+                                        {%- case block.settings.search_icon -%}
+                                            {%-  when '1' -%}
+                                                {% render 'icon-search', class: 'modal__toggle-open icon icon-search', width: width_icons_pls_2, stroke: stroke, icon_custom: icon_search_custom %}
+                                            {%-  when '2' -%}
+                                                {% render 'icon-search-06', class: 'stroke-icon modal__toggle-open icon icon-search', width: width_icons_pls_2, stroke: stroke, icon_custom: icon_search_custom %}
+                                            {%-  when '3' -%}
+                                                {% render 'icon-search-05', class: 'modal__toggle-open icon icon-search', width: width_icons, stroke: stroke, icon_custom: icon_search_custom %}
+                                        {%- endcase -%}
+                                    {%- endif -%}
                                 </summary>
                                 <div class="search-modal modal__content{% if settings.show_quick_search %} quickSearch{% endif %}" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
                                     <div class="search-modal__content search-modal__content-bottom d-block p-relative maw-100 text-center" tabindex="-1">
@@ -248,64 +271,98 @@
                             {%- else -%}
                                 {%- assign is_contained = false -%}
                             {%- endif -%}
-                            <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link link--text{% if block.settings.show_customer_sticky%}{% if block.settings.show_customer %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_customer %} show-main-menu{% endif %}{% endif %} text-center"{% if is_contained %} data-open-auth-sidebar{% endif %}>
-                                {%- case block.settings.customer_icon -%}
-                                    {%-  when '2' -%}
-                                        {% render 'icon-account-2', class: 'icon m-lr-auto', width: width_icons, height: height_icons, stroke: stroke %}
-                                    {%-  when '3' -%}
-                                        {% render 'icon-account-3', class: 'icon m-lr-auto', width: width_icons, height: height_icons, stroke: stroke %}
-                                    {%-  when '4' -%}
-                                        {% render 'icon-account', class: 'icon m-lr-auto', width: width_icons_pls_5, stroke: stroke %}
-                                {%- endcase -%}
-                                <span class="visually-hidden">
-                                    {%- liquid
-                                      if customer
-                                        echo 'customer.account_fallback' | t
-                                      else
-                                        echo 'customer.log_in' | t
-                                      endif
-                                    -%}
-                              </span>
+                            <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link link--text{% if block.settings.show_customer_sticky%}{% if block.settings.show_customer %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_customer %} show-main-menu{% endif %}{% endif %} text-center{% if block.settings.icons_layout == 'text' %} link-effect{% endif %}"{% if is_contained %} data-open-auth-sidebar{% endif %}>
+                                {%- if block.settings.icons_layout == 'text' -%}
+                                    {%- if customer and customer.has_avatar? -%}
+                                        <account-icon>
+                                            {{ customer | avatar }}
+                                        </account-icon>
+                                    {%- else -%}
+                                        <span class="text__icon icon">
+                                            {%- liquid
+                                              if customer
+                                                echo 'customer.my_account' | t
+                                              else
+                                                echo 'customer.log_in' | t
+                                              endif
+                                            -%}
+                                        </span>
+                                    {%- endif -%}
+                                {%- else -%}
+                                    {%- if customer and customer.has_avatar? -%}
+                                        <account-icon>
+                                            {{ customer | avatar }}
+                                        </account-icon>
+                                    {%- else -%}
+                                        {%- case block.settings.customer_icon -%}
+                                            {%-  when '2' -%}
+                                                {% render 'icon-account-2', class: 'icon m-lr-auto', width: width_icons, height: height_icons, stroke: stroke %}
+                                            {%-  when '3' -%}
+                                                {% render 'icon-account-3', class: 'icon m-lr-auto', width: width_icons, height: height_icons, stroke: stroke %}
+                                            {%-  when '4' -%}
+                                                {% render 'icon-account', class: 'icon m-lr-auto', width: width_icons_pls_5, stroke: stroke %}
+                                        {%- endcase -%}
+                                    {%- endif -%}
+                                    <span class="visually-hidden">
+                                        {%- liquid
+                                          if customer
+                                            echo 'customer.account_fallback' | t
+                                          else
+                                            echo 'customer.log_in' | t
+                                          endif
+                                        -%}
+                                    </span>
+                                {%- endif -%}
                             </a> 
                         {%- endif -%}                              
                     {%- endif -%}
                 {%- endunless -%}
                 {%- if settings.show_wishlist -%}
                     {%- if block.settings.show_wishlist or block.settings.show_wishlist_sticky -%}
-                        <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset{% if block.settings.show_wishlist_sticky %}{% if block.settings.show_wishlist %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_wishlist %} show-main-menu{% endif %}{% endif %} text-center">
-                            {%- case block.settings.wishlist_icon -%}
-                                {%-  when '1' -%}
-                                    {% render 'icon-heart-2', class: 'm-lr-auto', width: width_icons, stroke: stroke, height: height_icons %}
-                                {%-  when '2' -%}
-                                    {% render 'icon-heart-3', class: 'm-lr-auto', width: width_icons_pls_1, stroke: stroke %}
-                            {%- endcase -%}
-                             <span class="visually-hidden">{{ 'wishlist.general.wishlist' | t }}</span>
+                        <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset{% if block.settings.show_wishlist_sticky %}{% if block.settings.show_wishlist %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_wishlist %} show-main-menu{% endif %}{% endif %} text-center{% if block.settings.icons_layout == 'text' %} link-effect{% endif %}">
+                            {%- if block.settings.icons_layout == 'text' -%}
+                                <span class="text__icon icon">{{ 'wishlist.general.text_icon' | t }}</span>
+                            {%- else -%}
+                                {%- case block.settings.wishlist_icon -%}
+                                    {%-  when '1' -%}
+                                        {% render 'icon-heart-2', class: 'm-lr-auto', width: width_icons, stroke: stroke, height: height_icons %}
+                                    {%-  when '2' -%}
+                                        {% render 'icon-heart-3', class: 'm-lr-auto', width: width_icons_pls_1, stroke: stroke %}
+                                {%- endcase -%}
+                                 <span class="visually-hidden">{{ 'wishlist.general.wishlist' | t }}</span>
+                            {%- endif -%}
                         </a>
                     {%- endif -%}
                 {%- endif -%}
                 {%- if block.settings.show_cart or block.settings.show_cart_sticky -%}
-                    <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset cart-icon-bubble{% if block.settings.show_cart_sticky %}{% if block.settings.show_cart %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_cart %} show-main-menu{% endif %}{% endif %} text-center" {% if settings.show_quick_cart %} data-cart-sidebar{% endif %}>
-                        {%- case block.settings.cart_icon -%}
-                            {%-  when '1' -%}
-                                {% render 'icon-cart', class: 'm-lr-auto', width: width_icons_pls_2, stroke: stroke %}
-                            {%-  when '2' -%}
-                                {% render 'icon-cart-05', class: 'm-lr-auto', width: width_icons, stroke: stroke %}
-                            {%-  when '3' -%}
-                                {% render 'icon-cart-02', class: 'm-lr-auto', width: width_icons, stroke: stroke %}
-                            {%-  when '4' -%}
-                                {% render 'icon-cart-06', class: 'stroke-icon', width: width_icons, stroke: stroke %}
-                            {%-  when '5' -%}
-                                {% render 'icon-cart-04', class: 'stroke-icon', width: width_icons, stroke: stroke %}
-                            {%-  when '6' -%}
-                                {% render 'icon-cart-03', class: 'stroke-icon', width: width_icons, stroke: stroke %}
-                            {%-  when '7' -%}
-                                {% render 'icon-cart-07', class: 'm-lr-auto', width: width_icons_pls_2, stroke: stroke %}
-                        {%- endcase -%}
-                        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-                        <div class="cart-count-bubble{% if block.settings.cart_icon == '7' %} cart-count-bubble-07{% endif %}">
-                            {%- if cart.item_count < 100 -%} <span class="text" aria-hidden="true" data-cart-count>{{ cart.item_count }}</span>{%- endif -%}
-                                <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-                        </div>
+                    <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset cart-icon-bubble{% if block.settings.show_cart_sticky %}{% if block.settings.show_cart %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_cart %} show-main-menu{% endif %}{% endif %} text-center{% if block.settings.icons_layout == 'text' %} link-effect{% endif %}" {% if settings.show_quick_cart %} data-cart-sidebar{% endif %}>
+                        {%- if block.settings.icons_layout == 'text' -%}
+                            <div class="text__icon icon">{{ 'general.cart.my_cart' | t }} (<span class="text" aria-hidden="true" data-cart-count>{{ cart.item_count }}</span>) </div>
+                        {%- else -%}
+                            {%- case block.settings.cart_icon -%}
+                                {%-  when '1' -%}
+                                    {% render 'icon-cart', class: 'm-lr-auto', width: width_icons_pls_2, stroke: stroke %}
+                                {%-  when '2' -%}
+                                    {% render 'icon-cart-05', class: 'm-lr-auto', width: width_icons, stroke: stroke %}
+                                {%-  when '3' -%}
+                                    {% render 'icon-cart-02', class: 'm-lr-auto', width: width_icons, stroke: stroke %}
+                                {%-  when '4' -%}
+                                    {% render 'icon-cart-06', class: 'stroke-icon', width: width_icons, stroke: stroke %}
+                                {%-  when '5' -%}
+                                    {% render 'icon-cart-04', class: 'stroke-icon', width: width_icons, stroke: stroke %}
+                                {%-  when '6' -%}
+                                    {% render 'icon-cart-03', class: 'stroke-icon', width: width_icons, stroke: stroke %}
+                                {%-  when '8' -%}
+                                    {% render 'icon-cart-09', class: 'stroke-icon', width: width_icons, stroke: stroke %}
+                                {%-  when '7' -%}
+                                    {% render 'icon-cart-07', class: 'm-lr-auto', width: width_icons_pls_2, stroke: stroke %}
+                            {%- endcase -%}
+                            <span class="visually-hidden">{{ 'templates.cart.cart' | t }}<span class="text" aria-hidden="true" data-cart-count>{{ cart.item_count }}</span></span>
+                            <div class="cart-count-bubble{% if block.settings.cart_icon == '7' %} cart-count-bubble-07{% endif %}">
+                                {%- if cart.item_count < 100 -%} <span class="text" aria-hidden="true" data-cart-count>{{ cart.item_count }}</span>{%- endif -%}
+                                    <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                            </div>
+                        {%- endif -%}
                     </a>
                 {%- endif -%}
                 {%- if block.settings.show_language_currency or block.settings.show_language_currency_sticky -%}
@@ -354,6 +411,7 @@ if (sticky != undefined || sticky != null) {
           this.onScrollHandler = this.onScroll.bind(this);
           this.hideHeaderOnScrollUp = () => this.preventReveal = true;
           this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+          window.addEventListener('load', this.checkLoadPosition.bind(this));
           window.addEventListener('scroll', this.onScrollHandler, false);
           this.createObserver();
         }
@@ -362,6 +420,7 @@ if (sticky != undefined || sticky != null) {
         }
         disconnectedCallback() {
           this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+          window.removeEventListener('load', this.checkLoadPosition);
           window.removeEventListener('scroll', this.onScrollHandler);
         }
         createObserver() {
@@ -370,6 +429,28 @@ if (sticky != undefined || sticky != null) {
             observer.disconnect();
           });
           observer.observe(this.header);
+        }
+        checkLoadPosition() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const headerGr = document.querySelectorAll(".shopify-section-group-header-group");
+
+            if(headerGr[0].classList.contains('shopify-section-header-sticky')) {
+                if(scrollTop > headerGr[0].offsetHeight && !this.header.classList.contains('scrolled-past-header')) {
+                    this.header.classList.add('shopify-section-header-hidden');
+                }
+            } else {
+                headerGr.forEach(item => {
+                    if(item.classList.contains('shopify-section-header-sticky') ) {
+                        const itemPrev = item.previousElementSibling;
+                        const itemPrevHeight = itemPrev.offsetHeight;
+                        const itemPrevTop = itemPrev.offsetTop;
+
+                        if(scrollTop > itemPrevTop + itemPrevHeight && !this.header.classList.contains('scrolled-past-header')) {
+                            this.header.classList.add('shopify-section-header-hidden');
+                        }
+                    }
+                });
+            }
         }
         onScroll() {
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -403,6 +484,7 @@ if (sticky != undefined || sticky != null) {
                 } else {
                     this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
                     this.header.classList.remove('shopify-section-header-show');
+                    document.querySelector('body').classList.add("section-header-is-hidden")
                 }
             }
           this.closeMenuDisclosure();
@@ -415,6 +497,7 @@ if (sticky != undefined || sticky != null) {
                 } else {
                   this.header.classList.add('shopify-section-header-sticky', 'shopify-section-header-show', 'animate');
                   this.header.classList.remove('shopify-section-header-hidden');
+                  document.querySelector('body').classList.remove("section-header-is-hidden")
               }
             }
         }
@@ -425,6 +508,7 @@ if (sticky != undefined || sticky != null) {
                     return
                 } else {
                   this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-show', 'shopify-section-header-sticky', 'animate');
+                  document.querySelector('body').classList.remove("section-header-is-hidden")
               }
             }
         }
@@ -1102,6 +1186,22 @@ if (sticky != undefined || sticky != null) {
                     ]
                 },
                 {
+                    "type": "select",
+                    "id": "icons_layout",
+                    "label": "t:settings_schema.typography.settings.typography.icon",
+                    "default": "icon",
+                    "options": [
+                        {
+                            "value": "icon",
+                            "label": "t:sections.image-banner.blocks.image.settings.content.label__17"
+                        },
+                        {
+                            "value": "text",
+                            "label": "t:sections.image-banner.blocks.image.settings.content.label__16"
+                        }
+                    ]
+                },
+                {
                     "type": "header",
                     "content": "t:sections.header.settings.header_top.search"
                 },
@@ -1256,6 +1356,10 @@ if (sticky != undefined || sticky != null) {
                         {
                             "value": "6",
                             "label": "t:sections.header.settings.header_icons.cart_6"
+                        },
+                        {
+                            "value": "8",
+                            "label": "t:sections.header.settings.header_icons.cart_8"
                         },
                         {
                             "value": "7",

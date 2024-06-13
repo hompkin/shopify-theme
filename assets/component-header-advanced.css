@@ -228,6 +228,10 @@
     border-radius: 0 var(--search-border-radius) var(--search-border-radius) 0;
 }
 
+.layout_rtl .header-advanced__content .header__search .search-modal__form .search__button {
+	border-radius: var(--search-border-radius) 0 0 var(--search-border-radius);
+}
+
 .header-advanced__content .header__search .search-modal__form .search__button svg {
 	width: 21px;
 	height: 22px;
@@ -363,10 +367,6 @@
 
 .card-product__group.group-left {
 	left: 0;
-}
-
-.card-review {
-	margin: -2px 0px -5px 0px;
 }
 
 /* Sidebar Cart */

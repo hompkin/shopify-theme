@@ -75,7 +75,7 @@
 }
 
 /* link listing grid */
-.search-container #main-page-article-grid {
+.search-container .collection.productShowMore+#main-page-article-grid {
 	margin-top: -30px;
 }
 
@@ -169,6 +169,19 @@
 
 .search-container .page-header {
 	padding: 25px 0 30px;
+}
+
+/**/
+.collection.resultListing .pagination-wrapper {
+  display: none;
+}
+
+.collection.resultListing.productShowMore .pagination-wrapper {
+  display: block;
+}
+
+.collection.resultListing.productShowMore+#main-page-article-grid {
+	margin-top: 0;
 }
 
 @media screen and (max-width: 1024px) {

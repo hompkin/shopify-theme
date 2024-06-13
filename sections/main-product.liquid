@@ -1,5 +1,4 @@
 {{ 'component-product.css' | asset_url | stylesheet_tag }}
-{{ 'component-review.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-badge.css' | asset_url | stylesheet_tag }}
 {{ 'component-rte.css' | asset_url | stylesheet_tag }}
@@ -66,7 +65,7 @@
             "id": "padding_full_width",
             "label": "t:sections.layout.container.padding_full_width",
             "min": 0,
-            "max": 50,
+            "max": 100,
             "step": 5,
             "unit": "t:sections.layout.fontsize.fontsize_title.unit",
             "default": 0,
@@ -292,10 +291,25 @@
             "label": "t:sections.main-sidebar.settings.general.label__1"
         },
         {
-            "type": "checkbox",
-            "id": "show_sidebar_collapse",
+            "type": "select",
+            "id": "sidebar_collapse",
             "label": "t:sections.main-sidebar.settings.general.label__2",
-            "default": true
+            "default": "collapse",
+            "options": 
+            [
+                {
+                  "value": "collapse",
+                  "label": "t:sections.main-sidebar.settings.general.options__5"
+                },
+                {
+                  "value": "slide",
+                  "label": "t:sections.main-sidebar.settings.general.options__6"
+                },
+                {
+                  "value": "none",
+                  "label": "t:sections.main-sidebar.settings.general.options__7"
+                }
+            ]
         },
         {
             "type": "checkbox",
@@ -346,11 +360,11 @@
             [
                 {
                   "value": "left",
-                  "label": "t:sections.general.settings.position.options__1"
+                  "label": "t:sections.general.settings.page-title.options__1"
                 },
                 {
                   "value": "right",
-                  "label": "t:sections.general.settings.position.options__2"
+                  "label": "t:sections.general.settings.page-title.options__3"
                 }
             ]
         },
@@ -587,6 +601,13 @@
             "id": "show_sticky_add_to_cart",
             "label": "t:sections.main-product.settings.sticky_add_to_cart.label",
             "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_sticky_add_to_cart_always_mobile",
+            "label": "t:sections.main-product.settings.sticky_add_to_cart.label__1",
+            "default": false,
+            "info": "t:sections.main-product.settings.sticky_add_to_cart.info__1"
         },
         {
             "type": "checkbox",
@@ -1289,16 +1310,6 @@
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.main-product.settings.header__4.content"
-                },
-                {
-                    "type": "checkbox",
-                    "id": "show_review",
-                    "label": "t:sections.main-product.settings.review.label",
-                    "default": true
-                },
-                {
-                    "type": "header",
                     "content": "t:sections.main-product.settings.header__5.content"
                 },
                 {
@@ -1726,6 +1737,117 @@
                 {
                     "type": "header",
                     "content": "t:sections.main-product.settings.general.spacing"
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_top",
+                    "label": "t:sections.general.settings.aligmnent.options__5",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "t:sections.layout.mg_desktop.unit",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "t:sections.general.settings.aligmnent.options__6",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "t:sections.layout.mg_desktop.unit",
+                    "default": 0
+                }
+            ]
+        },
+        {
+            "type": "tags",
+            "name": "t:sections.main-sidebar.blocks.filter.settings.general.label__3",
+            "limit": 1,
+            "settings":
+            [
+                {
+                    "type": "header",
+                    "content": "t:sections.main-product.settings.general.spacing"
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_top",
+                    "label": "t:sections.general.settings.aligmnent.options__5",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "t:sections.layout.mg_desktop.unit",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "t:sections.general.settings.aligmnent.options__6",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "t:sections.layout.mg_desktop.unit",
+                    "default": 0
+                }
+            ]
+        },
+        {
+            "type": "positive_vibes",
+            "name": "t:sections.main-product.settings.header__23.content",
+            "limit": 1,
+            "settings":
+            [
+                {
+                    "type": "header",
+                    "content": "t:sections.main-product.settings.general.spacing"
+                },
+                {
+                    "type": "range",
+                    "id": "fontsize_text",
+                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "min": 8,
+                    "max": 60,
+                    "step": 1,
+                    "unit": "t:sections.general.settings.padding.unit",
+                    "default": 12
+                },
+                {
+                    "type": "color",
+                    "id": "color_text",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
+                    "default": "#3c3c3c"
+                },
+                {
+                    "type": "select",
+                    "id": "text_font_weight",
+                    "label": "t:sections.image-banner.blocks.specialImg.settings.label__16",
+                    "default": "400",
+                    "options": [
+                    {
+                        "value": "400",
+                        "label": "t:settings_schema.typography.settings.font_weight.options__1"
+                    },
+                    {
+                        "value": "500",
+                        "label": "t:settings_schema.typography.settings.font_weight.options__2"
+                    },
+                    {
+                        "value": "600",
+                        "label": "t:settings_schema.typography.settings.font_weight.options__3"
+                    },
+                    {
+                        "value": "700",
+                        "label": "t:settings_schema.typography.settings.font_weight.options__4"
+                    },
+                    {
+                        "value": "800",
+                        "label": "t:settings_schema.typography.settings.font_weight.options__5"
+                    },
+                    {
+                        "value": "900",
+                        "label": "t:settings_schema.typography.settings.font_weight.options__6"
+                    }]
                 },
                 {
                     "type": "range",
@@ -2508,27 +2630,6 @@
             ]
         },
         {
-            "type": "review",
-            "name": "t:sections.main-product.blocks.review.name",
-            "limit": 1,
-            "settings": 
-            [
-                {
-                    "type": "checkbox",
-                    "id": "open_tab_mobile",
-                    "label": "t:sections.main-product.settings.general.open_tab_mobile",
-                    "default": false,
-                    "info": "t:sections.main-product.settings.general.info_for_horizontal_vertical"
-                },
-                {
-                    "type": "text",
-                    "id": "title",
-                    "label": "t:sections.main-product.blocks.review.settings.label",
-                    "default": "Review"
-                }
-            ]
-        },
-        {
             "type": "custom",
             "name": "t:sections.main-product.blocks.custom.name",
             "settings": 
@@ -3173,6 +3274,162 @@
                 {
                     "type": "header",
                     "content": "t:sections.main-product.settings.general.spacing"
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_top",
+                    "label": "t:sections.general.settings.aligmnent.options__5",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "t:sections.layout.mg_desktop.unit",
+                    "default": 30
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "t:sections.general.settings.aligmnent.options__6",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "t:sections.layout.mg_desktop.unit",
+                    "default": 0
+                }
+            ]
+        },
+        {
+            "type": "delivery_time",
+            "name": "t:sections.main-product.settings.header__24.content",
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "icon",
+                    "label": "t:settings_schema.typography.settings.typography.icon"
+                },
+                {
+                    "type": "color",
+                    "id": "color_title",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
+                    "default": "#232323"
+                },
+                {
+                    "type": "textarea",
+                    "id": "txt",
+                    "label": "t:sections.main-product.settings.header__24.label__1",
+                    "default": "Order within the next [hour] to receive it. Estimated delivery is between [date_start] and [date_end]",
+                    "info": "t:sections.main-product.settings.header__24.info__1"
+                },
+                {
+                    "type": "range",
+                    "id": "fontsize_text",
+                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "min": 8,
+                    "max": 60,
+                    "step": 1,
+                    "unit": "t:sections.general.settings.padding.unit",
+                    "default": 12
+                },
+                {
+                    "type": "range",
+                    "id": "d_start",
+                    "min": 0,
+                    "max": 99,
+                    "step": 1,
+                    "label": "t:sections.main-product.settings.header__24.label__2",
+                    "info": "t:sections.main-product.settings.header__24.info__2",
+                    "default": 10
+                },
+                {
+                    "type": "range",
+                    "id": "d_end",
+                    "min": 0,
+                    "max": 99,
+                    "step": 1,
+                    "label": "t:sections.main-product.settings.header__24.label__3",
+                    "info": "t:sections.main-product.settings.header__24.info__2",
+                    "default": 15
+                },
+                {
+                    "type": "text",
+                    "id": "exclude_day",
+                    "label": "t:sections.main-product.settings.header__24.label__4",
+                    "default": "SAT,SUN",
+                    "info": "t:sections.main-product.settings.header__24.info__3"
+                },
+                {
+                    "type": "select",
+                    "id": "frm_day",
+                    "default": "d, DD MMM",
+                    "options": [
+                        {
+                            "value": "d, DDth MMM",
+                            "label": "Friday, 12th May"
+                        },
+                        {
+                            "value": "d, DD MMM",
+                            "label": "Friday, 12 May"
+                        },
+                        {
+                            "value": "d, DDth MMM YYYY",
+                            "label": "Friday, 12th May 2024"
+                        },
+                        {
+                            "value": "d, DDth MMM, YYYY",
+                            "label": "Friday, 12th May, 2024"
+                        },
+                        {
+                            "value": "d, MMM DDth, YYYY",
+                            "label": "Friday, May 12th, 2024"
+                        },
+                        {
+                            "value": "d, MMM DDth",
+                            "label": "Friday, May 12th"
+                        },
+                        {
+                            "value": "d, MMM DDth YYYY",
+                            "label": "Friday, May 12th 2024"
+                        },
+                        {
+                            "value": "d, MMM DD",
+                            "label": "Friday, May 12"
+                        },
+                        {
+                            "value": "d, MMM DD YYYY",
+                            "label": "Friday, May 12 2024"
+                        },
+                        {
+                            "value": "d, MM/DD/YYYY",
+                            "label": "Friday, 05/12/2024"
+                        },
+                        {
+                            "value": "d, DD/M/YYYY",
+                            "label": "Friday, 12/05/2024"
+                        },
+                        {
+                            "value": "d, YYYY/MM/DD",
+                            "label": "Friday, 2024/05/12"
+                        }
+                    ],
+                    "label": "t:sections.main-product.settings.header__24.label__5"
+                },
+                {
+                    "type": "text",
+                    "id": "time",
+                    "label": "t:sections.main-product.settings.header__24.label__6",
+                    "info": "t:sections.main-product.settings.header__24.info__4",
+                    "default": "16:00:00"
+                },
+                {
+                    "type": "text",
+                    "id": "hr",
+                    "label": "t:sections.main-product.settings.header__24.label__7",
+                    "default": "hours"
+                },
+                {
+                    "type": "text",
+                    "id": "min",
+                    "label": "t:sections.main-product.settings.header__24.label__8",
+                    "default": "minutes"
                 },
                 {
                     "type": "range",

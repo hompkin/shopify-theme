@@ -112,9 +112,17 @@
     border: 1px solid var(--border-color-button-style);
 }
 
+.btn_1_br_outside .button.featured-collection-button:after {
+    border: 1px solid var(--border-color-button-style);
+}
+
 .featured-collection-button:hover {
     color: var(--color-button-hover-style);
     background: var(--bg-color-button-hover-style);
+    border: 1px solid var(--border-color-button-hover-style);
+}
+
+.btn_1_br_outside .button.featured-collection-button:hover:after {
     border: 1px solid var(--border-color-button-hover-style);
 }
 

@@ -33,7 +33,7 @@
         {%- case block.type -%}
             {%- when 'logo' -%}
                 <div class="header-logo header-item w-100 maw-300 pt-10 pb-10 d-flex flex-align-center{% if block.settings.logo_position == 'main_menu'%} show-main-menu{% elsif block.settings.logo_position == 'sticky_menu'%} hide-main-menu{% else %}{% endif %}" style="--logo_font_size: {{block.settings.logo_font_size | append: 'px'}};--logo_font_weight: {{block.settings.logo_font_weight}};--logo_text_transform: {{block.settings.logo_text_transform}};--logo_text_color: {{block.settings.logo_color}};--logo_width: {{block.settings.logo_width | append: 'px'}};--logo_width_sticky: {{block.settings.logo_width_fixed | append: '%'}};">
-                    <div class="header__heading">
+                    <{% if request.page_type == 'index' %}h1{% else %}div{% endif %} class="header__heading">
                         <a href="{{ routes.root_url }}" class="header__heading-link focus-inset">
                             {%- if block.settings.logo != blank -%}
                                 {%- assign logo = block.settings.logo -%}
@@ -48,7 +48,7 @@
                                 <span class="header__heading-text {{ block.settings.logo_text_transform }} d-block">{{ shop.name }}</span>
                             {%- endif -%}
                         </a>
-                    </div>
+                    </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                 </div>
             {%- when 'main_menu' -%}
             <div class="main-menu header-item header-item--side p-static{% if block.settings.label_position == 'none' %} label-none{% elsif block.settings.label_position == 'main_menu' %} label-main-menu{% if block.settings.new_label_1 != blank or block.settings.sale_label_1 != blank or block.settings.hot_label_1 != blank%} main-menu-hasLabel{% endif %}{% else %}{% if block.settings.menu_top_spacing <= 16 %} label-small{% endif %}{% endif %}">
@@ -76,15 +76,21 @@
                             {% assign is_contained = false %}
                         {% endif %}
                         <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link link--text link-effect h-100{% if block.settings.show_customer_sticky%}{% if block.settings.show_customer %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_customer %} show-main-menu{% endif %}{% endif %} text-center"{% if is_contained %} data-open-auth-sidebar{% endif %}>
-                            <span class="text p-relative">
-                                {%- liquid
-                                  if customer
-                                    echo 'customer.account_fallback' | t
-                                  else
-                                    echo 'customer.log_in' | t
-                                  endif
-                                -%}
-                          </span>
+                            {%- if customer and customer.has_avatar? -%}
+                                <account-icon>
+                                    {{ customer | avatar }}
+                                </account-icon>
+                            {%- else -%}
+                                <span class="text p-relative">
+                                    {%- liquid
+                                      if customer
+                                        echo 'customer.account_fallback' | t
+                                      else
+                                        echo 'customer.log_in' | t
+                                      endif
+                                    -%}
+                                </span>
+                            {%- endif -%}
                         </a> 
                     {%- endif -%}                              
                 {%- endif -%}
@@ -125,7 +131,7 @@
                 {%- endif -%}
                 {%- if settings.show_wishlist -%}
                     {%- if block.settings.show_wishlist or block.settings.show_wishlist_sticky -%}
-                        <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset link-effect h-100{% if block.settings.show_wishlist_sticky %}{% if block.settings.show_wishlist %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_wishlist %} show-main-menu{% endif %}{% endif %} text-center">
+                        <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset link-effect h-100{% if block.settings.show_wishlist_sticky %}{% if block.settings.show_wishlist %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_wishlist %} show-main-menu{% endif %}{% endif %} text-center">
                             <span class="text p-relative">{{ 'general.common.wishlist' | t }}</span>
                             <div class="wishlist-count-bubble p-relative">(<span class="text" aria-hidden="true" data-wishlist-count></span>)</div>
                         </a>

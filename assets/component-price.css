@@ -37,6 +37,11 @@
     display: flex !important;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.card .card-information__wrapper.text-center .price--on-sale .price__sale.show_saved_price {
+    justify-content: center;
 }
 
 .price--center {
@@ -118,4 +123,52 @@
 
 .price.price--large.price--on-sale .price__sale{
     align-items: center;
+}
+
+.price__last.price_percent{
+    margin-right: 0;
+}
+
+.price__label_sale.price__label_percent {
+    line-height: var(--product-price-line-height);
+    clip-path: unset;
+    height: initial;
+}
+
+.price__label_sale.price__label_percent .label_sale:not(.label_sale_percent){
+    font-size: var(--product-price-font-size);
+    padding: 0;
+}
+
+.template-product .productView-moreItem .price__label_sale.price__label_percent{
+    display: none;
+}
+
+.card .price__saved {
+    display: block;
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 0;
+}
+
+.enable_custom_layout_card_1 .card .price__saved {
+    margin: 10px 0 0;
+}
+
+.card .price__saved .price-item {
+    color: #fff;
+    padding: 2px 8px 3px;
+    background-color: var(--product-sale-price-color);
+    border-radius: 5px;
+    line-height: 1;
+    font-weight: var(--font-weight-normal);
+    font-size: calc(var(--product-price-font-size) - 2px);
+}
+
+.card .price__saved .price-item .money {
+    color: #fff;
+    font-weight: var(--font-weight-normal);
+    font-size: calc(var(--product-price-font-size) - 2px);
+    line-height: normal;
+    vertical-align: unset;
 }

@@ -82,7 +82,7 @@
 			                            		{%- endif -%}
 			                            			<img srcset="{{ image_1 | img_url: 'master' }}"
 										                src="{{ image_1 | img_url: 'master' }}"
-										                loading="lazy"
+										                {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}
 										                alt="{{ image_1.alt | default: shop.name | escape }}"
                                                         width="{{ image_1.width }}"
                                                         height="{{ image_1.height }}"
@@ -109,7 +109,7 @@
 			                            		{%- endif -%}
 			                            			<img srcset="{{ image_2 | img_url: 'master' }}"
 										                src="{{ image_2 | img_url: 'master' }}"
-										                loading="lazy"
+										                {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}
 										                alt="{{ image_2.alt | default: shop.name | escape }}"
                                                         width="{{ image_2.width }}"
                                                         height="{{ image_2.height }}"
@@ -134,7 +134,7 @@
 			                            		{%- endif -%}
 			                            			<img srcset="{{ image_3 | img_url: 'master' }}"
 										                src="{{ image_3 | img_url: 'master' }}"
-										                loading="lazy"
+										                {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}
 										                alt="{{ image_3.alt | default: shop.name | escape }}"
                                                         width="{{ image_3.width }}"
                                                         height="{{ image_3.height }}"
@@ -496,14 +496,13 @@
                         "value": "1770",
                         "label": "t:sections.layout.container.option3"
                     }
-                ],
-                "info": "t:sections.general.settings.container.info"
+                ]
             },
             {
                 "type": "range",
                 "id": "side_padding_full_width",
-                "label": "t:sections.general.settings.container.padding_full",
-                "info": "t:sections.general.settings.container.padding_full_info",
+                "label": "t:sections.layout.container.padding_full_width",
+                "info": "t:sections.layout.container.info_full_width",
                 "min": 0,
                 "max": 100,
                 "step": 1,

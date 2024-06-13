@@ -5,7 +5,7 @@
         <div class="site-nav-mobile nav" data-navigation-mobile>
           <div class="menu-heading-mobile halo-sidebar-header">
             <span class="title">{{ 'general.common.menu' | t }}</span>
-            <button type="button" class="halo-sidebar-close" data-menu-close-sidebar aria-label="{{ 'general.common.close' | t }}">{% render 'icon-close' %}{{ 'general.common.close' | t }}</a>
+            <button type="button" class="halo-sidebar-close" data-menu-close-sidebar aria-label="{{ 'general.common.close' | t }}">{% render 'icon-close' %}{{ 'general.common.close' | t }}</button>
           </div>
           <ul class="list-menu-loading" role="list">
             {%- for i in (1..8)-%}
@@ -40,7 +40,7 @@
             </div>
           {%- endif -%}
           {%- if settings.show_wishlist -%}
-              <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset last-link"><span class="icon-wrapper">{% render 'icon-wishlist' %}</span><span class="title">{{ 'wishlist.general.title' | t }}</span></a>
+              <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset last-link"><span class="icon-wrapper">{% render 'icon-wishlist' %}</span><span class="title">{{ 'wishlist.general.title' | t }}</span></a>
           {%- endif -%}
           <div class="wrapper-links"></div>
         </div>

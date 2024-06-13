@@ -69,12 +69,11 @@
 .blog-posts-list .halo-block-content .main-blog-view .article-card__info {
     background: white;
     max-width: 80%; 
-    padding: 30px;  
-    padding-left: 0;
+    padding: 30px;
+    padding-left: var(--blog-info-margin-left);
     position: relative;
     z-index: 1;
     margin-top: -145px;
-
     transition: transform var(--duration-default) ease-in-out;
 }
 
@@ -171,10 +170,18 @@
     background-color: var(--button-background-color);
 }
 
+.btn_1_br_outside .blog-posts-list .article-card__footer .button:after {
+    border: 1px solid var(--button-border-color);
+}
+
 .blog-posts-list .article-card__footer .button:hover {
     color: var(--button-text-color-hover);
     border: 1px solid var(--button-border-color-hover);
     background-color: var(--button-background-color-hover);
+}
+
+.btn_1_br_outside .blog-posts-list .article-card__footer .button:hover:after {
+    border: 1px solid var(--button-border-color-hover);
 }
 
 /* Start: Animation */

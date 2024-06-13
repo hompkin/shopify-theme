@@ -30,7 +30,7 @@
                                 </div>
                             {%-  when 'group_2' -%}
                                 <div class="header__logo text-left clearfix" style="--logo-width: {% if block.settings.logo == blank %}auto; --logo-svg-width: {% endif %}{{ block.settings.logo_width }}px; --font-size: {{ block.settings.logo_font_size }}px; --font-weight: {{ block.settings.logo_font_weight }}; --color: {{ block.settings.logo_color }}">
-                                    <div class="header__heading">
+                                    <{% if request.page_type == 'index' %}h1{% else %}div{% endif %} class="header__heading">
                                         <a href="{{ routes.root_url }}" class="header__heading-link focus-inset">
                                             {%- if block.settings.logo != blank -%}
                                                 {%- liquid 
@@ -50,7 +50,7 @@
                                                 <span class="h2 {{ block.settings.logo_text_transform }}">{% if block.settings.logo_text != blank %}{{ block.settings.logo_text }}{% else %}{{ shop.name }}{% endif %}</span>
                                             {%- endif -%}
                                         </a>
-                                    </div>
+                                    </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                                 </div>
                                 <div class="header__icons text-right clearfix">
                                     {%- if block.settings.customer_text_03 != blank -%}
@@ -66,16 +66,22 @@
                                                 {% endif %}
                                                 <div class="header__icon customer-links" style="--color: {{ block.settings.customer_color }}">
                                                     <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link link--text"{% if is_contained %} data-open-auth-sidebar{% endif %}>
-                                                        <span class="text-user">
-                                                            {%- liquid
-                                                            if customer
-                                                            echo 'customer.account_fallback' | t
-                                                            else
-                                                            echo 'customer.log_in' | t
-                                                            endif
-                                                            -%}
-                                                        </span>
-                                                        {% render 'icon-account' %}
+                                                        {%- if customer and customer.has_avatar? -%}
+                                                            <account-icon>
+                                                                {{ customer | avatar }}
+                                                            </account-icon>
+                                                        {%- else -%}
+                                                            <span class="text-user">
+                                                                {%- liquid
+                                                                    if customer
+                                                                        echo 'customer.account_fallback' | t
+                                                                    else
+                                                                        echo 'customer.log_in' | t
+                                                                    endif
+                                                                -%}
+                                                            </span>
+                                                            {% render 'icon-account' %}
+                                                        {%- endif -%}
                                                     </a>
                                                 </div>
                                             {%- endif -%}

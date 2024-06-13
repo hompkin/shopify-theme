@@ -1,4 +1,4 @@
-<sticky-add-to-cart class="productView-stickyCart style-{{ sticky_atc_layout }}" data-sticky-add-to-cart>
+<sticky-add-to-cart class="productView-stickyCart style-{{ sticky_atc_layout }} subtotal-{{subtotal_style}}{% if sticky_add_to_cart_always_mb and sticky_atc_layout == '1' %} always-on-mobile{% endif %}" data-sticky-add-to-cart>
     <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
         <a href="javascript:void(0)" class="sticky-product-close close" data-close-sticky-add-to-cart>
             {% render 'icon-close' %}
@@ -89,51 +89,87 @@
                     <div class="sticky-actions{% unless settings.show_wishlist %} sticky-actions-2{% endunless %}">
                         {%- assign product_form_sticky_id = 'product-form-sticky-' | append: product.id -%}
                         {% form 'product', product, id: product_form_sticky_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
-                            <input type="hidden" name="id" value="{{ current_variant.id }}">
-                            {%- if current_variant.available -%}
-                                {%- if show_qty -%}
-                                    {% render 'product-quantity',
-                                        current_variant: current_variant,
-                                        qty_style: qty_style,
-                                        check_hidden: false,
-                                        quantity_stt: 3
-                                    %}
+                            {%- if sticky_add_to_cart_always_mb and sticky_atc_layout == '1' -%}
+                                {%- if check_show_qty == 'show_qty_2' -%}
+                                    {%- if show_subtotal_text and subtotal_style == '1' -%}
+                                        <div class="productView-subtotal">
+                                            <span class="text">{{ 'sections.cart.subtotal' | t | append: ': ' }}</span>
+                                            <span class="money-subtotal">{{ subtotal }}</span>
+                                        </div>
+                                    {%- endif -%}
                                 {%- endif -%}
-                                {%- if current_variant.inventory_management -%}
-                                    {%- assign first_inventory = current_variant.inventory_quantity -%}
-                                    <button
-                                        type="submit"
-                                        name="add"
-                                        data-btn-addToCart
-                                        class="product-form__submit button button--primary{% if first_inventory == 0 %} button-text-change{% endif %}"
-                                        id="product-sticky-add-to-cart">
-                                        {%- if first_inventory > 0 -%}
+                                <div class="productView-groupBottom">
+                                    {%- if settings.show_global_checkbox -%}
+                                        <div class="productView-groupItem">
+                                            {%- if settings.show_global_checkbox -%}
+                                                <div class="productView-checkbox global-checkbox">
+                                                    <input class="global-checkbox--input" type="checkbox" name="conditions" id="product_conditions_sticky_{{ product.id }}" data-target="#product-checkout-sticky-{{ product.id }}">
+                                                    <label class="global-checkbox--label form-label--checkbox" for="product_conditions_sticky_{{ product.id }}">{{ settings.global_checkbox_text }}</label>
+                                                    {%- if settings.global_checkbox_link_text != blank -%}
+                                                        <button type="button" data-term-condition>{{ settings.global_checkbox_link_text | escape }}</button>
+                                                    {%- endif -%}
+                                                </div>
+                                            {%- endif -%}
+                                        </div>
+                                    {%- endif -%}
+                                    <div class="productView-groupItem">
+                                        <div class="productView-payment" {% if settings.show_global_checkbox %} disabled="disabled"{% endif %} id="product-checkout-sticky-{{ product.id }}" style="--bin-color: {{ bin_color }};--bin-bg-color: {% if bin_bg_color_gradient != blank %}{{ bin_bg_color_gradient }}{% else %}{{ bin_bg_color }}{% endif %};--bin-border-color: {{ bin_border_color }};--bin-color-hover: {{ bin_color_hover }};--bin-bg-color-hover: {% if bin_bg_color_hover_gradient != blank %}{{ bin_bg_color_hover_gradient }}{% else %}{{ bin_bg_color_hover }}{% endif %};--bin-border-color-hover: {{ bin_border_color_hover }}"> 
+                                            {{ form | payment_button }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {%- endif -%}
+                            {%- if sticky_atc_layout == '1' -%}
+                            <div class="sticky-actions-row">
+                            {%- endif -%}
+                                <input type="hidden" name="id" value="{{ current_variant.id }}">
+                                {%- if current_variant.available -%}
+                                    {%- if show_qty -%}
+                                        {% render 'product-quantity',
+                                            current_variant: current_variant,
+                                            qty_style: qty_style,
+                                            check_hidden: false,
+                                            quantity_stt: 3
+                                        %}
+                                    {%- endif -%}
+                                    {%- if current_variant.inventory_management -%}
+                                        {%- assign first_inventory = current_variant.inventory_quantity -%}
+                                        <button
+                                            type="submit"
+                                            name="add"
+                                            data-btn-addToCart
+                                            class="product-form__submit button button--primary{% if first_inventory == 0 %} button-text-change{% endif %}"
+                                            id="product-sticky-add-to-cart">
+                                            {%- if first_inventory > 0 -%}
+                                                {{ 'products.product.add_to_cart' | t}}
+                                            {%- else -%}
+                                                {{ 'products.product.pre_order' | t }}
+                                            {%- endif -%}
+                                        </button>
+                                    {% else %}
+                                        <button
+                                            type="submit"
+                                            name="add"
+                                            data-btn-addToCart
+                                            class="product-form__submit button button--primary"
+                                            id="product-sticky-add-to-cart">
                                             {{ 'products.product.add_to_cart' | t}}
-                                        {%- else -%}
-                                            {{ 'products.product.pre_order' | t }}
-                                        {%- endif -%}
-                                    </button>
-                                {% else %}
+                                        </button>
+                                    {% endif %}
+                                {%- else -%}
                                     <button
                                         type="submit"
                                         name="add"
                                         data-btn-addToCart
                                         class="product-form__submit button button--primary"
-                                        id="product-sticky-add-to-cart">
-                                        {{ 'products.product.add_to_cart' | t}}
+                                        id="product-sticky-add-to-cart"
+                                        disabled
+                                    >
+                                        {{ 'products.product.sold_out' | t }}
                                     </button>
-                                {% endif %}
-                            {%- else -%}
-                                <button
-                                    type="submit"
-                                    name="add"
-                                    data-btn-addToCart
-                                    class="product-form__submit button button--primary"
-                                    id="product-sticky-add-to-cart"
-                                    disabled
-                                >
-                                    {{ 'products.product.sold_out' | t }}
-                                </button>
+                                {%- endif -%}
+                            {%- if sticky_atc_layout == '1' -%}
+                            </div>
                             {%- endif -%}
                         {% endform %}
                         {% if sticky_atc_layout == '1' %}
@@ -149,7 +185,13 @@
                                     <button
                                         class="product-form__submit button button--primary{% if first_inventory == 0 %} button-text-change{% endif %}"
                                         id="show-sticky-product">
-                                            {{ 'products.product.add_to_cart' | t }}
+                                            {%- if show_subtotal_text and subtotal_style == '2' -%}
+                                                {%- assign subtotal = subtotal | strip_html -%}
+
+                                                {{ 'products.product.sub_total' | t : value : subtotal }}
+                                            {%- else -%}
+                                                {{ 'products.product.add_to_cart' | t}}
+                                            {%- endif -%}
                                     </button>
                             </div>
                         {% endif %}
@@ -161,6 +203,7 @@
                                     {{ 'wishlist.general.add' | t }}
                                 </span>
                                 {% render 'icon-heart' %}
+                                {% if settings.show_wishlist_full_icon %}{% render 'icon-heart-add-2' %}{% endif %}
                             </a>
                         </div>
                     {%- endif -%}

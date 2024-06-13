@@ -25,7 +25,7 @@
                                                 {%- if image.width >= 2000 -%}{{ image | image_url: width: 2000 }} 2000w,{%- endif -%}
                                                 {%- if image.width >= 2800 -%}{{ image | image_url: width: 2800 }} 2800w{%- endif -%}"
                                                 sizes="{% if section.settings.image != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image != blank %}50vw{% else %}100vw{% endif %}" {% unless settings.enable_lazyload %}src="{{ image | image_url: width: 750 }}"{% endunless %} alt="{{ image.alt | escape }}" width="{{ image.width }}" height="{{ image.width | divided_by: image.aspect_ratio | round}}"
-                                                {%- if settings.enable_lazyload -%}class="lazyload" loading="lazy"{%- endif -%}
+                                                {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
                                                 {% unless image.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image.presentation.focal_point }}"{% endunless %}
                                             >
                                             {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
@@ -65,7 +65,7 @@
                                             {%- if image.width >= 2000 -%}{{ image | image_url: width: 2000 }} 2000w,{%- endif -%}
                                             {%- if image.width >= 2800 -%}{{ image | image_url: width: 2800 }} 2800w{%- endif -%}"
                                             sizes="{% if section.settings.image != blank %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image != blank %}50vw{% else %}100vw{% endif %}" {% unless settings.enable_lazyload %}src="{{ image | image_url: width: 750 }}"{% endunless %} alt="{{ image.alt | escape }}" width="{{ image.width }}" height="{{ image.width | divided_by: image.aspect_ratio | round}}"
-                                            {%- if settings.enable_lazyload -%}class="lazyload" loading="lazy"{%- endif -%}
+                                            {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
                                             {% unless image.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image.presentation.focal_point }}"{% endunless %}
                                         >
                                         {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
@@ -111,7 +111,7 @@
                                             {%- if image_1.width >= 2000 -%}{{ image_1 | image_url: width: 2000 }} 2000w,{%- endif -%}
                                             {%- if image_1.width >= 2800 -%}{{ image_1 | image_url: width: 2800 }} 2800w{%- endif -%}"
                                             sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_1 | image_url: width: 750 }}"{% endunless %} alt="{{ image_1.alt | escape }}" width="{{ image_1.width }}" height="{{ image_1.width | divided_by: image_1.aspect_ratio | round}}" 
-                                            {%- if settings.enable_lazyload -%}class="lazyload" loading="lazy"{%- endif -%}
+                                            {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
                                             {% unless image_1.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_1.presentation.focal_point }}"{% endunless %}
                                         >
                                     {%- if block.settings.btn_lnk_1 != blank -%}</a>{%- endif -%}
@@ -146,7 +146,7 @@
                                             {%- if image_2.width >= 2000 -%}{{ image_2 | image_url: width: 2000 }} 2000w,{%- endif -%}
                                             {%- if image_2.width >= 2800 -%}{{ image_2 | image_url: width: 2800 }} 2800w{%- endif -%}"
                                             sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_2 | image_url: width: 320 }}"{% endunless %} alt="{{ image_2.alt | escape }}" width="{{ image_2.width }}" height="{{ image_2.width | divided_by: image_2.aspect_ratio | round}}" class="lazyload" 
-                                            {%- if settings.enable_lazyload -%}class="lazyload" loading="lazy"{%- endif -%}
+                                            {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
                                             {% unless image_2.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_2.presentation.focal_point }}"{% endunless %}
                                         >
                                         {%- if block.settings.btn_lnk_2 != blank -%}</a>{%- endif -%}
@@ -228,7 +228,7 @@
                                             {%- if image_1.width >= 2000 -%}{{ image_1 | image_url: width: 2000 }} 2000w,{%- endif -%}
                                             {%- if image_1.width >= 2800 -%}{{ image_1 | image_url: width: 2800 }} 2800w{%- endif -%}"
                                             sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_1 | image_url: width: 750 }}"{% endunless %} alt="{{ image_1.alt | escape }}" width="{{ image_1.width }}" height="{{ image_1.width | divided_by: image_1.aspect_ratio | round}}" 
-                                            {%- if settings.enable_lazyload -%}class="lazyload" loading="lazy"{%- endif -%}
+                                            {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
                                             {% unless image_1.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_1.presentation.focal_point }}"{% endunless %}
                                         >
                                         {%- if block.settings.lnk_1 != blank -%}</a>{%- endif -%}
@@ -270,7 +270,7 @@
                                             {%- if image_2.width >= 2000 -%}{{ image_2 | image_url: width: 2000 }} 2000w,{%- endif -%}
                                             {%- if image_2.width >= 2800 -%}{{ image_2 | image_url: width: 2800 }} 2800w{%- endif -%}"
                                             sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_2 | image_url: width: 320 }}"{% endunless %} alt="{{ image_2.alt | escape }}" width="{{ image_2.width }}" height="{{ image_2.width | divided_by: image_2.aspect_ratio | round}}" class="lazyload" 
-                                            {%- if settings.enable_lazyload -%}class="lazyload" loading="lazy"{%- endif -%}
+                                            {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
                                             {% unless image_2.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_2.presentation.focal_point }}"{% endunless %}
                                         >
                                         {%- if block.settings.lnk_2 != blank -%}</a>{%- endif -%}
@@ -308,7 +308,7 @@
                                         {%- if image_3.width >= 2000 -%}{{ image_3 | image_url: width: 2000 }} 2000w,{%- endif -%}
                                         {%- if image_3.width >= 2800 -%}{{ image_3 | image_url: width: 2800 }} 2800w{%- endif -%}"
                                         sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_3 | image_url: width: 320 }}"{% endunless %} alt="{{ image_3.alt | escape }}" width="{{ image_3.width }}" height="{{ image_3.width | divided_by: image_3.aspect_ratio | round}}" class="lazyload" 
-                                        {%- if settings.enable_lazyload -%}class="lazyload" loading="lazy"{%- endif -%}
+                                        {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
                                         {% unless image_3.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_3.presentation.focal_point }}"{% endunless %}
                                     >
                                     {%- if block.settings.lnk_3 != blank -%}</a>{%- endif -%}
@@ -918,7 +918,7 @@
                     },
                     {
                         "type" : "paragraph",
-                        "content" : "t:sections.slide-show.blocks.image.slider_look.product_1"
+                        "content" : "t:sections.collection_lookbook.blocks.lookbook.settings.content_1"
                     },
                     {
                         "type" : "product",
@@ -947,7 +947,7 @@
                     },
                     {
                         "type" : "paragraph",
-                        "content" : "t:sections.slide-show.blocks.image.slider_look.product_2"
+                        "content" : "t:sections.collection_lookbook.blocks.lookbook.settings.content_2"
                     },
                     {
                         "type" : "product",
@@ -996,7 +996,7 @@
                     },
                     {
                         "type" : "paragraph",
-                        "content" : "t:sections.slide-show.blocks.image.slider_look.product_1"
+                        "content" : "t:sections.collection_lookbook.blocks.lookbook.settings.content_1"
                     },
                     {
                         "type" : "product",
@@ -1025,7 +1025,7 @@
                     },
                     {
                         "type" : "paragraph",
-                        "content" : "t:sections.slide-show.blocks.image.slider_look.product_2"
+                        "content" : "t:sections.collection_lookbook.blocks.lookbook.settings.content_2"
                     },
                     {
                         "type" : "product",
@@ -1074,7 +1074,7 @@
                     },
                     {
                         "type" : "paragraph",
-                        "content" : "t:sections.slide-show.blocks.image.slider_look.product_1"
+                        "content" : "t:sections.collection_lookbook.blocks.lookbook.settings.content_1"
                     },
                     {
                         "type" : "product",
@@ -1103,7 +1103,7 @@
                     },
                     {
                         "type" : "paragraph",
-                        "content" : "t:sections.slide-show.blocks.image.slider_look.product_2"
+                        "content" : "t:sections.collection_lookbook.blocks.lookbook.settings.content_2"
                     },
                     {
                         "type" : "product",

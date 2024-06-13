@@ -27,8 +27,12 @@
                     <input id="customer_password" class="form-input form-input-placeholder text-left" type="password" value="" required placeholder="{{ 'customer.login_page.password' | t }}" name="customer[password]">
                 </div>
                 <div class="form-actions auth-actions text-center">
-                    <input type="submit" class="button button-{{ settings.customer_login_btn_1 }} button-login text-center" value="{{ 'customer.log_in' | t }}">
-                     <a class="auth-link link link-underline" href="{{ routes.account_login_url }}#recover"><span class="text">{{ 'customer.forgot_password' | t }}</span></a>
+                    {% if settings.enable_button_1_border_outside %}
+                        <button class="button button-{{ settings.customer_login_btn_1 }} button-login text-center"><span>{{ 'customer.log_in' | t }}</span></button>
+                    {% else %}
+                        <input type="submit" class="button button-{{ settings.customer_login_btn_1 }} button-login text-center" value="{{ 'customer.log_in' | t }}">
+                    {% endif %}
+                    <a class="auth-link link link-underline" href="{{ routes.account_login_url }}#recover"><span class="text">{{ 'customer.forgot_password' | t }}</span></a>
                     <a href="{{ routes.account_register_url }}" class="button button-{{ settings.customer_login_btn_2 }} button-register">{{ 'customer.register.title' | t }}</a>
                 </div>
             </form>

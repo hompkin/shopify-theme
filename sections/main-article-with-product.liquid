@@ -248,7 +248,7 @@
                                   {% if article.image.width >= 2200 %}{{ article.image | img_url: '2200x' }} 2200w,{% endif %}"
                                   sizes="(min-width: 1200px) 1100px, (min-width: 750px) calc(100vw - 10rem), 100vw"
                                   src="{{ article.image | img_url: '1100x' }}"
-                                  loading="lazy"
+                                  {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}
                                   width="{{ article.image.width }}"
                                   height="{{ article.image.height }}"
                                   alt="{{ article.image.alt | escape }}">
@@ -932,11 +932,11 @@
             [
                 {
                   "value": "left",
-                  "label": "t:sections.general.settings.position.options__1"
+                  "label": "t:sections.general.settings.page-title.options__1"
                 },
                 {
                   "value": "right",
-                  "label": "t:sections.general.settings.position.options__2"
+                  "label": "t:sections.general.settings.page-title.options__3"
                 }
             ]
         },

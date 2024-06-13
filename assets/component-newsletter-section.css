@@ -178,6 +178,10 @@
     background-origin: border-box;
 }
 
+.btn_1_br_outside .newsletter-section .newsletter-form__button span:after {
+    border: 1px solid var(--button-border-color);
+}
+
 .newsletter-section .newsletter-form__button svg {
     fill: var(--button-text-color);
     width: 26px;
@@ -191,7 +195,10 @@
     border: 1px solid var(--button-border-color-hover);
     background: var(--button-background-hover);
     background-origin: border-box;
+}
 
+.btn_1_br_outside .newsletter-section .newsletter-form__button:hover span:after {
+    border: 1px solid var(--button-border-color-hover);
 }
 
 .newsletter-section .newsletter-form__button:hover svg {

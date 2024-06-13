@@ -74,7 +74,7 @@
 <div class="instagram-slide section-block-{{section.id}} {% if section.settings.padding_full_width == 0 and section.settings.slide_ins == 'centermode' %}padding-full-width-0{% endif %} {% if as_grid_gap == 30 %}instagram-slide-pad-15{% endif %}{% if section.settings.enable_underline_button %} enable_underline_button{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="new-instagram-{{section.id}}" {% if section.settings.block_layout == 'slider' %}data-loader-script="{{ 'halo.slide-instagram.js' | asset_url }}"{% endif %} style="--grid-gap: {{ grid_gap }}">
     <div class="{% if section.settings.block_layout == 'infinite' %}container-full{% else %}{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1170' %}container-1170{% elsif section.settings.container == '1770' %}container-1770{% else %}container{% endif %}{% endif %}">
         {%- if section.settings.instagram_title != blank or section.settings.instagram_des != blank or section.settings.view_all != blank -%}
-            <div class="halo-block-header text-{{ section.settings.title_align }}{% if section.settings.view_all != blank %} viewAll--{{ section.settings.view_all_align }}{% endif %}">
+            <div class="halo-block-header text-{{ section.settings.title_align }}{% if section.settings.view_all != blank %} viewAll--{{ section.settings.view_all_align }}{% endif %}{% if section.settings.style_block_header == 'style2' %} style_2_block_header{% endif %}"{% if section.settings.style_block_header == 'style2' %} style="--margin-bottom-title: {{ section.settings.mg_bottom_title | append: 'px' }}"{% endif %}>
                 {%- if section.settings.instagram_title != blank -%}
                     <h3 class="title{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: 0;{% endif %}--margin-bottom-title: {{ section.settings.mg_bottom_title | append: 'px' }}"><span class="text">{{ section.settings.instagram_title }}</span></h3>
                 {%- endif -%}
@@ -92,7 +92,7 @@
             <div class="caption-instagram">{{ section.settings.embed_code }}</div>
         {%- else -%}
             {%- if section.settings.block_layout == 'scroll' -%}<product-scroller>{%- endif -%}
-                <div id="instafeed" class="halo-row column-{{ section.settings.images_per_row }} instagram-layout--{{ section.settings.block_layout }} {% if section.settings.block_layout == 'slider' %}halo-slider{% endif %} sm-column-2 md-column-3 {{ enable_hide_portion }}{% if section.settings.block_layout == 'infinite' %} flex-nowrap o-hidden{% endif %}" data-instagram-feed data-slide-rows="1" data-rows="{{ section.settings.images_per_row }}" data-arrow="{{ section.settings.display_arrow }}" data-mode="{% if section.settings.slide_ins == 'centermode' %}true{% endif %}" data-column="{{ section.settings.images_per_row }}"{%- if section.settings.block_layout == 'scroll' -%} data-drag-container{%- endif -%}{% if section.settings.block_layout == 'infinite' %} style="--timeScroll: {{timeScroll | append: 's'}};--width_item: {{width_item}};"{% endif %}>
+                <div id="instafeed" class="halo-row column-{{ section.settings.images_per_row }} instagram-layout--{{ section.settings.block_layout }} {% if section.settings.block_layout == 'slider' %}halo-slider{% endif %} sm-column-2 md-column-3 {{ enable_hide_portion }}{% if section.settings.block_layout == 'infinite' %} flex-nowrap o-hidden{% endif %}{% if section.settings.icon_style == 'style_3' %} icon_style_3{% endif %}" data-instagram-feed data-slide-rows="1" data-rows="{{ section.settings.images_per_row }}" data-arrow="{{ section.settings.display_arrow }}" data-dots="{{ section.settings.display_dots }}" data-mode="{% if section.settings.slide_ins == 'centermode' %}true{% endif %}" data-column="{{ section.settings.images_per_row }}"{%- if section.settings.block_layout == 'scroll' -%} data-drag-container{%- endif -%}{% if section.settings.block_layout == 'infinite' %} style="--timeScroll: {{timeScroll | append: 's'}};--width_item: {{width_item}};"{% endif %}>
                     {%- if section.settings.block_layout == 'infinite' -%}
                         {%- for i in (1..limitItems) -%}
                             <div class="instagram-item-scroll d-flex flex-align-center fs-0{% if section.settings.scroll_from == 'ltr'%} marquee-ltr{% else %} marquee-rtl{% endif %}">
@@ -117,8 +117,11 @@
                                             <div class="scroll-trigger animate--slide-in" data-cascade style="--animation-order: {{ forloop.index }};">
                                             {%- endif -%}
                                                 <a class="adaptive_height image-zoom" {% if section.settings.type_instagram_by_gallery == 'link' %}{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}{% else %}class="fancybox" rel="gallery1" href="{{ block.settings.image | img_url: 'master' }}" data-fancybox="images"{% endif %} style="padding-top: {% unless preview_img.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 120 | append: '%' }}{% else %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 100 | append: '%' }}{% endunless %}"> 
-                                                    <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}" loading="lazy"{% if settings.enable_lazyload %} class="lazyload"{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
+                                                    <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}" {% unless settings.enable_layout_rtl %}loading="lazy"{% endunless %}{% if settings.enable_lazyload %} class="lazyload"{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
                                                     {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
+                                                    {%- if section.settings.icon_style == 'style_3' -%}
+                                                        <span class="show-icon-more-style-3"></span>
+                                                    {%- endif -%}
                                                     {%- if icon_for_image != blank -%}
                                                         <span class="icon-show-more icon-show-more--{{ section.settings.icon_style }}">{{ icon_for_image }}</span>
                                                     {%- endif -%}
@@ -162,10 +165,18 @@
                                     <div class="scroll-trigger animate--slide-in" data-cascade style="--animation-order: {{ forloop.index }};">
                                     {% endif %}
                                         <a class="adaptive_height image-zoom" {% if section.settings.type_instagram_by_gallery == 'link' %}{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}{% else %}class="fancybox" rel="gallery1" href="{{ block.settings.image | img_url: 'master' }}" data-fancybox="images"{% endif %} style="padding-top: {% unless preview_img.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 120 | append: '%' }}{% else %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 100 | append: '%' }}{% endunless %}"> 
-                                            <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}" loading="lazy"{% if settings.enable_lazyload %} class="lazyload"{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
+                                            <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}" {% unless settings.enable_layout_rtl %}loading="lazy"{% endunless %}{% if settings.enable_lazyload %} class="lazyload"{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
                                             {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
+                                            {%- if section.settings.icon_style == 'style_3' -%}
+                                                <span class="show-icon-more-style-3"></span>
+                                            {%- endif -%}
                                             {%- if icon_for_image != blank -%}
-                                                <span class="icon-show-more icon-show-more--{{ section.settings.icon_style }}">{{ icon_for_image }}</span>
+                                                <span class="icon-show-more icon-show-more--{{ section.settings.icon_style }}">
+                                                    {%- if section.settings.icon_style == 'style_3' -%}
+                                                        <strong>Shop Now</strong>
+                                                    {%- endif -%}
+                                                    {{ icon_for_image }}
+                                                </span>
                                             {%- endif -%}
                                         </a>
                                     {% if settings.banner_animation == 'effect_fade_up' %}
@@ -288,6 +299,7 @@
     .section-block-{{section.id}} .view_all:not(.has-border) {border-bottom: none}
     .section-block-{{section.id}} .view_all.has-border {border-bottom: 1px solid}
     .section-block-{{section.id}} .button {background: {% if bg_color_gradient_button != blank %}{{ bg_color_gradient_button }}{% else %}{{ bg_color_button }}{% endif %};color: {{ color_button }};border: 1px solid {{ border_color_button }};max-width: {{ maxwidth_button | append: 'px' }}}
+    .btn_1_br_outside .section-block-{{section.id}} .button:after {border: 1px solid {{ border_color_button }}}
     .section-block-{{section.id}} .show-icon {width: {{ maxwidth_button | append: 'px' }};height: {{ maxwidth_button | append: 'px' }};max-width: {{ maxwidth_button | append: 'px' }};background: {% if bg_color_gradient_button != blank %}{{ bg_color_gradient_button }}{% else %}{{ bg_color_button }}{% endif %};border: 1px solid {{ border_color_button }}}
     .section-block-{{section.id}} .show-icon:before,.section-block-{{section.id}} .show-icon:after {background-color: {{ color_button }}}
     {%- if section.settings.enable_underline_button -%}
@@ -301,7 +313,27 @@
           opacity: 1;
           transform: translateY(0);
         }
-    {%- endif -%}  
+    {%- endif -%}
+    {%- if section.settings.style_block_header == 'style2' -%}
+        .section-block-{{section.id}} .container-full {overflow: visible;}
+    {%- endif -%}
+    {%- if section.settings.instagram_bg == '#000000' -%}
+        .instagram-slide.padding-full-width-0 .slick-arrow svg {color: #ffffff;fill: #ffffff;}
+        .instagram-slide.padding-full-width-0 .slick-dots li button{
+            border: 1px solid #fff;
+            background: transparent;
+        }
+        .instagram-slide.padding-full-width-0 .slick-dots li.slick-active button{
+            background: #fff;
+            border-color: #fff;
+        }
+    {%- endif -%}
+    {%- if section.settings.enable_hover_arrow -%}
+        .instagram-slide .instagram-layout--slider .slick-arrow {
+            visibility: hidden;
+            opacity: 0;
+        }
+    {%- endif -%}
 
     @media (max-width: 1024px) {
         {%- if instagram_bg_image != blank -%}
@@ -335,6 +367,19 @@
         {%- if section.settings.disable_padding_content -%}
             .section-block-{{section.id}} .container-full .halo-block-header{padding-left: 10px;padding-right: 10px}
         {%- endif -%}
+
+        .section-block-{{section.id}} .halo-block-header.style_2_block_header .subtext-instagram {font-size: calc({{ fontsize_des | append: 'px' }} - 3px)}
+    }
+
+    @media (min-width: 1800px) {
+        {%- if section.settings.enable_hover_arrow -%}
+            .instagram-slide.padding-full-width-0 .slick-arrow.slick-next {
+                right: 150px !important;
+            }
+            .instagram-slide.padding-full-width-0 .slick-arrow.slick-prev {
+                left: 150px !important;
+            }
+        {%- endif -%}
     }
 
     @media (min-width: 1200px) {.section-block-{{section.id}} {padding-top: {{ mg_top_desktop | append: 'px' }};padding-bottom: {{ mg_bottom_desktop | append: 'px' }}}}
@@ -348,11 +393,16 @@
                 .layout_rtl .section-block-{{section.id}} .container-full+.container-full{padding-right: {{ padding_full_width | append: 'px' }};padding-left: 0}
                 {%- endif -%}
                 .section-block-{{section.id}} .halo-block-header.text-left.viewAll--right .view_all{top: auto;bottom: 5px}
-                .section-block-{{section.id}} .halo-block-header .subtext-instagram {max-width: {{ section.settings.content_width }}px}
+                {% if section.settings.style_block_header == 'style2' %}
+                    .section-block-{{section.id}} .halo-block-header .subtext-instagram p:first-child {max-width: {{ section.settings.content_width }}px}
+                {% else %}
+                    .section-block-{{section.id}} .halo-block-header .subtext-instagram {max-width: {{ section.settings.content_width }}px}
+                {% endif %}
                 {%- if section.settings.slide_ins == 'centermode' -%}
                     .section-block-{{section.id}} .slick-list {padding: 0 18% 0 0 !important}
                     .layout_rtl .section-block-{{section.id}} .slick-list {padding: 0 0 0 18% !important}
                     .section-block-{{section.id}}.padding-full-width-0 .slick-list {padding: 0 3% 0 0 !important}
+                    .btn_1_br_outside .section-block-{{section.id}}.padding-full-width-0 .slick-list {padding: 5px 9.9% 0 0 !important}
                     .instagram-slide-pad-15 .slick-arrow.slick-prev {left: 60px !important}
                     .instagram-slide-pad-15 .slick-arrow.slick-next {right: 7% !important}
                 {%- endif -%}
@@ -362,8 +412,20 @@
                 {%- endif -%}
             {%- endif -%}
         {%- endif -%}
-
+        {%- if section.settings.enable_hover_arrow -%}
+            .instagram-slide .instagram-layout--slider:hover .slick-arrow {
+                visibility: visible;
+                opacity: 1;
+            }
+        {%- endif -%}
         .section-block-{{section.id}} .button:hover {background: {% if bg_color_gradient_button_hover != blank %}{{ bg_color_gradient_button_hover }}{% else %}{{ bg_color_button_hover }}{% endif %};color: {{ color_button_hover }};border: 1px solid {{ border_color_button_hover }}}
+        .btn_1_br_outside .section-block-{{section.id}} .button:hover:after {border: 1px solid {{ border_color_button_hover }}}
+        {%- if section.settings.style_block_header == 'style2' -%}
+            .section-block-{{section.id}} .container-full:first-child {
+                padding-left: 65px;
+                padding-right: 65px;
+            }
+        {%- endif -%}
     }
 
     @media (min-width: 768px) and (max-width: 1199px) {.section-block-{{section.id}} {padding-top: {{ mg_top_tablet | append: 'px' }};padding-bottom: {{ mg_bottom_tablet | append: 'px' }}}}
@@ -551,7 +613,7 @@
             "id": "mg_top_desktop",
             "label": "t:sections.layout.mg_desktop.label",
             "min": 0,
-            "max": 100,
+            "max": 200,
             "step": 5,
             "unit": "t:sections.layout.mg_desktop.unit",
             "default": 50
@@ -561,7 +623,7 @@
             "id": "mg_top_tablet",
             "label": "t:sections.layout.mg_tablet.label",
             "min": 0,
-            "max": 100,
+            "max": 200,
             "step": 5,
             "unit": "t:sections.layout.mg_desktop.unit",
             "default": 50
@@ -585,7 +647,7 @@
             "id": "mg_bottom_desktop",
             "label": "t:sections.layout.mg_desktop.label",
             "min": 0,
-            "max": 100,
+            "max": 200,
             "step": 5,
             "unit": "t:sections.layout.mg_desktop.unit",
             "default": 50
@@ -595,7 +657,7 @@
             "id": "mg_bottom_tablet",
             "label": "t:sections.layout.mg_tablet.label",
             "min": 0,
-            "max": 100,
+            "max": 200,
             "step": 5,
             "unit": "t:sections.layout.mg_desktop.unit",
             "default": 50
@@ -637,6 +699,21 @@
             "type" : "image_picker",
             "id" : "instagram_bg_image",
             "label" : "t:settings_schema.colors.settings.colors_name.background_image"
+        },
+        {
+            "type": "select",
+            "id": "style_block_header",
+            "label": "t:sections.product_block.settings.style_block_header.option",
+            "options": [
+            {
+                "value": "style1",
+                "label": "t:settings_schema.typography.settings.typography.style_1"
+            },
+            {
+                "value": "style2",
+                "label": "t:settings_schema.typography.settings.typography.style_2"
+            }],
+            "default": "style1"
         },
         {
             "type": "text",
@@ -1069,6 +1146,18 @@
             "default": true
         },
         {
+            "type": "checkbox",
+            "id": "enable_hover_arrow",
+            "label": "t:sections.instagram.settings.display_arrow_hover",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "display_dots",
+            "label": "t:sections.main-product.settings.complementary.show_dots",
+            "default": false
+        },
+        {
             "type": "textarea",
             "id": "icon_for_image",
             "label": "t:settings_schema.typography.settings.typography.icon"
@@ -1086,6 +1175,10 @@
                 {
                     "value": "style_2",
                     "label": "t:settings_schema.typography.settings.typography.style_2"
+                },
+                {
+                    "value": "style_3",
+                    "label": "t:settings_schema.typography.settings.typography.style_3"
                 }
             ]
         },
@@ -1094,7 +1187,7 @@
             "content": "t:sections.instagram.settings.effects_image"
         },
         {
-            "type": "color",
+            "type": "color_background",
             "id": "effects_bg",
             "label": "t:settings_schema.colors.settings.colors_name.background_color"
         },
@@ -1103,7 +1196,7 @@
             "id": "effects_opacity",
             "label": "t:sections.main-list-collections.blocks.collection.settings.general.label__10",
             "min": 0,
-            "max": 0.9,
+            "max": 1,
             "step": 0.1,
             "default": 0
         }

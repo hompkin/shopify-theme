@@ -25,6 +25,13 @@ Shopify.SearchByAllTypes = (function() {
 
                 if(resultElements && resultElements.innerHTML.trim().length) {
                     this.section.innerHTML = resultElements.innerHTML;
+                    const collectionProduct = document.querySelector('.collection');
+                    const products = collectionProduct.querySelectorAll('.product');
+                    if (products.length > 0) {
+                        collectionProduct.classList.add('productShowMore');
+                    } else {
+                        collectionProduct.classList.remove('productShowMore');
+                    }
                 } else {
                     this.section.remove();
                 }

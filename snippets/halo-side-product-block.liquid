@@ -24,23 +24,38 @@
             assign column = block.settings.column
         endif
     -%}
-    <div class="sidebarBlock sidebar-product position-{{ position }}{% if show_collapse %} sidebarBlock-collapse{% endif %}">
-        {%- if show_collapse -%}
-            <div class="sidebarBlock-headingWrapper">
+    <div class="sidebarBlock sidebar-product position-{{ position }} sidebarBlock-{{show_collapse}}">
+        {%- if show_collapse == 'collapse' or show_collapse == 'slide'  -%}
+            <div class="sidebarBlock-headingWrapper{% if show_collapse == 'slide' %}-slide{% endif %}">
         {%- endif -%}
             {%- if heading != blank -%}
                 <h2 class="sidebarBlock-heading{% if show_collapse %}{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}{% endif %}">{{ heading | escape }}</h2>
             {%- else -%}
-                {%- if show_collapse -%}
+                {%- if show_collapse == 'collapse' or show_collapse == 'slide'  -%}
                     <h2 class="sidebarBlock-heading{% if sidebar_collapse == 'expand' %} is-clicked{% endif %}">BLock Heading</h2>
                 {%- endif -%}
             {%- endif -%}
-        {%- if show_collapse -%}
+            {%- if show_collapse == 'slide' -%}
+                {% render 'icon-arrow-left' %}
+            {%- endif -%}
+        {%- if show_collapse == 'collapse' or show_collapse == 'slide' -%}
             </div>
+        {%- endif -%}
+        {%- if show_collapse == 'collapse' -%}
             <div class="sidebarBlock-contentWrapper" {% if sidebar_collapse == 'expand' %} style="display: block;"{% endif %}>
         {%- endif -%}
-            <div class="sidebarBlock-content">
-                <div class="sidebarBlock-product halo-product-block" data-limit="{{ limit }}">
+            <div class="sidebarBlock-content{% if show_collapse == 'slide' %} sidebarBlock-slide__content{% endif %}">
+                {%- if show_collapse == 'slide' -%}
+                    <button type="button" class="sidebarBlock-slide__content-close">
+                        {% render 'icon-arrow-left' %}
+                        {%- if heading != blank -%}
+                            {{ heading | escape }}
+                        {%- else -%}
+                            BLock Heading
+                        {%- endif -%}
+                    </button>
+                {%- endif -%}
+                <div class="sidebarBlock-product halo-product-block" data-limit="{{ limit }}{% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}">
                     <div class="{% if layout == 'slider' %}products-carousel{% else %}products-grid{% endif %} column-{{ column }}" {% if layout == 'slider' %}{% if position == 'content' %}data-product-slider-article{% else %}data-product-slider-sidebar{% endif %} data-layout="slider"{% endif %}{% if layout == 'slider' %} data-item-to-show="{{ column }}" data-item-dots="{{ dots }}" data-item-arrows="{{ arrows }}"{% endif %}>
                         {%- for product in collections[collection].products limit: limit -%}
                             <div class="product {% if layout == 'slider' %}slider__slide{% else %}grid__item{% endif %}">
@@ -57,7 +72,7 @@
                     </div>
                 </div>
             </div>
-        {%- if show_collapse -%}
+        {%- if show_collapse == 'collapse' -%}
             </div>
         {%- endif -%}
     </div>

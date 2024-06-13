@@ -15,7 +15,9 @@
                             {%- assign seach_trending_item = settings[cap_seach_trending_item] -%}
                             {%- if seach_trending_item != blank -%}
                                 {%- assign handle = seach_trending_item | split: '|' | first | strip | handleize -%}
-                                <li class="item"><a href="{{ routes.search_url }}?q={{ handle }}*&amp;type=product" class="link">{% render 'icon-search' %}<span class="text">{{ seach_trending_item | escape }}</span></a></li>
+                                <li class="item">
+                                    <a href="{{ routes.search_url }}?type={{ handle }}*&amp;options%5Bprefix%5D=last&amp;q={{ handle }}*" class="link">{% render 'icon-search' %}<span class="text">{{ seach_trending_item | escape }}</span></a>
+                                </li>
                             {%- endif -%}
                         {%- endfor -%}
                     </ul>
@@ -69,6 +71,13 @@
                                             %}
                                         {%- elsif settings.product_card_layout == '07' -%}
                                             {% render 'product-card-07',
+                                                product_card_product: product,
+                                                portrait_aspect_ratio: '125',
+                                                serial: forloop.index,
+                                                sectionId: sectionId
+                                            %}
+                                        {%- elsif settings.product_card_layout == '08' -%}
+                                            {% render 'product-card-08',
                                                 product_card_product: product,
                                                 portrait_aspect_ratio: '125',
                                                 serial: forloop.index,

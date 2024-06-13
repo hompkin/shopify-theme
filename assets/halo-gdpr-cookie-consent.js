@@ -40,12 +40,9 @@ class CookieConsent extends HTMLElement {
         );
 	}
 
-	setCookie(cname, cvalue, exdays) {
-  		const d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-        const expires = 'expires=' + d.toUTCString();
-        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
-	}
+	setCookie(cname, cvalue) {
+        document.cookie = cname + '=' + cvalue + ';path=/';
+    }
 
 	getCookie(cname) {
         const name = cname + '=';
@@ -68,10 +65,10 @@ class CookieConsent extends HTMLElement {
         document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
 
-    setClosePopup(event, expiresDate = 1) {
+    setClosePopup(event) {
         event.preventDefault();
         
-        this.setCookie('cookie-consent', 'closed', expiresDate);
+        this.setCookie('cookie-consent', 'closed');
         this.cookie.remove();
 
         if(this.cookie.classList.contains('full-width')){

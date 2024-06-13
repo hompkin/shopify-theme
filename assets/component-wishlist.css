@@ -365,6 +365,27 @@
 .product-card-layout-05 .wishlist-container .card-wishlist {
     display: block !important;
 }
+
+.product-card-layout-08 .wishlist-container .card-wishlist .wishlist-icon {
+    box-shadow: none;
+    width: 40px;
+    height: 40px;
+}
+
+.product-card-layout-08 .wishlist-container .card-wishlist .wishlist-icon:before,
+.product-card-layout-08 .wishlist-container .card-wishlist .wishlist-icon:after {
+    opacity: 0;
+    height: 15px;
+}
+
+.product-card-layout-08 .wishlist-container .card .card-wishlist:hover .icon {
+    opacity: 0;
+}
+
+.product-card-layout-08 .wishlist-container .card-wishlist:hover .wishlist-icon:before,
+.product-card-layout-08 .wishlist-container .card-wishlist:hover .wishlist-icon:after {
+    opacity: 1;
+}
 /* END: Remove Button */
 
 @media (max-width: 1200px) {

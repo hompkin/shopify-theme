@@ -327,4 +327,18 @@
     .halo-share-3 .productView-title {
         padding-right: 30px;
     }
+
+    .share-button__fallback {
+        --share-desk-top: 50%;
+        --share-desk-left: 50%;
+        transform: translate(-50%, -30%);
+        width: 500px;
+        opacity: 0;
+        transition: var(--duration-default) ease;
+    }
+
+    .share-button__fallback.is-open {
+        transform: translate(-50%, -50%);
+        animation: none;
+    }
 }

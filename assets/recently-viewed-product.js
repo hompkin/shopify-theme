@@ -250,6 +250,12 @@ Shopify.Products = (function () {
                     window.sharedFunctionsAnimation.onLeaveButton();
                 }
             }
+
+            if($('body').hasClass('product-card-layout-08')) {
+                window.sharedFunctions?.productCountdownCard();
+            }
+
+             window.sharedFunctions?.swapHoverVideoProductCard();
         }
     };
 

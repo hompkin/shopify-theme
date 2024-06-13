@@ -113,7 +113,8 @@
         {%- if section.settings.view_all != blank -%}
             margin-bottom: 0
         {%- else -%}
-            margin-bottom: {{ mg_bottom_title_service_block | append: 'px' }}
+            margin-bottom: {{ mg_bottom_title_service_block | append: 'px' }};
+            line-height: 1;
         {%- endif -%}
     }
 
@@ -146,6 +147,11 @@
         {%- if swipe == 'slider' -%}
             .section-block-{{section.id}} .halo-item + .halo-item:before {content: none}
         {%- endif -%}
+
+        {%- if section.settings.container == 'fullwidth' -%}
+            .section-block-{{section.id}} .container-full {padding-left: 15px;padding-right: 15px}
+            body.layout_rtl .section-block-{{section.id}} .container-full {padding-left: 15px;padding-right: 15px}
+        {%- endif -%}
     }
     @media (max-width: 767px) {
         .section-block-{{section.id}} {
@@ -162,6 +168,14 @@
             .section-block-{{section.id}} .halo-block-header {margin-bottom: {{ mg_bottom_title_service_block_mb | append: 'px' }}}
         {%- else -%}
             .section-block-{{section.id}} .halo-block-header .title {margin-bottom: {{ mg_bottom_title_service_block_mb | append: 'px' }}}
+        {%- endif -%}
+
+        {%- if section.settings.container == 'fullwidth' -%}
+            .section-block-{{section.id}} .container-full {padding-left: 10px;padding-right: 10px}
+            body.layout_rtl .section-block-{{section.id}} .container-full {padding-left: 10px;padding-right: 10px}
+            .style-arrows-6 .slider-arrows .slider-button {
+                top: 47%;
+            }
         {%- endif -%}
     }
     @media (min-width: 1200px) {
@@ -206,7 +220,7 @@
         }
     }
 </style>
-<div class="custom-service-block section-block-{{section.id}}{% if enable_block_bottom %} enable_block_bottom{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="--grid-gap: {{ grid_gap }}"{% if section.settings.id_section != blank %} id="{{ section.settings.id_section }}"{% endif %}>
+<div class="custom-service-block section-block-{{section.id}}{% if enable_block_bottom %} enable_block_bottom{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}{% if section.settings.service_block_style == 'style_3' %} service_block_style_3{% endif %}" style="--grid-gap: {{ grid_gap }}"{% if section.settings.id_section != blank %} id="{{ section.settings.id_section }}"{% endif %}>
     <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
         {%- if section.settings.service_block_style == 'style_2' -%}
             {%- if section.settings.service_block_title != blank -%}
@@ -247,7 +261,7 @@
             {%- endunless -%}
             {%- if swipe == 'slider' -%}
             <banner-slider-component>
-                <div class="policies-block-wrapper{% if section.settings.service_block_style == 'style_2' %} service_block_style_2{% endif %}">
+                <div class="policies-block-wrapper{% if section.settings.service_block_style == 'style_2' %} service_block_style_2{% endif %} items-align-{{section.settings.item_align}}">
             {%- endif -%}
                     <div class="halo-row column-{{ section.blocks.size }} items--{{ section.settings.item_width }}{% if swipe == 'slider' %} slider slider--tablet{% endif %}{% unless section.settings.enable_item_distance %} not-distance{% endunless %}{% if swipe == 'scroll' %} scroll-snap-mobile disable-srollbar{% endif %}">      
                         {%- for block in section.blocks -%}
@@ -267,7 +281,7 @@
                                     {%- endif -%}
                                 {%- endif -%}
                                 {%- if block.settings.description != blank or block.settings.button -%}
-                                <div class="policies-content{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+                                <div class="policies-content{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" >
                                     {%- if block.settings.text != blank -%}
                                         <span class="policies-text type--{{ block.settings.type_tab_font }}" style="--fontsize-title-style: {{ block.settings.fontsize_title_block | append: 'px' }};--mg-bottom-title-style: {{ block.settings.mg_bottom_title | append: 'px' }};--mg-bottom-title-mb-style: {{ block.settings.mg_bottom_title_mb | append: 'px' }};--fontsize-title-style-mb: {{ block.settings.fontsize_title_block_mb | append: 'px' }};--fontweight-title-style: {{ block.settings.title_block_font_weight}};--color-block-style: {{ block.settings.color_block }}">{{block.settings.text}}</span>
                                     {%- endif -%}
@@ -456,6 +470,10 @@
                 {
                     "value": "style_2",
                     "label": "t:settings_schema.typography.settings.typography.style_2"
+                },
+                {
+                    "value": "style_3",
+                    "label": "t:settings_schema.typography.settings.typography.style_3"
                 }]
             },
             {
@@ -888,6 +906,26 @@
                 "step": 5,
                 "unit": "t:sections.layout.mg_desktop.unit",
                 "default": 30
+            },
+            {
+                "type": "select",
+                "id": "item_align",
+                "label": "t:sections.image-banner.blocks.image.settings.content.label__9",
+                "default": "center",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "t:settings_schema.typography.settings.typography.left"
+                    },
+                    {
+                        "value": "center",
+                        "label": "t:settings_schema.typography.settings.typography.center"
+                    },
+                    {
+                        "value": "right",
+                        "label": "t:settings_schema.typography.settings.typography.right"
+                    }
+                ]
             },
             {
                 "type": "header",

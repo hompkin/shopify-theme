@@ -310,7 +310,6 @@
         width: var(--logo_width);
         height: var(--logo_width);
     }
-
     .menu-lv-1__action > .label {
         top: var(--menu_top_spacing_sticky);
     }
@@ -757,6 +756,10 @@
         width: 180px;
     }
 
+    .style-arrows-6 .megamenu_style_1 .menu-dropdown__product.col-left{
+        width: 190px;
+    }
+
     .megamenu_style_2 .site-nav-banner{
         margin: 0;
     }
@@ -1199,5 +1202,11 @@
 
     .megamenu_style_5 .menu-dropdown__block--content .slick-dots {
         bottom: 15px;
+    }
+
+    .site-nav-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }

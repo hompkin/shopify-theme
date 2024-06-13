@@ -405,6 +405,10 @@ breadcrumb-component {
         padding-right: 15px;
     }
 
+    .collection-header.container-full .breadcrumb-container.style--line_clamp_1 .breadcrumb {
+        padding-left: 30px;
+    }
+
     .breadcrumb-with-sidebar .breadcrumb-container.style--line_clamp_1 .breadcrumb {
         padding-left: 15px;
     }
