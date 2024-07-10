@@ -103,8 +103,12 @@ class ProductTabs extends HTMLElement {
         
         var $this = event.currentTarget,
             $thisContent = $this.parentNode.nextElementSibling;
-        console.log($thisContent);
-        console.log($isVerticalPopup);
+        // 读取 data-vertical 属性并设置 isVerticalPopup
+          var isVerticalPopup = $this.dataset.vertical === 'sidebar';
+
+          // 打印 isVerticalPopup 和 window.innerWidth
+          console.log('isVerticalPopup:', isVerticalPopup);
+          console.log('window.innerWidth:', window.innerWidth);
         if ($this.classList.contains('popup-mobile') && window.innerWidth <= 551) {
             if ($($thisContent).hasClass('is-show')) {
                 $($thisContent).removeClass('is-show');
