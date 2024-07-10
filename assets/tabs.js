@@ -104,6 +104,8 @@ class ProductTabs extends HTMLElement {
         var $this = event.currentTarget,
             $thisContent = $this.parentNode.nextElementSibling;
         console.log($thisContent);
+        console.log($isVerticalPopup);
+        console.log(${window.innerWidth});
         if ($this.classList.contains('popup-mobile') && window.innerWidth <= 551) {
             if ($($thisContent).hasClass('is-show')) {
                 $($thisContent).removeClass('is-show');
