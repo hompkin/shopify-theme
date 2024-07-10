@@ -45,10 +45,14 @@ Shopify.Products = (function () {
         name: 'shopify_recently_viewed',
         write: function (recentlyViewed) {
             jQuery.cookie(this.name, recentlyViewed.join(' '), this.configuration);
+            localStorage.setItem(this.name, recentlyViewed.join(' '), this.configuration);
         },
         read: function () {
             var recentlyViewed = [];
             var cookieValue = jQuery.cookie(this.name);
+            if (Shopify.designMode && !cookieValue) {
+                cookieValue = localStorage.getItem('shopify_recently_viewed');
+            }
             if (cookieValue !== null) {
                 recentlyViewed = cookieValue.split(' ');
             }
@@ -240,7 +244,18 @@ Shopify.Products = (function () {
                         });
                     }
                 }
+
+                if ($('body').hasClass('cursor-fixed__show')){
+                    window.sharedFunctionsAnimation.onEnterButton();
+                    window.sharedFunctionsAnimation.onLeaveButton();
+                }
             }
+
+            if($('body').hasClass('product-card-layout-08')) {
+                window.sharedFunctions?.productCountdownCard();
+            }
+
+             window.sharedFunctions?.swapHoverVideoProductCard();
         }
     };
 

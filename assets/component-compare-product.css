@@ -65,6 +65,10 @@
     overflow: inherit;
 }
 
+.product-card-layout-08 .compareTable-product .card-product {
+    overflow: visible;
+}
+
 .compareTable-item{
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);

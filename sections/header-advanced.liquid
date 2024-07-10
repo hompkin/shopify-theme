@@ -92,7 +92,7 @@
                         {%-  when 'group_2' -%}
                             {%- if block.settings.show_logo -%}
                                 <div class="header__logo text-left clearfix{% if block.settings.logo != blank %} has-logo{% endif %}" style="--logo-font-size: {{ block.settings.logo_font_size }}px; --logo-font-weight: {{ block.settings.logo_font_weight }}; --logo-color: {{ block.settings.logo_color }}">
-                                    <div class="header__heading">
+                                    <{% if request.page_type == 'index' %}h1{% else %}div{% endif %} class="header__heading">
                                         <a href="{{ routes.root_url }}" class="header__heading-link focus-inset">
                                             {%- if block.settings.logo != blank -%}
                                                 {%- liquid 
@@ -112,7 +112,7 @@
                                                 <span class="h2 {{ block.settings.logo_text_transform }}">{% if block.settings.logo_text != blank %}{{ block.settings.logo_text }}{% else %}{{ shop.name }}{% endif %}</span>
                                             {%- endif -%}
                                         </a>
-                                    </div>
+                                    </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                                 </div>
                             {%- endif -%}
                             {%- if block.settings.show_search -%}
@@ -174,7 +174,7 @@
                                     {%- endif -%}
                                     {%- if settings.show_wishlist and block.settings.show_wishlist -%}
                                         <div class="header__iconItem header__group header-advanced-wishlist" style="--color: {{ block.settings.wishlist_color }}">
-                                            <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset">{% render 'icon-heart-2' %} <span class="wishlist-text">{{ 'wishlist.general.wishlist' | t }}</span></a>
+                                            <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset">{% render 'icon-heart-2' %} <span class="wishlist-text">{{ 'wishlist.general.wishlist' | t }}</span></a>
                                         </div>
                                     {%- endif -%}
                                     {%- if block.settings.show_account -%}
@@ -191,27 +191,51 @@
                                                         <div class="header-advanced-textRight">
                                                             <span class="hello">{{ 'customer.hello' | t }}</span>
                                                             <span class="header-advanced-text">
-                                                                {%- liquid
-                                                                    if customer
-                                                                        echo 'customer.account_fallback' | t
-                                                                    else
-                                                                        echo 'customer.sign_in' | t
-                                                                    endif
-                                                                -%}
+                                                                {%- if customer and customer.has_avatar? -%}
+                                                                    <account-icon>
+                                                                        {{ customer | avatar }}
+                                                                    </account-icon>
+                                                                {%- else -%}
+                                                                    {%- liquid
+                                                                        if customer
+                                                                            echo 'customer.account_fallback' | t
+                                                                        else
+                                                                            echo 'customer.sign_in' | t
+                                                                        endif
+                                                                    -%}
+                                                                {%- endif -%}
                                                             </span>
                                                         </div>
                                                     </a>
                                                 {%- else -%}
                                                     <div class="header__icon header__icon--account link link--text">
-                                                        <a href="{{ routes.account_login_url }}"{% if is_contained %} data-open-auth-sidebar{% endif %}>{% render 'icon-account-2' %}</a>
+                                                        <a href="{{ routes.account_login_url }}"{% if is_contained %} data-open-auth-sidebar{% endif %}>
+                                                            {%- if customer and customer.has_avatar? -%}
+                                                                <account-icon>
+                                                                    {{ customer | avatar }}
+                                                                </account-icon>
+                                                            {%- else -%}
+                                                                {% render 'icon-account-2' %}
+                                                            {%- endif -%}
+                                                        </a>
                                                         <div class="header-advanced-textRight">
                                                             {% if customer %}
                                                                 <a class="header__link--account" id="customer_logout_link" href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
                                                                 <span> / </span>
-                                                                <a class="header__link--account" href="{{ routes.account_url }}">{{ 'customer.account.my_account' | t }}</a>
+                                                                <a class="header__link--account" href="{{ routes.account_url }}">
+                                                                    {%- if customer and customer.has_avatar? -%}
+                                                                        <account-icon>
+                                                                            {{ customer | avatar }}
+                                                                        </account-icon>
+                                                                    {%- else -%}
+                                                                        {{ 'customer.account.my_account' | t }}
+                                                                    {%- endif -%}
+                                                                </a>
                                                             {% else %}  
                                                                 <div class="header-advanced__link--account">
-                                                                    <a class="header__link--account" id="customer_login_link" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"{% if is_contained %} data-open-auth-sidebar{% endif %}>{{ 'customer.login_page.title' | t }}</a>
+                                                                    <a class="header__link--account" id="customer_login_link" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"{% if is_contained %} data-open-auth-sidebar{% endif %}>
+                                                                        {{ 'customer.login_page.title' | t }}
+                                                                    </a>
                                                                     <span class="or-text">{{ 'customer.or' | t }}</span>
                                                                     <a class="header__link--account" id="customer_register_link" href="{{ routes.account_register_url }}">{{ 'customer.login_page.register' | t }}</a>
                                                                 </div>

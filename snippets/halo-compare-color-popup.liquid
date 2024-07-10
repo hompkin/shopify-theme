@@ -97,4 +97,6 @@
     </div>
 </compare-color>
 
-<script src="{{ 'halo-compare-color.js' | asset_url }}" defer="defer"></script>
+{%- if load_script -%}
+    <script src="{{ 'halo-compare-color.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

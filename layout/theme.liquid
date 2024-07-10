@@ -8,6 +8,8 @@
         else
             assign enable_iso_rtl = false
         endif
+    else
+        assign enable_iso_rtl = false 
     endif
 -%}
 <html class="no-js" lang="{{ request.locale.iso_code }}"{% if settings.enable_layout_rtl and enable_iso_rtl %} dir="rtl"{% endif %}>
@@ -16,7 +18,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="theme-color" content="">
-        <link rel="canonical" href="{{ canonical_url }}">
         <link rel="canonical" href="{{ canonical_url }}" canonical-shop-url="{{ shop.url }}/">
         {%- if settings.favicon != blank -%}
             <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
@@ -52,6 +53,8 @@
                 assign style_arrows = 'style-arrows-2'
             elsif settings.style_arrows == '05'
                 assign style_arrows = 'style-arrows-5'
+            elsif settings.style_arrows == '06'
+                assign style_arrows = 'style-arrows-6'
             endif
         
             if settings.product_card_layout == '02'
@@ -66,11 +69,15 @@
                 assign product_card_layout = 'product-card-layout-06'
             elsif settings.product_card_layout == '07'
                 assign product_card_layout = 'product-card-layout-07'
+            elsif settings.product_card_layout == '08'
+                assign product_card_layout = 'product-card-layout-08'
             else
                 assign product_card_layout = 'product-card-layout-01'
             endif
         
-            if settings.quick_shop_type == '2'
+            if settings.quick_shop_type == '1'
+                assign quick_shop_type = 'quick_shop_option_1'
+            elsif  settings.quick_shop_type == '2'
                 assign quick_shop_type = 'quick_shop_option_2'
             elsif  settings.quick_shop_type == '3'
                 assign quick_shop_type = 'quick_shop_option_3'
@@ -82,10 +89,10 @@
         -%}
     </head>
 
-    <body class="template-{{ request.page_type }} {{layout_body}} {{style_dots}} {{style_text_size_varriant}} {{style_arrows}} {{product_card_layout}} {% if settings.enable_button_disable_arrows %} enable_button_disable_arrows{% endif %}{% if settings.display_text_color_title %} enable_text_color_title{% endif %}{% if settings.style_text_color_varriant == '02' %} style_2_text_color_varriant{% endif %}{% if settings.hide_compare_homepage %} hide_compare_homepage{% endif %} {{ quick_shop_type }}{% if settings.show_image_loading %} show_image_loading{% endif %}{% if settings.show_effect_close %} show_effect_close{% endif %}{% if settings.enable_layout_rtl and enable_iso_rtl %} layout_rtl{% endif %}{% if request.design_mode %} shopify-design-mode{% endif %}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+    <body class="template-{{ request.page_type }} {{layout_body}} {{style_dots}} {{style_text_size_varriant}} {{style_arrows}} {{product_card_layout}} {% if settings.enable_button_disable_arrows %} enable_button_disable_arrows{% endif %}{% if settings.display_text_color_title %} enable_text_color_title{% if settings.style_text_color_varriant == '02' %} style_2_text_color_varriant{% endif %}{% endif %}{% if settings.hide_compare_homepage %} hide_compare_homepage{% endif %} {{ quick_shop_type }}{% if settings.show_image_loading %} show_image_loading{% endif %}{% if settings.show_effect_close %} show_effect_close{% endif %}{% if settings.enable_layout_rtl and enable_iso_rtl %} layout_rtl{% endif %}{% if request.design_mode %} shopify-design-mode{% endif %}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if settings.enable_following_cursor and settings.following_cursor_style == 'default' %} cursor-fixed__show{% endif %}{% unless settings.enable_currencies %} disable_currencies{% endunless %}{% if settings.enable_button_1_border_outside %} btn_1_br_outside{% endif %}{% if settings.enable_button_2_border_outside %} btn_2_br_outside{% endif %}{% if settings.enable_button_3_border_outside %} btn_3_br_outside{% endif %}{% if settings.show_price_percent %} show_price_percent{% endif %}{% if settings.show_wishlist_full_icon %} icon_wishlist_full{% endif %}" allow-transparency>
         <div class="body-content-wrapper">
             <a class="skip-to-content-link button visually-hidden" href="#MainContent">{{ "accessibility.skip_to_text" | t }}</a>
-
+            {% render 'preload-screen' %}
             {% sections 'header-group' %}
             {% render 'wrapper-header' %}
             
@@ -128,6 +135,11 @@
             </div>
             {%- endif -%}
         </div>
+        
         {% render 'halo-sidebar' %}
+
+        {%- if settings.enable_following_cursor -%}
+          {% render 'cursor-fixed', style_cursor: settings.following_cursor_style %}
+        {%- endif -%}
     </body>
 </html>

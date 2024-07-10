@@ -68,7 +68,7 @@
         </div>
         <div class="bundle-product-information">
             <div class="bundle-product-content">
-                <div class="bundle-product-checkbox {% if settings.show_review %} halo-productReview{% endif %}">
+                <div class="bundle-product-checkbox">
                     <a class="card-title card-title-ellipsis" href="{{ product.url | within: collection }}">
                         {{ product.title | split: '|' | first }}
                         {% comment %} <span data-bundle-product-title> - {{ current_variant.title }}</span> {% endcomment %}
@@ -82,27 +82,6 @@
                             </div>
                         {%- endif -%}
                     {% endif %}
-                    {% assign show_review = true %}
-                    {%- if show_review -%}
-                        {%- liquid
-                            assign average = product.metafields.reviews.rating.value
-                            assign rating = average | replace: '', '' | plus : 0 | round
-                        -%}
-                        {% if rating > 1 %}
-                            <span class="spr-badge" id="spr_badge_{{ product.id }}" data-rating="{{ average }}">
-                                <span class="spr-starrating spr-badge-starrating">
-                                    {%- for review in (1..5) -%}
-                                        {%- if rating >= forloop.index -%}
-                                            <i class="spr-icon spr-icon-star" role="none"></i>
-                                        {%- else -%}
-                                            <i class="spr-icon spr-icon-star-empty" role="none"></i>
-                                        {%- endif -%}
-                                    {%- endfor -%}
-                                </span>
-                                <div class='animated-loading rating-loading'></div>
-                            </span>
-                        {% endif %}
-                    {%- endif -%}
                 </div>
                 <div class="bundle-product-price">
                     <div class="price-box card-price">

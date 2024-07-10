@@ -28,13 +28,14 @@
 	{{ 'component-card-06.css' | asset_url | stylesheet_tag }}
 {% elsif settings.product_card_layout == '07' %}
 	{{ 'component-card-07.css' | asset_url | stylesheet_tag }}
+{% elsif settings.product_card_layout == '08' %}
+	{{ 'component-card-08.css' | asset_url | stylesheet_tag }}
 {% endif %}
 
 {{ 'component-predictive-search.css' | asset_url | stylesheet_tag }}
 
 {%- unless request.page_type == 'product' -%}
 	<link rel="stylesheet" href="{{ 'component-product-form.css' | asset_url }}" media="print" onload="this.media='all'">
-	<link rel="stylesheet" href="{{ 'component-review.css' | asset_url }}" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="{{ 'component-badge.css' | asset_url }}" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -48,7 +49,6 @@
 
 {%- unless request.page_type == 'product' -%}
 	<noscript>{{ 'component-product-form.css' | asset_url | stylesheet_tag }}</noscript>
-	<noscript>{{ 'component-review.css' | asset_url | stylesheet_tag }}</noscript>
 	<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
 	<noscript>{{ 'component-badge.css' | asset_url | stylesheet_tag }}</noscript>
 	<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
@@ -88,8 +88,9 @@
 	.ft-0{font-size: 0}.ft-16{font-size: 16px}.ls-0{letter-spacing: 0}.ls-02{letter-spacing: 0.2em}.ls-05{letter-spacing: 0.5em}.ft-i{font-style: italic}
 	.button-effect svg{transition: 0.3s}.button-effect:hover svg{transform: rotate(180deg)}
 	.icon-effect:hover svg {transform: scale(1.15)}.icon-effect:hover .icon-search-1 {transform: rotate(-90deg) scale(1.15)}
-	.link-effect > span:after {content: "";position: absolute;bottom: -2px;left: 0;height: 1px;width: 100%;transform: scaleX(0);transition: transform var(--duration-default) ease-out;transform-origin: right}
-	.link-effect > span:hover:after{transform: scaleX(1);transform-origin: left}
+	.link-effect > span:after, .link-effect > .text__icon:after{content: "";position: absolute;bottom: -2px;left: 0;height: 1px;width: 100%;transform: scaleX(0);transition: transform var(--duration-default) ease-out;transform-origin: right}
+	.link-effect > .text__icon:after{ bottom: 0 }
+	.link-effect > span:hover:after, .link-effect > .text__icon:hover:after{transform: scaleX(1);transform-origin: left}
 	@media (min-width: 1025px){
 		.pl-lg-80{padding-left:80px}.pr-lg-80{padding-right:80px}
 	}

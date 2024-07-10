@@ -52,7 +52,7 @@
                     <div class="halo-item slidable-spotlight-slide">
                         {%- if image != blank -%}
                             <a class="adaptive_height {% unless settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %}image-zoom{% endunless %}"{% if link != blank %} href="{{ link }}"{% else %} role="link" aria-hidden="true"{% endif %} style="padding-top: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%"> 
-                                <img srcset="{{ image | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ image | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}" loading="lazy"{% if settings.enable_lazyload %} class="lazyload"{% endif %}>
+                                <img srcset="{{ image | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ image | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}" {% unless settings.enable_layout_rtl %}loading="lazy"{% endunless %}{% if settings.enable_lazyload %} class="lazyload"{% endif %}>
                                 {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                             </a>
                         {%- else -%}

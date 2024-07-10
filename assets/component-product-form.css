@@ -6,7 +6,8 @@
     margin: 0;
 }
 
-.product-form__input .form__label{
+.product-form__input .form__label,
+.form__label-combined{
     display: block;
     margin: 0;
     font-size: var(--font-body-size);
@@ -16,6 +17,16 @@
     text-transform: capitalize;
     text-align: left;
     color: var(--color-text);
+}
+
+.form__label-combined {
+    margin-bottom: 7px;
+}
+
+.form__label-combined span {
+    color: var(--text-cart);
+    font-weight: var(--font-weight-normal);
+    margin-left: 7px;
 }
 
 .product-form__input .form__label [data-header-option]{

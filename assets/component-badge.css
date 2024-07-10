@@ -30,6 +30,12 @@
     background-color: var(--new-badge-bg);
 }
 
+.style-arrows-6 .halo-productBadges .badge.new-badge {
+    border: 1px solid var(--new-badge-color);
+    padding-top: 1px;
+    padding-bottom: 2px;
+}
+
 .halo-productBadges .badge.sold-out-badge{
     color: var(--sold-out-badge-color);
     background-color: var(--sold-out-badge-bg);
@@ -57,4 +63,18 @@
 .halo-productBadges--right{
     right: var(--badge-postion-left-right);
     align-items: flex-end;
+}
+
+@media (max-width: 767px) {
+    .product-item.enable_custom_layout_card_1 .halo-productBadges {
+        top: 10px;
+    }
+
+    .product-item.enable_custom_layout_card_1 .halo-productBadges--left{
+        left: 10px;
+    }
+
+    .product-item.enable_custom_layout_card_1 .halo-productBadges--right{
+        right: 10px;
+    }
 }

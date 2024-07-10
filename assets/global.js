@@ -294,80 +294,42 @@ Shopify.onCartUpdate = function(cart) {
     alert('There are now ' + cart.item_count + ' items in the cart.');
 }
 
-Shopify.changeItem = function(variant_id, quantity, callback) {
-    var params = {
-        type: 'POST',
-        url: '/cart/change.js',
-        data:  'quantity='+quantity+'&id='+variant_id,
-        dataType: 'json',
-        success: function(cart) {
-            if ((typeof callback) === 'function') {
-                callback(cart);
-            } else {
-                Shopify.onCartUpdate(cart);
-            }
-        },
-        error: function(XMLHttpRequest, textStatus) {
-            // console.log(XMLHttpRequest.responseJSON.message);
-            if (XMLHttpRequest.responseJSON.message == 'nu există un id valid sau parametru de linie' || XMLHttpRequest.responseJSON.message == 'Required parameter missing or invalid: line or id param is required' || XMLHttpRequest.responseJSON.message == 'Parameter Missing or Invalid' || XMLHttpRequest.responseJSON.message == 'no valid id or line parameter') {
-                $.ajax({
-                    type: 'POST',
-                    url: '/cart/change.js',
-                    data:  'quantity='+quantity+'&id='+variant_id.split(':')[0],
-                    dataType: 'json',
-                    success: function(cart) {
-                        if ((typeof callback) === 'function') {
-                            callback(cart);
-                        } else {
-                            Shopify.onCartUpdate(cart);
-                        }
-                    }
-                })
-            } else {
-                Shopify.onError(XMLHttpRequest, textStatus);
-            }
-        }
-    };
-
-    $.ajax(params);
+Shopify.changeItem = function(variant_id, quantity, index, callback) {
+    getCartUpdate(index, quantity, callback)
 }
 
-Shopify.removeItem = function(variant_id, callback) {
-    var params = {
-        type: 'POST',
-        url: '/cart/change.js',
-        data:  'quantity=0&id='+variant_id,
-        dataType: 'json',
-        success: function(cart) {
-            if ((typeof callback) === 'function') {
-                callback(cart);
-            } else {
-                Shopify.onCartUpdate(cart);
-            }
-        },
-        error: function(XMLHttpRequest, textStatus) {
-            // console.log(XMLHttpRequest.responseJSON.message);
-            if (XMLHttpRequest.responseJSON.message == 'nu există un id valid sau parametru de linie' || XMLHttpRequest.responseJSON.message == 'Required parameter missing or invalid: line or id param is required' || XMLHttpRequest.responseJSON.message == 'Parameter Missing or Invalid' || XMLHttpRequest.responseJSON.message == 'no valid id or line parameter') {
-                $.ajax({
-                    type: 'POST',
-                    url: '/cart/change.js',
-                    data:  'quantity=0&id='+variant_id.split(':')[0],
-                    dataType: 'json',
-                    success: function(cart) {
-                        if ((typeof callback) === 'function') {
-                            callback(cart);
-                        } else {
-                            Shopify.onCartUpdate(cart);
-                        }
-                    }
-                })
-            } else {
-                Shopify.onError(XMLHttpRequest, textStatus);
-            }
-        }
-    };
+Shopify.removeItem = function(variant_id, index, callback) {
+    getCartUpdate(index, 0, callback)
+}
 
-    $.ajax(params);
+function getCartUpdate(line, quantity, callback) {
+    const body = JSON.stringify({
+        line,
+        quantity,
+        sections_url: window.location.pathname,
+    });
+
+    fetch(`${routes.cart_change_url}`, { ...fetchConfig(), ...{ body } })
+    .then((response) => {
+        return response.text();
+    })
+    .then((state) => {
+        const parsedState = JSON.parse(state);
+
+        if (parsedState.errors) {
+            showWarning('Error : ' + parsedState.errors, warningTime);
+            return;
+        }
+
+        if ((typeof callback) === 'function') {
+            callback(parsedState);
+        } else {
+            Shopify.onCartUpdate(parsedState);
+        }
+    })
+    .catch((e) => {
+        console.error(e);
+    })
 }
 
 Shopify.addItem = function(variant_id, quantity, $target, callback, input = null) {
@@ -919,4 +881,131 @@ class SmoothScrollMenu {
 
 document.addEventListener('DOMContentLoaded', function () {
     new SmoothScrollMenu('.header__inline-menu .menu-lv-1');
+    customElements.define('details-disclosure', DetailsDisclosure);
+});
+
+class DetailsDisclosure extends HTMLElement {
+    constructor() {
+        super();
+        this.mainDetailsToggle = this.querySelector('details');
+
+        this.addEventListener('keyup', this.onKeyUp);
+        this.mainDetailsToggle.addEventListener('focusout', this.onFocusOut.bind(this));
+    }
+
+    onKeyUp(event) {
+        if (event.code.toUpperCase() !== 'ESCAPE') return;
+
+        const openDetailsElement = event.target.closest('details[open]');
+        if (!openDetailsElement) return;
+
+        const summaryElement = openDetailsElement.querySelector('summary');
+        openDetailsElement.removeAttribute('open');
+        summaryElement.focus();
+    }
+
+    onFocusOut() {
+        setTimeout(() => {
+            if (!this.contains(document.activeElement)) this.close();
+        })
+    }
+
+    close() {
+        this.mainDetailsToggle.removeAttribute('open')
+    }
+}
+
+class AccountIcon extends HTMLElement {
+  constructor() {
+    super();
+
+    this.icon = this.querySelector('.icon');
+  }
+
+  connectedCallback() {
+    document.addEventListener('storefront:signincompleted', this.handleStorefrontSignInCompleted.bind(this));
+  }
+
+  handleStorefrontSignInCompleted(event) {
+    if (event?.detail?.avatar) {
+      this.icon?.replaceWith(event.detail.avatar.cloneNode());
+    }
+  }
+}
+
+customElements.define('account-icon', AccountIcon);
+
+class PositiveVibesComponent extends HTMLElement {
+    constructor() {
+        super();
+        this.productPositiveVibes();
+    }
+
+    productPositiveVibes() {
+        const parent = this.querySelector('.text-vibes');
+        const children = this.querySelectorAll('.text-vibes--child');
+        let currentIndex = 0;
+
+        if (children.length > 1) {
+            const newDiv = document.createElement("div");
+            newDiv.classList.add("text-vibes--child");
+            newDiv.innerHTML = children[0].innerHTML;
+            parent.appendChild(newDiv);
+            
+            const childrens = parent.querySelectorAll('.text-vibes--child');
+            setInterval(() => {
+                const height = childrens[currentIndex].offsetHeight;
+                childrens.forEach((child, index) => {
+                    parent.style.cssText = `transform: translateY(${height * -currentIndex}px); transition: all .5s ease;`;
+                    if (currentIndex == 0) {
+                        parent.style.cssText = `transform: translateY(${height * -currentIndex}px); transition: none;`;
+                    }
+                });
+                currentIndex = (currentIndex + 1) % childrens.length;
+                this.heightPositive();
+            }, 3000);
+        }
+    }
+
+    heightPositive() {
+        const parent = this.querySelector('.text-vibes');
+        const childrens = this.querySelectorAll('.text-vibes--child');
+        
+        let maxHeight = 0;
+        childrens.forEach(child => {
+            maxHeight = Math.max(maxHeight, child.querySelector('p').offsetHeight);
+        });
+
+        this.style.minHeight = maxHeight + 'px';
+
+        childrens.forEach(child => {
+            child.style.minHeight = `${maxHeight}px`;
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    customElements.define('positive-vibes', PositiveVibesComponent);
+})
+
+function checkTransparentHeader() {
+    allowTransparent();
+
+    if (Shopify.designMode) {
+        document.addEventListener("shopify:section:load", allowTransparent);
+        document.addEventListener("shopify:section:unload", allowTransparent);
+        document.addEventListener("shopify:section:reorder", allowTransparent);
+    }
+}
+
+function allowTransparent() {
+    if (document.querySelector(".shopify-section:first-child [allow-transparent-header]")) {
+        return;
+    } else {
+        document.querySelector("body").removeAttribute("allow-transparency");
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    checkTransparentHeader();
 });

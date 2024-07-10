@@ -22,7 +22,7 @@
     assign show_filter = section.settings.show_filter
     assign sidebar_type = section.settings.sidebar_type
     assign sidebar_position = section.settings.sidebar_position
-    assign show_sidebar_collapse = section.settings.show_sidebar_collapse
+    assign sidebar_collapse = section.settings.sidebar_collapse
     assign sidebar_collapse_default = section.settings.sidebar_collapse_default
     if show_sidebar
         if show_filter
@@ -56,7 +56,11 @@
     assign show_infinite_scrolling = section.settings.show_infinite_scrolling
     if settings.search_type == 'all'
         assign article_page_per_load = section.settings.article_page_per_load
-    endif 
+    endif
+    assign product_space_between_vert_desk = section.settings.product_space_between_vert_desk
+    assign product_space_between_vert_mb = section.settings.product_space_between_vert_mb
+    assign product_space_between_horiz_desk = section.settings.product_space_between_horiz_desk
+    assign product_space_between_horiz_mb = section.settings.product_space_between_horiz_mb
 -%}
 
 <style type="text/css" media="screen">
@@ -138,7 +142,7 @@
                                 sidebar_type: sidebar_type,
                                 show_filter: show_filter,
                                 show_sorting: show_sorting,
-                                show_collapse: show_sidebar_collapse,
+                                show_collapse: sidebar_collapse,
                                 sidebar_collapse: sidebar_collapse_default,
                                 filter_swatch: filter_swatch,
                                 filter_swatch_type: filter_swatch_type,
@@ -148,7 +152,7 @@
                     </div>
                 {%- endif -%}
             {%- endif -%}
-            <div class="page-content" id="CollectionProductGrid">
+            <div class="page-content {{search.results.size}}" id="CollectionProductGrid">
                 {%- if search.performed -%}
                     {%- if search.results.size > 0 -%}
                         {%- paginate search.results by products_per_page -%}
@@ -178,7 +182,14 @@
                                 </div>
                             {% endif %}
                             <div class="collection resultListing">
-                                <ul class="productListing{% if section.settings.collection_results_per_row == 1 %} productList{% else %} productGrid column-{{ layout }} {% endif %} list-{{ layout }} list-unstyled" id="main-collection-product-grid" data-id="{{ section.id }}">
+                                <ul class="productListing{% if section.settings.collection_results_per_row == 1 %} productList{% else %} productGrid column-{{ layout }} {% endif %} list-{{ layout }} list-unstyled" id="main-collection-product-grid" data-id="{{ section.id }}"
+                                    style="
+                                    --space-between-vert-desk: {{product_space_between_vert_desk}}px; 
+                                    --space-between-vert-mb: {{product_space_between_vert_mb}}px;
+                                    --space-between-horiz-desk: {{product_space_between_horiz_desk}}px; 
+                                    --space-between-horiz-mb: {{product_space_between_horiz_mb}}px;
+                                    "
+                                >
                                     {%- for item in search.results -%}
                                         {%- if item.object_type == 'product'-%}
                                             <li class="product{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} style="--animation-order: {{ forloop.index }};"{% endif %}>    
@@ -422,8 +433,8 @@
         {
             "type": "range",
             "id": "side_padding_full_width",
-            "label": "t:sections.general.settings.container.padding_full",
-            "info": "t:sections.general.settings.container.padding_full_info",
+            "label": "t:sections.layout.container.padding_full_width",
+            "info": "t:sections.layout.container.info_full_width",
             "min": 0,
             "max": 100,
             "step": 1,
@@ -529,10 +540,25 @@
             "label": "t:sections.main-sidebar.settings.general.label__1"
         },
         {
-            "type": "checkbox",
-            "id": "show_sidebar_collapse",
+            "type": "select",
+            "id": "sidebar_collapse",
             "label": "t:sections.main-sidebar.settings.general.label__2",
-            "default": true
+            "default": "collapse",
+            "options": 
+            [
+                {
+                  "value": "collapse",
+                  "label": "t:sections.main-sidebar.settings.general.options__5"
+                },
+                {
+                  "value": "slide",
+                  "label": "t:sections.main-sidebar.settings.general.options__6"
+                },
+                {
+                  "value": "none",
+                  "label": "t:sections.main-sidebar.settings.general.options__7"
+                }
+            ]
         },
         {
             "type": "checkbox",
@@ -600,11 +626,11 @@
             [
                 {
                 "value": "left",
-                "label": "t:sections.general.settings.position.options__1"
+                "label": "t:sections.general.settings.page-title.options__1"
                 },
                 {
                 "value": "right",
-                "label": "t:sections.general.settings.position.options__2"
+                "label": "t:sections.general.settings.page-title.options__3"
                 }
             ]
         },
@@ -861,6 +887,46 @@
                     "label": "50"
                 }
             ]
+        },
+        {
+            "type": "header",
+            "content": "t:sections.main-collection-product-grid.settings.header__6.content"
+        },
+        {
+            "type": "range",
+            "id": "product_space_between_vert_desk",
+            "label": "t:sections.main-collection-product-grid.settings.product.label__4",
+            "min": 0,
+            "max": 60,
+            "step": 1,
+            "default": 30
+        },
+        {
+            "type": "range",
+            "id": "product_space_between_vert_mb",
+            "label": "t:sections.main-collection-product-grid.settings.product.label__5",
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "default": 16
+        },
+        {
+            "type": "range",
+            "id": "product_space_between_horiz_desk",
+            "label": "t:sections.main-collection-product-grid.settings.product.label__6",
+            "min": 0,
+            "max": 60,
+            "step": 1,
+            "default": 60
+        },
+        {
+            "type": "range",
+            "id": "product_space_between_horiz_mb",
+            "label": "t:sections.main-collection-product-grid.settings.product.label__7",
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "default": 30
         }
     ],
     "blocks": [

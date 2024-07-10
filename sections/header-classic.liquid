@@ -75,7 +75,7 @@
                                         </details-modal>
                                     <div class="search-modal modal__content{% if settings.show_quick_search %} quickSearch{% endif %}" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
                                         {%- if settings.show_quick_search -%}
-                                            {% render 'halo-quick-search' %}
+                                            {% render 'halo-quick-search', sectionId: section.id %}
                                         {%- endif -%}
                                     </div>
                                 {% endif %}
@@ -99,21 +99,31 @@
                                         </a>
                                     {%- endif -%}
                                     {%- if settings.show_wishlist and block.settings.show_wishlist -%}
-                                        <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset" style="--text-color: {{ block.settings.wishlist_color }}">{% render 'icon-heart-2' %} <span class="wishlist-text">{{ 'wishlist.general.title' | t }}</span></a>
+                                        <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset" style="--text-color: {{ block.settings.wishlist_color }}">{% render 'icon-heart-2' %} <span class="wishlist-text">{{ 'wishlist.general.title' | t }}</span></a>
                                     {%- endif -%}
                                     {%- if shop.customer_accounts_enabled and block.settings.show_customer -%}
                                         <div class="customer-links" style="--text-color: {{ block.settings.customer_color }}">
                                             {%- if customer -%}
                                                 <a class="header__link--account" id="customer_logout_link" href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
                                                 <span> / </span>
-                                                <a class="header__link--account" href="{{ routes.account_url }}">{{ 'customer.account.my_account' | t }}</a>
+                                                <a class="header__link--account" href="{{ routes.account_url }}">
+                                                    {%- if customer and customer.has_avatar? -%}
+                                                        <account-icon>
+                                                            {{ customer | avatar }}
+                                                        </account-icon>
+                                                    {%- else -%}
+                                                        {{ 'customer.account.my_account' | t }}
+                                                    {%- endif -%}
+                                                </a>
                                             {%- else -%}
                                                 {% if routes.account_login_url contains '/account/login' %}
                                                     {% assign is_contained = true %}
                                                 {% else %}
                                                     {% assign is_contained = false %}
                                                 {% endif %}
-                                                <a class="header__link--account customer_login_link" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" {% if is_contained %}data-open-auth-sidebar{% endif %}>{{ 'customer.sign_in' | t }}</a>
+                                                <a class="header__link--account customer_login_link" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" {% if is_contained %}data-open-auth-sidebar{% endif %}>
+                                                    {{ 'customer.sign_in' | t }}
+                                                </a>
                                                 {%- if is_contained -%}
                                                     <span class="or-text"> {{ 'customer.or' | t }}</span>
                                                     <a class="header__link--account customer_register_link" href="{{ routes.account_register_url }}">{{ 'customer.create_account' | t }}</a>

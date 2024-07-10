@@ -236,16 +236,8 @@
     margin-bottom: 10px;
 }
 
-.bundle-product-checkbox .spr-badge-caption,
-.bundle-product-review .spr-badge-caption{
+.bundle-product-checkbox .spr-badge-caption{
     display: none;
-}
-
-.bundle-product-review{
-    font-size: 0;
-    letter-spacing: 0;
-    margin-top: 8px;
-    margin-bottom: 8px;
 }
 
 .bundle-product-price{
@@ -699,10 +691,6 @@
 
 .product-full-width-2 .bundlePdItem-container {
     padding: 0;
-}
-
-.bundle-product-content .halo-productReview .spr-badge-starrating {
-    display: none;
 }
 
 @media (max-width: 1024px) {

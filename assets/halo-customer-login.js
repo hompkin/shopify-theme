@@ -81,7 +81,7 @@ class CustomerAuth extends HTMLElement {
         }
         
         if(document.body.classList.contains('auth-sidebar-show')){
-            if ((!this.contains(event.target)) && ($(event.target).closest('[data-open-auth-sidebar]').length === 0)){
+            if ((!this.contains(event.target)) && ($(event.target).closest('[data-open-auth-sidebar]').length === 0) && ($(event.target).closest('[data-auth-sidebar]').length === 0)){
                 event.stopImmediatePropagation();
                 this.setCloseSidebar(event);
             }

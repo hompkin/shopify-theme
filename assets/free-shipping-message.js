@@ -106,7 +106,7 @@ class FreeShippingMeter extends HTMLElement {
 
             this.progressMeter.style.width = `${freeShipBar}%`;
             if (this.textEnabled) {
-                const textWrapper = this.progressMeter.querySelector('.text').innerHTML = `${freeShipBar}%`;
+                const textWrapper = this.progressMeter.querySelector('.text').innerHTML = `${freeShipBar.toFixed(2)}%`;
             }
 
             this.messageElement.innerHTML = text;

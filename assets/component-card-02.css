@@ -7,10 +7,6 @@
 	margin-bottom: 10px;
 }
 
-.product-card-layout-02 .card-review{
-	margin: -2px 0 0 -3px;
-}
-
 .product-card-layout-02 .card-vendor{
 	margin-bottom: 3px;
 }
@@ -86,11 +82,6 @@
 	padding: 10px 10px 10px 10px;
 }
 
-.product-card-layout-02 .product-item.disable_product_card_border .card-review{
-	margin: 12px 0 0 -3px;
-	line-height: 20px;
-}
-
 .product-card-layout-02 .product-item.disable_product_card_border .card-information__wrapper {
 	margin-bottom: 17px;
 }
@@ -139,10 +130,6 @@
 	display: none;
 }
 
-.product-card-layout-02 .product-item.enable_custom_layout_card .card-review{
-	margin-bottom: 4px;
-}
-
 .product-card-layout-02 .product-item.enable_custom_layout_card .price.price--on-sale .price-item--regular .money {
     font-size: var(--product-price-font-size);
 }
@@ -171,10 +158,6 @@
 
 .product-card-layout-02 .productList .product-item.enable_custom_layout_card .card-action .button.cancel-btn {
 	display: none;
-}
-
-.product-card-layout-02 .productList .product-item.enable_custom_layout_card .card .card-review {
-	margin-top: 6px;
 }
 
 .product-card-layout-02.quick_shop_option_2 .productList .product-item.enable_custom_layout_card .card .wrapper__card .card-wishlist {
@@ -263,11 +246,6 @@
 
 .product-card-layout-02 .product-item .wrapper-title-vendor.card-title-ellipsis:has(.card-title-ellipsis) {
   	padding-right: 0px;
-}
-
-.product-card-layout-02 .product-item.enable_custom_layout_card .card .card-review {
-  	margin-bottom: 6px;
-  	margin-top: 0;
 }
 
 .product-card-layout-02 .product-item.enable_custom_layout_card .card .wrapper-title-vendor .card-vendor a:hover,
@@ -376,14 +354,6 @@
 	}
     
 	/* Enable Custom Layout Card*/
-	.product-card-layout-02 .product-item.enable_custom_layout_card .card-review{
-		display: none;
-	}
-
-	.product-card-layout-02 .site-nav-banner .menu-dropdown__product .product-item.enable_custom_layout_card .card-information .card-information__wrapper .card-review{
-		display: none !important;
-	}
-
 	.product-card-layout-02 .site-nav-banner .menu-dropdown__product .product-item.enable_custom_layout_card .card-information {
 	    padding: 10px 0px 14px !important;
 	}

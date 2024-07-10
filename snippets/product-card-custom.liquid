@@ -52,11 +52,6 @@
                         {% endif %}
                     </span>
                 </a>
-                {%- if settings.show_review -%}
-                    <div class="card-review clearfix halo-productReview">
-                        <span class="shopify-product-reviews-badge" data-id="{{ product_card_product.id }}"></span>
-                    </div>
-                {%- endif -%}
                 <div class="card-price">
                     {% render 'price',
                         product: product_card_product,

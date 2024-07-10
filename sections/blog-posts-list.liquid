@@ -17,6 +17,7 @@
 
     assign margin_bottom_title = section.settings.margin_bottom_title | append: 'px'
     assign margin_bottom_info = section.settings.margin_bottom_info | append: 'px' 
+    assign margin_left_info = section.settings.margin_left_info | append: 'px' 
     assign margin_bottom_des = section.settings.margin_bottom_des | append: 'px'
     assign limit_content_des = section.settings.limit_content_des
 
@@ -51,7 +52,7 @@
         </div>
     {%- endif -%}
     {%- assign blog = blogs[section.settings.blog_posts] -%}
-    <div class="halo-block-content" style="--blog-title-margin-bottom: {{ margin_bottom_title }};--blog-info-margin-bottom: {{ margin_bottom_info }};--blog-description-margin-bottom: {{ margin_bottom_des }}">
+    <div class="halo-block-content" style="--blog-title-margin-bottom: {{ margin_bottom_title }};--blog-info-margin-bottom: {{ margin_bottom_info }};--blog-info-margin-left: {{ margin_left_info }};--blog-description-margin-bottom: {{ margin_bottom_des }}">
         <div class="content-block main-blog-view" style="--button-text-color: {% if show_more_button_text_color != blank %}{{ show_more_button_text_color }}{% endif %};--button-border-color: {% if show_more_button_border_color != blank %}{{ show_more_button_border_color }}{% endif %};--button-background-color: {% if show_more_button_background_color != blank %}{{ show_more_button_background_color }}{% endif %};--button-text-color-hover: {% if show_more_button_text_color_hover != blank %}{{ show_more_button_text_color_hover }}{% endif %};--button-border-color-hover: {% if show_more_button_border_color_hover != blank %}{{ show_more_button_border_color_hover }}{% endif %};--button-background-color-hover: {% if show_more_button_background_color_hover != blank %}{{ show_more_button_background_color_hover }}{% endif %}">   
             <div class="blog-post-main-item" data-main-view data-article-id="{{ blog.articles[0].id }}">
                 {% render 'article-card-main-view', article: blog.articles[0], limit_content_des: limit_content_des %}  
@@ -261,39 +262,49 @@
             "default": 6
         },
         {
+            "type": "range",
+            "id": "margin_left_info",
+            "label": "Info Margin Left",
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "t:sections.layout.mg_desktop.unit",
+            "default": 0
+        },
+        {
             "type": "color",
             "id": "show_more_button_text_color",
-            "label": "t:sections.featured_blog.settings.settings_item.color_button_item",
+            "label": "t:settings_schema.colors.settings.colors_name.color",
             "default": "#3c3c3c"
         },
         {
             "type": "color",
             "id": "show_more_button_border_color",
-            "label": "t:sections.featured_blog.settings.settings_item.color_button_item_border",
+            "label": "t:settings_schema.colors.settings.colors_name.border_color",
             "default": "#1e1e1e"
         },
         {
             "type": "color",
             "id": "show_more_button_background_color",
-            "label": "t:sections.featured_blog.settings.settings_item.color_button_item_bg",
+            "label": "t:settings_schema.colors.settings.colors_name.background_color",
             "default": "#1e1e1e"
         },
         {
             "type": "color",
             "id": "show_more_button_text_color_hover",
-            "label": "t:sections.featured_blog.settings.settings_item.color_button_item_hover",
+            "label": "t:settings_schema.colors.settings.colors_name.color_hover",
             "default": "#000"
         },
         {
             "type": "color",
             "id": "show_more_button_border_color_hover",
-            "label": "t:sections.featured_blog.settings.settings_item.color_button_item_border_hover",
+            "label": "t:settings_schema.colors.settings.colors_name.border_hover",
             "default": "#fff"
         },
         {
             "type": "color",
             "id": "show_more_button_background_color_hover",
-            "label": "t:sections.featured_blog.settings.settings_item.color_button_item_bg_hover",
+            "label": "t:settings_schema.colors.settings.colors_name.background_hover",
             "default": "#fff"
         },  
         {

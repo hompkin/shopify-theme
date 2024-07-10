@@ -37,7 +37,7 @@
     /* Settings Header Tab */
     .header-nav-multi-site .header-top--wrapper{background: {% if bg_tab_home_gradient != 'rgba(0,0,0,0)' and bg_tab_home_gradient != blank %}{{ bg_tab_home_gradient }}{% else %}{{ bg_tab_home }}{% endif %}}.header-nav-multi-site .header-top--left .header__list li svg {height: {{ tab_font_size }};width: auto}.header-nav-multi-site .header-top--left .header__list .item--border:before {background-color: {{ color_border_separation }}}
     {%- if section.settings.header_style == 'style_2' -%}
-        .header-nav-multi-site .halo-productBadges {top: 15px}.header-nav-multi-site .halo-productBadges--right {right: 15px}.header-nav-multi-site .halo-productBadges--left {left: 15px}.header-nav-multi-site .card-review {line-height: 24px}.product-block__banner .product-block__cap--text {font-style: italic}
+        .header-nav-multi-site .halo-productBadges {top: 15px}.header-nav-multi-site .halo-productBadges--right {right: 15px}.header-nav-multi-site .halo-productBadges--left {left: 15px}.product-block__banner .product-block__cap--text {font-style: italic}
     {%- endif -%}
     {%- if settings.enable_layout_rtl -%}
     .layout_rtl .header-nav-multi-site .header__list .item--border:not(.is-active):before {right: auto;left: 0}.layout_rtl .header-nav-multi-site .header__icon+.header__icon, .layout_rtl .header-nav-multi-site .header__iconItem+.header__iconItem, .layout_rtl .header-nav-multi-site .header__languageCurrency {margin-left: 0;margin-right: 20px}.layout_rtl .header-nav-multi-site .header__group .cart-count-bubble {margin-right: 0}.layout_rtl .header-nav-multi-site .halo-top-currency .dropdown-toggle .text {margin-left: 5px;margin-right: 5px}.layout_rtl .header-nav-multi-site .live_help,.layout_rtl .header-nav-multi-site .customer-links {margin-left: 0;margin-right: 20px}
@@ -66,7 +66,7 @@
         .header-nav-multi-site .header__inline-menu{display: none}.header-nav-multi-site .header__inline-menu.is-active{display: block}
     }
 </style>
-<script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
+<!-- <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script> -->
 {%- liquid
     assign menu_tab = section.blocks | where: "type", "tab"
     assign page_handle = page.handle
@@ -160,7 +160,7 @@
 
                     {%- if section.settings.header_style == 'style_2' %}
                         {%- if settings.show_wishlist and section.settings.show_wishlist -%}
-                            <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset">{% render 'icon-heart-2' %}<span class="wishlist-text">{{ 'wishlist.general.wishlist' | t }}</span></a>
+                            <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset">{% render 'icon-heart-2' %}<span class="wishlist-text">{{ 'wishlist.general.wishlist' | t }}</span></a>
                         {%- endif -%}
                     {%-  endif -%}
                     {%- if section.settings.header_style == 'style_2' -%}
@@ -174,7 +174,15 @@
                               {%- if customer -%}
                                   <a class="header__link--account" id="customer_logout_link" href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
                                   <span> / </span>
-                                  <a class="header__link--account" href="{{ routes.account_url }}">{{ 'customer.account.my_account' | t }}</a>
+                                  <a class="header__link--account" href="{{ routes.account_url }}">
+                                    {%- if customer and customer.has_avatar? -%}
+                                        <account-icon>
+                                            {{ customer | avatar }}
+                                        </account-icon>
+                                    {%- else -%}
+                                        {{ 'customer.account.my_account' | t }}
+                                    {%- endif -%}
+                                  </a>
                               {%- else -%}  
                                   <a class="header__link--account" id="customer_login_link" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"{% if is_contained %} data-open-auth-sidebar{% endif %}>{{ 'customer.sign_in' | t }}</a>
                                   <span class="or-text">{{ 'customer.or' | t }}</span>
@@ -192,7 +200,13 @@
                                 {% assign is_contained = false %}
                             {% endif %}
                             <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link link--text"{% if is_contained %} data-open-auth-sidebar{% endif %}>
-                                {% render 'icon-account-2' %}
+                                {%- if customer and customer.has_avatar? -%}
+                                    <account-icon>
+                                        {{ customer | avatar }}
+                                    </account-icon>
+                                {%- else -%}
+                                    {% render 'icon-account-2' %}
+                                {%- endif -%}
                                 <span class="visually-hidden">
                                     {%- liquid
                                     if customer
@@ -208,7 +222,7 @@
 
                     {%- unless section.settings.header_style == 'style_2' -%}
                         {%- if settings.show_wishlist and section.settings.show_wishlist -%}
-                            <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset">
+                            <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset">
                                 {% render 'icon-heart-2' %}
                                 <div class="wishlist-count-bubble"><span class="text" aria-hidden="true" data-wishlist-count></span><span class="visually-hidden">{{ 'wishlist.general.wishlist' | t }}</span></div>
                             </a>
@@ -284,6 +298,8 @@
                                     {%- endif -%}
                                 </div>
                             </div>
+                        {%- else -%}
+                            {% render 'halo-currency-js' %}
                         {%- endif -%}
                     {%- endif -%}
                 </div>
@@ -299,7 +315,7 @@
                         <div class="header__logo">
                             {%- if menu_tab.size > 0 -%}
                                 {% assign page_handle = page.handle %}
-                                <div class="header__heading header__heading--item">
+                                <{% if request.page_type == 'index' %}h1{% else %}div{% endif %} class="header__heading header__heading--item">
                                     {%- for block in menu_tab -%}
                                         {%- liquid
                                             assign multi_page_handle = pages[block.settings.link].handle
@@ -334,9 +350,9 @@
                                             {%- endif -%}
                                         </a>
                                     {%- endfor -%}
-                                </div>
+                                </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                             {%- else -%}
-                                <div class="header__heading">
+                                <{% if request.page_type == 'index' %}h1{% else %}div{% endif %} class="header__heading">
                                     <a href="{{ routes.root_url }}" class="header__heading-link focus-inset">
                                         {%- if section.settings.logo != blank -%}
                                             {%- assign image = section.settings.logo -%}
@@ -348,7 +364,7 @@
                                             <span class="h2 {{ section.settings.logo_text_transform }}">{{ shop.name }}</span>
                                         {%- endif -%}
                                     </a>
-                                </div>
+                                </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                             {%- endif -%}
                         </div>
                     </div>
@@ -551,10 +567,10 @@ if (sticky != undefined || sticky != null) {
           this.disclosures.forEach(disclosure => disclosure.close());
         }
     }
-    customElements.define('sticky-header', StickyHeader);
+    document.addEventListener('DOMContentLoaded', () => {customElements.define('sticky-header', StickyHeader)});
 }
 {% endjavascript %}
-<script> 
+<script>
     var appendPrependMenuMobile = function() {
         var headerLanguageCurrencyPC = $('.wrapper-language-currency'),
             headerLanguageCurrencyMB = $('.nav-currency-language'),

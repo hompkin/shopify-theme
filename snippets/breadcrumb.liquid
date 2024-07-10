@@ -5,7 +5,7 @@
 {{ 'component-breadcrumb.css' | asset_url | stylesheet_tag }}
 
 {%- unless template == 'index' -%}
-    <breadcrumb-component class="breadcrumb-container style--line_clamp_1{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+    <breadcrumb-component class="breadcrumb-container style--line_clamp_1{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" data-collection-title="{{ collection.title }}" data-collection-all="{{ routes.all_products_collection_url}}">
         <nav class="breadcrumb breadcrumb-{{ alignment }}" role="navigation" aria-label="breadcrumbs">
         <a class="link home-link" href="{{ routes.cart_url | split: '/cart' | first | append: '/'  }}">{{ 'general.breadcrumb.home' | t }}</a>  
             {%- if template contains 'product' -%} 
@@ -15,15 +15,6 @@
                         <span>{{ collection.title | split: '|' | first | link_to: collection.url }}</span>
                     {%- endif -%}
                 {%- endif -%}
-                <span class="separate" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg></span>
-                {% capture currentProductHandle %}{{ product.handle }}{% endcapture %}
-                {% for collection in collections %}
-                  {% for product_in_collection in collection.products %}
-                    {% if product_in_collection.handle == currentProductHandle %}
-                      <a class="breadcrumb-collection hidden" href="{{ collection.url }}" data-handle="{{ collection.url | split: '/collections/' }}">{{ collection.title }}</a>
-                    {% endif %}
-                  {% endfor %}
-                {% endfor %}
                 <span class="separate" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg></span>
                 <span>{{ product.title | split: '|' | first }}</span>
             {%- elsif template contains 'collection' and collection.handle -%}
@@ -54,10 +45,6 @@
                 <span class="separate" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg></span>
                 <span>{{ 'general.search.title' | t }}</span>
             {%- else -%}
-                {%- if template contains 'article.' -%}
-                    <span class="separate" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg></span>
-                    <span>{{ blog.title | split: '|' | first | link_to: blog.url }}</span>
-                {%- endif -%}
                 <span class="separate" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg></span>
                 <span>{{ page_title | split: '|' | first }}</span>
             {%- endif -%}
@@ -65,10 +52,12 @@
         </nav>
     </breadcrumb-component>
     <script type="text/javascript">
-        if (typeof breadcrumbComponentDeclare == 'undefiend') {
+        if (typeof breadcrumbComponentDeclare == 'undefined') {
             class BreadcrumbComponent extends HTMLElement {
                 constructor() {
                     super();
+                    this.firstPostCollection();
+                    this.getCollection();
                 }
 
                 connectedCallback() {
@@ -102,6 +91,34 @@
                     this.scrollToFirstObserver.observe(this.firstLink);
                     this.scrollToLastObserver.observe(this.lastLink);
                 }
+
+                firstPostCollection() {
+                    if (!document.body.matches('.template-collection')) return;
+                    this.postCollection(true);
+                    this.checkCollection();
+                }
+
+                postCollection(showCollection) {
+                    const title = this.dataset.collectionTitle ? this.dataset.collectionTitle : "Products";
+                    let collection = {name: title, url: window.location.pathname, show: showCollection};
+                    localStorage.setItem('_breadcrumb_collection', JSON.stringify(collection));
+                }
+
+                checkCollection() {
+                    document.addEventListener("click", (event) => {
+                        const target = event.target;
+                        if (!target.matches('.card-link')) return;
+                        target.closest('.shopify-section[id*="product-grid"]') == null ? this.postCollection(false) : this.postCollection(true);
+                    });
+                }
+
+                getCollection() {
+                    if (!document.body.matches('.template-product')) return;
+                    const collection = JSON.parse(localStorage.getItem('_breadcrumb_collection'));
+                    let checkCollection = document.referrer.indexOf('/collections/') !== -1 && (new URL(document.referrer)).pathname == collection.url && collection && collection.show ? true : false;
+                    const breadcrumb = `<a class="breadcrumb-collection animate--text" href="${checkCollection ? collection.url : this.dataset.collectionAll}">${checkCollection ? collection.name : "Products"}</a><span class="separate animate--text" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 7.75 1.34375 L 6.25 2.65625 L 14.65625 12 L 6.25 21.34375 L 7.75 22.65625 L 16.75 12.65625 L 17.34375 12 L 16.75 11.34375 Z"></path></svg></span>`;
+                    this.querySelectorAll('.separate')[0]?.insertAdjacentHTML("afterend", breadcrumb);
+                }
             }   
 
             window.addEventListener('load', () => {
@@ -112,47 +129,3 @@
         }
     </script>
 {%- endunless -%}
-
-<script>
-    document.addEventListener("DOMContentLoaded", (event) => {
-      const previousCollection = getCookie('currentCollection');
-      const breadcrumbCollection = document.querySelectorAll('.breadcrumb-collection');
-      const breadcrumbCollectionCount = breadcrumbCollection.length;
-      let checkCollection = true;
-  
-        if (breadcrumbCollection && breadcrumbCollectionCount > 1) breadcrumbCollection.forEach((element, index) => {
-            const handle = element.dataset.handle;
-            if (handle == previousCollection) {
-                document.querySelectorAll(`.breadcrumb-collection[data-handle="${handle}"]`).forEach(element => {element.classList.remove('hidden');element.classList.add('animate--text')})
-                checkCollection = false;
-            }
-
-            if (index == breadcrumbCollectionCount-1) {
-                if (previousCollection == 'not-template-collection' || previousCollection == null || checkCollection) element.insertAdjacentHTML("afterend", `<a class="breadcrumb-collection" href="/collections/all" data-handle="all">Products</a>`);
-            }
-              
-            if (element.classList.contains('hidden')) {
-                element.remove();
-            }
-        })
-
-        if (breadcrumbCollection && breadcrumbCollectionCount == 1) {
-            document.querySelectorAll(`.breadcrumb-collection[data-handle="${breadcrumbCollection[0].dataset.handle}"]`).forEach(element => {element.classList.remove('hidden');element.classList.add('animate--text')})
-        }
-  
-        if (!document.body.matches('.template-collection, .template-product')) {
-            document.cookie = `currentCollection=not-template-collection; path=/`;
-        }
-  
-        function getCookie(name) {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-              const cookie = cookies[i].trim();
-              if (cookie.startsWith(name + '=')) {
-                return cookie.substring(name.length + 1);
-              }
-            }
-            return null;
-        }
-    });
-</script>

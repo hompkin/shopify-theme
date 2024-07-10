@@ -238,6 +238,10 @@
     margin: 0;
 }
 
+.btn_1_br_outside .product-edit-action {
+    padding: 8px 5px;
+}
+
 .product-edit-action .button{
     font-family: var(--btn-1-font-family);
     font-size: var(--btn-1-font-size);
@@ -327,33 +331,44 @@ body.edit-cart-show .halo-edit-cart-popup.halo-popup-topDown{
         padding: 15px 10px 15px;
     }
 
+    /* START: New Style Edit Card */
     .product-edit-item {
-        display: grid;
+        /* display: grid;
         grid-template-areas:
         "image title"
         "options options"
-        "button button";
+        "button button"; */
+        display: flex;
+        flex-wrap: wrap;
         column-gap: 15px;
+        border-top: 1px solid #e6e6e6;
     }
 
     .product-edit-itemLeft {
-        grid-area: image;
+        /* grid-area: image; */
         width: 110px;
         display: block;
     }
 
     .product-edit-itemCenter {
-        grid-area: title;
+        /* grid-area: title; */
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 110px - 15px);
     }
 
-    .product-edit-itemRight {
+    .product-edit-itemCenter ~ * {
+        width: 100%;
+    }
+
+    /* .product-edit-itemRight {
         grid-area: options;
     }
 
     .product-edit-item .add-more {
         grid-area: button;
-    }
-
+    } */
+    /* END: New Style Edit Card */
     .product-edit-title {
         -webkit-line-clamp: 1;
     }
@@ -368,6 +383,51 @@ body.edit-cart-show .halo-edit-cart-popup.halo-popup-topDown{
         height: calc(var(--product-swatch-height) - 10px);
         line-height: calc(var(--product-swatch-height) - 10px);
     }
+
+    /* START: New Style Edit Card */
+    .product-edit-itemFirst {
+        padding-top: 10px;
+    }
+
+    .halo-edit-cart-popup {
+        top: unset;
+        bottom: 0;
+    }
+
+    body.edit-cart-show .halo-edit-cart-popup{
+        transform: translate3d(0%,0%,0);
+    }
+
+    .product-edit-action {
+        padding: 10px;
+    }
+
+    .product-edit-item:nth-last-child(1) .add-more {
+        padding: 15px 0 25px 16px;
+    }
+
+    .product-edit-quantity .form-label {
+        display: none;
+    }
+
+    .product-edit-quantity {
+        margin-top: auto;
+    }
+
+    .product-edit-quantity .update-quantity__group {
+        max-width: 124px;
+    }
+
+    .halo-edit-cart-popup .halo-popup-close {
+        right: 12px;
+        top: 12px;
+        background-color: transparent;
+    }
+
+    .halo-edit-cart-popup .halo-popup-close svg {
+        fill: var(--bg-black);
+    }
+    /* END: New Style Edit Card */
 }
 
 @media (min-width: 551px){

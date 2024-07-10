@@ -21,7 +21,7 @@ window.compareColor = function() {
                 this.onChangeHandler(event);
             }, 0);
 
-            this.querySelector('ul').addEventListener('input', this.debouncedOnChange.bind(this));
+            this.querySelector('ul') ? this.querySelector('ul').addEventListener('input', this.debouncedOnChange.bind(this)) : document.querySelector('.productView-compareColor')?.classList.add('hidden');
 
             document.body.addEventListener('click', this.onBodyClickEvent.bind(this));
         }

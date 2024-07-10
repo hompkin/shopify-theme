@@ -81,6 +81,10 @@ class VariantSelects extends HTMLElement {
                 return this.options[index] === option;
             }).includes(false);
         });
+
+        if (this.item.find('[data-filter]').length && this.currentVariant?.featured_media && this.currentVariant.featured_media.alt != null) {
+            this.item.find('[data-filter]:checked').attr('data-value-default-lang', this.currentVariant?.featured_media.alt.toLowerCase().replace(/ /g,"-"));
+        }
     }      
 
     updateMedia(time) {
@@ -188,12 +192,17 @@ class VariantSelects extends HTMLElement {
                 }
 
                 document.getElementById(`product-price-${this.dataset.product}`)?.classList.remove('visibility-hidden');
+                this.updateBadgeSale()
         });
     }
 
     renderProductInfo() {
         if(this.item.find('[data-sku]').length > 0){
             this.item.find('[data-sku] .productView-info-value').text(this.currentVariant.sku);
+        }
+
+        if(this.item.find('[data-barcode]').length > 0){
+            this.item.find('[data-barcode] .productView-info-value').text(this.currentVariant.barcode);
         }
 
         var inventory = this.currentVariant?.inventory_management;
@@ -204,9 +213,15 @@ class VariantSelects extends HTMLElement {
 
             if(inven_array != undefined) {
                 var inven_num = inven_array[this.currentVariant.id],
+                    inputQuantity = this.item.find('input[name="quantity"]'),
+                    buttonSubmit = this.item.find('button#product-add-to-cart'),
                     inventoryQuantity = parseInt(inven_num);
 
-                this.item.find('input[name="quantity"]').attr('data-inventory-quantity', inventoryQuantity);
+                if(inputQuantity.length > 0) {
+                    inputQuantity.attr('data-inventory-quantity', inventoryQuantity);
+                } else {
+                    buttonSubmit.attr('data-inventory-quantity', inventoryQuantity);
+                }
 
                 if(this.item.find('[data-inventory]').length > 0){
                     if(inventoryQuantity > 0){
@@ -286,7 +301,7 @@ class VariantSelects extends HTMLElement {
                 const stickyComparePrice = $('[data-sticky-add-to-cart] .money-compare-price .money');
 
                 if (window.subtotal.show) {
-                    let qty = quantityInput.val();
+                    let qty = quantityInput.val() || 1;
 
                     subTotal = qty * price;
                     subTotal = Shopify.formatMoney(subTotal, window.money_format);
@@ -312,6 +327,7 @@ class VariantSelects extends HTMLElement {
                         }
                     } else if (window.subtotal.style == '2') {
                         text = window.subtotal.text.replace('[value]', subTotal);
+                        console.log(text,'123');
                     }
                 } else {
                     subTotal = Shopify.formatMoney(price, window.money_format);
@@ -352,7 +368,7 @@ class VariantSelects extends HTMLElement {
 
                 if (subTotal != 0 && stickyComparePrice.length && window.subtotal.show) {
                     let comparePrice = $('[data-sticky-add-to-cart] .money-compare-price').data('compare-price'),
-                        qty = quantityInput.val();
+                        qty = quantityInput.val() || 1;
                     comparePrice = qty * comparePrice;
                     comparePrice = Shopify.formatMoney(comparePrice, window.money_format);
                     comparePrice = extractContent(comparePrice);
@@ -372,7 +388,7 @@ class VariantSelects extends HTMLElement {
                 const stickyPrice = $('[data-sticky-add-to-cart] .money-subtotal .money');
 
                 if (window.subtotal.show) {
-                    let qty = quantityInput.val();
+                    let qty = quantityInput.val() || 1;
 
                     subTotal = qty * price;
                     subTotal = Shopify.formatMoney(subTotal, window.money_format);
@@ -403,7 +419,14 @@ class VariantSelects extends HTMLElement {
                             text = window.variantStrings.addToCart;
                         }
                     } else if (window.subtotal.style == '2') {
-                        text = window.subtotal.text.replace('[value]', subTotal);
+                        if (this.currentVariant.available && maxValue <= 0 && this.currentVariant.inventory_management == "shopify") {
+                            text = window.variantStrings.preOrder;
+                        } else {
+                            text = window.subtotal.text.replace('[value]', subTotal);
+                            $('#show-sticky-product').text(text);
+                            $('#product-sticky-add-to-cart').text(text);
+                            console.log(text,'345');
+                        }
                     }
                 } else {
                     subTotal = Shopify.formatMoney(price, window.money_format);
@@ -450,7 +473,7 @@ class VariantSelects extends HTMLElement {
                 const stickyComparePrice = $('[data-sticky-add-to-cart] .money-compare-price .money');
                 if (subTotal != 0 && stickyComparePrice.length && window.subtotal.show) {
                     let comparePrice = $('[data-sticky-add-to-cart] .money-compare-price').data('compare-price'),
-                        qty = quantityInput.val();
+                        qty = quantityInput.val() || 1;
                     comparePrice = qty * comparePrice;
                     comparePrice = Shopify.formatMoney(comparePrice, window.money_format);
                     comparePrice = extractContent(comparePrice);
@@ -472,7 +495,13 @@ class VariantSelects extends HTMLElement {
             const input = document.getElementById(`product-form-sticky-${this.dataset.product}`)?.querySelector('input[name="id"]');
             const button = document.getElementById(`product-form-sticky-${this.dataset.product}`)?.querySelector('[name="add"]');
             var quantityInput = this.item.find('input[name="quantity"]');
-            var maxValue = parseInt(quantityInput.attr('data-inventory-quantity'));
+            var maxValue;
+
+            if (quantityInput.length > 0) {
+                maxValue = parseInt(quantityInput.attr('data-inventory-quantity'));
+            } else {
+                maxValue = parseInt(submitBtn.attr('data-inventory-quantity'));
+            }
           
             if(unavailable){
                 var text = window.variantStrings.unavailable;
@@ -563,6 +592,7 @@ class VariantSelects extends HTMLElement {
         const selectedOptionOneVariants = this.variantData.filter(variant => this.querySelector(':checked').value === variant.option1);
         const inputWrappers = [...this.querySelectorAll('.product-form__input')];
         const inputLength = inputWrappers.length;
+        const variant_swatch = [...this.querySelectorAll('.product-form__swatch')];
         inputWrappers.forEach((option, index) => {
             option.querySelector('[data-header-option]').innerText = option.querySelector(':checked').value;
             if (index === 0 && inputLength > 1) return;
@@ -571,8 +601,40 @@ class VariantSelects extends HTMLElement {
             const optionInputsValue = inputLength > 1 ? selectedOptionOneVariants.filter(variant => variant[`option${ index }`] === previousOptionSelected).map(variantOption => variantOption[`option${ index + 1 }`]) : this.variantData.map(variantOption => variantOption[`option${ index + 1 }`]);
             const availableOptionInputsValue = inputLength > 1 ? selectedOptionOneVariants.filter(variant => variant.available && variant[`option${ index }`] === previousOptionSelected).map(variantOption => variantOption[`option${ index + 1 }`]) : this.variantData.filter(variant => variant.available).map(variantOption => variantOption[`option${ index + 1 }`]);
             this.setInputAvailability(optionInputs, optionInputsValue, availableOptionInputsValue)
+            if (variant_swatch.length > 1){
+                this.updateImageSwatch(selectedOptionOneVariants)
+            }
         });
     }
+
+    updateImageSwatch(selectedOptionOneVariants) {
+        const inputWrappers = this.querySelectorAll('.product-form__input');
+        if(inputWrappers){
+            inputWrappers.forEach((element, inputIndex) => {
+                const imageSpan = element.querySelectorAll("label>span.pattern");
+                const imageLabel = element.querySelectorAll("label");
+                const imageSpanImage = element.querySelectorAll("label>span.expand>img");
+                const inputList = element.querySelectorAll("input");
+
+                inputList.forEach((item, index) => {
+                    const image = selectedOptionOneVariants.filter(tmp => {
+                        if (inputIndex == 0) return tmp.option1 == item.value;
+                        if (inputIndex == 1) return tmp.option2 == item.value;
+                        if (inputIndex == 2) return tmp.option3 == item.value;
+                    });
+    
+                    if(image.length > 0) {
+                        imageLabel[index].style.display = "inline-block";
+                        if (imageSpan[index] != undefined && image[0].featured_image != null) imageSpan[index].style.backgroundImage = `url("${image[0].featured_image.src}")`;
+                        if (imageSpanImage[index] != undefined && image[0].featured_image != null) imageSpanImage[index].srcset = image[0].featured_image.src;
+                    }
+                    // else {
+                    //     imageLabel[index].style.display = "none";
+                    // }
+                })
+            });
+        }
+    }            
 
     setInputAvailability(optionInputs, optionInputsValue, availableOptionInputsValue) {
         optionInputs.forEach(input => {
@@ -584,6 +646,46 @@ class VariantSelects extends HTMLElement {
                 optionInputsValue.includes(input.getAttribute('value')) ? input.innerText = input.getAttribute('value') + ' (Sold out)' : input.innerText = window.variantStrings.unavailable_with_option.replace('[value]', input.getAttribute('value'))
             }
         });
+    }
+
+    updateBadgeSale() {
+        let badgeWrap = document.querySelector(".productView-badge"),
+            badgeText = badgeWrap.querySelector(".productView-badge .badge.sale-badge"),
+            badgeTextSaleType = badgeWrap.getAttribute('data-text-sale-badge'),
+            priceCompare = document.querySelector(".productView-product .price__compare").getAttribute('data-compare'),
+            priceLast = document.querySelector(".productView-product .price__sale .price__last").getAttribute('data-last'),
+            percentSale = Math.round(((priceCompare - priceLast) / priceCompare) * 100);
+
+        function renderSpan(text1, text2) {
+            let spanElement = document.createElement('span');
+            spanElement.classList.add('badge', 'sale-badge');
+            let container = document.querySelector('.productView-badge');
+            container.appendChild(spanElement);
+            spanElement.innerText = `${text1} ${text2}%`
+        }
+
+        if (badgeWrap.classList.contains("has-badge-js")) {
+            if (!priceCompare) {
+                badgeWrap.querySelector(".badge.sale-badge")?.remove();
+            } else {
+                if (!badgeText) {
+                    renderSpan(badgeTextSaleType, percentSale)
+                } else {
+                    badgeText.innerText = `${badgeTextSaleType} ${percentSale}%`
+                }
+            }
+        } else {
+            if (!priceCompare) {
+                badgeWrap.querySelector(".badge.sale-badge")?.remove();
+            } else {
+                if (!badgeText) {
+                    renderSpan(badgeTextSaleType, percentSale);
+                } else {
+                    badgeText.innerText = `${badgeTextSaleType}`
+                }
+            }
+        }
+
     }
 }
 
@@ -702,6 +804,7 @@ class QuantityInput extends HTMLElement {
             }
             else if (window.subtotal.style == '2') {
                 text = window.subtotal.text.replace('[value]', subTotal);
+                $('#product-sticky-add-to-cart').text(text);
 
                 addButton.textContent = text;  
             }

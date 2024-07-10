@@ -9,8 +9,8 @@
         assign check_lookbook = true
     -%}
 
-    <div class="slideshow-wrapper section-block-{{section.id}}" id="slideshow-wrapper-{{section.id}}" {% if section.blocks.size > 1 %}data-loader-script="{{ 'halo.slide-show.js' | asset_url }}"{% endif %}>
-        <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
+    <div class="slideshow-wrapper section-block-{{section.id}}" id="slideshow-wrapper-{{section.id}}" {% if section.blocks.size > 1 %}data-loader-script="{{ 'halo.slide-show.js' | asset_url }}"{% endif %} allow-transparent-header>
+        <div class="{% if container == '1170' %}container-1170{% elsif section.settings.container == '1470' %}container-1470{% elsif section.settings.container == '1570' %}container-1570{% elsif container == '1770' %}container-1770{% elsif container == '1920' %}container-1920{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
         {%- if section.settings.enable_categories or section.settings.enable_banner -%}
         <div class="wrapper-category-banner{% if section.settings.enable_categories %} has-categories{% endif %}{% if section.settings.enable_banner %} has-banner{% endif %}">
         {%- endif -%}
@@ -26,7 +26,7 @@
                                 <li>
                                     <a class="item-menu"  href="{{ link.url }}">
                                         {% assign img = link.handle | downcase | replace: ' ', '-' | append: '.png' | file_url %}
-                                        <span class="icon-img image-zoom"><img src="{{ img }}" alt="{{ link.title }}" onError="style.display = 'none';" width="{{ img.width }}" height="{{ img.height }}" loading="lazy"/></span> <span class="text-menu">{{ link.title }}</span> </a>      
+                                        <span class="icon-img image-zoom"><img src="{{ img }}" alt="{{ link.title }}" onError="style.display = 'none';" width="{{ img.width }}" height="{{ img.height }}" {% unless settings.enable_layout_rtl %}loading="lazy"{% endunless %}/></span> <span class="text-menu">{{ link.title }}</span> </a>      
                                 </li>
                             {% endfor %}
                         </ul>
@@ -96,7 +96,7 @@
                                                 {%- if img_url_mb.width >= 2000 -%}{{ img_url_mb | image_url: width: 2000 }} 2000w,{%- endif -%}
                                                 {%- if img_url_mb.width >= 2800 -%}{{ img_url_mb | image_url: width: 2800 }} 2800w{%- endif -%}"
                                                 sizes="{% if section.settings.image != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image != blank %}50vw{% else %}100vw{% endif %}" {% unless settings.enable_lazyload and forloop.first == false %}src="{{ img_url_mb | image_url: width: 750 }}"{% endunless %} alt="{{ img_url_mb.alt | escape }}" width="{{ img_url_mb.width }}" height="{{ img_url_mb.width | divided_by: img_url_mb.aspect_ratio | round}}"
-                                                {%- if settings.enable_lazyload and forloop.first == false -%}class="lazyload" loading="lazy"{%- endif -%}
+                                                {%- if settings.enable_lazyload and forloop.first == false -%}class="lazyload" {% unless settings.enable_layout_rtl %}loading="lazy"{% endunless %}{%- endif -%}
                                                 {% unless img_url_mb.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ img_url_mb.presentation.focal_point }}"{% endunless %}
                                             >
                                             {%- if settings.enable_lazyload and forloop.first == false -%}<span class="data-lazy-loading"></span>{%- endif -%}
@@ -121,7 +121,7 @@
                                                 {%- if img_url.width >= 2000 -%}{{ img_url | image_url: width: 2000 }} 2000w,{%- endif -%}
                                                 {%- if img_url.width >= 2800 -%}{{ img_url | image_url: width: 2800 }} 2800w{%- endif -%}"
                                                 sizes="{% if section.settings.image != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image != blank %}50vw{% else %}100vw{% endif %}" {% unless settings.enable_lazyload and forloop.first == false %}src="{{ img_url | image_url: width: 750 }}"{% endunless %} alt="{{ img_url.alt  | escape }}" width="{{ img_url.width }}" height="{{ img_url.width | divided_by: img_url.aspect_ratio | round }}" 
-                                                {%- if settings.enable_lazyload and forloop.first == false -%}class="lazyload" loading="lazy"{%- endif -%}
+                                                {%- if settings.enable_lazyload and forloop.first == false -%}class="lazyload" {% unless settings.enable_layout_rtl %}loading="lazy"{% endunless %}{%- endif -%}
                                                 {% unless img_url.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ img_url.presentation.focal_point }}"{% endunless %}
                                             >{%- if settings.enable_lazyload and forloop.first == false -%}<span class="data-lazy-loading"></span>{%- endif -%}</a>
                                     </div>
@@ -164,25 +164,37 @@
                             </div>
                         {%- elsif block.type == 'video'-%}
                             {% if block.settings.style_video == 'youtube' %}
+                                {%- liquid
+                                    assign autoplay_youtube = 0
+                                  if forloop.first and section.settings.auto_playvideo
+                                    assign autoplay_youtube = 1
+                                  endif
+                                -%}
                                 <div data-video-youtube class="item slide-youtube embed-responsive item-video" id="slide-{{ block.id }}">
                                     <div class="fluid-width-video-wrapper">
-                                        <iframe class="youtube-player" id="player_{{ block.id }}" width="100%" height="100%" data-video-id="{{ block.settings.video_link }}" src="https://www.youtube.com/embed/{{ block.settings.video_link }}?enablejsapi=1&rel=0&autoplay=0&mute=1" frameborder="0" allowfullscreen=""></iframe>
+                                        <iframe class="youtube-player{% if block.settings.video_link_mb != blank %} slide-pc{% endif %}" id="player_{{ block.id }}" width="100%" height="100%" data-video-id="{{ block.settings.video_link }}" src="https://www.youtube.com/embed/{{ block.settings.video_link }}?enablejsapi=1&rel=0&autoplay={{ autoplay_youtube }}&mute=1" frameborder="0" allowfullscreen=""></iframe>
+                                        {%- if block.settings.video_link_mb != blank -%}
+                                            <iframe class="youtube-player slide-mobile" id="player_mb_{{ block.id }}" width="100%" height="100%" data-video-id="{{ block.settings.video_link_mb }}" src="https://www.youtube.com/embed/{{ block.settings.video_link_mb }}?enablejsapi=1&rel=0&autoplay={{ autoplay_youtube }}&mute=1" frameborder="0" allowfullscreen=""></iframe>
+                                        {%- endif -%}
                                     </div>
                                 </div>
-                                {% else %}
+                            {% else %}
                                 <div data-video-mp4 class="item slide-video item-video" id="slide-{{ block.id }}">
                                     <div class="fluid-width-video-wrapper">
-                                        <video class="video" muted playsinline preload="none" autoplay loop><source type="video/mp4" src="{{ block.settings.video_mp4_link }}"></video>
+                                        <video class="video{% if block.settings.video_mp4_link_mb != blank %} slide-pc{% endif %}" muted playsinline preload="none" autoplay loop><source type="video/mp4" src="{{ block.settings.video_mp4_link }}"></video>
+                                        {%- if block.settings.video_mp4_link_mb != blank -%}
+                                            <video class="video slide-mobile" muted playsinline preload="none" autoplay loop><source type="video/mp4" src="{{ block.settings.video_mp4_link_mb }}"></video>
+                                        {%- endif -%}
                                     </div>
                                 </div>
                             {% endif %}
                         {%- endif -%}
                         {%- if block.settings.heading != blank or block.settings.slide-des != blank or block.settings.button_slide != blank or section.settings.dots_shape == 'line' -%}
-                            <div class="slide-content content-box--absolute content-box--{{ block.settings.alignment }} text-{{ block.settings.text_alignment }} {% if block.settings.enable_custom_position %}custom_position{% endif %} {% if block.settings.enable_position_outside_image %}enable_position_outside_image{% endif %}" {% if block.settings.enable_custom_position %}style="--horizontal_position: {{ block.settings.custom_horizontal }}%;--vertical_position: {{ block.settings.custom_vertical }}%;--minus_horizontal_position: -{{ block.settings.custom_horizontal }}%;--minus_vertical_position: -{{ block.settings.custom_vertical }}%"{% endif %}>
+                            <div class="slide-content content-box--absolute content-box--{{ block.settings.alignment }} text-{{ block.settings.text_alignment }} {% if block.settings.enable_custom_position %}custom_position{% endif %} {% if block.settings.enable_position_outside_image %}enable_position_outside_image{% endif %}{% if block.settings.sub_heading_font == 'font_1' %} sub_heading_font_1{% endif %}" {% if block.settings.enable_custom_position %}style="--horizontal_position: {{ block.settings.custom_horizontal }}%;--vertical_position: {{ block.settings.custom_vertical }}%;--minus_horizontal_position: -{{ block.settings.custom_horizontal }}%;--minus_vertical_position: -{{ block.settings.custom_vertical }}%"{% endif %}>
                             {%- if block.settings.profile_name != blank or block.settings.profile_title != blank or block.settings.profile_picture != blank -%}
                                 <div class="slide-content__person slide-testimonial{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                                     {%- if block.settings.profile_picture != blank -%}
-                                        <img class="slide-content__person profile-image" src="{{ block.settings.profile_picture | image_url: width: 720, height: 720 }}" width={{ block.settings.profile_picture.width }} height={{ block.settings.profile_picture.height }} loading="lazy" />
+                                        <img class="slide-content__person profile-image" src="{{ block.settings.profile_picture | image_url: width: 720, height: 720 }}" width={{ block.settings.profile_picture.width }} height={{ block.settings.profile_picture.height }} {% unless settings.enable_layout_rtl %}loading="lazy"{% endunless %} />
                                     {%- else -%}
                                         <div class="slide-content__person profile-image empty"></div>
                                     {%- endif -%}
@@ -201,10 +213,10 @@
                             {%- if block.settings.sub_title_position == 'sub_title_above' -%}
                                 {%- if block.settings.sub_heading != blank or block.settings.sub_heading_mb != blank -%}
                                     {%- if block.settings.sub_heading != blank -%}
-                                    <h3 class="slide-sub slide-pc border--{{ block.settings.border_sub_heading }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: 0;{% endif %}--slide-sub-font-size-style: {{ block.settings.font_size_sub_heading | append: 'px' }}; --slide-sub-color-style: {{ block.settings.color_sub_heading }}; --sub-heading-spacing-bottom-style: {{ block.settings.sub_heading_spacing_bottom | append: 'px' }}; --font-weight-sub-heading-style: {{ block.settings.font_weight_sub_heading }}"><span>{{ block.settings.sub_heading }}</span></h3>
+                                    <h3 class="slide-sub slide-pc border--{{ block.settings.border_sub_heading }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: 0;{% endif %}--slide-sub-font-size-style: {{ block.settings.font_size_sub_heading | append: 'px' }}; --slide-sub-color-style: {{ block.settings.color_sub_heading }}; --sub-heading-spacing-bottom-style: {{ block.settings.sub_heading_spacing_bottom | append: 'px' }}; --font-weight-sub-heading-style: {{ block.settings.font_weight_sub_heading }}; --font-sub-heading-type:{%- if block.settings.sub_heading_font == 'font_1' -%}var(--font-tab-type-1){%- else -%}var(--font-tab-type-2){%- endif -%}"><span>{{ block.settings.sub_heading }}</span></h3>
                                     {%- endif -%}
                                     {%- if block.settings.sub_heading_mb != blank -%}
-                                    <h3 class="slide-sub slide-mobile border--{{ block.settings.border_sub_heading_mb }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: 0;{% endif %}--sub-heading-spacing-bottom-style: {{ block.settings.sub_heading_spacing_bottom_mb | append: 'px' }}; --font-weight-sub-heading-style: {{ block.settings.font_weight_sub_heading_mb }}"><span>{{ block.settings.sub_heading_mb }}</span></h3>
+                                    <h3 class="slide-sub slide-mobile border--{{ block.settings.border_sub_heading_mb }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: 0;{% endif %}--sub-heading-spacing-bottom-style: {{ block.settings.sub_heading_spacing_bottom_mb | append: 'px' }}; --font-weight-sub-heading-style: {{ block.settings.font_weight_sub_heading_mb }};--slide-sub-color-style: {{ block.settings.color_sub_heading }};"><span>{{ block.settings.sub_heading_mb }}</span></h3>
                                     {%- endif -%}
                                 {%- endif -%}
                             {%- endif -%}
@@ -275,7 +287,7 @@
                             {%- endif -%}
 
                             <style>
-                                .slide-block-{{ block.id }} .slide-content {width: {{ block.settings.content_width | append: 'px' }};padding-top: {{ block.settings.padding_vertical | minus: 5 | append: 'px' }};padding-bottom: {{ block.settings.padding_vertical | append: 'px' }}}
+                                .slide-block-{{ block.id }} .slide-content {width: {% if block.settings.enable_content_fullwidth %}100%{% else %}{{ block.settings.content_width | append: 'px' }}{% endif %};padding-top: {{ block.settings.padding_vertical | minus: 5 | append: 'px' }};padding-bottom: {{ block.settings.padding_vertical | append: 'px' }}}
                                 .slide-block-{{ block.id }} .slide-content .slide-text {max-width: 100%;margin-bottom: {{ block.settings.des_spacing_bottom | append: 'px' }}}
                                 .slide-block-{{ block.id }} .slide-content .slide-sub {
                                     {%- if block.settings.enable_border_line -%}font-family: var(--font-body-family);{%- endif -%}
@@ -301,7 +313,9 @@
                                     {%- endunless -%}
                                 {%- endif -%}
                                 .slide-block-{{ block.id }} .slide-content .slide-button { {% if block.settings.enable_button_link == false %}background:{% if block.settings.bg_button_gradient != blank %}{{ block.settings.bg_button_gradient }}{% else %}{{ block.settings.bg_button }}{% endif %};border-color:{{ block.settings.border_button }};{% endif %}color:{{ block.settings.color_button }}}
+                                .btn_1_br_outside .slide-block-{{ block.id }} .slide-content .slide-button:after {border-color:{{ block.settings.border_button }};}
                                 .slide-block-{{ block.id }} .slide-content .slide-button:hover { {% if block.settings.enable_button_link == false %}background:{% if block.settings.bg_button_gradient_hover != blank %}{{ block.settings.bg_button_gradient_hover }}{% else %}{{ block.settings.bg_button_hover }}{% endif %};border-color:{{ block.settings.border_button_hover }};{% endif %}color:{{ block.settings.color_button_hover }}}
+                                .btn_1_br_outside .slide-block-{{ block.id }} .slide-content .slide-button:hover:after {border-color:{{ block.settings.border_button_hover }};}
                                 
                                 .slide-block-{{ block.id }} .slide-content .slide-button:hover svg{fill: {{ block.settings.color_button_hover }}}
 
@@ -361,6 +375,9 @@
                                             .section-block-{{ section.id }} .slideshow .slick-dots li .dot {color: {{ block.settings.color_heading_mb }}}
                                         {%- endif -%}
                                     {%- endif -%}
+                                    .slide-block-{{ block.id }} .slide-content.sub_heading_font_1{
+                                        padding: 105px 10px 30px;
+                                    }
                                 }
                                 @media (max-width: 551px){
                                     .slide-block-{{ block.id }} .slide-content.enable_position_outside_image{position: initial;transform: none}
@@ -383,6 +400,7 @@
                                     {%- if block.settings.border_sub_heading == 'solid' -%}
                                         .slide-block-{{block.id}} .images-contain .adaptive_height.slide-pc{padding-top: 36.595745% !important}
                                         .slide-block-{{ block.id }} .slide-pc .slide-image img{min-height: 290px;width: 100%;object-fit: cover}
+                                        .btn_1_br_outside .slide-block-{{block.id}} .images-contain .adaptive_height.slide-pc{padding-top: 48.595745% !important}
                                     {%- endif -%}
                                     {%- if section.settings.dots_direction == 'left' or section.settings.dots_direction == 'right' -%} 
                                         .slide-block-{{ block.id }} .slide-content {width: 680px}
@@ -405,7 +423,7 @@
                         <div class="banner{% if section.settings.image_behavior != 'none' %} o-hidden{% endif %}">
                             {%- if block.settings.image != blank -%}
                                 <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="adaptive_height image" style="padding-top: {{ 1 | divided_by: preview_img.aspect_ratio | times: 100 }}%">
-                                    <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ img_url }}" {% unless settings.enable_lazyload %}src="{{ img_url }}"{% endunless %} alt="{{ preview_img.alt | escape }}" width="{{ preview_img.width }}" height="{{ preview_img.width | divided_by: preview_img.aspect_ratio }}" {% if settings.enable_lazyload and forloop.first == false %}class="lazyload" loading="lazy" {% elsif forloop.first %}src="{{ img_url }}"{% endif %}>
+                                    <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ img_url }}" {% unless settings.enable_lazyload %}src="{{ img_url }}"{% endunless %} alt="{{ preview_img.alt | escape }}" width="{{ preview_img.width }}" height="{{ preview_img.width | divided_by: preview_img.aspect_ratio }}" {% if settings.enable_lazyload and forloop.first == false %}class="lazyload" {% unless settings.enable_layout_rtl %}loading="lazy"{% endunless %} {% elsif forloop.first %}src="{{ img_url }}"{% endif %}>
                                     {% if settings.enable_lazyload and forloop.first == false %}<span class="data-lazy-loading"></span>{% endif %}</a>
                             {%- else -%}
                                 <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="banner"><div class="not_img" style="--height_not_img: 250px">250 x 250px</div></a>
@@ -422,9 +440,6 @@
         <div class="home-category-filter-sections{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--fade-in{% endif %}">{% render 'multi-level-category' %}</div>
         {%- endif -%}
     </div>
-    {%- if settings.banner_animation == 'none' and section.settings.image_behavior == 'zoom-in' -%}
-        <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
     <style>
         {%- liquid
             assign slideshow_background =  section.settings.slideshow_background
@@ -535,6 +550,14 @@
                 }
             {%- endif -%}
         {%- endif -%}
+
+        @media (max-width: 551px) {
+            .section-block-{{ section.id }} .item-video .fluid-width-video-wrapper {padding-top: {{ section.settings.video_height_mb }} !important}
+            .section-block-{{ section.id }} .item-video .fluid-width-video-wrapper video,
+            .section-block-{{ section.id }} .item-video .fluid-width-video-wrapper iframe {
+                object-fit: cover;
+            }
+        }
         
         @media (min-width: 768px) {
             {%- if section.settings.dots_opacity -%}
@@ -569,8 +592,20 @@
                         "label": "t:sections.layout.container.option4"
                     },
                     {
+                        "value": "1470",
+                        "label": "t:sections.layout.container.option5"
+                    },
+                    {
+                        "value": "1570",
+                        "label": "t:sections.layout.container.option6"
+                    },
+                    {
                         "value": "1770",
                         "label": "t:sections.layout.container.option3"
+                    },
+                    {
+                        "value": "1920",
+                        "label": "t:sections.layout.container.option9"
                     },
                     {
                         "value": "fullwidth",
@@ -915,6 +950,7 @@
                 }
               ],
               "default": "none",
+              "info": "t:sections.main-product.settings.general.image_behavior.info",
               "label": "t:sections.main-product.settings.general.image_behavior.label"
             },
             {
@@ -925,6 +961,13 @@
                 "type": "text",
                 "id": "video_height",
                 "label": "t:sections.slide-show.settings.video.video_height",
+                "default": "41.7%",
+                "info": "t:sections.slide-show.settings.video.info_video_height"
+            },
+            {
+                "type": "text",
+                "id": "video_height_mb",
+                "label": "t:sections.video.settings.video_height.label_1",
                 "default": "41.7%",
                 "info": "t:sections.slide-show.settings.video.info_video_height"
             },
@@ -1227,6 +1270,11 @@
                         "default": 475
                     },
                     {
+                        "type": "checkbox",
+                        "id": "enable_content_fullwidth",
+                        "label" : "t:sections.slide-show.blocks.image.slider_layout.enable_content_full"
+                    },
+                    {
                         "type": "color",
                         "id": "bg_color_content",
                         "label" : "t:sections.slide-show.blocks.image.slider_layout.bg_color_content"
@@ -1412,6 +1460,21 @@
                         "step": 1,
                         "unit": "t:sections.layout.fontsize.fontsize_title.unit",
                         "default": 20
+                    },
+                    {
+                        "type": "select",
+                        "id": "sub_heading_font",
+                        "label": "t:settings_schema.typography.settings.font_type.label",
+                        "options": [
+                        {
+                            "value": "font_1",
+                            "label": "t:settings_schema.typography.settings.font_family__1.content"
+                        },
+                        {
+                            "value": "font_2",
+                            "label": "t:settings_schema.typography.settings.font_family__2.content"
+                        }],
+                        "default": "font_2"
                     },
                     {
                         "type": "select",
@@ -1893,7 +1956,7 @@
                     },
                     {
                         "type" : "header",
-                        "content" : "t:sections.slide-show.blocks.image.slider_look.product_1"
+                        "content" : "t:sections.collection_lookbook.blocks.lookbook.settings.content_1"
                     },
                     {
                         "type" : "product",
@@ -1946,7 +2009,7 @@
                     },
                     {
                         "type" : "header",
-                        "content" : "t:sections.slide-show.blocks.image.slider_look.product_2"
+                        "content" : "t:sections.collection_lookbook.blocks.lookbook.settings.content_2"
                     },
                     {
                         "type" : "product",
@@ -1999,7 +2062,7 @@
                     },
                     {
                         "type" : "header",
-                        "content" : "t:sections.slide-show.blocks.image.slider_look.product_3"
+                        "content" : "t:sections.collection_lookbook.blocks.lookbook.settings.content_3"
                     },
                     {
                         "type" : "product",
@@ -2080,6 +2143,13 @@
                         "type": "text",
                         "id": "video_link",
                         "label": "t:sections.slide-show.blocks.video.video_link",
+                        "default": "eTCtDW7O1aM",
+                        "info": "[Find your YouTube video ID](https://www.youtube.com/watch?v=liJVSwOiiwg)."
+                    },
+                    {
+                        "type": "text",
+                        "id": "video_link_mb",
+                        "label": "t:sections.slide-show.blocks.video.video_link_mb",
                         "default": "eTCtDW7O1aM",
                         "info": "[Find your YouTube video ID](https://www.youtube.com/watch?v=liJVSwOiiwg)."
                     },
@@ -2186,6 +2256,11 @@
                         "type": "text",
                         "id": "video_mp4_link",
                         "label": "t:sections.slide-show.blocks.video.video_mp4_link"
+                    },
+                    {
+                        "type": "text",
+                        "id": "video_mp4_link_mb",
+                        "label": "t:sections.slide-show.blocks.video.video_mp4_link_mb"
                     },
                     {
                         "type": "header",

@@ -8,6 +8,7 @@
 	                dataRows = self.data('rows'),
 	                dataSlideRow = self.data('slide-rows'),
 	                dataArrow = self.data('arrow'),
+	                dataDots = self.data('dots'),
 	                dataMode = self.data('mode'),
 	                dataLimit = self.data('limit');
 	                
@@ -33,6 +34,7 @@
 					    }
 					},
 	              	arrows: dataArrow,
+	              	dots: dataDots,
 	              	nextArrow: window.arrows.icon_next,
                     prevArrow: window.arrows.icon_prev,
 	              	slidesToShow: dataRows,
@@ -114,4 +116,8 @@
 	    }
 	}
 	halo.initInstagramSlider();
+	if ($('body').hasClass('cursor-fixed__show')){
+		window.sharedFunctionsAnimation.onEnterButton();
+		window.sharedFunctionsAnimation.onLeaveButton();
+	}
 })(jQuery);

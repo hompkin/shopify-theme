@@ -252,6 +252,10 @@
     max-height: 45px;
 }
 
+.productView-stickyCart.subtotal-2 .sticky-actions .button {
+    width: auto;
+}
+
 .enable_gradient_button_card .sticky-actions .button{
     background: var(--gradient-button-card-color-left) !important;
     background: -moz-linear-gradient(left, var(--gradient-button-card-color-left) 0%, var(--gradient-button-card-color-right) 100%) !important;
@@ -361,6 +365,32 @@
     margin-bottom: 10px;
 }
 
+/* Fix sticky add to cart */
+body:not(.section-header-is-hidden) .productView-stickyCart.style-2 {
+    top: 55px;
+}
+
+.productView-stickyCart.style-2 .sticky-product-close {
+    top: -12px;
+    right: 0px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productView-stickyCart.style-2 .sticky-product-close svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.productView-stickyCart.style-2 .sticky-title {
+    padding-right: 20px;
+    -webkit-line-clamp: 2;
+}
+/* Fix sticky add to cart */
+
 @media (max-width: 991px) {
     .productView-stickyCart.style-1 .sticky-actions .quantity__group {
         display: none;
@@ -468,9 +498,15 @@
         padding: 8px;
     }
 
-    .productView-stickyCart.style-2 .sticky-product-close {
-        right: -10px;
+    /* START: Sticky add to cart always mobile */
+    .productView-stickyCart.style-1.always-on-mobile {
+        top: auto;
+        bottom: 0;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: visible;   
     }
+    /* END: Sticky add to cart always mobile */
 }
 
 @media (max-width: 550px){
@@ -495,6 +531,30 @@
     .productView-stickyCart.full-sticky .sticky-product-expand{
         display: none;
     }
+
+    /* Fix sticky add to cart */
+    .productView-stickyCart.style-2 {
+        top: 5px;
+    }
+    
+    body:not(.section-header-is-hidden) .productView-stickyCart.style-2 {
+        top: 55px;
+    }
+
+    .productView-stickyCart.style-2 .sticky-product-close {
+        top: -5px;
+        right: 2px;
+        width: 20px;
+        height: 20px;
+        background: var(--color-white);
+        border-radius: 50%;
+        box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
+    }
+
+    .productView-stickyCart.full-sticky .sticky-product-close {
+        box-shadow: none;
+    }
+    /* Fix sticky add to cart */
 }
 
 @media (min-width: 551px){
@@ -555,6 +615,12 @@
     .sticky-wishlist a:hover .icon{
         fill: var(--product-wishlist-color-added);
     }
+
+    /* Fix sticky add to cart */
+    body:not(.section-header-is-hidden) .productView-stickyCart.style-2 {
+        top: calc(var(--header-height) + 5px);
+    }
+    /* Fix sticky add to cart */
 }
 
 @media (min-width: 1600px){

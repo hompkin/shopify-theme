@@ -53,6 +53,7 @@
 
     assign press_bg = section.settings.press_bg
     assign press_gradient = section.settings.press_gradient
+    assign press_bg_image = section.settings.press_bg_image
     assign title_align = 'left'
 
     assign item_spacing = section.settings.item_spacing | append: 'px'
@@ -102,11 +103,14 @@
   </div>
 </div> 
 <style>
-    .section-block-{{section.id}} {
-        {%- if press_gradient != blank and press_gradient != 'rgba(0,0,0,0)' -%}
-            background: {{ press_gradient }};
-        {%- elsif press_bg != blank and press_bg != 'rgba(0,0,0,0)' -%}
-            background-color: {{ press_bg }};
+    {%- if press_bg_image != blank -%}
+        .section-block-{{section.id}} {background: url({{ press_bg_image | img_url: '1920x' }});background-repeat: repeat-x;background-size: cover}
+    {%- else -%}
+        .section-block-{{section.id}} {background: {% if press_gradient != blank %}{{ press_gradient }}{% else %}{{ press_bg }}{% endif %}}
+    {%- endif -%}
+    @media (max-width: 1024px) {
+        {%- if press_bg_image != blank -%}
+            .section-block-{{section.id}} {background-position: center top}
         {%- endif -%}
     }
     @media (min-width: 1200px) {.section-block-{{section.id}} {padding-top: {{ mg_top_desktop }}; padding-bottom: {{ mg_bottom_desktop }}; } }
@@ -231,6 +235,22 @@
         "step": 5,
         "unit": "t:sections.layout.mg_desktop.unit",
         "default": 50
+    },
+    {
+        "type" : "color",
+        "id" : "press_bg",
+        "label": "t:settings_schema.colors.settings.colors_name.background_color",
+        "default" : "#fafafa"
+    },
+    {
+        "type" : "color_background",
+        "id" : "press_gradient",
+        "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+    },
+    {
+        "type" : "image_picker",
+        "id" : "press_bg_image",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_image"
     },
     {
         "type": "header",
@@ -644,17 +664,6 @@
         }]
     },
     {
-        "type" : "color",
-        "id" : "press_bg",
-        "label": "t:settings_schema.colors.settings.colors_name.background_color",
-        "default" : "#fafafa"
-    },
-    {
-        "type" : "color_background",
-        "id" : "press_gradient",
-        "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-    },
-    {
       "type": "header",
       "content": "t:sections.main-product.settings.general.animation"
     },
@@ -676,6 +685,7 @@
         }
       ],
       "default": "none",
+      "info": "t:sections.main-product.settings.general.image_behavior.info",
       "label": "t:sections.main-product.settings.general.image_behavior.label"
     }],
     "presets": [

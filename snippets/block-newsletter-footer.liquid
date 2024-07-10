@@ -11,12 +11,12 @@
         <div class="newsletter-form__field-wrapper">
             <div class="field">
                 <label class="field__label hiddenLabels" for="NewsletterForm--{{ section.id }}">{{ 'newsletter.label' | t }}</label>
-                <input id="NewsletterForm--{{ section.id }}" type="email" name="contact[email]" class="field__input form-input-placeholder" value="{{ form.email }}" aria-required="true" autocorrect="off" autocapitalize="off" autocomplete="email"{% if form.errors %} autofocus aria-invalid="true" aria-describedby="ContactFooter-error"{% elsif form.posted_successfully? %} aria-describedby="ContactFooter-success"{% endif %} placeholder="{{ input_text }}">
+                <input id="NewsletterForm--{{ section.id }}" type="email" name="contact[email]" class="field__input form-input-placeholder" value="{{ form.email }}" aria-required="true" autocorrect="off" autocapitalize="off" autocomplete="email"{% if form.errors %} autofocus aria-invalid="true" aria-describedby="ContactFooter-error"{% elsif form.posted_successfully? %} aria-describedby="ContactFooter-success"{% endif %} placeholder="{{ input_text }}" required="required">
             </div>
             {%- if block.settings.enable_deep_button_border -%}
             <div class="submit-button-wrapper">
             {%- endif -%} 
-            <button type="submit" {% if check_text != blank %}disabled{% endif %} class="button newsletter-form__button" name="commit" id="Subscribe--{{ section.id }}" aria-label="{{ 'newsletter.button_label' | t }}" style="--button-width: {{ button_width }}">{{ button_text }}</button>   
+            <button type="submit" {% if check_text != blank %}disabled{% endif %} class="button newsletter-form__button" name="commit" id="Subscribe--{{ section.id }}" aria-label="{{ 'newsletter.button_label' | t }}" style="--button-width: {{ button_width }}">{% if settings.enable_button_1_border_outside %}<span>{% endif %}{{ button_text }}{% if settings.enable_button_1_border_outside %}</span>{% endif %}</button>   
             {%- if block.settings.enable_deep_button_border -%}
             </div>
             {%- endif -%}
@@ -145,6 +145,7 @@
             background-color: {{ button_color_bg }};
         {%- endif -%}
     }
+    .btn_1_br_outside .footer-block__newsletter .newsletter-form__button span:after {border: 1px solid {{ button_color_border }};}
     .footer-7 .footer-block__newsletter .newsletter-form__field-wrapper .button svg {fill: {{ button_color }}}
     .footer-7 .footer-block__newsletter .newsletter-form__field-wrapper .button:hover svg {fill: {{ button_color_hover }}}
     .footer-block__newsletter .newsletter-form__button:hover {color: {{ button_color_hover }};border: 1px solid {{ button_color_border_hover }};
@@ -154,6 +155,7 @@
             background-color: {{ button_color_bg_hover }};
         {%- endif -%}
     }
+    .btn_1_br_outside .footer-block__newsletter .newsletter-form__button:hover span:after {border: 1px solid {{ button_color_border_hover }};}
     .footer-block__newsletter .form--check p,.footer-block__newsletter .form--check a {color: {{ check_text_color }};font-size: {{ check_text_fontsize }};cursor: pointer}
     .footer-block__newsletter .form--check label:before,.footer-block__newsletter .form--check label:after {border-color: {{ check_input_color }}}
     .newsletter__style2 .newsletter-form__field-wrapper {border: 1px solid {{ check_input_color }};padding: 10px}

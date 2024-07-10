@@ -62,5 +62,13 @@
             loading: true
         %}  
         <button class="close-dialog-button" data-close-lookbook-dialog-button>&times;</button>
+        {% if settings.enable_following_cursor and settings.following_cursor_style == 'default' %}
+            <cursor-fixed-lookbook class="cursor-fixed top-0 left-0 pos-fixed e-none" style="--color-cursor: {{ settings.colors_following_cursor.red }},{{ settings.colors_following_cursor.green }},{{ settings.colors_following_cursor.blue }}">
+                <div class="cursor-fixed__wrap">
+                    <div class="cursor cursor--large pos-fixed b-circle"></div>
+                    <div class="cursor cursor--small pos-fixed b-circle"></div>
+                </div>
+            </cursor-fixed-lookbook>
+        {%- endif -%}
     </dialog>
 </{% if lookbook_style == "1" %}lookbook-dialog-dot{% else %}div{% endif %}>

@@ -67,7 +67,7 @@
             {%- for block in section.blocks -%} 
                 {%- assign preview_img = block.settings.image -%}
                 <div class="instagram-item{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
-                    <a class="adaptive_height image-zoom fancybox" rel="gallery1" href="{{ preview_img | img_url: 'master' }}" data-fancybox="images" style="padding-top: {% unless preview_img.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 120 | append: '%' }}{% else %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 100 | append: '%' }}{% endunless %}"><img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}" loading="lazy"{% if settings.enable_lazyload %} class="lazyload"{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
+                    <a class="adaptive_height image-zoom fancybox" rel="gallery1" href="{{ preview_img | img_url: 'master' }}" data-fancybox="images" style="padding-top: {% unless preview_img.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 120 | append: '%' }}{% else %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 100 | append: '%' }}{% endunless %}"><img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}"{% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{% if settings.enable_lazyload %} class="lazyload"{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
                         {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}</a>    
                 </div>
             {%- endfor -%}
@@ -205,7 +205,7 @@
         {
             "type": "text",
             "id": "section_title",
-            "label": "t:settings_schema.newsletter_popup.settings.general.label__7",
+            "label": "t:sections.general.settings.content.label__1",
             "default": "Sign up for our newsletter"
         },
         {
@@ -348,12 +348,6 @@
             "step": 1,
             "unit": "px"
         },
-        {   
-            "type": "text",
-            "id": "section_placeholder",
-            "label": "t:sections.general.settings.article.label__8",
-            "default": "Your email address"
-        },
         {
             "type" : "text",
             "id" : "button_text",
@@ -473,7 +467,7 @@
         {
             "type": "select",
             "id": "button_font_weight",
-            "label": "t:settings_schema.typography.settings.typography.sub_title_font_weight",
+            "label": "t:settings_schema.typography.settings.typography.button_font_weight",
             "default": "600",
             "options": [
             {   

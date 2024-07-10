@@ -13,7 +13,7 @@
     assign show_filter = section.settings.show_filter
     assign sidebar_type = section.settings.sidebar_type
     assign sidebar_position = section.settings.sidebar_position
-    assign show_sidebar_collapse = section.settings.show_sidebar_collapse
+    assign sidebar_collapse = section.settings.sidebar_collapse
     assign sidebar_collapse_default = section.settings.sidebar_collapse_default
     if show_sidebar
         if show_filter
@@ -50,6 +50,10 @@
     assign image_ratio = section.settings.image_ratio
     assign portrait_aspect_ratio = section.settings.portrait_aspect_ratio
     assign show_infinite_scrolling = section.settings.show_infinite_scrolling
+    assign product_space_between_vert_desk = section.settings.product_space_between_vert_desk
+    assign product_space_between_vert_mb = section.settings.product_space_between_vert_mb
+    assign product_space_between_horiz_desk = section.settings.product_space_between_horiz_desk
+    assign product_space_between_horiz_mb = section.settings.product_space_between_horiz_mb
 -%}
 
 <style type="text/css" media="screen">
@@ -73,7 +77,7 @@
     #CollectionSection-{{ section.id }}{padding-top: {{ padding_top }};padding-bottom: {{ padding_bottom }}}
 
     {%- if has_sidebar -%}
-        #CollectionSection-{{ section.id }} .sidebarBlock-heading{font-family: var(--sidebar-heading-font);font-size: {{ sidebar_heading_font_size | append: 'px' }};font-weight: {{ sidebar_heading_font_weight }};text-transform: {{ sidebar_heading_text_transform }}}
+        #CollectionSection-{{ section.id }} .sidebarBlock-heading, .sidebarBlock .sidebarBlock-slide__content-close{font-family: var(--sidebar-heading-font);font-size: {{ sidebar_heading_font_size | append: 'px' }};font-weight: {{ sidebar_heading_font_weight }};text-transform: {{ sidebar_heading_text_transform }}}
     {%- endif -%}
 
     @media (max-width: 1024px) {#CollectionSection-{{ section.id }}{padding-top: {{ padding_top_tablet }};padding-bottom: {{ padding_bottom_tablet }}}}
@@ -98,7 +102,7 @@
                             sidebar_type: sidebar_type,
                             show_filter: show_filter,
                             show_sorting: show_sorting,
-                            show_collapse: show_sidebar_collapse,
+                            show_collapse: sidebar_collapse,
                             sidebar_collapse: sidebar_collapse_default,
                             filter_swatch: filter_swatch,
                             filter_swatch_type: filter_swatch_type,
@@ -180,7 +184,14 @@
                         </div>
                     {%- else -%}
                         <div class="collection{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
-                            <ul class="productListing{% if layout == '1' %} productList{% else %} productGrid column-{{ layout }}{% endif %} list-{{ layout }} list-unstyled" id="main-collection-product-grid" data-id="{{ section.id }}">
+                            <ul class="productListing{% if layout == '1' %} productList{% else %} productGrid column-{{ layout }}{% endif %} list-{{ layout }} list-unstyled" id="main-collection-product-grid" data-id="{{ section.id }}"
+                                style="
+                                    --space-between-vert-desk: {{product_space_between_vert_desk}}px; 
+                                    --space-between-vert-mb: {{product_space_between_vert_mb}}px;
+                                    --space-between-horiz-desk: {{product_space_between_horiz_desk}}px; 
+                                    --space-between-horiz-mb: {{product_space_between_horiz_mb}}px;
+                                "
+                            >
                                 {%- for product in collection.products -%}
                                     <li class="product{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} style="--animation-order: {{ forloop.index }};"{% endif %}>
                                         {% render 'product-grid-layout',

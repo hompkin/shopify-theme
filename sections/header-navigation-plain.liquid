@@ -2,6 +2,7 @@
 
 <style>
     @media screen and (min-width: 1025px) {
+        body:not([allow-transparency]) .header-navigation {position: static !important;}
         .header-nav-plain:not(.header-plain--transparent),.scrolled-past-header .header-plain--transparent {
             {%- if section.settings.header_navigation_bg_gradient != 'rgba(0,0,0,0)' and section.settings.header_navigation_bg_gradient != blank -%}
                  background: {{ section.settings.header_navigation_bg_gradient }}
@@ -41,7 +42,7 @@
         {%- case block.type -%}
             {%- when 'logo' -%}
                 <div class="header-logo header-item header-item--side d-flex flex-align-center d-flex fs-0 fg-0 pt-2 pb-5{% if block.settings.logo_position == 'main_menu'%} show-main-menu{% elsif block.settings.logo_position == 'sticky_menu'%} hide-main-menu{% else %}{% endif %}" style="--logo_font_size: {{block.settings.logo_font_size | append: 'px'}};--logo_font_weight: {{block.settings.logo_font_weight}};--logo_text_transform: {{block.settings.logo_text_transform}};--logo_text_color: {{block.settings.logo_color}};--logo_width: {{block.settings.logo_width | append: 'px'}};--logo_width_sticky: {{block.settings.logo_width_fixed | append: '%'}}">
-                    <div class="header__heading d-inline-block">
+                    <{% if request.page_type == 'index' %}h1{% else %}div{% endif %} class="header__heading d-inline-block">
                         <a href="{{ routes.root_url }}" class="header__heading-link focus-inset">
                             {%- liquid 
                                 assign logo_transparent = block.settings.logo_transparent
@@ -69,7 +70,7 @@
                                 <span class="header__heading-text {{ block.settings.logo_text_transform }} d-block">{{ shop.name }}</span>
                             {%- endif -%}
                         </a>
-                    </div>
+                    </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                 </div>
             {%- when 'main_menu' -%}
             <div class="main-menu header-item p-static w-100 d-flex flex-align-center{% if block.settings.label_position == 'none' %} label-none{% elsif block.settings.label_position == 'main_menu' %} label-main-menu{% if block.settings.new_label_1 != blank or block.settings.sale_label_1 != blank or block.settings.hot_label_1 != blank%} main-menu-hasLabel{% endif %}{% else %}{% endif %}{% if block.settings.menu_top_spacing <= 16 %} label-small{% endif %}">
@@ -139,7 +140,13 @@
                         {% endif %}
                         <div class="header--account header--icon-border h-100 d-flex flex-align-center p-relative{% if block.settings.show_customer_sticky %}{% if block.settings.show_customer %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_customer %} show-main-menu{% endif %}{% endif %}">
                             <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account stroke-icon link link--text"{% if is_contained %} data-open-auth-sidebar{% endif %}>
-                                {% render 'icon-account-2', class: 'icon w-h-24 stroke-w-15' %}
+                                {%- if customer and customer.has_avatar? -%}
+                                    <account-icon>
+                                        {{ customer | avatar }}
+                                    </account-icon>
+                                {%- else -%}
+                                    {% render 'icon-account-2', class: 'icon w-h-24 stroke-w-15' %}
+                                {%- endif -%}
                                 <span class="visually-hidden">
                                     {%- liquid
                                       if customer
@@ -156,7 +163,7 @@
                 {%- if settings.show_wishlist -%}
                     {%- if block.settings.show_wishlist or block.settings.show_wishlist_sticky -%}
                         <div class="header--wishlist header--icon-border d-flex flex-align-center h-100 d-flex p-relative{% if block.settings.show_wishlist_sticky %}{% if block.settings.show_wishlist %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_wishlist %} show-main-menu{% endif %}{% endif %}">
-                            <a href="{{ pages['wish-list'].url }}" class="header__icon header__icon--wishlist link link--text focus-inset">
+                            <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset">
                                 {% render 'icon-heart-2', class: 'w-h-25' %}
                                 <span class="visually-hidden">{{ 'wishlist.general.wishlist' | t }}</span>
                             </a>

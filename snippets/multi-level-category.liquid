@@ -198,9 +198,7 @@
         buildSelect(1, list);
         
         var level = 1;
-        if($("body").hasClass('template-index')){
-            jQuery.cookie('multiLevelCategory', '');
-        }
+        jQuery.cookie('multiLevelCategory', '');
         
         if(jQuery.cookie('multiLevelCategory') != ''){
             var active = jQuery.cookie('multiLevelCategory').split(",");

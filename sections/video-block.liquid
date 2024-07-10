@@ -3,8 +3,7 @@
 {%- liquid
   assign autoVideo = section.settings.autoplay
 -%}
-<div class="video-section section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" 
-    data-loader-script="{%- if autoVideo -%}{{ 'autoplay-video.js' | asset_url }}{%- else -%}{{ 'deferred-media.js' | asset_url }}{%- endif -%}">
+<div class="video-section section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" allow-transparent-header data-loader-script="{%- if autoVideo -%}{{ 'autoplay-video.js' | asset_url }}{%- else -%}{{ 'deferred-media.js' | asset_url }}{%- endif -%}">
   <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
       {% if section.settings.video_block_title != blank %}
           <div class="halo-block-header text-{{ section.settings.title_align }}">
@@ -39,7 +38,7 @@
                 src="{{ section.settings.cover_image | img_url: '1920x' }}"
                 sizes="{% if section.settings.full_width %}100vw{% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw{% endif %}"
                 alt="{{ 'sections.video.load_video' | t: description: section.settings.description | escape }}"
-                loading="lazy"
+                {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}
                 width="{{ section.settings.cover_image.width }}"
                 height="{{ section.settings.cover_image.height }}"
               >
@@ -74,7 +73,7 @@
               src="{{ section.settings.cover_image | img_url: '1920x' }}"
               sizes="{% if section.settings.full_width %}100vw{% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw{% endif %}"
               alt="{{ 'sections.video.load_video' | t: description: section.settings.description | escape }}"
-              loading="lazy"
+              {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}
               width="{{ section.settings.cover_image.width }}"
               height="{{ section.settings.cover_image.height }}"
             >

@@ -52,7 +52,9 @@ class Toolbar extends HTMLElement {
                 dropdownButton.addEventListener('click', this.onClickDropdownButtonHandler.bind(this));
             });
 
-            document.body.addEventListener('click', this.onBodyClickEvent.bind(this));
+            window.addEventListener('load', () => {
+                document.body.addEventListener('click', this.onBodyClickEvent.bind(this));
+            });
         }
 
         if(this.querySelector('[data-sorting]')){

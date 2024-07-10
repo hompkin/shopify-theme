@@ -6,7 +6,7 @@
     assign color = ''
     assign count = 0
 -%}
-{%- if variantCount > 1 and product.variants.first.title != 'Default Title' -%}
+{%- if variantCount > 0 and product.variants.first.title != 'Default Title' -%}
     <div class="card-swatch text-{{ settings.product_content_text_align }} clearfix{% if settings.quick_shop_type == '2' %} quick_shop_type_2{% endif %}" id="product-swatch-{{ product.id }}">
         <ul class="swatch list-unstyled">
             {%- for variant in product.variants -%}
@@ -48,8 +48,7 @@
                     {%- if count < 4 -%}
                         <li class="item">
                             <div class="item-wrapper clearfix">
-                                <label{% if product.options_with_values.size == 1 %} data-with-one-option="{{ variant.id }}" data-quantity="{% if variant.available %}1{% else %}0{% endif %}" {% endif %} class="swatch-label
-                                {% unless settings.quick_shop_type == '2' %}{% if variant_selected != blank %}{% if variant_selected == text %} is-active{% endif %}{% else %}{% if count == 0 %} is-active{% endif %}{% endif %}{% endunless %}{% if product.options_with_values.size == 1 and variant.unavailable %} is-soldout{% endif %}" data-value="{{ text }}" data-variant-id="{{ variant.id }}" title="{{ color | strip }}" {% if variant.image != null -%} data-variant-img="{{ variant.image.src | product_img_url: '800x' }}"{% endif %}>
+                                <label{% if product.options_with_values.size == 1 %} data-with-one-option="{{ variant.id }}" data-quantity="{% if variant.available %}1{% else %}0{% endif %}" {% endif %} class="swatch-label{% if settings.show_quick_shop %}{% unless settings.quick_shop_type == '2' %}{% if variant_selected != blank %}{% if variant_selected == text %} is-active{% endif %}{% else %}{% if count == 0 %} is-active{% endif %}{% endif %}{% endunless %}{% endif %}{% if product.options_with_values.size == 1 and variant.unavailable %} is-soldout{% endif %}" data-value="{{ text }}" data-variant-id="{{ variant.id }}" title="{{ color | strip }}" {% if variant.image != null -%} data-variant-img="{{ variant.image.src | product_img_url: '800x' }}"{% endif %}>
                                     <span
                                         class="pattern"
                                         style="background-color: {{ color | split: ' ' | last | handle }};{% if enable_variant_image %}{% if swatch_type == 'metafields' %}{% if color_codes %} background: {{ background_color }}{% else %} background: url({{ background_image }}); background-size: cover;{% endif %}{% else %} background-image: url({{ background_image }});{% endif %}{% endif %}"
@@ -64,7 +63,7 @@
                             <li class="group-swatch" style="display: none">
                         {%- endif -%}
                             <div class="item-wrapper clearfix">
-                                <label{% if product.options_with_values.size == 1 %} data-with-one-option="{{ variant.id }}" data-quantity="{% if variant.available %}1{% else %}0{% endif %}"{% endif %} class="swatch-label{% unless settings.quick_shop_type == '2' %}{% if variant_selected != blank %}{% if variant_selected == text %} is-active{% endif %}{% else %}{% if count == 0 %} is-active{% endif %}{% endif %}{% endunless %}{% if product.options_with_values.size == 1 and variant.unavailable %} is-soldout{% endif %}" data-value="{{ text }}" data-variant-id="{{ variant.id }}" title="{{ color | strip }}" {% if variant.image != null %} data-variant-img="{{ variant.image.src | product_img_url: '800x' }}"{% endif %}>
+                                <label{% if product.options_with_values.size == 1 %} data-with-one-option="{{ variant.id }}" data-quantity="{% if variant.available %}1{% else %}0{% endif %}"{% endif %} class="swatch-label{% if settings.show_quick_shop %}{% unless settings.quick_shop_type == '2' %}{% if variant_selected != blank %}{% if variant_selected == text %} is-active{% endif %}{% else %}{% if count == 0 %} is-active{% endif %}{% endif %}{% endunless %}{% endif %}{% if product.options_with_values.size == 1 and variant.unavailable %} is-soldout{% endif %}" data-value="{{ text }}" data-variant-id="{{ variant.id }}" title="{{ color | strip }}" {% if variant.image != null %} data-variant-img="{{ variant.image.src | product_img_url: '800x' }}"{% endif %}>
                                     <span
                                         class="pattern"
                                         style="background-color: {{ color | split: ' ' | last | handle }};{% if enable_variant_image %}{% if swatch_type == 'metafields' %}{% if color_codes %} background: {{ background_color }}{% else %} background: url({{ background_image }}); background-size: cover;{% endif %}{% else %} background-image: url({{ background_image }});{% endif %}{% endif %}"

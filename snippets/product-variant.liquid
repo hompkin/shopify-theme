@@ -4,7 +4,7 @@
     assign enable_border_bottom = block.settings.enable_border_bottom
     assign color_border = block.settings.color_border
 -%}
-<div class="productView-options{% if enable_border_top %} has-border-top{% endif %}{% if enable_border_bottom %} has-border-bottom{% endif %}" style="--color-border: {{ color_border }}">
+<div class="productView-options{% if enable_border_top %} has-border-top{% endif %}{% if enable_border_bottom %} has-border-bottom{% endif %}" style="--color-border: {{ color_border }}" data-lang="{{ request.locale.iso_code | downcase }}" data-default-lang="{{ localization.country.iso_code | downcase }}">
     {%- if variantCount > 0  and product.has_only_default_variant != true -%}
         <div class="productView-variants halo-productOptions" id="product-option-{{ product.id }}"  data-type="{{ picker_type }}">
             {%- if picker_type == 'button' -%}
@@ -64,7 +64,10 @@
                                         name="{{ option.name }}"
                                         value="{{ value | escape }}"
                                         {% if option.selected_value == value %}checked{% endif %}
-                                        {% if is_swatch and show_variant_image_group %}data-filter=".filter-{{ value | handle }}"{% endif %}
+                                        {% if is_swatch and show_variant_image_group %}
+                                            data-filter=".filter-{{ value | handle }}"
+                                            data-metafields-vig="{{ variant.metafields.custom.variant_image_group }}"
+                                        {% endif %}
                                         data-variant-id="{{ variant.id }}"
                                     >
                                     {%- if is_swatch -%}
@@ -105,7 +108,7 @@
                                             ></span>
                                             {% if swatch_type == 'variant_image' and variant.image %}
                                                 <span class="expand">
-                                                    <img srcset="{{ variant.image.src | product_img_url: '75x'}}" src="{{ variant.image.src | product_img_url: '75x'}}" sizes="auto" loading="lazy">
+                                                    <img srcset="{{ variant.image.src | product_img_url: '75x'}}" src="{{ variant.image.src | product_img_url: '75x'}}" sizes="75px" loading="lazy">
                                                 </span>
                                             {% endif %}
                                         </label>

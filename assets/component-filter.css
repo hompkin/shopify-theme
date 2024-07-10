@@ -372,14 +372,29 @@
     position: relative;
     margin-top: 5px;
     margin-bottom: 30px;
-} 
+    opacity: 0;
+}
 
 .facets-horizontal .facets__price--slide {
     margin-bottom: 0;
 }
 
-.facets__price--slide::after,
-.facets__price--slide::before {
+.chrome .facets__price--slide,
+.safari .facets__price--slide {
+    animation: filterFadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes filterFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+body:not(.firefox) .facets__price--slide::after,
+body:not(.firefox) .facets__price--slide::before {
     content: '';
     position: absolute;
     top: -3px;
@@ -430,20 +445,6 @@
     margin-top: -8px;
 }
 
-.facets__price--slide input[type=range]::-moz-range-thumb {
-    position: relative;
-    z-index: 2;
-    box-shadow: none;
-    border: 6px solid var(--icon);
-    height: 22px;
-    width: 22px;
-    border-radius: 50%;
-    background: #ffffff;
-    cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -8px;
-}
-
 .facets__price--slide input[type=range]::-ms-thumb {
     position: relative;
     z-index: 2;
@@ -459,17 +460,6 @@
 }
 
 .facets__price--slide input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 6px;
-    cursor: pointer;
-    animation: 0.2s;
-    background: var(--icon);
-    border-radius: 1px;
-    box-shadow: none;
-    border: none;
-}
-
-.facets__price--slide input[type=range]::-moz-range-track {
     width: 100%;
     height: 6px;
     cursor: pointer;
@@ -498,6 +488,48 @@
     box-shadow: none;
     border: none;
 }
+
+/* Firefox */
+
+.firefox .facets__price--slide input[type=range] {
+    pointer-events: none;
+}
+
+.firefox .facets__price--slide input[type=range]:nth-child(1) {
+    z-index: 1;
+}
+
+.facets__price--slide input[type=range]::-moz-range-thumb {
+    box-shadow: none;
+    border: 6px solid var(--icon);
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -8px;
+    pointer-events: all;
+}
+
+.facets__price--slide input[type=range]:nth-child(1)::-moz-range-progress,
+.facets__price--slide input[type=range]:nth-child(2)::-moz-range-track {
+    height: 6px;
+    background-color: lightgray;
+}
+
+.facets__price--slide input[type=range]:nth-child(1)::-moz-range-track {
+    height: 6px;
+    background-color: transparent;
+}   
+
+.facets__price--slide input[type=range]:nth-child(2)::-moz-range-progress {
+    height: 6px;
+    background-color: var(--icon);
+}
+
+/* End Firefox */
+
 
 #CollectionFiltersForm .refined-widgets .sidebarBlock-heading {
     display: flex;

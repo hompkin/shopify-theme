@@ -22,7 +22,7 @@
             <a class="product-edit-image card-media--adapt" href="{{ product.url | within: collection }}"
                     style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;"
             >
-                <img srcset="{{ image | img_url: '270x' }}" src="{{ image | img_url: '270x' }}" alt="{{ product.title | escape }}" sizes="auto" loading="lazy">
+                <img srcset="{{ image | img_url: '270x' }}" src="{{ image | img_url: '270x' }}" alt="{{ product.title | escape }}" sizes="270px" loading="lazy">
             </a>
             <a href="javascript:void(0)" class="product-edit-remove" data-edit-cart-remove>
                 {% render 'icon-close' %}
@@ -53,16 +53,17 @@
                 <span class="quantity__message"></span>
             </quantity-edit-cart-input>
             {%- if settings.show_notify_form -%}
+                {%- assign form_id = 'product-edit-cart-notify-form-' | append: product.id -%}
                 <div class="product-edit-notifyMe halo-notifyMe" style="display: none;">
                     {% render 'halo-notify-sold-out',
                         id: product.id,
+                        id_form: form_id,
                         current_variant: current_variant
                     %}
                 </div>
             {%- endif -%}
         </div>
         <div class="product-edit-itemRight">
-            
             {%- assign product_form_id = 'product-form-edit-' | append: product.id -%}
             {% form 'product', product, id: product_form_id, novalidate: 'novalidate' %}
                 <input type="hidden" name="id" value="{{ current_variant.id }}">
@@ -90,6 +91,12 @@
                                         </span>
                                     </legend>
                                     {%- assign values = '' -%}
+                                    {%- liquid
+                                        assign variants_available_arr = product.variants | map: 'available'
+                                        assign variants_option1_arr = product.variants | map: 'option1'
+                                        assign variants_option2_arr = product.variants | map: 'option2'
+                                        assign variants_option3_arr = product.variants | map: 'option3'
+                                    -%}
                                     {%- for variant in product.variants -%}
                                         {%- assign value = variant.options[option_index] -%}
                                         {%- unless values contains value -%}
@@ -97,9 +104,27 @@
                                                 assign values = values | join: ';'
                                                 assign values = values | append: ';' | append: value
                                                 assign values = values | split: ';'
+                                                assign option_stock = 'soldout'
+
+                                                for option1_name in variants_option1_arr
+                                                    case option.position
+                                                        when 1
+                                                            if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                assign option_stock = 'available'
+                                                            endif
+                                                        when 2
+                                                            if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                assign option_stock = 'available'
+                                                            endif
+                                                        when 3
+                                                            if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                                                assign option_stock = 'available'
+                                                            endif
+                                                    endcase
+                                                endfor
                                             -%}
                                             <input class="product-form__radio" type="radio" id="option-edit-{{ product.id }}-{{ option.name }}-{{ forloop.index0 }}"
-                                                name="{{ option.name }}"
+                                                name="edit-cart-{{ option.name }}"
                                                 value="{{ value | escape }}"
                                                 {% if option.selected_value == value %}checked{% endif %}
                                             >
@@ -134,14 +159,14 @@
                                                             endif
                                                     endcase
                                                 -%}
-                                                <label class="product-form__label {% if variant.available %} available{% else %} soldout{% endif %}" for="option-edit-{{ product.id }}-{{ option.name }}-{{ forloop.index0 }}">
+                                                <label class="product-form__label {{ option_stock }}" for="option-edit-{{ product.id }}-{{ option.name }}-{{ forloop.index0 }}">
                                                     <span
                                                         class="pattern"
                                                         style="background-color: {{ value | split: ' ' | last | handle }};{% if enable_variant_image %}{% if swatch_type == 'metafields' %}{% if color_codes %} background: {{ background_color }}{% else %} background: url({{ background_image }}); background-size: cover;{% endif %}{% else %} background-image: url({{ background_image }});{% endif %}{% endif %}"
                                                     ></span>
                                                 </label>
                                             {%- else -%}   
-                                                <label class="product-form__label{% if variant.available %} available{% else %} soldout{% endif %}" for="option-edit-{{ product.id }}-{{ option.name }}-{{ forloop.index0 }}">
+                                                <label class="product-form__label {{ option_stock }}" for="option-edit-{{ product.id }}-{{ option.name }}-{{ forloop.index0 }}">
                                                     <span class="text">{{ value }}</span>
                                                 </label>
                                             {%- endif -%}

@@ -396,10 +396,6 @@
 		top: calc(50% - 10px);
 	}
 
-	.bottom-bar--list span{
-		font-size: calc(var(--font-body-size) - 4px) !important;
-	}
-
 	.slideshow-wrapper .slide-content .slide-heading{
         margin-bottom: 14px !important;
     }
@@ -529,5 +525,12 @@
 	.bundle-product-list .slick-arrow.slick-prev {
     	left: auto!important;
     	right: 65px !important;
+	}
+}
+
+@media (min-width: 1025px) and (max-width: 1280px){
+	.header-utility__item .customer-service-text ul li:not(:last-child),
+	.header-utility__item .customer-service-text ol li:not(:last-child) {
+		width: max-content;
 	}
 }
