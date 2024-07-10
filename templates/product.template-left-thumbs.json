@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "main": {
@@ -33,7 +42,6 @@
           "settings": {
             "spacing_top": 4,
             "spacing_bottom": 4,
-            "show_review": false,
             "show_sold_in": true,
             "sold_in_number": "1,2,3,5,6,7,8",
             "sold_in_hours": "48",
@@ -55,6 +63,7 @@
           "settings": {
             "show_vendor": false,
             "show_sku": false,
+            "show_barcode": false,
             "show_availability": false,
             "show_product_type": false,
             "stock_level_display": "none",
@@ -202,13 +211,6 @@
             "product_tab_key_metafield": "product_weight_dimensions"
           }
         },
-        "faebbc78-6094-4bc0-a917-80dbfbf5ef3c": {
-          "type": "review",
-          "settings": {
-            "open_tab_mobile": false,
-            "title": "Customer Reviews"
-          }
-        },
         "3d9ea84d-5527-4bce-abe6-5debef3ec955": {
           "type": "custom",
           "settings": {
@@ -263,7 +265,6 @@
         "bd066b80-c8e3-4f3e-8280-b27fbf6e9423",
         "custom_mkLJDa",
         "custom_84pYrk",
-        "faebbc78-6094-4bc0-a917-80dbfbf5ef3c",
         "3d9ea84d-5527-4bce-abe6-5debef3ec955",
         "b9d6eb19-10f4-41f8-bfdc-ea10e8b3182a",
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
@@ -296,7 +297,7 @@
         "thumnail_layout": "1",
         "thumbnail_to_show": 6,
         "show_sidebar": false,
-        "show_sidebar_collapse": true,
+        "sidebar_collapse": "collapse",
         "enable_sticky": false,
         "sidebar_layout": "layout_1",
         "sidebar_collapse_default": "expand",
@@ -316,6 +317,7 @@
         "show_subtotal": false,
         "subtotal_style": "1",
         "show_sticky_add_to_cart": false,
+        "enable_sticky_add_to_cart_always_mobile": false,
         "show_sticky_vendor": false,
         "sticky_atc_layout": "1",
         "show_tab": true,
