@@ -104,9 +104,6 @@ class ProductTabs extends HTMLElement {
         var $this = event.currentTarget,
             $thisContent = $this.parentNode.nextElementSibling;
 
-          // 打印 isVerticalPopup 和 window.innerWidth
-          console.log('vertical:', this.dataset.vertical);
-          console.log('isVerticalPopup:', this.isVerticalPopup);
         if ($this.classList.contains('popup-mobile') && window.innerWidth <= 551) {
             if ($($thisContent).hasClass('is-show')) {
                 $($thisContent).removeClass('is-show');
@@ -135,6 +132,9 @@ class ProductTabs extends HTMLElement {
                 if ((this.isVerticalPopup && window.innerWidth > 550) || ($this.classList.contains('sidebar-mobile') && window.innerWidth <= 550)) {
                     if($this.matches('.sidebar-mobile') && window.innerWidth <= 550) {
                         document.body.classList.add('tab-popup-sidebar-show');
+                        $thisContent.classList.add('is-show');
+                        document.body.classList.add('tab-popup-show');
+                    }else {
                         $thisContent.classList.add('is-show');
                         document.body.classList.add('tab-popup-show');
                     }
