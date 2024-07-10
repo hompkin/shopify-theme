@@ -35,7 +35,7 @@
 
     .footer-block__list-social .list-social__link svg {fill: {{ social_color }} !important;width: {{ social_icon_width | append: 'px' }} !important;height: {{ social_icon_width | append: 'px' }} !important}
 {%- if social_border_color == 'rgba(0,0,0,0)' or social_border_color == blank -%}
-    .footer-block__list-social .list-social {margin-left: -13px}
+    .footer-block__list-social .list-social {margin-left: -13px !important}
     .layout_rtl .footer-block__list-social .list-social {margin-right: -13px;margin-left: 0px}
 {%- endif -%}
     @media (min-width: 1025px){

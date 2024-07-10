@@ -61,7 +61,8 @@ class ProductCombo extends HTMLElement {
         this.addComboButton.value = window.variantStrings.addingToCart
         
         const bundleItem = this.querySelectorAll('.bundle-product-item.isChecked');
-        const discountCode = "COMBO-"+ meta.product.id;
+        const productId = typeof meta == 'object' ? meta.product.id : this.form.querySelector('[name="product-id"]').value;
+        const discountCode = "COMBO-"+ productId;
         let data = '';
         let hint = ',';
         let attributes = {};
@@ -440,7 +441,7 @@ class ProductCombo extends HTMLElement {
     }
 
     redirectTo(url){
-        if (this.isRunningInIframe() && !window.iframeSdk) {
+        if (this.isRunningInIframe() && !window.iframeSdk && !Shopify.designMode) {
             window.top.location = url;
         } else {
             window.location = url;

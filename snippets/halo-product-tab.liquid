@@ -106,12 +106,10 @@
                         else
                             assign content = product.description
                         endif
-					else block.type == 'review'
-						assign content = product.metafields.spr.reviews
 					endif
 				endif
 
-				if block.type == 'description' or block.type == 'review' or block.type == 'custom'
+				if block.type == 'description' or block.type == 'custom'
 					assign style_mobile = false
 					if block.settings.open_tab_mobile
 						assign style_mobile = 'show-mobile'
@@ -178,9 +176,6 @@
 									<a class="button button--secondary" href="#tab-{{ title | escape | handleize }}-mobile" data-show-more-text="{{ 'products.product.read_more' | t }}" data-show-less-text="{{ 'products.product.read_less' | t }}" data-show-more-toogle> 
 										{{ 'products.product.read_more' | t }}
 									</a>
-								</div>
-							{%- endif -%}
-							{%- if block.type == 'review' -%}
 								</div>
 							{%- endif -%}
 						{%- if tab_layout == 'vertical_sidebar' or style_mobile == 'sidebar-mobile' or style_mobile == 'popup-mobile' -%}

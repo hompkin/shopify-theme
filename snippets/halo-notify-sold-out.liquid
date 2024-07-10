@@ -7,8 +7,13 @@
         assign inputId = 'halo-notify-email'
         assign buttonId = 'halo-btn-notify'
     endif
+    if id_form
+        assign id_form_inner = 'ContactForm-notifyMe-' | append: id_form
+    else
+        assign id_form_inner = 'ContactForm-notifyMe'
+    endif
 -%}
-{%- form 'contact', id: 'ContactForm-notifyMe', class: 'notifyMe-form contact-form' -%}
+{%- form 'contact', id: id_form_inner, class: 'notifyMe-form contact-form' -%}
     <input type="hidden" name="contact[Form]" value="{{ 'notify_form.general.label' | t }}"/>
     <input type="hidden" class="halo-notify-product-site" name="contact[Shop name]" value="{{ shop.name }}"/>
     <input type="hidden" class="halo-notify-product-site-url" name="contact[Link]" value="{{ shop.url }}"/>

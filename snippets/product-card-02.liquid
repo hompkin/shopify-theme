@@ -75,9 +75,11 @@
     assign has_video = product_card_product.media | where: 'media_type','video'
 
     assign show_price = settings.show_price
+    
+    assign custom_fields = product_card_product.metafields.custom.product_variant_custom
 -%}
 <div class="product-item{% if settings.disable_product_card_border %} disable_product_card_border{% endif %}{% if settings.enable_custom_layout_card %} enable_custom_layout_card{% endif %}{% if settings.disable_product_card_border and settings.enable_custom_layout_card %} enable_custom_content{% endif %}" data-product-id="{{ product_card_product.id }}" data-json-product='{"id": {{product_card_product.id}},"handle": "{{product_card_product.handle}}","media": {{product.media | json | escape}},"variants": {{ product_card_product.variants | json | escape }}}'>
-    <div class="card">
+    <div class="card{% if product_card_product.media[0].media_type == 'video' %} has-first-video{% endif %}">
         <div class="card-product{% if product_card_product.featured_media == nil %} card--text-only card--soft{% endif %}">
             <div class="card-product__wrapper">
                 {%- if settings.show_badge -%}
@@ -121,6 +123,7 @@
                                             {{ 'wishlist.general.add' | t }}
                                         </span>
                                         {% render 'icon-heart-2' %}
+                                        {% if settings.show_wishlist_full_icon %}{% render 'icon-heart-add' %}{% endif %}
                                     </button>
                                 </div>
                             {%- endif -%}
@@ -178,7 +181,7 @@
                     {% endunless %}
                         <div class="card-vendor link-underline">
                             <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-                            {{ product_card_product.vendor | link_to_vendor }}
+                            {{ product_card_product.vendor | link_to_vendor: class: 'vendor-text' }}
                         </div>
                     {% unless settings.disable_product_card_border and settings.enable_custom_layout_card %}    
                     </div>
@@ -199,12 +202,6 @@
                     </div>
                 {% endif %}
 
-                {%- if settings.show_review -%}
-                    <div class="card-review clearfix halo-productReview">
-                        <span class="shopify-product-reviews-badge" data-id="{{ product_card_product.id }}"></span>
-                    </div>
-                {%- endif -%}
-
                 {% render 'product-card-summary',
                     product: product_card_product,
                     class: 'card-list__hidden'
@@ -219,19 +216,40 @@
                         %}
                     </div>
                 {%- endif -%}
+
+                {%- if product_card_product.metafields.custom.positive_vibes_almost_sold_out or product_card_product.metafields.custom.positive_vibes_recently_people_gave_review or product_card_product.metafields.custom.positive_vibes_top_best_seller -%}
+                    <positive-vibes class="card-positive_vibes positive_vibes">
+                        <div class="text-vibes">
+                            {%- if product_card_product.metafields.custom.positive_vibes_almost_sold_out -%}
+                                <div class="text-vibes--child"><p>{% render 'icon-fire-3' %} {{product_card_product.metafields.custom.positive_vibes_almost_sold_out}}</p></div>
+                            {%- endif -%}
+                            {%- if product_card_product.metafields.custom.positive_vibes_recently_people_gave_review -%}
+                                <div class="text-vibes--child"><p>{% render 'icon-check-2' %} {{product_card_product.metafields.custom.positive_vibes_recently_people_gave_review}}</p></div>
+                            {%- endif -%}
+                            {%- if product_card_product.metafields.custom.positive_vibes_top_best_seller -%}
+                                <div class="text-vibes--child"><p><span class="hot-stock">{{ 'products.product.hot_stock_text' | t }}</span> {{product_card_product.metafields.custom.positive_vibes_top_best_seller}}</p></div>
+                            {%- endif -%}
+                        </div>
+                    </positive-vibes>
+                {%- endif -%}
             </div>
-            {%- if isColor -%}
-                {%- unless settings.show_swatch -%}
-                <div class="hidden">
-                {%- endunless -%}
-                    {% render 'product-swatch',
-                        product: product_card_product,
-                        index: index,
-                        variant_selected: variant_selected
-                    %}
-                {%- unless settings.show_swatch -%}
-                </div>
-                {%- endunless -%}
+
+            {%- if settings.enable_combined_products_listing and custom_fields != blank -%}
+                {% render 'combined-products-listing', product: product %}
+            {%- else -%}
+                {%- if isColor -%}
+                    {%- unless settings.show_swatch -%}
+                    <div class="hidden">
+                    {%- endunless -%}
+                        {% render 'product-swatch',
+                            product: product_card_product,
+                            index: index,
+                            variant_selected: variant_selected
+                        %}
+                    {%- unless settings.show_swatch -%}
+                    </div>
+                    {%- endunless -%}
+                {%- endif -%}
             {%- endif -%}
 
             {% if settings.display_text_size %}
@@ -271,6 +289,7 @@
                                     {{ 'wishlist.general.add' | t }}
                                 </span>
                                 {% render 'icon-heart-2' %}
+                                {% if settings.show_wishlist_full_icon %}{% render 'icon-heart-add' %}{% endif %}
                             </button>
                         </div>
                     {%- endif -%}

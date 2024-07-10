@@ -19,7 +19,7 @@ pickup-availability.product__pickup-availabilities {
 }
 
 .pickup-availability-info {
-    padding-left: 28px;
+    padding-left: 35px;
 }
 
 .pickup-availability-preview .icon {
@@ -70,6 +70,8 @@ pickup-availability.product__pickup-availabilities {
     height: 24px;
     margin-left: -32px;
     margin-right: 8px;
+    position: relative;
+    left: -5px;
 }
 
 .pickup-availability-info .icon-tick{
@@ -238,6 +240,24 @@ pickup-availability-drawer[open] .pickup-availability-drawer-button {
 body.overflow-hidden .background-overlay{
     opacity: 1;
     pointer-events: all;
+}
+
+@media screen and (max-width: 1024px) {
+    .pickup-availability-info {
+        padding-left: 34px;
+    }
+
+    .pickup-availability-info .icon {
+        width: 40px;
+        height: 40px;
+        margin-left: -37px;
+        margin-right: 15px;
+        left: 2px;
+    }
+
+    .pickup-availability-button {
+        margin-left: 1px;
+    }
 }
 
 @media screen and (min-width: 551px) {

@@ -220,8 +220,16 @@
     border: 1px solid var(--button-border-color);
 }
 
+.btn_1_br_outside .image-comparison .shop-all.button:after {
+    border: 1px solid var(--button-border-color);
+}
+
 .image-comparison .shop-all.button:hover {
     background: var(--button-background-hover);
+    border: 1px solid var(--button-border-color-hover);
+}
+
+.btn_1_br_outside .image-comparison .shop-all.button:hover:after {
     border: 1px solid var(--button-border-color-hover);
 }
 

@@ -36,7 +36,11 @@
     </div>
 
     <div id="get-rates-container">
-      <input type="submit" id="get-rates-submit" class="get-rates styled-submit button button-1" value="{{'general.cart.shipping_calculator_button' | t }}"/>      
+      {% if settings.enable_button_1_border_outside %}
+          <button class="get-rates styled-submit button button-1" id="get-rates-submit"><span>{{ 'general.cart.shipping_calculator_button' | t }}</span></button>
+      {% else %}
+          <input type="submit" id="get-rates-submit" class="get-rates styled-submit button button-1" value="{{'general.cart.shipping_calculator_button' | t }}"/>
+      {% endif %}
     </div>        
   </div>
 
@@ -100,7 +104,7 @@
 </script>
 
 <script>
-  setTimeout(() => {
+  window.addEventListener('load', () => {
     Shopify.Cart.ShippingCalculator.show({
       submitButton: `{{ 'general.cart.shipping_calculator_button' | t }}`,
       submitButtonDisabled: `{{ 'general.cart.shipping_calculator_calculating' | t }}`,
@@ -109,5 +113,5 @@
       {% endif %}
       moneyFormat: {{ shop.money_format | json }}
     });
-  }, 500)
+  })
 </script>

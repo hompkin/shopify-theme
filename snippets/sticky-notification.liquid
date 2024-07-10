@@ -154,7 +154,7 @@
                 if (e.target.matches('[data-close-notification-btn]') || e.target.closest('[data-close-notification-btn]')) return 
 
                 document.body.classList.add('show_popup_notification');
-                
+
                 const link = this.querySelector('[data-main-link]')
                 if (!link) return;
                 link.click()

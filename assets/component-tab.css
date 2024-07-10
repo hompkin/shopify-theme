@@ -353,6 +353,12 @@ body.tab-popup-show {
         border-top: 1px solid #d3d3d3;
     }
 
+    body.tab-popup-sidebar-show .productView-bottom.animate--slide-in:not(.scroll-trigger--offscreen) {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
     .productView-tab .tab-content + .shipping-policy,
     .productView-tab .tab-content + .shipping-policy{
       border-top: none;

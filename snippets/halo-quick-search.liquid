@@ -3,7 +3,7 @@
 	<div class="quickSearchResults custom-scrollbar">
 		<div class="container">
 			{%- if settings.show_search_trending or settings.show_search_product -%}
-				{%- render 'quick-searching-trending-products', sectionId: 'list-result' -%}
+				{%- render 'quick-searching-trending-products', sectionId: sectionId -%}
 			{%- endif -%}
 			{%- if settings.show_quick_search -%}
 				{%- render 'predictive-search-results' -%}

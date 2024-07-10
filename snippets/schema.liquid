@@ -41,7 +41,7 @@
             {
                 "@type": "Offer",
                 "priceCurrency": "{{ shop.currency }}",
-                "price": "{{ fa_current_variant.price | money_without_currency  | strip_html }}",
+                "price": "{{ fa_current_variant.price | divided_by: 100.00 | json }}",
                 "itemCondition": "http://schema.org/NewCondition",
                 "availability": "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
                 "url": "{{ url }}{{ fa_current_variant.url }}",
@@ -81,7 +81,7 @@
                     {
                         "@type": "Offer",
                         "priceCurrency": "{{ shop.currency }}",
-                        "price": "{{ variant.price | money_without_currency  | strip_html | remove: ',' }}",
+                        "price": "{{ variant.price | divided_by: 100.00 | json }}",
                         "itemCondition": "http://schema.org/NewCondition",
                         "availability": "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
                         "url": "{{ url }}{{ variant.url }}",
@@ -121,28 +121,6 @@
                 {%- endif -%}
             {%- endfor -%}
             {% if product.variants.size > 1 %}]{% endif %}
-            {%- if product.metafields.spr.reviews -%}
-                {%- assign fa_rating = product.metafields.spr.reviews | split: '"reviewCount": "' | last | split: '"' | first | plus: 0 -%}
-                {%- if fa_rating > 0 -%}
-                    ,"aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": {{ product.metafields.spr.reviews | split: '"ratingValue": "' | last | split: '"' | first | plus: 0 }},
-                        "ratingCount": {{ product.metafields.spr.reviews | split: '"reviewCount": "' | last | split: '"' | first | plus: 0 }}
-                    }
-                {%- endif -%}
-                ,"review": {
-                    "@type": "Review",
-                    "reviewRating": {
-                        "@type": "Rating",
-                        "ratingValue": "{{ product.metafields.spr.reviews | split: '"ratingValue": "' | last | split: '"' | first | plus: 0 }}",
-                        "bestRating": "5"
-                    },
-                    "author": {
-                        "@type": "Person",
-                        "name": "Persons"
-                    }
-                }
-            {%- endif -%}
         {%- endif -%}
     }
     </script>

@@ -95,7 +95,9 @@
     {%- if enable_blog_button -%}
         .section-block-{{section.id}} .article-card__footer {text-decoration: unset}
         .section-block-{{section.id}} .article-card__footer a.button {color: {{ color_button_item }};background: {{ color_button_item_bg }};border: 1px solid {{ color_button_item_border }};font-weight: var(--btn-1-font-weight);text-transform: var(--btn-1-text-transform);width: 162px}
+        .btn_1_br_outside .section-block-{{section.id}} .article-card__footer a.button:after {border: 1px solid {{ color_button_item_border }}}
         .section-block-{{section.id}} .article-card__footer a.button:hover {color: {{ color_button_item_hover }};background: {{ color_button_item_bg_hover }};border: 1px solid {{ color_button_item_border_hover }}}
+        .btn_1_br_outside .section-block-{{section.id}} .article-card__footer a.button:hover:after {border: 1px solid {{ color_button_item_border_hover }}}
         {%- unless show_more_pos == 'right_title' -%}
         .section-block-{{section.id}} .article-card__author {display: flex;justify-content: center}
         {%- endunless -%}
@@ -627,13 +629,13 @@
     {
         "type": "checkbox",
         "id": "blog_show_author",
-        "label": "t:sections.featured_blog.settings.blog.blog_show_author",
+        "label": "t:sections.main-article.settings.general.label__1",
         "default": true
     },
     {
         "type": "checkbox",
         "id": "blog_show_date",
-        "label": "t:sections.featured_blog.settings.blog.blog_show_date",
+        "label": "t:sections.main-article.settings.general.label__2",
         "default": true
     },
     {
@@ -767,11 +769,11 @@
         "options": [
         {
             "value": "style_1",
-            "label": "t:sections.featured_blog.settings.settings_item.style_1"
+            "label": "Style 1"
         },
         {
             "value": "style_2",
-            "label": "t:sections.featured_blog.settings.settings_item.style_2"
+            "label": "Style 2"
         }],
         "default": "style_1" 
     },
@@ -863,25 +865,19 @@
     {
         "type": "color",
         "id": "color_title_item",
-        "label": "t:sections.featured_blog.settings.settings_item.color_title_item",
+        "label": "t:settings_schema.typography.settings.typography.title_color",
         "default": "#232323"
     },
     {
         "type": "color",
         "id": "color_date_item",
-        "label": "t:sections.featured_blog.settings.settings_item.color_date_item",
+        "label": "t:sections.customer_review.settings.layout_block.color_date",
         "default": "#999999"
     },
     {
         "type": "color",
         "id": "color_des_item",
-        "label": "t:sections.featured_blog.settings.settings_item.color_des_item",
-        "default": "#3c3c3c"
-    },
-    {
-        "type": "color",
-        "id": "color_button_item",
-        "label": "t:sections.featured_blog.settings.settings_item.color_button_item",
+        "label": "t:settings_schema.typography.settings.typography.des_color",
         "default": "#3c3c3c"
     },
     {
@@ -892,32 +888,38 @@
     },
     {
         "type": "color",
+        "id": "color_button_item",
+        "label": "t:settings_schema.typography.settings.typography.button_color",
+        "default": "#3c3c3c"
+    },
+    {
+        "type": "color",
         "id": "color_button_item_border",
-        "label": "t:sections.featured_blog.settings.settings_item.color_button_item_border",
+        "label": "t:settings_schema.colors.settings.colors_name.border_color",
         "default": "#1e1e1e"
     },
     {
         "type": "color",
         "id": "color_button_item_bg",
-        "label": "t:sections.featured_blog.settings.settings_item.color_button_item_bg",
+        "label": "t:settings_schema.colors.settings.colors_name.background_color",
         "default": "#1e1e1e"
     },
     {
         "type": "color",
         "id": "color_button_item_hover",
-        "label": "t:sections.featured_blog.settings.settings_item.color_button_item_hover",
+        "label": "t:settings_schema.colors.settings.colors_name.color_hover",
         "default": "#000"
     },
     {
         "type": "color",
         "id": "color_button_item_border_hover",
-        "label": "t:sections.featured_blog.settings.settings_item.color_button_item_border_hover",
+        "label": "t:settings_schema.colors.settings.colors_name.border_hover",
         "default": "#fff"
     },
     {
         "type": "color",
         "id": "color_button_item_bg_hover",
-        "label": "t:sections.featured_blog.settings.settings_item.color_button_item_bg_hover",
+        "label": "t:settings_schema.colors.settings.colors_name.background_hover",
         "default": "#fff"
     },
     {

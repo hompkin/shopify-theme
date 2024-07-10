@@ -40,9 +40,6 @@
         </div>
         <div class="card-information">
             <div class="card-information__wrapper text-left">
-                {%- if settings.show_reviews -%}
-                    <div class="card-review halo-productReview"><span class="shopify-product-reviews-badge" data-id="{{ product_card_product.id }}"></span></div>
-                {%- endif -%}
                 <a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}{% if variant_selected != blank %} card-title-change{% endif %}" href="{{ product_card_product.url | within: collection }}">
                     <span class="text">{{ product_card_product.title | escape }}{% if variant_selected != blank %} <span data-change-title> - {{ variant_selected }}</span>{% endif %}</span>
                 </a>
@@ -58,7 +55,12 @@
                         index: index
                     %}
                 {%- endif -%}
-                <a class="card-button" href="{{ product_card_product.url | within: collection }}">{{ 'products.product.details' | t }}</a>
+                {% comment %} <a class="card-button" href="{{ product_card_product.url | within: collection }}">{{ 'products.product.details' | t }}</a> {% endcomment %}
+                {%- if settings.show_action -%}
+                    <div class="card-action">
+                        {% render 'add-to-cart-form-sidebar', product: product_card_product, id: 'form', position: position, sectionId: sectionId %}
+                    </div>
+                {%- endif -%}
             </div>
         </div>
     </div>

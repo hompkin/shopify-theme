@@ -20,23 +20,22 @@ class StickyAddToCart extends HTMLElement {
         this.closeModal = this.closeStickyModal.bind(this);
     }
 
-    connectedCallback(){
+    connectedCallback() {
         this.onScrollHandler = this.onScroll.bind(this);
         window.addEventListener('scroll', this.onScrollHandler, false);
 
-        this.openStickyButton.addEventListener('click', this.openStickyModal.bind(this));
+        this.openStickyButton?.addEventListener('click', this.openStickyModal.bind(this));
         document.addEventListener('click', (e) => {
             if (e.target.matches('.background-overlay') || e.target.closest('[data-close-sticky-mobile]') != null || e.target.matches('[data-close-sticky-mobile]')) {
                 this.closeModal();
             }
         })
-
-        const height = this.closest('[data-sticky-add-to-cart]').clientHeight;
-        this.sticky.querySelector('.sticky-product-mobile').style.bottom = height + 'px';
     }
 
     openStickyModal() {
         document.body.classList.add('show-mobile-options');
+        const height = this.closest('[data-sticky-add-to-cart]').clientHeight;
+        this.sticky.querySelector('.sticky-product-mobile').style.bottom = height + 'px';
     }
 
     closeStickyModal() {
@@ -284,6 +283,7 @@ class VariantStickyAddToCart extends HTMLElement {
                         } else {
                             $(element).find('.product-form__radio').prop('checked', false);
                             $(element).find(`.product-form__radio[value="${this.encodeOption(selectedOption1)}"]`).prop('checked', true);
+                            $(element).find(`.product-form__radio[value="${this.encodeOption(selectedOption1)}"]`).trigger('change');
                         }
     
                         var option1List = variantList.filter((variant) => {
@@ -411,6 +411,7 @@ class VariantStickyAddToCart extends HTMLElement {
                         } else {
                             $(element).find('.product-form__radio').prop('checked', false);
                             $(element).find(`.product-form__radio[value="${this.encodeOption(selectedOption2)}"]`).prop('checked', true);
+                            $(element).find(`.product-form__radio[value="${this.encodeOption(selectedOption2)}"]`).trigger('change');
                         }
     
                         var option2List = variantList.filter((variant) => {
@@ -538,6 +539,7 @@ class VariantStickyAddToCart extends HTMLElement {
                         } else {
                             $(element).find('.product-form__radio').prop('checked', false);
                             $(element).find(`.product-form__radio[value="${this.encodeOption(selectedOption3)}"]`).prop('checked', true);
+                            $(element).find(`.product-form__radio[value="${this.encodeOption(selectedOption3)}"]`).trigger('change');
                         }
     
                         var option3List = variantList.filter((variant) => {
@@ -669,9 +671,16 @@ class VariantStickyAddToCart extends HTMLElement {
 
             if(inven_array != undefined) {
                 var inven_num = inven_array[this.currentVariant.id],
+                    inputQuantity = this.item.find('input[name="quantity"]'),
+                    buttonSubmit = this.item.find('button#product-sticky-add-to-cart'),
                     inventoryQuantity = parseInt(inven_num);
-              
-                 this.item.find('input[name="quantity"]').attr('data-inventory-quantity', inventoryQuantity);
+
+                    if(inputQuantity.length > 0) {
+                        inputQuantity.attr('data-inventory-quantity', inventoryQuantity);
+                    } else {
+                        buttonSubmit.attr('data-inventory-quantity', inventoryQuantity);
+                    }
+                //  this.item.find('input[name="quantity"]').attr('data-inventory-quantity', inventoryQuantity);
 
                 if(this.item.find('[data-inventory]').length > 0){
                     if(inventoryQuantity > 0){
@@ -701,10 +710,16 @@ class VariantStickyAddToCart extends HTMLElement {
         const stickyButton = document.getElementById(`product-form-sticky-${this.dataset.product}`)?.querySelector('[name="add"]');
 
         var quantityInput = $('[data-sticky-add-to-cart] .quantity__input'),
+            submitBtn = $('[data-sticky-add-to-cart] .product-form__submit'),
             notifyMe = this.item.find('.productView-notifyMe'),
             stickyPrice = $('[data-sticky-add-to-cart] .money-subtotal .money');
-        
-        var maxValue = parseInt(quantityInput.attr('data-inventory-quantity'));
+        var maxValue;
+
+        if (quantityInput.length > 0) {
+            maxValue = parseInt(quantityInput.attr('data-inventory-quantity'));
+        } else {
+            maxValue = parseInt(submitBtn.attr('data-inventory-quantity'));
+        }
 
         if (stickyPrice.length === 0) {
            stickyPrice = $('[data-sticky-add-to-cart] .sticky-price .money-subtotal')

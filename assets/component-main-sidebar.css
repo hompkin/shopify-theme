@@ -533,6 +533,132 @@
     width: calc(100% - 36px);  
 }
 
+@media screen and (max-width: 1024px){
+    /* START: Sidebar slide from right */
+        .halo-sidebar-wrapper {
+            max-height: calc(100vh - 60px);
+        }
+
+        .sidebarBlock.sidebar-categories.sidebarBlock-slide {
+            margin-bottom: 8px;
+        }
+
+        .sidebarBlock.sidebar-categories.sidebarBlock-slide svg {
+            top: 1px;
+        }
+
+        .filter-facets-slide #CollectionFiltersForm .sidebarBlock.sibarbarBlock-filter-price .sidebarBlock-heading svg {
+            top: 1px;
+        }
+
+        .filter-facets-slide #CollectionFiltersForm .sidebarBlock {
+            margin-bottom: 2px;
+        }
+
+        .filter-facets-slide #CollectionFiltersForm .sidebarBlock .sidebarBlock-heading {
+            margin-bottom: 8px;
+        }
+
+        .sidebarBlock.sidebarBlock-slide > .show-more--list_tags {
+            display: none;
+        }
+
+        .sidebarBlock .sidebarBlock-headingWrapper-slide {
+            position: relative;
+            min-height: 40px;
+        }
+
+        .sidebarBlock .sidebarBlock-headingWrapper-slide svg {
+            position: absolute;
+            top: 8px;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            transform: rotate(180deg);
+            pointer-events: none;
+        }
+
+        .sidebarBlock .sidebarBlock-headingWrapper-slide .sidebarBlock-heading {
+            padding-right: 20px;
+            border-bottom: 0;
+        }
+
+        .sidebarBlock .sidebarBlock-slide__content {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-white);
+            z-index: 10;
+            padding: 20px 0;
+            transform: translateX(100%);
+            transition: transform .4s cubic-bezier(.29,.63,.44,1);
+            pointer-events: none;
+        }
+
+        .sidebarBlock .sidebarBlock-slide__content.is-show {
+            transform: translateX(0);
+            pointer-events: visible;
+        }
+
+        .sidebarBlock .sidebarBlock-slide__content.facets__display.is-show {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebarBlock:not(.Color) .sidebarBlock-slide__content.facets__display.is-show .facets__list {
+            flex:1;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .sidebarBlock .sidebarBlock-slide__content.facets__display .show-more--list_tags ,
+        .sidebarBlock .sidebarBlock-slide__content.facets__display .facets__reset {
+            padding: 10px 20px;
+        }
+
+        .sidebarBlock .sidebarBlock-slide__content-close {
+            width: 100%;
+            padding: 10px 20px;
+            outline: none;
+            border: none;
+            background-color: var(--color-background-10);
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+        }
+
+        .sidebarBlock .sidebarBlock-slide__content-close svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .sidebarBlock .sidebarBlock-slide__content-list {
+            padding: 0 20px;
+        }
+
+        .halo-sidebar-wrapper.disable-scroll {
+            overflow-x: clip;
+            overflow-y: clip;
+        }
+
+        .halo-sidebar-wrapper.disable-scroll .sidebarBlock .sidebarBlock-headingWrapper-slide ,
+        .halo-sidebar-wrapper.disable-scroll .sidebarBlock:not(.has-slide) {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .sidebarBlock.sidebarBlock-slide .halo-product-block .products-carousel {
+            padding: 0 20px;
+        }
+
+        .sidebarBlock.sidebarBlock-slide .facets__price--box .form-field {
+            width: 45%;
+        }
+    /* END Sidebar slide from right */
+}
+
 @media (min-width: 551px) {
     .sidebar-toogle {
         left: 20px;
@@ -747,4 +873,12 @@
     .halo-collection-content.sidebar--layout_horizontal {
         overflow: hidden;
     }
+
+    /* sidebar slide from right */
+    .sidebarBlock-headingWrapper-slide svg,
+    .sidebarBlock-heading .facets__text svg,
+    .sidebarBlock-slide__content-close {
+        display: none;
+    }
+    /* sidebar slide from right */
 }

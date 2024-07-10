@@ -184,7 +184,7 @@
     .brand-slider .halo-item .description {color: var(--color_des)}
 {%- endif -%}
 
-/* Effect */
+    /* Effect */
     .brand-layout--slider .wrapper-content.animate--slide-in { 
         animation: var(--animation-slide-in);   
         animation-delay: calc(var(--animation-order) * .1s);    
@@ -192,6 +192,27 @@
     .brand-layout--infinite .brand-item-scroll {white-space: nowrap;}
     .brand-layout--infinite:hover .brand-item-scroll, .brand-layout--infinite:focus .brand-item-scroll {animation-play-state: paused}
     .brand-slider .halo-row.brand-layout--infinite .halo-item {width: var(--width_item)}
+
+{%- if section.settings.brands_block_style == 'style_4' -%}
+    .section-block-{{section.id}} .halo-row .halo-item{
+        max-width: 255px;
+    }
+    .section-block-{{section.id}} .halo-block-header .title{
+        font-family: var(--font-body-family);
+        letter-spacing: var(--body-letter-spacing);
+    }
+    .section-block-{{section.id}} .brand-layout--slider{
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .section-block-{{section.id}} .halo-row .slick-list {
+        padding: 0 10% 0 0;
+    }
+    body.layout_rtl .section-block-{{section.id}} .halo-row .slick-list {
+        padding: 0 0 0 10%;
+    }
+{%- endif -%}
     @media (min-width: 768px) {
         {%- unless section.settings.brands_block_style == 'style_3' -%}
             {%- if section.settings.title_align == 'left' -%}
@@ -238,7 +259,8 @@
         {%- endif -%}
     {%- endif -%}
     {%- if section.settings.container == 'fullwidth' -%}
-        .section-block-{{section.id}} .container-full {padding-left: {{ section.settings.padding_full_width | append: 'px' }};padding-right: {{ section.settings.padding_full_width | append: 'px' }}}
+        .section-block-{{section.id}} .container-full {padding-left: {{ section.settings.padding_full_width | append: 'px' }};padding-right: {% if section.settings.brands_block_style == 'style_4' %}0{% else %}{{ section.settings.padding_full_width | append: 'px' }}{% endif %}}
+        body.layout_rtl .section-block-{{section.id}} .container-full {padding-left: {% if section.settings.brands_block_style == 'style_4' %}0{% else %}{{ section.settings.padding_full_width | append: 'px' }}{% endif %};padding-right: {{ section.settings.padding_full_width | append: 'px' }}}
     {%- endif -%}
         .section-block-{{section.id}} .slick-arrow:hover {border-color: {{ arrow_border_hover }};{%- if arrow_background_gradient_hover != blank -%}background: {{ arrow_background_gradient_hover }}{%- else -%}background: {{ arrow_background_hover }}{%- endif -%}}
         .section-block-{{section.id}} .slick-arrow:hover svg {color: {{ color_arrow_hover }};fill: {{ color_arrow_hover }}}
@@ -309,6 +331,32 @@
         {%- endif -%}
         .section-block-{{section.id}} .brands-block--wrapper {flex-wrap: wrap}
         .section-block-{{section.id}} .halo-slider {display: flex;flex: auto}
+        {%- if section.settings.brands_block_style == 'style_4' -%}
+            .section-block-{{section.id}} .brand_style_4 .container-full{
+                padding-left: 15px;
+            }
+            body.layout_rtl .section-block-{{section.id}} .brand_style_4 .container-full{
+                padding-left: 0;
+                padding-right: 15px;
+            }
+            .section-block-{{section.id}} .halo-row .halo-item{
+                max-width: 185px;
+                margin-right: 42px;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .section-block-{{section.id}} .halo-row .halo-item:last-child{
+                margin-right: 0px;
+            }
+            body.layout_rtl .section-block-{{section.id}} .halo-row .halo-item{
+                margin-right: auto;
+                margin-left: 42px;
+            }
+            body.layout_rtl .section-block-{{section.id}} .halo-row .halo-item:last-child{
+                margin-right: auto;
+                margin-left: 0px;
+            }
+        {%- endif -%}
     }
 
     @media (max-width: 767px) {
@@ -327,6 +375,18 @@
         .section-block-{{section.id}} .halo-block-header .title .text br {display: none}
         {%- if section.settings.title_align == 'left' -%}
             .section-block-{{section.id}} .halo-block-header {text-align: left;}
+        {%- endif -%}
+        {%- if section.settings.brands_block_style == 'style_4' -%}
+            .section-block-{{section.id}} .brand_style_4 .container-full{
+                padding-left: 10px;
+            }
+            body.layout_rtl .section-block-{{section.id}} .brand_style_4 .container-full{
+                padding-left: 0;
+                padding-right: 10px;
+            }
+            .section-block-{{section.id}} .halo-row .halo-item{
+                margin-right: 60px;
+            }
         {%- endif -%}
     }
     @media (max-width: 551px){
@@ -353,7 +413,7 @@
 </style>
 {%- if section.blocks.size > 0 -%}
 <div class="brand-slider section-block-{{section.id}}" id="brands-{{section.id}}" {% if section.settings.brand_layout == 'slider' %}data-loader-script="{{ 'halo.slide-brand.js' | asset_url }}"{% endif %}>
-    <div class="brands-block {% if section.settings.brand_layout == 'grid' %}brands-grid{% else %}brands-slider{% endif %}{% if section.settings.brands_block_style == 'style_2' %} brand_style_2{% elsif section.settings.brands_block_style == 'style_3' %} brand_style_3{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+    <div class="brands-block {% if section.settings.brand_layout == 'grid' %}brands-grid{% else %}brands-slider{% endif %}{% if section.settings.brands_block_style == 'style_2' %} brand_style_2{% elsif section.settings.brands_block_style == 'style_3' %} brand_style_3{% elsif section.settings.brands_block_style == 'style_4' %} brand_style_4{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
         <div class="{% if section.settings.brand_layout == 'infinite' %}container-full{% else %}{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1170' %}container-1170{% elsif section.settings.container == '1470' %}container-1470{% elsif section.settings.container == '1770' %}container-1770{% else %}container{% endif %}{% endif %}">
             {%- if section.settings.brands_block_style == 'style_3' -%}
             <div class="brands-block--wrapper">
@@ -461,9 +521,7 @@
                             <div class="brand-item-scroll d-flex flex-align-center fs-0{% if section.settings.scroll_from == 'ltr'%} marquee-ltr{% else %} marquee-rtl{% endif %}">
                                 {%- for block in section.blocks -%}
                                     <div class="halo-item block-{{block.id}}" id="block-{{block.id}}" style="--item-distance-style: {{ section.settings.item_distance | append: 'px' }};--title_color: {{block.settings.color_text}};--title_color_hover:{{block.settings.color_text_hover}};--color_des:{{block.settings.color_des}}">
-                                        {%- unless section.settings.brands_block_style == 'style_4' -%}
                                         <div class="wrapper-content{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger{% if section.settings.brand_layout == 'infinite' %} animate--fade-in{% else %} animate--slide-in{% endif %}{% endif %}" style="--border_radius:{{ section.settings.border_radius | append: 'px' }};--animation-order: {{ forloop.index }};"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style=""{% endif %}>
-                                        {%- endunless -%}
                                             {%- if block.settings.image != blank -%}
                                                 {%- assign preview_img = block.settings.image -%}
                                                 <div class="wrapper-image{% if section.settings.hover_effect == 'zoom' %} image-zoom{% elsif section.settings.hover_effect == 'fadeup' %} image-fadeInUp{% endif %}">
@@ -487,9 +545,7 @@
                                             {%- if block.settings.description != blank -%}
                                                 <a class="description"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}>{{ block.settings.description }}</a>
                                             {%- endif -%}
-                                        {%- unless section.settings.brands_block_style == 'style_4' -%}     
                                         </div>
-                                        {%- endunless -%}
                                     </div>
                                 {%- endfor -%}
                             </div>
@@ -497,9 +553,7 @@
                     {%- else -%}
                         {%- for block in section.blocks -%}
                             <div class="halo-item block-{{block.id}}" id="block-{{block.id}}" style="--item-distance-style: {{ section.settings.item_distance | append: 'px' }};--title_color: {{block.settings.color_text}};--title_color_hover:{{block.settings.color_text_hover}};--color_des:{{block.settings.color_des}}">
-                                {%- unless section.settings.brands_block_style == 'style_4' -%}
                                 <div class="wrapper-content{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="--border_radius:{{ section.settings.border_radius | append: 'px' }};--animation-order: {{ forloop.index }};"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style=""{% endif %}>
-                                {%- endunless -%}
                                     {%- if block.settings.image != blank -%}
                                         {%- assign preview_img = block.settings.image -%}
                                         <div class="wrapper-image{% if section.settings.hover_effect == 'zoom' %} image-zoom{% elsif section.settings.hover_effect == 'fadeup' %} image-fadeInUp{% endif %}">
@@ -523,9 +577,7 @@
                                     {%- if block.settings.description != blank -%}
                                         <a class="description"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}>{{ block.settings.description }}</a>
                                     {%- endif -%}
-                                {%- unless section.settings.brands_block_style == 'style_4' -%}     
                                 </div>
-                                {%- endunless -%}
                             </div>
                         {%- endfor -%}
                     {%- endif -%}                    
@@ -583,7 +635,7 @@
         "id": "padding_full_width",
         "label": "t:sections.layout.container.padding_full_width",
         "min": 0,
-        "max": 50,
+        "max": 200,
         "step": 5,
         "unit": "t:sections.layout.fontsize.fontsize_title.unit",
         "default": 0,
@@ -606,6 +658,10 @@
         {
             "value": "style_3",
             "label": "t:settings_schema.typography.settings.typography.style_3"
+        },
+        {
+            "value": "style_4",
+            "label": "t:settings_schema.typography.settings.typography.style_4"
         }]
     },
     {

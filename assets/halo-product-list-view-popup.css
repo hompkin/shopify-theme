@@ -88,7 +88,7 @@ body.product-card-layout-05 .halo-product-list-view-popup .product-card__button2
 }
 
 .halo-product-list-view-popup .card-action .selector-wrapper .swatch-element.unavailable {
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 .halo-product-list-view-popup .mobile-popup-header {

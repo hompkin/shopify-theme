@@ -87,6 +87,7 @@
           "settings": {
             "show_block": true,
             "heading": "",
+            "image": "shopify:\/\/shop_images\/blog-sidebar-1.jpg",
             "link": ""
           }
         },
@@ -96,6 +97,7 @@
           "settings": {
             "show_block": true,
             "heading": "",
+            "image": "shopify:\/\/shop_images\/blog-sidebar-2.jpg",
             "link": ""
           }
         },

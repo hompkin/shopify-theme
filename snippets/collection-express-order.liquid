@@ -13,7 +13,7 @@
     assign show_filter = section.settings.show_filter
     assign sidebar_type = section.settings.sidebar_type
     assign sidebar_position = section.settings.sidebar_position
-    assign show_sidebar_collapse = section.settings.show_sidebar_collapse
+    assign sidebar_collapse = section.settings.sidebar_collapse
     assign sidebar_collapse_default = section.settings.sidebar_collapse_default
     if show_sidebar
         if show_filter
@@ -81,7 +81,7 @@
     #CollectionSection-{{ section.id }}{padding-top: {{ padding_top }};padding-bottom: {{ padding_bottom }}}
 
     {%- if has_sidebar -%}
-        #CollectionSection-{{ section.id }} .sidebarBlock-heading{font-family: var(--sidebar-heading-font);font-size: {{ sidebar_heading_font_size | append: 'px' }};font-weight: {{ sidebar_heading_font_weight }};text-transform: {{ sidebar_heading_text_transform }}}
+        #CollectionSection-{{ section.id }} .sidebarBlock-heading, .sidebarBlock .sidebarBlock-slide__content-close{font-family: var(--sidebar-heading-font);font-size: {{ sidebar_heading_font_size | append: 'px' }};font-weight: {{ sidebar_heading_font_weight }};text-transform: {{ sidebar_heading_text_transform }}}
     {%- endif -%}
 
     @media (max-width: 1024px) {#CollectionSection-{{ section.id }}{padding-top: {{ padding_top_tablet }};padding-bottom: {{ padding_bottom_tablet }}}}
@@ -106,7 +106,7 @@
                             sidebar_type: sidebar_type,
                             show_filter: show_filter,
                             show_sorting: show_sorting,
-                            show_collapse: show_sidebar_collapse,
+                            show_collapse: sidebar_collapse,
                             sidebar_collapse: sidebar_collapse_default,
                             filter_swatch: filter_swatch,
                             filter_swatch_type: filter_swatch_type,

@@ -42,6 +42,7 @@
         endif
         endfor
     endif
+    assign enable_dropdown = section.settings.enable_dropdown
 -%}
 <cart-coupon-discount>
     <template data-discount-icon>{% render 'icon-discount' %}</template>
@@ -288,7 +289,7 @@
                                 </div>
                             {%- endif -%}
                         </div>
-                        <div class="cart-content-item cart-total" data-cart-total>
+                        <div class="cart-content-item cart-total{% if section.settings.enable_sticky_button_checkout_mb %} enable_sticky_buttton{% endif %}" data-cart-total>
                             <form action="{{ routes.cart_url }}" method="post" novalidate>
                                 <ul class="cart-totals list-unstyled">
                                     <div class="cart--totals-title">{{ 'general.cart.order_summary' | t }}</div>
@@ -297,21 +298,49 @@
                                         <div class="cart-total-value"><span class="text">{{ cart.original_total_price | money }}</span></div>
                                     </li>
                                     {%- if show_shipping_rate_calculator -%}
-                                        <li class="cart-total cart-total-shipping">
-                                            <div class="cart-total-label"><span class="text">{{ 'general.cart.shipping' | t }}</span></div>
-                                            <div class="cart-total-value" style="display: none;"></div>
-                                            {% render 'shipping-rates-calculator' %}
+                                        <li class="cart-total cart-total-shipping{% if enable_dropdown %} enable_dropdown{% endif %}">
+                                            {%- unless enable_dropdown -%}
+                                                <div class="cart-total-label"><span class="text">{{ 'general.cart.shipping' | t }}</span></div>
+                                                <div class="cart-total-value" style="display: none;"></div>
+                                                {% render 'shipping-rates-calculator' %}
+                                            {%- else -%}
+                                                <accordion-block class="d-block">
+                                                    <div class="accordion-block-header p-relative">
+                                                        <div class="cart-total-label"><span class="text">{{ 'general.cart.shipping' | t }}</span></div>
+                                                        <div class="cart-total-value" style="display: none;"></div>
+                                                    </div>
+                                                    <div class="accordion-block-content" style="display: none;">
+                                                        {% render 'shipping-rates-calculator' %}
+                                                    </div>
+                                                </accordion-block>
+                                            {%- endunless -%}
                                         </li>
                                     {%- endif -%}
                                     {%- if show_coupon_code -%}
-                                        <li class="cart-total cart-total-coupon">
-                                            <div class="cart-total-label"><span class="text">{{ 'general.cart.coupon_code' | t }}</span></div>
-                                            <div class="cart-total-value" style="display: none;"></div>
-                                            <div class="cart-coupon-code form-field discount-code-field"> 
-                                                <label class="form-label hiddenLabels" for="cart-coupon-code">{{ 'general.cart.coupon_code' | t }}</label> 
-                                                <input class="form-input" autocomplete="off" type="text" name="discount" id="cart-coupon-code" placeholder="{{'general.cart.enter_coupo_code' | t }}" /> 
-                                                <p class="form-text">{{ 'general.cart.coupon_code_text' | t }}</p>
-                                            </div>
+                                        <li class="cart-total cart-total-coupon{% if enable_dropdown %} enable_dropdown{% endif %}">
+                                            {%- unless enable_dropdown -%}
+                                                <div class="cart-total-label"><span class="text">{{ 'general.cart.coupon_code' | t }}</span></div>
+                                                <div class="cart-total-value" style="display: none;"></div>
+                                                <div class="cart-coupon-code form-field discount-code-field"> 
+                                                    <label class="form-label hiddenLabels" for="cart-coupon-code">{{ 'general.cart.coupon_code' | t }}</label> 
+                                                    <input class="form-input" autocomplete="off" type="text" name="discount" id="cart-coupon-code" placeholder="{{'general.cart.enter_coupo_code' | t }}" /> 
+                                                    <p class="form-text">{{ 'general.cart.coupon_code_text' | t }}</p>
+                                                </div>
+                                            {%- else -%}
+                                                <accordion-block class="d-block">
+                                                    <div class="accordion-block-header p-relative">
+                                                        <div class="cart-total-label"><span class="text">{{ 'general.cart.coupon_code' | t }}</span></div>
+                                                        <div class="cart-total-value" style="display: none;"></div>
+                                                    </div>
+                                                    <div class="accordion-block-content" style="display: none;">
+                                                        <div class="cart-coupon-code form-field discount-code-field"> 
+                                                            <label class="form-label hiddenLabels" for="cart-coupon-code">{{ 'general.cart.coupon_code' | t }}</label> 
+                                                            <input class="form-input" autocomplete="off" type="text" name="discount" id="cart-coupon-code" placeholder="{{'general.cart.enter_coupo_code' | t }}" /> 
+                                                            <p class="form-text">{{ 'general.cart.coupon_code_text' | t }}</p>
+                                                        </div>
+                                                    </div>
+                                                </accordion-block>
+                                            {%- endunless -%}
                                         </li>
                                     {%- endif -%}
                                     <li class="cart-discount cart-total-savings"{% if cart.total_discount == 0 %} style="display: none;"{% endif %} data-saved-discount-display data-dis="{{ cart.total_discount }}">
@@ -338,7 +367,26 @@
                                         <li class="shipTotal"><p class="cart-total-value form-text">{{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}</p></li>  
                                     {%- endif -%}
                                 </ul>
-                                <div class="cart-actions">
+                                
+                                {%- if section.settings.enable_sticky_button_checkout_mb -%}
+                                    <div class="cart-actions">
+                                        <div class="action-group">
+                                            {%- if continue_button_action == "1" -%}
+                                                <a class="button button-2 button-continue"{% if custom_button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ custom_button_link }}"{% endif %} role="button">{{ 'general.continue_shopping' | t }}</a>
+                                            {%- else -%}
+                                                <a class="button button-2 button-continue" role="link" aria-disabled="true" onclick="window.history.back();" role="button" id="cart-previous-page-btn">{{ 'general.back_to_previous_page' | t }}</a>
+                                            {%- endif -%}
+                                        </div>
+                                    </div>
+                                {%- endif -%}
+
+                                <div class="cart-actions{% if section.settings.enable_sticky_button_checkout_mb %} sticky_button_checkout_mb{% endif %}">
+                                    {%- if section.settings.enable_sticky_button_checkout_mb -%}
+                                        <li class="cart-total cart-total-grandtotal">
+                                            <div class="cart-total-label"><span class="text">{{ 'general.cart.total' | t }}</span></div>  
+                                            <div class="cart-total-value" data-cart-total-value="{{ cart.total_price }}"><span class="text">{{ cart.total_price | money }}</span></div>  
+                                        </li>
+                                    {%- endif -%}
                                     {%- if settings.show_global_checkbox -%}
                                         <div class="cart-checkbox global-checkbox">
                                             <input class="global-checkbox--input" type="checkbox" name="conditions" id="cart_conditions" data-target="#cart-checkout">
@@ -349,13 +397,16 @@
                                         </div>
                                     {%- endif -%}
                                     <div class="action-group">
-                                        <button class="button button-1 button-checkout" {% if settings.show_global_checkbox %} disabled="disabled" {% endif %} id="cart-checkout" data-href="{{ routes.cart_url | split: '/cart' | first }}/checkout">{{ 'sections.cart.proceed_to_checkout' | t }}</button>
+                                        {%- if section.settings.enable_sticky_button_checkout_mb -%}
+                                            <a class="button button-1 button-checkout button-disable" href="javascript:void(0)">{{ 'sections.cart.proceed_to_checkout' | t }}</a>
+                                        {%- endif -%}
+                                        <button class="button button-1 button-checkout button-enable" {% if settings.show_global_checkbox %} disabled="disabled" {% endif %} id="cart-checkout" data-href="{{ routes.cart_url | split: '/cart' | first }}/checkout">{{ 'sections.cart.proceed_to_checkout' | t }}</button>
                                         {%- if continue_button_action == "1" -%}
                                             <a class="button button-2 button-continue"{% if custom_button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ custom_button_link }}"{% endif %} role="button">{{ 'general.continue_shopping' | t }}</a>
                                         {%- else -%}
                                             <a class="button button-2 button-continue" role="link" aria-disabled="true" onclick="window.history.back();" role="button" id="cart-previous-page-btn">{{ 'general.back_to_previous_page' | t }}</a>
                                         {%- endif -%}
-                                    </div> 
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -491,8 +542,8 @@
             {
                 "type": "range",
                 "id": "side_padding_full_width",
-                "label": "t:sections.general.settings.container.padding_full",
-                "info": "t:sections.general.settings.container.padding_full_info",
+                "label": "t:sections.layout.container.padding_full_width",
+                "info": "t:sections.layout.container.info_full_width",
                 "min": 0,
                 "max": 100,
                 "step": 1,
@@ -567,6 +618,22 @@
                 "unit": "t:sections.layout.mg_desktop.unit",
                 "default": 50
             },
+        {
+            "type": "header",
+            "content": "t:sections.sticky_toolbar_mobile.blocks.action.action_to.option1"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_sticky_button_checkout_mb",
+            "label": "t:sections.main_cart.settings.enabled_sticky_button",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_dropdown",
+            "label": "Enable Dropdowns For 'Shipping Estimate' And 'Coupon Code'",
+            "default": false
+        },
         {
             "type": "header",
             "content": "t:sections.main_cart.settings.header__1"

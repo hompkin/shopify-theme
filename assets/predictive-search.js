@@ -266,8 +266,8 @@ class PredictiveSearch extends HTMLElement {
   updateViewAllLink(searchTerm) {
     const qsViewAllLink = document.querySelector('[data-qs-view-all-link]');
     if (!qsViewAllLink) return 
-
-    const linkTotal = `${routes.search_url}?q=${encodeURIComponent(searchTerm)}&${encodeURIComponent('resources[type]')}=product`
+    // const linkTotal = `${routes.search_url}?q=${encodeURIComponent(searchTerm)}&${encodeURIComponent('resources[type]')}=product`
+    const linkTotal = `${routes.search_url}?q=${encodeURIComponent(searchTerm)}&options%5Bprefix%5D=last&type=product`;
     
     qsViewAllLink.href = linkTotal
     return this.getTotalResults(linkTotal).then(count => {

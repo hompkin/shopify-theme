@@ -21,6 +21,7 @@
       if block.settings.show_gift_card_recipient and product.gift_card?
         assign gift_card_recipient_feature_active = true
       endif
+    assign sticky_add_to_cart_always_mb = section.settings.enable_sticky_add_to_cart_always_mobile
 -%}
 <div class="productView-buttons">
     {%- if gift_card_recipient_feature_active -%}
@@ -33,7 +34,7 @@
         {{ form | payment_terms }}
     {%- endform -%}
     {%- assign product_form_id = 'product-form-' | append: product.id -%}
-    <product-form class="productView-form product-form">
+    <product-form class="productView-form product-form{% if sticky_add_to_cart_always_mb %} always-on-mobile{% endif %}">
         {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
             <div class="productView-group">
                 {%- if check_show_qty == 'show_qty_2' -%}
@@ -97,7 +98,7 @@
                         </div>
                         {%- if settings.show_wishlist -%}
                             <div class="productView-wishlist clearfix{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
-                                <a data-wishlist href="#" data-wishlist-handle="{{ product.handle }}" data-product-id="{{ product.id }}"><span class="visually-hidden">{{ 'wishlist.general.add' | t }}</span>{% render 'icon-heart' %}</a>
+                                <a data-wishlist href="#" data-wishlist-handle="{{ product.handle }}" data-product-id="{{ product.id }}"><span class="visually-hidden">{{ 'wishlist.general.add' | t }}</span>{% render 'icon-heart' %}{% if settings.show_wishlist_full_icon %}{% render 'icon-heart-add-2' %}{% endif %}</a>
                             </div>
                         {%- endif -%}
                         {%- if check_show_share == '2' -%}
@@ -105,7 +106,7 @@
                         {%- endif -%}
                     </div>
                 </div>
-                {%- if show_dynamic_checkout -%}
+                {%- if show_dynamic_checkout or show_dynamic_checkout_sticky_atc_always_mb -%}
                     <div class="productView-groupBottom{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                         {%- if settings.show_global_checkbox -%}
                             <div class="productView-groupItem">
@@ -131,8 +132,9 @@
         {%- endform -%}
     </product-form>
     {%- if settings.show_notify_form -%}
-        <div class="productView-notifyMe halo-notifyMe{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" {% if product.variants.size > 1 %}style="display: none;"{% else %}{% if product.available %}style="display: none;"{% endif %}{% endif %}>
-            {% render 'halo-notify-sold-out', id: product.id, current_variant: current_variant %}
+        {%- assign form_id = 'product-productView-notify-form-' | append: product.id -%}
+        <div class="productView-notifyMe  halo-notifyMe{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" {% if product.variants.size > 1 %}style="display: none;"{% else %}{% if product.available %}style="display: none;"{% endif %}{% endif %}>
+            {% render 'halo-notify-sold-out', id: product.id, id_form: form_id , current_variant: current_variant %}
         </div>
     {%- endif -%}
 </div>

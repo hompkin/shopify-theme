@@ -128,10 +128,25 @@
         "label": "t:sections.main-sidebar.settings.general.label__1"
     },
     {
-        "type": "checkbox",
-        "id": "show_sidebar_collapse",
+        "type": "select",
+        "id": "sidebar_collapse",
         "label": "t:sections.main-sidebar.settings.general.label__2",
-        "default": true
+        "default": "collapse",
+        "options": 
+        [
+            {
+              "value": "collapse",
+              "label": "t:sections.main-sidebar.settings.general.options__5"
+            },
+            {
+              "value": "slide",
+              "label": "t:sections.main-sidebar.settings.general.options__6"
+            },
+            {
+              "value": "none",
+              "label": "t:sections.main-sidebar.settings.general.options__7"
+            }
+        ]
     },
     {
         "type": "checkbox",
@@ -199,11 +214,11 @@
         [
             {
               "value": "left",
-              "label": "t:sections.general.settings.position.options__1"
+              "label": "t:sections.general.settings.page-title.options__1"
             },
             {
               "value": "right",
-              "label": "t:sections.general.settings.position.options__2"
+              "label": "t:sections.general.settings.page-title.options__3"
             }
         ]
     },

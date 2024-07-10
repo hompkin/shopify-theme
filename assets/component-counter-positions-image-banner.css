@@ -67,14 +67,21 @@
     background: var(--button-background); 
     text-transform: var(--button-text-transform);   
     font-weight: var(--button-font-weight);
-
     margin-bottom: var(--button-margin-bottom, 0px);
+}
+
+.btn_1_br_outside .counter-positions-image-banner-wrapper .content-block .block-button:after {
+    border: 1px solid var(--button-border-color);
 }
 
 .counter-positions-image-banner-wrapper .content-block .block-button:hover {
     color: var(--button-text-color-hover);
     border: 1px solid var(--button-border-color-hover); 
     background: var(--button-background-hover);
+}
+
+.btn_1_br_outside .counter-positions-image-banner-wrapper .content-block .block-button:hover:after {
+    border: 1px solid var(--button-border-color-hover);
 }
 
 .counter-positions-image-banner-wrapper .content-block .block-button.is-underlined .text {

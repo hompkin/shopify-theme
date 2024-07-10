@@ -62,7 +62,11 @@
     endif
 -%}
 {%- if sale_badge or sold_out_badge or custom_badge or bundle_badge or new_badge -%}
-    <div class="{{ class }} badge-{{ position }} halo-productBadges halo-productBadges--{{ position }} date-{{ date_minus }} date1-{{ date_difference }}" data-new-badge-number="{{ new_badge_limit }}">
+    <div class="{{ class }}{% if sale_badge_type == 'discount' or sale_badge_type == 'text_discount' %} has-badge-js{% endif %} badge-{{ position }} halo-productBadges halo-productBadges--{{ position }} date-{{ date_minus }} date1-{{ date_difference }}"
+        {% if sale_badge_type == 'text_discount' or sale_badge_type == 'text' %}data-text-sale-badge="{{ 'products.product.on_sale' | t }}"{% endif %}
+        {% if sale_badge_type == 'discount' %}data-text-sale-badge="- "{% endif %}
+        data-new-badge-number="{{ new_badge_limit }}"
+    >
         {%- if new_badge -%}
             {%- if new_badge_type == 'auto' -%}
                 {%- if date_difference < new_badge_time -%}
