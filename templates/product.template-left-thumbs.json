@@ -321,7 +321,7 @@
         "show_sticky_vendor": false,
         "sticky_atc_layout": "1",
         "show_tab": true,
-        "tab_layout": "vertical",
+        "tab_layout": "vertical_sidebar",
         "tab_layout_mobile": "vertical_sidebar",
         "icon_style_layout": "style_2",
         "title_font_size": 16,
