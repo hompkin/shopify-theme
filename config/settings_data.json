@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "current": {
     "layout_body": "custom_width",
@@ -124,7 +133,7 @@
     "type_page_title_font_size": 28,
     "type_page_title_font_weight": "700",
     "type_page_title_letter_spacing": ".05em",
-    "favicon": "shopify:\/\/shop_images\/hompkin_favicon.png",
+    "favicon": "shopify:\/\/shop_images\/hompkin_favicon.svg",
     "show_effect_close": true,
     "show_global_checkbox": false,
     "global_checkbox_text": "I agree with",
@@ -171,7 +180,6 @@
     "style_text_color_varriant": "02",
     "style_text_color_varriant_fs": 16,
     "style_text_size_varriant": "01",
-    "show_review": true,
     "show_compare": false,
     "product_compare_type": "default",
     "show_wishlist_card": true,
@@ -330,7 +338,6 @@
     "product_price_color": "#3c3c3c",
     "product_price_sale_color": "{{ shop.brand.colors.secondary[0].background }}",
     "product_price_compare_color": "#888888",
-    "product_review_full_color": "{{ shop.brand.colors.secondary[0].background }}",
     "product_swatch_border": "#e8e8e8",
     "product_swatch_border_active": "{{ shop.brand.colors.secondary[0].background }}",
     "product_hot_stock_color": "#d62828",
@@ -398,6 +405,8 @@
     "btn_3_bg_hover": "#e9514b",
     "banner_animation": "effect_fade_up",
     "use_custom_js": false,
+    "show_review": true,
+    "product_review_full_color": "{{ shop.brand.colors.secondary[0].background }}",
     "checkout_logo_image": "shopify:\/\/shop_images\/hompkin_0fc70f03-fcc6-454a-9719-1a74406056d0.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "small",
@@ -899,14 +908,6 @@
     },
     "content_for_index": [
 
-    ],
-    "blocks": {
-      "6143736321357441667": {
-        "type": "shopify:\/\/apps\/tidio-live-chat-chatbots\/blocks\/app-embed\/1002274d-fb18-4939-98f6-5f05a8deeadc",
-        "disabled": false,
-        "settings": {
-        }
-      }
-    }
+    ]
   }
 }
