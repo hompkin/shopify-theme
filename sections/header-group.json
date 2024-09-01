@@ -62,9 +62,10 @@
           "type": "logo",
           "settings": {
             "logo_position": "always",
+            "logo": "shopify:\/\/shop_images\/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
             "logo_width": 120,
             "logo_width_fixed": 100,
-            "logo_text": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!-- Generator: Adobe Illustrator 27.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg version=\"1.1\" id=\"图层_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<style type=\"text\/css\">\n\t.st0{font-family:'Jost-SemiBold';}\n\t.st1{font-size:54.5427px;}\n\t.st2{font-family:'Jost-Regular';}\n\t.st3{font-size:24.6303px;}\n\t.st4{fill:#FD8508;}\n<\/style>\n<text transform=\"matrix(1 0 0 1 192.4285 273.7284)\" class=\"st0 st1\">HOMPKIN<\/text>\n<text transform=\"matrix(1 0 0 1 310.5124 303.8524)\" class=\"st2 st3\">hompkin.com<\/text>\n<g>\n\t<path class=\"st4\" d=\"M54.88,245c0.86-0.39,1.79-0.53,2.73-0.53c5.35,0,29.1,0,29.1,0c2.77,0,6.89,2.19,9.24,6.08\n\t\tc1.77,2.94,9.18,15.62,12.71,21.67c1.18,2.03,1.32,4.5,0.36,6.65l-11.72,26.34c-0.45,1.01-1.12,1.91-1.97,2.62\n\t\tc-2.42,2.03-7.47,4.8-11.79-2.54c-5.5-9.34-27.45-46.97-30.54-52.25c-0.36-0.61-0.62-1.25-0.78-1.94\n\t\tC51.84,249.38,51.72,246.43,54.88,245z\"><\/path>\n\t<path class=\"st4\" d=\"M124.1,270.1c-5.21,0-8.75-5.3-6.74-10.11c7.32-17.53,22.25-53.04,28.88-67.09c1.51-3.19,5.03-9.73,10.22-9.73\n\t\ts20.88,0,27.9,0c2.29,0,6.16,2.92,4.54,7.95c-1.55,4.81-26.66,64-28.87,69.21c-0.12,0.29-0.26,0.56-0.42,0.83\n\t\tc-1.11,1.89-5.61,8.94-11.09,8.94H124.1z\"><\/path>\n<\/g>\n<\/svg>",
+            "logo_text": "",
             "logo_font_size": 22,
             "logo_font_weight": "900",
             "logo_text_transform": "uppercase",
@@ -284,8 +285,8 @@
         "550fbd21-75fb-4051-9dee-77d91b5239f0": {
           "type": "logo",
           "settings": {
-            "logo_mobile": "shopify:\/\/shop_images\/hompkin_0fc70f03-fcc6-454a-9719-1a74406056d0.png",
-            "logo_width_mobile": 90,
+            "logo_mobile": "shopify:\/\/shop_images\/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
+            "logo_width_mobile": 100,
             "logo_text": "",
             "logo_font_size": 20,
             "logo_font_weight": "900",
