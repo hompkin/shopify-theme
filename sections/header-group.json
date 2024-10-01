@@ -210,9 +210,10 @@
           "settings": {
             "layout_block": "custom_width",
             "header_custom_width_size": 1400,
-            "item": "Product",
-            "column": 5,
-            "show_banner_1": false,
+            "item": "furniture",
+            "column": 4,
+            "show_banner_1": true,
+            "banner_1": "shopify://shop_images/2_jpg_d457e180-3149-4752-a325-04b06ae016af.jpg",
             "banner_url_1": "",
             "show_product": false,
             "product_title": "Featured Products",
