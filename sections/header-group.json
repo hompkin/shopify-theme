@@ -153,7 +153,7 @@
             "column": 4,
             "show_banner_1": true,
             "banner_1": "shopify://shop_images/2C6B32D4-6134-44C1-AD71-CC64FEE2D8E9.jpg",
-            "banner_url_1": "shopify://products/47-inch-rectangular-acrylic-single-soaker-bathtub-in-white",
+            "banner_url_1": "",
             "show_product": false,
             "product_title": "Featured Products",
             "product_collection": ""
@@ -164,7 +164,7 @@
           "settings": {
             "layout_block": "custom_width",
             "header_custom_width_size": 1200,
-            "item": "furniture",
+            "item": "",
             "column": 4,
             "show_banner_1": false,
             "banner_url_1": "",
