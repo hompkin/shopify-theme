@@ -213,7 +213,7 @@
             "layout_block": "full",
             "header_custom_width_size": 1920,
             "item": "lighting",
-            "column": 6,
+            "column": 3,
             "show_banner_1": true,
             "banner_1": "shopify://shop_images/Layer_10.png",
             "banner_url_1": "",
