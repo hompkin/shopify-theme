@@ -222,18 +222,21 @@
             "product_collection": ""
           }
         },
-        "megamenu_style_1_7nACbU": {
-          "type": "megamenu_style_1",
+        "megamenu_style_2_MiyydG": {
+          "type": "megamenu_style_2",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
+            "header_custom_width_size": 1280,
             "item": "Bath & Faucets",
             "column": 3,
-            "show_banner_1": false,
+            "show_banner_1": true,
+            "banner_1": "shopify://shop_images/Layer_11.png",
             "banner_url_1": "",
-            "show_product": true,
-            "product_title": "Featured Products",
-            "product_collection": "35-inch-white-acrylic-oval-single-soaker-bathtub"
+            "show_banner_2": true,
+            "banner_2": "shopify://shop_images/Layer_11.png",
+            "banner_url_2": "",
+            "show_banner_3": false,
+            "banner_url_3": ""
           }
         }
       },
@@ -243,7 +246,7 @@
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-2",
         "1bc0cba0-edde-4b6b-9130-5ce8a8832ec5",
         "megamenu_style_1_rew3UH",
-        "megamenu_style_1_7nACbU"
+        "megamenu_style_2_MiyydG"
       ],
       "settings": {
         "container": "full",
