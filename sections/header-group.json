@@ -146,11 +146,10 @@
         },
         "2d3383cf-a9b6-4b56-b34a-4bfe543bffd6": {
           "type": "megamenu_style_1",
-          "disabled": true,
           "settings": {
             "layout_block": "custom_width",
             "header_custom_width_size": 1400,
-            "item": "Theme Demo",
+            "item": "furniture",
             "column": 5,
             "show_banner_1": false,
             "banner_url_1": "",
