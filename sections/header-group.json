@@ -17,7 +17,7 @@
         "announcement_XezgPE": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Up To 30% OFF<\/p>",
+            "text": "<p>Up To 30% OFF</p>",
             "btn_color": "#e95144",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -27,7 +27,7 @@
         "announcement_9ndYyj": {
           "type": "announcement",
           "settings": {
-            "text": "<p>All Free Shipping<\/p>",
+            "text": "<p>All Free Shipping</p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -62,7 +62,7 @@
           "type": "logo",
           "settings": {
             "logo_position": "always",
-            "logo": "shopify:\/\/shop_images\/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
+            "logo": "shopify://shop_images/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
             "logo_width": 120,
             "logo_width_fixed": 100,
             "logo_text": "",
@@ -75,7 +75,7 @@
         "sections--14682829619277__52cc81e8-30d0-4f7b-b3a2-c97c000cee1b-1680873556fdad5cf4-1": {
           "type": "main_menu",
           "settings": {
-            "menu": "main-menu",
+            "menu": "header-menu",
             "menu_top_spacing": 23,
             "menu_bottom_spacing": 23,
             "grid_gap_menu_item": 20,
@@ -285,7 +285,7 @@
         "550fbd21-75fb-4051-9dee-77d91b5239f0": {
           "type": "logo",
           "settings": {
-            "logo_mobile": "shopify:\/\/shop_images\/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
+            "logo_mobile": "shopify://shop_images/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
             "logo_width_mobile": 100,
             "logo_text": "",
             "logo_font_size": 20,
@@ -324,7 +324,7 @@
         "gradient": "",
         "sticky_header_type": "on_scroll",
         "enable_transparent": false,
-        "transparent_color": "#fff",
+        "transparent_color": "#ffffff",
         "transparent_border_color": "",
         "padding_top": 0,
         "padding_bottom": 0
