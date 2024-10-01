@@ -99,8 +99,8 @@
         "sections--14682829619277__d128316a-9eef-4ad8-9e41-3e9614db5ae2-16808670863a7d2551-3"
       ],
       "settings": {
-        "container": "1770",
-        "padding_full_width": 0,
+        "container": "full",
+        "padding_full_width": 50,
         "header_bg": "#ffffff",
         "header_bg_gradient": "",
         "padding_top": 18,
@@ -296,7 +296,7 @@
       ],
       "settings": {
         "container": "full",
-        "padding_full_width": 30,
+        "padding_full_width": 50,
         "header_navigation_bg": "#ffffff",
         "header_navigation_bg_gradient": "",
         "sticky_header_type": "on_scroll",
