@@ -164,7 +164,7 @@
           "settings": {
             "layout_block": "custom_width",
             "header_custom_width_size": 1200,
-            "item": "Shop",
+            "item": "furniture",
             "column": 4,
             "show_banner_1": false,
             "banner_url_1": "",
