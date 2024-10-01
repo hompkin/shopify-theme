@@ -238,6 +238,20 @@
             "show_banner_3": false,
             "banner_url_3": ""
           }
+        },
+        "megamenu_style_1_abiWrB": {
+          "type": "megamenu_style_1",
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1770,
+            "item": "Baby & Kids",
+            "column": 6,
+            "show_banner_1": false,
+            "banner_url_1": "",
+            "show_product": false,
+            "product_title": "Featured Products",
+            "product_collection": ""
+          }
         }
       },
       "block_order": [
@@ -246,7 +260,8 @@
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-2",
         "1bc0cba0-edde-4b6b-9130-5ce8a8832ec5",
         "megamenu_style_1_rew3UH",
-        "megamenu_style_2_MiyydG"
+        "megamenu_style_2_MiyydG",
+        "megamenu_style_1_abiWrB"
       ],
       "settings": {
         "container": "full",
