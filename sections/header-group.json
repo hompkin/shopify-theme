@@ -226,7 +226,7 @@
           "type": "megamenu_style_2",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1280,
+            "header_custom_width_size": 1340,
             "item": "Bath & Faucets",
             "column": 3,
             "show_banner_1": true,
