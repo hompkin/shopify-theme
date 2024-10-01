@@ -17,7 +17,6 @@
         "sections--14682829619277__cd70f884-a33f-44c2-a411-3439d3dfe9f4-16808527258e4b918f-0": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/home-8-logo.png",
             "logo_width": 130,
             "logo_text": "",
             "logo_font_size": 30,
@@ -39,7 +38,7 @@
         "sections--14682829619277__cd70f884-a33f-44c2-a411-3439d3dfe9f4-16808527258e4b918f-2": {
           "type": "text",
           "settings": {
-            "customer_service_text": "<p>Customer Service<\/p><p><strong>(090) 123-ELLA<\/strong><\/p>",
+            "customer_service_text": "<p>Customer Service</p><p><strong>(090) 123-ELLA</strong></p>",
             "text_size": 16,
             "color": "#ffffff"
           }
@@ -75,9 +74,9 @@
         "sections--14682829619277__cd70f884-a33f-44c2-a411-3439d3dfe9f4-16808527258e4b918f-5"
       ],
       "settings": {
-        "container": "1370",
+        "container": "1170",
         "padding_full_width": 0,
-        "header_bg": "#5b3eef",
+        "header_bg": "#ff8b21",
         "header_bg_gradient": "",
         "header_text_transform": "capitalize",
         "padding_top": 18,
@@ -91,7 +90,6 @@
           "type": "logo",
           "settings": {
             "logo_position": "sticky_menu",
-            "logo": "shopify:\/\/shop_images\/home-8-logo.png",
             "logo_width": 130,
             "logo_width_fixed": 55,
             "logo_text": "",
@@ -197,8 +195,7 @@
             "item": "New in",
             "column": 3,
             "show_banner_1": true,
-            "banner_1": "shopify:\/\/shop_images\/home-8-mega-menu-3.jpg",
-            "banner_url_1": "shopify:\/\/collections\/blazero",
+            "banner_url_1": "shopify://collections/blazero",
             "show_product": true,
             "product_title": "Featured Products",
             "product_collection": "game-cover-juisce7-logo"
@@ -226,11 +223,9 @@
             "item": "Trend",
             "column": 3,
             "show_banner_1": true,
-            "banner_1": "shopify:\/\/shop_images\/home-8-mega-menu-1.jpg",
-            "banner_url_1": "shopify:\/\/collections\/collection-home-08-play-station-games",
+            "banner_url_1": "shopify://collections/collection-home-08-play-station-games",
             "show_banner_2": true,
-            "banner_2": "shopify:\/\/shop_images\/home-8-mega-menu-2.jpg",
-            "banner_url_2": "shopify:\/\/collections\/collection-home-08-pc-games",
+            "banner_url_2": "shopify://collections/collection-home-08-pc-games",
             "show_banner_3": false,
             "banner_url_3": ""
           }
@@ -245,11 +240,9 @@
             "menu_text_left": "",
             "menu_text_left_sale": "",
             "show_banner_1": true,
-            "banner_1": "shopify:\/\/shop_images\/home-8-mega-menu-5_9cca3461-adf3-4b1c-ad3d-43dc2062a716.jpg",
-            "banner_url_1": "shopify:\/\/collections\/collection-home-08-xbox-360",
+            "banner_url_1": "shopify://collections/collection-home-08-xbox-360",
             "show_banner_2": true,
-            "banner_2": "shopify:\/\/shop_images\/home-8-mega-menu-4.jpg",
-            "banner_url_2": "shopify:\/\/collections\/collection-home-08-new",
+            "banner_url_2": "shopify://collections/collection-home-08-new",
             "show_az_brand": true,
             "az_brand_title": "All Brands A-Z",
             "az_brand_link_text": "See All Brands",
@@ -316,7 +309,7 @@
       "settings": {
         "container": "1370",
         "padding_full_width": 0,
-        "header_navigation_bg": "#5b3eef",
+        "header_navigation_bg": "#ff8b21",
         "header_navigation_bg_gradient": "",
         "header_navigation_border_bottom": "box_shadow",
         "header_navigation_border_bottom_color": "#000000",
@@ -330,7 +323,8 @@
         "7de2266e-0cd4-4fda-9f09-06f75a17f944": {
           "type": "menu",
           "settings": {
-            "color": "#232323"
+            "color": "#232323",
+            "menu_tab_bg": "#000000"
           }
         },
         "163e2cb5-14f2-4af6-9ac3-77193c082f53": {
@@ -342,7 +336,6 @@
         "550fbd21-75fb-4051-9dee-77d91b5239f0": {
           "type": "logo",
           "settings": {
-            "logo_mobile": "shopify:\/\/shop_images\/home-8-logo-mb.png",
             "logo_width_mobile": 65,
             "logo_text": "",
             "logo_font_size": 20,
@@ -379,6 +372,9 @@
         "background": "#ffffff",
         "gradient": "",
         "sticky_header_type": "on_scroll",
+        "enable_transparent": false,
+        "transparent_color": "#fff",
+        "transparent_border_color": "",
         "padding_top": 0,
         "padding_bottom": 0
       }
