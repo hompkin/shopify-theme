@@ -231,9 +231,9 @@
             "column": 3,
             "show_banner_1": false,
             "banner_url_1": "",
-            "show_product": false,
+            "show_product": true,
             "product_title": "Featured Products",
-            "product_collection": ""
+            "product_collection": "35-inch-white-acrylic-oval-single-soaker-bathtub"
           }
         }
       },
