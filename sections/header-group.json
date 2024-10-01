@@ -129,8 +129,8 @@
           "type": "main_menu",
           "settings": {
             "menu": "header-menu",
-            "menu_top_spacing": 16,
-            "menu_bottom_spacing": 16,
+            "menu_top_spacing": 10,
+            "menu_bottom_spacing": 24,
             "grid_gap_menu_item": 16,
             "alignment": "left",
             "bg_mega_menu": "#ffffff",
@@ -395,6 +395,7 @@
         },
         "20dae707-64c0-4ea3-a05e-561cae9836d8": {
           "type": "customer",
+          "disabled": true,
           "settings": {
             "icon": "1",
             "color": "#232323"
