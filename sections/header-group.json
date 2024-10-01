@@ -213,7 +213,7 @@
             "layout_block": "custom_width",
             "header_custom_width_size": 1200,
             "item": "lighting",
-            "column": 3,
+            "column": 6,
             "show_banner_1": true,
             "banner_1": "shopify://shop_images/Layer_10.png",
             "banner_url_1": "",
