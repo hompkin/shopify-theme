@@ -148,15 +148,15 @@
           "type": "megamenu_style_1",
           "settings": {
             "layout_block": "full",
-            "header_custom_width_size": 1770,
+            "header_custom_width_size": 1420,
             "item": "furniture",
             "column": 4,
             "show_banner_1": true,
             "banner_1": "shopify://shop_images/2C6B32D4-6134-44C1-AD71-CC64FEE2D8E9.jpg",
             "banner_url_1": "",
-            "show_product": true,
+            "show_product": false,
             "product_title": "Featured Products",
-            "product_collection": "47-inch-oval-pink-new-synthetic-stone-single-soak-bathtub"
+            "product_collection": ""
           }
         },
         "0ac11c63-0fa0-4b10-acd3-9fac9d4cf1cd": {
