@@ -70,7 +70,7 @@
           "type": "search",
           "settings": {
             "search_color": "#c6c6c6",
-            "bg_search_color": "#fafafa",
+            "bg_search_color": "#fffefd",
             "search_icon_color": "#000000",
             "search_border_radius": 6
           }
