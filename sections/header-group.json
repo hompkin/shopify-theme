@@ -194,14 +194,14 @@
           "type": "megamenu_style_2",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1560,
+            "header_custom_width_size": 1770,
             "item": "furniture",
-            "column": 3,
+            "column": 4,
             "show_banner_1": true,
-            "banner_1": "shopify://shop_images/2_dbeae492-39f0-47d0-8714-5c7b364f5807.jpg",
+            "banner_1": "shopify://shop_images/person-dressed-in-black-holds-two-weights-in-each-hand.jpg",
             "banner_url_1": "",
             "show_banner_2": true,
-            "banner_2": "shopify://shop_images/2_cc4f2544-294b-4961-b72a-3c101637d4b5.jpg",
+            "banner_2": "shopify://shop_images/black-and-blue-clothing-on-a-rack-in-a-sunlit-shop.jpg",
             "banner_url_2": "",
             "show_banner_3": false,
             "banner_url_3": ""
