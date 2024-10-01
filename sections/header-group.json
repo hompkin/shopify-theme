@@ -190,95 +190,18 @@
             "cart_count_bubble_bg_gradient": ""
           }
         },
-        "752e4b98-3961-4a46-877e-adf41c8663b1": {
-          "type": "megamenu_style_1",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1400,
-            "item": "furniture",
-            "column": 4,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/1_jpg_bc4fa75e-b626-4670-a713-38a6903c4fb9.jpg",
-            "banner_url_1": "",
-            "show_product": false,
-            "product_title": "Featured Products",
-            "product_collection": ""
-          }
-        },
-        "727126bf-ad9b-4e9c-a344-9db9946a4772": {
-          "type": "megamenu_style_1",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1400,
-            "item": "furniture",
-            "column": 4,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/2_jpg_d457e180-3149-4752-a325-04b06ae016af.jpg",
-            "banner_url_1": "",
-            "show_product": false,
-            "product_title": "Featured Products",
-            "product_collection": ""
-          }
-        },
-        "c0897142-24a2-42d9-861d-d63f53734b67": {
-          "type": "megamenu_style_1",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "item": "Shop",
-            "column": 4,
-            "show_banner_1": false,
-            "banner_url_1": "",
-            "show_product": false,
-            "product_title": "Featured Products",
-            "product_collection": ""
-          }
-        },
-        "97bf5e0c-a0f8-49fc-87ac-47872a781ef6": {
-          "type": "megamenu_style_1",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "item": "New In",
-            "column": 3,
-            "show_banner_1": true,
-            "banner_url_1": "",
-            "show_product": true,
-            "product_title": "Featured Products",
-            "product_collection": "product-01-sample-furniture-and-footwear-for-sale"
-          }
-        },
-        "ed98299a-9268-403d-a785-e7b75c132ae9": {
-          "type": "megamenu_style_4",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
-            "item": "Collections",
-            "column": 5,
-            "menu_text_left": "",
-            "menu_text_left_sale": "",
-            "show_banner_1": true,
-            "banner_url_1": "",
-            "show_banner_2": true,
-            "banner_url_2": "",
-            "show_az_brand": true,
-            "az_brand_title": "Brand by Alphabet",
-            "az_brand_link_text": "See All Brands",
-            "az_brand_url": "shopify://pages/brands",
-            "bg_mega_menu_bottom": "#f8f8f8",
-            "az_brand_link_text_color": "#000000"
-          }
-        },
         "1bc0cba0-edde-4b6b-9130-5ce8a8832ec5": {
           "type": "megamenu_style_2",
           "settings": {
             "layout_block": "custom_width",
             "header_custom_width_size": 1200,
-            "item": "Trend",
-            "column": 3,
+            "item": "furniture",
+            "column": 4,
             "show_banner_1": true,
+            "banner_1": "shopify://shop_images/2_dbeae492-39f0-47d0-8714-5c7b364f5807.jpg",
             "banner_url_1": "",
             "show_banner_2": true,
+            "banner_2": "shopify://shop_images/2_cc4f2544-294b-4961-b72a-3c101637d4b5.jpg",
             "banner_url_2": "",
             "show_banner_3": false,
             "banner_url_3": ""
@@ -289,11 +212,6 @@
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-0",
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-1",
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-2",
-        "752e4b98-3961-4a46-877e-adf41c8663b1",
-        "727126bf-ad9b-4e9c-a344-9db9946a4772",
-        "c0897142-24a2-42d9-861d-d63f53734b67",
-        "97bf5e0c-a0f8-49fc-87ac-47872a781ef6",
-        "ed98299a-9268-403d-a785-e7b75c132ae9",
         "1bc0cba0-edde-4b6b-9130-5ce8a8832ec5"
       ],
       "settings": {
