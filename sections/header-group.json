@@ -114,6 +114,8 @@
           "type": "logo",
           "settings": {
             "logo_position": "sticky_menu",
+            "logo": "shopify://shop_images/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
+            "logo_transparent": "shopify://shop_images/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
             "logo_width": 70,
             "logo_width_fixed": 55,
             "logo_text": "",
@@ -127,9 +129,9 @@
           "type": "main_menu",
           "settings": {
             "menu": "header-menu",
-            "menu_top_spacing": 17,
-            "menu_bottom_spacing": 17,
-            "grid_gap_menu_item": 20,
+            "menu_top_spacing": 16,
+            "menu_bottom_spacing": 16,
+            "grid_gap_menu_item": 16,
             "alignment": "left",
             "bg_mega_menu": "#ffffff",
             "bg_mega_menu_gradient": "",
