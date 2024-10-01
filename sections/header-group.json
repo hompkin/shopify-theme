@@ -17,6 +17,7 @@
         "sections--14682829619277__cd70f884-a33f-44c2-a411-3439d3dfe9f4-16808527258e4b918f-0": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
             "logo_width": 130,
             "logo_text": "",
             "logo_font_size": 30,
@@ -30,8 +31,8 @@
           "settings": {
             "show_box_shadow": false,
             "search_color": "#808080",
-            "search_icon_color": "#220971",
-            "bg_search_color": "#ffffff",
+            "search_icon_color": "#232323",
+            "bg_search_color": "#f8f8f8",
             "search_border_radius": 50
           }
         },
@@ -46,7 +47,7 @@
         "sections--14682829619277__cd70f884-a33f-44c2-a411-3439d3dfe9f4-16808527258e4b918f-3": {
           "type": "wishlist",
           "settings": {
-            "color": "#ffffff"
+            "color": "#232323"
           }
         },
         "sections--14682829619277__cd70f884-a33f-44c2-a411-3439d3dfe9f4-16808527258e4b918f-4": {
@@ -58,7 +59,7 @@
         "sections--14682829619277__cd70f884-a33f-44c2-a411-3439d3dfe9f4-16808527258e4b918f-5": {
           "type": "cart",
           "settings": {
-            "color": "#ffffff",
+            "color": "#232323",
             "cart_bg_item": "#24f2b4",
             "cart_color_item": "#220971",
             "cart_item_font_size": 14
@@ -76,7 +77,7 @@
       "settings": {
         "container": "1170",
         "padding_full_width": 0,
-        "header_bg": "#ff8b21",
+        "header_bg": "#fff",
         "header_bg_gradient": "",
         "header_text_transform": "capitalize",
         "padding_top": 18,
@@ -307,7 +308,7 @@
         "49770c19-36b0-4942-8855-44968d850d5e"
       ],
       "settings": {
-        "container": "1370",
+        "container": "1770",
         "padding_full_width": 0,
         "header_navigation_bg": "#ff8b21",
         "header_navigation_bg_gradient": "",
