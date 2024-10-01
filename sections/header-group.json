@@ -126,7 +126,7 @@
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-1": {
           "type": "main_menu",
           "settings": {
-            "menu": "",
+            "menu": "header-menu",
             "menu_top_spacing": 17,
             "menu_bottom_spacing": 17,
             "grid_gap_menu_item": 20,
