@@ -239,18 +239,21 @@
             "banner_url_3": ""
           }
         },
-        "megamenu_style_1_abiWrB": {
-          "type": "megamenu_style_1",
+        "megamenu_style_2_a6djwH": {
+          "type": "megamenu_style_2",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1680,
+            "header_custom_width_size": 1440,
             "item": "Baby & Kids",
-            "column": 6,
-            "show_banner_1": false,
+            "column": 4,
+            "show_banner_1": true,
+            "banner_1": "shopify://shop_images/Layer_12.png",
             "banner_url_1": "",
-            "show_product": false,
-            "product_title": "Featured Products",
-            "product_collection": ""
+            "show_banner_2": true,
+            "banner_2": "shopify://shop_images/Layer_11.png",
+            "banner_url_2": "",
+            "show_banner_3": false,
+            "banner_url_3": ""
           }
         }
       },
@@ -261,7 +264,7 @@
         "1bc0cba0-edde-4b6b-9130-5ce8a8832ec5",
         "megamenu_style_1_rew3UH",
         "megamenu_style_2_MiyydG",
-        "megamenu_style_1_abiWrB"
+        "megamenu_style_2_a6djwH"
       ],
       "settings": {
         "container": "full",
