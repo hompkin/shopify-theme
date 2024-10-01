@@ -147,7 +147,7 @@
         "2d3383cf-a9b6-4b56-b34a-4bfe543bffd6": {
           "type": "megamenu_style_1",
           "settings": {
-            "layout_block": "custom_width",
+            "layout_block": "full",
             "header_custom_width_size": 1400,
             "item": "furniture",
             "column": 5,
