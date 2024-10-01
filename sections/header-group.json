@@ -63,7 +63,7 @@
           "settings": {
             "logo_position": "always",
             "logo": "shopify://shop_images/hompkin_81399bad-cbb5-4a91-a892-7aa1ec101be3.svg",
-            "logo_width": 120,
+            "logo_width": 110,
             "logo_width_fixed": 100,
             "logo_text": "",
             "logo_font_size": 22,
@@ -78,7 +78,7 @@
             "menu": "header-menu",
             "menu_top_spacing": 23,
             "menu_bottom_spacing": 23,
-            "grid_gap_menu_item": 20,
+            "grid_gap_menu_item": 12,
             "alignment": "center",
             "bg_mega_menu": "#ffffff",
             "bg_mega_menu_gradient": "",
