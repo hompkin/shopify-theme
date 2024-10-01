@@ -100,11 +100,11 @@
       ],
       "settings": {
         "container": "full",
-        "padding_full_width": 50,
+        "padding_full_width": 40,
         "header_bg": "#ffffff",
         "header_bg_gradient": "",
-        "padding_top": 18,
-        "padding_bottom": 1
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "00c92468-4e6c-42f1-85ad-ba2b3977ed37": {
