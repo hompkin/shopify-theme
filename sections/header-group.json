@@ -295,8 +295,8 @@
         "1bc0cba0-edde-4b6b-9130-5ce8a8832ec5"
       ],
       "settings": {
-        "container": "1770",
-        "padding_full_width": 0,
+        "container": "full",
+        "padding_full_width": 30,
         "header_navigation_bg": "#ffffff",
         "header_navigation_bg_gradient": "",
         "sticky_header_type": "on_scroll",
