@@ -101,7 +101,7 @@
       "settings": {
         "container": "full",
         "padding_full_width": 40,
-        "header_bg": "#ffffff",
+        "header_bg": "{{ shop.brand.colors.secondary[0].foreground }}",
         "header_bg_gradient": "",
         "padding_top": 0,
         "padding_bottom": 0
