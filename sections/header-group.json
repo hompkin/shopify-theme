@@ -283,10 +283,28 @@
             "show_banner_1": true,
             "banner_1": "shopify://shop_images/Layer_12.png",
             "banner_url_1": "",
-            "show_banner_2": true,
+            "show_banner_2": false,
             "banner_2": "shopify://shop_images/Layer_11.png",
             "banner_url_2": "",
             "show_banner_3": false,
+            "banner_url_3": ""
+          }
+        },
+        "megamenu_style_2_HLTDjL": {
+          "type": "megamenu_style_2",
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1440,
+            "item": "Decor & Rugs",
+            "column": 4,
+            "show_banner_1": true,
+            "banner_1": "shopify://shop_images/Layer_12.png",
+            "banner_url_1": "",
+            "show_banner_2": true,
+            "banner_2": "shopify://shop_images/Layer_11.png",
+            "banner_url_2": "",
+            "show_banner_3": true,
+            "banner_3": "shopify://shop_images/black-and-blue-clothing-on-a-rack-in-a-sunlit-shop.jpg",
             "banner_url_3": ""
           }
         }
@@ -300,7 +318,8 @@
         "megamenu_style_2_MiyydG",
         "megamenu_style_2_a6djwH",
         "megamenu_style_2_xyX6DR",
-        "megamenu_style_2_N9K6XF"
+        "megamenu_style_2_N9K6XF",
+        "megamenu_style_2_HLTDjL"
       ],
       "settings": {
         "container": "full",
