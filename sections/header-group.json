@@ -194,7 +194,7 @@
           "type": "megamenu_style_2",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1520,
+            "header_custom_width_size": 1480,
             "item": "furniture",
             "column": 4,
             "show_banner_1": true,
@@ -215,6 +215,7 @@
             "item": "lighting",
             "column": 3,
             "show_banner_1": false,
+            "banner_1": "shopify://shop_images/Layer_10.png",
             "banner_url_1": "",
             "show_product": false,
             "product_title": "Featured Products",
