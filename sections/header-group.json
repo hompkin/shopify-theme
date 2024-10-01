@@ -148,7 +148,7 @@
           "type": "megamenu_style_1",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1400,
+            "header_custom_width_size": 1770,
             "item": "furniture",
             "column": 4,
             "show_banner_1": true,
