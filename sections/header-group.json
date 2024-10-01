@@ -211,7 +211,7 @@
           "type": "megamenu_style_1",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1340,
+            "header_custom_width_size": 1440,
             "item": "lighting",
             "column": 6,
             "show_banner_1": true,
