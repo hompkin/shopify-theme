@@ -260,7 +260,7 @@
           "type": "megamenu_style_2",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1340,
+            "header_custom_width_size": 1500,
             "item": "Outdoor",
             "column": 4,
             "show_banner_1": true,
