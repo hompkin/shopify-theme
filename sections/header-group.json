@@ -76,8 +76,8 @@
           "type": "main_menu",
           "settings": {
             "menu": "header-menu",
-            "menu_top_spacing": 23,
-            "menu_bottom_spacing": 23,
+            "menu_top_spacing": 24,
+            "menu_bottom_spacing": 24,
             "grid_gap_menu_item": 12,
             "alignment": "center",
             "bg_mega_menu": "#ffffff",
