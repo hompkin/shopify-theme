@@ -194,9 +194,9 @@
           "type": "megamenu_style_2",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1200,
+            "header_custom_width_size": 1560,
             "item": "furniture",
-            "column": 4,
+            "column": 3,
             "show_banner_1": true,
             "banner_1": "shopify://shop_images/2_dbeae492-39f0-47d0-8714-5c7b364f5807.jpg",
             "banner_url_1": "",
