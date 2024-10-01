@@ -272,6 +272,23 @@
             "show_banner_3": false,
             "banner_url_3": ""
           }
+        },
+        "megamenu_style_2_N9K6XF": {
+          "type": "megamenu_style_2",
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1280,
+            "item": "Kitchen",
+            "column": 3,
+            "show_banner_1": true,
+            "banner_1": "shopify://shop_images/Layer_12.png",
+            "banner_url_1": "",
+            "show_banner_2": true,
+            "banner_2": "shopify://shop_images/Layer_11.png",
+            "banner_url_2": "",
+            "show_banner_3": false,
+            "banner_url_3": ""
+          }
         }
       },
       "block_order": [
@@ -282,7 +299,8 @@
         "megamenu_style_1_rew3UH",
         "megamenu_style_2_MiyydG",
         "megamenu_style_2_a6djwH",
-        "megamenu_style_2_xyX6DR"
+        "megamenu_style_2_xyX6DR",
+        "megamenu_style_2_N9K6XF"
       ],
       "settings": {
         "container": "full",
