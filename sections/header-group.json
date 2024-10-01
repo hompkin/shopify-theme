@@ -194,7 +194,7 @@
           "type": "megamenu_style_2",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1460,
+            "header_custom_width_size": 1440,
             "item": "furniture",
             "column": 4,
             "show_banner_1": true,
@@ -211,9 +211,9 @@
           "type": "megamenu_style_1",
           "settings": {
             "layout_block": "custom_width",
-            "header_custom_width_size": 1440,
+            "header_custom_width_size": 1200,
             "item": "lighting",
-            "column": 4,
+            "column": 3,
             "show_banner_1": true,
             "banner_1": "shopify://shop_images/Layer_10.png",
             "banner_url_1": "",
