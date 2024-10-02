@@ -105,8 +105,8 @@
         "padding_full_width": 40,
         "header_bg": "{{ shop.brand.colors.secondary[0].foreground }}",
         "header_bg_gradient": "",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 16,
+        "padding_bottom": 10
       }
     },
     "00c92468-4e6c-42f1-85ad-ba2b3977ed37": {
