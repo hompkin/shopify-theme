@@ -50,7 +50,7 @@
         "sections--14682829619277__d128316a-9eef-4ad8-9e41-3e9614db5ae2-16808670863a7d2551-0": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/hompkin_a74bce14-21ea-47f4-8f55-6d3bdc3245a2.svg",
+            "logo": "shopify://shop_images/hompkin_9e89aca2-9a6a-448e-a997-7ac5e41a9bea.svg",
             "logo_width": 80,
             "logo_text": "",
             "logo_font_size": 20,
@@ -117,8 +117,8 @@
           "type": "logo",
           "settings": {
             "logo_position": "sticky_menu",
-            "logo": "shopify://shop_images/hompkin_a74bce14-21ea-47f4-8f55-6d3bdc3245a2.svg",
-            "logo_transparent": "shopify://shop_images/hompkin_a74bce14-21ea-47f4-8f55-6d3bdc3245a2.svg",
+            "logo": "shopify://shop_images/hompkin_9e89aca2-9a6a-448e-a997-7ac5e41a9bea.svg",
+            "logo_transparent": "shopify://shop_images/hompkin_9e89aca2-9a6a-448e-a997-7ac5e41a9bea.svg",
             "logo_width": 70,
             "logo_width_fixed": 55,
             "logo_text": "",
@@ -388,9 +388,9 @@
         "550fbd21-75fb-4051-9dee-77d91b5239f0": {
           "type": "logo",
           "settings": {
-            "logo_mobile": "shopify://shop_images/hompkin_a74bce14-21ea-47f4-8f55-6d3bdc3245a2.svg",
-            "logo_transparent": "shopify://shop_images/hompkin_a74bce14-21ea-47f4-8f55-6d3bdc3245a2.svg",
-            "logo_width_mobile": 70,
+            "logo_mobile": "shopify://shop_images/hompkin_9e89aca2-9a6a-448e-a997-7ac5e41a9bea.svg",
+            "logo_transparent": "shopify://shop_images/hompkin_9e89aca2-9a6a-448e-a997-7ac5e41a9bea.svg",
+            "logo_width_mobile": 100,
             "logo_text": "",
             "logo_font_size": 20,
             "logo_font_weight": "900",
