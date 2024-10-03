@@ -119,7 +119,7 @@
             "logo": "shopify://shop_images/hompkin_e6fffa47-f114-4406-a7af-d4651e2b926f.svg",
             "logo_transparent": "shopify://shop_images/hompkin_e6fffa47-f114-4406-a7af-d4651e2b926f.svg",
             "logo_width": 100,
-            "logo_width_fixed": 35,
+            "logo_width_fixed": 100,
             "logo_text": "",
             "logo_font_size": 20,
             "logo_font_weight": "900",
