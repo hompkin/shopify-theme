@@ -17,7 +17,7 @@
               </tr>
             {% endif %}
             {% assign attrs = item.attrs %}
-            {% if current_variant.sku in item %}
+            {% if item[current_variant.sku] %}
               {% assign attrs = item[current_variant.sku] %}
             {% endif %}
             {% for attr in attrs %}
