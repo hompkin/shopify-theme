@@ -359,7 +359,7 @@
         "padding_full_width": 50,
         "header_navigation_bg": "{{ shop.brand.colors.secondary[0].foreground }}",
         "header_navigation_bg_gradient": "",
-        "sticky_header_type": "on_scroll",
+        "sticky_header_type": "always",
         "sticky_header_width": "full",
         "enable_transparent": false,
         "transparent_color": "#ffffff",
