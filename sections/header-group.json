@@ -213,10 +213,10 @@
             "layout_block": "custom_width",
             "header_custom_width_size": 1280,
             "item": "lighting",
-            "column": 3,
+            "column": 4,
             "show_banner_1": true,
             "banner_1": "shopify://shop_images/WeChat91b1e4e5c754d23ecb669ba70faf9844.jpg",
-            "banner_url_1": "",
+            "banner_url_1": "shopify://collections",
             "show_product": false,
             "product_title": "Featured Products",
             "product_collection": ""
