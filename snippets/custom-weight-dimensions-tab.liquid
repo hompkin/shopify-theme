@@ -16,19 +16,22 @@
                   </td>
               </tr>
             {% endif %}
-       
-            {% for attr in item.attrs %}
-              {% if attr.value and attr.value != blank %}
-                <tr>
-                  <td class="key-td">
-                    <span class="key-text">{{ attr.key }}</span>
-                  </td>
-                   <td class="value-td">
-                    <span class="value-text">{{ attr.value }}</span>
-                  </td>
-                </tr>
-              {% endif %}
-            {% endfor %}
+            {% assign attrs = item.attrs %}
+            {% if current_variant.sku in item %}
+              {% assign attrs = item[current_variant.sku] %}
+            {% endif %}
+            {% for attr in attrs %}
+                {% if attr.value and attr.value != blank %}
+                  <tr>
+                    <td class="key-td">
+                      <span class="key-text">{{ attr.key }}</span>
+                    </td>
+                    <td class="value-td">
+                        <span class="value-text">{{ attr.value }}</span>
+                      </td>
+                    </tr>
+                {% endif %}
+              {% endfor %}
           </tbody>
         </table>
       </div>
