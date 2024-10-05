@@ -1,52 +1,49 @@
 <div class="custom-meta-div">
   {% assign current_variant = product.selected_or_first_available_variant %}
-  {% if product.metafields.custom.product_specification -%}
+  {% assign spec_variant_kv = product.metafields.custom.product_specification.value.variant_kv %}
+  {% if spec_variant_kv and spec_variant_kv[current_variant.sku]-%}
     <span class="text">Specification</span>
-    {% for item in product.metafields.custom.product_specification.value.content %}
       <div class="custom-meta-block">
         <table>
           <tbody>
-            {% if current_variant %}
-               <tr>
-                  <td class="key-td">
-                    <span class="key-text">SKU</span>
-                  </td>
-                  <td class="value-td" data-tab-meta-sku>
-                    <span class="value-text">{{ current_variant.sku }}</span>
-                  </td>
-              </tr>
-            {% endif %}
-            {% assign attrs = item.attrs %}
-            {% if item[current_variant.sku] %}
-              {% assign attrs = item[current_variant.sku] %}
-            {% endif %}
+            <tr>
+              <td class="key-td">
+                <span class="key-text">SKU</span>
+              </td>
+              <td class="value-td" data-tab-meta-sku>
+                <span class="value-text">{{ current_variant.sku }}</span>
+              </td>
+            </tr>
+            {% assign attrs = spec_variant_kv[current_variant.sku] %}
             {% for attr in attrs %}
-                {% if attr.value and attr.value != blank %}
-                  <tr>
-                    <td class="key-td">
-                      <span class="key-text">{{ attr.key }}</span>
+              {% if attr.value and attr.value != blank %}
+                <tr>
+                  <td class="key-td">
+                    <span class="key-text">{{ attr.key }}</span>
+                  </td>
+                  <td class="value-td">
+                      <span class="value-text">{{ attr.value }}</span>
                     </td>
-                    <td class="value-td">
-                        <span class="value-text">{{ attr.value }}</span>
-                      </td>
-                    </tr>
-                {% endif %}
-              {% endfor %}
+                  </tr>
+              {% endif %}
+            {% endfor %}
           </tbody>
         </table>
       </div>
-    {% endfor %}
   {% endif %}
 </div>
+
 <div class="custom-meta-div">
-  {% if product.metafields.custom.product_weight_dimensions -%}
-    <span class="text">Dimensions</span>
-    {% for item in product.metafields.custom.product_weight_dimensions.value.content %}
-      
-      <div class="custom-meta-block" id="data_tab_meta_dimens_{{ item.sku }}" {% if item.sku contains current_variant.sku %} style="display:block;"  {% else %} style="display:none;"  {% endif %} >
+  {% assign wd_variants = product.metafields.custom.product_weight_dimensions.value %}
+  {% if wd_variants -%}
+    {% assign wd_variants_kv = product.metafields.custom.product_weight_dimensions.value.variant_kv %}
+    <span class="text">Weight & Dimensions</span>
+    {% if wd_variants_kv and wd_variants_kv[current_variant.sku] %}
+      {% assign attrs = wd_variants_kv[current_variant.sku] %}
+      <div class="custom-meta-block" id="data_tab_meta_dimens_{{ current_variant.sku }}" style="display:block;">
         <table>
           <tbody>
-            {% for attr in item.attrs %}
+            {% for attr in attrs %}
               {% if attr.value and attr.value != blank %}
                 <tr>
                   <td class="key-td">
@@ -60,20 +57,25 @@
             {% endfor %}
           </tbody>
         </table>
-        {% if item.img_url %}
+        {% assign wd_variants_images = product.metafields.custom.product_weight_dimensions.value.variant_kv %}
+        {% if wd_variants_images and wd_variants_images[current_variant.sku] %}
           <div class="horizen-line">&nbsp</div>
-          {%- for media in product.media -%}
-            {% assign preview_image_url = media.preview_image | img_url: 'master' %}
-            {% assign filename = preview_image_url | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
-            {% assign checkArray = filename | split:item.img_url %}
-            {%- if media.media_type =='image' and checkArray[0] == blank -%}
-                <img class="img" src="{{ preview_image_url }}" loading="lazy" alt="{{ media.alt | escape }}" width="100%" height="100%" >
-                {% break; %}
-            {%- endif -%}
-          {%- endfor -%}
-          
+          {% assign wd_variants_images_attrs = wd_variants_images[current_variant.sku] %}
+          {% for attr in wd_variants_images_attrs %}
+            {% if attr.value and attr.value != blank %}
+              {% assign attr_filename = attr.value | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
+              {%- for media in product.media -%}
+                {% assign preview_image_url = media.preview_image | img_url: 'master' %}
+                {% assign preview_filename = preview_image_url | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
+                {%- if media.media_type =='image' and preview_filename == attr_filename -%}
+                    <img class="img" src="{{ preview_image_url }}" loading="lazy" alt="{{ media.alt | escape }}" width="100%" height="100%" >
+                    {% break; %}
+                {%- endif -%}
+              {%- endfor -%}
+            {% endif %}
+          {% endfor %}
         {% endif %}
       </div>
-    {% endfor %}
+    {% endif %}
   {% endif %}
 </div>
