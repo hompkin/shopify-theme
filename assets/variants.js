@@ -221,6 +221,18 @@ class VariantSelects extends HTMLElement {
         if(this.item.find('[data-tab-meta-sku]').length > 0){
             this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
         }
+        const weightDimensionsTab = document.getElementById('tab-weight-dimensions');
+        if (weightDimensionsTab) {
+            fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+                .then((response) => response.text())
+                .then((responseText) => {
+                    const html = new DOMParser().parseFromString(responseText, 'text/html');
+                    const sourceTab = html.getElementById('tab-weight-dimensions');
+                    if (sourceTab) {
+                        weightDimensionsTab.innerHTML = sourceTab.innerHTML;
+                    }
+                });
+        }
         var elements = this.findElementsWithIdContainingPrefix('data_tab_meta_dimens_');
         elements.forEach(element => {
           element.style.display = "none";

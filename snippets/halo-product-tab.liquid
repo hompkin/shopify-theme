@@ -161,7 +161,9 @@
 							{%- endif -%}
                             <!-- 自定义tab 显示内容 by changelcai -->
                             {%- if key == 'product_weight_dimensions' -%}
-                              {% render 'custom-weight-dimensions-tab', product: product %}
+                              <div id="tab-weight-dimensions">
+                                {% render 'custom-weight-dimensions-tab', product: product %}
+                              </div>
                             {%- elsif key == 'product_note_care' -%}
                               {% render 'product-note-care-tab', product: product %}
                             {%- elsif block.type == 'description' -%}
