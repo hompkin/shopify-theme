@@ -66,14 +66,7 @@
             {%- for media in product.media -%}
               {% assign preview_image_url = media.preview_image | img_url: 'master' %}
               {% assign preview_filename = preview_image_url | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
-               <span>******</span>
-                 <br>
-              <span>{{ attr_filename }}</span>
-              <br>
-              <span>{{ preview_filename }}</span>
-              <br>
-              <span>******</span>
-              {%- if media.media_type =='image' and attr_filename in preview_filename -%}
+              {%- if media.media_type == 'image' and preview_filename | starts_with: attr_filename -%}
                   <img class="img" src="{{ preview_image_url }}" loading="lazy" alt="{{ media.alt | escape }}" width="100%" height="100%" >
                   {% break; %}
               {%- endif -%}
