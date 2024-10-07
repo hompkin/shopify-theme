@@ -218,9 +218,9 @@ class VariantSelects extends HTMLElement {
             this.item.find('[data-sku] .productView-info-value').text(this.currentVariant.sku);
         }
 
-        if(this.item.find('[data-tab-meta-sku]').length > 0){
-            this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
-        }
+        // if(this.item.find('[data-tab-meta-sku]').length > 0){
+        //     this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
+        // }
         const weightDimensionsTab = document.getElementById('tab-weight-dimensions');
         if (weightDimensionsTab) {
             fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
@@ -233,14 +233,6 @@ class VariantSelects extends HTMLElement {
                     }
                 });
         }
-        var elements = this.findElementsWithIdContainingPrefix('data_tab_meta_dimens_');
-        elements.forEach(element => {
-          element.style.display = "none";
-        });
-        var target_elements = this.findElementsWithIdContainingTest(elements, this.currentVariant.sku);
-        target_elements.forEach(element => {
-          element.style.display = "block";
-        });
 
         if(this.item.find('[data-barcode]').length > 0){
             this.item.find('[data-barcode] .productView-info-value').text(this.currentVariant.barcode);
