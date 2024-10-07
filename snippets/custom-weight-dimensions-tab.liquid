@@ -1,6 +1,7 @@
 <div class="custom-meta-div">
   {% assign current_variant = product.selected_or_first_available_variant %}
   {% assign spec_variant_kv = product.metafields.custom.product_specification.value.variant_kv %}
+  <span>{{spec_variant_kv}}</span>
   {% if spec_variant_kv and spec_variant_kv[current_variant.sku]-%}
     <span class="text">Specification</span>
       <div class="custom-meta-block">
