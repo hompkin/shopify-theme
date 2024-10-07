@@ -57,7 +57,7 @@
             {% endfor %}
           </tbody>
         </table>
-        {% assign wd_variants_images = product.metafields.custom.product_weight_dimensions.value.variant_kv %}
+        {% assign wd_variants_images = product.metafields.custom.product_weight_dimensions.value.variant_images %}
         {% if wd_variants_images and wd_variants_images[current_variant.sku] %}
           <div class="horizen-line">&nbsp</div>
           {% assign wd_variants_images_attrs = wd_variants_images[current_variant.sku] %}
