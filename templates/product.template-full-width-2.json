@@ -8,497 +8,773 @@
 * ------------------------------------------------------------
 */
 {
-    "sections": {
-      "main": {
-        "type": "main-product-full-width-2",
-        "blocks": {
-          "2e8c7c14-a0ad-4930-a1d8-3def05310426": {
-            "type": "breadcrumb",
-            "settings": {
-              "breadcrumb_layout": "full",
-              "breadcrumb_alignment": "left",
-              "breadcrumb_bg": "rgba(0,0,0,0)",
-              "breadcrumb_gradient": "",
-              "breadcrumb_bg_mb": "#f6f6f6",
-              "breadcrumb_gradient_mb": "",
-              "breadcrumb_mg_top_desktop": 0,
-              "breadcrumb_mg_top_mobile": 0,
-              "breadcrumb_mg_bottom_desktop": 15,
-              "breadcrumb_mg_bottom_mobile": 15
-            }
-          },
-          "b0ea69b7-8a54-4a3c-9abd-0fcceeabaaa0": {
-            "type": "title",
-            "settings": {
-              "fontsize_text": 19,
-              "fontsize_text_mb": 18,
-              "color_title": "#232323",
-              "spacing_top": 0,
-              "spacing_bottom": 0
-            }
-          },
-          "0e4ea696-4820-4c98-aaa6-806d41782a3d": {
-            "type": "meta",
-            "settings": {
-              "spacing_top": 4,
-              "spacing_bottom": 4,
-              "show_sold_in": true,
-              "sold_in_number": "1,2,3,5,6,7,8,9,12",
-              "sold_in_hours": "36,48",
-              "color_text_sold_in": "#d62828"
-            }
-          },
-          "short_description_EFRigP": {
-            "type": "short_description",
-            "settings": {
-              "word_number": "46",
-              "fontsize_text": 14,
-              "color_text": "#3c3c3c",
-              "spacing_top": 0,
-              "spacing_bottom": 0
-            }
-          },
-          "4e59f24a-8859-4579-a80a-d70e6f1bf66b": {
-            "type": "info",
-            "settings": {
-              "show_vendor": false,
-              "show_sku": false,
-              "show_barcode": false,
-              "show_availability": false,
-              "show_product_type": false,
-              "stock_level_display": "none",
-              "enable_border_top": false,
-              "enable_border_bottom": false,
-              "color_border": "#e6e6e6",
-              "spacing_top": 8,
-              "spacing_bottom": 0
-            }
-          },
-          "4f95b592-8369-4ab0-b30d-24e463fb6890": {
-            "type": "price",
-            "settings": {
-              "fontsize_text": 24,
-              "spacing_top": 8,
-              "spacing_bottom": 2
-            }
-          },
-          "d98e243b-3682-495a-965a-1c7f7d460880": {
-            "type": "variant_picker",
-            "settings": {
-              "picker_type": "button",
-              "show_variant_image_group": false,
-              "enable_border_top": false,
-              "enable_border_bottom": false,
-              "color_border": "#e6e6e6",
-              "spacing_top": 12,
-              "spacing_bottom": 0
-            }
-          },
-          "faa2b3e6-c0a1-4269-baa6-d2605efe4c05": {
-            "type": "quantity_selector",
-            "settings": {
-              "qty_style": "1",
-              "qty_layout": "1",
-              "spacing_top": 0,
-              "spacing_bottom": 10
-            }
-          },
-          "04ea8843-f461-4f1d-8ea4-43f62fdfb21e": {
-            "type": "perks",
-            "disabled": true,
-            "settings": {
-              "spacing_top": 0,
-              "spacing_bottom": 8,
-              "show_size_chart": true,
-              "size_chart_type": "custom_image",
-              "size_chart_page": "",
-              "size_chart_image_type": "jpg",
-              "show_compare_color": true,
-              "show_compare_color_drop_drap": true,
-              "compare_layout": "1"
-            }
-          },
-          "sprout_plant_trees_badge_L6Cy7f": {
-            "type": "shopify://apps/sprout-plant-trees/blocks/badge/7db5ee24-2195-4099-b98e-1547c600e4aa",
-            "settings": {
-              "custom_classes": "sprout-product-badge-container-custom"
-            }
-          },
-          "countdown_pYHU3H": {
-            "type": "countdown",
-            "settings": {
-              "spacing_top": 0,
-              "spacing_bottom": 18
-            }
-          },
-          "f1b31d90-1e43-4948-9fe3-97ba43f6fb34": {
-            "type": "buy_buttons",
-            "settings": {
-              "show_dynamic_checkout": true,
-              "show_gift_card_recipient": false,
-              "spacing_top": 15,
-              "spacing_bottom": 15,
-              "atc_animation": "none",
-              "atc_color": "#ffffff",
-              "atc_border_color": "{{ shop.brand.colors.secondary[0].background }}",
-              "atc_bg_color": "{{ shop.brand.colors.secondary[0].background }}",
-              "atc_bg_color_gradient": "",
-              "atc_color_hover": "{{ shop.brand.colors.primary[0].background }}",
-              "atc_border_color_hover": "{{ shop.brand.colors.secondary[1].background }}",
-              "atc_bg_color_hover": "{{ shop.brand.colors.secondary[1].background }}",
-              "atc_bg_color_gradient_hover": "",
-              "bin_color": "#232323",
-              "bin_border_color": "#acacac",
-              "bin_bg_color": "#ffffff",
-              "bin_bg_color_gradient": "",
-              "bin_color_hover": "#ffffff",
-              "bin_border_color_hover": "#232323",
-              "bin_bg_color_hover": "#232323",
-              "bin_bg_color_hover_gradient": ""
-            }
-          },
-          "683f2b15-db3b-4f63-8d0f-e688cc678581": {
-            "type": "customer_viewing",
-            "disabled": true,
-            "settings": {
-              "customer_viewing_number": "283, 100, 59, 11, 14, 185, 193, 165, 50, 38, 99, 112, 46, 10, 125, 200, 250, 18",
-              "customer_viewing_time": 5,
-              "spacing_top": 0,
-              "spacing_bottom": 22
-            }
-          },
-          "19de9abb-17c8-4d67-941d-b32706ed06fd": {
-            "type": "pickup_availability",
-            "settings": {
-              "show_pickup_availability": true,
-              "spacing_top": 0,
-              "spacing_bottom": 25
-            }
-          },
-          "10093fcf-2053-47e9-bedb-841bb0d046fa": {
-            "type": "trust_image",
-            "disabled": true,
-            "settings": {
-              "show_trust_image": true,
-              "spacing_top": 0,
-              "spacing_bottom": 0
-            }
-          },
-          "bd066b80-c8e3-4f3e-8280-b27fbf6e9423": {
-            "type": "description",
-            "settings": {
-              "open_tab_mobile": true,
-              "title": "Description",
-              "enable_btn_show_more": false,
-              "maximum_des_to_show": 300
-            }
-          },
-          "custom_xGkGnz": {
-            "type": "custom",
-            "settings": {
-              "open_tab_mobile": true,
-              "title": "Customer Reviews",
-              "type": "all",
-              "content": "",
-              "enable_btn_show_more": false,
-              "maximum_des_to_show": 300,
-              "product_custom_source": "key_text",
-              "product_tab_key_metafield": "customer_reviews"
-            }
-          },
-          "b9d6eb19-10f4-41f8-bfdc-ea10e8b3182a": {
-            "type": "custom",
-            "settings": {
-              "open_tab_mobile": false,
-              "title": "Specification & Dimensions",
-              "type": "all",
-              "content": "",
-              "enable_btn_show_more": false,
-              "maximum_des_to_show": 300,
-              "product_custom_source": "key_text",
-              "product_tab_key_metafield": "product_weight_dimensions"
-            }
-          },
-          "3d9ea84d-5527-4bce-abe6-5debef3ec955": {
-            "type": "custom",
-            "settings": {
-              "open_tab_mobile": true,
-              "title": "Note & Care",
-              "type": "all",
-              "content": "",
-              "enable_btn_show_more": false,
-              "maximum_des_to_show": 300,
-              "product_custom_source": "key_text",
-              "product_tab_key_metafield": "product_note_care"
-            }
-          },
-          "custom_UW4W3n": {
-            "type": "custom",
-            "settings": {
-              "open_tab_mobile": true,
-              "title": "Shipping Policy",
-              "type": "all",
-              "content": "<p>HOMPKIN ships all around the globe, covering North and South America, Europe, Asia, Africa, Oceania, and so on. Along with the largest and most trusted global courier delivery services, such as UPS, FedEx, and USPS, we ensure that your package arrives at the destination safely.</p>\n<h3 id=\"do-i-need-to-pay-for-shipping\">Do I Need to Pay For Shipping?</h3>\n<p>Usually free delivery is available in most areas. <br> If your area is a remote area, our team will contact you after you place the order to confirm the shipping surcharge before starting to process the order.</p>\n<h3 id=\"how-to-track-the-package\">What Countries or Regions Do You Ship To?</h3>\n<p>Regions currently available for shipping.</p>\n<strong>North America:</strong>\n<div class=\"region-container clearfix\">\n<div class=\"country-container\">\n<p>🇺🇸 United States</p>\n</div>\n<div class=\"country-container\">\n<p>🇨🇦 Canada</p>\n</div>\n<div class=\"country-container\">\n<p>🇲🇽 Mexico <br>(Ciudad de México)</p>\n</div>\n</div>\n<br> <strong>Europe:</strong>\n<div class=\"region-container clearfix\">\n<div class=\"country-container\">\n<p>🇩🇪 Germany</p>\n</div>\n<div class=\"country-container\">\n<p>🇸🇪 Sweden</p>\n</div>\n<div class=\"country-container\">\n<p>🇬🇧 United Kingdom</p>\n</div>\n<div class=\"country-container\">\n<p>🇫🇷 France</p>\n</div>\n<div class=\"country-container\">\n<p>🇳🇱 Netherlands</p>\n</div>\n<div class=\"country-container\">\n<p>🇵🇹 Portugal</p>\n</div>\n<div class=\"country-container\">\n<p>🇸🇪 Sweden</p>\n</div>\n<div class=\"country-container\">\n<p>🇨🇭 Switzerland</p>\n</div>\n<div class=\"country-container\">\n<p>🇸🇰 Slovakia</p>\n</div>\n<div class=\"country-container\">\n<p>🇪🇸 Spain</p>\n</div>\n<div class=\"country-container\">\n<p>🇮🇹 Italy</p>\n</div>\n<div class=\"country-container\">\n<p>🇬🇷 Greece</p>\n</div>\n</div>\n<br> <strong>Asia:</strong>\n<div class=\"region-container clearfix\">\n<div class=\"country-container\">\n<p>🇯🇵 Japan</p>\n</div>\n<div class=\"country-container\">\n<p>🇴🇲 Oman</p>\n</div>\n<div class=\"country-container\">\n<p>🇶🇦 Qatar</p>\n</div>\n<div class=\"country-container\">\n<p>🇦🇪 United Arab Emirates</p>\n</div>\n<div class=\"country-container\">\n<p>🇸🇦 Saudi Arabia</p>\n</div>\n<div class=\"country-container\">\n<p>🇭🇰 Hong Kong</p>\n</div>\n</div>\n<br> <strong>Oceania:</strong>\n<div class=\"region-container clearfix\">\n<div class=\"country-container\">\n<p>🇳🇿 New Zealand</p>\n</div>\n<div class=\"country-container\">\n<p>🇦🇺 Australia</p>\n</div>\n</div>\n<h3 id=\"how-to-estimate-the-delivery-date\">How to Estimate the Delivery Date?</h3>\n<p><strong>Pre-Order:</strong> You can find the Estimated Delivery Date instructions on each product page. <br> <strong>Post-Order:</strong> Visit the order link in the order confirmation email we send for the latest order status. We will send you a shipment notification email with tracking information once we have shipped your order. <br> Please note:</p>\n<ol>\n<li rel=\"1\">If you need Expedited Shipping Service, please contact our <a href=\"https://hompkin.com/pages/contact-us\" target=\"_blank\">Customer Service</a>.</li>\n<li rel=\"2\">Deliveries are not typically made at weekends or on holidays.</li>\n</ol>\n<h3 id=\"how-to-track-the-package\">How to Track the Package?</h3>\n<p>Once an order has shipped out, we will send you a Shipping Confirmation email that includes the tracking number and the carrier. Just go to the carrier’s website and use the tracking number to track your package. <br> You can also use the email address and order number via website ” <a href=\"https://hompkin.com/apps/17TRACK\" target=\"_blank\">Track My Order</a>” to check the tracking information.</p>\n<h3 id=\"should-i-pay-taxes\">Should I Pay Taxes?</h3>\n<p>While additional taxes are generally not applicable, it’s important to note that specific categories of items may be subject to state taxes. If mandated by your state, we are obligated to collect sales tax on relevant items.</p>\n<h3 id=\"how-does-shipping-work-for-oversized-items\">How Does Shipping Work for Oversized Items?</h3>\n<p>Oversized items are large products including most furniture, bathtubs, sofa, bed, TV-cabinet, big table sinks etc that must ship by Freight Outside Home Delivery Service due to size or weight. <br> Delivery of oversized items is limited to the first accessible dry area outside the home. The truck driver is responsible for delivering the goods to the agreed-upon location. Customers are required to provide their own warehouse equipment for unloading, or arrange for additional assistance from capable adults to transport the items into their homes.</p>\n<p>Carrier will call you 24-48 hours prior to delivery to arrange a delivery time that will vary depending on the freight carrier’s schedule. Whatever information you can give during the phone call will be given to the driver to make the delivery easier for them and for you.</p>\n<p>Inform the carrier if you have any circumstances that could affect the delivery (additional fees may apply):</p>\n<ol>\n<li rel=\"1\">\n<p>Very narrow driveway</p>\n</li>\n<li rel=\"2\">\n<p>Dead-end street</p>\n</li>\n<li rel=\"3\">\n<p>Ferry for island locations, etc. (fees may apply)</p>\n</li>\n<li rel=\"4\">\n<p>The driver will need to park in a particular place</p>\n</li>\n<li rel=\"5\">\n<p>Delivery to a side door or garage entrance</p>\n</li>\n</ol>\n<h3 id=\"under-what-circumstances-do-i-need-to-pay-additional-shipping-charges\">Under what circumstances do I need to pay additional shipping charges?</h3>\n<p>Additional delivery charges may apply under the following circumstances:</p>\n<ol>\n<li rel=\"1\">\n<p>Requesting a change of delivery address after the shipment has been dispatched.</p>\n</li>\n<li rel=\"2\">\n<p>Failure to accept delivery within 5 business days of the initial delivery attempt by the shipping company may result in daily storage fees.</p>\n</li>\n<li rel=\"3\">\n<p>A second delivery attempt is necessary due to customer non-compliance or rescheduling, requiring payment for the second delivery.</p>\n</li>\n<li rel=\"4\">\n<p>Abandonment of goods will incur a disposal fee for waste management.</p>\n</li>\n</ol>\n<h3 id=\"what-should-i-do-when-i-received-a-damaged-item\">What Should I Do When I Received a Damaged Item?</h3>\n<ol>\n<li rel=\"1\">\n<p>Upon receipt, please kindly sign the word “damaged” on the proof of delivery (for freight shipping) and inspect your purchase and notify us of any missing parts, faults, damage or incorrect items immediately.</p>\n</li>\n<li rel=\"2\">\n<p>Please kindly keep the original packaging, which is essential. You are advised to contact our customer service within 48 hours of receiving your items if there is an issue with the product. such as the lights not working when fitted, faucets leaking while installed, and damage to furniture after opening, please make sure to take some pictures or a quick video demonstrating the problem. Providing pictures of the product, the packaging and the labels on the outside will allow us to greatly speed up the process for you.</p>\n</li>\n<li rel=\"3\">\n<p>All product issue inquiries may need to inform us within 14 days of receipt along with the three types of pictures mentioned above, otherwise, after-sales inquiries after 14 days of receipt might be affected negatively due to uncertain factors outside of the time frame.</p>\n</li>\n<li rel=\"4\">\n<p>Please note that we do not cover the repair fee if unauthorized handyman services were hired.</p>\n</li>\n<li rel=\"5\">\n<p>For orders with fragile items like marble tabletops, bathtubs, ceramic sinks, etc., please inspect the contents upon delivery and record an unpacking video. If any damage occurs, contact our customer support immediately. We’ll expedite returns/exchanges for a quick resolution, minimizing any inconvenience.</p>\n</li>\n</ol>\n<h3 id=\"what-if-my-order-shows-as-delivered-but-is-missing\">What If My Order Shows as Delivered But is Missing?</h3>\n<p>There are a few steps you can take, better within 24 hours after your item shows as delivered:</p>\n<ol>\n<li rel=\"1\">\n<p>Confirm your shipping address.</p>\n</li>\n<li rel=\"2\">\n<p>Check mailbox and other entrances to your home.</p>\n</li>\n<li rel=\"3\">\n<p>Check if someone else from your household or a neighbor accepted the package.</p>\n</li>\n<li rel=\"4\">\n<p>Check around your home for delivery attempt notice.</p>\n</li>\n<li rel=\"5\">\n<p>Contact the carrier (FedEx, UPS, etc.) with your tracking number to start a claim.</p>\n</li>\n<li rel=\"6\">\n<p>Sometimes carriers communicate delivery prior to arrival, so we suggest waiting 24 hours. <br> If it has been 24 hours or more since the delivery notification and you still haven’t received the product, please contact our customer service and provide the claim number for additional assistance. If the shipment is confirmed “missing”, we are responsible for re-shipment or refund according to your preference. <br> All missing item inquiries may need to inform us within 3 days of receipt, otherwise, after-sales inquiries after 3 days of receipt might be affected negatively due to uncertain factors outside of the time frame.</p>\n</li>\n</ol>\n<h3 id=\"can-i-change-my-shipping-address-after-placing-an-order\">Can I Change My Shipping Address After Placing an Order?</h3>\n<p>Carefully review your shipping information for accuracy before submitting your order. Once an order is placed, shipping address cannot be changed online. When you need, first of all, please check the status of your order. <br> <strong>Pending:</strong> You can just leave it alone and place a new order. <br> <strong>Shipped:</strong> It depends on the carrier’s service. Some carriers offer address change service by charging additional fee. With all of this in mind, we still do understand that sometimes you want to ask us to try, so you may contact Customer Service to check the possibility. Note that country cannot be changed, success or not depends on carriers, additional address change fee will be at customer’s expense. <br> If unfortunately, the carrier who delivers your order doesn’t offer address change service, please manage to receive your order at the original shipping address or directly contact the carrier to seek assistance. If the address is totally invalid, package may be destroyed or returned to sender. In this situation, you will be charged a penalty that may include, but not limited to extra shipping charges and handling fees. <br> Changes are not guaranteed until you receive a confirmation from our customer service.</p>\n<h3 id=\"do-you-ship-to-multiple-shipping-addresses\">Do You Ship to Multiple Shipping Addresses?</h3>\n<p>At HOMPKIN.com, each order allows for the specification of only one shipping address. If you’re purchasing multiple items and wish to have them delivered to different addresses (e.g., buying an item for yourself and another as a gift for a friend), it’s necessary to make separate purchases for each item. This ensures that each item is shipped to the desired address accurately.</p>\n<h3 id=\"do-you-ship-to-po-boxes-or-apofpo-military-addresses\">Do You Ship to PO Boxes or APO/FPO Military Addresses?</h3>\n<p>Sorry, at this time we are unable to ship to PO Boxes or APO/FPO military addresses, so customers need to provide a street address. If a PO Box or APO/FPO military address is provided, we will contact you for confirmation, it will delay shipment of the order.</p>\n<h3 id=\"what-should-i-do-if-there-is-a-serious-delay-with-my-shipment\">What Should I Do If There is a Serious Delay with My Shipment?</h3>\n<p>Please contact both the carrier and our customer service to investigate. If it is confirmed there is an exception (i.e., package lost) or delay will still last for a considerable time, we are responsible for re-shipment or refund according to your preference.</p>",
-              "enable_btn_show_more": false,
-              "maximum_des_to_show": 300,
-              "product_custom_source": "dynamic",
-              "product_tab_key_metafield": ""
-            }
-          },
-          "custom_xqn6MJ": {
-            "type": "custom",
-            "settings": {
-              "open_tab_mobile": true,
-              "title": "Returns & Refunds",
-              "type": "all",
-              "content": "<h3 id=\"general-return\">General Return</h3>\n<p>You have the flexibility to request a return within 30 days from the date of receiving your purchase if you are dissatisfied with the product. However, it’s important to note that you will be responsible for covering the return or exchange expenses unless there are quality issues with the item.To facilitate a general return, it is necessary to maintain the original packaging, and for additional guidance, you can refer to the ” Why Should I Keep the Original Packaging ﻿ ” section.</p>\n<ul>\n<li>\n<p>In brand-new condition</p>\n</li>\n<li>\n<p>Uninstalled and/or non-assembled</p>\n</li>\n<li>\n<p>Unused, no pieces missing</p>\n</li>\n<li>\n<p>With original tags and original packaging</p>\n</li>\n</ul>\n<p>Please be aware that the 30 days return policy is based on the delivery time of each individual item shown on the carrier’s website instead of the entire order. We would not accept if the item(s) are marked delivered greater than 30 days when you initiate the return.</p>\n<h3 id=\"certain-products-are-not-eligible-for-returns\">Certain Products Are Not Eligible for Returns:</h3>\n<ol>\n<li rel=\"1\">\n<p>Clearance items</p>\n</li>\n<li rel=\"2\">\n<p>Customized items</p>\n</li>\n<li rel=\"3\">\n<p>Offline purchase (items or parts not listed on our website)</p>\n</li>\n<li rel=\"4\">\n<p>Items marked “Non-Returnable” on the product page</p>\n</li>\n<li rel=\"5\">\n<p>Assembled or disassembled products</p>\n</li>\n<li rel=\"6\">\n<p>Without original packaging or serious damage to the original packaging <br> Please note, any items returned without authorization will not qualify for a refund and be rejected on delivery to our returns center.</p>\n</li>\n</ol>\n<h3 id=\"what-you-need-to-know-before-you-start-a-general-return\">What you need to know before you start a general return:</h3>\n<ol>\n<li rel=\"1\">\n<p>Preserve Original Packaging: <br> Please kindly DO NOT discard any original packaging or wrapping materials from the item(s) you received.</p>\n</li>\n<li rel=\"2\">\n<p>Repackaging Requirements: <br> You would need to package the same way when the item arrives to ensure the product meets the requirements for the carrier.</p>\n</li>\n<li rel=\"3\">\n<p>Non-Refundable Additional Services: <br> Any additional service on the order will NOT be refunded for the general return, including expedited delivery fee, doorway drop-off, room of choice drop-off and white glove delivery.</p>\n</li>\n<li rel=\"4\">\n<p>Photo Documentation for Assessment: <br> At least a full view picture of the product and the outer box, and a picture of the internal packing needs to be provided so we can assess its condition and return eligibility.</p>\n</li>\n<li rel=\"5\">\n<p>Return Shipping Cost Responsibility: <br> You would need to cover the return shipping cost if there are no quality issues involved.</p>\n</li>\n</ol>\n<h3 id=\"concealed-faulty-or-damage\">Concealed Faulty or Damage</h3>\n<p>Please inspect your purchase and notify us of any missing parts, faults, damage or incorrect items immediately. <br> For large or fragile items in your purchase, we highly recommend recording an unboxing video.This not only safeguards your rights but also expedites our process for handling returns or exchanges in case of damage.</p>\n<p>You are advised to contact our customer service within 48 hours of receiving your itemsif there is an issue with the product. such as the lights not working when fitted, faucets leaking while installed, and damage to furniture after opening, please make sure to take some pictures or a quick video demonstrating the problem.</p>\n<p>All product issue inquiries may be best informed us within 30 days of receipt along with the three types of pictures mentioned above, otherwise, after-sales inquiries after 30 days of receipt might be affected negatively due to uncertain factors outside of the time frame.</p>\n<p>Please note that we do not cover the repair fee if unauthorized handyman services were hired.</p>\n<h3 id=\"obvious-shipping-damage\">Obvious Shipping Damage</h3>\n<p>If a shipment arrives at your door with obvious shipping damage, please immediately inspect the items and check their condition. With obvious damage on items themselves, please refuse the specific package, and clearly mark down the damage situation when signing any paperwork. If the carrier denies your refusal and insists on you accepting the shipment, please document the series of events (package damage, item damage, not being allowed to refuse, etc.) on all paperwork and take photographs. If you accept the goods without noting the circumstances, the carrier might refuse to address the damages caused during transit.</p>\n<ol>\n<li rel=\"1\">\n<p>Photograph the whole process, the damage, all packaging material and paperwork.</p>\n</li>\n<li rel=\"2\">\n<p>Note any damages on the carrier delivery receipt or contact the carrier to submit a damage claim.</p>\n</li>\n<li rel=\"3\">\n<p>Reflect to our customer service by including the order ID, the item number & Qty of the damaged item(s), the claim number, providing pictures/videos evidence clearly showing the damage and all packaging material and paperwork.</p>\n</li>\n<li rel=\"4\">\n<p>If you accept the package, please DO NOT discard the damaged product or the packaging. Typically, the shipper will be dispatched to pick the item up for inspection and processing. We’ll need your help in making it available for pickup on the scheduled date and time. <br> Please note that if you attempt to return the damaged item without speaking to one of our customer service representatives, you will jeopardize your chances of making a claim, and you may not receive credit for the return.</p>\n</li>\n</ol>\n<p>COCOCHAIRS.com is not responsible for reimbursement of any labor costs or project delays that may occur due to the receipt of damaged goods. We always recommend that you wait to schedule installation until after your fixture has arrived and been inspected.</p>\n<h3 id=\"i-received-a-wrong-item\">I Received a Wrong Item</h3>\n<p>If you believe you have received the wrong product, please verify the item number of the item(s) you received compared to your order confirmation and/or invoice. If it does not match, contact customer service immediately, be sure to include the copy of your original order confirmation, confirm the item number & Qty of the wrong item(s), provide pictures clearly showing the wrong item. The wrong item must be returned in original packaging, COCOCHAIRS.com will be responsible for the return shipping cost. You can exchange it for the correct one or request a full refund.</p>\n<p>COCOCHAIRS.com is not responsible for reimbursement of any labor costs or project delays that may occur due to the receipt of incorrect goods. We always recommend that you wait to schedule installation until after your fixture has arrived and been inspected.</p>\n<h3 id=\"how-soon-will-i-receive-my-refund\">How Soon Will I Receive My Refund?</h3>\n<p>If we cancel your order, we will refund you within 3 working days. <br> If you apply for a return refund, when we receive your return, we will refund you within 5 working days after receipt and inspection. <br> The refund will be made to the account that the funds were originally drawn from, namely the money will be sent back in the same way it was received. <br> If you originally paid with credit card, please allow up to one billing cycle for the credit to show in the bank statement. It mostly depends on how fast your bank processes the credit. <br> Please do not request a chargeback from your credit card company during the return process. Due to the time it takes to resolve chargeback disputes, it is usually better to be patient and wait for the return process to run its course. Or if an unusual delay occurs, feel free to contact us for assistance. <br> If you originally paid with PayPal account balance, you could find the refund right away in your PayPal account.</p>\n<h3 id=\"why-should-i-keep-the-original-packaging\">Why Should I Keep the Original Packaging?</h3>\n<p>Due to the nature of our products, whether it be large furniture or other smaller items, they are often in the heavy or delicate categories. Our packaging is specially made to cater to each individual item. They are rigorously tested to ensure they can withstand most kinds of incidences in transportation. Any self-packed items by the customer will have a high chance of being damaged on the way caused by flimsy materials or improper techniques. That’s why we don’t generally allow any returns without their complete original packaging. In a way, this also prevents lots of potentially wasted efforts and protects the customer’s interest.</p>",
-              "enable_btn_show_more": false,
-              "maximum_des_to_show": 300,
-              "product_custom_source": "dynamic",
-              "product_tab_key_metafield": ""
-            }
-          },
-          "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3": {
-            "type": "share",
-            "settings": {
-              "show_share": true,
-              "share_layout": "2",
-              "spacing_top": 0,
-              "spacing_bottom": 0
-            }
+  "sections": {
+    "main": {
+      "type": "main-product-full-width-2",
+      "blocks": {
+        "2e8c7c14-a0ad-4930-a1d8-3def05310426": {
+          "type": "breadcrumb",
+          "settings": {
+            "breadcrumb_layout": "full",
+            "breadcrumb_alignment": "left",
+            "breadcrumb_bg": "rgba(0,0,0,0)",
+            "breadcrumb_gradient": "",
+            "breadcrumb_bg_mb": "#f6f6f6",
+            "breadcrumb_gradient_mb": "",
+            "breadcrumb_mg_top_desktop": 10,
+            "breadcrumb_mg_top_mobile": 0,
+            "breadcrumb_mg_bottom_desktop": 20,
+            "breadcrumb_mg_bottom_mobile": 0
           }
         },
-        "block_order": [
-          "2e8c7c14-a0ad-4930-a1d8-3def05310426",
-          "b0ea69b7-8a54-4a3c-9abd-0fcceeabaaa0",
-          "0e4ea696-4820-4c98-aaa6-806d41782a3d",
-          "short_description_EFRigP",
-          "4e59f24a-8859-4579-a80a-d70e6f1bf66b",
-          "4f95b592-8369-4ab0-b30d-24e463fb6890",
-          "d98e243b-3682-495a-965a-1c7f7d460880",
-          "faa2b3e6-c0a1-4269-baa6-d2605efe4c05",
-          "04ea8843-f461-4f1d-8ea4-43f62fdfb21e",
-          "sprout_plant_trees_badge_L6Cy7f",
-          "countdown_pYHU3H",
-          "f1b31d90-1e43-4948-9fe3-97ba43f6fb34",
-          "683f2b15-db3b-4f63-8d0f-e688cc678581",
-          "19de9abb-17c8-4d67-941d-b32706ed06fd",
-          "10093fcf-2053-47e9-bedb-841bb0d046fa",
-          "bd066b80-c8e3-4f3e-8280-b27fbf6e9423",
-          "custom_xGkGnz",
-          "b9d6eb19-10f4-41f8-bfdc-ea10e8b3182a",
-          "3d9ea84d-5527-4bce-abe6-5debef3ec955",
-          "custom_UW4W3n",
-          "custom_xqn6MJ",
-          "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
-        ],
-        "custom_css": [
-          "@media (min-width: 551px) {[data-vertical=\"sidebar\"] .tab-content .toggle-content {width: 666px; max-width: 66vw; }}",
-          "@media only screen and (min-width: 768px) {/* Container for each region */ .region-container {width: 100%; }}",
-          ".sprout-product-badge-container {font-size: 16px;}"
-        ],
-        "settings": {
-          "container": "1770",
-          "padding_full_width": 30,
-          "show_sticky_info": true,
-          "mg_top_desktop": 0,
-          "mg_top_tablet": 0,
-          "mg_top_mobile": 0,
-          "mg_bottom_desktop": 0,
-          "mg_bottom_tablet": 0,
-          "mg_bottom_mobile": 0,
-          "main_image_arrows_desktop": false,
-          "main_image_arrows_mobile": true,
-          "main_image_counter_mobile": true,
-          "main_image_enable_parallax_mb": false,
-          "main_image_show_zoom_icon_mb": false,
-          "main_image_position": "left",
-          "main_image_layout": "3",
-          "main_image_show_custom_cursor": true,
-          "count_color": "#191919",
-          "icon_color": "#000000",
-          "show_thumbnail_mobile": false,
-          "thumnail_layout": "4",
-          "thumbnail_to_show": 8,
-          "show_sidebar": false,
-          "sidebar_collapse": "collapse",
-          "enable_sticky": false,
-          "sidebar_layout": "layout_1",
-          "sidebar_collapse_default": "expand",
-          "sidebar_position": "left",
-          "sidebar_heading_font": "font_1",
-          "sidebar_heading_font_size": 14,
-          "sidebar_heading_font_weight": "700",
-          "sidebar_heading_text_transform": "uppercase",
-          "product_image_ratio": "adapt",
-          "portrait_aspect_ratio": 101,
-          "zoomed_image": true,
-          "media_fit": "cover",
-          "product_image_popup": "fancybox",
-          "video_layout": "popup",
-          "show_badge": true,
-          "show_qty": false,
-          "show_subtotal": false,
-          "subtotal_style": "1",
-          "show_sticky_add_to_cart": false,
-          "enable_sticky_add_to_cart_always_mobile": false,
-          "show_sticky_vendor": false,
-          "sticky_atc_layout": "1",
-          "show_tab": true,
-          "tab_layout": "vertical_sidebar",
-          "tab_layout_mobile": "popup",
-          "icon_style_layout": "style_2",
-          "title_font_size": 16,
-          "title_font_size_mb": 15,
-          "font_weight_title": "600",
-          "title_text_transform": "capitalize",
-          "title_padding_top_bottom": 16,
-          "tab_border_color": "{{ shop.brand.colors.secondary[1].background }}",
-          "tab_border_color_rgb": "",
-          "show_product_bundle": true,
-          "background_color": "",
-          "padding_top": 30,
-          "padding_top_tablet": 30,
-          "padding_top_mobile": 30,
-          "padding_bottom": 30,
-          "padding_bottom_tablet": 30,
-          "padding_bottom_mobile": 30,
-          "block_title": "Frequently Bought Together",
-          "block_title_align": "left",
-          "block_dots": false,
-          "block_arrows": true,
-          "product_style": "2",
-          "block_image_ratio": "adapt",
-          "bundle_discount": true,
-          "bundle_discount_text": "Get a [discount]% discount buying these products together",
-          "bundle_discount_text_color": "#232323",
-          "total_btn_color": "#ffffff",
-          "total_btn_border": "{{ shop.brand.colors.secondary[0].background }}",
-          "total_btn_bg": "{{ shop.brand.colors.secondary[0].background }}",
-          "total_btn_bg_gradient": "",
-          "total_btn_color_hover": "#ffffff",
-          "total_btn_border_hover": "{{ shop.brand.colors.secondary[1].background }}",
-          "total_btn_bg_hover": "{{ shop.brand.colors.secondary[1].background }}",
-          "total_btn_bg_gradient_hover": ""
+        "b0ea69b7-8a54-4a3c-9abd-0fcceeabaaa0": {
+          "type": "title",
+          "settings": {
+            "fontsize_text": 20,
+            "fontsize_text_mb": 18,
+            "color_title": "#232323",
+            "spacing_top": 0,
+            "spacing_bottom": 6
+          }
+        },
+        "0e4ea696-4820-4c98-aaa6-806d41782a3d": {
+          "type": "meta",
+          "settings": {
+            "spacing_top": 0,
+            "spacing_bottom": 13,
+            "show_sold_in": true,
+            "sold_in_number": "3,5,6,7,8,10,12,15",
+            "sold_in_hours": "10,15,16,17,18,20,25,35",
+            "color_text_sold_in": "#e95144"
+          }
+        },
+        "4f95b592-8369-4ab0-b30d-24e463fb6890": {
+          "type": "price",
+          "settings": {
+            "fontsize_text": 18,
+            "spacing_top": 0,
+            "spacing_bottom": 20
+          }
+        },
+        "4e59f24a-8859-4579-a80a-d70e6f1bf66b": {
+          "type": "info",
+          "settings": {
+            "show_vendor": true,
+            "show_sku": true,
+            "show_barcode": false,
+            "show_availability": true,
+            "show_product_type": true,
+            "stock_level_display": "none",
+            "enable_border_top": false,
+            "enable_border_bottom": true,
+            "color_border": "#e6e6e6",
+            "spacing_top": 0,
+            "spacing_bottom": 18
+          }
+        },
+        "d98e243b-3682-495a-965a-1c7f7d460880": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "show_variant_image_group": false,
+            "enable_border_top": false,
+            "enable_border_bottom": true,
+            "color_border": "#e6e6e6",
+            "spacing_top": 0,
+            "spacing_bottom": 5
+          }
+        },
+        "faa2b3e6-c0a1-4269-baa6-d2605efe4c05": {
+          "type": "quantity_selector",
+          "settings": {
+            "qty_style": "1",
+            "qty_layout": "2",
+            "spacing_top": 0,
+            "spacing_bottom": 10
+          }
+        },
+        "04ea8843-f461-4f1d-8ea4-43f62fdfb21e": {
+          "type": "perks",
+          "settings": {
+            "spacing_top": 0,
+            "spacing_bottom": 8,
+            "show_size_chart": true,
+            "size_chart_type": "custom_image",
+            "size_chart_image_type": "jpg",
+            "show_compare_color": true,
+            "show_compare_color_drop_drap": true,
+            "compare_layout": "1"
+          }
+        },
+        "f1b31d90-1e43-4948-9fe3-97ba43f6fb34": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false,
+            "spacing_top": 0,
+            "spacing_bottom": 15,
+            "atc_animation": "horizontal-shaking",
+            "atc_color": "#ffffff",
+            "atc_border_color": "#232323",
+            "atc_bg_color": "#232323",
+            "atc_bg_color_gradient": "",
+            "atc_color_hover": "#232323",
+            "atc_border_color_hover": "#232323",
+            "atc_bg_color_hover": "#ffffff",
+            "atc_bg_color_gradient_hover": "",
+            "bin_color": "#232323",
+            "bin_border_color": "#acacac",
+            "bin_bg_color": "#ffffff",
+            "bin_bg_color_gradient": "",
+            "bin_color_hover": "#ffffff",
+            "bin_border_color_hover": "#232323",
+            "bin_bg_color_hover": "#232323",
+            "bin_bg_color_hover_gradient": ""
+          }
+        },
+        "683f2b15-db3b-4f63-8d0f-e688cc678581": {
+          "type": "customer_viewing",
+          "settings": {
+            "customer_viewing_number": "283, 100, 59, 11, 14, 185, 193, 165, 50, 38, 99, 112, 46, 10, 125, 200, 250, 18",
+            "customer_viewing_time": 5,
+            "spacing_top": 0,
+            "spacing_bottom": 22
+          }
+        },
+        "19de9abb-17c8-4d67-941d-b32706ed06fd": {
+          "type": "pickup_availability",
+          "settings": {
+            "show_pickup_availability": true,
+            "spacing_top": 0,
+            "spacing_bottom": 32
+          }
+        },
+        "10093fcf-2053-47e9-bedb-841bb0d046fa": {
+          "type": "trust_image",
+          "settings": {
+            "show_trust_image": true,
+            "spacing_top": 0,
+            "spacing_bottom": 0
+          }
+        },
+        "bd066b80-c8e3-4f3e-8280-b27fbf6e9423": {
+          "type": "description",
+          "settings": {
+            "open_tab_mobile": true,
+            "title": "Description",
+            "enable_btn_show_more": false,
+            "maximum_des_to_show": 300
+          }
+        },
+        "3d9ea84d-5527-4bce-abe6-5debef3ec955": {
+          "type": "custom",
+          "settings": {
+            "open_tab_mobile": false,
+            "title": "Shipping & Return",
+            "type": "all",
+            "content": "<h3>Returns Policy</h3>\n<p>You may return most new, unopened items within 30 days of delivery for a full refund. We'll also pay the return shipping costs if the return is a result of our error (you received an incorrect or defective item, etc.).</p>\n<p>You should expect to receive your refund within four weeks of giving your package to the return shipper, however, in many cases you will receive a refund more quickly. This time period includes the transit time for us to receive your return from the shipper (5 to 10 business days), the time it takes us to process your return once we receive it (3 to 5 business days), and the time it takes your bank to process our refund request (5 to 10 business days).</p>\n<p>If you need to return an item, simply login to your account, view the order using the \"Complete Orders\" link under the My Account menu and click the Return Item(s) button. We'll notify you via e-mail of your refund once we've received and processed the returned item.</p>\n<h3>Shipping</h3>\n<p>We can ship to virtually any address in the world. Note that there are restrictions on some products, and some products cannot be shipped to international destinations.</p>\n<p>When you place an order, we will estimate shipping and delivery dates for you based on the availability of your items and the shipping options you choose. Depending on the shipping provider you choose, shipping date estimates may appear on the shipping quotes page.</p>\n<p>Please also note that the shipping rates for many items we sell are weight-based. The weight of any such item can be found on its detail page. To reflect the policies of the shipping companies we use, all weights will be rounded up to the next full pound.</p>",
+            "enable_btn_show_more": false,
+            "maximum_des_to_show": 300,
+            "product_custom_source": "dynamic",
+            "product_tab_key_metafield": ""
+          }
+        },
+        "b9d6eb19-10f4-41f8-bfdc-ea10e8b3182a": {
+          "type": "custom",
+          "settings": {
+            "open_tab_mobile": false,
+            "title": "Custom Tab",
+            "type": "all",
+            "content": "<table>\n    <tbody>\n        <tr>\n            <td class=\"tb-title\">Drostique</td>\n            <td>Nam tempus turpis at metus scelerisque placerat nulla deumantos</td>\n        </tr>\n        <tr>\n            <td class=\"tb-title\">Pharetro Lorem</td>\n            <td>Pellentesque diam dolor elementum etos lobortis des mollis</td>\n        </tr>\n        <tr>\n            <td class=\"tb-title\">Milancelos</td>\n            <td>Donec pretium egestas sapien et mollis</td>\n        </tr>\n        <tr>\n            <td class=\"tb-title\">Pellentesque</td>\n            <td>Sedcus faucibus an sullamcorper mattis drostique des commodo pharetras</td>\n        </tr>\n        <tr>\n            <td class=\"tb-title\">Proin Molestie</td>\n            <td>Pellentesque diam dolor elementum etos lobortis des mollis</td>\n        </tr>\n        <tr>\n            <td class=\"tb-title\">Cosmopolis</td>\n            <td>Donec pretium egestas sapien et mollis</td>\n        </tr>\n    </tbody>\n</table>",
+            "enable_btn_show_more": false,
+            "maximum_des_to_show": 300,
+            "product_custom_source": "dynamic",
+            "product_tab_key_metafield": ""
+          }
+        },
+        "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3": {
+          "type": "share",
+          "settings": {
+            "show_share": true,
+            "share_layout": "3",
+            "spacing_top": 0,
+            "spacing_bottom": 0
+          }
         }
       },
-      "product-recommendations": {
-        "type": "product-recommendations",
-        "custom_css": [
-  
-        ],
-        "settings": {
-          "display_product_block": true,
-          "product_block_container": "fullwidth",
-          "padding_full_width": 30,
-          "enable_border_top": false,
-          "enable_border_bottom": false,
-          "color_border_bottom": "#e8e8e8",
-          "border_style": "container",
-          "mg_top_desktop": 15,
-          "mg_top_tablet": 15,
-          "mg_top_mobile": 15,
-          "mg_bottom_desktop": 15,
-          "mg_bottom_tablet": 15,
-          "mg_bottom_mobile": 5,
-          "product_block_layout": "grid",
-          "product_bg": "#ffffff",
-          "style_block_header": "style1",
-          "product_block_title": "Related Products",
-          "enable_border_title": true,
-          "mg_top_title": 12,
-          "mg_bottom_title": 12,
-          "fontsize_title": 24,
-          "fontsize_title_mb": 22,
-          "color_title": "#232323",
-          "border_color_title": "#232323",
-          "product_block_title_align": "center",
-          "product_block_limit": 10,
-          "grid_gap": 5,
-          "product_block_per_row": "5",
-          "product_block_swipe_on_mobile": false,
-          "product_block_dots": false,
-          "product_block_dots_mb": false,
-          "product_block_arrows": false,
-          "product_block_arrows_mb": false,
-          "product_block_show": "5",
-          "product_block_per_view": "4",
-          "show_half": true,
-          "scroll_height": 4,
-          "scroll_track_bg": "#f1f1f1",
-          "scroll_thumb_color": "#000000",
-          "scroll_thumb_hover_color": "#444444",
-          "enable_hover_drag_icon": true,
-          "enable_layout_special": false,
-          "bg_card": "#ffffff",
-          "padding_card": 10,
-          "border_radius_card": 5,
-          "border_layout_card": "full",
-          "border_width_card": 5,
-          "border_color_card": "#f0f1f4"
-        }
-      },
-      "product-recently-viewed": {
-        "type": "product-recently-viewed",
-        "disabled": true,
-        "settings": {
-          "display_product_recently_viewed": false,
-          "product_recently_viewed_container": "1770",
-          "padding_full_width": 0,
-          "enable_border_top": true,
-          "enable_border_bottom": false,
-          "color_border_bottom": "#e8e8e8",
-          "border_style": "container",
-          "mg_top_desktop": 80,
-          "mg_top_tablet": 50,
-          "mg_top_mobile": 30,
-          "mg_bottom_desktop": 80,
-          "mg_bottom_tablet": 50,
-          "mg_bottom_mobile": 30,
-          "product_recently_viewed_layout": "slider",
-          "product_bg": "#ffffff",
-          "product_bg_gradient": "",
-          "style_block_header": "style1",
-          "product_recently_viewed_title": "Recently Viewed Products",
-          "enable_border_title": false,
-          "mg_top_title": 22,
-          "mg_bottom_title": 12,
-          "fontsize_title": 16,
-          "fontsize_title_mb": 16,
-          "border_color_title": "#232323",
-          "color_title": "#232323",
-          "product_recently_viewed_title_align": "center",
-          "product_recently_viewed_limit": 10,
-          "product_recently_viewed_image_ratio": "adapt",
-          "grid_gap": 30,
-          "product_recently_viewed_per_row": "5",
-          "product_recently_viewed_swipe_on_mobile": true,
-          "product_recently_viewed_dots": false,
-          "product_recently_viewed_dots_mb": true,
-          "product_recently_viewed_arrows": true,
-          "product_recently_viewed_arrows_mb": false,
-          "product_recently_viewed_show": "5",
-          "product_block_per_view": "4",
-          "show_half": true,
-          "scroll_height": 4,
-          "scroll_track_bg": "#f1f1f1",
-          "scroll_thumb_color": "#000000",
-          "scroll_thumb_hover_color": "#444444",
-          "enable_hover_drag_icon": true,
-          "enable_layout_special": false,
-          "bg_card": "#ffffff",
-          "padding_card": 15,
-          "border_radius_card": 5,
-          "border_layout_card": "full",
-          "border_width_card": 5,
-          "border_color_card": "#f0f1f4"
-        }
+      "block_order": [
+        "2e8c7c14-a0ad-4930-a1d8-3def05310426",
+        "b0ea69b7-8a54-4a3c-9abd-0fcceeabaaa0",
+        "0e4ea696-4820-4c98-aaa6-806d41782a3d",
+        "4f95b592-8369-4ab0-b30d-24e463fb6890",
+        "4e59f24a-8859-4579-a80a-d70e6f1bf66b",
+        "d98e243b-3682-495a-965a-1c7f7d460880",
+        "faa2b3e6-c0a1-4269-baa6-d2605efe4c05",
+        "04ea8843-f461-4f1d-8ea4-43f62fdfb21e",
+        "f1b31d90-1e43-4948-9fe3-97ba43f6fb34",
+        "683f2b15-db3b-4f63-8d0f-e688cc678581",
+        "19de9abb-17c8-4d67-941d-b32706ed06fd",
+        "10093fcf-2053-47e9-bedb-841bb0d046fa",
+        "bd066b80-c8e3-4f3e-8280-b27fbf6e9423",
+        "3d9ea84d-5527-4bce-abe6-5debef3ec955",
+        "b9d6eb19-10f4-41f8-bfdc-ea10e8b3182a",
+        "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
+      ],
+      "settings": {
+        "container": "1770",
+        "padding_full_width": 0,
+        "show_sticky_info": true,
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0,
+        "main_image_arrows_desktop": false,
+        "main_image_arrows_mobile": true,
+        "main_image_counter_mobile": true,
+        "main_image_enable_parallax_mb": false,
+        "main_image_show_zoom_icon_mb": true,
+        "main_image_position": "left",
+        "main_image_layout": "3",
+        "main_image_show_custom_cursor": true,
+        "count_color": "#191919",
+        "icon_color": "#000000",
+        "show_thumbnail_mobile": true,
+        "thumnail_layout": "4",
+        "thumbnail_to_show": 5,
+        "show_sidebar": false,
+        "sidebar_collapse": "collapse",
+        "enable_sticky": false,
+        "sidebar_layout": "layout_1",
+        "sidebar_collapse_default": "expand",
+        "sidebar_position": "left",
+        "sidebar_heading_font": "font_1",
+        "sidebar_heading_font_size": 14,
+        "sidebar_heading_font_weight": "700",
+        "sidebar_heading_text_transform": "uppercase",
+        "product_image_ratio": "portrait",
+        "portrait_aspect_ratio": 148,
+        "zoomed_image": true,
+        "media_fit": "cover",
+        "product_image_popup": "fancybox",
+        "video_layout": "popup",
+        "show_badge": true,
+        "show_qty": true,
+        "show_subtotal": false,
+        "subtotal_style": "1",
+        "show_sticky_add_to_cart": true,
+        "enable_sticky_add_to_cart_always_mobile": false,
+        "show_sticky_vendor": false,
+        "sticky_atc_layout": "1",
+        "show_tab": true,
+        "tab_layout": "vertical_sidebar",
+        "tab_layout_mobile": "popup",
+        "icon_style_layout": "style_1",
+        "title_font_size": 16,
+        "title_font_size_mb": 14,
+        "font_weight_title": "400",
+        "title_text_transform": "none",
+        "title_padding_top_bottom": 15,
+        "tab_border_color": "#000000",
+        "tab_border_color_rgb": "",
+        "show_product_bundle": true,
+        "background_color": "",
+        "padding_top": 0,
+        "padding_top_tablet": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom": 55,
+        "padding_bottom_tablet": 40,
+        "padding_bottom_mobile": 30,
+        "block_title": "Frequently Bought Together",
+        "block_title_align": "center",
+        "block_dots": false,
+        "block_arrows": true,
+        "product_style": "2",
+        "block_image_ratio": "adapt",
+        "bundle_discount": true,
+        "bundle_discount_text": "Get a [discount]% discount buying these products together",
+        "bundle_discount_text_color": "#232323",
+        "total_btn_color": "#ffffff",
+        "total_btn_border": "#000000",
+        "total_btn_bg": "#000000",
+        "total_btn_bg_gradient": "",
+        "total_btn_color_hover": "#ffffff",
+        "total_btn_border_hover": "#d12442",
+        "total_btn_bg_hover": "#d12442",
+        "total_btn_bg_gradient_hover": ""
       }
     },
-    "order": [
-      "main",
-      "product-recommendations",
-      "product-recently-viewed"
-    ]
-  }
-  
+    "16523184820d078b27": {
+      "type": "instagram",
+      "blocks": {
+        "f41f90d5-d90e-4211-92a6-d266a353b487": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "link": ""
+          }
+        },
+        "2f41c757-57e5-4deb-9c1a-24b7fb338f4d": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "link": ""
+          }
+        },
+        "383e5863-2f99-4ed6-b7a0-261f3f2d1a94": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "link": ""
+          }
+        },
+        "4b61a7c0-616b-47f5-8cf9-a6321639773f": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "link": ""
+          }
+        },
+        "f4202539-2136-412b-8686-d4ab44f7a842": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "link": ""
+          }
+        },
+        "9a5ae625-12b3-43dd-a203-f1b9c6ac88fb": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "link": ""
+          }
+        },
+        "a16dd6d5-0efc-4a31-a89b-303fe97ea559": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "link": ""
+          }
+        },
+        "e5d3a032-805e-4cdd-9a45-2f8855f89f3e": {
+          "type": "instagram",
+          "settings": {
+            "enable": true,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "f41f90d5-d90e-4211-92a6-d266a353b487",
+        "2f41c757-57e5-4deb-9c1a-24b7fb338f4d",
+        "383e5863-2f99-4ed6-b7a0-261f3f2d1a94",
+        "4b61a7c0-616b-47f5-8cf9-a6321639773f",
+        "f4202539-2136-412b-8686-d4ab44f7a842",
+        "9a5ae625-12b3-43dd-a203-f1b9c6ac88fb",
+        "a16dd6d5-0efc-4a31-a89b-303fe97ea559",
+        "e5d3a032-805e-4cdd-9a45-2f8855f89f3e"
+      ],
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "disable_padding_content": false,
+        "type_instagram": "default",
+        "block_layout": "slider",
+        "scroll_from": "rtl",
+        "scroll_time": "30",
+        "mg_top_desktop": 75,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 70,
+        "mg_bottom_tablet": 60,
+        "mg_bottom_mobile": 50,
+        "enable_border_instagram": false,
+        "instagram_border_color": "#e6e6e6",
+        "instagram_bg": "#fffaf4",
+        "instagram_bg_gradient": "",
+        "style_block_header": "style1",
+        "instagram_title": "Image Gallery",
+        "enable_border_title": false,
+        "border_color_title": "#232323",
+        "color_title": "#232323",
+        "mg_bottom_title": 20,
+        "fontsize_title": 20,
+        "fontsize_title_mb": 20,
+        "instagram_des": "This is an image gallery block but you can use this block as an<br> Instagram Feed by installing an Instagram App",
+        "color_des": "#3c3c3c",
+        "fontsize_des": 12,
+        "margin_bottom_des": 45,
+        "content_width": 375,
+        "title_align": "center",
+        "view_all": "",
+        "view_all_fs": 12,
+        "view_all_align": "center",
+        "font_weight_view_all": "400",
+        "mg_bottom_view": 30,
+        "enable_border_view_all": true,
+        "link_view_all": "",
+        "color_view_all": "#3c3c3c",
+        "display_instagram_button": false,
+        "instagram_button_text": "",
+        "type_button_more": "link",
+        "instagram_button_link": "",
+        "enable_underline_button": false,
+        "color_button": "#ffffff",
+        "border_color_button": "#232323",
+        "bg_color_button": "#232323",
+        "bg_color_gradient_button": "",
+        "color_button_hover": "#232323",
+        "border_color_button_hover": "#232323",
+        "bg_color_button_hover": "#ffffff",
+        "bg_color_gradient_button_hover": "",
+        "maxwidth_button": 230,
+        "mg_top_button": 30,
+        "embed_code": "",
+        "type_instagram_by_gallery": "popup_image",
+        "images_per_row": "4",
+        "instagram_item_limit": 10,
+        "grid_gap": 30,
+        "enable_hide_portion": false,
+        "slide_ins": "default_ins",
+        "display_arrow": true,
+        "enable_hover_arrow": false,
+        "display_dots": false,
+        "icon_for_image": "",
+        "icon_style": "style_1",
+        "effects_bg": "",
+        "effects_opacity": 0
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "display_product_block": true,
+        "product_block_container": "1770",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "border_style": "container",
+        "mg_top_desktop": 30,
+        "mg_top_tablet": 25,
+        "mg_top_mobile": 25,
+        "mg_bottom_desktop": 20,
+        "mg_bottom_tablet": 10,
+        "mg_bottom_mobile": 5,
+        "product_block_layout": "slider",
+        "product_bg": "#ffffff",
+        "style_block_header": "style1",
+        "product_block_title": "Related Products",
+        "enable_border_title": false,
+        "mg_top_title": 22,
+        "mg_bottom_title": 12,
+        "fontsize_title": 20,
+        "fontsize_title_mb": 20,
+        "color_title": "#232323",
+        "border_color_title": "#232323",
+        "product_block_title_align": "center",
+        "product_block_limit": 10,
+        "grid_gap": 30,
+        "product_block_per_row": "5",
+        "product_block_swipe_on_mobile": true,
+        "product_block_dots": false,
+        "product_block_dots_mb": true,
+        "product_block_arrows": true,
+        "product_block_arrows_mb": false,
+        "product_block_show": "5",
+        "product_block_per_view": "4",
+        "show_half": true,
+        "scroll_height": 4,
+        "scroll_track_bg": "#f1f1f1",
+        "scroll_thumb_color": "#000000",
+        "scroll_thumb_hover_color": "#444444",
+        "enable_hover_drag_icon": true,
+        "enable_layout_special": false,
+        "bg_card": "#ffffff",
+        "padding_card": 15,
+        "border_radius_card": 5,
+        "border_layout_card": "full",
+        "border_width_card": 5,
+        "border_color_card": "#f0f1f4"
+      }
+    },
+    "product-recently-viewed": {
+      "type": "product-recently-viewed",
+      "disabled": true,
+      "settings": {
+        "display_product_recently_viewed": true,
+        "product_recently_viewed_container": "1770",
+        "padding_full_width": 0,
+        "enable_border_top": true,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "border_style": "container",
+        "mg_top_desktop": 80,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 30,
+        "mg_bottom_desktop": 80,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 30,
+        "product_recently_viewed_layout": "slider",
+        "product_bg": "#ffffff",
+        "product_bg_gradient": "",
+        "style_block_header": "style1",
+        "product_recently_viewed_title": "Recently Viewed Products",
+        "enable_border_title": false,
+        "mg_top_title": 22,
+        "mg_bottom_title": 12,
+        "fontsize_title": 16,
+        "fontsize_title_mb": 16,
+        "border_color_title": "#232323",
+        "color_title": "#232323",
+        "product_recently_viewed_title_align": "center",
+        "product_recently_viewed_limit": 10,
+        "product_recently_viewed_image_ratio": "adapt",
+        "grid_gap": 30,
+        "product_recently_viewed_per_row": "5",
+        "product_recently_viewed_swipe_on_mobile": true,
+        "product_recently_viewed_dots": false,
+        "product_recently_viewed_dots_mb": true,
+        "product_recently_viewed_arrows": true,
+        "product_recently_viewed_arrows_mb": false,
+        "product_recently_viewed_show": "5",
+        "product_block_per_view": "4",
+        "show_half": true,
+        "scroll_height": 4,
+        "scroll_track_bg": "#f1f1f1",
+        "scroll_thumb_color": "#000000",
+        "scroll_thumb_hover_color": "#444444",
+        "enable_hover_drag_icon": true,
+        "enable_layout_special": false,
+        "bg_card": "#ffffff",
+        "padding_card": 15,
+        "border_radius_card": 5,
+        "border_layout_card": "full",
+        "border_width_card": 5,
+        "border_color_card": "#f0f1f4"
+      }
+    },
+    "16498138484eae8c63": {
+      "type": "custom-service-block",
+      "blocks": {
+        "6059c918-57dd-4eed-8fc0-d6a230897804": {
+          "type": "Text",
+          "settings": {
+            "bg_color_block": "rgba(0,0,0,0)",
+            "border_block": "rgba(0,0,0,0)",
+            "icon_type": "image",
+            "icon": "",
+            "width_icon": 64,
+            "height_icon": 64,
+            "mg_bottom_icon": 23,
+            "color_icon": "#3c3c3c",
+            "text": "Free Standard Delivery",
+            "type_tab_font": "font_1",
+            "fontsize_title_block": 16,
+            "fontsize_title_block_mb": 16,
+            "title_block_font_weight": "700",
+            "mg_bottom_title": 10,
+            "mg_bottom_title_mb": 0,
+            "color_block": "#232323",
+            "description": "Phasellus malesuada de pulvinar maecenas\n<span style=\"display: block; \n text-decoration: underline;text-underline-position: under;\">Learn More</span>",
+            "fontsize_des_block": 12,
+            "fontsize_des_block_mb": 12,
+            "lineheight_des_block": 22,
+            "mg_bottom_des": 0,
+            "color_des_block": "#3c3c3c",
+            "button": "",
+            "link": "",
+            "button_style": "style1",
+            "fontsize_button": 14,
+            "button_width": 235,
+            "fontweight_button": "500",
+            "enable_underline_button": false,
+            "color_button": "#ba7a2d",
+            "button_border": "",
+            "button_background": "",
+            "button_background_gradient": "",
+            "button_color_hover": "#ba7a2d",
+            "button_border_hover": "",
+            "button_background_hover": "",
+            "button_background_gradient_hover": ""
+          }
+        },
+        "89220aa1-16cf-481c-a10a-9faf68fc6fcd": {
+          "type": "Text",
+          "settings": {
+            "bg_color_block": "rgba(0,0,0,0)",
+            "border_block": "rgba(0,0,0,0)",
+            "icon_type": "image",
+            "icon": "",
+            "width_icon": 64,
+            "height_icon": 64,
+            "mg_bottom_icon": 23,
+            "color_icon": "#3c3c3c",
+            "text": "Free In Store Returns",
+            "type_tab_font": "font_1",
+            "fontsize_title_block": 16,
+            "fontsize_title_block_mb": 16,
+            "title_block_font_weight": "700",
+            "mg_bottom_title": 10,
+            "mg_bottom_title_mb": 0,
+            "color_block": "#232323",
+            "description": "Phasellus malesuada de pulvinar maecenas\n<span style=\"display: block; \n text-decoration: underline;text-underline-position: under;\">Learn More</span>",
+            "fontsize_des_block": 12,
+            "fontsize_des_block_mb": 12,
+            "lineheight_des_block": 22,
+            "mg_bottom_des": 0,
+            "color_des_block": "#3c3c3c",
+            "button": "",
+            "link": "",
+            "button_style": "style1",
+            "fontsize_button": 14,
+            "button_width": 235,
+            "fontweight_button": "500",
+            "enable_underline_button": false,
+            "color_button": "#ba7a2d",
+            "button_border": "",
+            "button_background": "",
+            "button_background_gradient": "",
+            "button_color_hover": "#ba7a2d",
+            "button_border_hover": "",
+            "button_background_hover": "",
+            "button_background_gradient_hover": ""
+          }
+        },
+        "f011a504-1404-4e47-bb09-8b93b63a0c98": {
+          "type": "Text",
+          "settings": {
+            "bg_color_block": "rgba(0,0,0,0)",
+            "border_block": "rgba(0,0,0,0)",
+            "icon_type": "image",
+            "icon": "",
+            "width_icon": 64,
+            "height_icon": 64,
+            "mg_bottom_icon": 23,
+            "color_icon": "#3c3c3c",
+            "text": "100% Secure Checkout",
+            "type_tab_font": "font_1",
+            "fontsize_title_block": 16,
+            "fontsize_title_block_mb": 16,
+            "title_block_font_weight": "700",
+            "mg_bottom_title": 10,
+            "mg_bottom_title_mb": 0,
+            "color_block": "#232323",
+            "description": "Phasellus malesuada de pulvinar maecenas\n<span style=\"display: block; \n text-decoration: underline;text-underline-position: under;\">Learn More</span>",
+            "fontsize_des_block": 12,
+            "fontsize_des_block_mb": 12,
+            "lineheight_des_block": 22,
+            "mg_bottom_des": 0,
+            "color_des_block": "#3c3c3c",
+            "button": "",
+            "link": "",
+            "button_style": "style1",
+            "fontsize_button": 14,
+            "button_width": 235,
+            "fontweight_button": "500",
+            "enable_underline_button": false,
+            "color_button": "#ba7a2d",
+            "button_border": "",
+            "button_background": "",
+            "button_background_gradient": "",
+            "button_color_hover": "#ba7a2d",
+            "button_border_hover": "",
+            "button_background_hover": "",
+            "button_background_gradient_hover": ""
+          }
+        }
+      },
+      "block_order": [
+        "6059c918-57dd-4eed-8fc0-d6a230897804",
+        "89220aa1-16cf-481c-a10a-9faf68fc6fcd",
+        "f011a504-1404-4e47-bb09-8b93b63a0c98"
+      ],
+      "settings": {
+        "id_section": "",
+        "container": "1770",
+        "padding_full_width": 0,
+        "display_border_top": true,
+        "display_border_bottom": false,
+        "border_color": "#d0d0d0",
+        "service_block_swipe_on_mobile": "slider",
+        "color_icon_slider": "#212121",
+        "service_block_style": "style_1",
+        "mg_top_desktop": 40,
+        "mg_top_tablet": 40,
+        "mg_top_mobile": 40,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0,
+        "policies_bg": "#ffffff",
+        "policies_bg_gradient": "",
+        "service_block_title": "",
+        "enable_border_title": false,
+        "color_title": "#000000",
+        "fontsize_title": 30,
+        "fontsize_title_mb": 22,
+        "mg_bottom_title_service_block": 12,
+        "mg_bottom_title_service_block_mb": 12,
+        "service_block_des": "",
+        "service_block_des_pos": "bottom",
+        "color_des": "#000000",
+        "fontsize_des": 16,
+        "mg_top_service_block_des": 50,
+        "mg_bottom_service_block_des": 50,
+        "view_all": "",
+        "view_all_align": "center",
+        "font_weight_view_all": "400",
+        "mg_top_view": 0,
+        "mg_bottom_view": 30,
+        "enable_border_view_all": true,
+        "link_view_all": "",
+        "color_view_all": "#3c3c3c",
+        "icon_view_all": "",
+        "color_view_all_icon": "#eb492f",
+        "title_align": "center",
+        "item_width": "full_width",
+        "border_item": "none",
+        "enable_item_distance": true,
+        "enable_hover_box_shadow": false,
+        "enable_hover_effects_top": false,
+        "item_padding_top": 60,
+        "item_padding_bottom": 13,
+        "item_padding_left_right": 40,
+        "item_radius": 4,
+        "grid_gap": 30,
+        "item_align": "center",
+        "enable_block_bottom": false,
+        "bg_block_bottom": "#000",
+        "btn_text_block_bottom": "Shop Now",
+        "button_link_block_bottom": "",
+        "button_1_width_block_bottom": 235,
+        "button_color_block_bottom": "#fff",
+        "button_border_block_bottom": "#232323",
+        "button_background_block_bottom": "#232323",
+        "button_background_gradient_block_bottom": "",
+        "button_color_hover_block_bottom": "#fff",
+        "button_border_hover_block_bottom": "#232323",
+        "button_background_hover_block_bottom": "#232323",
+        "button_background_gradient_hover_block_bottom": "",
+        "btn_2_text_block_bottom": "Shop Now",
+        "button_link_2_block_bottom": "",
+        "button_2_width_block_bottom": 235,
+        "button_2_color_block_bottom": "#fff",
+        "button_2_border_block_bottom": "#232323",
+        "button_2_background_block_bottom": "#232323",
+        "button_2_background_gradient_block_bottom": "",
+        "button_2_color_hover_block_bottom": "#fff",
+        "button_2_border_hover_block_bottom": "#232323",
+        "button_2_background_hover_block_bottom": "#232323",
+        "button_2_background_gradient_hover_block_bottom": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16523184820d078b27",
+    "product-recommendations",
+    "product-recently-viewed",
+    "16498138484eae8c63"
+  ]
+}
