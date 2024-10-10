@@ -274,7 +274,7 @@
         "@media only screen and (min-width: 768px) {/* Container for each region */ .region-container {width: 100%; }}"
       ],
       "settings": {
-        "container": "1770",
+        "container": "fullwidth",
         "padding_full_width": 50,
         "show_sticky_info": true,
         "mg_top_desktop": 0,
@@ -289,7 +289,7 @@
         "main_image_enable_parallax_mb": false,
         "main_image_show_zoom_icon_mb": false,
         "main_image_position": "left",
-        "main_image_layout": "1",
+        "main_image_layout": "2",
         "main_image_show_custom_cursor": true,
         "count_color": "{{ shop.brand.colors.primary[0].foreground }}",
         "icon_color": "{{ shop.brand.colors.primary[0].foreground }}",
