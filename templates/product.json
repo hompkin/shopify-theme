@@ -289,7 +289,7 @@
         "main_image_enable_parallax_mb": false,
         "main_image_show_zoom_icon_mb": false,
         "main_image_position": "left",
-        "main_image_layout": "2",
+        "main_image_layout": "3",
         "main_image_show_custom_cursor": true,
         "count_color": "{{ shop.brand.colors.primary[0].foreground }}",
         "icon_color": "{{ shop.brand.colors.primary[0].foreground }}",
