@@ -294,7 +294,7 @@
         "count_color": "{{ shop.brand.colors.primary[0].foreground }}",
         "icon_color": "{{ shop.brand.colors.primary[0].foreground }}",
         "show_thumbnail_mobile": false,
-        "thumnail_layout": "1",
+        "thumnail_layout": "4",
         "thumbnail_to_show": 8,
         "show_sidebar": false,
         "sidebar_collapse": "collapse",
