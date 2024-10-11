@@ -11,16 +11,24 @@ class ProductTabs extends HTMLElement {
         this.isVerticalPopup = this.dataset.vertical === 'sidebar'
         this.isVerticalSidebarMobile = this.dataset.verticalMobile === 'sidebar-mobile'
 
+
         // 处理 delivery-time-previewing 中 Shipping Policy 的点击事件 by changelcai
         document.getElementById("shipping_policy_id").addEventListener(
           'click',
            function() {
               document.getElementById("href-shipping-policy-id").click();
+             // document.getElementById("href-customer-reviews-id").click();
+           }
+        );
+
+       document.getElementById("ryviu-widget-total-id")?.addEventListener(
+          'click',
+           function() {
+              document.getElementById("href-customer-reviews-id").click();
            }
         );
 
         for (let i = 0; i < this.tab.length; i++) {
-
             this.tab[i].addEventListener(
                 'click',
                 this.tabActive.bind(this)
@@ -28,12 +36,30 @@ class ProductTabs extends HTMLElement {
         }
             
         for (let i = 0; i < this.link.length; i++) {
-
             this.link[i].addEventListener(
                 'click',
                 this.tabToggle.bind(this)
             );
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            window.history.pushState({}, '');
+            window.addEventListener('popstate', function(event) {
+
+                this.backgroundOverlay = document.querySelector('.background-overlay');
+                if (backgroundOverlay == null) {
+                    history.back();
+                } else {
+
+                    console.log('Back button was pressed,');
+                    document.querySelector('.toggleLink.is-open')?.classList.remove('is-open');
+                    document.querySelector('.toggle-content.is-show')?.classList.remove('is-show');
+                    document.body.classList.remove('tab-popup-show');
+                    window.history.pushState({}, '');
+                }
+
+            });
+          });
 
         document.addEventListener('click', e => {
             if (e.target.matches('[data-show-more-toogle]') || e.target.closest('[data-show-more-toogle]')) {
@@ -130,14 +156,12 @@ class ProductTabs extends HTMLElement {
             } else {
                 $this.classList.add('is-open');
                 if ((this.isVerticalPopup && window.innerWidth > 550) || ($this.classList.contains('sidebar-mobile') && window.innerWidth <= 550)) {
-                    if($this.matches('.sidebar-mobile') && window.innerWidth <= 550) {
+                    // if($this.matches('.sidebar-mobile') && window.innerWidth <= 550) {
                         document.body.classList.add('tab-popup-sidebar-show');
                         $thisContent.classList.add('is-show');
                         document.body.classList.add('tab-popup-show');
-                    }else {
-                        $thisContent.classList.add('is-show');
-                        document.body.classList.add('tab-popup-show');
-                    }
+                    // }
+
                 } else {
                     $($thisContent).slideDown('slow');
                 }
