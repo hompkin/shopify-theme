@@ -233,7 +233,7 @@ class VariantSelects extends HTMLElement {
                             weightDimensionsTab.innerHTML = sourceTab.innerHTML;
                         }
                     }
-                    // const tabDescriptionTab = document.getElementById('tab-description');
+                    const tabDescriptionTab = document.getElementById('tab-description');
                     // if (tabDescriptionTab) {
                     //     const sourceTab2 = html.getElementById('tab-description');
                     //     if (sourceTab2) {
