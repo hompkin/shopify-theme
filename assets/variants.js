@@ -272,6 +272,14 @@ class VariantSelects extends HTMLElement {
         }
     }
 
+    updateProductTag(id){
+        const tag = document.getElementById(id);
+        const sourceTab = html.getElementById(id);
+        if (tag && sourceTab) {
+            tag.innerHTML = sourceTab.innerHTML;
+        }
+    }
+
     updateProductInfo() {
         console.log("update product info")
         fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
@@ -288,14 +296,9 @@ class VariantSelects extends HTMLElement {
                         destinationDesc.style.maxHeight = null;
                     }
                 }
-                const tab_weight_dimensions = 'tab-specification-amp-dimensions-mobile'
-                const weightDimensionsTab = document.getElementById(tab_weight_dimensions);
-                
-                const sourceTab = html.getElementById(tab_weight_dimensions);
-                console.log(sourceTab.innerHTML);
-                if (sourceTab) {
-                    weightDimensionsTab.innerHTML = sourceTab.innerHTML;
-                }
+
+                updateProductTag('tab-description-mobile')
+                updateProductTag('tab-specification-amp-dimensions-mobile')
 
                 // const tab_weight_dimensions = 'tab-weight-dimensions'
                 // const weightDimensionsTab = document.getElementById(tab_weight_dimensions);
