@@ -227,6 +227,7 @@ class VariantSelects extends HTMLElement {
             .then((responseText) => {
                 const html = new DOMParser().parseFromString(responseText, 'text/html');
                 const weightDimensionsTab = document.getElementById('tab-weight-dimensions');
+                console.info("html=$html");
                 if (weightDimensionsTab) {
                     const sourceTab = html.getElementById('tab-weight-dimensions');
                     if (sourceTab) {
