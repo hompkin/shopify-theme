@@ -236,9 +236,9 @@ class VariantSelects extends HTMLElement {
                     const tabDescriptionTab = document.getElementById('tab-description');
                     if (tabDescriptionTab) {
                         const sourceTab2 = html.getElementById('tab-description');
-                    //     if (sourceTab2) {
-                    //         tabDescriptionTab.innerHTML = sourceTab2.innerHTML;
-                    //     }
+                        if (sourceTab2) {
+                            weightDimensionsTab.innerHTML = sourceTab2.innerHTML;
+                        }
                     }
                 });
          
