@@ -221,24 +221,6 @@ class VariantSelects extends HTMLElement {
         // if(this.item.find('[data-tab-meta-sku]').length > 0){
         //     this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
         // }
-      
-        fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
-            .then((response) => response.text())
-            .then((responseText) => {
-                const html = new DOMParser().parseFromString(responseText, 'text/html');
-                const weightDimensionsTab = document.getElementById('tab-weight-dimensions');
-                console.info("html=$html");
-                if (weightDimensionsTab) {
-                    const sourceTab = html.getElementById('tab-weight-dimensions');
-                    if (sourceTab) {
-                        weightDimensionsTab.innerHTML = sourceTab.innerHTML;
-                    }
-                }
-                // const sourceTab2 = html.getElementById('tab-description');
-                // if (sourceTab2) {
-                //     tabDescriptionTab.innerHTML = sourceTab2.innerHTML;
-                // }
-            });
      
 
         if(this.item.find('[data-barcode]').length > 0){
@@ -290,6 +272,7 @@ class VariantSelects extends HTMLElement {
     }
 
     updateProductInfo() {
+        console.log("update product info")
         fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
             .then((response) => response.text())
             .then((responseText) => {
@@ -367,7 +350,6 @@ class VariantSelects extends HTMLElement {
                         }
                     } else if (window.subtotal.style == '2') {
                         text = window.subtotal.text.replace('[value]', subTotal);
-                        console.log(text,'123');
                     }
                 } else {
                     subTotal = Shopify.formatMoney(price, window.money_format);
