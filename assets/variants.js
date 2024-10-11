@@ -288,7 +288,7 @@ class VariantSelects extends HTMLElement {
                         destinationDesc.style.maxHeight = null;
                     }
                 }
-                const tab_weight_dimensions = 'tab-weight-dimensions'
+                const tab_weight_dimensions = 'tab-specification-amp-dimensions-mobile'
                 const weightDimensionsTab = document.getElementById(tab_weight_dimensions);
                 
                 const sourceTab = html.getElementById(tab_weight_dimensions);
