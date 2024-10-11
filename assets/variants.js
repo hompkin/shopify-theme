@@ -288,6 +288,22 @@ class VariantSelects extends HTMLElement {
                         destinationDesc.style.maxHeight = null;
                     }
                 }
+                const tab_weight_dimensions = 'tab-weight-dimensions'
+                const weightDimensionsTab = document.getElementById(tab_weight_dimensions);
+                
+                const sourceTab = html.getElementById(tab_weight_dimensions);
+                console.log(sourceTab.innerHTML);
+                if (sourceTab) {
+                    weightDimensionsTab.innerHTML = sourceTab.innerHTML;
+                }
+
+                // const tab_weight_dimensions = 'tab-weight-dimensions'
+                // const weightDimensionsTab = document.getElementById(tab_weight_dimensions);
+                
+                // const sourceTab = html.getElementById(tab_weight_dimensions);
+                // if (sourceTab) {
+                //     weightDimensionsTab.innerHTML = sourceTab.innerHTML;
+                // }
         });
     }
 
