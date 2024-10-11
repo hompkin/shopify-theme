@@ -297,8 +297,8 @@ class VariantSelects extends HTMLElement {
                     }
                 }
 
-                updateProductTag('tab-description-mobile')
-                updateProductTag('tab-specification-amp-dimensions-mobile')
+                updateProductTag('tab-description-mobile');
+                updateProductTag('tab-specification-amp-dimensions-mobile');
 
                 // const tab_weight_dimensions = 'tab-weight-dimensions'
                 // const weightDimensionsTab = document.getElementById(tab_weight_dimensions);
