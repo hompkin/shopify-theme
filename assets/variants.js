@@ -272,7 +272,7 @@ class VariantSelects extends HTMLElement {
         }
     }
 
-    updateProductTag(id){
+    updateProductTag(html, id){
         const tag = document.getElementById(id);
         const sourceTab = html.getElementById(id);
         if (tag && sourceTab) {
@@ -297,8 +297,8 @@ class VariantSelects extends HTMLElement {
                     }
                 }
 
-                updateProductTag('tab-description-mobile');
-                updateProductTag('tab-specification-amp-dimensions-mobile');
+                updateProductTag(html, 'tab-description-mobile');
+                updateProductTag(html, 'tab-specification-amp-dimensions-mobile');
 
                 // const tab_weight_dimensions = 'tab-weight-dimensions'
                 // const weightDimensionsTab = document.getElementById(tab_weight_dimensions);
