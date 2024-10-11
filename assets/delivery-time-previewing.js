@@ -29,8 +29,8 @@ function setCookieJson(cookieName, jsonData, expiredHours) {
 
 function getZipCodeCategory(countryCode, zipCode) {
   const firstDigit = parseInt(zipCode.charAt(0), 10);
-
-  if (firstDigit >= 90 && firstDigit <= 92) {
+  const twoDigit = parseInt(zipCode.substring(0, 2), 10);
+  if (twoDigit >= 90 && twoDigit <= 92) {
     return "1";
   } else if (firstDigit === 8 || firstDigit === 9) {
     return "2";
@@ -109,8 +109,14 @@ function refreshView(country_options, params, json) {
   const city = json.city;
   const zipcode = json.zipcode;
   console.log(`countryCode=${countryCode} zipcode=${zipcode} city=${city}`);
-  const targetDeliveryTime = getDeliveryTime(countryCode, zipcode, params);
+  if (countryCode == 'JP') {
+    setTimeout(function() {
+       document.getElementById("tex_free_id").style.display="none;";
+       console.log(`display=${document.getElementById("tex_free_id").style.display}`);
+    }, 1000);
+  }
 
+  const targetDeliveryTime = getDeliveryTime(countryCode, zipcode, params);
   const deliveryTimeContainer = document.getElementById("delivery_time_layout_id");
   const addressTextView = document.getElementById("address_text_id");
   const sureIcon = document.getElementById("sure_icon_id");
@@ -129,9 +135,9 @@ function refreshView(country_options, params, json) {
     deliveryTimePrefixView.textContent = params.prefix_title;
 
     if (zipcode && city) {
-      addressTextView.textContent = `${removeAfter(zipcode, "-")}-${city}`;
+      addressTextView.textContent = `${removeAfter(zipcode, "-")} - ${city}`;
     } else if (zipcode) {
-      addressTextView.textContent = `${country}-${removeAfter(zipcode,"-")}`;
+      addressTextView.textContent = `${country} - ${removeAfter(zipcode,"-")}`;
     } else if (city) {
       addressTextView.textContent = city;
     } else {
@@ -171,16 +177,15 @@ function refreshView(country_options, params, json) {
   
 }
 
-
 document.addEventListener("DOMContentLoaded", function () {
  
-  document.getElementById('contact_us_id').addEventListener('click', function() {
-     if (window.tidioChatApi) {
-      window.tidioChatApi.show();
-      window.tidioChatApi.open();
-     }
+  // 获取span元素和button元素
+  var span = document.getElementById('contact_us_id');
+  // 添加点击事件监听器到span元素
+  span.addEventListener('click', function() {
+    document.querySelector('#ShopifyChat').shadowRoot.querySelector('.chat-toggle').click();
   });
-
+  
   var countrySelect = document.getElementById("country-select");
 
   if (countrySelect) {

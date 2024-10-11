@@ -19,7 +19,8 @@
     </svg>
     <span class="text" id="delivery_time_id"></span>
     <div class="vertical-line"> </div>
-    <span class="link" id="shipping_policy_id">Shipping Policy</span>
+        {%- assign title_3 = shop.metaobjects.delivery_time['expedited-shipping-service'].config.value.title_3 -%}
+    <span class="link" id="shipping_policy_id">{{ title_3 }}</span>
   </div>
   <div class="productView-DeliveryTimeUpdate" id="delivery-time-update-container">
     <select id="country-select" class="select__select">
@@ -49,6 +50,8 @@
     </button>
   </div>
   <div class="productView-DeliveryTimeExpedited" id= "delivery-time-expedited-container">
-    <span class="text">If you need expedited shipping service, please&nbsp</span> <span class="link" id="contact_us_id">contact us</span>.
+    {%- assign title_1 = shop.metaobjects.delivery_time['expedited-shipping-service'].config.value.title_1 -%}
+    {%- assign title_2 = shop.metaobjects.delivery_time['expedited-shipping-service'].config.value.title_2 -%}
+    <span class="text">{{ title_1 }}&nbsp</span> <span class="link" id="contact_us_id">{{ title_2 }}</span>
   </div>
 </div>
