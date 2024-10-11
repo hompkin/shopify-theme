@@ -16,7 +16,7 @@ class ProductTabs extends HTMLElement {
             'click',
              function() {
                 const tab = document.getElementById("tab-shipping-policy");
-                console.log('click tab-shipping-policy tab=$tab');
+                console.log('click tab-shipping-policy tab='+tab);
                 tab.click();
                // document.getElementById("href-customer-reviews-id").click();
              }
