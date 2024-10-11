@@ -15,8 +15,7 @@ class ProductTabs extends HTMLElement {
         document.getElementById("shipping_policy_id").addEventListener(
             'click',
              function() {
-                const tab = document.getElementById("tab-shipping-policy");
-                console.log('click tab-shipping-policy tab='+tab);
+                const tab = document.getElementById("tab-note-amp-care");
                 tab.click();
                // document.getElementById("href-customer-reviews-id").click();
              }
