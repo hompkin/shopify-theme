@@ -18,6 +18,42 @@
     </div>
   </div>
 {% endif %}
+
+<div class="custom-meta-div">
+  {% assign current_variant = product.selected_or_first_available_variant %}
+  {% assign detail_variant_kv = product.metafields.custom.product_details.value.variant_kv %}
+  {% if detail_variant_kv and detail_variant_kv[current_variant.sku]-%}
+    <span class="text">Detail</span>
+      <div class="custom-meta-block">
+        <table>
+          <tbody>
+            <tr>
+              <td class="key-td">
+                <span class="key-text">SKU</span>
+              </td>
+              <td class="value-td" data-tab-meta-sku>
+                <span class="value-text">{{ current_variant.sku }}</span>
+              </td>
+            </tr>
+            {% assign attrs = detail_variant_kv[current_variant.sku] %}
+            {% for attr in attrs %}
+              {% if attr.value and attr.value != blank %}
+                <tr>
+                  <td class="key-td">
+                    <span class="key-text">{{ attr.key }}</span>
+                  </td>
+                  <td class="value-td">
+                      <span class="value-text">{{ attr.value }}</span>
+                    </td>
+                  </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  {% endif %}
+</div>
+
 <div class="product-desc">
   <span class="desc">Descprition</span>
   {{ content }}
