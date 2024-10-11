@@ -19,11 +19,16 @@
   </div>
 {% endif %}
 
+<div class="product-desc">
+  <span class="desc">Descprition</span>
+  {{ content }}
+</div>
+
 <div class="custom-meta-div">
   {% assign current_variant = product.selected_or_first_available_variant %}
   {% assign detail_variant_kv = product.metafields.custom.product_details.value.variant_kv %}
   {% if detail_variant_kv and detail_variant_kv[current_variant.sku]-%}
-    <span class="text">Detail</span>
+    <span class="text">Details</span>
       <div class="custom-meta-block">
         <table>
           <tbody>
@@ -54,7 +59,4 @@
   {% endif %}
 </div>
 
-<div class="product-desc">
-  <span class="desc">Descprition</span>
-  {{ content }}
-</div>
+

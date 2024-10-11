@@ -234,6 +234,20 @@ class VariantSelects extends HTMLElement {
                 });
         }
 
+        const tabDescriptionTab = document.getElementById('tab-description');
+        if (tabDescriptionTab) {
+            fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+                .then((response) => response.text())
+                .then((responseText) => {
+                    const html = new DOMParser().parseFromString(responseText, 'text/html');
+                    const sourceTab = html.getElementById('tab-description');
+                    if (sourceTab) {
+                        tabDescriptionTab.innerHTML = sourceTab.innerHTML;
+                    }
+                });
+        }
+       
+
         if(this.item.find('[data-barcode]').length > 0){
             this.item.find('[data-barcode] .productView-info-value').text(this.currentVariant.barcode);
         }
