@@ -18,3 +18,34 @@
     {{ shop.metaobjects.note_care['note-care-gdfo4yyo'].bathtub.value }}
   </div>
 {% endif %}
+
+<link href="{{ 'custom-product-overview.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+
+
+  <div class="custom-meta-div">
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    {% assign care_variant_kv = product.metafields.custom.note_care.value.variant_kv %}
+    {% if care_variant_kv and care_variant_kv[current_variant.sku]-%}
+      <span class="text">Care</span>
+        <div class="custom-meta-block">
+          <table>
+            <tbody>
+              {% assign attrs = care_variant_kv[current_variant.sku] %}
+              {% for attr in attrs %}
+                {% if attr.value and attr.value != blank %}
+                  <tr>
+                    <td class="key-td">
+                      <span class="key-text">{{ attr.key }}</span>
+                    </td>
+                    <td class="value-td">
+                        <span class="value-text">{{ attr.value }}</span>
+                      </td>
+                    </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+    {% endif %}
+  </div>
+
