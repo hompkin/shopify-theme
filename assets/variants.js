@@ -214,6 +214,7 @@ class VariantSelects extends HTMLElement {
     }
 
     renderProductInfo() {
+        console.log("render product info")
         if(this.item.find('[data-sku]').length > 0){
             this.item.find('[data-sku] .productView-info-value').text(this.currentVariant.sku);
         }
