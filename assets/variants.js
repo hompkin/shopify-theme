@@ -275,6 +275,7 @@ class VariantSelects extends HTMLElement {
     updateProductTag(html, id){
         const tag = document.getElementById(id);
         const sourceTab = html.getElementById(id);
+        console.log(sourceTab.innerHTML);
         if (tag && sourceTab) {
             tag.innerHTML = sourceTab.innerHTML;
         }
