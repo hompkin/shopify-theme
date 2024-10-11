@@ -15,8 +15,10 @@ class ProductTabs extends HTMLElement {
         document.getElementById("shipping_policy_id").addEventListener(
             'click',
              function() {
-                const tab = document.getElementById("tab-note-amp-care");
-                tab.click();
+                let tab = document.querySelector('a.toggleLink.popup-mobile[href="#tab-shipping-policy-mobile"]');
+                if(tab) {
+                    tab.click();
+                }
                // document.getElementById("href-customer-reviews-id").click();
              }
           );
