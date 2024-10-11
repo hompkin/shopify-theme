@@ -221,7 +221,7 @@ class VariantSelects extends HTMLElement {
         // if(this.item.find('[data-tab-meta-sku]').length > 0){
         //     this.item.find('[data-tab-meta-sku] .value-text').text(this.currentVariant.sku);
         // }
-        const weightDimensionsTab = document.getElementById('tab-weight-dimensions');
+        const weightDimensionsTab = document.getElementById('tab-specification-amp-dimensions-mobile');
         if (weightDimensionsTab) {
             fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
                 .then((response) => response.text())
