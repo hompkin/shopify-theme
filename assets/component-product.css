@@ -2876,19 +2876,19 @@ quantity-input.disabled {
         padding-top: 0;
     }
 
-    .productView-nav.style-3 .productView-image:nth-child(3n+1) {
+    .productView-nav.style-3 .productView-image:nth-child(2n+1) {
         width: 50%;
         padding-right: 5px;
     }
 
-    .productView-nav.style-3 .productView-image:nth-child(3n+2) {
+    .productView-nav.style-3 .productView-image:nth-child(2n+2) {
         width: 50%;
         padding-left: 5px;
     }
 
-    .productView-nav.style-3 .productView-image:nth-child(3n+3) {
+    /* .productView-nav.style-3 .productView-image:nth-child(3n+3) {
         width: 100%;
-    }
+    } */
 
     .tabs-horizontal+.tabs-contents .tab-content .icon-dropdown {
         display: none;
