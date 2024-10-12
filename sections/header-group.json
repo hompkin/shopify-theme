@@ -179,7 +179,7 @@
             "show_cart": false,
             "text_font_size": 14,
             "show_language_currency_sticky": false,
-            "show_search_sticky": true,
+            "show_search_sticky": false,
             "show_customer_sticky": false,
             "show_wishlist_sticky": false,
             "show_cart_sticky": true,
