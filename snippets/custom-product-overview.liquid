@@ -1,13 +1,16 @@
 <link href="{{ 'custom-product-overview.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign overview_variant_kv = product.metafields.custom.product_overview.value.variant_kv %}
 
-{% if product.metafields.custom.product_overview -%}
+{% if overview_variant_kv and overview_variant_kv[current_variant.sku] -%}
   <div class="product-overview">
     <span class="text">Overview</span>
     <div class="overview-box">
-      {% for attr in product.metafields.custom.product_overview.value.attrs %}
+      {% assign attrs = overview_variant_kv[current_variant.sku] %}
+      {% for attr in attrs %}
         {% if attr.value %}
           <div class="overview-box-item">
-            <img src="{{ attr.image }}" lazy="loaded" >
+            <img src="{{ attr.icon }}" lazy="loaded" >
             <div class="info">
               <span class="key">{{ attr.key }}:</span>
               <span class="value">{{ attr.value }}</span>
@@ -25,7 +28,6 @@
 </div>
 
 <div class="custom-meta-div">
-  {% assign current_variant = product.selected_or_first_available_variant %}
   {% assign detail_variant_kv = product.metafields.custom.product_details.value.variant_kv %}
   {% if detail_variant_kv and detail_variant_kv[current_variant.sku]-%}
     <span class="text">Details</span>
