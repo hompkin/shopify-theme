@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer Group",
@@ -17,7 +26,7 @@
             "section_title_color": "#000000",
             "mg_bottom_title": 12,
             "mg_bottom_title_mb": 12,
-            "section_description": "<p>Learn more about special offers, promotions, events and more.<\/p>",
+            "section_description": "<p>Learn more about special offers, promotions, events and more.</p>",
             "section_description_font_size": 17,
             "section_description_font_size_mb": 17,
             "section_description_font_weight": "400",
@@ -124,7 +133,7 @@
           "settings": {
             "custom_width": "22",
             "heading": "Shop",
-            "menu": "main-menu",
+            "menu": "bathroom-menu",
             "mg_bottom": 0
           }
         },
@@ -155,13 +164,13 @@
             "subtext": "",
             "address_icon": "point_icon",
             "show_address_icon": false,
-            "address_text": "<p>Address: 686 Market Street<br\/>San Francisco, CA 94108,<br\/>United States<\/p>",
+            "address_text": "<p>Address: 686 Market Street<br/>San Francisco, CA 94108,<br/>United States</p>",
             "phone_icon": "message_icon",
             "show_phone_icon": false,
-            "phone_text": "<p>SMS: +1 (707) 622-6660<\/p>",
+            "phone_text": "<p>SMS: +1 (707) 622-6660</p>",
             "email_icon": "envelope_icon",
             "show_email_icon": false,
-            "email_text": "<p>Email: <a href=\"https:\/\/hompkin.com\/pages\/contact-us\" target=\"_blank\" title=\"support@hompkin.com\">support@hompkin.com<\/a><\/p>",
+            "email_text": "<p>Email: <a href=\"https://hompkin.com/pages/contact-us\" target=\"_blank\" title=\"support@hompkin.com\">support@hompkin.com</a></p>",
             "icon_size": 17,
             "icon_color": "#000000",
             "content_spacing": 6,
@@ -199,7 +208,7 @@
             "show_copyright": true,
             "show_shop_name": false,
             "enable_layout_grid": true,
-            "copyright_content": "<p>Copyright © 2024 Hompkin. All Rights Reserved.<\/p>",
+            "copyright_content": "<p>Copyright © 2024 Hompkin. All Rights Reserved.</p>",
             "copyright_content_color": "#666666",
             "shop_name": "",
             "show_payment": true,
