@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -14,7 +23,7 @@
         "page_title_alignment": "center",
         "container": "full",
         "side_padding_full_width": 0,
-        "about_bg_image": "shopify:\/\/shop_images\/osy8010_Create_a_captivating_facade_for_a_flagship_furniture_st_f94c0bfa-7348-4842-8cdc-9081d3f33db1_1.png",
+        "about_bg_image": "shopify://shop_images/osy8010_Create_a_captivating_facade_for_a_flagship_furniture_st_f94c0bfa-7348-4842-8cdc-9081d3f33db1_1.png",
         "about_bg_image_height": 450,
         "enable_parallax": false,
         "mg_top_desktop": 0,
@@ -50,7 +59,8 @@
           "settings": {
             "text": "At Hompkin, we believe that a home is not just a place to live, it's a feeling of warmth, comfort, and security. <br>That's why we've combined \"Home\" and \"Pumpkin\" to create a brand that represents the cozy and inviting atmosphere that every home should have.\n<br>\nDiscover the art of creating a home that resonates with your personality – choose Hompkin for an unparalleled fusion of style, comfort, and quality. Elevate your living spaces with us, and let your home be a true reflection of you.",
             "text_size": 17,
-            "text_line_height": 1,
+            "text_size_mb": 12,
+            "text_line_height": 1.4,
             "margin_top_text": 20,
             "text_color": "#000000",
             "text_width": "880px"
@@ -75,7 +85,8 @@
         "mg_bottom_mobile": 35,
         "rich_text_bg": "#ffffff",
         "rich_text_bg_gradient": "",
-        "enable_column": false
+        "enable_column": false,
+        "content_align": "center"
       }
     },
     "16473179044a870c08": {
@@ -85,7 +96,7 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": false,
-            "image": "shopify:\/\/shop_images\/2C6B32D4-6134-44C1-AD71-CC64FEE2D8E9.jpg",
+            "image": "shopify://shop_images/2C6B32D4-6134-44C1-AD71-CC64FEE2D8E9.jpg",
             "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
@@ -131,7 +142,7 @@
             "bg_color_icon": "#000000",
             "button_style": "style_1",
             "btn_text": "SHOP NOW",
-            "link": "shopify:\/\/collections",
+            "link": "shopify://collections",
             "button_1_width": 165,
             "enable_button_custom_border": false,
             "button_color": "#ffffff",
@@ -143,7 +154,7 @@
             "button_background_hover": "#ffffff",
             "button_background_gradient_hover": "",
             "btn_2_text": "",
-            "link_btn_2": "shopify:\/\/collections",
+            "link_btn_2": "shopify://collections",
             "button_2_width": 235,
             "button_2_color": "#ffffff",
             "button_2_border": "#232323",
@@ -198,7 +209,7 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": true,
-            "image": "shopify:\/\/shop_images\/Untitled_design_22.png",
+            "image": "shopify://shop_images/Untitled_design_22.png",
             "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
@@ -227,7 +238,7 @@
             "margin_bottom_heading": 22,
             "font_weight_heading": "600",
             "color_heading": "#232323",
-            "text": "<ol>\n<li rel=\"1\"><p><strong>Global Collaboration:<\/strong> Hompkin proudly collaborates with premier suppliers from around the world. Through meticulous selection, we bring you a curated collection of furniture that reflects international design trends and superior craftsmanship.<\/p><\/li>\n<li rel=\"2\"><p><strong>Carefully Curated Selection:<\/strong> We understand the significance of each piece in your home. That’s why our team tirelessly scours the market to handpick furniture that not only meets our high standards but also resonates with your unique style.<\/p><\/li>\n<li rel=\"3\"><p><strong>Quality Assurance:<\/strong> At Hompkin, quality is non-negotiable. Our commitment to excellence ensures that every piece of furniture undergoes rigorous quality checks, guaranteeing durability and longevity.<\/p><\/li>\n<li rel=\"4\"><p><strong>Seamless Online Experience:<\/strong> Embrace the convenience of shopping from the comfort of your own space. Our user-friendly online platform is designed to make your shopping experience enjoyable and stress-free.<\/p><\/li>\n<\/ol>",
+            "text": "<ol>\n<li rel=\"1\"><p><strong>Global Collaboration:</strong> Hompkin proudly collaborates with premier suppliers from around the world. Through meticulous selection, we bring you a curated collection of furniture that reflects international design trends and superior craftsmanship.</p></li>\n<li rel=\"2\"><p><strong>Carefully Curated Selection:</strong> We understand the significance of each piece in your home. That’s why our team tirelessly scours the market to handpick furniture that not only meets our high standards but also resonates with your unique style.</p></li>\n<li rel=\"3\"><p><strong>Quality Assurance:</strong> At Hompkin, quality is non-negotiable. Our commitment to excellence ensures that every piece of furniture undergoes rigorous quality checks, guaranteeing durability and longevity.</p></li>\n<li rel=\"4\"><p><strong>Seamless Online Experience:</strong> Embrace the convenience of shopping from the comfort of your own space. Our user-friendly online platform is designed to make your shopping experience enjoyable and stress-free.</p></li>\n</ol>",
             "font_size_des": 17,
             "font_size_des_mb": 17,
             "line_height_des": 24,
@@ -311,7 +322,7 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": false,
-            "image": "shopify:\/\/shop_images\/Untitled_design_21.png",
+            "image": "shopify://shop_images/Untitled_design_21.png",
             "small_img_block_style": "style_3",
             "smallImg_justify": "space-between",
             "enable_divider": true,
@@ -340,7 +351,7 @@
             "margin_bottom_heading": 22,
             "font_weight_heading": "600",
             "color_heading": "#232323",
-            "text": "<ol>\n<li rel=\"1\"><p><strong>Aesthetics and Functionality:<\/strong> Our furniture seamlessly blends aesthetics with functionality, creating spaces that are not only visually appealing but also practical and comfortable.<\/p><\/li>\n<li rel=\"2\"><p><strong>Affordability:<\/strong> Experience luxury without breaking the bank. Hompkin offers competitively priced furniture without compromising on quality, making high-end home furnishings accessible to all.<\/p><\/li>\n<li rel=\"3\"><p><strong>Global Trends, Local Touch:<\/strong> Stay ahead of the curve with our ever-evolving collection that reflects global design trends while maintaining a touch of local charm.<\/p><\/li>\n<li rel=\"4\"><p><strong>Customer-Centric Approach:<\/strong> Your satisfaction is our priority. Our dedicated customer support team is always ready to assist you, ensuring a smooth and delightful shopping journey.<\/p><\/li>\n<\/ol>",
+            "text": "<ol>\n<li rel=\"1\"><p><strong>Aesthetics and Functionality:</strong> Our furniture seamlessly blends aesthetics with functionality, creating spaces that are not only visually appealing but also practical and comfortable.</p></li>\n<li rel=\"2\"><p><strong>Affordability:</strong> Experience luxury without breaking the bank. Hompkin offers competitively priced furniture without compromising on quality, making high-end home furnishings accessible to all.</p></li>\n<li rel=\"3\"><p><strong>Global Trends, Local Touch:</strong> Stay ahead of the curve with our ever-evolving collection that reflects global design trends while maintaining a touch of local charm.</p></li>\n<li rel=\"4\"><p><strong>Customer-Centric Approach:</strong> Your satisfaction is our priority. Our dedicated customer support team is always ready to assist you, ensuring a smooth and delightful shopping journey.</p></li>\n</ol>",
             "font_size_des": 17,
             "font_size_des_mb": 17,
             "line_height_des": 24,
