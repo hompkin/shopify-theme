@@ -133,7 +133,7 @@
             "menu": "bathroom-menu",
             "menu_top_spacing": 10,
             "menu_bottom_spacing": 24,
-            "grid_gap_menu_item": 14,
+            "grid_gap_menu_item": 12,
             "alignment": "left",
             "bg_mega_menu": "#ffffff",
             "bg_mega_menu_gradient": "",
