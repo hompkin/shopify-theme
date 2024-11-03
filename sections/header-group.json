@@ -29,7 +29,7 @@
         "9da20430-b562-46f1-9f28-e5592eeec567"
       ],
       "settings": {
-        "enable_announcement": true,
+        "enable_announcement": false,
         "layout": "slider",
         "enable_close": false,
         "color_text": "#ffffff",
