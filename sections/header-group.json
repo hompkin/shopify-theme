@@ -130,7 +130,7 @@
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-1": {
           "type": "main_menu",
           "settings": {
-            "menu": "header-menu",
+            "menu": "bathroom-menu",
             "menu_top_spacing": 10,
             "menu_bottom_spacing": 24,
             "grid_gap_menu_item": 14,
@@ -223,123 +223,6 @@
             "product_title": "Featured Products",
             "product_collection": ""
           }
-        },
-        "megamenu_style_2_MiyydG": {
-          "type": "megamenu_style_2",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1480,
-            "item": "Bath & Faucets",
-            "column": 3,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/Layer_11.png",
-            "banner_url_1": "",
-            "show_banner_2": true,
-            "banner_2": "shopify://shop_images/Layer_12.png",
-            "banner_url_2": "",
-            "show_banner_3": false,
-            "banner_url_3": ""
-          }
-        },
-        "megamenu_style_2_a6djwH": {
-          "type": "megamenu_style_2",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1390,
-            "item": "Baby & Kids",
-            "column": 4,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/Layer_12.png",
-            "banner_url_1": "",
-            "show_banner_2": true,
-            "banner_2": "shopify://shop_images/Layer_11.png",
-            "banner_url_2": "",
-            "show_banner_3": false,
-            "banner_url_3": ""
-          }
-        },
-        "megamenu_style_2_xyX6DR": {
-          "type": "megamenu_style_2",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1460,
-            "item": "Outdoor",
-            "column": 4,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/Layer_12.png",
-            "banner_url_1": "",
-            "show_banner_2": true,
-            "banner_2": "shopify://shop_images/Layer_11.png",
-            "banner_url_2": "",
-            "show_banner_3": false,
-            "banner_url_3": ""
-          }
-        },
-        "megamenu_style_2_N9K6XF": {
-          "type": "megamenu_style_2",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1280,
-            "item": "Kitchen",
-            "column": 3,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/Layer_12.png",
-            "banner_url_1": "",
-            "show_banner_2": false,
-            "banner_2": "shopify://shop_images/Layer_11.png",
-            "banner_url_2": "",
-            "show_banner_3": false,
-            "banner_url_3": ""
-          }
-        },
-        "megamenu_style_2_HLTDjL": {
-          "type": "megamenu_style_2",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1440,
-            "item": "Rugs",
-            "column": 4,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/Layer_12.png",
-            "banner_url_1": "",
-            "show_banner_2": true,
-            "banner_2": "shopify://shop_images/Layer_11.png",
-            "banner_url_2": "",
-            "show_banner_3": false,
-            "banner_url_3": ""
-          }
-        },
-        "megamenu_style_2_6Yzbag": {
-          "type": "megamenu_style_2",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1320,
-            "item": "Salon & Spa",
-            "column": 3,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/Layer_12.png",
-            "banner_url_1": "",
-            "show_banner_2": false,
-            "banner_url_2": "",
-            "show_banner_3": false,
-            "banner_url_3": ""
-          }
-        },
-        "megamenu_style_2_rM8fhw": {
-          "type": "megamenu_style_2",
-          "settings": {
-            "layout_block": "custom_width",
-            "header_custom_width_size": 1340,
-            "item": "Wall Decor",
-            "column": 3,
-            "show_banner_1": true,
-            "banner_1": "shopify://shop_images/Layer_12.png",
-            "banner_url_1": "",
-            "show_banner_2": false,
-            "banner_url_2": "",
-            "show_banner_3": false,
-            "banner_url_3": ""
-          }
         }
       },
       "block_order": [
@@ -347,14 +230,7 @@
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-1",
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-2",
         "1bc0cba0-edde-4b6b-9130-5ce8a8832ec5",
-        "megamenu_style_1_rew3UH",
-        "megamenu_style_2_MiyydG",
-        "megamenu_style_2_a6djwH",
-        "megamenu_style_2_xyX6DR",
-        "megamenu_style_2_N9K6XF",
-        "megamenu_style_2_HLTDjL",
-        "megamenu_style_2_6Yzbag",
-        "megamenu_style_2_rM8fhw"
+        "megamenu_style_1_rew3UH"
       ],
       "settings": {
         "container": "full",
