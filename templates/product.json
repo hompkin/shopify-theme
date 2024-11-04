@@ -21,9 +21,9 @@
             "breadcrumb_gradient": "",
             "breadcrumb_bg_mb": "#f6f6f6",
             "breadcrumb_gradient_mb": "",
-            "breadcrumb_mg_top_desktop": 10,
+            "breadcrumb_mg_top_desktop": 0,
             "breadcrumb_mg_top_mobile": 0,
-            "breadcrumb_mg_bottom_desktop": 5,
+            "breadcrumb_mg_bottom_desktop": 0,
             "breadcrumb_mg_bottom_mobile": 0
           }
         },
@@ -99,7 +99,7 @@
             "enable_border_bottom": false,
             "color_border": "#e6e6e6",
             "spacing_top": 0,
-            "spacing_bottom": 12
+            "spacing_bottom": 0
           }
         },
         "faa2b3e6-c0a1-4269-baa6-d2605efe4c05": {
@@ -275,7 +275,7 @@
       ],
       "settings": {
         "container": "1770",
-        "padding_full_width": 0,
+        "padding_full_width": 50,
         "show_sticky_info": true,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
@@ -283,7 +283,7 @@
         "mg_bottom_desktop": 0,
         "mg_bottom_tablet": 0,
         "mg_bottom_mobile": 0,
-        "main_image_arrows_desktop": true,
+        "main_image_arrows_desktop": false,
         "main_image_arrows_mobile": true,
         "main_image_counter_mobile": true,
         "main_image_enable_parallax_mb": false,
@@ -295,7 +295,7 @@
         "icon_color": "{{ shop.brand.colors.primary[0].foreground }}",
         "show_thumbnail_mobile": false,
         "thumnail_layout": "1",
-        "thumbnail_to_show": 8,
+        "thumbnail_to_show": 6,
         "show_sidebar": false,
         "sidebar_collapse": "collapse",
         "enable_sticky": false,
@@ -326,9 +326,9 @@
         "icon_style_layout": "style_2",
         "title_font_size": 16,
         "title_font_size_mb": 15,
-        "font_weight_title": "600",
+        "font_weight_title": "500",
         "title_text_transform": "capitalize",
-        "title_padding_top_bottom": 12,
+        "title_padding_top_bottom": 10,
         "tab_border_color": "{{ shop.brand.colors.secondary[1].background }}",
         "tab_border_color_rgb": "",
         "show_product_bundle": true,

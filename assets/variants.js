@@ -467,7 +467,6 @@ class VariantSelects extends HTMLElement {
                             text = window.subtotal.text.replace('[value]', subTotal);
                             $('#show-sticky-product').text(text);
                             $('#product-sticky-add-to-cart').text(text);
-                            console.log(text,'345');
                         }
                     }
                 } else {
