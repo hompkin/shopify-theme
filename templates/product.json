@@ -274,7 +274,7 @@
         "@media only screen and (min-width: 768px) {/* Container for each region */ .region-container {width: 100%; }}"
       ],
       "settings": {
-        "container": "fullwidth",
+        "container": "1770",
         "padding_full_width": 0,
         "show_sticky_info": true,
         "mg_top_desktop": 0,
