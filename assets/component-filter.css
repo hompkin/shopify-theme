@@ -327,7 +327,7 @@
 .facets__price--box .field__currency {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 14px;
     transform: translateY(-50%);
     font-size: var(--font-size);
     font-weight: var(--font-weight-normal);
