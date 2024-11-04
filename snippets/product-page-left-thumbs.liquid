@@ -492,8 +492,8 @@
                                     data-counter-mobi="{{ main_image_counter_mobile }}"
                                     data-media-count="{{ product.media.size }}"
                                 >
+                                    <!-- 去除展示尺寸图 by changelcai -->
                                     {%- for media in product.media -%}
-                                        <!-- 去除展示尺寸图 by changelcai -->
                                         {% assign filename = media | img_url: 'master' | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
                                         {% assign startsWith = 'size' %}
                                         {% assign checkArray = filename | split:startsWith %}
