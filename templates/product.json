@@ -275,7 +275,7 @@
       ],
       "settings": {
         "container": "fullwidth",
-        "padding_full_width": 10,
+        "padding_full_width": 0,
         "show_sticky_info": true,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
