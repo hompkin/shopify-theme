@@ -312,7 +312,7 @@
         "media_fit": "contain",
         "product_image_popup": "fancybox",
         "video_layout": "popup",
-        "show_badge": true,
+        "show_badge": false,
         "show_qty": false,
         "show_subtotal": false,
         "subtotal_style": "1",
