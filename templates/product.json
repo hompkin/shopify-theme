@@ -21,8 +21,8 @@
             "breadcrumb_gradient": "",
             "breadcrumb_bg_mb": "#f6f6f6",
             "breadcrumb_gradient_mb": "",
-            "breadcrumb_mg_top_desktop": 10,
-            "breadcrumb_mg_top_mobile": 10,
+            "breadcrumb_mg_top_desktop": 0,
+            "breadcrumb_mg_top_mobile": 0,
             "breadcrumb_mg_bottom_desktop": 10,
             "breadcrumb_mg_bottom_mobile": 10
           }
