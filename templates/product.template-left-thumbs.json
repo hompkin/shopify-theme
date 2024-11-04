@@ -21,10 +21,10 @@
             "breadcrumb_gradient": "",
             "breadcrumb_bg_mb": "#f6f6f6",
             "breadcrumb_gradient_mb": "",
-            "breadcrumb_mg_top_desktop": 0,
-            "breadcrumb_mg_top_mobile": 0,
-            "breadcrumb_mg_bottom_desktop": 0,
-            "breadcrumb_mg_bottom_mobile": 0
+            "breadcrumb_mg_top_desktop": 10,
+            "breadcrumb_mg_top_mobile": 10,
+            "breadcrumb_mg_bottom_desktop": 10,
+            "breadcrumb_mg_bottom_mobile": 10
           }
         },
         "b0ea69b7-8a54-4a3c-9abd-0fcceeabaaa0": {
@@ -62,7 +62,7 @@
           "type": "info",
           "settings": {
             "show_vendor": false,
-            "show_sku": false,
+            "show_sku": true,
             "show_barcode": false,
             "show_availability": false,
             "show_product_type": false,
