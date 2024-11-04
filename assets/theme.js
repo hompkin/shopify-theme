@@ -4593,7 +4593,7 @@
                             {
                                 breakpoint: 1600,
                                 settings: {
-                                    slidesToShow: thumbnailToShow > 3 ? thumbnailToShow - 1 : thumbnailToShow,
+                                    slidesToShow: thumbnailToShow,
                                     slidesToScroll: 1
                                 }
                             },
@@ -4637,7 +4637,7 @@
                             {
                                 breakpoint: 1600,
                                 settings: {
-                                    slidesToShow: thumbnailToShow > 3 ? thumbnailToShow - 1 : thumbnailToShow,
+                                    slidesToShow: thumbnailToShow,
                                     slidesToScroll: 1
                                 }
                             },
@@ -4675,7 +4675,7 @@
                         {
                             breakpoint: 1600,
                             settings: {
-                                slidesToShow: thumbnailToShow > 3 ? thumbnailToShow - 1 : thumbnailToShow,
+                                slidesToShow: thumbnailToShow,
                                 slidesToScroll: 1
                             }
                         },
