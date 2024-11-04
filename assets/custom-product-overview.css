@@ -28,7 +28,8 @@
   text-transform: capitalize;
 }
 .tab-popup-content .product-desc {
-  margin-top: 16px;
+  margin-top: 12px;
+  margin-bottom: 24px;
 }
 .product-overview .overview-box img {
   width: 50px;

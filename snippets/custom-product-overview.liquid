@@ -1,64 +1,118 @@
+
 <link href="{{ 'custom-product-overview.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
-{% assign current_variant = product.selected_or_first_available_variant %}
-{% assign overview_variant_kv = product.metafields.custom.product_overview.value.variant_kv %}
+{% assign product_details_value = product.metafields.custom.product_details.value %}
+{% if product_details_value %}
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    {% assign overview_variant_kv = product.metafields.custom.product_overview.value.variant_kv %}
+    {% if overview_variant_kv and overview_variant_kv[current_variant.sku] -%}
+      <div class="product-overview">
+        <span class="text">Overview</span>
+        <div class="overview-box">
+          {% assign attrs = overview_variant_kv[current_variant.sku] %}
+          {% for attr in attrs %}
+            {% if attr.value %}
+              <div class="overview-box-item">
+                <img src="{{ attr.icon }}" lazy="loaded" >
+                <div class="info">
+                  <span class="key">{{ attr.key }}:</span>
+                  <span class="value">{{ attr.value }}</span>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
 
-{% if overview_variant_kv and overview_variant_kv[current_variant.sku] -%}
-  <div class="product-overview">
-    <span class="text">Overview</span>
-    <div class="overview-box">
-      {% assign attrs = overview_variant_kv[current_variant.sku] %}
-      {% for attr in attrs %}
-        {% if attr.value %}
-          <div class="overview-box-item">
-            <img src="{{ attr.icon }}" lazy="loaded" >
-            <div class="info">
-              <span class="key">{{ attr.key }}:</span>
-              <span class="value">{{ attr.value }}</span>
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
+    <div class="product-desc">
+      {{ content }}
     </div>
-  </div>
-{% endif %}
 
-<div class="product-desc">
-  <span class="desc">Descprition</span>
-  {{ content }}
-</div>
-
-<div class="custom-meta-div">
-  {% assign detail_variant_kv = product.metafields.custom.product_details.value.variant_kv %}
-  {% if detail_variant_kv and detail_variant_kv[current_variant.sku]-%}
-    <span class="text">Details</span>
-      <div class="custom-meta-block">
-        <table>
-          <tbody>
-            <tr>
-              <td class="key-td">
-                <span class="key-text">SKU</span>
-              </td>
-              <td class="value-td" data-tab-meta-sku>
-                <span class="value-text">{{ current_variant.sku }}</span>
-              </td>
-            </tr>
-            {% assign attrs = detail_variant_kv[current_variant.sku] %}
-            {% for attr in attrs %}
-              {% if attr.value and attr.value != blank %}
+    <div class="custom-meta-div">
+      {% assign detail_variant_kv = product.metafields.custom.product_details.value.variant_kv %}
+      {% if detail_variant_kv and detail_variant_kv[current_variant.sku]-%}
+        <span class="text">Details</span>
+          <div class="custom-meta-block">
+            <table>
+              <tbody>
                 <tr>
                   <td class="key-td">
-                    <span class="key-text">{{ attr.key }}</span>
+                    <span class="key-text">SKU</span>
                   </td>
-                  <td class="value-td">
-                      <span class="value-text">{{ attr.value }}</span>
-                    </td>
-                  </tr>
+                  <td class="value-td" data-tab-meta-sku>
+                    <span class="value-text">{{ current_variant.sku }}</span>
+                  </td>
+                </tr>
+                {% assign attrs = detail_variant_kv[current_variant.sku] %}
+                {% for attr in attrs %}
+                  {% if attr.value and attr.value != blank %}
+                    <tr>
+                      <td class="key-td">
+                        <span class="key-text">{{ attr.key }}</span>
+                      </td>
+                      <td class="value-td">
+                          <span class="value-text">{{ attr.value }}</span>
+                        </td>
+                      </tr>
+                  {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+      {% endif %}
+    </div>
+
+{% else %}
+    {% if product.metafields.product_info.product_overview %}
+      <div class="product-overview">
+         {%- assign title_overview = shop.metaobjects.general['common-23r34234'].wording.value.Overview -%}
+        <span class="text">{{ title_overview }}</span>
+        <div class="overview-box">
+          {% if product.metafields.product_info.product_overview.value.attrs %}
+            {% for attr in product.metafields.product_info.product_overview.value.attrs %}
+              {% if attr.value %}
+                <div class="overview-box-item">
+                  <img src="{{ attr.image }}" lazy="loaded">
+                  <div class="info">
+                    <span class="key">{{ attr.key }}:</span>
+                    <span class="value">{{ attr.value }}</span>
+                  </div>
+                </div>
               {% endif %}
             {% endfor %}
-          </tbody>
-        </table>
+          {% elsif product.metafields.product_info.product_overview.value %}
+            {% for attr in product.metafields.product_info.product_overview.value %}
+              {% if attr.value %}
+                <div class="overview-box-item">
+                  <!-- load image slow tencent clound -->
+                  {% if attr.key == 'Warranty' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0609/3094/9367/files/d6b52c91b4e34e0a83b5d904371f73fe.webp?v=1713533321" lazy="loaded" alt="Warranty icon">
+                  {% elsif attr.key == 'Toss Pillow Included' and attr.value == 'No' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0609/3094/9367/files/without_pillow.png?v=1709866433" lazy="loaded" alt="Toss Pillow Included NO icon">
+                  {% elsif attr.key == 'Toss Pillow Included' and attr.value == 'Yes' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0609/3094/9367/files/38c57221ecc44ea3abe1def5839d6d32_1.webp?v=1713534285" lazy="loaded" alt="Toss Pillow Included Yes icon">
+                  {% elsif attr.key == 'Assembly Required' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0609/3094/9367/files/ee9df4acbdc04bf380ab8dd58b245575.webp?v=1713533520" lazy="loaded" alt="Assembly Required icon">
+                   {% elsif attr.key == 'Number Of Chairs' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0609/3094/9367/files/35b1a1f4d2c76bd8c15e09aaea281639.png?v=1713534129" lazy="loaded" alt="Number Of Chairs icon">
+                  {% else %}
+                    <img src="{{ attr.overview_img }}" lazy="loaded">
+                  {% endif %}
+
+                  <div class="info">
+                    <span class="key">{{ attr.key }}:</span>
+                    <span class="value">{{ attr.value }}</span>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
       </div>
-  {% endif %}
-</div>
-
-
+    {% endif %}
+    <div class="product-desc">
+       {%- assign title_desc = shop.metaobjects.general['common-23r34234'].wording.value.Descprition -%}
+      <span class="desc">{{ title_desc }}</span>
+      {{ content }}
+    </div>
+{% endif %}
