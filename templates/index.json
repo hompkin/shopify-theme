@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner_gPEWUR": {
@@ -7,7 +16,7 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": true,
-            "image": "shopify:\/\/shop_images\/O1CN01yHirSc1lPwnIYOntt__2216446814812.png__1.jpg",
+            "image": "shopify://shop_images/O1CN01yHirSc1lPwnIYOntt__2216446814812.png__1.jpg",
             "small_img_block_style": "style_1",
             "smallImg_justify": "space-between",
             "enable_divider": false,
@@ -53,7 +62,7 @@
             "bg_color_icon": "#000000",
             "button_style": "style_1",
             "btn_text": "",
-            "link": "shopify:\/\/collections\/bathtub",
+            "link": "shopify://collections/bathtub",
             "button_1_width": 235,
             "enable_button_custom_border": true,
             "button_color": "#ffffff",
@@ -82,9 +91,7 @@
       "block_order": [
         "small_img_pHxLPm"
       ],
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
         "id_section": "",
         "container": "fullwidth",
@@ -108,7 +115,7 @@
         "style_bg": "none",
         "bg_color": "",
         "bg_color_gradient": "",
-        "bg_image": "shopify:\/\/shop_images\/Blue_Navy_Minimalist_Furniture_Banner_Landscape_4.png",
+        "bg_image": "shopify://shop_images/Blue_Navy_Minimalist_Furniture_Banner_Landscape_4.png",
         "display_type": "slide",
         "list_gap": 0,
         "enable_arrows": true,
@@ -124,9 +131,9 @@
           "type": "smallImg",
           "settings": {
             "row_reverse": false,
-            "image": "shopify:\/\/shop_images\/O1CN01xFZSYI1RkkOrmUOYZ__2207671282150.jpg_Q75.jpg__1.jpg",
-            "image_2": "shopify:\/\/shop_images\/O1CN01O7V4uR1vzLU51bZuZ__2215457186243_2.jpg",
-            "image_3": "shopify:\/\/shop_images\/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg",
+            "image": "shopify://shop_images/a-photo-of-a-modern-bathroom-with-a-beau_KVb2V7VwSt-uEsT2V2i0og_Qd5d1FdzRoCM388kkREt_A_1.png",
+            "image_2": "shopify://shop_images/O1CN01O7V4uR1vzLU51bZuZ__2215457186243_2.jpg",
+            "image_3": "shopify://shop_images/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg",
             "small_img_block_style": "style_1",
             "smallImg_justify": "space-between",
             "enable_divider": true,
@@ -137,7 +144,7 @@
             "content_pos_from_center": 0,
             "divider_position_from_center": 0,
             "small_banner_bg_color": "",
-            "image_sub_title": "shopify:\/\/shop_images\/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg",
+            "image_sub_title": "shopify://shop_images/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg",
             "mg_bottom_icon": 25,
             "image_behavior": "zoom-in",
             "sub_title": "",
@@ -173,7 +180,7 @@
             "bg_color_icon": "#000000",
             "button_style": "style_1",
             "btn_text": "View All",
-            "link": "shopify:\/\/collections",
+            "link": "shopify://collections",
             "button_1_width": 235,
             "enable_button_custom_border": true,
             "button_color": "#ffffff",
@@ -240,7 +247,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "",
-            "image": "shopify:\/\/shop_images\/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg",
+            "image": "shopify://shop_images/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg",
             "content_align": "center",
             "title": "Janpanese Soaking Bathub",
             "color_title": "#232323",
@@ -258,14 +265,14 @@
             "bg_color_gradient_button_hover": "",
             "btn_icon": "",
             "btn_text": "Shop Now",
-            "link": "shopify:\/\/collections\/bathtub"
+            "link": "shopify://collections/bathtub"
           }
         },
         "featured_collection_YrVNdF": {
           "type": "featured_collection",
           "settings": {
             "collection": "",
-            "image": "shopify:\/\/shop_images\/WeChat1861b7bcfb70a6d3e24e205c55954285.jpg",
+            "image": "shopify://shop_images/WeChat1861b7bcfb70a6d3e24e205c55954285.jpg",
             "content_align": "center",
             "title": "Transparent Resin Bathtub",
             "color_title": "#232323",
@@ -283,14 +290,14 @@
             "bg_color_gradient_button_hover": "",
             "btn_icon": "",
             "btn_text": "Shop Now",
-            "link": "shopify:\/\/collections\/bathtub"
+            "link": "shopify://collections/bathtub"
           }
         },
         "featured_collection_Mqt3wa": {
           "type": "featured_collection",
           "settings": {
             "collection": "",
-            "image": "shopify:\/\/shop_images\/WeChata7f3dd8c546671e1c82cd719db958b19.jpg",
+            "image": "shopify://shop_images/WeChata7f3dd8c546671e1c82cd719db958b19.jpg",
             "content_align": "center",
             "title": "TODO #1 Bathtub",
             "color_title": "#232323",
@@ -308,7 +315,7 @@
             "bg_color_gradient_button_hover": "",
             "btn_icon": "",
             "btn_text": "Shop Now",
-            "link": "shopify:\/\/collections\/bathtub"
+            "link": "shopify://collections/bathtub"
           }
         }
       },
@@ -413,8 +420,8 @@
         "content_style_2_background_color": "#f5f5f5",
         "content_style_2_background_gradient": "",
         "content_style_2_border_color": "",
-        "image_1": "shopify:\/\/shop_images\/WeChat1861b7bcfb70a6d3e24e205c55954285.jpg",
-        "image_2": "shopify:\/\/shop_images\/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg"
+        "image_1": "shopify://shop_images/WeChat1861b7bcfb70a6d3e24e205c55954285.jpg",
+        "image_2": "shopify://shop_images/WeChat7ca24c7f3ef4afc8ffd228ef977faf1d.jpg"
       }
     },
     "video_block_B8NELq": {
@@ -427,7 +434,7 @@
         "mg_bottom_desktop": 50,
         "mg_bottom_tablet": 50,
         "mg_bottom_mobile": 50,
-        "spotlight_bg": "#fff",
+        "spotlight_bg": "#ffffff",
         "spotlight_bg_gradient": "",
         "video_block_title": "",
         "color_title": "#232323",
@@ -442,7 +449,7 @@
         "video_height": "30",
         "style_video": "mp4",
         "video_url": "",
-        "url_mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/e5004e3cf4444347995c9f8f09f4ef49.mp4",
+        "url_mp4": "https://cdn.shopify.com/videos/c/o/v/e5004e3cf4444347995c9f8f09f4ef49.mp4",
         "description": "",
         "full_width": false
       }
@@ -454,7 +461,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_9.png",
+            "image": "shopify://shop_images/white_bathtub_9.png",
             "link": ""
           }
         },
@@ -462,7 +469,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_6.png",
+            "image": "shopify://shop_images/white_bathtub_6.png",
             "link": ""
           }
         },
@@ -470,7 +477,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_1.png",
+            "image": "shopify://shop_images/white_bathtub_1.png",
             "link": ""
           }
         },
@@ -478,7 +485,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_3.png",
+            "image": "shopify://shop_images/white_bathtub_3.png",
             "link": ""
           }
         },
@@ -486,7 +493,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_2.png",
+            "image": "shopify://shop_images/white_bathtub_2.png",
             "link": ""
           }
         },
@@ -494,7 +501,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/Stone_Resin_Soaking_Bathtub_1.png",
+            "image": "shopify://shop_images/Stone_Resin_Soaking_Bathtub_1.png",
             "link": ""
           }
         },
@@ -502,7 +509,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_4.png",
+            "image": "shopify://shop_images/white_bathtub_4.png",
             "link": ""
           }
         },
@@ -510,7 +517,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_8.png",
+            "image": "shopify://shop_images/white_bathtub_8.png",
             "link": ""
           }
         },
@@ -518,7 +525,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_7.png",
+            "image": "shopify://shop_images/white_bathtub_7.png",
             "link": ""
           }
         },
@@ -526,7 +533,7 @@
           "type": "instagram",
           "settings": {
             "enable": true,
-            "image": "shopify:\/\/shop_images\/white_bathtub_5.png",
+            "image": "shopify://shop_images/white_bathtub_5.png",
             "link": ""
           }
         }
@@ -561,6 +568,7 @@
         "instagram_border_color": "#e6e6e6",
         "instagram_bg": "#ffffff",
         "instagram_bg_gradient": "",
+        "style_block_header": "style1",
         "instagram_title": "#Image Gallery",
         "enable_border_title": false,
         "border_color_title": "#232323",
@@ -580,7 +588,7 @@
         "font_weight_view_all": "400",
         "mg_bottom_view": 28,
         "enable_border_view_all": true,
-        "link_view_all": "shopify:\/\/collections",
+        "link_view_all": "shopify://collections",
         "color_view_all": "{{ shop.brand.colors.secondary[0].background }}",
         "display_instagram_button": false,
         "instagram_button_text": "View Gallery",
@@ -605,7 +613,9 @@
         "enable_hide_portion": true,
         "slide_ins": "centermode",
         "display_arrow": true,
-        "icon_for_image": "<svg height=\"512px\" style=\"enable-background:new 0 0 512 512;\" version=\"1.1\" viewbox=\"0 0 512 512\" width=\"50px\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xml:space=\"preserve\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><g id=\"_x37_22-_add__x2C__add_more__x2C__plus__x2C_\"><g><line style=\"fill:#fff;stroke:#fff;stroke-width:13.4167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;\" x1=\"256.486\" x2=\"256.486\" y1=\"26.814\" y2=\"486.139\"><\/line><line style=\"fill:#fff;stroke:#fff;stroke-width:13.4167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;\" x1=\"486.238\" x2=\"26.711\" y1=\"256.477\" y2=\"256.477\"><\/line><\/g><\/g><g id=\"Layer_1\"><\/g><\/svg>",
+        "enable_hover_arrow": false,
+        "display_dots": false,
+        "icon_for_image": "<svg height=\"512px\" style=\"enable-background:new 0 0 512 512;\" version=\"1.1\" viewbox=\"0 0 512 512\" width=\"50px\" xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><g id=\"_x37_22-_add__x2C__add_more__x2C__plus__x2C_\"><g><line style=\"fill:#fff;stroke:#fff;stroke-width:13.4167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;\" x1=\"256.486\" x2=\"256.486\" y1=\"26.814\" y2=\"486.139\"></line><line style=\"fill:#fff;stroke:#fff;stroke-width:13.4167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;\" x1=\"486.238\" x2=\"26.711\" y1=\"256.477\" y2=\"256.477\"></line></g></g><g id=\"Layer_1\"></g></svg>",
         "icon_style": "style_1",
         "effects_bg": "#232323",
         "effects_opacity": 0.3
@@ -647,7 +657,7 @@
         "mg_top_view": 0,
         "mg_bottom_view": 0,
         "enable_border_view_all": true,
-        "link_view_all": "shopify:\/\/blogs\/tips-ideas",
+        "link_view_all": "shopify://blogs/tips-ideas",
         "color_view_all": "#ff8b21",
         "icon_view_all": "",
         "color_view_all_icon": "#eb492f",
@@ -680,8 +690,8 @@
         "color_title_item": "#232323",
         "color_date_item": "#969696",
         "color_des_item": "#232323",
-        "color_button_item": "#ff8b21",
         "enable_blog_button": false,
+        "color_button_item": "#ff8b21",
         "color_button_item_border": "#1e1e1e",
         "color_button_item_bg": "#1e1e1e",
         "color_button_item_hover": "#000000",
