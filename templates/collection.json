@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -14,6 +23,7 @@
         "show_page_title": true,
         "page_title_alignment": "left",
         "container": "1770",
+        "padding_full_width": 0,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
         "mg_top_mobile": 0,
@@ -87,7 +97,6 @@
           "settings": {
             "show_block": true,
             "heading": "",
-            "image": "shopify:\/\/shop_images\/blog-sidebar-1.jpg",
             "link": ""
           }
         },
@@ -97,7 +106,6 @@
           "settings": {
             "show_block": true,
             "heading": "",
-            "image": "shopify:\/\/shop_images\/blog-sidebar-2.jpg",
             "link": ""
           }
         },
@@ -107,7 +115,7 @@
           "settings": {
             "show_block": false,
             "heading": "Custom Block",
-            "text": "<p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... or whatever you like.<\/p>\n\n<p>There are many similar sample content placeholders across the store. All editable from admin panel.<\/p>"
+            "text": "<p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... or whatever you like.</p>\n\n<p>There are many similar sample content placeholders across the store. All editable from admin panel.</p>"
           }
         }
       },
@@ -121,13 +129,12 @@
         "34930b49-8499-46d3-bf41-2cbb334ca73d",
         "2f7f02ac-4072-40ea-844f-59943e256971"
       ],
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
         "colors_bg": "rgba(0,0,0,0)",
         "colors_bg_gradient": "",
         "container": "1770",
+        "padding_full_width": 0,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
         "mg_top_mobile": 0,
@@ -135,7 +142,7 @@
         "mg_bottom_tablet": 0,
         "mg_bottom_mobile": 0,
         "show_sidebar": true,
-        "show_sidebar_collapse": true,
+        "sidebar_collapse": "collapse",
         "enable_sticky": false,
         "sidebar_layout": "layout_1",
         "sidebar_collapse_default": "expand",
@@ -159,7 +166,7 @@
         "show_view_as": true,
         "products_per_page": "20",
         "layout": "4",
-        "show_infinite_scrolling": "show_more",
+        "show_infinite_scrolling": "infinite",
         "show_banner": false,
         "show_banner_1": true,
         "banner_position_1": "4",
@@ -169,7 +176,11 @@
         "link_banner_2": "",
         "show_banner_3": true,
         "banner_position_3": "12",
-        "link_banner_3": ""
+        "link_banner_3": "",
+        "product_space_between_vert_desk": 30,
+        "product_space_between_vert_mb": 16,
+        "product_space_between_horiz_desk": 60,
+        "product_space_between_horiz_mb": 30
       }
     },
     "product-recently-viewed": {
