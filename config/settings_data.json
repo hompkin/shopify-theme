@@ -12,6 +12,7 @@
     "layout_body": "custom_width",
     "body_custom_width_size": 1800,
     "mobile_menu": "default",
+    "blog_layout": "masonry",
     "type_font_1": "shopify_fonts",
     "type_font_1_name": "Jost",
     "type_font_1_font": "serif",
