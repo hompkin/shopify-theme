@@ -167,7 +167,7 @@
             "address_text": "<p>Address: 686 Market Street<br/>San Francisco, CA 94108,<br/>United States</p>",
             "phone_icon": "message_icon",
             "show_phone_icon": false,
-            "phone_text": "<p>SMS: +1 (707) 622-6660</p>",
+            "phone_text": "",
             "email_icon": "envelope_icon",
             "show_email_icon": false,
             "email_text": "<p>Email: <a href=\"https://hompkin.com/pages/contact-us\" target=\"_blank\" title=\"support@hompkin.com\">support@hompkin.com</a></p>",
