@@ -58,6 +58,7 @@
         },
         "80b0a11c-fb01-4b89-8a29-1dbb2a1db16a": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "show_block": false,
             "heading": "Categories",
@@ -67,6 +68,7 @@
         },
         "ce351101-2c54-4627-b740-b2c592067b4a": {
           "type": "filter",
+          "disabled": true,
           "settings": {
             "heading": "Color",
             "list_tags": "White,Black,Blue,Invory,Beige,Brown,Silver,Olive,Gainsboro,DimGray,Burlywood,Lightblue,Salmon,LightPink,LightCoral"
@@ -74,6 +76,7 @@
         },
         "6684d566-6940-4457-9cf9-f1a8a6e80573": {
           "type": "filter",
+          "disabled": true,
           "settings": {
             "heading": "Size",
             "list_tags": "S,XS,M,L,XL"
