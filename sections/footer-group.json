@@ -164,7 +164,7 @@
             "subtext": "",
             "address_icon": "point_icon",
             "show_address_icon": false,
-            "address_text": "<p>Address: 686 Market Street<br/>San Francisco, CA 94108,<br/>United States</p>",
+            "address_text": "<p>Address: 686 Market Street, San Francisco, CA 94108, United States</p>",
             "phone_icon": "message_icon",
             "show_phone_icon": false,
             "phone_text": "",
