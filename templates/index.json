@@ -155,8 +155,8 @@
         "text_VxtaMr"
       ],
       "custom_css": [
-        ".collection-gallery-wrapper {display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;}",
-        ".collection-gallery-img {width: 200px; object-fit: cover; transition: transform 0.3s ease;}",
+        ".collection-gallery-wrapper {display: flex; flex-wrap: wrap; justify-content: center;}",
+        ".collection-gallery-img {width: 13vw; object-fit: cover; transition: transform 0.3s ease;}",
         ".collection-gallery-img:hover {}",
         "@media (max-width: 1024px) {.collection-gallery-img {width: 30vw; height: auto; }}",
         "@media (max-width: 600px) {.collection-gallery-img {width: 100%; /* 手机上一行1张 */ height: auto; }}"
