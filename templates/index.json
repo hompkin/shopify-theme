@@ -124,10 +124,20 @@
         "enable_autoplay": true
       }
     },
-    "rich_text_MCqewz": {
+    "rich_text_n6KqtY": {
       "type": "rich-text",
       "blocks": {
-        "text_AJqfhj": {
+        "heading_UJXQRD": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bathtub Categories",
+            "heading_size": 30,
+            "heading_size_mb": 30,
+            "heading_line_height": 1,
+            "heading_color": "#000"
+          }
+        },
+        "text_VxtaMr": {
           "type": "text",
           "settings": {
             "text": "<div class=\"collection-gallery-wrapper\">\n    <a href=\"https://hompkin.com/collections/freestanding-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Freestanding_Bathtubs.png?v=1756194283\" alt=\"Freestanding Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/back-to-wall-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Back-to-Wall_Bathtubs.png?v=1756194283\" alt=\"Back-to-Wall Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/corner-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Corner_Bathtubs.png?v=1756194283\" alt=\"Corner Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/alcove-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Alcove_Bathtubs.png?v=1756194283\" alt=\"Alcove Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/drop-in-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Drop-In_Bathtubs.png?v=1756194283\" alt=\"Drop-In Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/walk-in-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Walk-In_Bathtubs.png?v=1756194283\" alt=\"Walk-In Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/portable-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Portable_Bathtubs.png?v=1756194284\" alt=\"Portable Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n</div>",
@@ -141,18 +151,19 @@
         }
       },
       "block_order": [
-        "text_AJqfhj"
+        "heading_UJXQRD",
+        "text_VxtaMr"
       ],
       "custom_css": [
         ".collection-gallery-wrapper {display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;}",
         ".collection-gallery-img {width: 256px; object-fit: cover; transition: transform 0.3s ease;}",
         ".collection-gallery-img:hover {}",
-        " @media (max-width: 1024px) {.collection-gallery-img {width: 30vw; height: auto; }}",
+        "@media (max-width: 1024px) {.collection-gallery-img {width: 30vw; height: auto; }}",
         "@media (max-width: 600px) {.collection-gallery-img {width: 100%; /* 手机上一行1张 */ height: auto; }}"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "container": "fullwidth",
+        "container": "container",
         "padding_full_width": 0,
         "enable_border_top": false,
         "enable_border_bottom": false,
@@ -750,7 +761,7 @@
   },
   "order": [
     "image_banner_gPEWUR",
-    "rich_text_MCqewz",
+    "rich_text_n6KqtY",
     "image_banner_XGdwEL",
     "featured_collection_Akrbr7",
     "image_comparison_aBYbMG",
