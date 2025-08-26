@@ -185,6 +185,7 @@
       "blocks": {
         "small_img_nnrGAt": {
           "type": "smallImg",
+          "disabled": true,
           "settings": {
             "row_reverse": false,
             "image": "shopify://shop_images/a-photo-of-a-modern-bathroom-with-a-beau_KVb2V7VwSt-uEsT2V2i0og_Qd5d1FdzRoCM388kkREt_A_1.png",
@@ -380,6 +381,7 @@
         "featured_collection_YrVNdF",
         "featured_collection_Mqt3wa"
       ],
+      "disabled": true,
       "custom_css": [
         ".featured-collection-content {background-color: #f5f5f5ff;}",
         "@media (min-width: 1024px) {.featured-collection-content {background-color: #00000099; } .featured-collection-content .title {margin-top: 40px; } .featured-collection-content .custom-text-style a {color: #f8f8f8; }}",
@@ -415,6 +417,7 @@
     },
     "image_comparison_aBYbMG": {
       "type": "image-comparison",
+      "disabled": true,
       "settings": {
         "container": "1770",
         "padding_full_width": 0,
