@@ -62,7 +62,7 @@
             "bg_color_icon": "#000000",
             "button_style": "style_1",
             "btn_text": "",
-            "link": "shopify://collections/bathtub",
+            "link": "shopify://collections/bathtubs",
             "button_1_width": 235,
             "enable_button_custom_border": true,
             "button_color": "#ffffff",
@@ -134,7 +134,7 @@
             "heading_size": 40,
             "heading_size_mb": 30,
             "heading_line_height": 1,
-            "heading_color": "#000"
+            "heading_color": "#000000"
           }
         },
         "text_VxtaMr": {
@@ -145,7 +145,7 @@
             "text_size_mb": 18,
             "text_line_height": 1,
             "margin_top_text": 20,
-            "text_color": "#000",
+            "text_color": "#000000",
             "text_width": "5000px"
           }
         }
@@ -175,7 +175,7 @@
         "mg_bottom_desktop": 50,
         "mg_bottom_tablet": 50,
         "mg_bottom_mobile": 50,
-        "rich_text_bg": "#fff",
+        "rich_text_bg": "#ffffff",
         "rich_text_bg_gradient": "",
         "enable_column": false,
         "content_align": "center"
