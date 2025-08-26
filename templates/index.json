@@ -188,7 +188,7 @@
           "type": "heading",
           "settings": {
             "heading": "Bathtub Features",
-            "heading_size": 30,
+            "heading_size": 40,
             "heading_size_mb": 30,
             "heading_line_height": 1,
             "heading_color": "#000"
@@ -212,12 +212,12 @@
         "text_x4kU6z"
       ],
       "custom_css": [
-        ".feature-gallery-wrapper {display: flex; flex-wrap: wrap; justify-content: center; }",
-        " .feature-gallery-item {display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; text-align: center; }",
-        " .feature-gallery-img {width: 13vw; object-fit: cover; transition: transform 0.3s ease; }",
-        " .feature-gallery-img:hover {transform: scale(1.03); }",
-        " @media (max-width: 1024px) {.feature-gallery-img {width: 20vw; height: auto; } }",
-        " @media (max-width: 600px) {.feature-gallery-img {width: 100vw; height: auto; } }"
+        ".feature-gallery-wrapper {display: flex; flex-wrap: wrap; justify-content: center;}",
+        ".feature-gallery-item {display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; text-align: center;}",
+        ".feature-gallery-img {width: 13vw; object-fit: cover; transition: transform 0.3s ease;}",
+        ".feature-gallery-img:hover {transform: scale(1.03);}",
+        "@media (max-width: 1024px) {.feature-gallery-img {width: 20vw; height: auto; }}",
+        "@media (max-width: 600px) {.feature-gallery-img {width: 100vw; height: auto; }}"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
