@@ -160,7 +160,7 @@
         ".collection-gallery-img {width: 13vw; object-fit: cover; transition: transform 0.3s ease;}",
         ".collection-gallery-img:hover {transform: scale(1.1);}",
         "@media (max-width: 1024px) {.collection-gallery-img {width: 20vw; height: auto; }}",
-        "@media (max-width: 600px) {.collection-gallery-img {width: 100vw; height: auto; }}"
+        "@media (max-width: 600px) {.collection-gallery-img {width: 45vw; height: auto; }}"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
@@ -217,7 +217,7 @@
         ".feature-gallery-img {width: 13vw; object-fit: cover; transition: transform 0.3s ease;}",
         ".feature-gallery-img:hover {transform: scale(1.03);}",
         "@media (max-width: 1024px) {.feature-gallery-img {width: 20vw; height: auto; }}",
-        "@media (max-width: 600px) {.feature-gallery-img {width: 100vw; height: auto; }}"
+        "@media (max-width: 600px) {.feature-gallery-img {width: 45vw; height: auto; }}"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
