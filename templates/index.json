@@ -169,9 +169,9 @@
         "enable_border_top": false,
         "enable_border_bottom": false,
         "color_border_bottom": "#e8e8e8",
-        "mg_top_desktop": 15,
-        "mg_top_tablet": 15,
-        "mg_top_mobile": 15,
+        "mg_top_desktop": 20,
+        "mg_top_tablet": 20,
+        "mg_top_mobile": 20,
         "mg_bottom_desktop": 20,
         "mg_bottom_tablet": 20,
         "mg_bottom_mobile": 20,
@@ -221,14 +221,71 @@
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "container": "container",
+        "container": "fullwidth",
         "padding_full_width": 0,
         "enable_border_top": false,
         "enable_border_bottom": false,
         "color_border_bottom": "#e8e8e8",
-        "mg_top_desktop": 15,
-        "mg_top_tablet": 15,
-        "mg_top_mobile": 15,
+        "mg_top_desktop": 20,
+        "mg_top_tablet": 20,
+        "mg_top_mobile": 20,
+        "mg_bottom_desktop": 20,
+        "mg_bottom_tablet": 20,
+        "mg_bottom_mobile": 20,
+        "rich_text_bg": "#fff",
+        "rich_text_bg_gradient": "",
+        "enable_column": false,
+        "content_align": "center"
+      }
+    },
+    "rich_text_nmHkEQ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_NKQHFF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bathtub Shapes",
+            "heading_size": 40,
+            "heading_size_mb": 30,
+            "heading_line_height": 1,
+            "heading_color": "#000"
+          }
+        },
+        "text_7pxMdy": {
+          "type": "text",
+          "settings": {
+            "text": "<div class=\"shape-gallery-wrapper\">\n    <div class=\"shape-gallery-item\">\n        <a href=\"https://hompkin.com/collections/clawfoot-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Clawfoot.png?v=1756201104\" alt=\"Clawfoot Bathtubs\" class=\"shape-gallery-img\">\n        </a>\n        <p class=\"shape-gallery-name\">Clawfoot</p>\n    </div>\n    <div class=\"shape-gallery-item\">\n        <a href=\"https://hompkin.com/collections/oval-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Oval.png?v=1756201104\" alt=\"Oval Bathtubs\" class=\"shape-gallery-img\">\n        </a>\n        <p class=\"shape-gallery-name\">Oval</p>\n    </div>\n    <div class=\"shape-gallery-item\">\n        <a href=\"https://hompkin.com/collections/rectangular-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Rectangular.png?v=1756201104\" alt=\"Rectangular Bathtubs\" class=\"shape-gallery-img\">\n        </a>\n        <p class=\"shape-gallery-name\">Rectangular</p>\n    </div>\n    <div class=\"shape-gallery-item\">\n        <a href=\"https://hompkin.com/collections/square-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Square.png?v=1756201104\" alt=\"Square Bathtubs\" class=\"shape-gallery-img\">\n        </a>\n        <p class=\"shape-gallery-name\">Square</p>\n    </div>\n    <div class=\"shape-gallery-item\">\n        <a href=\"https://hompkin.com/collections/round-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Round.png?v=1756201104\" alt=\"Round Bathtubs\" class=\"shape-gallery-img\">\n        </a>\n        <p class=\"shape-gallery-name\">Round</p>\n    </div>\n    <div class=\"shape-gallery-item\">\n        <a href=\"https://hompkin.com/collections/triangular-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Triangular.png?v=1756201104\" alt=\"Triangular Bathtubs\" class=\"shape-gallery-img\">\n        </a>\n        <p class=\"shape-gallery-name\">Triangular</p>\n    </div>\n</div>",
+            "text_size": 16,
+            "text_size_mb": 18,
+            "text_line_height": 1,
+            "margin_top_text": 20,
+            "text_color": "#000",
+            "text_width": "5000px"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NKQHFF",
+        "text_7pxMdy"
+      ],
+      "custom_css": [
+        ".shape-gallery-wrapper {display: flex; flex-wrap: wrap; justify-content: center;}",
+        ".shape-gallery-item {display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; text-align: center;}",
+        ".shape-gallery-img {width: 13vw; object-fit: cover; transition: transform 0.3s ease;}",
+        ".shape-gallery-img:hover {transform: scale(1.03);}",
+        "@media (max-width: 1024px) {.shape-gallery-img {width: 20vw; height: auto; }}",
+        "@media (max-width: 600px) {.shape-gallery-img {width: 45vw; height: auto; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "container": "fullwidth",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 20,
+        "mg_top_tablet": 20,
+        "mg_top_mobile": 20,
         "mg_bottom_desktop": 20,
         "mg_bottom_tablet": 20,
         "mg_bottom_mobile": 20,
@@ -824,6 +881,7 @@
     "image_banner_gPEWUR",
     "rich_text_n6KqtY",
     "rich_text_9hAytr",
+    "rich_text_nmHkEQ",
     "image_banner_XGdwEL",
     "featured_collection_Akrbr7",
     "image_comparison_aBYbMG",
