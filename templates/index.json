@@ -181,6 +181,63 @@
         "content_align": "center"
       }
     },
+    "rich_text_9hAytr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_w4Ndgz": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bathtub Features",
+            "heading_size": 30,
+            "heading_size_mb": 30,
+            "heading_line_height": 1,
+            "heading_color": "#000"
+          }
+        },
+        "text_x4kU6z": {
+          "type": "text",
+          "settings": {
+            "text": "<div class=\"feature-gallery-wrapper\">\n    <div class=\"feature-gallery-item\">\n        <a href=\"https://hompkin.com/collections/soaking-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Soaking.png?v=1756199431\" alt=\"Soaking Bathtubs\" class=\"feature-gallery-img\">\n        </a>\n        <p class=\"feature-gallery-name\">Soaking</p>\n    </div>\n    <div class=\"feature-gallery-item\">\n        <a href=\"https://hompkin.com/collections/whirlpool-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Whirlpool.png?v=1756199431\" alt=\"Whirlpool Bathtubs\" class=\"feature-gallery-img\">\n        </a>\n        <p class=\"feature-gallery-name\">Whirlpool</p>\n    </div>\n    <div class=\"feature-gallery-item\">\n        <a href=\"https://hompkin.com/collections/air-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Air___Bubble.png?v=1756199431\" alt=\"Air/Bubble Bathtubs\" class=\"feature-gallery-img\">\n        </a>\n        <p class=\"feature-gallery-name\">Air/Bubble</p>\n    </div>\n    <div class=\"feature-gallery-item\">\n        <a href=\"https://hompkin.com/collections/heated-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Heater.png?v=1756199431\" alt=\"Heated Bathtubs\" class=\"feature-gallery-img\">\n        </a>\n        <p class=\"feature-gallery-name\">Heater</p>\n    </div>\n    <div class=\"feature-gallery-item\">\n        <a href=\"https://hompkin.com/collections/lighting-bathtubs\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Lighting.png?v=1756199432\" alt=\"Lighting Bathtubs\" class=\"feature-gallery-img\">\n        </a>\n        <p class=\"feature-gallery-name\">Lighting</p>\n    </div>\n</div>",
+            "text_size": 16,
+            "text_size_mb": 18,
+            "text_line_height": 1,
+            "margin_top_text": 20,
+            "text_color": "#000",
+            "text_width": "800px"
+          }
+        }
+      },
+      "block_order": [
+        "heading_w4Ndgz",
+        "text_x4kU6z"
+      ],
+      "custom_css": [
+        ".feature-gallery-wrapper {display: flex; flex-wrap: wrap; justify-content: center; }",
+        " .feature-gallery-item {display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; text-align: center; }",
+        " .feature-gallery-img {width: 13vw; object-fit: cover; transition: transform 0.3s ease; }",
+        " .feature-gallery-img:hover {transform: scale(1.03); }",
+        " @media (max-width: 1024px) {.feature-gallery-img {width: 20vw; height: auto; } }",
+        " @media (max-width: 600px) {.feature-gallery-img {width: 100vw; height: auto; } }"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "rich_text_bg": "#fff",
+        "rich_text_bg_gradient": "",
+        "enable_column": false,
+        "content_align": "center"
+      }
+    },
     "image_banner_XGdwEL": {
       "type": "image-banner",
       "blocks": {
@@ -766,6 +823,7 @@
   "order": [
     "image_banner_gPEWUR",
     "rich_text_n6KqtY",
+    "rich_text_9hAytr",
     "image_banner_XGdwEL",
     "featured_collection_Akrbr7",
     "image_comparison_aBYbMG",
