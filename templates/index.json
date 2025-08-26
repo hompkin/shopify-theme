@@ -124,6 +124,51 @@
         "enable_autoplay": true
       }
     },
+    "rich_text_MCqewz": {
+      "type": "rich-text",
+      "blocks": {
+        "text_AJqfhj": {
+          "type": "text",
+          "settings": {
+            "text": "<div class=\"collection-gallery-wrapper\">\n    <a href=\"https://hompkin.com/collections/freestanding-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Freestanding_Bathtubs.png?v=1756194283\" alt=\"Freestanding Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/back-to-wall-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Back-to-Wall_Bathtubs.png?v=1756194283\" alt=\"Back-to-Wall Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/corner-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Corner_Bathtubs.png?v=1756194283\" alt=\"Corner Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/alcove-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Alcove_Bathtubs.png?v=1756194283\" alt=\"Alcove Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/drop-in-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Drop-In_Bathtubs.png?v=1756194283\" alt=\"Drop-In Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/walk-in-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Walk-In_Bathtubs.png?v=1756194283\" alt=\"Walk-In Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/portable-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Portable_Bathtubs.png?v=1756194284\" alt=\"Portable Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n</div>",
+            "text_size": 16,
+            "text_size_mb": 12,
+            "text_line_height": 1,
+            "margin_top_text": 20,
+            "text_color": "#000",
+            "text_width": "5000px"
+          }
+        }
+      },
+      "block_order": [
+        "text_AJqfhj"
+      ],
+      "custom_css": [
+        ".collection-gallery-wrapper {display: flex; flex-wrap: wrap; /* 不够宽时换行 */ justify-content: center; /* 每一行居中 */ gap: 8px; /* 图片间距 */}",
+        ".collection-gallery-img {width: 200px; object-fit: cover; transition: transform 0.3s ease;}",
+        ".collection-gallery-img:hover {transform: scale(1.03); /* 悬停轻微放大 */}",
+        " /* 移动端适配 */@media (max-width: 1024px) {.collection-gallery-img {width: 30vw; /* 平板上一行可容纳3张 */ height: auto; }}",
+        "@media (max-width: 600px) {.collection-gallery-img {width: 100%; /* 手机上一行1张 */ height: auto; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "container": "fullwidth",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "rich_text_bg": "#fff",
+        "rich_text_bg_gradient": "",
+        "enable_column": false,
+        "content_align": "center"
+      }
+    },
     "image_banner_XGdwEL": {
       "type": "image-banner",
       "blocks": {
@@ -701,61 +746,16 @@
         "content_bg": "",
         "content_gradient": "rgba(255, 255, 255, 0.95)"
       }
-    },
-    "rich_text_MCqewz": {
-      "type": "rich-text",
-      "blocks": {
-        "text_AJqfhj": {
-          "type": "text",
-          "settings": {
-            "text": "<div class=\"collection-gallery-wrapper\">\n    <a href=\"https://hompkin.com/collections/freestanding-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Freestanding_Bathtubs.png?v=1756194283\" alt=\"Freestanding Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/back-to-wall-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Back-to-Wall_Bathtubs.png?v=1756194283\" alt=\"Back-to-Wall Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/corner-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Corner_Bathtubs.png?v=1756194283\" alt=\"Corner Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/alcove-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Alcove_Bathtubs.png?v=1756194283\" alt=\"Alcove Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/drop-in-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Drop-In_Bathtubs.png?v=1756194283\" alt=\"Drop-In Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/walk-in-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Walk-In_Bathtubs.png?v=1756194283\" alt=\"Walk-In Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n    <a href=\"https://hompkin.com/collections/portable-bathtubs\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Portable_Bathtubs.png?v=1756194284\" alt=\"Portable Bathtubs\" class=\"collection-gallery-img\">\n    </a>\n</div>",
-            "text_size": 16,
-            "text_size_mb": 12,
-            "text_line_height": 1,
-            "margin_top_text": 20,
-            "text_color": "#000",
-            "text_width": "5000px"
-          }
-        }
-      },
-      "block_order": [
-        "text_AJqfhj"
-      ],
-      "custom_css": [
-        ".collection-gallery-wrapper {display: flex; flex-wrap: wrap; /* 不够宽时换行 */ justify-content: center; /* 每一行居中 */ gap: 8px; /* 图片间距 */}",
-        ".collection-gallery-img {width: 200px; object-fit: cover; transition: transform 0.3s ease;}",
-        ".collection-gallery-img:hover {transform: scale(1.03); /* 悬停轻微放大 */}",
-        "/* 移动端适配 */@media (max-width: 1024px) {.collection-gallery-img {width: 30vw; /* 平板上一行可容纳3张 */ height: auto; }}",
-        "@media (max-width: 600px) {.collection-gallery-img {width: 100%; /* 手机上一行1张 */ height: auto; }}"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "container": "fullwidth",
-        "padding_full_width": 0,
-        "enable_border_top": false,
-        "enable_border_bottom": false,
-        "color_border_bottom": "#e8e8e8",
-        "mg_top_desktop": 50,
-        "mg_top_tablet": 50,
-        "mg_top_mobile": 50,
-        "mg_bottom_desktop": 50,
-        "mg_bottom_tablet": 50,
-        "mg_bottom_mobile": 50,
-        "rich_text_bg": "#fff",
-        "rich_text_bg_gradient": "",
-        "enable_column": false,
-        "content_align": "center"
-      }
     }
   },
   "order": [
     "image_banner_gPEWUR",
+    "rich_text_MCqewz",
     "image_banner_XGdwEL",
     "featured_collection_Akrbr7",
     "image_comparison_aBYbMG",
     "video_block_B8NELq",
     "165750374504bb14a3",
-    "16575923090614cdb0",
-    "rich_text_MCqewz"
+    "16575923090614cdb0"
   ]
 }
