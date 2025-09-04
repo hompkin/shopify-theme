@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,7 +15,7 @@
         "bced6fd1-310d-4026-8786-1f886c51eec2": {
           "type": "category",
           "settings": {
-            "show_block": true,
+            "show_block": false,
             "heading": "Categories",
             "type": "1_level",
             "link_list": ""
@@ -15,7 +24,7 @@
         "96861bf3-10df-4b31-82bd-61aee2e9bc30": {
           "type": "recent_post",
           "settings": {
-            "show_block": false,
+            "show_block": true,
             "heading": "Recent Post",
             "number": 3
           }
@@ -23,7 +32,7 @@
         "441f2329-1d0c-4d63-bcff-c7281f41bf54": {
           "type": "product_block",
           "settings": {
-            "show_block": false,
+            "show_block": true,
             "position": "sidebar",
             "column": "1",
             "heading": "Featured Products",
@@ -55,7 +64,7 @@
           "settings": {
             "show_block": false,
             "heading": "Custom Block",
-            "text": "<p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... or whatever you like.<\/p>\n<p>There are many similar sample content placeholders across the store. All editable from admin panel.<\/p>"
+            "text": "<p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... or whatever you like.</p>\n<p>There are many similar sample content placeholders across the store. All editable from admin panel.</p>"
           }
         },
         "9ffcbc70-f507-4049-874d-4e9915e05726": {
@@ -87,7 +96,7 @@
             "number_mobile_size": 16,
             "lookbook_truncate": "1",
             "show_image_1": true,
-            "image_1": "shopify:\/\/shop_images\/2_7bed8db2-0302-43a5-a11a-9ad1089a73b4.jpg",
+            "image_1": "shopify://shop_images/2_7bed8db2-0302-43a5-a11a-9ad1089a73b4.jpg",
             "link_1": "",
             "lb_product_1_1": "",
             "horizontal_pos_1_1": 0,
@@ -98,7 +107,7 @@
             "vertical_pos_1_2": 0,
             "lookbook_pos_1_2": "right",
             "show_image_2": true,
-            "image_2": "shopify:\/\/shop_images\/3_53d38fa3-2890-4ecb-92bd-65f981bd90a4.jpg",
+            "image_2": "shopify://shop_images/3_53d38fa3-2890-4ecb-92bd-65f981bd90a4.jpg",
             "link_2": "",
             "lb_product_2_1": "",
             "horizontal_pos_2_1": 0,
@@ -109,7 +118,7 @@
             "vertical_pos_2_2": 0,
             "lookbook_pos_2_2": "right",
             "show_image_3": true,
-            "image_3": "shopify:\/\/shop_images\/5.jpg",
+            "image_3": "shopify://shop_images/5.jpg",
             "link_3": "",
             "lb_product_3_1": "",
             "horizontal_pos_3_1": 0,
@@ -120,7 +129,7 @@
             "vertical_pos_3_2": 0,
             "lookbook_pos_3_2": "right",
             "show_image_4": true,
-            "image_4": "shopify:\/\/shop_images\/O1CN01TQiO2I2D6WySrvTx0__27635285602.webp",
+            "image_4": "shopify://shop_images/O1CN01TQiO2I2D6WySrvTx0__27635285602.webp",
             "link_4": "",
             "lb_product_4_1": "",
             "horizontal_pos_4_1": 0,
@@ -197,7 +206,7 @@
             "button_1_fs": 24,
             "button_1_fs_mb": 16,
             "button_1_fw": "700",
-            "link_1": "shopify:\/\/collections",
+            "link_1": "shopify://collections",
             "button_2_text": "MEN",
             "button_2_text_color": "#ffffff",
             "button_2_background_color": "rgba(0,0,0,0)",
@@ -211,7 +220,7 @@
             "button_2_fs": 24,
             "button_2_fs_mb": 16,
             "button_2_fw": "700",
-            "link_2": "shopify:\/\/collections"
+            "link_2": "shopify://collections"
           }
         },
         "73becaeb-c487-4f3b-93aa-39f4bef40c07": {
