@@ -33,10 +33,10 @@
           "type": "product_block",
           "settings": {
             "show_block": false,
-            "position": "sidebar",
+            "position": "content",
             "column": "1",
             "heading": "Featured Products",
-            "product_block_collection": "",
+            "product_block_collection": "{{ article.metafields.custom.product_collection.value }}",
             "product_block_layout": "slider",
             "product_block_limit": 2,
             "product_block_dots": false,
