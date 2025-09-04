@@ -32,13 +32,13 @@
         "441f2329-1d0c-4d63-bcff-c7281f41bf54": {
           "type": "product_block",
           "settings": {
-            "show_block": false,
+            "show_block": true,
             "position": "content",
-            "column": "1",
+            "column": "4",
             "heading": "Featured Products",
             "product_block_collection": "{{ article.metafields.custom.product_collection.value }}",
-            "product_block_layout": "slider",
-            "product_block_limit": 2,
+            "product_block_layout": "grid",
+            "product_block_limit": 12,
             "product_block_dots": false,
             "product_block_arrows": true
           }
