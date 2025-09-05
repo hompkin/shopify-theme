@@ -17,7 +17,7 @@
         "9da20430-b562-46f1-9f28-e5592eeec567": {
           "type": "announcement",
           "settings": {
-            "text": "<div class=\"message\" style=\"font-weight: 400;padding: 5px 15px;\">\nSave now: 50% <a href=\"#\">furniture &amp; kitchen </a> discount* | Order hotline: <a href=\"#\">1-(090)-123-ELLA</a>\n</div>",
+            "text": "<p>Free Shipping on All Orders</p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -29,14 +29,14 @@
         "9da20430-b562-46f1-9f28-e5592eeec567"
       ],
       "settings": {
-        "enable_announcement": false,
-        "layout": "slider",
+        "enable_announcement": true,
+        "layout": "scroll",
         "enable_close": false,
         "color_text": "#ffffff",
-        "bg_color_text": "#ff8b21",
+        "bg_color_text": "#acacac",
         "bg_color_text_gradient": "",
         "font_size_text": 14,
-        "font_style_text": "normal",
+        "font_style_text": "italic",
         "font_weight_text": "500",
         "arrow_active": false,
         "content_max_width": 38,
