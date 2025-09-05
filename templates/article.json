@@ -302,7 +302,7 @@
         "show_next_prev": true,
         "background_color": "",
         "title_font": "font_2",
-        "title_font_size": 18,
+        "title_font_size": 24,
         "title_mobile_font_size": 18,
         "title_font_weight": "600",
         "title_text_transform": "capitalize",
