@@ -201,7 +201,7 @@
     "new_badge_time": 30,
     "show_sale_badge": false,
     "sale_badge_type": "text_discount",
-    "show_bundle_badge": true,
+    "show_bundle_badge": false,
     "point_product_swatch_custom": "24px",
     "point_product_swatch_custom_mb": "24px",
     "show_action": true,
