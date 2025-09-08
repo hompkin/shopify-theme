@@ -29,6 +29,21 @@
             "number": 3
           }
         },
+        "block_quote_eUHcyR": {
+          "type": "block_quote",
+          "settings": {
+            "enable_bg_color": true,
+            "bg_color_content": "#ffffff",
+            "title": "",
+            "color_title": "#232323",
+            "fontsize_title": 10,
+            "margin_bottom_title": 0,
+            "content": "<style>\n    .mt-author-bio-container {\n        display: flex;\n        align-items: flex-start;\n        gap: 20px;\n        padding: 8px;\n    }\n\n    .mt-author-avatar-wrapper {\n        width: 150px;\n        height: 150px;\n        flex-shrink: 0;\n    }\n\n    .mt-author-avatar-img {\n        width: 100%;\n        height: 100%;\n        object-fit: cover;\n        border-radius: 4px;\n    }\n\n    .mt-author-info-content {\n        margin: auto;\n    }\n\n    .mt-author-name {\n        font-weight: bold;\n        margin: 0 0 8px 0;\n    }\n\n    .mt-author-bio-text {\n        margin: 0;\n        color: #333;\n        line-height: 1.5;\n    }\n\n    @media (max-width: 600px) {\n        .mt-author-bio-container {\n            flex-direction: column;\n            align-items: center;\n        }\n\n        .mt-author-info-content {\n            margin: 0;\n            width: 100%;\n            max-width: 300px;\n        }\n\n        .mt-author-name {\n            text-align: center;\n        }\n\n        .mt-author-bio-text {\n            text-align: left;\n        }\n    }\n</style>\n<div class=\"mt-author-bio-container\">\n    <div class=\"mt-author-avatar-wrapper\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0628/5987/0358/files/Annie_Jones.png?v=1757302145\" alt=\"Annie Jones\" class=\"mt-author-avatar-img\">\n    </div>\n    <div class=\"mt-author-info-content\">\n        <p class=\"mt-author-name\">Written by Mia Taylor</p>\n        <p class=\"mt-author-bio-text\">\n            Annie Jones has spent the past six years immersed in the world of bathroom design and renovation. With hands-on experience working alongside designers and visiting countless showrooms, she brings a practical eye for detail and a passion for functional style. Her insights help readers navigate choices in bathtubs, showers, and fixtures, always balancing everyday comfort with timeless design.\n        </p>\n    </div>\n</div>",
+            "color_content": "#3c3c3c",
+            "fontsize_content": 12,
+            "margin_bottom": 40
+          }
+        },
         "441f2329-1d0c-4d63-bcff-c7281f41bf54": {
           "type": "product_block",
           "settings": {
@@ -259,6 +274,7 @@
       "block_order": [
         "bced6fd1-310d-4026-8786-1f886c51eec2",
         "96861bf3-10df-4b31-82bd-61aee2e9bc30",
+        "block_quote_eUHcyR",
         "441f2329-1d0c-4d63-bcff-c7281f41bf54",
         "71176645-a609-4ff4-90ca-dc2dedabac94",
         "f1a4c4f6-e343-45a5-93ed-33109f5942ea",
