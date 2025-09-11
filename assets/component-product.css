@@ -2036,7 +2036,7 @@ s.price-item.price-item--regular {
     color: var(--bin-color);
     background: var(--bin-bg-color);
     border-color: var(--bin-border-color);
-    box-shadow: var(--btn-2-horizontal-length) var(--btn-2-vertical-length) var(--btn-2-blur-radius) var(--btn-2-spread) var(--btn-2-all-bg-opacity) var(--btn-2-inset);
+    /*box-shadow: var(--btn-2-horizontal-length) var(--btn-2-vertical-length) var(--btn-2-blur-radius) var(--btn-2-spread) var(--btn-2-all-bg-opacity) var(--btn-2-inset);*/
 }
 .productView-payment .shopify-payment-button [data-testid="ShopifyPay-button"],
 .productView-payment .shopify-payment-button .shopify-payment-button__button--unbranded {
