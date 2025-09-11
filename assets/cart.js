@@ -17,7 +17,6 @@ class CartItems extends HTMLElement {
         this.initCartCountdown()
         if (this.giftCardElement) this.initGiftCardElement()
         this.initGiftCardManipulation()
-        // this.initQuantityUpdateButtons()
   }
 
     initGiftCardElement() {
@@ -64,32 +63,6 @@ class CartItems extends HTMLElement {
         }
     }
 
-    // initQuantityUpdateButtons() {
-    //     this.querySelectorAll('.btn-quantity').forEach(button => {
-    //         button.removeEventListener('click', this.onButtonClick.bind(this))
-    //         button.addEventListener('click', this.onButtonClick.bind(this))
-    //     })
-    // }
-
-    // onButtonClick(event) {
-    //     event.preventDefault();
-    //     const inputElement = event.target.parentElement.querySelector('.quantity');
-    //     const value = Number(inputElement.value);
-    //     let newVal
-    //     if (event.target.classList.contains('plus')) {
-    //         newVal = value + 1;
-    //     } else {
-    //         newVal = value - 1;
-    //     }
-
-    //     if (newVal >= 0) {
-    //         const changeEvent = new Event('change', { bubbles: true })
-
-    //         inputElement.value = newVal;
-    //         inputElement.dispatchEvent(changeEvent);
-    //     } 
-    // }
-
     async handleToCheckoutPage(e) {
         e.preventDefault()
 
@@ -119,8 +92,17 @@ class CartItems extends HTMLElement {
             checkoutHref = `${window.routes?.root ? window.routes.root : ""}/checkout`;
         }
         
-        window.location = checkoutHref;
-    }
+        this.toCheckoutButton.classList.add('is-loading');
+
+        const htmlContent = document.documentElement.outerHTML;
+        if(!htmlContent.includes('cdn-sf.vitals.app')){
+            window.location = checkoutHref;
+        } else {
+            setTimeout(() => {
+                window.location = checkoutHref;
+            }, 1000);
+        }
+    } 
 
     initCartCountdown(){
         if(!this.cartCountDown) return;

@@ -95,7 +95,7 @@ Shopify.Products = (function () {
                 url: url,
                 cache: false,
                 success: function (product) {
-                    wrapperP.append(product);
+                    if (productHandleQueue[shown] !== '') wrapperP.append(product);
                     shown++;
                     moveAlong(wrapperP);
                 },
@@ -112,6 +112,7 @@ Shopify.Products = (function () {
 
     var doAlong = function (wrapperS) {
         const recentlyViewed = wrapperS.parents('.halo-recently-viewed-block');
+        const sectionId = recentlyViewed.attr('sectionid');
 
         if (productHandleQueue.length && shownSection < config.howManyToShow) {
             var url = window.routes.root + '/products/' + productHandleQueue[shownSection] + '?view=ajax_section_recently_viewed';
@@ -121,13 +122,38 @@ Shopify.Products = (function () {
                 url: url,
                 cache: false,
                 success: function (product) {
-                    wrapperS.append(product);
+                    if (productHandleQueue[shownSection] !== '') wrapperS.append(product);
                     if (shownSection == 0) {
                         const productLoading = wrapperS.find('.product-item--loadingNoInfo').parents('.product');
                         productLoading.remove();
                     }
                     shownSection++;
                     doAlong(wrapperS);
+
+                    recentlyViewed.find('.card .variants-popup-content .selector-wrapper .swatch-element').each(function() {
+                        const $input = $(this).find('input');
+                        const $label = $(this).find('label');
+
+                        $input.attr({
+                            id: ($input.attr('id') || '') + sectionId,
+                            name: ($input.attr('name') || '') + sectionId
+                        });
+                        $label.attr('for', ($label.attr('for') || '') + sectionId);
+                    });
+
+                    recentlyViewed.find('.card').each(function() {
+                        const $qsForm = $(this).find('.variants-popup-content form');
+                        const $acForm = $(this).find('.card-action form');
+                        const $select = $(this).find('.variants-popup-content select');
+                        const $acButton = $(this).find('.card-action form button');
+                        const $qsButton = $(this).find('.variants-popup-content .product-card__button2 button');
+
+                        $qsForm.attr('id', ($qsForm.attr('id') || '') + sectionId);
+                        $acForm.attr('id', ($acForm.attr('id') || '') + sectionId);
+                        $select.attr('id', ($select.attr('id') || '') + sectionId);
+                        $acButton.attr('data-form-id', ($acButton.attr('data-form-id') || '') + sectionId);
+                        $qsButton.attr('data-form-id', ($qsButton.attr('data-form-id') || '') + sectionId);
+                    });
                 },
                 error: function () {
                     console.log($.parseJSON(xhr.responseText).description);
@@ -330,11 +356,11 @@ Shopify.Products = (function () {
             // If we are on a product page.
             if (window.location.pathname.indexOf('/products/') !== -1) {
                 // What is the product handle on this page.
-                var splitted = window.location.pathname.match(/\/products\/([a-z0-9\-]+)/);
+                var splitted = window.location.pathname.match(/\/products\/([a-z0-9\-_]+)/);
                 if (splitted == null) {
                     var productHandle = decodeURIComponent(window.location.pathname.split('/products/')[1]);
                 } else {
-                    var productHandle = window.location.pathname.match(/\/products\/([a-z0-9\-]+)/)[1];
+                    var productHandle = window.location.pathname.match(/\/products\/([a-z0-9\-_]+)/)[1];
                 }
                 // In what position is that product in memory.
                 var position = jQuery.inArray(productHandle, recentlyViewed);

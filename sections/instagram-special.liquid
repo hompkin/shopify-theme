@@ -29,21 +29,27 @@
     <{% if check_load %}instagram-block{% else %}div{% endif %} class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% else %}container{% endif %}">
         <div id="instafeed" class="halo-grid-row instagram-grid--{{ section.settings.instagram_style }}" style="--instagram-grid-gap-style: {{ section.settings.instagram_grid_gap | append: 'px' }}">
             {%- for block in section.blocks -%}
-                {%- if block.settings.enable and block.settings.image != blank -%}
+                {%- if block.settings.image != blank -%}
                     {%- assign preview_img = block.settings.image -%}
                     <div class="halo-item {% if forloop.index > number_show %}hidden{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
-                        <a class="adaptive_height image-zoom" {% if section.settings.type_instagram_by_gallery == 'link' %}{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}{% else %}class="fancybox" rel="gallery1" href="{{ block.settings.image | img_url: 'master' }}" data-fancybox="images"{% endif %} style="padding-top: {% unless preview_img.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 120 | append: '%' }}{% else %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 100 | append: '%' }}{% endunless %}; --items-border-radius-style: {{ section.settings.items_border_radius | append: 'px' }}"><img srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}"{% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{% if settings.enable_lazyload %} class="lazyload"{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
+                        <a class="adaptive_height image-zoom" {% if section.settings.type_instagram_by_gallery == 'link' %}{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}{% else %}class="fancybox" rel="gallery1" href="{{ block.settings.image | img_url: 'master' }}" data-fancybox="instagram-special-images"{% endif %} style="padding-top: {% unless preview_img.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 120 | append: '%' }}{% else %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 100 | append: '%' }}{% endunless %}; --items-border-radius-style: {{ section.settings.items_border_radius | append: 'px' }}"><img srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
                             {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}</a>
                         {%- if section.settings.display_icon_more -%}
-                        <span class="show-icon-more{% if section.settings.enable_special_icon %} enable-gradient-color{% endif %}"></span>
+                        <span class="show-icon-more"></span>
                         {%- endif -%}
                     </div>
-                {%- else -%}  
+                {%- else -%}
                     <div class="halo-item{% if forloop.index > number_show %} hidden{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
                         {%- if forloop.index == 3 or forloop.index == 6 or forloop.index == 7 -%}
-                        <div class="not_img" style="--height_not_img: 516px">514 x 516px</div>
+                            <div class="placeholder" style="--height_placeholder: 516px;">
+                                {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                            </div>
                         {%- else -%}
-                        <div class="not_img" style="--height_not_img: 250px">250 x 250px</div>
+                            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                            {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+                            <div class="placeholder" style="--height_placeholder: 250px;">
+                                {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                            </div>
                         {%- endif -%}
                     </div>
                 {%- endif -%}
@@ -55,7 +61,7 @@
                 {% if settings.banner_animation == 'effect_fade_up' %}
                 <div class="scroll-trigger animate--slide-in">
                 {% endif %}
-                    <a {% if section.settings.instagram_button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ section.settings.instagram_button_link }}"{% endif %} title="{{ section.settings.instagram_button_text | split: '|' | first }}" class="btn button {% if section.settings.enable_special_button %}enable-gradient-color{% endif %}">{{ section.settings.instagram_button_text }}</a>
+                    <a {% if section.settings.instagram_button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ section.settings.instagram_button_link }}"{% endif %} title="{{ section.settings.instagram_button_text | split: '|' | first }}" class="btn button">{{ section.settings.instagram_button_text }}</a>
                 {% if settings.banner_animation == 'effect_fade_up' %}
                 </div>
                 {% endif %}
@@ -64,7 +70,7 @@
                 {% if settings.banner_animation == 'effect_fade_up' %}
                 <div class="scroll-trigger animate--slide-in">
                 {% endif %}
-                    <button type="button" aria-label="{% if section.settings.instagram_button_text != blank %}{{ section.settings.instagram_button_text | split: '|' | first }}{% else %}{{ 'general.button_load_more.default' | t }}{% endif %}" class="btn button{% if section.settings.enable_special_button %} enable-gradient-color{% endif %}" data-load-more-block>{{ section.settings.instagram_button_text }}</button>
+                    <button type="button" aria-label="{% if section.settings.instagram_button_text != blank %}{{ section.settings.instagram_button_text | split: '|' | first }}{% else %}{{ 'general.button_load_more.default' | t }}{% endif %}" class="btn button" data-load-more-block>{{ section.settings.instagram_button_text }}</button>
                 {% if settings.banner_animation == 'effect_fade_up' %}
                 </div>
                 {% endif %}
@@ -229,11 +235,10 @@
             "id": "padding_full_width",
             "label": "t:sections.layout.container.padding_full_width",
             "min": 0,
-            "max": 50,
+            "max": 100,
             "step": 5,
             "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 0,
-            "info": "t:sections.layout.container.info_full_width"
+            "default": 0
         },
         {
             "type": "checkbox",
@@ -246,6 +251,275 @@
             "id" : "border_color",
             "label" : "t:settings_schema.colors.settings.colors_name.border_color",
             "default" : "#e3e3e3"
+        },
+        {
+            "type" : "color",
+            "id" : "instagram_bg",
+            "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
+            "default" : "#fafafa"
+        },
+        {
+            "type" : "color_background",
+            "id" : "instagram_bg_gradient",
+            "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+        },
+        {
+            "type" : "image_picker",
+            "id" : "instagram_bg_image",
+            "label" : "t:settings_schema.colors.settings.colors_name.background_image"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.image-banner.blocks.image.settings.content.section_header"
+        },
+        {
+            "type": "text",
+            "id": "instagram_title",
+            "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
+            "default": "#Ella On Instagram"
+        },
+        {
+            "type" : "color",
+            "id" : "color_title",
+            "label": "t:settings_schema.typography.settings.typography.title_color",
+            "default" : "#232323"
+        },
+        {
+            "type": "range",
+            "id": "fontsize_title",
+            "label": "t:settings_schema.typography.settings.typography.title_font_size",
+            "min": 10,
+            "max": 50,
+            "step": 1,
+            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+            "default": 16
+        },
+        {
+            "type": "range",
+            "id": "fontsize_title_mb",
+            "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
+            "min": 10,
+            "max": 50,
+            "step": 1,
+            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+            "default": 16
+        },
+        {
+            "type": "range",
+            "id": "margin_bottom_title",
+            "label": "t:settings_schema.typography.settings.typography.title_margin_bottom",
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+            "default": 5
+        },
+        {
+            "type": "liquid",
+            "id": "instagram_des",
+            "label": "t:sections.image-banner.blocks.image.settings.content.label__2",
+            "default": "Phasellus lorem malesuada ligula pulvinar commodo maecenas"
+        },
+        {
+            "type" : "color",
+            "id" : "color_des",
+            "label": "t:settings_schema.typography.settings.typography.des_color",
+            "default" : "#3c3c3c"
+        },
+        {
+            "type": "range",
+            "id": "fontsize_des",
+            "label": "t:settings_schema.typography.settings.typography.des_font_size",
+            "min": 10,
+            "max": 50,
+            "step": 1,
+            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+            "default": 16
+        },
+        {
+            "type": "range",
+            "id": "margin_bottom_des",
+            "label": "t:settings_schema.typography.settings.typography.des_margin_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "title_align",
+            "label": "t:sections.general.settings.alignment.label__1",
+            "options": [
+            {
+                "value": "left",
+                "label": "t:settings_schema.typography.settings.type_button_font.left"
+            },
+            {
+                "value": "center",
+                "label": "t:settings_schema.typography.settings.type_button_font.center"
+            },
+            {
+                "value": "right",
+                "label": "t:settings_schema.typography.settings.type_button_font.right"
+            }],
+            "default": "center"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_instagram_button",
+            "label": "t:settings_schema.typography.settings.typography.button_view_more",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "instagram_button_text",
+            "label": "t:settings_schema.typography.settings.typography.button_text",
+            "default": "View Gallery"
+        },
+        {
+            "type" : "select",
+            "id" : "type_button_more",
+            "label" : "t:sections.instagram.settings.type_button_more.option",
+            "options": [
+                {
+                    "value": "load",
+                    "label": "t:sections.instagram.settings.type_button_more.option1"
+                },
+                {
+                    "value": "link",
+                    "label": "t:settings_schema.colors.settings.colors_link.label__4"
+                }
+            ],
+            "default": "load"
+        },
+        {
+            "type": "url",
+            "id": "instagram_button_link",
+            "label": "t:settings_schema.typography.settings.typography.button_link"
+        },
+        {
+            "type" : "color",
+            "id" : "color_button",
+            "label": "t:settings_schema.typography.settings.typography.button_color",
+            "default" : "#fff"
+        },
+        {
+            "type" : "color",
+            "id" : "border_color_button",
+            "label": "t:sections.rich-text.blocks.button.settings.button_border",
+            "default" : "#232323"
+        },
+        {
+            "type" : "color",
+            "id" : "bg_color_button",
+            "label": "t:sections.rich-text.blocks.button.settings.button_bg",
+            "default" : "#232323"
+        },
+        {
+            "type" : "color_background",
+            "id" : "bg_color_gradient_button",
+            "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient"
+        },
+        {
+            "type": "range",
+            "id": "maxwidth_button",
+            "label": "t:settings_schema.typography.settings.typography.button_width",
+            "min": 50,
+            "max": 600,
+            "step": 10,
+            "unit": "t:sections.layout.mg_desktop.unit",
+            "default": 80
+        },
+        {
+          "type" : "header",
+          "content" : "t:sections.custom_service_block.settings.block_items"
+        },
+        {
+            "type": "select",
+            "id": "instagram_style",
+            "label": "t:sections.instagram.settings.layout",
+            "default": "layout__1",
+            "options": [
+                {
+                    "value": "layout__1",
+                    "label": "t:settings_schema.typography.settings.typography.style_1"
+                },
+                {
+                    "value": "layout__2",
+                    "label": "t:settings_schema.typography.settings.typography.style_2"
+                },
+                {
+                    "value": "layout__3",
+                    "label": "t:settings_schema.typography.settings.typography.style_3"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "instagram_grid_gap",
+            "label": "t:settings_schema.typography.settings.typography.grid_gap",
+            "min": 0,
+            "max": 50,
+            "step": 5,
+            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+            "default": 15
+        },
+        {
+            "type": "range",
+            "id": "items_border_radius",
+            "label": "t:settings_schema.typography.settings.typography.image_border_radius",
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+            "default": 6
+        },
+        {
+            "type" : "select",
+            "id" : "type_instagram_by_gallery",
+            "label" : "t:sections.instagram.settings.type_image.type_instagram_by_gallery.option",
+            "options": [
+                {
+                    "value": "link",
+                    "label": "t:settings_schema.colors.settings.colors_link.label__4"
+                },
+                {
+                    "value": "popup_image",
+                    "label": "t:sections.instagram.settings.type_image.type_instagram_by_gallery.option2"
+                }
+            ],
+            "default": "popup_image"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_icon_more",
+            "label": "t:sections.instagram.settings.display_icon_more",
+            "info": "t:sections.instagram.settings.info_icon_more",
+            "default": true
+        },
+        {
+            "type" : "color",
+            "id" : "icon_color",
+            "label": "t:sections.instagram.settings.plus_button_color",
+            "default" : "#fff"
+        },
+        {
+            "type" : "color",
+            "id" : "border_color_icon",
+            "label": "t:sections.instagram.settings.plus_button_border_color",
+            "default" : "#232323"
+        },
+        {
+            "type" : "color",
+            "id" : "bg_color_icon",
+            "label": "t:sections.instagram.settings.plus_button_bg_color",
+            "default" : "#232323" 
+        },
+        {
+            "type" : "color_background",
+            "id" : "bg_color_gradient_icon",
+            "label": "t:sections.instagram.settings.plus_button_bg_gradient"
         },
         {
             "type": "header",
@@ -314,274 +588,6 @@
             "step": 5,
             "unit": "t:sections.layout.mg_desktop.unit",
             "default": 50
-        },
-        {
-            "type" : "color",
-            "id" : "instagram_bg",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color",
-            "default" : "#fafafa"
-        },
-        {
-            "type" : "color_background",
-            "id" : "instagram_bg_gradient",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-        },
-        {
-            "type" : "image_picker",
-            "id" : "instagram_bg_image",
-            "label" : "t:settings_schema.colors.settings.colors_name.background_image"
-        },
-        {
-            "type": "text",
-            "id": "instagram_title",
-            "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
-            "default": "#Ella On Instagram"
-        },
-        {
-            "type" : "color",
-            "id" : "color_title",
-            "label": "t:sections.layout.color.color_title",
-            "default" : "#232323"
-        },
-        {
-            "type": "range",
-            "id": "fontsize_title",
-            "label": "t:sections.layout.fontsize.fontsize_title.label",
-            "min": 10,
-            "max": 50,
-            "step": 1,
-            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 16
-        },
-        {
-            "type": "range",
-            "id": "fontsize_title_mb",
-            "label": "t:sections.layout.fontsize.fontsize_title.label_mb",
-            "min": 10,
-            "max": 50,
-            "step": 1,
-            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 16
-        },
-        {
-            "type": "range",
-            "id": "margin_bottom_title",
-            "label": "t:sections.layout.fontsize.margin_bottom",
-            "min": 0,
-            "max": 50,
-            "step": 1,
-            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 5
-        },
-        {
-            "type": "textarea",
-            "id": "instagram_des",
-            "label": "t:sections.image-banner.blocks.image.settings.content.label__2",
-            "default": "Phasellus lorem malesuada ligula pulvinar commodo maecenas"
-        },
-        {
-            "type" : "color",
-            "id" : "color_des",
-            "label": "t:sections.layout.color.color_des",
-            "default" : "#3c3c3c"
-        },
-        {
-            "type": "range",
-            "id": "fontsize_des",
-            "label": "t:sections.layout.fontsize.fontsize_des.label",
-            "min": 10,
-            "max": 50,
-            "step": 1,
-            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 16
-        },
-        {
-            "type": "range",
-            "id": "margin_bottom_des",
-            "label": "t:sections.layout.fontsize.fontsize_des.margin_bottom",
-            "min": 0,
-            "max": 100,
-            "step": 1,
-            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 0
-        },
-        {
-            "type": "select",
-            "id": "title_align",
-            "label": "t:sections.product_block.settings.general.label__7",
-            "options": [
-            {
-                "value": "left",
-                "label": "t:sections.product_block.settings.general.options__7"
-            },
-            {
-                "value": "center",
-                "label": "t:sections.product_block.settings.general.options__8"
-            },
-            {
-                "value": "right",
-                "label": "t:sections.product_block.settings.general.options__9"
-            }],
-            "default": "center"
-        },
-        {
-            "type": "checkbox",
-            "id": "display_icon_more",
-            "label": "t:sections.instagram.settings.display_icon_more",
-            "default": true
-        },
-        {
-            "type" : "color",
-            "id" : "icon_color",
-            "label": "t:settings_schema.colors.settings.colors_name.color",
-            "default" : "#fff"
-        },
-        {
-            "type" : "color",
-            "id" : "border_color_icon",
-            "label": "t:settings_schema.colors.settings.colors_name.border_color",
-            "default" : "#232323"
-        },
-        {
-            "type" : "color",
-            "id" : "bg_color_icon",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color",
-            "default" : "#232323" 
-        },
-        {
-            "type" : "color_background",
-            "id" : "bg_color_gradient_icon",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-        },
-        {
-            "type": "checkbox",
-            "id": "display_instagram_button",
-            "label": "t:settings_schema.typography.settings.typography.button_display",
-            "default": true
-        },
-        {
-            "type": "text",
-            "id": "instagram_button_text",
-            "label": "t:settings_schema.typography.settings.typography.button_text",
-            "default": "View Gallery"
-        },
-        {
-            "type" : "select",
-            "id" : "type_button_more",
-            "label" : "t:sections.instagram.settings.type_button_more.option",
-            "options": [
-                {
-                    "value": "load",
-                    "label": "t:sections.instagram.settings.type_button_more.option1"
-                },
-                {
-                    "value": "link",
-                    "label": "t:sections.instagram.settings.type_button_more.option2"
-                }
-            ],
-            "default": "load"
-        },
-        {
-            "type": "url",
-            "id": "instagram_button_link",
-            "label": "t:settings_schema.typography.settings.typography.button_link"
-        },
-        {
-            "type" : "color",
-            "id" : "color_button",
-            "label": "t:settings_schema.colors.settings.colors_name.color",
-            "default" : "#fff"
-        },
-        {
-            "type" : "color",
-            "id" : "border_color_button",
-            "label": "t:settings_schema.colors.settings.colors_name.border_color",
-            "default" : "#232323"
-        },
-        {
-            "type" : "color",
-            "id" : "bg_color_button",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color",
-            "default" : "#232323"
-        },
-        {
-            "type" : "color_background",
-            "id" : "bg_color_gradient_button",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-        },
-        {
-            "type": "range",
-            "id": "maxwidth_button",
-            "label": "t:settings_schema.typography.settings.typography.button_width",
-            "min": 50,
-            "max": 600,
-            "step": 10,
-            "unit": "t:sections.layout.mg_desktop.unit",
-            "default": 80
-        },
-        {
-          "type" : "header",
-          "content" : "t:sections.instagram.settings.content"
-        },
-        {
-            "type": "select",
-            "id": "instagram_style",
-            "label": "t:sections.instagram.settings.layout",
-            "default": "layout__1",
-            "options": [
-                {
-                    "value": "layout__1",
-                    "label": "t:settings_schema.typography.settings.typography.style_1"
-                },
-                {
-                    "value": "layout__2",
-                    "label": "t:settings_schema.typography.settings.typography.style_2"
-                },
-                {
-                    "value": "layout__3",
-                    "label": "t:settings_schema.typography.settings.typography.style_3"
-                }
-            ]
-        },
-        {
-            "type": "range",
-            "id": "instagram_grid_gap",
-            "label": "t:sections.instagram.settings.grid_gap",
-            "min": 0,
-            "max": 50,
-            "step": 5,
-            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 15
-        },
-        {
-            "type": "range",
-            "id": "items_border_radius",
-            "label": "t:settings_schema.typography.settings.typography.border_radius",
-            "min": 0,
-            "max": 50,
-            "step": 1,
-            "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 6
-        },
-        {
-          "type" : "header",
-          "content" : "t:sections.instagram.settings.type_image.content"
-        },
-        {
-            "type" : "select",
-            "id" : "type_instagram_by_gallery",
-            "label" : "t:sections.instagram.settings.type_image.type_instagram_by_gallery.option",
-            "options": [
-                {
-                    "value": "link",
-                    "label": "t:sections.instagram.settings.type_image.type_instagram_by_gallery.option1"
-                },
-                {
-                    "value": "popup_image",
-                    "label": "t:sections.instagram.settings.type_image.type_instagram_by_gallery.option2"
-                }
-            ],
-            "default": "popup_image"
         }
     ],
     "blocks": [
@@ -589,12 +595,6 @@
             "type": "instagram",
             "name": "t:sections.instagram.blocks.instagram.name",
             "settings": [
-                {
-                  "type": "checkbox",
-                  "id": "enable",
-                  "label" : "t:sections.instagram.blocks.instagram.enable",
-                  "default" : true
-                },
                 {
                   "type": "image_picker",
                   "id": "image",
@@ -610,7 +610,36 @@
     ],
     "presets": [
         {
-          "name": "t:sections.instagram_special.presets.name"
+          "name": "t:sections.instagram_special.presets.name",
+          "blocks": [
+                {
+                    "type": "instagram"
+                },
+                {
+                    "type": "instagram"
+                },
+                {
+                    "type": "instagram"
+                }, 
+                {
+                    "type": "instagram"
+                },
+                {
+                    "type": "instagram"
+                },
+                {
+                    "type": "instagram"
+                },
+                {
+                    "type": "instagram"
+                },
+                {
+                    "type": "instagram"
+                },
+                {
+                    "type": "instagram"
+                }
+            ]
         }
     ],
     "disabled_on": {

@@ -1,11 +1,13 @@
-<li class="menu-lv-item menu-lv-1 text-left no-megamenu {% if link.links != blank %}dropdown {% endif %} {% if sale_item_lv1 contains title %} menu-sale{% endif %}">
+<li class="menu-lv-item menu-lv-1 text-left no-megamenu {% if link.links != blank %}dropdown {% endif %} {% if sale_item_lv1 contains title %} menu-sale{% endif %}"{% if settings.enable_following_cursor and settings.following_cursor_style == 'default' %} no-effect-cursor{% endif %}>
     {%- if link.links != blank -%}
         <a class="menu-lv-1__action  header__menu-item list-menu__item link focus-inset menu_mobile_link link-effect"{% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %}>
 
-            {% assign img = link.handle | downcase | replace: ' ', '-' | append: '.png' | file_url %}
+            {% assign img = link.handle | downcase | replace: ' ', '-' | append: '.png' %}
+            {%- if images[img] != blank -%}
             <span class="icon-img">
-                <img src="{{ img }}" alt="{{ link.title }}" onError="style.display = 'none';">
+                <img src="{{ img | file_url }}" alt="{{ link.title }}">
             </span>
+            {%- endif -%}
 
             <span class="text p-relative{%- if link.child_active %} header__active-menu-item{% endif %}">
                 {{ link.title | escape }}
@@ -95,11 +97,13 @@
             </div>
         </ul>
     {%- else -%}
-        <a {% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %} class="menu-lv-1__action header__menu-item header__menu-item list-menu__item link link--text focus-inset link-effect"{% if link.current %} aria-current="page"{% endif %}>
-            {% assign img = link.handle | downcase | replace: ' ', '-' | append: '.png' | file_url %}
+        <a {% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %} class="menu-lv-1__action header__menu-item list-menu__item link link--text focus-inset link-effect"{% if link.current %} aria-current="page"{% endif %}>
+            {% assign img = link.handle | downcase | replace: ' ', '-' | append: '.png' %}
+            {%- if images[img] != blank -%}
             <span class="icon-img">
-                <img src="{{ img }}" alt="{{ link.title }}" onError="style.display = 'none';">
+                <img src="{{ img | file_url }}" alt="{{ link.title }}">
             </span>
+            {%- endif -%}
             <span class="text p-relative{%- if link.current %} header__active-menu-item{% endif %}">{{ link.title | escape }}</span>
         </a>
     {%- endif -%}

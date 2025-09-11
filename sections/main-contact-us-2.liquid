@@ -20,7 +20,9 @@
     assign content_max_width = section.settings.content_max_width
     assign header_text_color = section.settings.header_text_color
     assign container = section.settings.container
+    assign padding_full_width = section.settings.padding_full_width
     assign form_container = section.settings.form_container
+    assign form_padding_full_width = section.settings.form_padding_full_width
     assign contact_form_text = section.settings.contact_form_text
     assign contact_form_title = section.settings.contact_form_title
     assign contact_form_title_alignment = section.settings.contact_form_title_alignment
@@ -59,7 +61,7 @@
 -%}
 
 <div data-section-id="{{ section.id }}" data-section-type="contact" id="ContactSection-{{ section.id }}" data-section="{{ section.id }}">
-    <div class="contact-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%} container-full{% else %}container{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+    <div class="contact-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
         {% if bg_image != blank %}
             <div class="image-container{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
         {% endif %}
@@ -87,7 +89,7 @@
         {% endif %}
     </div>
     {% if linklists[section.settings.menu].links.size > 0 %}
-        <div class="contact-navigation-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%} container-full{% else %}container{% endif %} scroll-snap-mobile{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="contact-navigation-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %} scroll-snap-mobile{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
             <ul class="contact-page-nav disable-srollbar">
                 {% for link in linklists[section.settings.menu].links %}
                     <li class="item {% if link.active %}active{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
@@ -297,6 +299,22 @@
             color: {{ header_text_color }};
         }
     {% endif %}
+    
+    @media (min-width: 1025px) {
+        {% if container == 'fullwidth' %}
+            #ContactSection-{{ section.id }} > .contact-container.container-full {
+                padding-left: {{ padding_full_width | append: 'px' }};
+                padding-right: {{ padding_full_width | append: 'px' }};
+            }
+        {% endif %}
+
+        {% if container == 'fullwidth' %}
+            #ContactSection-{{ section.id }} > .contact-content-container.container-full {
+                padding-left: {{ form_padding_full_width | append: 'px' }};
+                padding-right: {{ form_padding_full_width | append: 'px' }};
+            }
+        {% endif %}
+    }
 
     @media (max-width: 1024px) {
         #ContactSection-{{ section.id }}{
@@ -370,8 +388,38 @@
 		"name": "t:sections.main_contact.name",
         "settings": [
             {
-                "type": "header",
-                "content": "t:settings_schema.general.name"
+                "type": "select",
+                "id": "container",
+                "label": "t:sections.layout.container.option",
+                "default": "fullwidth",
+                "options": [
+                    {
+                        "value": "container",
+                        "label": "t:sections.layout.container.option1"
+                    },
+                    {
+                        "value": "1170",
+                        "label": "t:sections.layout.container.option4"
+                    },
+                    {
+                        "value": "1770",
+                        "label": "t:sections.layout.container.option3"
+                    },
+                    {
+                        "value": "fullwidth",
+                        "label": "t:sections.layout.container.option2"
+                    }
+                ]
+            },
+            {
+                "type": "range",
+                "id": "padding_full_width",
+                "label": "t:sections.layout.container.padding_full_width",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 0
             },
             {
                 "type": "checkbox",
@@ -386,15 +434,15 @@
                 "options": [
                     {
                         "value": "left",
-                        "label": "t:sections.general.settings.breadcrumb.options__1"
+                        "label": "t:settings_schema.typography.settings.type_button_font.left"
                     },
                     {
                         "value": "center",
-                        "label": "t:sections.general.settings.breadcrumb.options__2"
+                        "label": "t:settings_schema.typography.settings.type_button_font.center"
                     },
                     {
                         "value": "right",
-                        "label": "t:sections.general.settings.breadcrumb.options__3"
+                        "label": "t:settings_schema.typography.settings.type_button_font.right"
                     }
                 ],
                 "default": "center"
@@ -417,21 +465,21 @@
                 "options": [
                     {
                         "value": "left",
-                        "label": "t:sections.general.settings.page-title.options__1"
+                        "label": "t:settings_schema.typography.settings.type_button_font.left"
                     },
                     {
                         "value": "center",
-                        "label": "t:sections.general.settings.page-title.options__2"
+                        "label": "t:settings_schema.typography.settings.type_button_font.center"
                     },
                     {
                         "value": "right",
-                        "label": "t:sections.general.settings.page-title.options__3"
+                        "label": "t:settings_schema.typography.settings.type_button_font.right"
                     }
                 ],
                 "default": "center"
             },
             {
-                "type": "textarea",
+                "type": "liquid",
                 "id": "contact_form_text",
                 "label": "t:sections.image-banner.blocks.image.settings.content.label__16"
             },
@@ -457,110 +505,18 @@
                 "options": [
                     {
                         "value": "left",
-                        "label": "t:sections.general.settings.page-title.options__1"
+                        "label": "t:settings_schema.typography.settings.type_button_font.left"
                     },
                     {
                         "value": "center",
-                        "label": "t:sections.general.settings.page-title.options__2"
+                        "label": "t:settings_schema.typography.settings.type_button_font.center"
                     },
                     {
                         "value": "right",
-                        "label": "t:sections.general.settings.page-title.options__3"
+                        "label": "t:settings_schema.typography.settings.type_button_font.right"
                     }
                 ],
                 "default": "center"
-            },
-            {
-                "type": "select",
-                "id": "container",
-                "label": "t:sections.layout.container.option",
-                "default": "fullwidth",
-                "options": [
-                    {
-                        "value": "container",
-                        "label": "t:sections.layout.container.option1"
-                    },
-                    {
-                        "value": "1170",
-                        "label": "t:sections.layout.container.option4"
-                    },
-                    {
-                        "value": "fullwidth",
-                        "label": "t:sections.layout.container.option2"
-                    },
-                    {
-                        "value": "1770",
-                        "label": "t:sections.layout.container.option3"
-                    }
-                ]
-            },
-            {
-                "type": "header",
-                "content": "t:sections.layout.margin_top"
-            },
-            {
-                "type": "range",
-                "id": "mg_top_desktop",
-                "label": "t:sections.layout.mg_desktop.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_top_tablet",
-                "label": "t:sections.layout.mg_tablet.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_top_mobile",
-                "label": "t:sections.layout.mg_mobile.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "header",
-                "content": "t:sections.layout.margin_bottom"
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_desktop",
-                "label": "t:sections.layout.mg_desktop.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_tablet",
-                "label": "t:sections.layout.mg_tablet.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_mobile",
-                "label": "t:sections.layout.mg_mobile.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
             },
             {
                 "type": "header",
@@ -569,7 +525,7 @@
             {
                 "type": "link_list",
                 "id": "menu",
-                "label": "t:sections.main_contact.settings.pages_menu.menu_heading"
+                "label": "t:sections.main-about-page.blocks.page_menu.settings.content.choose_menu"
             },
             {
                 "type": "color",
@@ -653,14 +609,24 @@
                         "label": "t:sections.layout.container.option4"
                     },
                     {
-                        "value": "fullwidth",
-                        "label": "t:sections.layout.container.option2"
-                    },
-                    {
                         "value": "1770",
                         "label": "t:sections.layout.container.option3"
+                    },
+                    {
+                        "value": "fullwidth",
+                        "label": "t:sections.layout.container.option2"
                     }
                 ]
+            },
+            {
+                "type": "range",
+                "id": "form_padding_full_width",
+                "label": "t:sections.layout.container.padding_full_width",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 0
             },
             {
                 "type": "text",
@@ -675,15 +641,15 @@
                 "options": [
                     {
                         "value": "left",
-                        "label": "t:settings_schema.typography.settings.typography.left"
+                        "label": "t:settings_schema.typography.settings.type_button_font.left"
                     },
                     {
                         "value": "center",
-                        "label": "t:settings_schema.typography.settings.typography.center"
+                        "label": "t:settings_schema.typography.settings.type_button_font.center"
                     },
                     {
                         "value": "right",
-                        "label": "t:settings_schema.typography.settings.typography.right"
+                        "label": "t:settings_schema.typography.settings.type_button_font.right"
                     }
                 ]
             },
@@ -694,7 +660,7 @@
                 "default": "Send us an email"
             },
             {
-                "type": "textarea",
+                "type": "liquid",
                 "id": "contact_form_description",
                 "label": "t:sections.main_contact.settings.contact_form.label__5",
                 "default": "Ask us anything! We're here to help."
@@ -716,7 +682,7 @@
                 "default": "Live Help"
             },
             {
-                "type": "textarea",
+                "type": "liquid",
                 "id": "contact_info_text",
                 "label": "t:sections.main_contact.settings.contact_info.label__8",
                 "default": "If you have an issue or question that requires immediate assistance, you can click the button below to chat live with a Customer Service representative. If we aren’t available, drop us an email to the left and we will get back to you within 20-36 hours!"
@@ -740,7 +706,7 @@
             {
                 "type": "color",
                 "id": "btn_bg_color",
-                "label": "t:settings_schema.colors.settings.colors_name.background_color"
+                "label": "t:settings_schema.colors.settings.colors_name.background_color_2"
             },
             {
                 "type": "color_background",
@@ -780,22 +746,90 @@
             {
                 "type": "url",
                 "id": "btn_link",
-                "label": "t:sections.main_contact.settings.contact_info.button.label__9"
+                "label": "t:settings_schema.typography.settings.typography.button_link"
             },
             {
-                "type": "textarea",
+                "type": "liquid",
                 "id": "contact_info_address",
                 "label": "t:sections.main_contact.settings.contact_info.label__4"
             },
             {
-                "type": "textarea",
+                "type": "liquid",
                 "id": "contact_info_content_1",
                 "label": "t:sections.main_contact.settings.contact_info.label__5"
             },
             {
-                "type": "textarea",
+                "type": "liquid",
                 "id": "contact_info_content_2",
                 "label": "t:sections.main_contact.settings.contact_info.label__6"
+            },
+            {
+                "type": "header",
+                "content": "t:settings_schema.typography.settings.type_button_font.padding_top"
+            },
+            {
+                "type": "range",
+                "id": "mg_top_desktop",
+                "label": "t:sections.layout.mg_desktop.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_top_tablet",
+                "label": "t:sections.layout.mg_tablet.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_top_mobile",
+                "label": "t:sections.layout.mg_mobile.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "header",
+                "content": "t:settings_schema.typography.settings.type_button_font.padding_bottom"
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_desktop",
+                "label": "t:sections.layout.mg_desktop.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_tablet",
+                "label": "t:sections.layout.mg_tablet.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_mobile",
+                "label": "t:sections.layout.mg_mobile.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
             }
         ]
 	}

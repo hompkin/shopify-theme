@@ -20,10 +20,10 @@
 -%}
 
 {% render 'footer-style', block_newsletter: block_newsletter, footer_layout: 3 %}
-<footer class="footer footer-3{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="--spacing-l-r: {{ section.settings.padding_full_width }}px"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade{% endif %}>
+<footer class="footer footer-3" style="--spacing-l-r: {{ section.settings.padding_full_width }}px"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade{% endif %}{% if settings.enable_following_cursor and settings.following_cursor_style == 'default' %} no-effect-cursor{% endif %}>
   {%- if section.blocks.size > 0 -%}
     <div class="footer__content-top{% if section.settings.show_footer_top_bg_img %} footer__content-bg{% endif %}{% if block_newsletter.settings.enable_top and position_social == 7 %} enable_newsletter_social{% endif %}">
-      <div class="container container-{{ section.settings.container }}">
+      <div class="container container-{{ section.settings.container }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade{% endif %}>
         <div class="halo-row column-{{column}}">
           {%- for block in section.blocks -%}
             {%- if forloop.first and block.type == 'text' -%}
@@ -78,14 +78,12 @@
           "type": "text",
           "id": "custom_width",
           "label": "t:sections.footer.settings.custom_width.label",
-          "info": "t:sections.footer.settings.custom_width.info",
           "default": "20"
         },
         {
           "id": "heading",
           "type": "text",
           "label": "t:sections.image-banner.blocks.image.settings.content.label__19",
-          "info": "t:sections.footer.blocks.link_list.settings.heading.info",
           "default": "Quick links"
         },
         {
@@ -94,6 +92,10 @@
           "label": "t:sections.footer.blocks.link_list.settings.menu.label",
           "info": "t:sections.footer.blocks.link_list.settings.menu.info",
           "default": "footer"
+        },
+        {
+          "type": "header",
+          "content": "t:settings_schema.typography.settings.typography.label__3"
         },
         {
           "type": "range",
@@ -109,19 +111,17 @@
     },
     {
       "type": "social_media_with_payment",
-      "name": "Social With Payment",
+      "name": "Social with payment",
       "limit": 1,
       "settings": [
         {
           "type": "header",
-          "content": "t:sections.footer.settings.social_media_link.content",
-          "info": "t:sections.footer.settings.social_media_link.info"
+          "content": "t:sections.footer.settings.social_media_link.content"
         },
         {
           "id": "social_heading",
           "type": "text",
-          "label": "t:sections.image-banner.blocks.image.settings.content.label__19",
-          "info": "t:sections.footer.blocks.link_list.settings.heading.info"
+          "label": "t:sections.image-banner.blocks.image.settings.content.label__19"
         },
         {
           "type": "checkbox",
@@ -136,7 +136,7 @@
           "min": 0,
           "max": 50,
           "step": 1,
-          "unit": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.unit",
+          "unit": "t:settings_schema.typography.settings.font_size.unit",
           "default": 35
         },
         {
@@ -146,7 +146,7 @@
           "min": 0,
           "max": 50,
           "step": 1,
-          "unit": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.unit",
+          "unit": "t:settings_schema.typography.settings.font_size.unit",
           "default": 12
         },
         {
@@ -156,7 +156,7 @@
           "min": 0,
           "max": 50,
           "step": 1,
-          "unit": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.unit",
+          "unit": "t:settings_schema.typography.settings.font_size.unit",
           "default": 12
         },
         {
@@ -166,7 +166,7 @@
           "min": 0,
           "max": 50,
           "step": 1,
-          "unit": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.unit",
+          "unit": "t:settings_schema.typography.settings.font_size.unit",
           "default": 1
         },
         {
@@ -176,13 +176,13 @@
           "min": 0,
           "max": 50,
           "step": 1,
-          "unit": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.unit",
+          "unit": "t:settings_schema.typography.settings.font_size.unit",
           "default": 15
         },
         {
           "id": "social_color",
           "type": "color",
-          "label": "t:settings_schema.colors.settings.colors_name.color",
+          "label": "t:sections.footer.settings.icon_color",
           "default": "#282828"
         },
         {
@@ -194,7 +194,7 @@
         {
           "id": "social_background_color",
           "type": "color",
-          "label": "t:settings_schema.colors.settings.colors_name.background_color",
+          "label": "t:sections.footer.settings.background_color",
           "default": "#fff"
         },
         {
@@ -205,7 +205,7 @@
         {
           "id": "social_color_hover",
           "type": "color",
-          "label": "t:settings_schema.colors.settings.colors_name.color_hover",
+          "label": "t:sections.footer.settings.icon_hover_color",
           "default": "#282828"
         },
         {
@@ -248,7 +248,7 @@
           "min": 0,
           "max": 50,
           "step": 1,
-          "unit": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.unit",
+          "unit": "t:settings_schema.typography.settings.font_size.unit",
           "default": 0
         },
         {
@@ -291,12 +291,12 @@
         {
           "type": "checkbox",
           "id": "show_payment_american_express",
-          "label": "American Express"
+          "label": "American express"
         },
         {
           "type": "checkbox",
           "id": "show_payment_apple_pay",
-          "label": "Apple Pay"
+          "label": "Apple pay"
         },
         {
           "type": "checkbox",
@@ -311,7 +311,7 @@
         {
           "type": "checkbox",
           "id": "show_payment_diners_club",
-          "label": "Diners Club"
+          "label": "Diners club"
         },
         {
           "type": "checkbox",
@@ -371,7 +371,7 @@
         {
           "type": "checkbox",
           "id": "show_payment_klarna-pay-later",
-          "label": "Klarnapay Later"
+          "label": "Klarnapay later"
         },
         {
           "type": "checkbox",
@@ -391,27 +391,23 @@
       "limit": 1,
       "settings": [
         {
-          "type": "header",
-          "content": "t:sections.footer.settings.footer_bottom.content"
-        },
-        {
           "type": "range",
           "id": "pdtop_footer_bottom",
-          "label": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.label",
+          "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
           "min": 0,
           "max": 100,
           "step": 1,
-          "unit": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.unit",
+          "unit": "t:settings_schema.typography.settings.font_size.unit",
           "default": 50
         },
         {
           "type": "range",
           "id": "pdbottom_footer_bottom",
-          "label": "t:sections.footer.settings.footer_bottom.pdbottom_footer_bottom.label",
+          "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
           "min": 0,
           "max": 100,
           "step": 1,
-          "unit": "t:sections.footer.settings.footer_bottom.pdbottom_footer_bottom.unit",
+          "unit": "t:settings_schema.typography.settings.font_size.unit",
           "default": 50
         },
         {
@@ -435,7 +431,7 @@
         {
           "id": "footer_bottom_bg",
           "type": "color",
-          "label": "t:settings_schema.colors.settings.colors_name.background_color",
+          "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
           "default": "#141414"
         },
         {
@@ -467,7 +463,7 @@
         {
           "id": "copyright_content_color",
           "type": "color",
-          "label": "t:settings_schema.colors.settings.colors_name.color"
+          "label": "t:settings_schema.colors.settings.colors_name.text_color"
         },
         {
           "type": "header",
@@ -486,7 +482,7 @@
           "min": 0,
           "max": 50,
           "step": 1,
-          "unit": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.unit",
+          "unit": "t:settings_schema.typography.settings.font_size.unit",
           "default": 0
         },
         {
@@ -529,12 +525,12 @@
         {
           "type": "checkbox",
           "id": "show_payment_american_express",
-          "label": "American Express"
+          "label": "American express"
         },
         {
           "type": "checkbox",
           "id": "show_payment_apple_pay",
-          "label": "Apple Pay"
+          "label": "Apple pay"
         },
         {
           "type": "checkbox",
@@ -549,7 +545,7 @@
         {
           "type": "checkbox",
           "id": "show_payment_diners_club",
-          "label": "Diners Club"
+          "label": "Diners club"
         },
         {
           "type": "checkbox",
@@ -609,7 +605,7 @@
         {
           "type": "checkbox",
           "id": "show_payment_klarna-pay-later",
-          "label": "Klarnapay Later"
+          "label": "Klarnapay later"
         },
         {
           "type": "checkbox",
@@ -627,7 +623,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "*You should only activate \/ use \"Footer\" you want, don't use the redundant headers which may not optimize for performance."
+      "content": "You should only activate\/use the footer you need. Avoid using redundant footers, as they may negatively affect performance."
     },
     {
       "type": "select",
@@ -664,13 +660,12 @@
     {
       "type": "range",
       "id": "padding_full_width",
-      "label": "t:sections.layout.container.padding_full_width",
+      "label": "t:sections.footer.settings.padding_full_width",
       "min": 0,
-      "max": 75,
+      "max": 100,
       "step": 5,
       "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-      "default": 0,
-      "info": "t:sections.layout.container.info_full_width"
+      "default": 0
     },
     {
       "type": "header",
@@ -705,6 +700,16 @@
       "step": 1,
       "unit": "t:settings_schema.typography.settings.font_size.unit",
       "default": 16
+    },
+    {
+      "type": "range",
+      "id": "type_footer_heading_line_height",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:settings_schema.typography.settings.typography.label__1",
+      "default": 20
     },
     {
       "type": "select",
@@ -764,19 +769,20 @@
     },
     {
       "type": "range",
-      "id": "type_footer_heading_line_height",
-      "min": 1,
-      "max": 100,
+      "id": "type_footer_heading_margin_bottom",
+      "min": 0,
+      "max": 50,
       "step": 1,
       "unit": "px",
-      "label": "t:settings_schema.typography.settings.typography.label__1",
-      "default": 20
+      "label": "t:sections.general.settings.page-content.mg_bottom",
+      "default": 12
     },
     {
       "type": "text",
       "id": "type_footer_heading_letter_spacing",
       "label": "t:settings_schema.typography.settings.typography.label__2",
-      "default": ".02em"
+      "default": ".02em",
+      "info": "t:settings_schema.typography.settings.typography.info"
     },
     {
       "type": "paragraph",
@@ -878,7 +884,8 @@
       "type": "text",
       "id": "type_footer_link_letter_spacing",
       "label": "t:settings_schema.typography.settings.typography.label__2",
-      "default": ".02em"
+      "default": ".02em",
+      "info": "t:settings_schema.typography.settings.typography.info"
     },
     {
       "type": "header",
@@ -909,33 +916,33 @@
     {
       "type": "range",
       "id": "pdtop_footer_top",
-      "label": "t:sections.footer.settings.footer_top.pdtop_footer_top.label",
+      "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
       "min": 0,
       "max": 100,
       "step": 5,
-      "unit": "t:sections.footer.settings.footer_top.pdtop_footer_top.unit",
+      "unit": "t:settings_schema.typography.settings.font_size.unit",
       "default": 50
     },
     {
       "type": "range",
       "id": "pdbottom_footer_top",
-      "label": "t:sections.footer.settings.footer_top.pdbottom_footer_top.label",
+      "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
       "min": 0,
       "max": 100,
       "step": 5,
-      "unit": "t:sections.footer.settings.footer_top.pdbottom_footer_top.unit",
+      "unit": "t:settings_schema.typography.settings.font_size.unit",
       "default": 50
     },
     {
       "id": "footer_top_bg",
       "type": "color",
-      "label": "t:settings_schema.colors.settings.colors_name.background_color",
+      "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
       "default": "#000000"
     },
     {
       "id": "footer_top_bg_gradient",
       "type": "color_background",
-      "label": "t:settings_schema.colors.settings.colors_name.background_color"
+      "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
     },
     {
       "type": "checkbox",
@@ -956,15 +963,15 @@
       "options": [
         {
           "value": "left",
-          "label": "t:settings_schema.typography.settings.typography.left"
+          "label": "t:settings_schema.typography.settings.type_button_font.left"
         },
         {
           "value": "center",
-          "label": "t:settings_schema.typography.settings.typography.center"
+          "label": "t:settings_schema.typography.settings.type_button_font.center"
         },
         {
           "value": "right",
-          "label": "t:settings_schema.typography.settings.typography.right"
+          "label": "t:settings_schema.typography.settings.type_button_font.right"
         }
       ]
     },
@@ -980,7 +987,7 @@
         },
         {
           "value": "center",
-          "label": "t:settings_schema.typography.settings.typography.center"
+          "label": "t:settings_schema.typography.settings.type_button_font.middle"
         },
         {
           "value": "bottom",
@@ -1056,15 +1063,15 @@
       "options": [
         {
           "value": "left",
-          "label": "t:sections.footer.settings.footer_top.footer_top_text_align.option1"
+          "label": "t:settings_schema.typography.settings.type_button_font.left"
         },
         {
           "value": "center",
-          "label": "t:sections.footer.settings.footer_top.footer_top_text_align.option2"
+          "label": "t:settings_schema.typography.settings.type_button_font.center"
         },
         {
           "value": "right",
-          "label": "t:sections.footer.settings.footer_top.footer_top_text_align.option3"
+          "label": "t:settings_schema.typography.settings.type_button_font.right"
         }
       ]
     },
@@ -1144,7 +1151,7 @@
           "type": "link_list",
           "settings": {
             "custom_width": "25",
-            "heading": "Customer Service",
+            "heading": "Customer service",
             "menu": "ella-6-customer-service",
             "mg_bottom": 0
           }

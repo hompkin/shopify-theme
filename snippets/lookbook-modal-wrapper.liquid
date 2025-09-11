@@ -55,7 +55,7 @@
     <dialog class="lookbook-dialog card" data-lookbook-dialog {% if lookbook_style != "1" %}style="display: none!important"{% endif %}>
         {% render 'product-grid-layout',
             product_card_product: product,
-            show_add_to_cart: true,
+            complementary_product_button_atc: true,
             serial: forloop.index,
             sectionId: section.id,
             show_list: true,

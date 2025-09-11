@@ -6,20 +6,21 @@
     assign author = article.author
     assign summary = article.excerpt_or_content | strip_html | truncatewords: catewords
 -%}
+
 <article class="article-item{% if image == blank %} article-card--no-image{% unless show_placeholder %} not-placeholder{% endunless %}{% endif %}" aria-labelledby="Article-{{ id }}">
     {%- if image -%}
         <div class="blog-image img-box">
                 {%- assign preview_img = image -%}
                 {%- assign img_url = preview_img | img_url: '700px', crop: 'center' -%}
-                <a href="{{ link }}" class="image image-{{ media_size }} image-zoom" 
+                <a href="{{ link }}" class="image image-{{ media_size }} image-zoom"
                     {% if media_size == 'adapt' %}
-                      style="padding-bottom: {{ 1 | divided_by: preview_img.aspect_ratio | times: 100 }}%;"
+                        style="padding-bottom: {{ 1 | divided_by: preview_img.aspect_ratio | times: 100 }}%;"
                     {% elsif media_size == 'square' %}
-                      style="padding-bottom: 100%;"
+                        style="padding-bottom: 100%;"
                     {% elsif media_size == 'portrait' %}
                         style="padding-bottom: {{ portrait_aspect_ratio }};"
                     {% endif %}
-                  >
+                >
                     <img srcset="
                         {%- if image.src.width >= 165 -%}{{ image.src | img_url: '165x' }} 165w,{%- endif -%}
                         {%- if image.src.width >= 360 -%}{{ image.src | img_url: '360x' }} 360w,{%- endif -%}
@@ -27,20 +28,22 @@
                         {%- if image.src.width >= 533 -%}{{ image.src | img_url: '533x' }} 533w,{%- endif -%}
                         {%- if image.src.width >= 720 -%}{{ image.src | img_url: '720x' }} 720w,{%- endif -%}
                         {%- if image.src.width >= 940 -%}{{ image.src | img_url: '940x' }} 940w,{%- endif -%}
-                        {%- if image.src.width >= 1066 -%}{{ image.src | img_url: '1066x' }} 1066w{%- endif -%}" src="{{ image.src | img_url: '533x' }}" sizes="(min-width: 1100px) {{preview_img.width | append: 'px'}}, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)" alt="{{ image.src.alt | escape }}" loading="lazy" class="motion-reduce"
+                        {%- if image.src.width >= 1066 -%}{{ image.src | img_url: '1066x' }} 1066w{%- endif -%}" src="{{ image.src | img_url: '533x' }}" sizes="(min-width: 1100px) {{preview_img.width | append: 'px'}}, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)" alt="{{ image.src.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} class="motion-reduce"
                     >
                 </a>
         </div>
     {%- elsif show_placeholder -%}
         <div class="blog-image img-box">
-            <a {% if link == blank %} role="link" aria-disabled="true"{% else %} href="{{ link }}"{% endif %} class="image">
-                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            <a {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %} class="image">
+                <div class="placeholder" style="--height_placeholder: 100%;">
+                    {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
             </a>
         </div>
     {%- endif -%}
     <div class="blog-content text-{{ blog_text_align }}">
         <h3 class="blog-title" id="Article-{{ article.id }}">
-            <a {% if link == blank %} role="link" aria-disabled="true"{% else %} href="{{ link }}"{% endif %}>
+            <a {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %}>
                 {{ title | escape }}
             </a>
         </h3>

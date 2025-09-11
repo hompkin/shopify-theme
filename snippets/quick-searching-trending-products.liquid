@@ -24,78 +24,31 @@
                 </div>
             {%- endif -%}
             {%- if settings.show_search_product -%}
-                <div class="search-block quickSearchProduct">
+                {%- assign limit = settings.search_product_to_show -%}
+                {%- assign collection = settings.search_product_collection -%}
+                {%- assign image_ratio = settings.product_block_image_ratio -%}
+                <div class="search-block quickSearchProduct" data-limit="{{ limit }}" data-collection="{{ collection }}">
                     {%- if settings.search_product_title != blank -%}
                         <h3 class="search-block-title text-left"><span class="text">{{ settings.search_product_title | escape }}</span></h3>
                     {%- endif -%}
                     <div class="search-block-content">
                         <div class="halo-block">
-                            {%- assign limit = settings.search_product_to_show -%}
                             <div class="products-grid column-{{ settings.search_product_per_row }} disable-srollbar">
                                 {%- for product in collections[settings.search_product_collection].products limit: limit -%}
                                     <div class="product">
-                                        {%- if settings.product_card_layout == '02' -%}
-                                            {% render 'product-card-02',
-                                                product_card_product: product,
-                                                portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
-                                                sectionId: sectionId
-                                            %}
-                                        {%- elsif settings.product_card_layout == '03' -%}
-                                            {% render 'product-card-03',
-                                                product_card_product: product,
-                                                portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
-                                                sectionId: sectionId
-                                            %}
-                                        {%- elsif settings.product_card_layout == '04' -%}
-                                            {% render 'product-card-04',
-                                                product_card_product: product,
-                                                portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
-                                                sectionId: sectionId
-                                            %}
-                                        {%- elsif settings.product_card_layout == '05' -%}
-                                            {% render 'product-card-05',
-                                                product_card_product: product,
-                                                portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
-                                                sectionId: sectionId
-                                            %}
-                                        {%- elsif settings.product_card_layout == '06' -%}
-                                            {% render 'product-card-06',
-                                                product_card_product: product,
-                                                portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
-                                                sectionId: sectionId
-                                            %}
-                                        {%- elsif settings.product_card_layout == '07' -%}
-                                            {% render 'product-card-07',
-                                                product_card_product: product,
-                                                portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
-                                                sectionId: sectionId
-                                            %}
-                                        {%- elsif settings.product_card_layout == '08' -%}
-                                            {% render 'product-card-08',
-                                                product_card_product: product,
-                                                portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
-                                                sectionId: sectionId
-                                            %}
-                                        {%- else -%}
-                                            {% render 'product-card',
-                                                product_card_product: product,
-                                                portrait_aspect_ratio: '125',
-                                                serial: forloop.index,
-                                                sectionId: sectionId
-                                            %}
-                                        {%- endif -%}
+                                        {% render 'product-grid-layout', 
+                                            product_card_product: product, 
+                                            media_size: image_ratio, 
+                                            portrait_aspect_ratio: '125',
+                                            serial: forloop.index,
+                                            sectionId: sectionId,
+                                            loading: true
+                                        %}
                                     </div>
                                 {%- else -%}
                                     {%- for product in (1..limit) -%}
                                         <div class="product">
-                                            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                            {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
                                             {% render 'product-card-placeholder',
                                                 index: current
                                             %}

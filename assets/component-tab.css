@@ -195,11 +195,12 @@
 }
 
 .pdViewTab-close-mobile {
-    top: 10px;
+    top: 50%;
     right: 12px;
     width: 16px;
     height: 16px;
     padding: 12px;
+    transform: translateY(-50%) rotate(-45deg);
 }
 
 .pdViewTab-close-mobile:before {
@@ -296,6 +297,7 @@ body.tab-popup-show {
 
     .toggle-content.popup-mobile .tab-popup-header,
     .toggle-content.sidebar-mobile .tab-popup-header {
+        position: relative;
         padding: 10px 20px;
         box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.21);
     }
@@ -340,7 +342,8 @@ body.tab-popup-show {
         border-top: 1px solid #d3d3d3;
     }
 
-    body.tab-popup-sidebar-show .productView-bottom.animate--slide-in:not(.scroll-trigger--offscreen) {
+    body.tab-popup-sidebar-show .productView-bottom.animate--slide-in:not(.scroll-trigger--offscreen),
+    body:has(.productView-tab[data-vertical-mobile="sidebar-mobile"]) .productView-bottom.animate--slide-in:not(.scroll-trigger--offscreen) {
         animation: none;
         opacity: 1;
         transform: none;

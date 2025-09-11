@@ -31,7 +31,8 @@
     will-change: width;
 }
 
-.image-comparison .compare-image-overlay img {
+.image-comparison .compare-image-overlay img,
+.image-comparison .compare-image-overlay .placeholder-svg {
     object-fit: cover;
     object-position: left;
     z-index: 2;

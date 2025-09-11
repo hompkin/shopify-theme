@@ -52,11 +52,17 @@
                     <div class="halo-item slidable-spotlight-slide">
                         {%- if image != blank -%}
                             <a class="adaptive_height {% unless settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %}image-zoom{% endunless %}"{% if link != blank %} href="{{ link }}"{% else %} role="link" aria-hidden="true"{% endif %} style="padding-top: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%"> 
-                                <img srcset="{{ image | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ image | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}" {% unless settings.enable_layout_rtl %}loading="lazy"{% endunless %}{% if settings.enable_lazyload %} class="lazyload"{% endif %}>
+                                <img srcset="{{ image | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ image | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{% endif %}>
                                 {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                             </a>
                         {%- else -%}
-                            <div class="halo-item"><div class="not_img" style="--height_not_img: 230px">230 x 230px</div></div>
+                            <div class="halo-item">
+                                {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                                {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+                                <div class="placeholder" style="--height_placeholder: 230px;">
+                                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                                </div>
+                            </div>
                         {%- endif -%}
                         {%- if title != blank -%}
                             <h3 class="title text-center" style="--color: {% if title_color != blank and title_color != "rgba(0,0,0,0)" %}{{ title_color }}{% endif %};--font-size: {{ title_fs }};--font-size-mb: {{ title_fs_mb }};--font-weight: {{ title_fw }}">{{ title }}</h3>
@@ -130,8 +136,113 @@
             "max": 100,
             "step": 5,
             "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 0,
-            "info": "t:sections.layout.container.info_full_width"
+            "default": 0
+        },
+        {
+            "type": "color",
+            "id": "section_bg_color",
+            "label": "t:settings_schema.colors.settings.colors_name.background_color_2"
+        },
+        {
+            "type": "color_background",
+            "id": "section_bg_gradient",
+            "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+        },
+        {
+            "type": "image_picker",
+            "id": "section_bg_image",
+            "label": "t:settings_schema.colors.settings.colors_name.background_image"
+        },
+        {   
+            "type": "text",
+            "id": "title",
+            "label": "t:sections.general.settings.content.label__1"
+        },
+        {
+            "type": "color",
+            "id": "title_color",
+            "label": "t:settings_schema.typography.settings.typography.title_color"
+        },
+        {
+            "type": "range",
+            "id": "title_fs",
+            "label": "t:settings_schema.typography.settings.typography.title_font_size",
+            "min": 1, 
+            "max": 70,
+            "step": 1,
+            "default": 50,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "title_fs_mb",
+            "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
+            "min": 1, 
+            "max": 70,
+            "step": 1,
+            "default": 24,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "id": "title_fw",
+            "label": "t:settings_schema.typography.settings.typography.title_font_weight",
+            "default": "800",
+            "options": [
+            {       
+                "value": "400",
+                "label": "t:settings_schema.typography.settings.font_weight.options__1"
+            },
+            {
+                "value": "500",
+                "label": "t:settings_schema.typography.settings.font_weight.options__2"
+            },
+            {
+                "value": "600",
+                "label": "t:settings_schema.typography.settings.font_weight.options__3"
+            },
+            {
+                "value": "700",
+                "label": "t:settings_schema.typography.settings.font_weight.options__4"
+            },
+            {
+                "value": "800",
+                "label": "t:settings_schema.typography.settings.font_weight.options__5"
+            },
+            {
+                "value": "900",
+                "label": "t:settings_schema.typography.settings.font_weight.options__6"
+            }]
+        },
+        {
+            "type": "range",
+            "id": "title_mg_bottom",
+            "label": "t:settings_schema.typography.settings.typography.title_margin_bottom",
+            "min": 1, 
+            "max": 70,
+            "step": 1,
+            "default": 50,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "title_mg_bottom_mb",
+            "label": "t:settings_schema.typography.settings.typography.title_mg_bottom_mobile",
+            "min": 1, 
+            "max": 70,
+            "step": 1,
+            "default": 24,
+            "unit": "px"
+        },
+        {
+            "type": "paragraph",
+            "content": "t:sections.slide-show.settings.dots.content_2"
+        },
+        {
+          "type": "text",
+          "id": "position_horizontal_slick_arrow",
+          "label": "t:sections.slide-show.settings.arrows.position_slick_arrow",
+          "default": "0"
         },
         {
             "type": "header",
@@ -200,108 +311,6 @@
             "step": 5,
             "unit": "t:sections.layout.mg_desktop.unit",
             "default": 50
-        },
-        {
-            "type": "color",
-            "id": "section_bg_color",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color"
-        },
-        {
-            "type": "color_background",
-            "id": "section_bg_gradient",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-        },
-        {
-            "type": "image_picker",
-            "id": "section_bg_image",
-            "label": "t:settings_schema.colors.settings.colors_name.background_image"
-        },
-        {   
-            "type": "text",
-            "id": "title",
-            "label": "t:sections.general.settings.content.label__1"
-        },
-        {
-            "type": "color",
-            "id": "title_color",
-            "label": "t:settings_schema.colors.settings.colors_name.color"
-        },
-        {
-            "type": "range",
-            "id": "title_fs",
-            "label": "t:settings_schema.typography.settings.font_size.label",
-            "min": 1, 
-            "max": 70,
-            "step": 1,
-            "default": 50,
-            "unit": "px"
-        },
-        {
-            "type": "range",
-            "id": "title_fs_mb",
-            "label": "t:settings_schema.typography.settings.font_size.label_mb",
-            "min": 1, 
-            "max": 70,
-            "step": 1,
-            "default": 24,
-            "unit": "px"
-        },
-        {
-            "type": "select",
-            "id": "title_fw",
-            "label": "t:settings_schema.typography.settings.font_weight.label",
-            "default": "800",
-            "options": [
-            {       
-                "value": "400",
-                "label": "t:settings_schema.typography.settings.font_weight.options__1"
-            },
-            {
-                "value": "500",
-                "label": "t:settings_schema.typography.settings.font_weight.options__2"
-            },
-            {
-                "value": "600",
-                "label": "t:settings_schema.typography.settings.font_weight.options__3"
-            },
-            {
-                "value": "700",
-                "label": "t:settings_schema.typography.settings.font_weight.options__4"
-            },
-            {
-                "value": "800",
-                "label": "t:settings_schema.typography.settings.font_weight.options__5"
-            },
-            {
-                "value": "900",
-                "label": "t:settings_schema.typography.settings.font_weight.options__6"
-            }]
-        },
-        {
-            "type": "range",
-            "id": "title_mg_bottom",
-            "label": "t:settings_schema.typography.settings.typography.title_margin_bottom",
-            "min": 1, 
-            "max": 70,
-            "step": 1,
-            "default": 50,
-            "unit": "px"
-        },
-        {
-            "type": "range",
-            "id": "title_mg_bottom_mb",
-            "label": "t:settings_schema.typography.settings.typography.title_mg_bottom_mobile",
-            "min": 1, 
-            "max": 70,
-            "step": 1,
-            "default": 24,
-            "unit": "px"
-        },
-        {
-          "type": "text",
-          "id": "position_horizontal_slick_arrow",
-          "label": "t:sections.slide-show.settings.arrows.position_slick_arrow",
-          "default": "0"
         }
     ],
     "blocks": [
@@ -332,7 +341,7 @@
                 {
                     "type": "range",
                     "id": "title_fs",
-                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "label": "t:settings_schema.typography.settings.typography.title_font_size",
                     "min": 1, 
                     "max": 70,
                     "step": 1,
@@ -342,7 +351,7 @@
                 {
                     "type": "range",
                     "id": "title_fs_mb",
-                    "label": "t:settings_schema.typography.settings.font_size.label_mb",
+                    "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
                     "min": 1, 
                     "max": 70,
                     "step": 1,
@@ -352,7 +361,7 @@
                 {
                     "type": "select",
                     "id": "title_fw",
-                    "label": "t:settings_schema.typography.settings.font_weight.label",
+                    "label": "t:settings_schema.typography.settings.typography.title_font_weight",
                     "default": "800",
                     "options": [
                     {       
@@ -383,53 +392,53 @@
                 {
                     "type": "text",
                     "id": "button_text",
-                    "label": "t:settings_schema.typography.settings.typography.button"
+                    "label": "t:settings_schema.typography.settings.typography.button_text"
                 },
                 {
                     "type" : "color",
                     "id" : "button_text_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.color",
+                    "label": "t:settings_schema.typography.settings.typography.button_color",
                     "default" : "#fff"
                 },
                 {
                     "type" : "color",
                     "id" : "button_border_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.border_color",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_border",
                     "default" : "#232323"
                 },
                 {
                     "type" : "color",
                     "id" : "button_bg_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_bg",
                     "default" : "#232323"
                 },
                 {
                     "type" : "color_background",
                     "id" : "button_gradient",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+                    "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient"
                 },
                 {
                     "type" : "color",
                     "id" : "button_text_color_hover",
-                    "label": "t:settings_schema.colors.settings.colors_name.color_hover",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_color_hover",
                     "default" : "#232323"
                 },
                 {
                     "type" : "color",
                     "id" : "button_border_color_hover",
-                    "label": "t:settings_schema.colors.settings.colors_name.border_hover",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_border_hover",
                     "default" : "#232323"
                 },
                 {
                     "type" : "color",
                     "id" : "button_bg_color_hover",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_hover",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_bg_hover",
                     "default" : "#fff"
                 },
                 {
                     "type" : "color_background",
                     "id" : "button_gradient_hover",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_hover_gradient"
+                    "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient_hover"
                 },
                 {
                     "type": "range",
@@ -456,7 +465,83 @@
     ],
     "presets": [
         {   
-          "name": "t:sections.slidable_spotlight.name"
+            "name": "t:sections.slidable_spotlight.name",
+            "settings": {
+                "title": "EXPLORE THE SHOP",
+                "title_color": "#000",
+                "title_fs": 20
+            },
+            "blocks": [
+                {
+                    "type": "image",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/bicycle-spotlight-2.jpg",
+                        "link": "#",
+                        "title": "Gear Up",
+                        "title_color": "#ffffff",
+                        "title_fs": 50,
+                        "title_fs_mb": 24,
+                        "title_fw": "800",
+                        "button_text": "Shop Mountain",
+                        "button_text_color": "#000000",
+                        "button_border_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_gradient": "",
+                        "button_text_color_hover": "#ffffff",
+                        "button_border_color_hover": "#337fd3",
+                        "button_bg_color_hover": "#337fd3",
+                        "button_gradient_hover": "",
+                        "button_width": 180,
+                        "button_mg_top": 30
+                    }
+                },
+                {
+                    "type": "image",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/bicycle-spotlight-2.jpg",
+                        "link": "#",
+                        "title": "Gear Up",
+                        "title_color": "#ffffff",
+                        "title_fs": 50,
+                        "title_fs_mb": 24,
+                        "title_fw": "800",
+                        "button_text": "Shop Mountain",
+                        "button_text_color": "#000000",
+                        "button_border_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_gradient": "",
+                        "button_text_color_hover": "#ffffff",
+                        "button_border_color_hover": "#337fd3",
+                        "button_bg_color_hover": "#337fd3",
+                        "button_gradient_hover": "",
+                        "button_width": 180,
+                        "button_mg_top": 30
+                    }
+                },
+                {
+                    "type": "image",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/bicycle-spotlight-2.jpg",
+                        "link": "#",
+                        "title": "Gear Up",
+                        "title_color": "#ffffff",
+                        "title_fs": 50,
+                        "title_fs_mb": 24,
+                        "title_fw": "800",
+                        "button_text": "Shop Mountain",
+                        "button_text_color": "#000000",
+                        "button_border_color": "#ffffff",
+                        "button_bg_color": "#ffffff",
+                        "button_gradient": "",
+                        "button_text_color_hover": "#ffffff",
+                        "button_border_color_hover": "#337fd3",
+                        "button_bg_color_hover": "#337fd3",
+                        "button_gradient_hover": "",
+                        "button_width": 180,
+                        "button_mg_top": 30
+                    }
+                }
+            ]
         }
     ]
   }

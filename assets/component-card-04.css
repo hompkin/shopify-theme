@@ -286,11 +286,12 @@ body:not(.quick_shop_option_2) .halo-product-list-view-popup .form-label+.swatch
 		padding-left: 10px;
 		padding-right: 10px;
 	}
-    .card-product__group.group-left .card-quickview .text {
-      right: auto;
-      left: calc(100% - 30px);
+    .card-product__group.group-left .card-quickview .text,
+	.product-card-layout-04 .card-product__group.group-left .card-compare.card-compareIcon .compare-icon .text_1 {
+		right: auto;
+		left: calc(100% - 30px);
     }
-	
+
 	.product-card-layout-04 .product-item.sold-out:not(.has-notify) .card-product__wrapper .card-media,
 	.product-card-layout-04 .product-item.sold-out:not(.has-notify) .card-product__wrapper .card-action form,
 	.product-card-layout-04 .product-item.has-notify .card-product__wrapper .card-media {
@@ -306,7 +307,7 @@ body:not(.quick_shop_option_2) .halo-product-list-view-popup .form-label+.swatch
 	/* Page Category */
 	.template-collection.product-card-layout-04 .productGrid .product{
 		padding-left: 10px;
-   		padding-right: 10px;
+		padding-right: 10px;
 	}
 }
 
@@ -315,7 +316,7 @@ body:not(.quick_shop_option_2) .halo-product-list-view-popup .form-label+.swatch
 		padding: 10px 0 0 0;
 	}
     .product-card-layout-04 .card-quickview .text {
-      display: none;
+		display: none;
     }
 	.product-card-layout-04 .card-action-bottom.has-wishlist .card-compare {
 		display: none;
@@ -339,16 +340,16 @@ body:not(.quick_shop_option_2) .halo-product-list-view-popup .form-label+.swatch
 		display: none;
 	}
     .product-card-layout-04 .card-action-bottom.show-mb {
-      display: flex;
+		display: flex;
     }
     .product-card-layout-04 .card-action-bottom.show-mb.text-center {
-      justify-content: center;
+		justify-content: center;
     }
     .product-card-layout-04 .card-action-bottom.show-mb.text-right {
-      justify-content: flex-end;
+		justify-content: flex-end;
     }
     .product-card-layout-04 .card-action-bottom.show-mb .card-wishlist .wishlist-icon .text {
-      display: inline-block;
+		display: inline-block;
     }
 	.product-card-layout-04 .card-information .price-item .money{
 		font-size: calc(var(--product-price-font-size) - 2px);

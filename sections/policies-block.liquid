@@ -2,13 +2,14 @@
 {%- assign swipe = section.settings.policies_block_swipe_on_mobile -%}
 <link rel="stylesheet" href="{{ 'component-policies-block.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-policies-block.css' | asset_url | stylesheet_tag }}</noscript>
-<div class="policies-block section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
-    <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
+<div class="policies-block policies-border--{{ section.settings.border }} section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
+    style="--border-color: {{ section.settings.border_color }};">
+    <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1670' %}container-1670{% elsif section.settings.container == '1470' %}container-1470{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
         <div class="bg-policies-block">
             {%- if swipe == 'slider' -%}
             <banner-slider-component>
             {%- endif -%}
-                <div class="halo-row column-{{ section.blocks.size }}{% if swipe == 'slider' %} slider slider--tablet{% endif %}{% unless section.settings.enable_item_distance %} not-distance{% endunless %}{% if swipe == 'scroll' %} scroll-snap-mobile disable-srollbar{% endif %}">      
+                <div class="halo-row column-{{ section.blocks.size }}{% if swipe == 'slider' %} slider slider--tablet{% endif %}{% unless section.settings.enable_item_distance %} not-distance{% endunless %}{% if swipe == 'scroll' %} scroll-snap-mobile disable-srollbar{% endif %}"{% if swipe == 'scroll' %} style="--spacing-tablet: {{ section.settings.spacing_tablet }}px;--spacing-mobile: {{ section.settings.spacing_mobile }}px;"{% endif %}>      
                     {%- for block in section.blocks -%}
                     <div class="halo-item{% if swipe == 'slider' %} slider__slide{% endif %}{% if block.settings.description != blank %} has-des{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
                         <a class="alignItems--{{ section.settings.align_items }}{% if section.settings.text_align_items == 'left' %} text-left{% elsif section.settings.text_align_items == 'center' %} text-center{% else %} text-right{% endif %}"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} title="{{block.settings.text}}" style="--item-radius-style: {{ section.settings.item_radius | append: 'px' }}; --item-padding-top-style: {{ section.settings.item_padding_top | append: 'px' }}; --item-padding-bottom-style: {{ section.settings.item_padding_bottom | append: 'px' }}; --item-padding-left-right: {{  section.settings.item_padding_left_right | append: 'px' }}">
@@ -23,18 +24,18 @@
                                 <span class="policies-icon" style="--icon-width-style: {{ block.settings.icon_width | append: 'px' }}; --icon-height-style: {{ block.settings.icon_height | append: 'px' }}; --icon-mg-right-style: {{ block.settings.icon_mg_right | append: 'px' }}">{{ block.settings.icon }}</span>
                                 {%- endif -%}
                             {%- endif -%}
-                            {%- if block.settings.description != blank -%}
-                            <div class="policies-content">
+                            <div class="policies-content" 
+                            style="--font-size-text-style: {{ block.settings.font_size_text | append: 'px' }};--font-size-text-style-mb: {{ block.settings.font_size_text_mb | append: 'px' }};--font-weight-text-style: {{ block.settings.font_weight_text }};--font-style-text-style: {{ block.settings.font_style_text }};--mg-bottom-text-style: {{ block.settings.mg_bottom_text | append: 'px' }};--font-size-des: {{ block.settings.font_size_des | append: 'px' }};--font-size-des-mb: {{ block.settings.font_size_des_mb | append: 'px' }};--margin-bottom-description: {{ block.settings.margin_bottom_description | append: 'px' }};--button-font-size: {{ block.settings.button_font_size | append: 'px' }};--button-font-size-mb: {{ block.settings.button_font_size_mb | append: 'px' }};--text-font:{% if block.settings.type_text_font == 'font_1' %}var(--font-family-1){% else %}var(--font-family-2){% endif %};">
                                 {%- if block.settings.text != blank -%}
-                                <span class="policies-text" style="--font-size-text-style: {{ block.settings.font_size_text | append: 'px' }};--font-size-text-style-mb: {{ block.settings.font_size_text_mb | append: 'px' }};--font-weight-text-style: {{ block.settings.font_weight_text }};--font-style-text-style: {{ block.settings.font_style_text }};--mg-bottom-text-style: {{ block.settings.mg_bottom_text | append: 'px' }}">{{block.settings.text}}</span>
+                                <span class="policies-text">{{block.settings.text}}</span>
                                 {%- endif -%}
-                                <p class="policies-des">{{block.settings.description}}</p>
+                                {%- if block.settings.description != blank -%}
+                                <div class="policies-des">{{block.settings.description}}</div>
+                                {%- endif -%}
+                                {%- if block.settings.button != blank -%}
+                                <div class="policies-button">{{block.settings.button}}</div>
+                                {%- endif -%}
                             </div>
-                            {%- else -%}
-                                {%- if block.settings.text != blank -%}
-                                <span class="policies-text" style="--font-size-text-style: {{ block.settings.font_size_text | append: 'px' }};--font-size-text-style-mb: {{ block.settings.font_size_text_mb | append: 'px' }};--font-weight-text-style: {{ block.settings.font_weight_text }};--font-style-text-style: {{ block.settings.font_style_text }};--mg-bottom-text-style: {{ block.settings.mg_bottom_text | append: 'px' }}">{{block.settings.text}}</span>
-                                {%- endif -%}
-                            {%- endif -%}
                         </a>
                     </div>
                     {%- endfor -%}
@@ -74,6 +75,7 @@
         assign bg_color_block = section.settings.bg_color_block
         assign border_block = section.settings.border_block
         assign color_block = section.settings.color_block
+        assign des_color = section.settings.des_color
         assign color_icon = section.settings.color_icon
 
         assign item_color_border = section.settings.item_color_border
@@ -109,7 +111,8 @@
 
     .section-block-{{section.id}} .policies-icon {color: {{ color_icon }}}
     .section-block-{{section.id}} .policies-icon svg {fill: {{ color_icon }}}
-    .section-block-{{section.id}} .policies-text {color: {{ color_block }}}
+    .section-block-{{section.id}} .policies-text {font-family: var(--text-font);color: {{ color_block }}}
+    .section-block-{{section.id}} .policies-des {color: {{ des_color }}}
     .section-block-{{section.id}} .slider-button svg {fill: {{ color_block }}}
     .section-block-{{section.id}} .halo-item a {background-color: {{ bg_color_block }};border: 1px solid {{ border_block }}}
     @media (max-width: 1024px) {
@@ -166,6 +169,14 @@
                         "label": "t:sections.layout.container.option4"
                     },
                     {
+                        "value": "1470",
+                        "label": "t:sections.layout.container.option5"
+                    },
+                    {
+                        "value": "1670",
+                        "label": "t:sections.layout.container.option10"
+                    },
+                    {
                         "value": "1770",
                         "label": "t:sections.layout.container.option3"
                     },
@@ -180,11 +191,10 @@
                 "id": "padding_full_width",
                 "label": "t:sections.layout.container.padding_full_width",
                 "min": 0,
-                "max": 50,
+                "max": 100,
                 "step": 5,
                 "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                "default": 0,
-                "info": "t:sections.layout.container.info_full_width"
+                "default": 0
             },
             {
                 "type": "select",
@@ -206,77 +216,31 @@
                 }]
             },
             {
-                "type": "header",
-                "content": "t:sections.layout.margin_top"
+                "type": "range",
+                "id": "spacing_tablet",
+                "label": "t:sections.policies_block.settings.setting_block.spacing_tablet",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 15,
+                "info": "t:sections.policies_block.settings.setting_block.info"
             },
             {
                 "type": "range",
-                "id": "mg_top_desktop",
-                "label": "t:sections.layout.mg_desktop.label",
+                "id": "spacing_mobile",
+                "label": "t:sections.policies_block.settings.setting_block.spacing_mobile",
                 "min": 0,
                 "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_top_tablet",
-                "label": "t:sections.layout.mg_tablet.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_top_mobile",
-                "label": "t:sections.layout.mg_mobile.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "header",
-                "content": "t:sections.layout.margin_bottom"
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_desktop",
-                "label": "t:sections.layout.mg_desktop.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_tablet",
-                "label": "t:sections.layout.mg_tablet.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_mobile",
-                "label": "t:sections.layout.mg_mobile.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
+                "step": 1,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 10,
+                "info": "t:sections.policies_block.settings.setting_block.info"
             },
             {
                 "type" : "color",
                 "id" : "policies_bg",
-                "label" : "t:settings_schema.colors.settings.colors_name.background_color",
+                "label" : "t:settings_schema.colors.settings.colors_name.background_color_2",
                 "default" : "#fff"
             },
             {
@@ -290,13 +254,43 @@
                 "label" : "t:settings_schema.colors.settings.colors_name.background_image"
             },
             {
+                "type": "select",
+                "id": "border",
+                "label": "t:settings_schema.typography.settings.typography.border",
+                "default": "none",
+                "options": [
+                    {
+                        "value": "none",
+                        "label": "None"
+                    },
+                    {
+                        "value": "top",
+                        "label": "t:settings_schema.typography.settings.typography.top"
+                    },
+                    {
+                        "value": "bottom",
+                        "label": "t:settings_schema.typography.settings.typography.bottom"
+                    },
+                    {
+                        "value": "top_bottom",
+                        "label": "t:settings_schema.typography.settings.typography.top_bottom"
+                    }
+                ]
+            },
+            {
+                "type": "color",
+                "id": "border_color",
+                "default": "#000000",
+                "label": "t:settings_schema.colors.settings.colors_name.border_color"
+            },
+            {
                 "type": "header",
-                "content": "t:sections.policies_block.settings.setting_block.content"
+                "content": "t:sections.image-banner.blocks.image.settings.content.text_blocks"
             },
             {
                 "type": "select",
                 "id": "border_item",
-                "label": "t:settings_schema.typography.settings.typography.border_item",
+                "label": "t:settings_schema.typography.settings.typography.border_between_items",
                 "default": "none",
                 "options": [
                 {
@@ -305,18 +299,25 @@
                 },
                 {
                     "value": "style_1",
-                    "label": "t:settings_schema.typography.settings.typography.border_style1"
+                    "label": "t:settings_schema.typography.settings.typography.full_border"
                 },
                 {
 
                     "value": "style_2",
-                    "label": "t:settings_schema.typography.settings.typography.border_style2"
+                    "label": "t:settings_schema.typography.settings.typography.short_border"
                 }]
+            },
+            {
+                "type" : "color",
+                "id" : "item_color_border",
+                "label" : "t:settings_schema.colors.settings.colors_name.border_color",
+                "default" : "#000"
             },
             {
                 "type": "select",
                 "id": "align_items",
-                "label": "t:sections.image-banner.blocks.image.settings.content.label__9",
+                "label": "t:sections.slide-show.blocks.image.slider_layout.alignment.option",
+                "info": "t:sections.slide-show.blocks.image.slider_layout.alignment.info__1",
                 "default": "center",
                 "options": [
                 {
@@ -325,7 +326,7 @@
                 },
                 {
                     "value": "center",
-                    "label": "t:sections.image-banner.blocks.image.settings.content.options__7"
+                    "label": "t:sections.general.settings.alignment.options__7"
                 },
                 {
                     "value": "bottom",
@@ -335,20 +336,20 @@
             {
                 "type": "select",
                 "id": "text_align_items",
-                "label": "t:sections.footer.settings.footer_top.footer_top_text_align.option",
+                "label": "t:sections.image-banner.blocks.image.settings.content.label__7",
                 "default": "center",
                 "options": [
                 {
                     "value": "left",
-                    "label": "t:sections.footer.settings.footer_top.footer_top_text_align.option1"
+                    "label": "t:settings_schema.typography.settings.type_button_font.left"
                 },
                 {
                     "value": "center",
-                    "label": "t:sections.footer.settings.footer_top.footer_top_text_align.option2"
+                    "label": "t:settings_schema.typography.settings.type_button_font.center"
                 },
                 {
                     "value": "right",
-                    "label": "t:sections.footer.settings.footer_top.footer_top_text_align.option3"
+                    "label": "t:settings_schema.typography.settings.type_button_font.right"
                 }]
             },
             {
@@ -358,15 +359,9 @@
                 "default": true
             },
             {
-                "type" : "color",
-                "id" : "item_color_border",
-                "label" : "t:settings_schema.typography.settings.typography.border_item_color",
-                "default" : "#000"
-            },
-            {
                 "type": "range",
                 "id": "item_padding_top",
-                "label": "t:settings_schema.typography.settings.typography.item_padding_top",
+                "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
                 "min": 0,
                 "max": 100,
                 "step": 1,
@@ -376,7 +371,7 @@
             {
                 "type": "range",
                 "id": "item_padding_bottom",
-                "label": "t:settings_schema.typography.settings.typography.item_padding_bottom",
+                "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
                 "min": 0,
                 "max": 100,
                 "step": 1,
@@ -406,7 +401,7 @@
             {
                 "type" : "color",
                 "id": "bg_color_block",
-                "label" : "t:settings_schema.colors.settings.colors_name.background_color",
+                "label" : "t:settings_schema.colors.settings.colors_name.background_color_2",
                 "default" : "#f8f8f8"
             },
             {
@@ -418,7 +413,13 @@
             {
                 "type" : "color",
                 "id" : "color_block",
-                "label" : "t:sections.policies_block.settings.setting_block.color_block",
+                "label": "t:settings_schema.typography.settings.typography.title_color",
+                "default" : "#232323"
+            },
+            {
+                "type" : "color",
+                "id" : "des_color",
+                "label" : "t:settings_schema.typography.settings.typography.des_color",
                 "default" : "#232323"
             },
             {
@@ -426,6 +427,74 @@
                 "id" : "color_icon",
                 "label" : "t:settings_schema.typography.settings.typography.icon_color",
                 "default" : "#3c3c3c"
+            },
+            {
+                "type": "header",
+                "content": "t:sections.layout.margin_top"
+            },
+            {
+                "type": "range",
+                "id": "mg_top_desktop",
+                "label": "t:sections.layout.mg_desktop.label",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_top_tablet",
+                "label": "t:sections.layout.mg_tablet.label",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_top_mobile",
+                "label": "t:sections.layout.mg_mobile.label",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "header",
+                "content": "t:sections.layout.margin_bottom"
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_desktop",
+                "label": "t:sections.layout.mg_desktop.label",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_tablet",
+                "label": "t:sections.layout.mg_tablet.label",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_mobile",
+                "label": "t:sections.layout.mg_mobile.label",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
             }
         ],
         "blocks" : [
@@ -434,13 +503,18 @@
                 "name" : "t:sections.image-banner.blocks.image.settings.content.label__16",
                 "settings":[
                     {
+                        "type": "image_picker",
+                        "id" : "image",
+                        "label" : "t:sections.image-banner.blocks.image.settings.content.label__15"
+                    },
+                    {
                         "type": "radio",
                         "id": "icon_type",
                         "label": "t:settings_schema.typography.settings.typography.icon_type",
                         "options": [
                         {
                           "value": "text",
-                          "label": "t:sections.image-banner.blocks.image.settings.content.label__16"
+                          "label": "t:settings_schema.typography.settings.typography.text_svg_icon"
                         },
                         {
                           "value": "image",
@@ -450,15 +524,10 @@
                         "default": "text"
                     },
                     {
-                        "type": "image_picker",
-                        "id" : "image",
-                        "label" : "t:sections.image-banner.blocks.image.settings.content.label__15"
-                    },
-                    {
-                        "type": "textarea",
+                        "type": "liquid",
                         "id" : "icon",
-                        "label" : "t:settings_schema.typography.settings.typography.icon",
-                        "info" : "Go to this link [Find your Icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
+                        "label" : "t:settings_schema.typography.settings.typography.text_svg_icon",
+                        "info" : "Go to this link [find your icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
                     },
                     {
                         "type": "range",
@@ -495,6 +564,21 @@
                         "id" : "text",
                         "label" : "t:sections.policies_block.blocks.image.title",
                         "default" : "Free Shipping on all orders *"
+                    },
+                    {
+                        "type": "select",
+                        "id": "type_text_font",
+                        "label": "t:settings_schema.typography.settings.font_type.label",
+                        "options": [
+                        {
+                            "value": "font_1",
+                            "label": "t:settings_schema.typography.settings.font_family__1.content"
+                        },
+                        {
+                            "value": "font_2",
+                            "label": "t:settings_schema.typography.settings.font_family__2.content"
+                        }],
+                        "default": "font_1"
                     },
                     {
                         "type": "range",
@@ -577,9 +661,64 @@
                         }]
                     },
                     {
-                        "type" : "textarea",
+                        "type" : "liquid",
                         "id" : "description",
                         "label" : "t:sections.image-banner.blocks.image.settings.content.label__2"
+                    },
+                    {
+                        "type": "range",
+                        "id": "font_size_des",
+                        "label": "t:settings_schema.typography.settings.typography.des_font_size",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "t:sections.layout.mg_desktop.unit",
+                        "default": 14
+                    },
+                    {
+                        "type": "range",
+                        "id": "font_size_des_mb",
+                        "label": "t:settings_schema.typography.settings.typography.des_font_size_mb",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "t:sections.layout.mg_desktop.unit",
+                        "default": 14
+                    },
+                    {
+                        "type": "range",
+                        "id": "margin_bottom_description",
+                        "label": "t:settings_schema.typography.settings.typography.des_margin_bottom",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "t:settings_schema.typography.settings.font_size.unit",
+                        "default": 0
+                    },
+                    {
+                        "type": "text",
+                        "id": "button",
+                        "label": "t:settings_schema.typography.settings.typography.button_text"
+                    },
+                    {
+                        "type": "range",
+                        "id": "button_font_size",
+                        "label": "t:settings_schema.typography.settings.typography.button_font_size",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "t:sections.layout.mg_desktop.unit",
+                        "default": 14
+                    },
+                    {
+                        "type": "range",
+                        "id": "button_font_size_mb",
+                        "label": "t:settings_schema.typography.settings.typography.button_font_size_mb",
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unit": "t:sections.layout.mg_desktop.unit",
+                        "default": 12
                     },
                     {
                         "type" : "url",
@@ -591,7 +730,18 @@
         ],
         "presets": [{
             "name": "t:sections.policies_block.name",
-            "category": "text"
+            "category": "text",
+            "blocks": [
+                {
+                    "type": "Text"
+                },
+                {
+                    "type": "Text"
+                },
+                {
+                    "type": "Text"
+                }
+            ]
         }]
     }
 {% endschema %}

@@ -2,7 +2,7 @@
 .instagram-grid-section .section-wrapper {
     display: flex;
     flex-direction: row;
-    gap: var(--section-wraooer-gap, 230px);
+    gap: var(--section-wrapper-gap, 230px);
 }
 
 .instagram-grid-section .section-wrapper .section-header {

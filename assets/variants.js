@@ -2,7 +2,7 @@ class VariantSelects extends HTMLElement {
     constructor() {
         super();
         this.item = $(this).closest('.productView');
-        this.isFullWidth = this.item.is('.layout-4');
+        this.isFullWidth = this.item.closest('.product-full-width').length == 1 || this.item.closest('.product-full-width-2').length == 1;
 
         this.onVariantInit();
         this.addEventListener('change', this.onVariantChange.bind(this));
@@ -11,7 +11,7 @@ class VariantSelects extends HTMLElement {
     onVariantInit(){
         this.updateOptions();
         this.updateMasterId();
-        this.updateMedia(1500);
+        this.updateMedia(1500, 'init');
         // this.updateURL();
         this.renderProductAjaxInfo();
         this.renderProductInfo();
@@ -27,13 +27,13 @@ class VariantSelects extends HTMLElement {
         this.updateOptions();
         this.updateMasterId();
         this.updatePickupAvailability();
-        this.updateVariantStatuses();
+        this.updateVariantStatuses(event.target);
       
         if (!this.currentVariant) {
             this.updateAttribute(true);
             this.updateStickyAddToCart(true);
         } else {
-            this.updateMedia(200);
+            this.updateMedia(200, 'change');
             if (!document.querySelector('.featured-product')) {
                 this.updateURL();
             }
@@ -87,36 +87,51 @@ class VariantSelects extends HTMLElement {
         }
     }      
 
-    updateMedia(time) {
-        if (!this.currentVariant || !this.currentVariant?.featured_media) return;
-        
-        const newMedia = document.querySelectorAll(
-            `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`
-        );
+    updateMedia(time, status) {
+        const enableVariantImageGroup = document?.querySelector('.enable_variant_image_group');
+    
+        if (enableVariantImageGroup && status == 'init') return;
 
-        if (!newMedia) return;
-        window.setTimeout(() => {
-            $(newMedia).trigger('click');
-        }, time);
+        setTimeout(() => {
+            if (!this.currentVariant || !this.currentVariant?.featured_media || document.querySelector('.productView-nav')?.matches('.media-filter')) return;
+            
+            const newMedia = document.querySelectorAll(
+                `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`
+            );
+    
+            if (!newMedia) return;
+            window.setTimeout(() => {
+                if ($('.productView-nav-gallery').length > 0) {
+                    const newMediaGallery = document.querySelector(`.slick-slide:not(.slick-cloned):has([data-media-id="${this.currentVariant.featured_media.id}"])`)?.getAttribute("data-slick-index");
+                    $('.productView-nav-gallery').slick('slickGoTo', newMediaGallery);
+                } else{
+                    $(newMedia).trigger('click');
+                }
+            }, time);
+    
+            if (!this.isFullWidth || window.innerWidth < 768 || !this.currentVariant) return;
+            const mediaId = this.currentVariant.featured_media.id;
+            const activeMedia = document?.querySelector(`.product-single__media[data-media-id="${mediaId}"]`);
+            const fallbackImageContainer = document?.querySelector('.productView-image[data-index="1"]');
 
-        if (!this.isFullWidth || window.innerWidth < 768) return;
+            if (activeMedia) {
+                setTimeout(() => {
+                    activeMedia.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 20);
+            } else {
+                const fallbackImage = fallbackImageContainer?.querySelector('img');
+                const featuredImage = this.currentVariant?.featured_image;
+                if (!featuredImage || !fallbackImage) return;
 
-        const mediaToReplace = document.querySelector('.productView-image[data-index="1"]')
-        const imageToReplace = mediaToReplace.querySelector('img')
+                fallbackImage.setAttribute('src', featuredImage.src);
+                fallbackImage.setAttribute('srcset', featuredImage.src);
+                fallbackImage.setAttribute('alt', featuredImage.alt);
 
-        if (!this.currentVariant) return;
-
-        const image = this.currentVariant?.featured_image;
-
-        if (image == null) return;
-
-        imageToReplace.setAttribute('src',  image.src)
-        imageToReplace.setAttribute('srcset', image.src)
-        imageToReplace.setAttribute('alt', image.alt)
-
-        if (mediaToReplace.getBoundingClientRect().top < window.scrollY) {
-            this.scrollToBlock(mediaToReplace)
-        }
+                setTimeout(() => {
+                    fallbackImageContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 20);
+            }
+        }, 1)
     }
 
     scrollToBlock(block) {
@@ -286,8 +301,10 @@ class VariantSelects extends HTMLElement {
 
             quantityInput.attr('disabled', true);
             notifyMe.slideUp('slow');
-            addButton.setAttribute('disabled', true);
-            addButton.textContent = text;
+            if (addButton != null){
+                addButton.setAttribute('disabled', true);
+                addButton.textContent = text;
+            }
             quantityInput.closest('quantity-input').addClass('disabled');
 
             if(hotStock.length > 0) hotStock.addClass('is-hiden');
@@ -327,7 +344,6 @@ class VariantSelects extends HTMLElement {
                         }
                     } else if (window.subtotal.style == '2') {
                         text = window.subtotal.text.replace('[value]', subTotal);
-                        console.log(text,'123');
                     }
                 } else {
                     subTotal = Shopify.formatMoney(price, window.money_format);
@@ -336,8 +352,10 @@ class VariantSelects extends HTMLElement {
 
                 quantityInput.attr('data-price', this.currentVariant?.price);
                 quantityInput.attr('disabled', true);
-                addButton.setAttribute('disabled', true);
-                addButton.textContent = text;
+                if (addButton != null){
+                    addButton.setAttribute('disabled', true);
+                    addButton.textContent = text;
+                }
                 quantityInput.closest('quantity-input').addClass('disabled');
 
                 if (subTotal != 0 && stickyPrice.length) {
@@ -425,7 +443,6 @@ class VariantSelects extends HTMLElement {
                             text = window.subtotal.text.replace('[value]', subTotal);
                             $('#show-sticky-product').text(text);
                             $('#product-sticky-add-to-cart').text(text);
-                            console.log(text,'345');
                         }
                     }
                 } else {
@@ -440,8 +457,10 @@ class VariantSelects extends HTMLElement {
 
                 quantityInput.attr('data-price', this.currentVariant?.price);
                 quantityInput.attr('disabled', false);
-                addButton.removeAttribute('disabled');
-                addButton.textContent = text;
+                if (addButton != null){
+                    addButton.removeAttribute('disabled');
+                    addButton.textContent = text;
+                }
                 quantityInput.closest('quantity-input').removeClass('disabled');
 
                 if (subTotal != 0 && stickyPrice.length) {
@@ -461,6 +480,18 @@ class VariantSelects extends HTMLElement {
                         thisStickyPrice.addClass('has-compare-price');
                         if (thisComparePrice.length) {
                             thisComparePrice.attr('data-compare-price', compare_at_price);
+                            
+                            const compare_at_price_sticky = Shopify.formatMoney(compare_at_price, window.money_format);
+                            const comparePrice_sticky = extractContent(compare_at_price_sticky);
+                            thisComparePrice.text(comparePrice_sticky);
+                            
+                            if (this.checkNeedToConvertCurrency()) {
+                                let currencyCode = document.getElementById('currencies')?.querySelector('.active')?.getAttribute('data-currency');
+                                Currency.convertAll(window.shop_currency, currencyCode, 'span.money', 'money_format');
+                            }
+
+                            thisStickyPrice.prepend(`<s class="money-compare-price" data-compare-price="${compare_at_price}"><span class="money"></span></s>`);
+                            thisComparePrice.remove();
                         } else {
                             thisStickyPrice.prepend(`<s class="money-compare-price" data-compare-price="${compare_at_price}"><span class="money"></span></s>`);
                         }
@@ -495,6 +526,7 @@ class VariantSelects extends HTMLElement {
             const input = document.getElementById(`product-form-sticky-${this.dataset.product}`)?.querySelector('input[name="id"]');
             const button = document.getElementById(`product-form-sticky-${this.dataset.product}`)?.querySelector('[name="add"]');
             var quantityInput = this.item.find('input[name="quantity"]');
+            var submitBtn = $('.product-form__submit');
             var maxValue;
 
             if (quantityInput.length > 0) {
@@ -578,10 +610,14 @@ class VariantSelects extends HTMLElement {
           quantityInput.value = value
         }
       
-        document.getElementById('product-add-to-cart').dataset.available = this.currentVariant.available && maxValue <= 0
+        // document.getElementById('product-add-to-cart').dataset.available = this.currentVariant.available && maxValue <= 0
+        const elementProductAddToCart = document.getElementById('product-add-to-cart');
+        if (elementProductAddToCart && this.currentVariant?.available !== undefined && typeof maxValue !== 'undefined') {
+            elementProductAddToCart.dataset.available = this.currentVariant.available && maxValue <= 0;
+        }
     }
 
-    updateVariantStatuses() {
+    updateVariantStatuses(target) {
         // const options = this.item.find('.productView-details .product-form__input'),
         //     optionsLength = options.length,
         //     pvOptionsLength = PVoptions.length,
@@ -589,7 +625,9 @@ class VariantSelects extends HTMLElement {
       
         // optionsLength > pvOptionsLength ? checkStickyVariant = true : '';
 
-        const selectedOptionOneVariants = this.variantData.filter(variant => this.querySelector(':checked').value === variant.option1);
+        const selectedOptionOneVariants1 = this.variantData.filter(variant => this.querySelectorAll(':checked')[0]?.value === variant.option1);
+        const selectedOptionOneVariants2 = this.variantData.filter(variant => this.querySelectorAll(':checked')[1]?.value === variant.option2);
+        const selectedOptionOneVariants3 = this.variantData.filter(variant => this.querySelectorAll(':checked')[2]?.value === variant.option3);
         const inputWrappers = [...this.querySelectorAll('.product-form__input')];
         const inputLength = inputWrappers.length;
         const variant_swatch = [...this.querySelectorAll('.product-form__swatch')];
@@ -598,16 +636,18 @@ class VariantSelects extends HTMLElement {
             if (index === 0 && inputLength > 1) return;
             const optionInputs = [...option.querySelectorAll('input[type="radio"], option')]
             const previousOptionSelected = inputLength > 1 ? inputWrappers[index - 1].querySelector(':checked').value : inputWrappers[index].querySelector(':checked').value;
-            const optionInputsValue = inputLength > 1 ? selectedOptionOneVariants.filter(variant => variant[`option${ index }`] === previousOptionSelected).map(variantOption => variantOption[`option${ index + 1 }`]) : this.variantData.map(variantOption => variantOption[`option${ index + 1 }`]);
-            const availableOptionInputsValue = inputLength > 1 ? selectedOptionOneVariants.filter(variant => variant.available && variant[`option${ index }`] === previousOptionSelected).map(variantOption => variantOption[`option${ index + 1 }`]) : this.variantData.filter(variant => variant.available).map(variantOption => variantOption[`option${ index + 1 }`]);
+            const optionInputsValue = inputLength > 1 ? selectedOptionOneVariants1.filter(variant => variant[`option${ index }`] === previousOptionSelected).map(variantOption => variantOption[`option${ index + 1 }`]) : this.variantData.map(variantOption => variantOption[`option${ index + 1 }`]);
+            const availableOptionInputsValue = inputLength > 1 ? selectedOptionOneVariants1.filter(variant => variant.available && variant[`option${ index }`] === previousOptionSelected).map(variantOption => variantOption[`option${ index + 1 }`]) : this.variantData.filter(variant => variant.available).map(variantOption => variantOption[`option${ index + 1 }`]);
             this.setInputAvailability(optionInputs, optionInputsValue, availableOptionInputsValue)
-            if (variant_swatch.length > 1){
-                this.updateImageSwatch(selectedOptionOneVariants)
-            }
         });
+        if (variant_swatch.length > 1 && target){
+            if(target.parentElement.parentElement.dataset.optionIndex == 0) this.updateImageSwatch(selectedOptionOneVariants1, target.parentElement.parentElement.dataset.optionIndex);
+            if(target.parentElement.parentElement.dataset.optionIndex == 1) this.updateImageSwatch(selectedOptionOneVariants2, target.parentElement.parentElement.dataset.optionIndex);
+            if(target.parentElement.parentElement.dataset.optionIndex == 2) this.updateImageSwatch(selectedOptionOneVariants3, target.parentElement.parentElement.dataset.optionIndex);
+        }
     }
 
-    updateImageSwatch(selectedOptionOneVariants) {
+    updateImageSwatch(selectedOptionOneVariants,optionIndex) {
         const inputWrappers = this.querySelectorAll('.product-form__input');
         if(inputWrappers){
             inputWrappers.forEach((element, inputIndex) => {
@@ -617,16 +657,30 @@ class VariantSelects extends HTMLElement {
                 const inputList = element.querySelectorAll("input");
 
                 inputList.forEach((item, index) => {
-                    const image = selectedOptionOneVariants.filter(tmp => {
-                        if (inputIndex == 0) return tmp.option1 == item.value;
-                        if (inputIndex == 1) return tmp.option2 == item.value;
-                        if (inputIndex == 2) return tmp.option3 == item.value;
-                    });
+                    if(inputIndex != optionIndex){
+                        const image = selectedOptionOneVariants.filter(tmp => {
+                            if (inputIndex == 0) return tmp.option1 == item.value;
+                            if (inputIndex == 1) return tmp.option2 == item.value;
+                            if (inputIndex == 2) return tmp.option3 == item.value;
+                        });
     
-                    if(image.length > 0) {
-                        imageLabel[index].style.display = "inline-block";
-                        if (imageSpan[index] != undefined && image[0].featured_image != null) imageSpan[index].style.backgroundImage = `url("${image[0].featured_image.src}")`;
-                        if (imageSpanImage[index] != undefined && image[0].featured_image != null) imageSpanImage[index].srcset = image[0].featured_image.src;
+                        if(image.length > 0) {
+                            imageLabel[index].style.display = "inline-block";
+                            var remainingOptionValue = inputWrappers[3 - inputIndex - optionIndex]?.querySelector(':checked').value;
+                            let activeIndex = 0;
+                                
+                            for (let i = 0; i < image.length; i++) {
+                                const imageItem = image[i];
+                                const title = imageItem.title;
+
+                                if (title.includes(remainingOptionValue)) {
+                                    activeIndex = i;
+                                }
+                            }
+                            
+                            if (imageSpan[index] != undefined && image[activeIndex].featured_image != null) imageSpan[index].style.backgroundImage = `url("${image[activeIndex].featured_image.src}")`;
+                            if (imageSpanImage[index] != undefined && image[0].featured_image != null) imageSpanImage[index].srcset = image[0].featured_image.src;
+                        }
                     }
                     // else {
                     //     imageLabel[index].style.display = "none";
@@ -634,7 +688,7 @@ class VariantSelects extends HTMLElement {
                 })
             });
         }
-    }            
+    }
 
     setInputAvailability(optionInputs, optionInputsValue, availableOptionInputsValue) {
         optionInputs.forEach(input => {
@@ -649,8 +703,11 @@ class VariantSelects extends HTMLElement {
     }
 
     updateBadgeSale() {
-        let badgeWrap = document.querySelector(".productView-badge"),
-            badgeText = badgeWrap.querySelector(".productView-badge .badge.sale-badge"),
+        let badgeWrap = document.querySelector(".productView-badge");
+
+        if (!badgeWrap) return;
+
+        let badgeText = badgeWrap.querySelector(".productView-badge .badge.sale-badge"),
             badgeTextSaleType = badgeWrap.getAttribute('data-text-sale-badge'),
             priceCompare = document.querySelector(".productView-product .price__compare").getAttribute('data-compare'),
             priceLast = document.querySelector(".productView-product .price__sale .price__last").getAttribute('data-last'),
@@ -685,7 +742,6 @@ class VariantSelects extends HTMLElement {
                 }
             }
         }
-
     }
 }
 
@@ -730,6 +786,7 @@ customElements.define('variant-radios', VariantRadios);
 class QuantityInput extends HTMLElement {
     constructor() {
         super();
+        if (this.closest('.quick-order-list__contents')) return; 
         this.input = this.querySelector('input');
         this.changeEvent = new Event('change', { bubbles: true });
         this.input.addEventListener('change', this.onInputChange.bind(this));
@@ -749,7 +806,7 @@ class QuantityInput extends HTMLElement {
         var inputValue = this.input.value;
         var maxValue = parseInt(this.input.dataset.inventoryQuantity);
         var currentId = document.getElementById(`product-form-${this.input.dataset.product}`)?.querySelector('[name="id"]')?.value;
-        var saleOutStock  = document.getElementById('product-add-to-cart').dataset.available === 'true' || false ;
+        var saleOutStock  = document.getElementById('product-add-to-cart')?.dataset.available === 'true' || false ;
         const addButton = document.getElementById(`product-form-${this.input.dataset.product}`)?.querySelector('[name="add"]');
 
         if(inputValue < 1) {
@@ -805,8 +862,9 @@ class QuantityInput extends HTMLElement {
             else if (window.subtotal.style == '2') {
                 text = window.subtotal.text.replace('[value]', subTotal);
                 $('#product-sticky-add-to-cart').text(text);
-
-                addButton.textContent = text;  
+                if (addButton != null){
+                    addButton.textContent = text;
+                }
             }
 
             const stickyPrice = $('[data-sticky-add-to-cart] .money-subtotal .money');
@@ -827,7 +885,9 @@ class QuantityInput extends HTMLElement {
 
         if (this.classList.contains('quantity__group--2') || this.classList.contains('quantity__group--3')) {
             const mainQty = document.querySelector('.quantity__group--1 .quantity__input');
-            mainQty.value = inputValue;
+            if (mainQty != null){
+                mainQty.value = inputValue;
+            }
 
             const mainQty2Exists = !!document.querySelector('.quantity__group--2 .quantity__input');
             const mainQty3Exists = !!document.querySelector('.quantity__group--3 .quantity__input');
@@ -852,7 +912,12 @@ class QuantityInput extends HTMLElement {
     }
 
     checkNeedToConvertCurrency() {
-        return (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency;
+        var currencyItem = $('.dropdown-item[data-currency]');
+        if (currencyItem.length) {
+            return (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency;
+        } else {
+            return;
+        }
     }
     
     checkHasMultipleVariants() {
@@ -872,10 +937,11 @@ class QuantityInput extends HTMLElement {
     }
 
     checkVariantInventory() {
-        const addBtn = document.getElementById('product-add-to-cart')
-        this.input.disabled = addBtn.disabled 
-        this.querySelector('.btn-quantity.minus').disabled = addBtn.disabled
-        this.querySelector('.btn-quantity.plus').disabled = addBtn.disabled
+        const addBtn = document.getElementById('product-add-to-cart');
+        if (!addBtn) return;
+        this.input.disabled = addBtn.disabled;
+        this.querySelector('.btn-quantity.minus').disabled = addBtn.disabled;
+        this.querySelector('.btn-quantity.plus').disabled = addBtn.disabled;
     }
 
     getVariantData() {
@@ -885,6 +951,118 @@ class QuantityInput extends HTMLElement {
 }
 
 customElements.define('quantity-input', QuantityInput);
+
+class StepIndicator extends HTMLElement {
+    constructor() {
+        super();
+        this.el = this;
+        this.steps = parseInt(this.getAttribute('steps')) || 3;
+        this._step = 0;
+    }
+
+    connectedCallback() {
+        document.addEventListener("click", this.clickAction.bind(this));
+        this.displayStep(this.step);
+        this.checkExtremes();
+        this.setupFinalStepInputWatcher();
+    }
+
+    get step() {
+        return this._step;
+    }
+
+    set step(value) {
+        this._step = value;
+        this.displayStep(value);
+        this.checkExtremes();
+    }
+
+    clickAction(e) {
+        const button = e.target.closest('a[data-action]');
+        if (!button) return;
+
+        const actionName = button.getAttribute("data-action");
+        if (actionName === "prev") this.prev();
+        else if (actionName === "next") this.next();
+    }
+
+    prev() {
+        if (this.step > 0) this.step--;
+    }
+
+    next() {
+        if (this.step < this.steps - 1) this.step++;
+    }
+
+    checkExtremes() {
+        const prevBtn = document.querySelector(`[data-action="prev"]`);
+        const nextBtn = document.querySelector(`[data-action="next"]`);
+        const cartBtn = document.querySelector(`[data-action="cart"]`);
+
+        if (prevBtn) prevBtn.setAttribute("aria-disabled", this.step <= 0 ? "true" : "false");
+        if (nextBtn) nextBtn.setAttribute("aria-disabled", this.step >= this.steps - 1 ? "true" : "false");
+
+        if (cartBtn) {
+            cartBtn.style.display = (this.step >= this.steps - 1) ? 'inline-block' : 'none';
+            if (nextBtn) nextBtn.style.display = (this.step >= this.steps - 1) ? 'none' : 'block';
+        }
+    }
+
+    displayStep(targetStep) {
+        const current = "steps__step--current";
+        const done = "steps__step--done";
+
+        for (let i = 0; i < this.steps; i++) {
+            const stepEl = this.querySelector(`.steps__step[data-step="${i}"]`);
+            const tabEl = this.querySelector(`.tab[data-step="${i}"]`);
+
+            stepEl?.classList.remove(current, done);
+            tabEl?.classList.remove("active");
+
+            if (i < targetStep) {
+                stepEl?.classList.add(done);
+            } else if (i === targetStep) {
+                stepEl?.classList.add(current);
+                tabEl?.classList.add("active");
+            }
+        }
+    }
+
+    setupFinalStepInputWatcher() {
+        const lastTab = this.querySelector(`.tab[data-step="${this.steps - 1}"]`);
+        if (!lastTab) return;
+
+        const inputWrapper = lastTab.querySelector('.product-step__input');
+        if (!inputWrapper) return;
+
+        const fields = inputWrapper.querySelectorAll('input, textarea');
+
+        const checkCompleted = () => {
+            const isFilled = Array.from(fields).some(el => el.value.trim() !== '');
+            const stepEl = this.querySelector(`.steps__step[data-step="${this.steps - 1}"]`);
+
+            if (isFilled) {
+                inputWrapper.classList.add('complete');
+                if (stepEl?.classList.contains('steps__step--current')) {
+                    stepEl.classList.remove('steps__step--current');
+                    stepEl.classList.add('steps__step--done');
+                }
+            } else {
+                inputWrapper.classList.remove('complete');
+                if (stepEl?.classList.contains('steps__step--done')) {
+                    stepEl.classList.remove('steps__step--done');
+                    stepEl.classList.add('steps__step--current');
+                }
+            }
+        };
+
+        fields.forEach(field => {
+            field.addEventListener('input', checkCompleted);
+        });
+    }
+}
+
+customElements.define("step-indicator", StepIndicator);
 
 function hotStock(inventoryQuantity) {
     const productView = document.querySelector('.productView');

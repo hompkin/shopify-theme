@@ -17,6 +17,8 @@
                                                 {% render 'halo-top-currency' %}
                                             {%- endif -%}
                                         </div>
+                                    {% elsif settings.enable_currencies %}
+                                    {{ "jquery.currencies.min.js" | asset_url | script_tag }}
                                     {%- endif -%}
                                     {%- if block.settings.customer_service_text != blank -%}
                                         <div class="customer-service-text">{{ block.settings.customer_service_text }}</div>
@@ -51,7 +53,7 @@
                                                 {%- if block.settings.logo_parallax != blank -%}
                                                     {%- assign image_parallax = block.settings.logo_parallax -%}
                                                     {%- assign image_size = block.settings.logo_width | append: 'x' -%}
-                                                    <img srcset="{{ image_parallax | img_url: image_size }}" src="{{ image_parallax | img_url: image_size }}" loading="lazy" class="header__heading-logo" alt="{{ image.alt | default: shop.name | escape }}">
+                                                    <img srcset="{{ image_parallax | img_url: image_size }}" src="{{ image_parallax | img_url: image_size }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} class="header__heading-logo" alt="{{ image.alt | default: shop.name | escape }}">
                                                 {%- elsif block.settings.logo_text != blank -%}
                                                     <span class="h2 {{ block.settings.logo_text_transform }}">{{ block.settings.logo_text }}</span>
                                                 {%- else -%}
@@ -65,7 +67,7 @@
                         {%-  when 'function_group' -%}
                             <div class="header-top--right header__icons clearfix">
                                 {% if block.settings.show_search %}
-                                    <details-modal class="header__iconItem header__search" style="--search-color: {{ block.settings.search_color }}; --bg-search-color: {{ block.settings.bg_search_color }}; --search-icon-color: {{ block.settings.search_icon_color }}; --search-border-color: {{ block.settings.search_border_color }}">
+                                    <details-modal class="header__iconItem header__search{% if block.settings.show_search_left_to_right %} search__ltr{% endif %}" style="--search-color: {{ block.settings.search_color }}; --bg-search-color: {{ block.settings.bg_search_color }}; --search-icon-color: {{ block.settings.search_icon_color }}; --search-border-color: {{ block.settings.search_border_color }}">
                                         {%- if settings.show_quick_search -%}
                                             <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}" data-product-to-show="{{ settings.quick_search_to_show }}">
                                         {%- endif -%}
@@ -74,11 +76,16 @@
                                                 <button type="button" class="header-search-close" aria-label="{{ 'general.common.close' | t }}">{% render 'icon-close' %}</button>
                                                 <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
                                                     <div class="field">
+                                                        {%- if block.settings.show_search_left_to_right -%}
+                                                            <button class="button search__button field__button focus-inset" aria-label="{{ 'general.search.search' | t }}">{% render 'icon-search-03' %}</button>
+                                                        {%- endif -%}
                                                         <input class="search__input field__input form-input-placeholder" id="Search-In-Modal-Basic" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.search' | t }}" autocomplete="off" {%- if settings.show_quick_search -%}role="combobox" aria-expanded="false" aria-owns="predictive-search-results-list" aria-controls="predictive-search-results-list" aria-haspopup="listbox" aria-autocomplete="list" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"{%- endif -%}>
                                                         <input type="hidden" name="options[prefix]" value="last">
                                                         <input type="hidden" name="type" value="product">
                                                         <label class="field__label hiddenLabels" for="Search-In-Modal-Basic">{{ 'general.search.search' | t }}</label>
-                                                        <button class="button search__button field__button focus-inset" aria-label="{{ 'general.search.search' | t }}">{% render 'icon-search-03' %}</button>
+                                                        {%- unless block.settings.show_search_left_to_right -%}
+                                                            <button class="button search__button field__button focus-inset" aria-label="{{ 'general.search.search' | t }}">{% render 'icon-search-03' %}</button>
+                                                        {%- endunless -%}
                                                     </div>
                                                     {%- if settings.show_quick_search -%}
                                                         {%- if settings.show_search_trending or settings.show_search_product -%}
@@ -100,7 +107,7 @@
                                     </details-modal>
                                 {% endif %}
                                 {% if block.settings.show_cart or block.settings.show_wishlist or block.settings.show_customer %}
-                                    <div class="header__iconItem header__group">
+                                    <div class="header__iconItem header__group{% if block.settings.show_wishlist_number %} wishlist_number{% endif %}">
                                         {%- if shop.customer_accounts_enabled and block.settings.show_customer -%}
                                             {% if routes.account_login_url contains '/account/login' %}
                                                 {% assign is_contained = true %}
@@ -129,15 +136,22 @@
                                             </div>
                                         {%- endif -%}
                                         {%- if settings.show_wishlist and block.settings.show_wishlist -%}
-                                            <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset" style="--text-color: {{ block.settings.wishlist_color }}">{% render 'icon-heart-2' %}</a>
+                                            <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset" style="--text-color: {{ block.settings.wishlist_color }}; --wishlist-bg-item: {{ block.settings.wishlist_bg_item }}; --wishlist-color-item: {{ block.settings.wishlist_color_item }}">
+                                                {% render 'icon-heart-2' %}
+                                                {%- if block.settings.show_wishlist_number -%}
+                                                    <div class="wishlist-count-bubble"><span class="text" aria-hidden="true" data-wishlist-count></span><span class="visually-hidden">{{ 'wishlist.general.wishlist' | t }}</span></div>
+                                                {%- endif -%}
+                                            </a>
                                         {%- endif -%}
                                         {%- if block.settings.show_cart -%}
                                             <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset" id="cart-icon-bubble"{% if settings.show_quick_cart %} data-cart-sidebar{% endif %} style="--text-color: {{ block.settings.cart_color }}; --cart-bg-item: {{ block.settings.cart_bg_item }}; --cart-color-item: {{ block.settings.cart_color_item }}">
-                                                {% render 'icon-cart-03' %}
+                                                {%- if block.settings.show_wishlist_number -%}
+                                                    {% render 'icon-cart-10' %}
+                                                {%- else -%}
+                                                    {% render 'icon-cart-03' %}
+                                                {%- endif -%}
                                                 <div class="cart-count-bubble">
-                                                    {%- if cart.item_count < 100 -%}
-                                                        <span class="text" aria-hidden="true" data-cart-count>{{ cart.item_count }}</span>
-                                                    {%- endif -%}
+                                                    <span class="text" aria-hidden="true" data-cart-count>{%- if cart.item_count < 100 -%}{{ cart.item_count }}{%- else -%}{{ 'sections.cart.item_99' | t }}{%- endif -%}</span>
                                                     <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
                                                 </div>
                                             </a>
@@ -151,6 +165,7 @@
         </div>
     </div>
 </header>
+<script src="{{ 'halo-quick-search.js' | asset_url }}" defer="defer"></script>
 <script defer> 
     var appendPrependMenuMobile = function() {
         if (window.innerWidth < 1025) {
@@ -183,7 +198,7 @@
     "settings": [
         {
             "type": "paragraph",
-            "content": "*You should only activate \/ use \"Header\" you want, don't use the redundant headers which may not optimize for performance."
+            "content": "*You should only activate\/use \"Header\" you want, don't use the redundant headers which may not optimize for performance."
         },
         {
             "type": "select",
@@ -222,16 +237,15 @@
             "id": "padding_full_width",
             "label": "t:sections.layout.container.padding_full_width",
             "min": 0,
-            "max": 75,
+            "max": 100,
             "step": 5,
             "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 0,
-            "info": "t:sections.layout.container.info_full_width"
+            "default": 0
         },
         {
             "type": "color",
             "id": "background",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color",
+            "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
             "default": "#ffffff"
         },
         {
@@ -260,7 +274,7 @@
             "max": 50,
             "step": 1,
             "unit": "px",
-            "label": "t:sections.main-list-collections.settings.spacing.mg_top",
+            "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
             "default": 20
         },
         {
@@ -270,7 +284,7 @@
             "max": 50,
             "step": 1,
             "unit": "px",
-            "label": "t:sections.main-list-collections.settings.spacing.mg_bottom",
+            "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
             "default": 0
         }
     ],
@@ -303,13 +317,13 @@
                 {
                     "type": "richtext",
                     "id": "customer_service_text",
-                    "label": "t:sections.header.settings.header_top.customer_service_text",
+                    "label": "t:settings_schema.typography.settings.typography.text",
                     "default": "<p>Customer Service 091 234-ELLA</p>"
                 },
                 {
                     "type": "color",
                     "id": "text_color",
-                    "label": "t:sections.header.settings.header_top.label__4",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
                     "default": "#3c3c3c"
                 }
             ]
@@ -326,7 +340,7 @@
                 {
                     "type": "image_picker",
                     "id": "logo",
-                    "label": "t:settings_schema.quick_view.settings.header__2.content"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "range",
@@ -343,14 +357,15 @@
                     "content": "t:sections.header.settings.menu_tab.label__3"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "logo_text",
-                    "label": "t:sections.header.settings.logo.label__7"
+                    "label": "t:settings_schema.typography.settings.typography.text_svg_icon",
+                    "info": "t:settings_schema.typography.settings.typography.logo_icon_info"
                 },
                 {
                     "type": "range",
                     "id": "logo_font_size",
-                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_size",
                     "min": 15,
                     "max": 60,
                     "step": 1,
@@ -360,7 +375,7 @@
                 {
                     "type": "select",
                     "id": "logo_font_weight",
-                    "label": "t:settings_schema.typography.settings.font_weight.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_weight",
                     "default": "900",
                     "options": [
                     {
@@ -394,6 +409,10 @@
                     "label": "t:settings_schema.typography.settings.text_transform.label",
                     "default": "uppercase",
                     "options": [
+                    {
+                        "value": "none",
+                        "label": "t:settings_schema.typography.settings.text_transform.options__1"
+                    },
                     {
                         "value": "capitalize",
                         "label": "t:settings_schema.typography.settings.text_transform.options__2"
@@ -431,26 +450,32 @@
                     "default": true
                 },
                 {
+                    "type": "checkbox",
+                    "id": "show_search_left_to_right",
+                    "label": "t:sections.header.settings.header_top.show_left_button",
+                    "default": false
+                },
+                {
                     "type": "color",
                     "id": "search_color",
-                    "label": "t:sections.header.settings.header_top.search_color_text",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
                     "default": "#3c3c3c"
                 },
                 {
                     "type": "color",
                     "id": "bg_search_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color"
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2"
                 },
                 {
                     "type": "color",
                     "id": "search_border_color",
-                    "label": "t:sections.header.settings.header_top.search_border_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.border_color",
                     "default": "#7b7b7b"
                 },
                 {
                     "type": "color",
                     "id": "search_icon_color",
-                    "label": "t:sections.header.settings.header_top.search_color_icon",
+                    "label": "t:settings_schema.typography.settings.typography.icon_color",
                     "default": "#232323"
                 },
                 {
@@ -483,6 +508,24 @@
                     "type": "color",
                     "id": "wishlist_color",
                     "label": "t:sections.header.settings.header_top.label__4",
+                    "default": "#232323"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_wishlist_number",
+                    "label": "t:sections.header.settings.header_icons.label__6",
+                    "default": false
+                },
+                {
+                    "type": "color",
+                    "id": "wishlist_color_item",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
+                    "default": "#ffffff"
+                },
+                {
+                    "type": "color",
+                    "id": "wishlist_bg_item",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#232323"
                 },
                 {

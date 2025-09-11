@@ -20,7 +20,13 @@
 </div>
 {%- endif -%}
 
+{% unless settings.show_newsletter_popup and settings.style_popup == 'default' %}
 {% render 'halo-newsletter-success-popup' %}
+{% endunless %}
+
+{% if settings.show_age_verification_popup %}
+    {% render 'halo-age-verification-popup' %}
+{% endif %}
 
 {% render 'halo-lookbook-popup' %}
 
@@ -33,7 +39,11 @@
 {% render 'halo-product-custom-information' %}
 
 {%- if settings.show_newsletter_popup -%}
-	{% render 'halo-newsletter-popup' %}
+    {% if settings.style_popup == 'default' %}
+        {% render 'halo-newsletter-popup' %}
+    {% else %}
+        {% render 'halo-promotion-popup' %}
+    {% endif %}
 {%- endif -%}
 
 {%- if settings.show_recently_viewed_popup or settings.show_recently_viewed_share or settings.show_recently_viewed_top -%}
@@ -70,8 +80,10 @@
 
 {%- if settings.quick_shop_type == '1' or settings.quick_shop_type == '2' -%}
     {% render 'halo-popup-card-mobile' %}
-{%- elsif  settings.quick_shop_type == '3' -%}
+{%- elsif settings.quick_shop_type == '3' -%}
     {% render 'halo-quickshop-popup' %}
+{%- elsif settings.quick_shop_type == '4' -%}
+    {% render 'halo-quick-bulk-popup' %}
 {%- endif -%}
 
 {%- if settings.enable_sticky_notification or settings.enable_sticky_notification_mb -%}

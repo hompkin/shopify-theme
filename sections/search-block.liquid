@@ -12,7 +12,6 @@
     assign padding_full_width = section.settings.padding_full_width | append: 'px'
 
     assign search_block_title = section.settings.search_block_title
-    assign enable_border_title = section.settings.enable_border_title.enable_border_title
     assign color_title = section.settings.color_title
     assign fontsize_title = section.settings.fontsize_title | append: 'px'
     assign fontsize_title_mb = section.settings.fontsize_title_mb | append: 'px'
@@ -40,13 +39,13 @@
 %}
 
 <div class="search-block-section{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="search-block-section-{{ section.id }}" data-id="{{ section.id }}" data-title="{{ search_block_title }}">
-    <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%} container-full{% else %}container{% endif %}">
+    <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
         <div class="search-block align-{{ content_align }}" style="--content-max-width: {{ content_max_width }};
                                                                     --input-padding-top: {{ padding_top_input }};
                                                                     --input-padding-bottom: {{ padding_bottom_input }};">
             <div class="block-header">
                 {% if search_block_title != blank %}
-                    <h2 class="title search-block-title text-{{ text_align }} {% if enable_border_title %}has_border{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
+                    <h2 class="title search-block-title text-{{ text_align }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                         style="--title-color: {{ color_title }};
                         --title-fs: {{ fontsize_title }};
                         --title-fs-mb: {{ fontsize_title_mb }};
@@ -152,12 +151,12 @@
                         "label": "t:sections.layout.container.option4"
                     },
                     {
-                        "value": "fullwidth",
-                        "label": "t:sections.layout.container.option2"
-                    },
-                    {
                         "value": "1770",
                         "label": "t:sections.layout.container.option3"
+                    },
+                    {
+                        "value": "fullwidth",
+                        "label": "t:sections.layout.container.option2"
                     }
                 ]
             },
@@ -166,11 +165,10 @@
                 "id": "padding_full_width",
                 "label": "t:sections.layout.container.padding_full_width",
                 "min": 0,
-                "max": 50,
+                "max": 100,
                 "step": 5,
                 "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                "default": 0,
-                "info": "t:sections.layout.container.info_full_width"
+                "default": 0
             },
             {
                 "type": "select",
@@ -179,34 +177,34 @@
                 "options": [
                 {
                     "value": "left",
-                    "label": "t:settings_schema.typography.settings.typography.left"
+                    "label": "t:settings_schema.typography.settings.type_button_font.left"
                 },
                 {
                     "value": "center",
-                    "label": "t:settings_schema.typography.settings.typography.center"
+                    "label": "t:settings_schema.typography.settings.type_button_font.center"
                 },
                 {
                     "value": "right",
-                    "label": "t:settings_schema.typography.settings.typography.right"
+                    "label": "t:settings_schema.typography.settings.type_button_font.right"
                 }],
                 "default": "center"
             },
             {
                 "type": "select",
                 "id": "content_align",
-                "label": "t:sections.general.settings.block-title.label__3",
+                "label": "t:sections.general.settings.position.label__1",
                 "options": [
                 {
                     "value": "left",
-                    "label": "t:settings_schema.typography.settings.typography.left"
+                    "label": "t:settings_schema.typography.settings.type_button_font.left"
                 },
                 {
                     "value": "center",
-                    "label": "t:settings_schema.typography.settings.typography.center"
+                    "label": "t:settings_schema.typography.settings.type_button_font.center"
                 },
                 {
                     "value": "right",
-                    "label": "t:settings_schema.typography.settings.typography.right"
+                    "label": "t:settings_schema.typography.settings.type_button_font.right"
                 }],
                 "default": "center"
             },
@@ -218,8 +216,153 @@
                 "min": 100,
                 "max": 1000,
                 "step": 10,
-                "unit": "t:sections.general.settings.padding.unit",
-                "info": "t:sections.custom_map.settings.info"
+                "unit": "t:sections.general.settings.padding.unit"
+            },
+            {
+                "type": "text",
+                "id": "search_block_title",
+                "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
+                "default": "Search For Something Special..."
+            },
+            {
+                "type" : "color",
+                "id" : "color_title",
+                "label": "t:settings_schema.typography.settings.typography.title_color",
+                "default" : "#232323"
+            },
+            {
+                "type": "range",
+                "id": "margin_bottom_title",
+                "label": "t:settings_schema.typography.settings.typography.title_margin_bottom",
+                "min": 0,
+                "max": 50,
+                "step": 1,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 45
+            },
+            {
+                "type": "range",
+                "id": "fontsize_title",
+                "label": "t:settings_schema.typography.settings.typography.title_font_size",
+                "min": 10,
+                "max": 50,
+                "step": 1,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 16
+            },
+            {
+                "type": "range",
+                "id": "fontsize_title_mb",
+                "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
+                "min": 10,
+                "max": 50,
+                "step": 1,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 22
+            },
+            {
+                "type": "select",
+                "id": "title_text_transform",
+                "label": "t:settings_schema.typography.settings.typography.title_style",
+                "default": "uppercase",
+                "options": [
+                    {
+                        "value": "none",
+                        "label": "t:settings_schema.typography.settings.text_transform.options__1"
+                    },
+                    {
+                        "value": "capitalize",
+                        "label": "t:settings_schema.typography.settings.text_transform.options__2"
+                    },
+                    {
+                        "value": "uppercase",
+                        "label": "t:settings_schema.typography.settings.text_transform.options__3"
+                    },
+                    {
+                        "value": "lowercase",
+                        "label": "t:settings_schema.typography.settings.text_transform.options__4"
+                    }
+                ]
+            },
+            {
+                "type" : "liquid",
+                "id" : "search_block_des",
+                "label" : "t:sections.image-banner.blocks.image.settings.content.label__2"
+            },
+            {
+                "type" : "color",
+                "id" : "color_des",
+                "label": "t:settings_schema.typography.settings.typography.des_color",
+                "default" : "#3c3c3c"
+            },
+            {
+                "type": "range",
+                "id": "margin_bottom_des",
+                "label": "t:settings_schema.typography.settings.typography.des_margin_bottom",
+                "min": 0,
+                "max": 60,
+                "step": 1,
+                "unit": "t:settings_schema.typography.settings.font_size.unit",
+                "default": 30
+            },
+            {
+                "type": "range",
+                "id": "fontsize_des",
+                "label": "t:settings_schema.typography.settings.typography.des_font_size",
+                "min": 10,
+                "max": 50,
+                "step": 1,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 16
+            },
+            {
+                "type": "paragraph",
+                "content": "t:sections.search_block.settings.search_field"
+            },
+            {
+                "type": "color",
+                "id": "search_input_color",
+                "label": "t:settings_schema.typography.settings.typography.text_color"
+            },
+            {
+                "type": "color",
+                "id": "search_input_bg",
+                "label": "t:settings_schema.colors.settings.colors_name.background_color_2"
+            },
+            {
+                "type": "color_background",
+                "id": "search_input_gradient",
+                "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+            },
+            {
+                "type": "color",
+                "id": "search_input_border",
+                "label": "t:settings_schema.colors.settings.colors_name.border_color"
+            },
+            { 
+                "type": "text",
+                "id": "search_block_placeholder",
+                "label": "t:sections.search_block.settings.search_block_placeholder",
+                "default": "Search entire store here"
+            },
+            {
+                "type": "select",
+                "id": "search_input_align",
+                "label": "t:sections.general.settings.alignment.label__1",
+                "options": [
+                {
+                    "value": "left",
+                    "label": "t:settings_schema.typography.settings.type_button_font.left"
+                },
+                {
+                    "value": "center",
+                    "label": "t:settings_schema.typography.settings.type_button_font.center"
+                },
+                {
+                    "value": "right",
+                    "label": "t:settings_schema.typography.settings.type_button_font.right"
+                }],
+                "default": "center"
             },
             {
                 "type": "range",
@@ -308,158 +451,6 @@
                 "step": 5,
                 "unit": "t:sections.layout.mg_desktop.unit",
                 "default": 50
-            },
-            {
-                "type": "text",
-                "id": "search_block_title",
-                "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
-                "default": "Search For Something Special..."
-            },
-            {
-                "type": "checkbox",
-                "id": "enable_border_title",
-                "label": "t:sections.spotlight_block.blocks.image.enable_border_title",
-                "default": true
-            },
-            {
-                "type" : "color",
-                "id" : "color_title",
-                "label": "t:sections.layout.color.color_title",
-                "default" : "#232323"
-            },
-            {
-                "type": "range",
-                "id": "margin_bottom_title",
-                "label": "t:sections.layout.mg_bottom_title.label",
-                "min": 0,
-                "max": 50,
-                "step": 1,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 45
-            },
-            {
-                "type": "range",
-                "id": "fontsize_title",
-                "label": "t:sections.layout.fontsize.fontsize_title.label",
-                "min": 10,
-                "max": 50,
-                "step": 1,
-                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                "default": 16
-            },
-            {
-                "type": "range",
-                "id": "fontsize_title_mb",
-                "label": "t:sections.layout.fontsize.fontsize_title.label_mb",
-                "min": 10,
-                "max": 50,
-                "step": 1,
-                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                "default": 22
-            },
-            {
-                "type": "select",
-                "id": "title_text_transform",
-                "label": "t:settings_schema.typography.settings.text_transform.label",
-                "default": "uppercase",
-                "options": [
-                    {
-                        "value": "none",
-                        "label": "t:settings_schema.typography.settings.text_transform.options__1"
-                    },
-                    {
-                        "value": "capitalize",
-                        "label": "t:settings_schema.typography.settings.text_transform.options__2"
-                    },
-                    {
-                        "value": "uppercase",
-                        "label": "t:settings_schema.typography.settings.text_transform.options__3"
-                    },
-                    {
-                        "value": "lowercase",
-                        "label": "t:settings_schema.typography.settings.text_transform.options__4"
-                    }
-                ]
-            },
-            {
-                "type" : "textarea",
-                "id" : "search_block_des",
-                "label" : "t:sections.image-banner.blocks.image.settings.content.label__2"
-            },
-            {
-                "type" : "color",
-                "id" : "color_des",
-                "label": "t:sections.layout.color.color_des",
-                "default" : "#3c3c3c"
-            },
-            {
-                "type": "range",
-                "id": "margin_bottom_des",
-                "label": "t:settings_schema.typography.settings.typography.des_margin_bottom",
-                "min": 0,
-                "max": 60,
-                "step": 1,
-                "unit": "t:sections.footer.settings.footer_bottom.pdtop_footer_bottom.unit",
-                "default": 30
-            },
-            {
-                "type": "range",
-                "id": "fontsize_des",
-                "label": "t:sections.layout.fontsize.fontsize_des.label",
-                "min": 10,
-                "max": 50,
-                "step": 1,
-                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                "default": 16
-            },
-            {
-                "type": "paragraph",
-                "content": "t:sections.search_block.settings.search_field"
-            },
-            {
-                "type": "color",
-                "id": "search_input_color",
-                "label": "t:settings_schema.colors.settings.colors_name.color"
-            },
-            {
-                "type": "color",
-                "id": "search_input_bg",
-                "label": "t:settings_schema.colors.settings.colors_name.background_color"
-            },
-            {
-                "type": "color_background",
-                "id": "search_input_gradient",
-                "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-            },
-            {
-                "type": "color",
-                "id": "search_input_border",
-                "label": "t:settings_schema.colors.settings.colors_name.border_color"
-            },
-            { 
-                "type": "text",
-                "id": "search_block_placeholder",
-                "label": "t:sections.search_block.settings.search_block_placeholder",
-                "default": "Search entire store here"
-            },
-            {
-                "type": "select",
-                "id": "search_input_align",
-                "label": "t:sections.image-banner.blocks.image.settings.content.label__21",
-                "options": [
-                {
-                    "value": "left",
-                    "label": "t:settings_schema.typography.settings.typography.left"
-                },
-                {
-                    "value": "center",
-                    "label": "t:settings_schema.typography.settings.typography.center"
-                },
-                {
-                    "value": "right",
-                    "label": "t:settings_schema.typography.settings.typography.right"
-                }],
-                "default": "center"
             }
 		], 
         "presets": [

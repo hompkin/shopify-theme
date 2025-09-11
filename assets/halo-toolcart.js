@@ -55,8 +55,8 @@ class CouponCode extends HTMLElement {
       fetch(`/discount/${this.val}`)
           .then((response) => response.text())
           .then((responseText) => {
-        	
-      });
+            Shopify.getCart((cart) => {window.sharedFunctions?.updateSidebarCart(cart)});
+          });
       document.querySelector('.popup-toolDown.show').classList.remove('show');
       document.querySelector('.previewCart').classList.remove('active-tool');
     })

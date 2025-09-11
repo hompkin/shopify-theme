@@ -94,7 +94,8 @@
         transform: translateY(calc((var(--btn-3-padding-top) + var(--btn-3-padding-bottom) + var(--btn-3-line-height) + (var(--btn-3-border-width) * 2) - 2px) * -1));
     }
 
-    body.product-card-layout-01 .product-item.enable_background_button_card .card:hover .card-marquee {
+    body.product-card-layout-01 .product-item.enable_background_button_card .card:hover .card-marquee,
+    body.product-card-layout-01 .product-item.enable_custom_position_swatch .card:hover .card-marquee {
         transform: translateY(calc((30px + var(--btn-3-padding-top) + var(--btn-3-padding-bottom) + var(--btn-3-line-height) + (var(--btn-3-border-width) * 2) - 2px) * -1));
     }
 

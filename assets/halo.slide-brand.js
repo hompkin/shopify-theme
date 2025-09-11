@@ -25,9 +25,10 @@
 						    	return this.infinite = dataCenterMode;
 						    }
 						},
-						centerMode: dataCenterMode,
+						centerMode: dataCenterMode && itemTotal > itemsToShow,
 						centerPadding: "10%",
 	                    speed: 800,
+						arrows: dataArrows,
 	                    nextArrow: window.arrows.icon_next,
                         prevArrow: window.arrows.icon_prev,
                         autoplay: autoplay,
@@ -37,29 +38,21 @@
 	                            breakpoint: 1200,
 	                            settings: {
 									infinite: false,
-									centerMode: false,
-	                                slidesToShow: 4,
-	                                slidesToScroll: 4,
+									centerMode: dataCenterMode && itemTotal > 4,
+	                                slidesToShow: itemsToShow - 1,
+	                                slidesToScroll: itemsToShow - 1,
 	                                arrows: dataArrows,
 									dots: dataDots && itemTotal > 4
 	                            }
 	                        },
 	                        {
-	                            breakpoint: 992,
+	                            breakpoint: 768,
 	                            settings: {
+									centerMode: dataCenterMode && itemTotal > 3,
 	                                slidesToShow: 3,
 	                                slidesToScroll: 3,
 	                                arrows: dataArrows,
 									dots: dataDots && itemTotal > 3
-	                            }
-	                        },
-	                        {
-	                            breakpoint: 768,
-	                            settings: {
-	                                slidesToShow: 2,
-	                                slidesToScroll: 2,
-	                                arrows: dataArrows,
-									dots: dataDots && itemTotal > 2
 	                            }
 	                        },
 	                        {
@@ -77,6 +70,7 @@
 	                        }
 	                    ]
 	                });
+					self.slick('setPosition');
 	            }
 	        });
 	    }

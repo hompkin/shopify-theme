@@ -10,8 +10,13 @@
     -%}
     <script type="application/ld+json">
     {
-        "@context": "http://schema.org/",
-        "@type": "Product",
+        "@context": "https://schema.org/",
+        {%- if fa_variant_count != 1 -%}
+            "@type": "ProductGroup",
+            "productGroupID": "{{ product.id }}",
+        {%- else -%}
+            "@type": "Product",
+        {%- endif -%}
         "name": "{{ product.title | strip_html | escape }}",
         "url": "{{ url }}{{ product.url }}",
         {%- if product.variants.first.sku != blank -%}
@@ -28,105 +33,97 @@
         {%- if product.variants.first.barcode.size == 14 -%}
             "gtin14": {{ product.variants.first.barcode }},
         {%- endif -%}
-        "productID": "{{ product.id }}",
+        "@id": "/products/{{ product.handle }}#product",
         "brand": {
             "@type": "Brand",
             "name": "{{ product.vendor | escape }}"
         },
-        "description": "{{ product.description | strip_html | escape | strip_newlines }}",
+        {% if product.description != blank %}
+            "description": "{{ product.description | strip_html | escape | strip_newlines }}",
+        {% else %}
+            "description": "{{ product.title | strip_html | escape }}",
+        {% endif %}
         "image": "https:{{ product.featured_image.src | img_url: 'original' }}",
-        {%- if product.variants -%}
-            {%- assign fa_count = fa_count | plus: 1 -%}
-            "offers": {% if product.variants.size > 1 %}[{% endif %}
-            {
-                "@type": "Offer",
-                "priceCurrency": "{{ shop.currency }}",
-                "price": "{{ fa_current_variant.price | divided_by: 100.00 | json }}",
-                "itemCondition": "http://schema.org/NewCondition",
-                "availability": "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
-                "url": "{{ url }}{{ fa_current_variant.url }}",
-                {%- if fa_current_variant.image -%}
-                    {% assign variant_image_size = fa_current_variant.image.width | append: 'x' %}
-                    "image": "https:{{ fa_current_variant.image.src | img_url: variant_image_size }}",
-                {%- else -%}
-                    "image": "https:{{ product.featured_image.src | img_url: 'original' }}",
-                {%- endif -%}
-                {%- if fa_current_variant.title != 'Default Title' -%}
-                    "name": "{{ product.title | strip_html | escape }} - {{ fa_current_variant.title | escape }}",
-                {%- else -%}
-                    "name": "{{ product.title | strip_html | escape }}",
-                {%- endif -%}
-                {%- if fa_current_variant.barcode.size == 12 -%}
-                    "gtin12": {{ fa_current_variant.barcode }},
-                {%- endif -%}
-                {%- if fa_current_variant.barcode.size == 13 -%}
-                    "gtin13": {{ fa_current_variant.barcode }},
-                {%- endif -%}
-                {%- if fa_current_variant.barcode.size == 14 -%}
-                    "gtin14": {{ fa_current_variant.barcode }},
-                {%- endif -%}
-                {%- if fa_current_variant.sku != blank -%}
-                    "sku": "{{ fa_current_variant.sku }}",
-                {%- else -%}
-                    "sku": "{{ fa_current_variant.id }}",
-                {%- endif -%}
-                {%- if product.description != blank -%}
-                    "description": "{{ product.description | strip_html | escape | strip_newlines }}",
-                {%- endif -%}
-                "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}"
-            }{%- if product.variants.size != 1 -%},{%- endif -%}
-            {%- for variant in product.variants -%}
-                {%- if variant != product.selected_or_first_available_variant -%}
-                    {%- assign fa_count = fa_count | plus: 1 -%}
-                    {
+        {%- if product.variants and fa_variant_count != 1 -%}
+            "hasVariant": [
+            {% for variant in product.variants %}
+                {%- assign fa_count = fa_count | plus: 1 -%}
+                {
+                    "@id": "/products/{{ product.handle }}?variant={{ variant.id }}#variant",
+                    "@type": "Product",
+                    {%- if variant.image -%}
+                        {%- assign variant_image_size = variant.image.width | append: 'x' -%}
+                        "image": "https:{{ variant.image.src | img_url: variant_image_size }}",
+                    {%- else -%}
+                        "image": "https:{{ product.featured_image.src | img_url: 'original' }}",
+                    {%- endif -%}
+                    {%- if variant.title != 'Default Title' -%}
+                        "name": "{{ product.title | strip_html | escape }} - {{ variant.title | escape }}",
+                    {%- else -%}
+                        "name": "{{ variant.title | strip_html | escape }}",
+                    {%- endif -%}
+                    "offers": {
+                        "@id": "/products/{{ product.handle }}?variant={{ variant.id }}#offer",
                         "@type": "Offer",
                         "priceCurrency": "{{ shop.currency }}",
                         "price": "{{ variant.price | divided_by: 100.00 | json }}",
-                        "itemCondition": "http://schema.org/NewCondition",
-                        "availability": "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+                        "itemCondition": "https://schema.org/NewCondition",
+                        "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
                         "url": "{{ url }}{{ variant.url }}",
-                        {%- if variant.image -%}
-                            {%- assign variant_image_size = variant.image.width | append: 'x' -%}
-                            "image": "http:{{ variant.image.src | img_url: variant_image_size }}",
-                        {%- else -%}
-                            "image": "https:{{ product.featured_image.src | img_url: 'original' }}",
-                        {%- endif -%}
-                        {%- if variant.title != 'Default Title' -%}
-                            "name": "{{ product.title | strip_html | escape }} - {{ variant.title | escape }}",
-                        {%- else -%}
-                            "name": "{{ product.title | strip_html | escape }}",
-                        {%- endif -%}
                         {%- if variant.barcode.size == 12 -%}
-                            "gtin12": {{ variant.barcode }},
+                            "gtin12": {{ variant.barcode | json }},
                         {%- endif -%}
                         {%- if variant.barcode.size == 13 -%}
-                            "gtin13": {{ variant.barcode }},
+                            "gtin13": {{ variant.barcode | json }},
                         {%- endif -%}
                         {%- if variant.barcode.size == 14 -%}
-                            "gtin14": {{ variant.barcode }},
+                            "gtin14": {{ variant.barcode | json }},
                         {%- endif -%}
                         {%- if variant.sku != blank -%}
                             "sku": "{{ variant.sku }}",
                         {%- else -%}
                             "sku": "{{ variant.id }}",
                         {%- endif -%}
-                        {%- if product.description != blank -%}
-                            "description": "{{ product.description | strip_html | escape | strip_newlines }}",
-                        {%- endif -%}
                         "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}"
                     }
-                    {%- if fa_count < fa_variant_count -%}
-                        {%- unless forloop.last %},{% endunless -%}
+
+                }{%- if fa_count != fa_variant_count -%},{%- endif -%}
+            {% endfor %}
+            ]
+        {%- else -%}
+            {%- for variant in product.variants -%}
+                "offers":
+                {
+                    "@id": "/products/{{ product.handle }}?variant={{ variant.id }}#offer",
+                    "@type": "Offer",
+                    "priceCurrency": "{{ shop.currency }}",
+                    "price": "{{ variant.price | divided_by: 100.00 | json }}",
+                    "itemCondition": "https://schema.org/NewCondition",
+                    "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+                    "url": "{{ url }}{{ variant.url }}",
+                    {%- if variant.barcode.size == 12 -%}
+                        "gtin12": {{ variant.barcode | json }},
                     {%- endif -%}
-                {%- endif -%}
+                    {%- if variant.barcode.size == 13 -%}
+                        "gtin13": {{ variant.barcode | json }},
+                    {%- endif -%}
+                    {%- if variant.barcode.size == 14 -%}
+                        "gtin14": {{ variant.barcode | json }},
+                    {%- endif -%}
+                    {%- if variant.sku != blank -%}
+                        "sku": "{{ variant.sku }}",
+                    {%- else -%}
+                        "sku": "{{ variant.id }}",
+                    {%- endif -%}
+                    "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}"
+                }
             {%- endfor -%}
-            {% if product.variants.size > 1 %}]{% endif %}
         {%- endif -%}
     }
     </script>
     <script type="application/ld+json">
     {
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org/",
         "@type": "BreadcrumbList",
         "itemListElement": [{
             "@type": "ListItem",
@@ -163,7 +160,7 @@
     </script>
     <script type="application/ld+json">
     {
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org/",
         "@type": "BreadcrumbList",
         "itemListElement": [{
             "@type": "ListItem",
@@ -182,7 +179,7 @@
 {%- elsif page_type == 'collection' and collection.handle -%}
     <script type="application/ld+json">
     {
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org/",
         "@type": "CollectionPage",
         "name": "{{ collection.title }}",
         "url": "{{ canonical_url }}",
@@ -191,7 +188,7 @@
     </script>
     <script type="application/ld+json">
     {
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org/",
         "@type": "BreadcrumbList",
         "itemListElement": [{
             "@type": "ListItem",

@@ -26,9 +26,7 @@
         assign fontsize_title_mb = section.settings.fontsize_title_mb
         assign mg_bottom_title = section.settings.mg_bottom_title
         assign mg_bottom_title_mb = section.settings.mg_bottom_title_mb
-
         assign enable_border_title = section.settings.enable_border_title
-
         assign headingLineHeight = settings.type_heading_line_height
     -%}
 
@@ -158,8 +156,8 @@
                                             {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                                         </div>
                                     {%- else -%}
-                                        <div class="not_img" style="--height_not_img: 100%">
-                                            {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                                        <div class="placeholder" style="--height_placeholder: 100%;">
+                                            {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
                                         </div>
                                     {%- endif -%}
                                     {% unless autoVideo %}
@@ -176,18 +174,18 @@
                                             {% else %}
                                                 src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}?autoplay={{ autoPlayNumber }}&title=0&byline=0&portrait=0&muted=1&loop=1&controls=0&autopause=0&playlist={{block.settings.video_url.id}}" 
                                             {% endif %}
-                                                class="{% if block.settings.video_url.type == 'youtube' %}js-youtube{%- else -%}js-vimeo{%- endif -%}" 
-                                                allow="autoplay; loop; encrypted-media" 
-                                                webkitallowfullscreen 
-                                                mozallowfullscreen 
-                                                allowfullscreen  
+                                                class="{% if block.settings.video_url.type == 'youtube' %}js-youtube{%- else -%}js-vimeo{%- endif -%}"
+                                                allow="autoplay; loop; encrypted-media"
+                                                webkitallowfullscreen
+                                                mozallowfullscreen
+                                                allowfullscreen
                                                 title="{{ block.settings.description | escape }}">
                                         </iframe>
                                     {%- else -%}
                                         {%- liquid
                                             if autoVideo
                                                 assign autoplay = 'none'
-                                            else 
+                                            else
                                                 assign autoplay = 'autoplay'
                                             endif
                                         -%}
@@ -251,7 +249,7 @@
                                         {%- endfor -%}
                                     {%- else -%}
                                         <div class="product{% if swipe %} slider__slide grid__item{% endif %}">
-                                            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                            {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
                                             {% render 'product-card-placeholder', index: current %}
                                         </div>
                                     {%- endif -%}
@@ -329,8 +327,104 @@
                 "max": 100,
                 "step": 5,
                 "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                "default": 0,
-                "info": "t:sections.layout.container.info_full_width"
+                "default": 0
+            },
+            {
+                "type" : "color",
+                "id" : "product_bg",
+                "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
+                "default" : "#fff"
+            },
+            {
+                "type" : "color_background",
+                "id" : "product_bg_gradient",
+                "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+            },
+            {
+                "type" : "image_picker",
+                "id" : "product_bg_image",
+                "label" : "t:settings_schema.colors.settings.colors_name.background_image"
+            },
+            {
+                "type": "header",
+                "content": "t:sections.image-banner.blocks.image.settings.content.label__19"
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_heading_sticky",
+                "label": "t:settings_schema.typography.settings.typography.enable_heading_sticky",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_border_title",
+                "label": "t:settings_schema.typography.settings.typography.title_enable_border",
+                "info": "t:settings_schema.typography.settings.typography.info_enable_border_title",
+                "default": false
+            },
+            {
+                "type": "text_alignment",
+                "id": "title_align",
+                "label": "t:sections.general.settings.alignment.label__1",
+                "default": "center"
+            },
+            {
+                "type": "text",
+                "id": "section_title",
+                "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
+                "default": "Clearance sale"
+            },
+            {
+                "type": "range",
+                "id": "fontsize_title",
+                "label": "t:settings_schema.typography.settings.typography.title_font_size",
+                "min": 10,
+                "max": 100,
+                "step": 1,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 40
+            },
+            {
+                "type": "range",
+                "id": "fontsize_title_mb",
+                "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
+                "min": 10,
+                "max": 50,
+                "step": 1,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 20
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_title",
+                "label": "t:settings_schema.typography.settings.typography.title_margin_bottom",
+                "min": 0,
+                "max": 50,
+                "step": 1,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 12
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_title_mb",
+                "label": "t:settings_schema.typography.settings.typography.title_mg_bottom_mobile",
+                "min": 0,
+                "max": 50,
+                "step": 1,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 12
+            },
+            {
+                "type" : "color",
+                "id" : "color_title",
+                "label": "t:settings_schema.typography.settings.typography.title_color",
+                "default" : "#232323"
+            },
+            {
+                "type" : "color",
+                "id" : "border_color_title",
+                "label": "t:settings_schema.typography.settings.typography.title_border_color",
+                "default": "#232323"
             },
             {
                 "type": "header",
@@ -399,104 +493,6 @@
                 "step": 5,
                 "unit": "t:sections.layout.mg_desktop.unit",
                 "default": 50
-            },
-            {
-                "type" : "color",
-                "id" : "product_bg",
-                "label": "t:settings_schema.colors.settings.colors_name.background_color",
-                "default" : "#fff"
-            },
-            {
-                "type" : "color_background",
-                "id" : "product_bg_gradient",
-                "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-            },
-            {
-                "type" : "image_picker",
-                "id" : "product_bg_image",
-                "label" : "t:settings_schema.colors.settings.colors_name.background_image"
-            },
-            {
-                "type": "header",
-                "content": "t:sections.image-banner.blocks.image.settings.content.label__19"
-            },
-            {
-                "type": "checkbox",
-                "id": "enable_heading_sticky",
-                "label": "t:settings_schema.typography.settings.typography.enable_heading_sticky",
-                "info": "t:sections.slide-show.blocks.image.info_enable_custom_position",
-                "default": false
-            },
-            {
-                "type": "checkbox",
-                "id": "enable_border_title",
-                "label": "t:settings_schema.typography.settings.typography.title_enable_border",
-                "info": "t:settings_schema.typography.settings.typography.info_enable_border_title",
-                "default": false
-            },
-            {
-                "type": "text_alignment",
-                "id": "title_align",
-                "label": "t:sections.product_block.settings.general.label__7",
-                "default": "center"
-            },
-            {
-                "type": "text",
-                "id": "section_title",
-                "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
-                "default": "Clearance sale"
-            },
-            {
-                "type": "range",
-                "id": "fontsize_title",
-                "label": "t:sections.layout.fontsize.fontsize_title.label",
-                "min": 10,
-                "max": 100,
-                "step": 1,
-                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                "default": 40
-            },
-            {
-                "type": "range",
-                "id": "fontsize_title_mb",
-                "label": "t:sections.layout.fontsize.fontsize_title.label_mb",
-                "min": 10,
-                "max": 50,
-                "step": 1,
-                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                "default": 20
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_title",
-                "label": "t:sections.layout.mg_bottom_title.label",
-                "min": 0,
-                "max": 50,
-                "step": 1,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 12
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_title_mb",
-                "label": "t:sections.layout.mg_bottom_title.label_mb",
-                "min": 0,
-                "max": 50,
-                "step": 1,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 12
-            },
-            {
-                "type" : "color",
-                "id" : "color_title",
-                "label": "t:sections.layout.color.color_title",
-                "default" : "#232323"
-            },
-            {
-                "type" : "color",
-                "id" : "border_color_title",
-                "label": "t:settings_schema.typography.settings.typography.title_border_color",
-                "default": "#232323"
             }
         ],
         "blocks": [
@@ -547,8 +543,7 @@
                         "type": "text",
                         "id": "video_height",
                         "label": "t:sections.video.settings.video_height.label",
-                        "default": "130",
-                        "info": "t:sections.video.settings.video_height.info"
+                        "default": "130"
                     },
                     {
                         "type": "text",
@@ -577,7 +572,7 @@
                     {
                         "type": "range",
                         "id": "limit",
-                        "label": "t:sections.product_block.settings.product_block_limit",
+                        "label": "t:settings_schema.quick_search.settings.general.label__2",
                         "min": 1,
                         "max": 10,
                         "step": 1,
@@ -628,6 +623,10 @@
                         "id": "product_block_progress_bar",
                         "label": "t:sections.product_block.settings.slider.enable_progress_bar",
                         "default": false
+                    },
+                    {
+                        "type": "header",
+                        "content": "t:sections.collection_lookbook.settings.content_3"
                     },
                     {
                         "type": "range",

@@ -57,66 +57,72 @@ class ProductBundle extends HTMLElement {
             let data = '';
             let hint = ',';
             let attributes = {};
-            const cartItem = document.querySelectorAll('.previewCartItem');
+
+            fetch(`${window.routes.root}/cart`)
+                .then((response) => response.text())
+                .then((responseText) => {
+                    const html = new DOMParser().parseFromString(responseText, 'text/html');
+                    const cartItem = html.querySelectorAll('.cart-item');
     
-            if (cartItem) {
-                cartItem.forEach(element => {
-                    const variantId = element.querySelector('.previewCartItem-qty').dataset.variant,
-                        qty = parseInt(element.querySelector('input[name="quantity"]').value);
-    
-                    if(variantId) {
-                        data = `${variantId}:${qty}${hint}${data}`;
-                    }
-                })
-            }
-    
-            bundleItem.forEach((item, index) => {
-                const variantId = item.querySelector('[name=group_id]').value;
-    
-                if(variantId) {
-                    data = `${data}${variantId}:1${index == (bundleItem.length - 1) ? '' : hint}`;
-                }
-            });
-    
-            $.post( "/cart", function(data) {
-                btnAddTocart.value = waitMessage;
-                attributes = data.attributes;
-            }).done(async function() {
-                const addProductsToCart = async () => {
-                    await fetch(`/cart/${data}`, {mode: 'no-cors'});
-                }
-    
-                const updateBundleDiscountData = async () => {
-                    if (!$this.querySelector('[data-bundle-discount-rate]')) return;
-                    const bundleDiscountRate = parseFloat($this.querySelector('[data-bundle-discount-rate]').dataset.bundleDiscountRate);
-    
-                    const items = [...bundleItem].map(item => parseInt(item.dataset.bundleProductItemId));
-    
-                    const new_checkout_level_applications = [{ name: discountCode, bundleDiscountRate, items }];
-                    const newAttributes = { ...attributes, checkout_level_applications: new_checkout_level_applications };
-                    const attributesBody = JSON.stringify({ attributes: newAttributes });
-                    localStorage.setItem('storedDiscount', discountCode);
-                    
-                    await fetch(`${routes.cart_update_url}`, {...fetchConfig(), ...{ body: attributesBody }});
-                }
-    
-                const applyDiscountCodeToServer = async () => {
-                    await fetch(`/discount/${discountCode}?redirect=cart`) 
-                }
-    
-                try {
-                    await addProductsToCart();
-    
-                    if (bundleItem.length == $this.form.querySelectorAll('.bundle-product-item').length) {
-                        await updateBundleDiscountData();
-                        await applyDiscountCodeToServer();
+                    if (cartItem) {
+                        cartItem.forEach(element => {
+                            const variantId = element.querySelector('input.cart-item-qty-input').dataset.cartQuantityId,
+                                  qty = parseInt(element.querySelector('input.cart-item-qty-input').value);
+            
+                            if(variantId) {
+                                data = `${variantId}:${qty}${hint}${data}`;
+                            }
+                        })
                     }
     
-                    $this.querySelector('.bundle-product-wrapper').classList.remove('has-halo-block-loader');
-                    $this.redirectTo(window.routes.cart);
-                } catch(err) {
-                    console.error(err);
-                }
+                    bundleItem.forEach((item, index) => {
+                        const variantId = item.querySelector('[name=group_id]').value;
+            
+                        if(variantId) {
+                            data = `${data}${variantId}:1${index == (bundleItem.length - 1) ? '' : hint}`;
+                        }
+                    });
+            
+                    $.post( "/cart", function(data) {
+                        btnAddTocart.value = waitMessage;
+                        attributes = data.attributes;
+                    }).done(async function() {
+                        const addProductsToCart = async () => {
+                            await fetch(`/cart/${data}`, {mode: 'no-cors'});
+                        }
+            
+                        const updateBundleDiscountData = async () => {
+                            if (!$this.querySelector('[data-bundle-discount-rate]')) return;
+                            const bundleDiscountRate = parseFloat($this.querySelector('[data-bundle-discount-rate]').dataset.bundleDiscountRate);
+            
+                            const items = [...bundleItem].map(item => parseInt(item.dataset.bundleProductItemId));
+            
+                            const new_checkout_level_applications = [{ name: discountCode, bundleDiscountRate, items }];
+                            const newAttributes = { ...attributes, checkout_level_applications: new_checkout_level_applications };
+                            const attributesBody = JSON.stringify({ attributes: newAttributes });
+                            localStorage.setItem('storedDiscount', discountCode);
+                            
+                            await fetch(`${routes.cart_update_url}`, {...fetchConfig(), ...{ body: attributesBody }});
+                        }
+            
+                        const applyDiscountCodeToServer = async () => {
+                            await fetch(`/discount/${discountCode}?redirect=cart`) 
+                        }
+            
+                        try {
+                            await addProductsToCart();
+            
+                            if (bundleItem.length == $this.form.querySelectorAll('.bundle-product-item').length) {
+                                await updateBundleDiscountData();
+                                await applyDiscountCodeToServer();
+                            }
+            
+                            $this.querySelector('.bundle-product-wrapper').classList.remove('has-halo-block-loader');
+                            $this.redirectTo(window.routes.cart);
+                        } catch(err) {
+                            console.error(err);
+                        }
+                    });
             });
         }
 
@@ -138,8 +144,10 @@ class ProductBundle extends HTMLElement {
                             console.log($.parseJSON(xhr.responseText).description);
                         },
                         complete: function () {
-                            if ((window.show_multiple_currencies && typeof Currency != 'undefined' && Currency.currentCurrency != shopCurrency) || window.show_auto_currency) {
-                                Currency.convertAll(window.shop_currency, $('#currencies .active').attr('data-currency'), 'span.money', 'money_format');
+                            if($('.dropdown-item[data-currency]').length){
+                                if ((window.show_multiple_currencies && typeof Currency != 'undefined' && Currency.currentCurrency != shopCurrency) || window.show_auto_currency) {
+                                    Currency.convertAll(window.shop_currency, $('#currencies .active').attr('data-currency'), 'span.money', 'money_format');
+                                }
                             }
                             document.dispatchEvent(new CustomEvent('cart-update', { detail: cart }));
                             addToCart();
@@ -506,7 +514,12 @@ class ProductBundle extends HTMLElement {
     }
 
     checkNeedToConvertCurrency() {
-        return (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency;
+        var currencyItem = $('.dropdown-item[data-currency]');
+        if (currencyItem.length) {
+            return (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency;
+        } else {
+            return;
+        }
     }
 }
 

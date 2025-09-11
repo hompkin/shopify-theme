@@ -21,7 +21,7 @@
             endif
         -%}
         <div class="bundle-product-image">
-            <a href="{{ product.url | within: collection }}" class="bundle-product-media bundle-product-media--{{ image_ratio }}"
+            <a href="{{ product.url }}" class="bundle-product-media bundle-product-media--{{ image_ratio }}"
                 {% if product.featured_media %}
                     {% if image_ratio == 'adapt' %}
                         style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"
@@ -57,19 +57,20 @@
                         src="{{ product.featured_media | img_url: '533x' }}"
                         sizes="(min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                         alt="{{ product.featured_media.alt | escape }}"
-                        loading="lazy"
+                       {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                         class="motion-reduce"
                     >
                 {%- else -%}
-                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture -%}
+                    {%- assign placeholder_image = 'product-apparel-' | append: current -%}
+                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
                 {%- endif -%}
             </a>
         </div>
         <div class="bundle-product-information">
             <div class="bundle-product-content">
                 <div class="bundle-product-checkbox">
-                    <a class="card-title card-title-ellipsis" href="{{ product.url | within: collection }}">
+                    <a class="card-title card-title-ellipsis" href="{{ product.url }}">
                         {{ product.title | split: '|' | first }}
                         {% comment %} <span data-bundle-product-title> - {{ current_variant.title }}</span> {% endcomment %}
                     </a>
@@ -105,7 +106,7 @@
                 </div>
             </div>
             {%- if variantCount > 1 -%}
-                <select id="product-variants-{{ product.id }}" name="group_id" style="display: none;" autocomplete="off">
+                <select id="product-variants-{{ product.id }}{{forloop1.index}}" name="group_id" style="display: none;" autocomplete="off">
                     {%- for variant in product.variants -%}
                         {%- if variant.available -%}
                             <option {% if variant == current_variant %} selected="selected" {% endif %} value="{{ variant.id }}" data-price="{{ variant.price }}" {% if variant.image.src != blank %}data-image="{{ variant.image.src | product_img_url: 'master' }}"{% endif %}>
@@ -121,7 +122,8 @@
                 <div class="combo-options customPopup-small isChecked" data-product-option-id="{{ product.id }}">
                     {% render 'product-combo-swatch',
                         product: product,
-                        picker_type: picker_type
+                        picker_type: picker_type,
+                        forloop2: forloop1
                     %}
                     {% comment %} {%- if settings.show_hot_stock -%}
                         {% assign productMaxStock = settings.hot_stock_limit | plus: 0 %}

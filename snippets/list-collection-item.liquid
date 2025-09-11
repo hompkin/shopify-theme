@@ -1,11 +1,12 @@
 {%- liquid
     assign layout = settings.list_collections_layout
 -%}
+
 <div class="banner-item item">
   {%- if layout == 'collections_02_list' or layout == 'collections_full' -%}
     <div class="halo-row column-2">
       <div class="halo-item">
-  {%- endif -%} 
+  {%- endif -%}
       <div class="img-box{% if layout == 'collections_01_grid' or layout == 'collections_4' %} animate-hvr{% endif %}">
         {%- liquid
           if type == 'all'
@@ -25,19 +26,22 @@
           endif
         -%}
         {%- if image != blank -%}
-          <a class="image image-{{ image_ratio }} adaptive_height" href="{{ link }}"{% if image_ratio == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;"{% elsif image_ratio == 'square' %} style="padding-bottom: 100%;"{% elsif image_ratio == 'portrait' %}{% if portrait_aspect_ratio != blank %} style="padding-bottom: {{ portrait_aspect_ratio | append: '%' }};"{% endif %}{% endif %}>
-              <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ image | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ image | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}" loading="lazy"{% if settings.enable_lazyload %} class="lazyload"{% endif %}>
+          <a class="image image-{{ image_ratio }} adaptive_height" {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %}{% if image_ratio == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;"{% elsif image_ratio == 'square' %} style="padding-bottom: 100%;"{% elsif image_ratio == 'portrait' %}{% if portrait_aspect_ratio != blank %} style="padding-bottom: {{ portrait_aspect_ratio | append: '%' }};"{% endif %}{% endif %}>
+              <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ image | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ image | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload" loading="lazy"{% endif %}>
               {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
             </a>
         {%- else -%}
-            <a class="image" href="{{ link }}">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+            <a class="image" {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %}>
+              {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+              {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+            </a>
         {%- endif -%}
         {% if layout == 'collections_01_grid' or layout == 'collections_4' %}
-          <div class="view-abs"><a href="{{ link }}" class="view"></a></div>
+          <div class="view-abs"><a {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %} class="view"></a></div>
         {%- endif -%}
         {%- if layout == 'collections_4' -%}
           {%- if show_collection_title -%}
-            <h3 class="collection-title"><a href="{{ link }}" title="{{ collection.title | escape }}">{{ collection.title}}</a> {% render 'icon-arrow-right' %}</h3>
+            <h3 class="collection-title"><a {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %} title="{{ collection.title | escape }}">{{ collection.title}}</a> {% render 'icon-arrow-right' %}</h3>
           {%- endif -%}
           {%- if show_collection_product_count -%}
               <span class="count">{{ 'sections.collection_list.count' | t: count: collection.all_products_count }}</span>
@@ -57,7 +61,7 @@
           </div>
         {%- endif -%}
       </div>
-  {%- if layout == 'collections_02_list' or layout == 'collections_full' -%}    
+  {%- if layout == 'collections_02_list' or layout == 'collections_full' -%}
     </div>
     <div class="halo-item">
   {%- endif -%}
@@ -65,13 +69,13 @@
           {%- unless layout == 'collections_4' -%}
             <div class="collections-wrapper text-{{ align }}">
               {%- if show_collection_title -%}
-                <h3 class="collection-title"><a href="{{ link }}" title="{{ collection.title | escape }}">{{ collection.title}}</a></h3>
+                <h3 class="collection-title"><a {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %} title="{{ collection.title | escape }}">{{ collection.title}}</a></h3>
               {%- endif -%}
               {%- if show_collection_product_count -%}
                   <span class="count">{{ 'sections.collection_list.count' | t: count: collection.all_products_count }}</span>
               {%- endif -%}
               <div class="des">{{ collection.description | strip_html | truncatewords: limit_content_des }}</div>
-              <a href="{{ link }}" class="collections-button{% if button_style == 'style1' %} button button--primary{% endif %}">{{ button }}</a>
+              <a {% if link == blank %}role="link" aria-disabled="true"{% else %}href="{{ link }}"{% endif %} class="collections-button{% if button_style == 'style1' %} button button--primary{% endif %}">{{ button }}</a>
             </div>
           {%- endunless -%}
         {%- endif -%}

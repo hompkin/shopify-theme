@@ -22,14 +22,14 @@
                                             </div>
                                         </div>
                                     {%- endif -%}
+                                {% elsif settings.enable_currencies %}
+                                {{ "jquery.currencies.min.js" | asset_url | script_tag }}
                                 {%- endif -%}
                                 {%- if block.settings.show_cart -%}
                                     <a {% if settings.show_quick_cart %}data-cart-sidebar role="link" aria-disabled="true"{% else %}href="{{ routes.cart_url }}"{% endif %} class="header__icon header__icon--cart link link--text focus-inset" id="cart-icon-bubble">
                                         {% render 'icon-cart-02' %}
                                         <div class="cart-count-bubble">
-                                            {%- if cart.item_count < 100 -%}
-                                                <span class="text" aria-hidden="true" data-cart-count>{{ cart.item_count }}</span>
-                                            {%- endif -%}
+                                            <span class="text" aria-hidden="true" data-cart-count>{%- if cart.item_count < 100 -%}{{ cart.item_count }}{%- else -%}{{ 'sections.cart.item_99' | t }}{%- endif -%}</span>
                                             <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
                                         </div>
                                     </a>
@@ -50,7 +50,7 @@
     "settings": [
         {
             "type": "paragraph",
-            "content": "*You should only activate \/ use \"Header\" you want, don't use the redundant headers which may not optimize for performance."
+            "content": "*You should only activate\/use \"Header\" you want, don't use the redundant headers which may not optimize for performance."
         },
         {
             "type": "select",
@@ -89,16 +89,15 @@
             "id": "padding_full_width",
             "label": "t:sections.layout.container.padding_full_width",
             "min": 0,
-            "max": 75,
+            "max": 100,
             "step": 5,
             "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 0,
-            "info": "t:sections.layout.container.info_full_width"
+            "default": 0
         },
         {
             "type": "color",
             "id": "header_bg",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color",
+            "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
             "default": "#26292d"
         },
         {
@@ -117,7 +116,7 @@
             "max": 50,
             "step": 1,
             "unit": "px",
-            "label": "t:sections.main-list-collections.settings.spacing.mg_top",
+            "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
             "default": 0
         },
         {
@@ -127,7 +126,7 @@
             "max": 50,
             "step": 1,
             "unit": "px",
-            "label": "t:sections.main-list-collections.settings.spacing.mg_bottom",
+            "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
             "default": 0
         }
     ],
@@ -140,7 +139,7 @@
                 {
                     "type": "color",
                     "id": "color",
-                    "label": "t:sections.header.settings.header_top.label__4",
+                    "label": "t:settings_schema.typography.settings.typography.icon_color",
                     "default": "#fff"
                 }
             ]   
@@ -169,7 +168,7 @@
                 {
                     "type": "color",
                     "id": "language_currency_bg",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#DDBDB0"
                 },
                 {

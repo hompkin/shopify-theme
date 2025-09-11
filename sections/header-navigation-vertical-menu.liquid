@@ -1,5 +1,6 @@
 {{ 'component-megamenu.css' | asset_url | stylesheet_tag: preload: true }}
 <style>
+    .header__menu-vertical .menu-lv-1__action .icon-img img{display: inline-block;vertical-align: middle;margin:-3px 5px 0 0}
     @media screen and (min-width: 1025px) {
         .header-nav-vertical-menu{
             {%- if section.settings.header_navigation_bg_gradient != 'rgba(0,0,0,0)' and section.settings.header_navigation_bg_gradient != blank -%}
@@ -20,17 +21,20 @@
             .header-nav-vertical-menu > .container-full {padding-left: {{ section.settings.padding_full_width | append: 'px' }};padding-right: {{ section.settings.padding_full_width | append: 'px' }}}
         {%- endif -%}
     }
-    @media screen and (min-width:1025px){.header-nav-vertical-menu .vertical-menu{width:260px;cursor:pointer}.vertical-menu .categories-title{padding:11px 25px;border-top-left-radius:6px;border-top-right-radius:6px;background:var(--title_categories_bg)}.vertical-menu .categories-title .title{color:var(--title_categories_color);font-size:var(--title_categories_font_size);line-height: var(--title_categories_line_height);font-weight: var(--font-weight-medium)}.vertical-menu .categories-title .view_all{font-size:var(--view_all_font_size);color:var(--view_all_link_color)}.categories-title__button .icon-grid{fill:var(--icon_title_categories_color);margin-top:-1px}.categories-title__button .icon-grid+.title{margin-left:8px}.icon--dropdown{width:6px;height:1px;transform:rotate(-45deg);vertical-align:middle;margin-left:5px;transition:0.3s;background:var(--title_categories_color)}.icon--dropdown:before{content:"";position:absolute;left:3px;top:3px;width:6px;height:1px;;transform:rotate(-90deg);background:var(--title_categories_color)}.vertical-menu__hide .icon--dropdown{margin-left:15px;transform:rotate(-225deg)}.icon-hamburger{width:24px;height:2px;vertical-align:middle;margin-right:12px;cursor:pointer;position:relative;background-color:var(--icon_title_categories_color)}.icon-hamburger:after,.icon-hamburger:before{display:block;width:24px;height:2px;position:absolute;left:0;right:0;content:"";transition:transform .3s;transition-delay:.2s;background-color:var(--icon_title_categories_color)}.icon-hamburger:before{top:-8px}.icon-hamburger:after{top:8px}.categories-title__style_1 .categories-title__button{position:relative;padding-right:15px;width:100%}.categories-title__style_1 .icon--dropdown{position:absolute;right:4px;top:50%;margin-top:-3px}.header-navigation .vertical-menu__style_3{width:195px}.vertical-menu .categories-title__style_3{background:none;padding:11px 15px 11px 0;border-radius:0;position:relative}.categories-title__style_3:before{position:absolute;content:"";top:50%;transform:translateY(-50%);right:0;width:1px;height:30px;background-color:var(--title_categories_border_color)}.vertical-menu__style_3:hover .header__menu-vertical{opacity:1;visibility:visible;transform:translateY(0);box-shadow:0 3px 5px #0000000d;pointer-events:auto}.header-nav-vertical-menu .header__inline-menu-ver{width:calc(100% - 290px)}.vertical-menu__style_3+.header__inline-menu{width:calc(100% - 195px)}.header__menu-vertical .menu-lv-1__action>.label{display:inline-block;position:relative;right:auto;top:auto;margin-left:15px}.header__menu-vertical .menu-lv-1__action>.label:before{left:-5px;bottom:4px;transform:translate(-50%) rotate(270deg);border-bottom-color:var(--new_label_border)}.header-navigation .header__menu-vertical{border-top:none;visibility:visible;pointer-events:auto;transform:translateY(0);transition:transform .3s linear;width:260px;box-shadow:0 3px 18px 2px rgba(0,0,0,.2);border-bottom-left-radius:6px;border-bottom-right-radius:6px}.header-navigation .vertical-menu__hide .header__menu-vertical{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(30px)}.header__menu-vertical .list-menu{padding:19px 0 26px}.header__menu-vertical .menu-lv-item:not(.d-none){display:block;margin:0}.header__menu-vertical .menu-lv-1__action{padding:10px 25px}.header__menu-vertical .menu-lv-item .list-menu--disclosure{position:absolute;left:calc(100% - 15px);box-shadow:none;padding:10px 0 0 0;top:-10px}.header__menu-vertical .menu-lv-item .list-menu--disclosure,.header__menu-vertical .menu-lv-2.dropdown:hover .site-nav-list-dropdown>.header__submenu{background-color:transparent}.header__menu-vertical .list-menu--disclosure .bg_white{background:var(--bg-white);box-shadow:0 1px 4px 0 rgb(0 0 0 / 15%);border-radius:6px}.header__menu-vertical .list-menu--disclosure-2{margin-left:0}.header__menu-vertical .menu-lv-1 .icon-dropdown{display:block;float:right}.header__menu-vertical .menu-lv-1__action .icon{right:23px;fill:var(--vertical_menu_lv1_color)}.header__menu-vertical .no-megamenu .menu-lv-2,.header__menu-vertical .no-megamenu .menu-lv-3{padding:0 20px}.header__menu-vertical .has-megamenu .menu-dropdown{left:100%;right:initial;top:0;min-width:calc(100vw - 450px);padding:0 30px 0 15px;max-height:90vh;border-bottom-left-radius:6px;border-bottom-right-radius:6px;box-shadow:0 3px 18px 2px rgb(0 0 0 / 20%);height: -webkit-fill-available;}.header__menu-vertical .has-megamenu .menu-dropdown .icon-dropdown{display:none}.header__menu-vertical>.list-menu{background:var(--vertical_menu_bg);border-bottom-left-radius:6px;border-bottom-right-radius:6px}.header__menu-vertical .menu-lv-1:not(.menu-sale) .menu-lv-1__action{color:var(--vertical_menu_lv1_color)}.header__menu-vertical .menu-lv-1:hover{background:var(--vertical_menu_lv1_hover_bg)}.header__menu-vertical .menu-lv-1:hover .menu-lv-1__action{color:var(--vertical_menu_lv1_color_hover)}.header__menu-vertical .menu-lv-1>.link-effect>.text:after{background:var(--vertical_menu_lv1_color_hover)}.header__menu-vertical .menu-lv-1>.link-effect:hover>.text:after{background:var(--vertical_menu_lv1_color_hover)}.header__menu-vertical .menu-lv-1:hover>a .icon{fill:var(--vertical_menu_lv1_color_hover)}.header-nav-vertical-menu .header-icons{padding:8px 0;max-width:350px; column-gap: 15px}.header-nav-vertical-menu .header-icons .header__icon{display:inline-block}.header-nav-vertical-menu .header__icon--cart svg{margin-top:-1px}.header-nav-vertical-menu .customer-service-text,.header-nav-vertical-menu .help-item{font-size:var(--text_font_size)}.section-header-navigation:not(.scrolled-past-header) .header-nav-vertical-menu .customer-service-text+.icons-top-right:not(.ml-0){margin-left:15px}.header-nav-vertical-menu .icons-top-right,.header-nav-vertical-menu .header-icons-bottom,.header-nav-vertical-menu .customer-service-text-ptb{padding-top:4px;padding-bottom:4px}.header-nav-vertical-menu .customer-service-text-pt{padding-top:4px}.header-nav-vertical-menu .customer-service-text{vertical-align:middle}.header-nav-vertical-menu .customer-service-text p{margin-top:0;margin-bottom:0}.header-nav-vertical-menu .help-item-has-border{margin-right:20px}.header-nav-vertical-menu .help-item-has-border:before{position:absolute;content:"";width:1px;height:22px;top:50%;transform:translateY(-50%);right:0;background-color:var(--icon_help_border_color)}.header-nav-vertical-menu .help-item svg{color:var(--icon_help_color);margin-top: -1px}.header-nav-vertical-menu .help-item span{vertical-align:middle;margin-top:-1px;color:var(--header_icons_color)}.header-nav-vertical-menu .help-item a:hover span{color:var(--header_icons_color_hover)}.header-nav-vertical-menu .header__search .icon-search{margin-top:3px}.header-nav-vertical-menu .header__icon--cart .cart-count-bubble{top:-7px}.scrolled-past-header .header-nav-vertical-menu .customer-service-text,.scrolled-past-header .header-nav-vertical-menu .help-item{display:none}.sticky-search-menu-open .header-nav-vertical-menu .search-modal__form{max-width:555px;background-color:var(--bg-white)}.sticky-search-menu-open .header-nav-vertical-menu .search-modal__content{max-width:555px;animation:animateMenuOpen .5s ease}.sticky-search-menu-open .header-nav-vertical-menu .search__input{padding:7px 10px}.sticky-search-menu-open .header-nav-vertical-menu .search__button svg{width:18px;height:18px}.sticky-search-menu-open .header-nav-vertical-menu .quickSearchResultsWrap{right:0;left:0;width:555px}.sticky-search-menu-open .header-nav-vertical-menu .quickSearchResults .container{padding-left:20px;padding-right:20px}.sticky-search-menu-open .header-nav-vertical-menu details>.search-modal{padding:10vh 0;border:1px solid #dadada;background:rgba(35,35,35,.8)}.sticky-search-menu-open .header-nav-vertical-menu .header-search-close{padding:0 0 15px 0}.sticky-search-menu-open .header-nav-vertical-menu .header-search-close svg{fill:var(--bg-white);width:20px;height:20px}.header-nav-vertical-menu .header-item:first-child {justify-content: flex-start}.header-nav-vertical-menu .header-item:nth-child(2){justify-content: center}.header-nav-vertical-menu .header-item:nth-child(3) {justify-content: flex-end}.header-nav-vertical-menu .header-item:nth-child(3) .header-icons-top{text-align: right}.header-nav-vertical-menu .header-item:nth-child(2) .header-icons-top{text-align: center}.scrolled-past-header .header-nav-vertical-menu .header-icons {padding: 4px 0}.header__menu-vertical .menu-lv-1__action .icon-img img{display: inline-block;vertical-align: middle;margin:-3px 5px 0 0}.vertical-menu__style_3 .header__menu-vertical{opacity: 0;visibility: hidden;transform: translateY(30px)}.vertical-menu__style_3:hover .header__menu-vertical {opacity: 1;visibility: visible;transform: translateY(0)}
+    @media screen and (min-width:1025px){.header-nav-vertical-menu .vertical-menu{width:260px;cursor:pointer}.vertical-menu .categories-title{padding:11px 25px;border-top-left-radius:6px;border-top-right-radius:6px;background:var(--title_categories_bg)}.vertical-menu .categories-title .title{color:var(--title_categories_color);font-size:var(--title_categories_font_size);line-height: var(--title_categories_line_height);font-weight: var(--font-menu-lv1-weight);}.vertical-menu .categories-title .view_all{font-size:var(--view_all_font_size);color:var(--view_all_link_color)}.categories-title__button .icon-grid{fill:var(--icon_title_categories_color);margin-top:-1px}.categories-title__button .icon-grid+.title{margin-left:8px}.icon--dropdown{width:6px;height:1px;transform:rotate(-45deg);vertical-align:middle;margin-left:5px;transition:0.3s;background:var(--title_categories_color)}.icon--dropdown:before{content:"";position:absolute;left:3px;top:3px;width:6px;height:1px;;transform:rotate(-90deg);background:var(--title_categories_color)}.vertical-menu__hide .icon--dropdown{margin-left:15px;transform:rotate(-225deg)}.icon-hamburger{width:24px;height:2px;vertical-align:middle;margin-right:12px;cursor:pointer;position:relative;background-color:var(--icon_title_categories_color)}.icon-hamburger:after,.icon-hamburger:before{display:block;width:24px;height:2px;position:absolute;left:0;right:0;content:"";transition:transform .3s;transition-delay:.2s;background-color:var(--icon_title_categories_color)}.icon-hamburger:before{top:-8px}.icon-hamburger:after{top:8px}.categories-title__style_1 .categories-title__button{position:relative;display: flex;align-items: center;padding-right:15px;width:100%;}.categories-title__style_1 .icon--dropdown{position:absolute;right:4px;top:50%;}.header-navigation .vertical-menu__style_3{width:195px}.vertical-menu .categories-title__style_3{background:none;padding:11px 15px 11px 0;border-radius:0;position:relative}.categories-title__style_3:before{position:absolute;content:"";top:50%;transform:translateY(-50%);right:0;width:1px;height:30px;background-color:var(--title_categories_border_color)}.vertical-menu__style_3:hover .header__menu-vertical{opacity:1;visibility:visible;transform:translateY(0);box-shadow:0 3px 5px #0000000d;pointer-events:auto}.header-nav-vertical-menu .header__inline-menu-ver{width:calc(100% - 290px)}.vertical-menu__style_3+.header__inline-menu{width:calc(100% - 195px)}.header__menu-vertical .menu-lv-1__action>.label{display:inline-block;position:relative;right:auto;top:auto;margin-left:15px}.header__menu-vertical .menu-lv-1__action>.label:before{left:-5px;bottom:4px;transform:translate(-50%) rotate(270deg);border-bottom-color:var(--new_label_border)}.header-navigation .header__menu-vertical{border-top:none;visibility:visible;pointer-events:auto;transform:translateY(0);transition:transform .3s linear;width:260px;box-shadow:0 3px 18px 2px rgba(0,0,0,.2);border-bottom-left-radius:6px;border-bottom-right-radius:6px}.header-navigation .vertical-menu__hide .header__menu-vertical{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(30px)}.header__menu-vertical .list-menu{padding:19px 0 26px}.header__menu-vertical .menu-lv-item:not(.d-none){display:block;margin:0}.header__menu-vertical .menu-lv-1__action{padding:10px 25px}.header__menu-vertical .menu-lv-item .list-menu--disclosure{position:absolute;left:calc(100% - 15px);box-shadow:none;padding:10px 0 0 0;top:-10px}.header__menu-vertical .menu-lv-item .list-menu--disclosure,.header__menu-vertical .menu-lv-2.dropdown:hover .site-nav-list-dropdown>.header__submenu{background-color:transparent}.header__menu-vertical .list-menu--disclosure .bg_white{background:var(--bg-white);box-shadow:0 1px 4px 0 rgb(0 0 0 / 15%);border-radius:6px}.header__menu-vertical .list-menu--disclosure-2{margin-left:0}.header__menu-vertical .menu-lv-1 .icon-dropdown{display:block;float:right}.header__menu-vertical .menu-lv-1__action .icon{right:23px;fill:var(--vertical_menu_lv1_color)}.header__menu-vertical .no-megamenu .menu-lv-2,.header__menu-vertical .no-megamenu .menu-lv-3{padding:0 20px}.header__menu-vertical .has-megamenu .menu-dropdown{left:100%;right:initial;top:0;min-width:calc(100vw - 450px);padding:0 30px 0 15px;max-height:90vh;border-bottom-left-radius:6px;border-bottom-right-radius:6px;box-shadow:0 3px 18px 2px rgb(0 0 0 / 20%);height: 100%;}.header__menu-vertical .has-megamenu .menu-dropdown .icon-dropdown{display:none}.header__menu-vertical>.list-menu{background:var(--vertical_menu_bg);border-bottom-left-radius:6px;border-bottom-right-radius:6px}.header__menu-vertical .menu-lv-1:not(.menu-sale) .menu-lv-1__action{color:var(--vertical_menu_lv1_color)}.header__menu-vertical .menu-lv-1:hover{background:var(--vertical_menu_lv1_hover_bg)}.header__menu-vertical .menu-lv-1:hover .menu-lv-1__action{color:var(--vertical_menu_lv1_color_hover)}.header__menu-vertical .menu-lv-1>.link-effect>.text:after{background:var(--vertical_menu_lv1_color_hover)}.header__menu-vertical .menu-lv-1>.link-effect:hover>.text:after{background:var(--vertical_menu_lv1_color_hover)}.header__menu-vertical .menu-lv-1:hover>a .icon{fill:var(--vertical_menu_lv1_color_hover)}.header-nav-vertical-menu .header-icons{padding:8px 0;max-width:350px; column-gap: 15px}.header-nav-vertical-menu .header-icons .header__icon{display:inline-block}.header-nav-vertical-menu .header__icon--cart svg{margin-top:-1px}.header-nav-vertical-menu .customer-service-text,.header-nav-vertical-menu .help-item,.header-nav-vertical-menu .halo-top-language .text,.header-nav-vertical-menu .halo-top-currency .text{font-size:var(--text_font_size);color: var(--header_icons_color);}.section-header-navigation:not(.scrolled-past-header) .header-nav-vertical-menu .customer-service-text+.icons-top-right:not(.ml-0){margin-left:15px}.header-nav-vertical-menu .icons-top-right,.header-nav-vertical-menu .header-icons-bottom,.header-nav-vertical-menu .customer-service-text-ptb{padding-top:4px;padding-bottom:4px}.header-nav-vertical-menu .customer-service-text-pt{padding-top:4px}.header-nav-vertical-menu .customer-service-text{vertical-align:middle}.header-nav-vertical-menu .customer-service-text p{margin-top:0;margin-bottom:0}.header-nav-vertical-menu .help-item-has-border{margin-right:20px}.header-nav-vertical-menu .help-item-has-border:before{position:absolute;content:"";width:1px;height:22px;top:50%;transform:translateY(-50%);right:0;background-color:var(--icon_help_border_color)}.header-nav-vertical-menu .help-item svg{color:var(--icon_help_color);margin-top: -1px}.header-nav-vertical-menu .help-item span{vertical-align:middle;margin-top:-1px;color:var(--header_icons_color)}.header-nav-vertical-menu .help-item a:hover span{color:var(--header_icons_color_hover)}.header-nav-vertical-menu .header__search .icon-search{margin-top:3px}.header-nav-vertical-menu .header__icon--cart .cart-count-bubble{top:-7px}.scrolled-past-header .header-nav-vertical-menu .customer-service-text,.scrolled-past-header .header-nav-vertical-menu .help-item{display:none}.sticky-search-menu-open .header-nav-vertical-menu .search-modal__form{max-width:555px;background-color:var(--bg-white)}.sticky-search-menu-open .header-nav-vertical-menu .search-modal__content{max-width:555px;animation:animateMenuOpen .5s ease}.sticky-search-menu-open .header-nav-vertical-menu .search__input{padding:7px 10px}.sticky-search-menu-open .header-nav-vertical-menu .search__button svg{width:18px;height:18px}.sticky-search-menu-open .header-nav-vertical-menu .quickSearchResultsWrap{right:0;left:0;width:555px}.sticky-search-menu-open .header-nav-vertical-menu .quickSearchResults .container{padding-left:20px;padding-right:20px}.sticky-search-menu-open .header-nav-vertical-menu details>.search-modal{padding:10vh 0;border:1px solid #dadada;background:rgba(35,35,35,.8)}.sticky-search-menu-open .header-nav-vertical-menu .header-search-close{padding:0 0 15px 0}.sticky-search-menu-open .header-nav-vertical-menu .header-search-close svg{fill:var(--bg-white);width:20px;height:20px}.header-nav-vertical-menu .header-item:first-child {justify-content: flex-start}.header-nav-vertical-menu .header-item:nth-child(2){justify-content: center}.header-nav-vertical-menu .header-item:nth-child(3) {justify-content: flex-end}.header-nav-vertical-menu .header-item:nth-child(3) .header-icons-top{text-align: right}.header-nav-vertical-menu .header-item:nth-child(2) .header-icons-top{text-align: center}.scrolled-past-header .header-nav-vertical-menu .header-icons {padding: 4px 0}.vertical-menu__style_3 .header__menu-vertical{opacity: 0;visibility: hidden;transform: translateY(30px)}.vertical-menu__style_3:hover .header__menu-vertical {opacity: 1;visibility: visible;transform: translateY(0)}
+        .header-nav-vertical-menu .header__icon--wishlist .wishlist-count-bubble{font-size: var(--cart_count_bubble_font_size);top: -7px;right: -12px;background-color: var(--wishlist-bg-item);color: var(--wishlist-color-item);}
         {%- if settings.enable_layout_rtl -%}
             .layout_rtl .categories-title__button .icon-grid+.title{margin-left: 0;margin-right: 8px}.layout_rtl .vertical-menu__hide .icon--dropdown {margin-left: 0;margin-right: 15px}.layout_rtl .categories-title__style_1 .icon--dropdown {right: auto;left: 4px}.layout_rtl .categories-title__style_3:before,.layout_rtl .header-nav-vertical-menu .help-item-has-border:before{right: auto;left: 0}.layout_rtl .header-nav-vertical-menu .header-item:nth-child(3) .header-icons-top {text-align: left}.layout_rtl .header-nav-vertical-menu .help-item-has-border {padding-right: 0;margin-right: 0;padding-left: 20px;margin-left: 20px}.layout_rtl .header-nav-vertical-menu .help-item svg{margin-right: 0;margin-left: 5px}.layout_rtl .categories-title__style_1 .categories-title__button {padding-right: 0;padding-left: 15px}.layout_rtl .header-nav-vertical-menu .icon-hamburger {margin-right: 0;margin-left: 12px}.layout_rtl .header__menu-vertical .has-megamenu .menu-dropdown {left: auto;right: 100%}.layout_rtl .header__menu-vertical .menu-lv-item .list-menu--disclosure,.layout_rtl .header__menu-vertical .menu-lv-item .list-menu--disclosure-2 {margin-right: 0; left: auto; right: calc(100% - 15px)}.layout_rtl .header__menu-vertical .menu-lv-2 > .has-icon {padding-left: 0;padding-right: 0}.layout_rtl .header__menu-vertical .menu-lv-1__action .icon {left: 23px;right: auto}
         {%- endif -%}
+        .header-nav-vertical-menu .dropdown-language .localization-form .disclosure__link.disclosure__link--active,.header-nav-vertical-menu .dropdown-language .localization-form .disclosure__link:hover{text-decoration-color: var(--header_icons_color);}
+        .header-nav-vertical-menu .halo-currency .currency-menu .dropdown-item.active .text:before,.header-nav-vertical-menu .halo-currency .currency-menu .dropdown-item .text:hover:before{background: var(--header_icons_color);}
     }
     @media (min-width:1281px) and (max-width:1399px){.header__menu-vertical .has-megamenu .menu-dropdown{min-width:calc(100vw - 470px)}}
     @media screen and (min-width:1440px){.header__menu-vertical .has-megamenu .menu-dropdown{min-width:calc(100vw - 560px)}.section-header-navigation:not(.scrolled-past-header) .header-nav-vertical-menu .customer-service-text+.icons-top-right:not(.ml-0){margin-left:35px}}
     @media screen and (min-width:1700px){.header__menu-vertical .has-megamenu .menu-dropdown{min-width:1100px}}
 </style>
 
-<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-navigation-wrapper">
+<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-navigation-wrapper"{% if settings.enable_following_cursor and settings.following_cursor_style == 'default' %} no-effect-cursor{% endif %}>
 <div class="header-navigation header-nav-vertical-menu" style="--header_navigation_rgb: {{ section.settings.header_navigation_border_bottom_color | color_to_rgb | remove: 'rgb(' | remove: ')' }}">
     <div class="container container-{{ section.settings.container }} d-flex flex-jc-between flex-align-center p-static o-unset{% if section.settings.sticky_header_width == 'full' %} sticky-container-full{% endif %}">
     {%- for block in section.blocks -%}
@@ -45,7 +49,7 @@
                                 {%- assign logo_width_img = logo_width | append: 'x' -%}
                                 {%- assign logo_width_retina = logo_width | times: 2 | append: 'x'  -%}
                                 {%- assign logo_height = logo_width | divided_by: logo.aspect_ratio | round -%}
-                                <img srcset="{{ logo | img_url: logo_width_img }}, {{ logo | img_url: logo_width_retina }} 2x" src="{{ logo | img_url: logo_width_img }}" loading="lazy" class="header__heading-logo w-100 h-auto ver-alg-mid d-inline-block" alt="{{ logo.alt | default: shop.name | escape }}" width="{{ logo_width }}" height="{{ logo_height }}">
+                                <img srcset="{{ logo | img_url: logo_width_img }}, {{ logo | img_url: logo_width_retina }} 2x" src="{{ logo | img_url: logo_width_img }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} class="header__heading-logo w-100 h-auto ver-alg-mid d-inline-block" alt="{{ logo.alt | default: shop.name | escape }}" width="{{ logo_width }}" height="{{ logo_height }}">
                             {%- elsif block.settings.logo_text != blank -%}
                                 <span class="header__heading-text {{ block.settings.logo_text_transform }} d-block">{{ block.settings.logo_text }}</span>
                             {%- else -%}
@@ -55,154 +59,157 @@
                     </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                 </div>
             {%- when 'main_menu' -%}
-            <div class="main-menu d-flex w-100 header-item p-static{% if block.settings.label_position == 'none' %} label-none{% elsif block.settings.label_position == 'main_menu' %} {% if block.settings.new_label_1 != blank or block.settings.sale_label_1 != blank or block.settings.hot_label_1 != blank%} main-menu-hasLabel{% endif %}{% else %}{% if block.settings.menu_top_spacing <= 16 %} label-small{% endif %}{% endif %}">
-                <div class="p-static container container-{{ section.settings.container }} o-unset">
-                    <div class="main-menu--wrapper d-flex flex-align-center {% if block.settings.alignment == 'center' %} flex-jc-center{% elsif block.settings.alignment == 'right'%} flex-jc-end{% else %} flex-jc-start{% endif %} gap-30" id="HeaderNavigation" style="--lv_1_color: {{ block.settings.lv_1_color }};--lv_1_color_hover: {{ block.settings.lv_1_color_hover }};--lv_2_color: {{ block.settings.lv_2_color }};--lv_2_color_hover: {{ block.settings.lv_2_color_hover }};--lv_3_color: {{ block.settings.lv_3_color }};--lv_3_color_hover: {{ block.settings.lv_3_color_hover }};--menu_margin_left: -{{block.settings.grid_gap_menu_item | append: 'px'}};--menu_top_spacing: {{block.settings.menu_top_spacing | append: 'px'}};--menu_top_spacing_sticky: -{{block.settings.menu_top_spacing | plus: 1 | append: 'px'}};--menu_bottom_spacing: {{block.settings.menu_bottom_spacing | append: 'px'}};--grid_gap_menu_item: {{block.settings.grid_gap_menu_item | append: 'px'}};--bg_mega_menu: {% if block.settings.bg_mega_menu_gradient != blank %}{{ block.settings.bg_mega_menu_gradient }}{% else %}{{ block.settings.bg_mega_menu }}{% endif %};--sale_item_color: {{block.settings.sale_item_color}};--new_label_color: {{ block.settings.new_label_color }};--new_label_border: {{ block.settings.new_label_bg }};--new_label_bg: {% if block.settings.new_label_bg_gradient != blank %}{{ block.settings.new_label_bg_gradient }}{% else %}{{ block.settings.new_label_bg }}{% endif %};--sale_label_color: {{ block.settings.sale_label_color }};
-                       --sale_label_border: {{ block.settings.sale_label_bg }};--sale_label_bg: {% if block.settings.sale_label_bg_gradient != blank %}{{ block.settings.sale_label_bg_gradient }}{% else %}{{ block.settings.sale_label_bg }}{% endif %};--hot_label_color: {{ block.settings.hot_label_color }};--hot_label_border: {{ block.settings.hot_label_bg }};--hot_label_bg: {% if block.settings.hot_label_bg_gradient != blank %}{{ block.settings.hot_label_bg_gradient }}{% else %}{{ block.settings.hot_label_bg }}{% endif %}">
-                        {%- if block.settings.vertical_menu_layout != 'none' -%}
-                            <div class="vertical-menu p-relative sticky_effect vertical-menu__{{ block.settings.vertical_menu_layout }} zi-1{% unless block.settings.vertical_menu_layout == 'style_3'%}{% if template contains 'index' %} vertical-menu__open{% else %} vertical-menu__hide{% endif %}{% endunless %}">
-                                <div class="categories-title d-flex flex-wrap flex-jc-between categories-title__{{ block.settings.vertical_menu_layout }} w-100" style="--title_categories_color: {{block.settings.title_categories_color}};--icon_title_categories_color: {{block.settings.icon_title_categories_color}};--title_categories_bg: {% if block.settings.title_categories_bg_gradient != blank %}{{block.settings.title_categories_bg_gradient}}{% else %}{{block.settings.title_categories_bg}}{% endif %};--title_categories_font_size: {{block.settings.title_categories_font_size | append: 'px'}};--title_categories_line_height:{{block.settings.title_categories_font_size |plus: 8 | append: 'px'}};--view_all_font_size: {{block.settings.view_all_font_size | append: 'px'}};--view_all_link_color: {{block.settings.view_all_link_color}};--title_categories_border_color: {{block.settings.title_categories_border_color}}">
-                                    <div class="categories-title__button p-relative pr-5">
-                                        {%- if block.settings.vertical_menu_layout == 'style_1'-%}
-                                                <span class="icon-hamburger d-inline-block"></span>
-                                        {%- elsif block.settings.vertical_menu_layout == 'style_3' -%}
-                                            <span class="icon-grid d-inline-block">{% render 'icon-grid', class: 'w-h-17' %}</span>
-                                        {%- else -%}{%- endif -%}
-                                        {%- if block.settings.title_categories != blank -%}
-                                            <h3 class="title d-inline-block m-zero">{{ block.settings.title_categories }}</h3>
-                                        {%- endif -%}
-                                        {%- if block.settings.vertical_menu_layout != 'style_2' -%}
-                                            <span class="icon icon--dropdown d-inline-block p-relative"></span>
+                <div class="main-menu d-flex w-100 header-item p-static{% if block.settings.label_position == 'none' %} label-none{% elsif block.settings.label_position == 'main_menu' %} {% if block.settings.new_label_1 != blank or block.settings.sale_label_1 != blank or block.settings.hot_label_1 != blank%} main-menu-hasLabel{% endif %}{% else %}{% if block.settings.menu_top_spacing <= 16 %} label-small{% endif %}{% endif %}">
+                    <div class="p-static container container-{{ section.settings.container }} o-unset">
+                        <div class="main-menu--wrapper d-flex flex-align-center {% if block.settings.alignment == 'center' %} flex-jc-center{% elsif block.settings.alignment == 'right'%} flex-jc-end{% else %} flex-jc-start{% endif %} gap-30" id="HeaderNavigation" style="--lv_1_color: {{ block.settings.lv_1_color }};--lv_1_color_hover: {{ block.settings.lv_1_color_hover }};--lv_2_color: {{ block.settings.lv_2_color }};--lv_2_color_hover: {{ block.settings.lv_2_color_hover }};--lv_3_color: {{ block.settings.lv_3_color }};--lv_3_color_hover: {{ block.settings.lv_3_color_hover }};--menu_margin_left: -{{block.settings.grid_gap_menu_item | append: 'px'}};--menu_top_spacing: {{block.settings.menu_top_spacing | append: 'px'}};--menu_top_spacing_sticky: -{{block.settings.menu_top_spacing | plus: 1 | append: 'px'}};--menu_bottom_spacing: {{block.settings.menu_bottom_spacing | append: 'px'}};--grid_gap_menu_item: {{block.settings.grid_gap_menu_item | append: 'px'}};--bg_mega_menu: {% if block.settings.bg_mega_menu_gradient != blank %}{{ block.settings.bg_mega_menu_gradient }}{% else %}{{ block.settings.bg_mega_menu }}{% endif %};--sale_item_color: {{block.settings.sale_item_color}};--new_label_color: {{ block.settings.new_label_color }};--new_label_border: {{ block.settings.new_label_bg }};--new_label_bg: {% if block.settings.new_label_bg_gradient != blank %}{{ block.settings.new_label_bg_gradient }}{% else %}{{ block.settings.new_label_bg }}{% endif %};--sale_label_color: {{ block.settings.sale_label_color }};
+                        --sale_label_border: {{ block.settings.sale_label_bg }};--sale_label_bg: {% if block.settings.sale_label_bg_gradient != blank %}{{ block.settings.sale_label_bg_gradient }}{% else %}{{ block.settings.sale_label_bg }}{% endif %};--hot_label_color: {{ block.settings.hot_label_color }};--hot_label_border: {{ block.settings.hot_label_bg }};--hot_label_bg: {% if block.settings.hot_label_bg_gradient != blank %}{{ block.settings.hot_label_bg_gradient }}{% else %}{{ block.settings.hot_label_bg }}{% endif %}">
+                            {%- if block.settings.vertical_menu_layout != 'none' -%}
+                                <div class="vertical-menu p-relative sticky_effect vertical-menu__{{ block.settings.vertical_menu_layout }} zi-1{% unless block.settings.vertical_menu_layout == 'style_3'%}{% if template contains 'index' and block.settings.auto_show_index %} vertical-menu__open{% else %} vertical-menu__hide{% endif %}{% endunless %}">
+                                    <div class="categories-title d-flex flex-wrap flex-jc-between categories-title__{{ block.settings.vertical_menu_layout }} w-100" style="--title_categories_color: {{block.settings.title_categories_color}};--icon_title_categories_color: {{block.settings.icon_title_categories_color}};--title_categories_bg: {% if block.settings.title_categories_bg_gradient != blank %}{{block.settings.title_categories_bg_gradient}}{% else %}{{block.settings.title_categories_bg}}{% endif %};--title_categories_font_size: {{block.settings.title_categories_font_size | append: 'px'}};--title_categories_line_height:{{block.settings.title_categories_font_size |plus: 8 | append: 'px'}};--view_all_font_size: {{block.settings.view_all_font_size | append: 'px'}};--view_all_link_color: {{block.settings.view_all_link_color}};--title_categories_border_color: {{block.settings.title_categories_border_color}}">
+                                        <div class="categories-title__button p-relative pr-5">
+                                            {%- if block.settings.vertical_menu_layout == 'style_1'-%}
+                                                    <span class="icon-hamburger d-inline-block"></span>
+                                            {%- elsif block.settings.vertical_menu_layout == 'style_3' -%}
+                                                <span class="icon-grid d-inline-block">{% render 'icon-grid', class: 'w-h-17' %}</span>
+                                            {%- else -%}{%- endif -%}
+                                            {%- if block.settings.title_categories != blank -%}
+                                                <h3 class="title d-inline-block m-zero">{{ block.settings.title_categories }}</h3>
+                                            {%- endif -%}
+                                            {%- if block.settings.vertical_menu_layout != 'style_2' -%}
+                                                <span class="icon icon--dropdown d-inline-block p-relative"></span>
+                                            {%- endif -%}
+                                        </div>
+                                        {%- if block.settings.vertical_menu_layout == 'style_2' -%}
+                                            {%- if block.settings.view_all != blank -%}
+                                                <a class="view_all"{% if block.settings.view_all_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.view_all_link }}"{% endif %} title="{{ block.settings.view_all }}"><span>{{ block.settings.view_all }}</span></a>
+                                            {% endif %}
                                         {%- endif -%}
                                     </div>
-                                    {%- if block.settings.vertical_menu_layout == 'style_2' -%}
-                                        {%- if block.settings.view_all != blank -%}
-                                            <a class="view_all"{% if block.settings.view_all_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.view_all_link }}"{% endif %} title="{{ block.settings.view_all }}"><span>{{ block.settings.view_all }}</span></a>
-                                        {% endif %}
-                                    {%- endif -%}
+                                    <nav class="header__menu-vertical p-absolute left-0 right-0 top-100 opacity-1" role="navigation" style="--vertical_menu_bg: {% if block.settings.vertical_menu_bg_gradient != blank %}{{ block.settings.vertical_menu_bg_gradient }}{% else %}{{ block.settings.vertical_menu_bg }}{% endif %};--vertical_menu_lv1_color:{{ block.settings.vertical_menu_lv1_color }};--vertical_menu_lv1_color_hover:{{ block.settings.vertical_menu_lv1_hover_color }};--vertical_menu_lv1_hover_bg:{% if block.settings.vertical_menu_lv1_hover_bg_gradient != blank %}{{ block.settings.vertical_menu_lv1_hover_bg_gradient }}{% else %}{{ block.settings.vertical_menu_lv1_hover_bg}}{% endif %}">
+                                        {% render 'halo-navigation-list-vertical', listClass: 'list-menu p-relative', block: block %}
+                                    </nav>    
                                 </div>
-                                <nav class="header__menu-vertical p-absolute left-0 right-0 top-100 opacity-1" role="navigation" style="--vertical_menu_bg: {% if block.settings.vertical_menu_bg_gradient != blank %}{{ block.settings.vertical_menu_bg_gradient }}{% else %}{{ block.settings.vertical_menu_bg }}{% endif %};--vertical_menu_lv1_color:{{ block.settings.vertical_menu_lv1_color }};--vertical_menu_lv1_color_hover:{{ block.settings.vertical_menu_lv1_hover_color }};--vertical_menu_lv1_hover_bg:{% if block.settings.vertical_menu_lv1_hover_bg_gradient != blank %}{{ block.settings.vertical_menu_lv1_hover_bg_gradient }}{% else %}{{ block.settings.vertical_menu_lv1_hover_bg}}{% endif %}">
-                                    {% render 'halo-navigation-list-vertical', listClass: 'list-menu p-relative', block: block %}
-                                </nav>    
+                            {%- endif -%}
+                            {%- if block.settings.menu != blank -%}
+                                <nav class="header__inline-menu{% if block.settings.vertical_menu_layout != 'none' %} header__inline-menu-ver{% endif %}" data-navigation role="navigation">
+                                    {% render 'halo-navigation-list', listClass: 'list-menu list-menu--inline', alignment: block.settings.alignment, block: block %}
+                                </nav>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            {%- when 'header_icons' -%}
+                <div class="header-icons header-item header-item--side d-flex flex-align-center flex-wrap fs-0 pt-2 pb-5{% if block.settings.show_language_currency_sticky == false and block.settings.show_search_sticky == false and block.settings.show_customer_sticky == false and block.settings.show_wishlist_sticky == false and block.settings.show_cart_sticky == false %} show-main-menu{% endif %}{% if block.settings.customer_service_text == blank and block.settings.show_help == false and block.settings.show_language_currency == false and block.settings.show_search == false and block.settings.show_customer == false and block.settings.show_wishlist == false and block.settings.show_cart == false %} hide-main-menu{% endif %}" style="--header_icons_color: {{block.settings.header_icons_color}};--header_icons_color_hover: {{block.settings.header_icons_color_hover}};--cart_count_bubble_bg: {% if block.settings.cart_count_bubble_bg_gradient != blank %}{{ block.settings.cart_count_bubble_bg_gradient }}{% else %}{{ block.settings.cart_count_bubble_bg }}{% endif %};--cart_count_bubble_color: {{block.settings.cart_count_bubble_color}};--cart_count_bubble_font_size: {% if block.settings.text_font_size <= 12 %}{{block.settings.text_font_size | append: 'px'}}{% else %} {{block.settings.text_font_size | minus: 2 | append: 'px'}}{% endif %};--text_font_size: {{block.settings.text_font_size | append: 'px' }};--icon_help_color: {{block.settings.icon_help_color}};--icon_help_border_color: {{block.settings.icon_help_border_color}}">
+                    <div class="header-icons-top d-inline-block">
+                        {%- if block.settings.customer_service_text != blank -%}
+                            <div class="customer-service-text d-inline-block sticky_effect{% if block.settings.show_help == false and block.settings.show_language_currency == false %} customer-service-text-ptb{% endif %}{% if block.settings.show_help == true and block.settings.show_language_currency == true %} customer-service-text-pt w-100{% endif %}">{{ block.settings.customer_service_text }}</div>
+                        {%- endif -%}
+                        {%- if block.settings.show_help or block.settings.show_language_currency or block.settings.show_language_currency_sticky -%}
+                            <div class="icons-top-right d-inline-block p-relative zi-1{% if block.settings.customer_service_text != blank and block.settings.show_help and block.settings.show_language_currency %} ml-0{% endif %}{% if block.settings.show_help == false and block.settings.show_language_currency == false %} hide-main-menu{% endif %}">
+                            {%- if block.settings.show_help -%}
+                                <div class="help-item d-inline-block sticky_effect{% if block.settings.customer_service_text != blank and block.settings.show_language_currency == false %} help-item-no-border{% else %} help-item-has-border p-relative pr-20{% endif %}">
+                                    <a {% if block.settings.help_text_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.help_text_link }}"{% endif %}>
+                                        {% render 'icon-help', class: 'w-h-18 mr-5' %}<span class="d-inline-block">{{ block.settings.help_text }}</span>
+                                    </a>
+                                </div>
+                            {%- endif -%}
+                            {%- if block.settings.show_language_currency or block.settings.show_language_currency_sticky -%}
+                                <div class="header-language_currency language_currency_style_2 d-inline-block{% if block.settings.show_language_currency_sticky %}{% if block.settings.show_language_currency%}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_language_currency %} show-main-menu{% endif %}{% endif %}">
+                                    <div class="top-language-currency d-flex flex-align-center sticky_effect{% if settings.enable_currencies %} enable-currency{% endif %}">
+                                        {% if settings.enable_multilang_shopify %}{% render 'halo-top-language' %}{% endif %}
+                                        {% if settings.enable_currencies %}{% render 'halo-top-currency' %}{% endif %}
+                                    </div>
+                                </div>
+                            {% elsif settings.enable_currencies %}
+                            {{ "jquery.currencies.min.js" | asset_url | script_tag }}
+                            {%- endif -%}
                             </div>
                         {%- endif -%}
-                        {%- if block.settings.menu != blank -%}
-                            <nav class="header__inline-menu{% if block.settings.vertical_menu_layout != 'none' %} header__inline-menu-ver{% endif %}" data-navigation role="navigation">
-                                {% render 'halo-navigation-list', listClass: 'list-menu list-menu--inline', alignment: block.settings.alignment, block: block %}
-                            </nav>
+                    </div>
+                    <div class="header-icons-bottom d-flex flex-align-center gap-15{% if block.settings.show_search == false and block.settings.show_customer == false and block.settings.show_wishlist == false and block.settings.show_cart == false %} hide-main-menu{% endif %}">
+                        {%- if block.settings.show_search or block.settings.show_search_sticky -%}
+                            <details-modal class="header__iconItem header__search{% if block.settings.show_search_sticky %}{% if block.settings.show_search %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_search %} show-main-menu{% endif %}{% endif %}">
+                                    <details class="search_details search_details--popup">
+                                        <summary class="header__icon header__icon--search header__icon--summary link link--text focus-inset modal__toggle h-100" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}" data-search-menu-sticky-form data-search-menu>
+                                            <span>{% render 'icon-search', class: 'modal__toggle-open icon icon-search w-h-28' %}</span>
+                                        </summary>
+                                        <div class="search-modal modal__content p-fixed top-0 bottom-0 left-0 right-0 w-100 h-100v zi-101 m-zero{% if settings.show_quick_search %} quickSearch{% endif %}" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
+                                            <div class="search-modal__content search-modal__content-bottom d-block p-relative m-lr-auto text-center" tabindex="-1">
+                                                <button type="button" class="header-search-close button-effect search-modal__close-button link--text focus-inset text-left d-block" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close', class: 'icon icon-close' %}</button>
+                                            {%- if settings.show_quick_search -%}
+                                                    <predictive-search class="search-modal__form w-100" data-loading-text="{{ 'accessibility.loading' | t }}" data-product-to-show="{{ settings.quick_search_to_show }}">
+                                                {%- endif -%}
+                                                <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form w-100">
+                                                    <div class="field">
+                                                        <input class="search__input field__input form-input-placeholder" id="Search-In-Modal-Menu-Vertical" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.search' | t }}" autocomplete="off" {%- if settings.show_quick_search -%}role="combobox" aria-expanded="false" aria-owns="predictive-search-results-list" aria-controls="predictive-search-results-list" aria-haspopup="listbox" aria-autocomplete="list" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"{%- endif -%}> 
+                                                        <input type="hidden" name="options[prefix]" value="last">
+                                                        <input type="hidden" name="type" value="product">
+                                                        <label class="field__label hiddenLabels" for="Search-In-Modal-Menu-Vertical">{{ 'general.search.search' | t }}</label>
+                                                        <button class="button search__button field__button focus-inset" aria-label="{{ 'general.search.search' | t }}">{% render 'icon-search' %}</button>
+                                                    </div>
+                                                    {%- if settings.show_quick_search -%}
+                                                        {%- if settings.show_search_trending or settings.show_search_product -%}{%- render 'quick-searching-trending-products', sectionId: 'nav-vertical-menu-list-result' -%}{%- endif -%}
+                                                        {%- render 'predictive-search-results' -%}
+                                                    {%- endif -%}
+                                                </form>
+                                                {%- if settings.show_quick_search -%}
+                                                    </predictive-search>
+                                                {%- endif -%}
+                                            </div>
+                                        </div>
+                                    </details>
+                            </details-modal>
+                        {%- endif -%}
+                        {%- if shop.customer_accounts_enabled -%}
+                            {%- if block.settings.show_customer or block.settings.show_customer_sticky -%}
+                                {% if routes.account_login_url contains '/account/login' %}
+                                    {% assign is_contained = true %}
+                                {% else %}
+                                    {% assign is_contained = false %}
+                                {% endif %}
+                                <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link link--text stroke-icon h-100{% if block.settings.show_customer_sticky%}{% if block.settings.show_customer %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_customer %} show-main-menu{% endif %}{% endif %}"{% if is_contained %} data-open-auth-sidebar{% endif %}>
+                                    {%- if customer and customer.has_avatar? -%}
+                                        <account-icon>
+                                            {{ customer | avatar }}
+                                        </account-icon>
+                                    {%- else -%}
+                                        {% render 'icon-account-2', class: 'w-h-25 stroke-w-10' %}
+                                    {%- endif -%}
+                                    <span class="visually-hidden">
+                                        {%- liquid
+                                        if customer
+                                            echo 'customer.account_fallback' | t
+                                        else
+                                            echo 'customer.log_in' | t
+                                        endif
+                                        -%}
+                                </span>
+                                </a> 
+                            {%- endif -%}                              
+                        {%- endif -%}
+                        {%- if settings.show_wishlist -%}
+                            {%- if block.settings.show_wishlist or block.settings.show_wishlist_sticky -%}
+                                <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset h-100{% if block.settings.show_wishlist_sticky %}{% if block.settings.show_wishlist %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_wishlist %} show-main-menu{% endif %}{% endif %}" style="--wishlist-bg-item: {{ block.settings.wishlist_bg_item }}; --wishlist-color-item: {{ block.settings.wishlist_color_item }}">
+                                    {% render 'icon-heart-2', class: 'w-h-25' %}
+                                    <span class="visually-hidden">{{ 'wishlist.general.wishlist' | t }}</span>
+                                    {%- if block.settings.show_wishlist_number -%}
+                                        <div class="wishlist-count-bubble"><span class="text" aria-hidden="true" data-wishlist-count></span><span class="visually-hidden">{{ 'wishlist.general.wishlist' | t }}</span></div>
+                                    {%- endif -%}
+                                </a>
+                            {%- endif -%}
+                        {%- endif -%}
+                        {%- if block.settings.show_cart or block.settings.show_cart_sticky -%}
+                            <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset cart-icon-bubble pr-10 h-100 stroke-icon{% if block.settings.show_cart_sticky %}{% if block.settings.show_cart %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_cart %} show-main-menu{% endif %}{% endif %}" {% if settings.show_quick_cart %} data-cart-sidebar{% endif %}>
+                                {% render 'icon-cart-03', class: 'w-h-26 stroke-w-10' %}
+                                <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                                <div class="cart-count-bubble">
+                                    <span class="text" aria-hidden="true" data-cart-count>{%- if cart.item_count < 100 -%}{{ cart.item_count }}{%- else -%}{{ 'sections.cart.item_99' | t }}{%- endif -%}</span>
+                                    <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                                </div>
+                            </a>
                         {%- endif -%}
                     </div>
                 </div>
-            </div>
-            {%- when 'header_icons' -%}
-            <div class="header-icons header-item header-item--side d-flex flex-align-center flex-wrap fs-0 pt-2 pb-5{% if block.settings.show_language_currency_sticky == false and block.settings.show_search_sticky == false and block.settings.show_customer_sticky == false and block.settings.show_wishlist_sticky == false and block.settings.show_cart_sticky == false %} show-main-menu{% endif %}{% if block.settings.customer_service_text == blank and block.settings.show_help == false and block.settings.show_language_currency == false and block.settings.show_search == false and block.settings.show_customer == false and block.settings.show_wishlist == false and block.settings.show_cart == false %} hide-main-menu{% endif %}" style="--header_icons_color: {{block.settings.header_icons_color}};--header_icons_color_hover: {{block.settings.header_icons_color_hover}};--cart_count_bubble_bg: {% if block.settings.cart_count_bubble_bg_gradient != blank %}{{ block.settings.cart_count_bubble_bg_gradient }}{% else %}{{ block.settings.cart_count_bubble_bg }}{% endif %};--cart_count_bubble_color: {{block.settings.cart_count_bubble_color}};--cart_count_bubble_font_size: {% if block.settings.text_font_size <= 12 %}{{block.settings.text_font_size | append: 'px'}}{% else %} {{block.settings.text_font_size | minus: 2 | append: 'px'}}{% endif %};--text_font_size: {{block.settings.text_font_size | append: 'px' }};--icon_help_color: {{block.settings.icon_help_color}};--icon_help_border_color: {{block.settings.icon_help_border_color}}">
-                <div class="header-icons-top d-inline-block">
-                    {%- if block.settings.customer_service_text != blank -%}
-                        <div class="customer-service-text d-inline-block sticky_effect{% if block.settings.show_help == false and block.settings.show_language_currency == false %} customer-service-text-ptb{% endif%}{% if block.settings.show_help == true and block.settings.show_language_currency == true %} customer-service-text-pt w-100{% endif%}">{{ block.settings.customer_service_text }}</div>
-                    {%- endif -%}
-                    {%- if block.settings.show_help or block.settings.show_language_currency or block.settings.show_language_currency_sticky -%}
-                        <div class="icons-top-right d-inline-block p-relative zi-1{% if block.settings.customer_service_text != blank and block.settings.show_help and block.settings.show_language_currency%} ml-0{% endif%}{% if block.settings.show_help == false and block.settings.show_language_currency == false %} hide-main-menu{% endif%}">
-                        {%- if block.settings.show_help -%}
-                            <div class="help-item d-inline-block sticky_effect{% if block.settings.customer_service_text != blank and block.settings.show_language_currency == false %} help-item-no-border{% else %} help-item-has-border p-relative pr-20{% endif%}">
-                                <a {% if block.settings.help_text_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.help_text_link }}"{% endif %}>
-                                    {% render 'icon-help', class: 'w-h-18 mr-5' %}<span class="d-inline-block">{{ block.settings.help_text }}</span>
-                                </a>
-                            </div>
-                        {%- endif -%}
-                        {%- if block.settings.show_language_currency or block.settings.show_language_currency_sticky -%}
-                            <div class="header-language_currency language_currency_style_2 d-inline-block{% if block.settings.show_language_currency_sticky %}{% if block.settings.show_language_currency%}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_language_currency %} show-main-menu{% endif %}{% endif %}">
-                                <div class="top-language-currency d-flex flex-align-center sticky_effect{% if settings.enable_currencies %} enable-currency{% endif %}">
-                                    {% if settings.enable_multilang_shopify %}{% render 'halo-top-language' %}{% endif %}
-                                    {% if settings.enable_currencies %}{% render 'halo-top-currency' %}{% endif %}
-                                </div>
-                            </div>
-                        {%- endif -%}
-                        </div>
-                    {%- endif -%}
-                </div>
-                <div class="header-icons-bottom d-flex flex-align-center gap-15{% if block.settings.show_search == false and block.settings.show_customer == false and block.settings.show_wishlist == false and block.settings.show_cart == false %} hide-main-menu{% endif %}">
-                    {%- if block.settings.show_search or block.settings.show_search_sticky -%}
-                        <details-modal class="header__iconItem header__search{% if block.settings.show_search_sticky %}{% if block.settings.show_search %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_search %} show-main-menu{% endif %}{% endif %}">
-                                <details class="search_details search_details--popup">
-                                    <summary class="header__icon header__icon--search header__icon--summary link link--text focus-inset modal__toggle h-100" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}" data-search-menu-sticky-form data-search-menu>
-                                        <span>{% render 'icon-search', class: 'modal__toggle-open icon icon-search w-h-28' %}</span>
-                                    </summary>
-                                    <div class="search-modal modal__content p-fixed top-0 bottom-0 left-0 right-0 w-100 h-100v zi-101 m-zero{% if settings.show_quick_search %} quickSearch{% endif %}" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
-                                        <div class="search-modal__content search-modal__content-bottom d-block p-relative m-lr-auto text-center" tabindex="-1">
-                                            <button type="button" class="header-search-close button-effect search-modal__close-button link--text focus-inset text-left d-block" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close', class: 'icon icon-close' %}</button>
-                                           {%- if settings.show_quick_search -%}
-                                                <predictive-search class="search-modal__form w-100" data-loading-text="{{ 'accessibility.loading' | t }}" data-product-to-show="{{ settings.quick_search_to_show }}">
-                                            {%- endif -%}
-                                            <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form w-100">
-                                                <div class="field">
-                                                    <input class="search__input field__input form-input-placeholder" id="Search-In-Modal-Menu-Vertical" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.search' | t }}" autocomplete="off" {%- if settings.show_quick_search -%}role="combobox" aria-expanded="false" aria-owns="predictive-search-results-list" aria-controls="predictive-search-results-list" aria-haspopup="listbox" aria-autocomplete="list" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"{%- endif -%}> 
-                                                    <input type="hidden" name="options[prefix]" value="last">
-                                                    <input type="hidden" name="type" value="product">
-                                                    <label class="field__label hiddenLabels" for="Search-In-Modal-Menu-Vertical">{{ 'general.search.search' | t }}</label>
-                                                    <button class="button search__button field__button focus-inset" aria-label="{{ 'general.search.search' | t }}">{% render 'icon-search' %}</button>
-                                                </div>
-                                                {%- if settings.show_quick_search -%}
-                                                    {%- if settings.show_search_trending or settings.show_search_product -%}{%- render 'quick-searching-trending-products', sectionId: 'nav-vertical-menu-list-result' -%}{%- endif -%}
-                                                    {%- render 'predictive-search-results' -%}
-                                                {%- endif -%}
-                                            </form>
-                                            {%- if settings.show_quick_search -%}
-                                                </predictive-search>
-                                            {%- endif -%}
-                                        </div>
-                                    </div>
-                                </details>
-                        </details-modal>
-                    {%- endif -%}
-                    {%- if shop.customer_accounts_enabled -%}
-                        {%- if block.settings.show_customer or block.settings.show_customer_sticky -%}
-                            {% if routes.account_login_url contains '/account/login' %}
-                                {% assign is_contained = true %}
-                            {% else %}
-                                {% assign is_contained = false %}
-                            {% endif %}
-                            <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link link--text stroke-icon h-100{% if block.settings.show_customer_sticky%}{% if block.settings.show_customer %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_customer %} show-main-menu{% endif %}{% endif %}"{% if is_contained %} data-open-auth-sidebar{% endif %}>
-                                {%- if customer and customer.has_avatar? -%}
-                                    <account-icon>
-                                        {{ customer | avatar }}
-                                    </account-icon>
-                                {%- else -%}
-                                    {% render 'icon-account-2', class: 'w-h-25 stroke-w-10' %}
-                                {%- endif -%}
-                                <span class="visually-hidden">
-                                    {%- liquid
-                                      if customer
-                                        echo 'customer.account_fallback' | t
-                                      else
-                                        echo 'customer.log_in' | t
-                                      endif
-                                    -%}
-                              </span>
-                            </a> 
-                        {%- endif -%}                              
-                    {%- endif -%}
-                    {%- if settings.show_wishlist -%}
-                        {%- if block.settings.show_wishlist or block.settings.show_wishlist_sticky -%}
-                            <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset h-100{% if block.settings.show_wishlist_sticky %}{% if block.settings.show_wishlist %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_wishlist %} show-main-menu{% endif %}{% endif %}">
-                                {% render 'icon-heart-2', class: 'w-h-25' %}
-                                <span class="visually-hidden">{{ 'wishlist.general.wishlist' | t }}</span>
-                            </a>
-                        {%- endif -%}
-                    {%- endif -%}
-                    {%- if block.settings.show_cart or block.settings.show_cart_sticky -%}
-                        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset cart-icon-bubble pr-10 h-100 stroke-icon{% if block.settings.show_cart_sticky %}{% if block.settings.show_cart %}{% else %} hide-main-menu{% endif %}{% else %}{% if block.settings.show_cart %} show-main-menu{% endif %}{% endif %}" {% if settings.show_quick_cart %} data-cart-sidebar{% endif %}>
-                            {% render 'icon-cart-03', class: 'w-h-26 stroke-w-10' %}
-                            <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-                            <div class="cart-count-bubble">
-                                {%- if cart.item_count < 100 -%}
-                                <span class="text" aria-hidden="true" data-cart-count>{{ cart.item_count }}</span>
-                                {%- endif -%}
-                                <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-                            </div>
-                        </a>
-                    {%- endif -%}
-                </div>
-            </div>
         {%- endcase -%}
     {%- endfor -%}
     </div>
@@ -233,7 +240,7 @@ if (sticky != undefined || sticky != null) {
 
           this.currentScrollTop = 0;
           this.preventReveal = false;
-
+          this.predictiveSearch = this.querySelector('predictive-search');
           this.onScrollHandler = this.onScroll.bind(this);
           this.hideHeaderOnScrollUp = () => this.preventReveal = true;
 
@@ -263,6 +270,7 @@ if (sticky != undefined || sticky != null) {
 
         onScroll() {
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
           if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
             if (this.preventHide) return;
             this.header.classList.add('scrolled-past-header');
@@ -325,13 +333,13 @@ if (sticky != undefined || sticky != null) {
                 } else {
                   this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-show', 'shopify-section-header-sticky', 'animate');
               }
-              if(!$('.vertical-menu').hasClass('vertical-menu__style_3')){
-                  if (document.body.classList.contains('template-index')) {
-                      if ($('.vertical-menu').hasClass('vertical-menu__hide')) {
-                          $('.vertical-menu').removeClass('vertical-menu__hide');
-                      }
-                  }
-              }
+            //   if(!$('.vertical-menu').hasClass('vertical-menu__style_3')){
+            //       if (document.body.classList.contains('template-index')) {
+            //           if ($('.vertical-menu').hasClass('vertical-menu__hide')) {
+            //               $('.vertical-menu').removeClass('vertical-menu__hide');
+            //           }
+            //       }
+            //   }
             }
         }
 
@@ -373,6 +381,7 @@ if (sticky != undefined || sticky != null) {
         if(!$('.vertical-menu').hasClass('vertical-menu__style_3')){
             $('.vertical-menu .categories-title__button').off('click.hideVertical').on('click.hideVertical', function() {
                 $('.vertical-menu').toggleClass('vertical-menu__hide vertical-menu__open');
+                console.log(123123123)
             });
         }
     }
@@ -389,7 +398,7 @@ if (sticky != undefined || sticky != null) {
     "settings": [
         {
             "type": "paragraph",
-            "content": "*You should only activate \/ use \"Header with Navigation\" you want, don't use the redundant headers which may not optimize for performance."
+            "content": "You should only activate\/use \"header with navigation\" you want, don't use the redundant headers which may not optimize for performance."
         },
         {
             "type": "select",
@@ -428,16 +437,15 @@ if (sticky != undefined || sticky != null) {
             "id": "padding_full_width",
             "label": "t:sections.layout.container.padding_full_width",
             "min": 0,
-            "max": 75,
+            "max": 100,
             "step": 5,
             "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 0,
-            "info": "t:sections.layout.container.info_full_width"
+            "default": 0
         },
         {
             "type": "color",
             "id": "header_navigation_bg",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color",
+            "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
             "default": "#ffffff"
         },
         {
@@ -482,7 +490,7 @@ if (sticky != undefined || sticky != null) {
         {
             "type": "select",
             "id": "sticky_header_type",
-            "label": "t:settings_schema.general.settings.swatch.label__2",
+            "label": "t:sections.main-sidebar.settings.general.label__3",
             "default": "on_scroll",
             "options": [
                 {
@@ -568,14 +576,14 @@ if (sticky != undefined || sticky != null) {
                     "default": 55
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "logo_text",
                     "label": "t:sections.header.settings.logo.label__7"
                 },
                 {
                     "type": "range",
                     "id": "logo_font_size",
-                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_size",
                     "min": 15,
                     "max": 50,
                     "step": 1,
@@ -585,7 +593,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "select",
                     "id": "logo_font_weight",
-                    "label": "t:settings_schema.typography.settings.font_weight.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_weight",
                     "default": "900",
                     "options": [
                     {
@@ -620,6 +628,10 @@ if (sticky != undefined || sticky != null) {
                     "default": "uppercase",
                     "options": [
                     {
+                        "value": "none",
+                        "label": "t:settings_schema.typography.settings.text_transform.options__1"
+                    },
+                    {
                         "value": "capitalize",
                         "label": "t:settings_schema.typography.settings.text_transform.options__2"
                     },
@@ -633,13 +645,9 @@ if (sticky != undefined || sticky != null) {
                     }]
                 },
                 {
-                    "type": "header",
-                    "content": "t:settings_schema.colors.settings.colors_name.color"
-                },
-                {
                     "type": "color",
                     "id": "logo_color",
-                    "label": "t:sections.header.settings.logo.label__8",
+                    "label": "t:sections.header.settings.header_top.label__4",
                     "default": "#000000"
                 }
             ]
@@ -658,7 +666,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "range",
                     "id": "menu_top_spacing",
-                    "label": "t:sections.header.settings.header_bottom.mg_top",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
                     "min": 10,
                     "max": 30,
                     "step": 1,
@@ -668,7 +676,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "range",
                     "id": "menu_bottom_spacing",
-                    "label": "t:sections.header.settings.header_bottom.mg_bottom",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
                     "min": 10,
                     "max": 30,
                     "step": 1,
@@ -688,20 +696,20 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "select",
                     "id": "alignment",
-                    "label": "t:sections.general.settings.aligmnent.label__1",
+                    "label": "t:sections.general.settings.alignment.label__1",
                     "default": "left",
                     "options": [
                     {
                         "value": "left",
-                        "label": "t:sections.product_block.settings.general.options__7"
+                        "label": "t:settings_schema.typography.settings.type_button_font.left"
                     },
                     {
                         "value": "center",
-                        "label": "t:sections.product_block.settings.general.options__8"
+                        "label": "t:settings_schema.typography.settings.type_button_font.center"
                     },
                     {
                         "value": "right",
-                        "label": "t:sections.product_block.settings.general.options__9"
+                        "label": "t:settings_schema.typography.settings.type_button_font.right"
                     }]
                 },
                 {
@@ -711,7 +719,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "color",
                     "id": "bg_mega_menu",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#fff"
                 },
                 {
@@ -773,19 +781,22 @@ if (sticky != undefined || sticky != null) {
                     "content": "t:sections.header.settings.header__10.content"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "sale_item_1",
-                    "label": "t:sections.header.settings.sale_item.label__1"
+                    "label": "t:sections.header.settings.sale_item.label__1",
+                    "info": "t:sections.header.settings.sale_item.info"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "sale_item_2",
-                    "label": "t:sections.header.settings.sale_item.label__2"
+                    "label": "t:sections.header.settings.sale_item.label__2",
+                    "info": "t:sections.header.settings.sale_item.info"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "sale_item_3",
-                    "label": "t:sections.header.settings.sale_item.label__3"
+                    "label": "t:sections.header.settings.sale_item.label__3",
+                    "info": "t:sections.header.settings.sale_item.info"
                 },
                 {
                     "type": "color",
@@ -820,7 +831,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "checkbox",
                     "id": "show_label_blink",
-                    "label": "t:sections.header.settings.menu_label.label__5",
+                    "label": "t:sections.header.settings.menu_label.label",
                     "info": "t:sections.header.settings.menu_label.info",
                     "default": false
                 },
@@ -829,30 +840,33 @@ if (sticky != undefined || sticky != null) {
                     "content": "t:sections.header.settings.menu_label.paragraph__1.content"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "new_label_1",
-                    "label": "t:sections.header.settings.header__6.menu_lv_1"
+                    "label": "t:sections.header.settings.header__6.menu_lv_1",
+                    "info": "t:sections.header.settings.header__6.info_1"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "new_label_2",
-                    "label": "t:sections.header.settings.header__6.menu_lv_2"
+                    "label": "t:sections.header.settings.header__6.menu_lv_2",
+                    "info": "t:sections.header.settings.header__6.info_1"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "new_label_3",
-                    "label": "t:sections.header.settings.header__6.menu_lv_3"
+                    "label": "t:sections.header.settings.header__6.menu_lv_3",
+                    "info": "t:sections.header.settings.header__6.info_1"
                 },
                 {
                     "type": "color",
                     "id": "new_label_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.color",
+                    "label": "t:settings_schema.colors.settings.colors_name.text_color",
                     "default": "#FFFFFF"
                 },
                 {
                     "type": "color",
                     "id": "new_label_bg",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#BAE4ED"
                 },
                 {
@@ -865,30 +879,33 @@ if (sticky != undefined || sticky != null) {
                     "content": "t:sections.header.settings.menu_label.paragraph__2.content"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "sale_label_1",
-                    "label": "t:sections.header.settings.header__6.menu_lv_1"
+                    "label": "t:sections.header.settings.header__6.menu_lv_1",
+                    "info": "t:sections.header.settings.header__6.info_2"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "sale_label_2",
-                    "label": "t:sections.header.settings.header__6.menu_lv_2"
+                    "label": "t:sections.header.settings.header__6.menu_lv_2",
+                    "info": "t:sections.header.settings.header__6.info_2"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "sale_label_3",
-                    "label": "t:sections.header.settings.header__6.menu_lv_3"
+                    "label": "t:sections.header.settings.header__6.menu_lv_3",
+                    "info": "t:sections.header.settings.header__6.info_2"
                 },
                 {
                     "type": "color",
                     "id": "sale_label_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.color",
+                    "label": "t:settings_schema.colors.settings.colors_name.text_color",
                     "default": "#FFFFFF"
                 },
                 {
                     "type": "color",
                     "id": "sale_label_bg",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#D12442"
                 },
                 {
@@ -901,30 +918,33 @@ if (sticky != undefined || sticky != null) {
                     "content": "t:sections.header.settings.menu_label.paragraph__3.content"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "hot_label_1",
-                    "label": "t:sections.header.settings.header__6.menu_lv_1"
+                    "label": "t:sections.header.settings.header__6.menu_lv_1",
+                    "info": "t:sections.header.settings.header__6.info_3"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "hot_label_2",
-                    "label": "t:sections.header.settings.header__6.menu_lv_2"
+                    "label": "t:sections.header.settings.header__6.menu_lv_2",
+                    "info": "t:sections.header.settings.header__6.info_3"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "hot_label_3",
-                    "label": "t:sections.header.settings.header__6.menu_lv_3"
+                    "label": "t:sections.header.settings.header__6.menu_lv_3",
+                    "info": "t:sections.header.settings.header__6.info_3"
                 },
                 {
                     "type": "color",
                     "id": "hot_label_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.color",
+                    "label": "t:settings_schema.colors.settings.colors_name.text_color",
                     "default": "#FFFFFF"
                 },
                 {
                     "type": "color",
                     "id": "hot_label_bg",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#FFF993"
                 },
                 {
@@ -964,7 +984,14 @@ if (sticky != undefined || sticky != null) {
                     "id": "vertical_menu",
                     "label": "t:sections.header.settings.menu.label__1",
                     "default": "main-menu"
-                },      
+                },    
+                {
+                    "type": "checkbox",
+                    "id": "auto_show_index",
+                    "label": "t:sections.header.settings.vertical_menu.auto_show_on_index",
+                    "default": true,
+                    "visible_if": "{{ block.settings.vertical_menu_layout == 'style_1' or block.settings.vertical_menu_layout == 'style_2' }}"
+                },  
                 {
                     "type": "paragraph",
                     "content": "t:sections.header.settings.vertical_menu.title_category"
@@ -1000,8 +1027,14 @@ if (sticky != undefined || sticky != null) {
                 },
                 {
                     "type": "color",
+                    "id": "title_categories_border_color",
+                    "label": "t:sections.general.settings.color.label__15",
+                    "default": "#dedede"
+                }, 
+                {
+                    "type": "color",
                     "id": "title_categories_bg",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#ea4d3d"
                 },
                 {
@@ -1043,27 +1076,10 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "paragraph",
                     "content": "t:sections.header.settings.header_top_custom.info_3"
-                },
-                {
-                    "type": "color",
-                    "id": "title_categories_border_color",
-                    "label": "t:sections.general.settings.color.label__15",
-                    "default": "#dedede"
-                },                
+                },              
                 {
                     "type": "paragraph",
                     "content": "t:sections.header.settings.navigation.label_8"
-                },
-                {
-                    "type": "color",
-                    "id": "vertical_menu_bg",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
-                    "default": "#ffffff"
-                },
-                {
-                    "type": "color_background",
-                    "id": "vertical_menu_bg_gradient",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
                 },
                 {
                     "type": "color",
@@ -1076,6 +1092,17 @@ if (sticky != undefined || sticky != null) {
                     "id": "vertical_menu_lv1_hover_color",
                     "label": "t:settings_schema.typography.settings.typography.text_color_hover",
                     "default": "#000000"
+                },
+                {
+                    "type": "color",
+                    "id": "vertical_menu_bg",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
+                    "default": "#ffffff"
+                },
+                {
+                    "type": "color_background",
+                    "id": "vertical_menu_bg_gradient",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
                 },
                 {
                     "type": "color",
@@ -1103,6 +1130,10 @@ if (sticky != undefined || sticky != null) {
                     "default": "<p>Available 24/7: 091 234-ELLA</p>"
                 },
                 {
+                    "type": "paragraph",
+                    "content": "t:sections.header.settings.header_top.help"
+                },
+                {
                     "type": "checkbox",
                     "id": "show_help",
                     "label": "t:sections.header.settings.header_top.display_help",
@@ -1118,6 +1149,10 @@ if (sticky != undefined || sticky != null) {
                     "type": "url",
                     "id": "help_text_link",
                     "label": "t:sections.header.settings.header_top.help_text_link"
+                },
+                {
+                    "type": "paragraph",
+                    "content": "t:sections.header.settings.navigation.option_1"
                 },
                 {
                     "type": "checkbox",
@@ -1141,6 +1176,12 @@ if (sticky != undefined || sticky != null) {
                     "type": "checkbox",
                     "id": "show_wishlist",
                     "label": "t:sections.header.settings.header_icons.label__1",
+                    "default": false
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_wishlist_number",
+                    "label": "t:sections.header.settings.header_icons.label__6",
                     "default": false
                 },
                 {
@@ -1200,13 +1241,13 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "color",
                     "id": "header_icons_color",
-                    "label": "t:settings_schema.product_card.settings.product_quick_view.label__3",
+                    "label": "t:sections.header.settings.header_top.label__4",
                     "default": "#202020"
                 },
                 {
                     "type": "color",
                     "id": "header_icons_color_hover",
-                    "label": "t:settings_schema.product_card.settings.product_quick_view.label__5",
+                    "label": "t:sections.header.settings.header_top.label__5",
                     "default": "#202020"
                 },
                 {
@@ -1238,13 +1279,29 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "color",
                     "id": "cart_count_bubble_bg",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#d12442"
                 },
                 {
                     "type": "color_background",
                     "id": "cart_count_bubble_bg_gradient",
                     "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+                },
+                {
+                    "type": "paragraph",
+                    "content": "t:sections.header.settings.navigation.wishlist_count_bubble"
+                },
+                {
+                    "type": "color",
+                    "id": "wishlist_color_item",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
+                    "default": "#ffffff"
+                },
+                {
+                    "type": "color",
+                    "id": "wishlist_bg_item",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
+                    "default": "#232323"
                 }
             ]
         },
@@ -1252,10 +1309,6 @@ if (sticky != undefined || sticky != null) {
             "type": "megamenu_style_1",
             "name": "t:sections.header.blocks.header__4.menu_menu_1",
             "settings": [
-                {
-                    "type": "header",
-                    "content": "t:settings_schema.multiple_layouts.settings.general.layout_block"
-                },
                 {
                     "type": "radio",
                     "id": "layout_block",
@@ -1275,7 +1328,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "range",
                     "id": "header_custom_width_size",
-                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width_2",
+                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width",
                     "max": 1920,
                     "min": 1200,
                     "step": 10,
@@ -1286,6 +1339,7 @@ if (sticky != undefined || sticky != null) {
                     "type": "text",
                     "id": "item",
                     "label": "t:sections.header.settings.mega_menu.label__2",
+                    "info": "t:sections.header.settings.mega_menu.info__2",
                     "default": "Catalog"
                 },
                 {
@@ -1348,10 +1402,6 @@ if (sticky != undefined || sticky != null) {
             "name": "t:sections.header.blocks.header__4.menu_menu_2",
             "settings": [
                 {
-                    "type": "header",
-                    "content": "t:settings_schema.multiple_layouts.settings.general.layout_block"
-                },
-                {
                     "type": "radio",
                     "id": "layout_block",
                     "label": "t:settings_schema.multiple_layouts.settings.general.layout_select",
@@ -1370,7 +1420,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "range",
                     "id": "header_custom_width_size",
-                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width_2",
+                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width",
                     "max": 1920,
                     "min": 1200,
                     "step": 10,
@@ -1381,6 +1431,7 @@ if (sticky != undefined || sticky != null) {
                     "type": "text",
                     "id": "item",
                     "label": "t:sections.header.settings.mega_menu.label__2",
+                    "info": "t:sections.header.settings.mega_menu.info__2",
                     "default": "Catalog"
                 },
                 {
@@ -1398,52 +1449,60 @@ if (sticky != undefined || sticky != null) {
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.header.blocks.header__8.content"
+                    "content": "t:sections.header.settings.mega_menu.label__31"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_1",
-                    "label": "t:sections.header.settings.mega_menu.label__31"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_1",
-                    "label": "t:sections.header.settings.mega_menu.label__10"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_1",
-                    "label": "t:sections.header.settings.mega_menu.label__13"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
+                },
+                {
+                    "type": "header",
+                    "content": "t:sections.header.settings.mega_menu.label__32"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_2",
-                    "label": "t:sections.header.settings.mega_menu.label__32"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_2",
-                    "label": "t:sections.header.settings.mega_menu.label__14"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_2",
-                    "label": "t:sections.header.settings.mega_menu.label__17"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
+                },
+                {
+                    "type": "header",
+                    "content": "t:sections.header.settings.mega_menu.label__33"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_3",
-                    "label": "t:sections.header.settings.mega_menu.label__33"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_3",
-                    "label": "t:sections.header.settings.mega_menu.label__18"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_3",
-                    "label": "t:sections.header.settings.mega_menu.label__21"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
                 }
             ]
         },
@@ -1451,10 +1510,6 @@ if (sticky != undefined || sticky != null) {
             "type": "megamenu_style_3",
             "name": "t:sections.header.blocks.header__4.menu_menu_3",
             "settings": [
-                {
-                    "type": "header",
-                    "content": "t:settings_schema.multiple_layouts.settings.general.layout_block"
-                },
                 {
                     "type": "radio",
                     "id": "layout_block",
@@ -1474,7 +1529,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "range",
                     "id": "header_custom_width_size",
-                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width_2",
+                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width",
                     "max": 1920,
                     "min": 1200,
                     "step": 10,
@@ -1500,6 +1555,7 @@ if (sticky != undefined || sticky != null) {
                     "type": "text",
                     "id": "item",
                     "label": "t:sections.header.settings.mega_menu.label__2",
+                    "info": "t:sections.header.settings.mega_menu.info__2",
                     "default": "Catalog"
                 },
                 {
@@ -1517,82 +1573,117 @@ if (sticky != undefined || sticky != null) {
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.header.blocks.header__8.content"
+                    "content": "t:sections.header.settings.mega_menu.label__31"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_1",
-                    "label": "t:sections.header.settings.mega_menu.label__31"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_1",
-                    "label": "t:sections.header.settings.mega_menu.label__10"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_1",
-                    "label": "t:sections.header.settings.mega_menu.label__13"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
+                },
+                {
+                    "type": "header",
+                    "content": "t:sections.header.settings.mega_menu.label__32"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_2",
-                    "label": "t:sections.header.settings.mega_menu.label__32"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_2",
-                    "label": "t:sections.header.settings.mega_menu.label__14"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_2",
-                    "label": "t:sections.header.settings.mega_menu.label__17"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
+                },
+                {
+                    "type": "header",
+                    "content": "t:sections.header.settings.mega_menu.label__33"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_3",
-                    "label": "t:sections.header.settings.mega_menu.label__33"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_3",
-                    "label": "t:sections.header.settings.mega_menu.label__18"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_3",
-                    "label": "t:sections.header.settings.mega_menu.label__21"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
+                },
+                {
+                    "type": "header",
+                    "content": "t:sections.header.settings.mega_menu.label__34"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_4",
-                    "label": "t:sections.header.settings.mega_menu.label__34"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_4",
-                    "label": "t:sections.header.settings.mega_menu.label__22"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_4",
-                    "label": "t:sections.header.settings.mega_menu.label__25"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
+                },
+                {
+                    "type": "header",
+                    "content": "t:sections.header.settings.mega_menu.label__39"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_5",
-                    "label": "t:sections.header.settings.mega_menu.label__36"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_5",
-                    "label": "t:sections.header.settings.mega_menu.label__37"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_5",
-                    "label": "t:sections.header.settings.mega_menu.label__38"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
+                },
+                {
+                    "type": "header",
+                    "content": "t:sections.header.settings.mega_menu.label__40"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_banner_6",
+                    "label": "t:sections.header.settings.mega_menu.label__9"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "banner_6",
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
+                },
+                {
+                    "type": "url",
+                    "id": "banner_url_6",
+                    "label": "t:sections.header.settings.mega_menu.label__8"
                 }
             ]
         },
@@ -1600,10 +1691,6 @@ if (sticky != undefined || sticky != null) {
             "type": "megamenu_style_4",
             "name": "t:sections.header.blocks.header__4.menu_menu_4",
             "settings": [
-                {
-                    "type": "header",
-                    "content": "t:settings_schema.multiple_layouts.settings.general.layout_block"
-                },
                 {
                     "type": "radio",
                     "id": "layout_block",
@@ -1623,7 +1710,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "range",
                     "id": "header_custom_width_size",
-                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width_2",
+                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width",
                     "max": 1920,
                     "min": 1200,
                     "step": 10,
@@ -1634,6 +1721,7 @@ if (sticky != undefined || sticky != null) {
                     "type": "text",
                     "id": "item",
                     "label": "t:sections.header.settings.mega_menu.label__2",
+                    "info": "t:sections.header.settings.mega_menu.info__2",
                     "default": "Catalog"
                 },
                 {
@@ -1655,44 +1743,48 @@ if (sticky != undefined || sticky != null) {
                     "label": "t:sections.header.settings.mega_menu.list_menu"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "menu_text_left_sale",
                     "label": "t:sections.header.settings.mega_menu.list_menu_sale",
                     "info": "t:sections.header.settings.mega_menu.list_menu_info"
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.header.blocks.header__8.content"
+                    "content": "t:sections.header.settings.mega_menu.label__31"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_1",
-                    "label": "t:sections.header.settings.mega_menu.label__31"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_1",
-                    "label": "t:sections.header.settings.mega_menu.label__10"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_1",
-                    "label": "t:sections.header.settings.mega_menu.label__13"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
+                },
+                {
+                    "type": "header",
+                    "content": "t:sections.header.settings.mega_menu.label__32"
                 },
                 {
                     "type": "checkbox",
                     "id": "show_banner_2",
-                    "label": "t:sections.header.settings.mega_menu.label__32"
+                    "label": "t:sections.header.settings.mega_menu.label__9"
                 },
                 {
                     "type": "image_picker",
                     "id": "banner_2",
-                    "label": "t:sections.header.settings.mega_menu.label__14"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "url",
                     "id": "banner_url_2",
-                    "label": "t:sections.header.settings.mega_menu.label__17"
+                    "label": "t:sections.header.settings.mega_menu.label__8"
                 },
                 {
                     "type": "header",
@@ -1744,10 +1836,6 @@ if (sticky != undefined || sticky != null) {
             "name": "t:sections.header.blocks.header__4.menu_menu_5",
             "settings": [
                 {
-                    "type": "header",
-                    "content": "t:settings_schema.multiple_layouts.settings.general.layout_block"
-                },
-                {
                     "type": "radio",
                     "id": "layout_block",
                     "label": "t:settings_schema.multiple_layouts.settings.general.layout_select",
@@ -1766,7 +1854,7 @@ if (sticky != undefined || sticky != null) {
                 {
                     "type": "range",
                     "id": "header_custom_width_size",
-                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width_2",
+                    "label": "t:settings_schema.multiple_layouts.settings.general.custom_width",
                     "max": 1920,
                     "min": 1200,
                     "step": 10,
@@ -1800,6 +1888,7 @@ if (sticky != undefined || sticky != null) {
                     "type": "text",
                     "id": "item",
                     "label": "t:sections.header.settings.mega_menu.label__2",
+                    "info": "t:sections.header.settings.mega_menu.info__2",
                     "default": "Catalog"
                 },
                 {
@@ -1821,7 +1910,7 @@ if (sticky != undefined || sticky != null) {
                     "label": "t:sections.header.settings.mega_menu.list_menu"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "menu_text_left_sale",
                     "label": "t:sections.header.settings.mega_menu.list_menu_sale",
                     "info": "t:sections.header.settings.mega_menu.list_menu_info"

@@ -46,6 +46,12 @@ body.size-chart-show .halo-size-chart-popup.is-show {
     z-index: 102;
 }
 
+@media (max-width: 1024px) {
+    .halo-size-chart-popup .halo-popup-wrapper .halo-size-chart .content-page {
+        padding-top: 16px;
+    }
+}
+
 @media (min-width: 1280px) {
     .halo-size-chart-popup .halo-popup-wrapper .halo-popup-content {
         padding: 30px 50px 0;

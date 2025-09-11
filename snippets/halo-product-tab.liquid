@@ -181,3 +181,10 @@
 	document.querySelector('.tabs-contents-horizontal .tab-content:nth-child(1) .toggle-content').style.display = 'block';
 </script>
 {%- endif -%}
+{%- if tab_layout_mobile == 'vertical' and tab_layout == 'vertical' -%}
+<script defer="defer">
+	if (window.innerWidth < 551) {
+		document.querySelector('.tabs-contents-vertical .tab-content .toggleLink').classList.remove('is-open');
+	}
+</script>
+{%- endif -%}

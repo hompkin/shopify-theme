@@ -525,6 +525,10 @@
         margin-top: 12px;
     }
 
+    .address-form .form-field:has(select){
+        text-align: left;
+    }
+
     .address-form .form-field input,
     .address-form .form-field .select__select {
       max-width: 450px;

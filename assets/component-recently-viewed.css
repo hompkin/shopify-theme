@@ -129,7 +129,8 @@
     justify-content: flex-start;
 }
 
-.recently-viewed-content .product-info .price__sale .price__compare{
+.recently-viewed-content .product-info .price__sale .price__compare,
+.recently-viewed-content .product-info .product-price .price__label_percent{
     display: none;
 }
 

@@ -9,7 +9,7 @@ class DeliveryTime extends HTMLElement {
         this.targetTime = this.getAttribute("data-time");
         this.hr = this.querySelector('.productView-dlvr__remaining-hr');
         this.mins = this.querySelector('.productView-dlvr__remaining-mins');
-
+        this.iso_code = document.documentElement.lang;
         this.checkExclude = this.checkAllExcludeDays(this.excludedDays)
 
         if (this.checkExclude) return;
@@ -59,12 +59,12 @@ class DeliveryTime extends HTMLElement {
     // Format dayOfWeek/dayOfMonth/month/year/year theo value
     formatDate(dateString, formatString) {
         const date = new Date(dateString);
-
-        const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' }),
-            dayOfMonth = date.toLocaleDateString('en-US', { day: '2-digit' }),
-            month = date.toLocaleDateString('en-US', { month: 'short' }),
+        const locale = window.iso_code || 'en-US';
+        const dayOfWeek = date.toLocaleDateString(locale, { weekday: 'long' }),
+            dayOfMonth = date.toLocaleDateString(locale, { day: '2-digit' }),
+            month = date.toLocaleDateString(locale, { month: 'short' }),
             monthNumber = (date.getMonth() + 1).toString().padStart(2, '0'),
-            year = date.toLocaleDateString('en-US', { year: 'numeric' });
+            year = date.toLocaleDateString(locale, { year: 'numeric' });
 
         const formattedDate = formatString
             .replace('d', dayOfWeek)

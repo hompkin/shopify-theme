@@ -3,9 +3,11 @@
     assign button_text = block.settings.button_text
     assign button_width = block.settings.button_width | append: 'px'
     assign input_text = block.settings.input_text
+    assign hidden_input_field = block.settings.hidden_input_field
+
 -%}
 
-<{% if check_text %}form-has-check{% else %}div{% endif %} class="footer-block__newsletter-item footer-block__newsletter-form">
+<{% if check_text %}form-has-check{% else %}div{% endif %} class="footer-block__newsletter-item footer-block__newsletter-form{% if hidden_input_field %} hidden-input{% endif %}" style="--button-width: {{ button_width }};--spacing-input-button: {{ block.settings.spacing_input | append: 'px' }};">
     {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
         <input type="hidden" name="contact[tags]" value="newsletter">
         <div class="newsletter-form__field-wrapper">
@@ -16,15 +18,18 @@
             {%- if block.settings.enable_deep_button_border -%}
             <div class="submit-button-wrapper">
             {%- endif -%} 
-            <button type="submit" {% if check_text != blank %}disabled{% endif %} class="button newsletter-form__button" name="commit" id="Subscribe--{{ section.id }}" aria-label="{{ 'newsletter.button_label' | t }}" style="--button-width: {{ button_width }}">{% if settings.enable_button_1_border_outside %}<span>{% endif %}{{ button_text }}{% if settings.enable_button_1_border_outside %}</span>{% endif %}</button>   
+            <button type="submit" {% if check_text != blank %}disabled{% endif %} class="button newsletter-form__button" name="commit" id="Subscribe--{{ section.id }}" aria-label="{{ 'newsletter.button_label' | t }}">{% if settings.enable_button_1_border_outside %}<span>{% endif %}{{ button_text }}{% if settings.enable_button_1_border_outside %}</span>{% endif %}</button>   
+            {% if hidden_input_field %}
+                <div class="button-overlay"></div>
+            {% endif %}
             {%- if block.settings.enable_deep_button_border -%}
             </div>
             {%- endif -%}
         </div>      
         {%- if check_text != blank -%}
         <div class="form--check">
-            <input type="checkbox" id="check_newsletter">
-            <label for="check_newsletter">{{ block.settings.check_text }}</label>
+            <input type="checkbox" id="check_newsletter-{{ section.id }}">
+            <label for="check_newsletter-{{ section.id }}">{{ block.settings.check_text }}</label>
         </div>
         {%- endif -%}
         {%- if form.errors -%}
@@ -98,21 +103,30 @@
     {%- endform -%}
 </{% if check_text %}form-has-check{% else %}div{% endif %}>
 {%- if check_text != blank -%}
-<script>
-    class NewsletterForm extends HTMLElement {
-        constructor() {
-            super();
-            this.querySelector('.form--check label').addEventListener('click', this.onClickChecked.bind(this))
+    <script>
+        class NewsletterForm extends HTMLElement {
+            constructor() {
+                super();
+                this.querySelector('.form--check label').addEventListener('click', this.onClickChecked.bind(this))
+            }
+            onClickChecked(e) {
+                (e.target.closest('.form--check').querySelector('input').checked) ?
+                this.querySelector('.newsletter-form__button').setAttribute('disabled', true) :
+                this.querySelector('.newsletter-form__button').removeAttribute('disabled');
+            }
         }
-        onClickChecked(e) {
-            (e.target.closest('.form--check').querySelector('input').checked) ?
-            this.querySelector('.newsletter-form__button').setAttribute('disabled', true) :
-            this.querySelector('.newsletter-form__button').removeAttribute('disabled');
-        }
-    }
-    customElements.define('form-has-check', NewsletterForm);
-</script>
+        customElements.define('form-has-check', NewsletterForm);
+    </script>
 {%- endif -%}
+
+{% if hidden_input_field %}
+    <script>
+        document.querySelector('#shopify-section-{{ section.id }} .footer-block__newsletter .button-overlay').addEventListener("click", (event) => {
+            document.querySelector('#shopify-section-{{ section.id }} .footer-block__newsletter .footer-block__newsletter-form').classList.add("show-input");
+            document.querySelector('#shopify-section-{{ section.id }} .footer-block__newsletter .button-overlay').remove();
+        });
+    </script>
+{% endif %}
 <style>
     {%- liquid
         assign input_color = block.settings.input_color

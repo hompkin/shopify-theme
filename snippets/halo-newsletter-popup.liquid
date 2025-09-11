@@ -6,12 +6,14 @@
                 {%- if settings.popup_newsletter_link_image != blank -%}
                     <a {% if settings.popup_newsletter_link_image == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.popup_newsletter_link_image }}"{% endif %} target="_blank">
                 {%- endif -%}
-                    <img srcset="{{ image | img_url: 'master' }}" src="{{ image | img_url: 'master' }}" loading="lazy" alt="{{ image.alt | default: shop.name | escape }}">
-                {%- if settings.popup_newsletter_link_image != blank -%}    
+                    <img srcset="{{ image | img_url: 'master' }}" src="{{ image | img_url: 'master' }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} alt="{{ image.alt | default: shop.name | escape }}">
+                {%- if settings.popup_newsletter_link_image != blank -%}
                     </a>
                 {%- endif -%}
             {%- else -%}
-                <div class="not_img" style="--height_not_img: 470px">470 x 470px</div>
+                <div class="placeholder" style="--height_placeholder: 470px;">
+                    {{ 'blog-apparel-3' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
             {%- endif -%}
         </div>
     {%- endif -%}
@@ -31,13 +33,15 @@
                     {%- form 'customer', id: 'ContactPopup', class: 'newsletter-form' -%}
                         <input type="hidden" name="contact[tags]" value="newsletter">
                         <div class="newsletter-form__field-wrapper">
-                            <div class="form-field field"> 
+                            {% if settings.select_button_submit == 'default' %}
+                            <div class="form-field field">
                                 <input id="NewsletterForm--Popup" type="email" name="contact[email]" class="field__input form-input-placeholder" value="{{ form.email }}" aria-required="true" autocorrect="off" autocapitalize="off" autocomplete="email"{% if form.errors %} autofocus aria-invalid="true" aria-describedby="ContactFooter-error"{% elsif form.posted_successfully? %} aria-describedby="ContactFooter-success"{% endif %} placeholder="{% if settings.select_button_submit == 'default' %}{{ 'newsletter.placeholder' | t }}{% else %}{{ 'newsletter.dont_miss_out_this_sale' | t }}{% endif %}">
                                 <label class="field__label hiddenLabels" for="NewsletterForm--Popup">{{ 'newsletter.label' | t }}</label>
                             </div>
+                            {% endif %}
                             {%- if form.posted_successfully? -%}
                                 <script>
-                                    window.onload = (event) => {
+                                    document.addEventListener("DOMContentLoaded", (event) => {
                                         var newsletterMessagePopup = (function(){
                                             var popup = document.getElementById('halo-newsletter-message-popup'),
                                             message = popup.getElementsByClassName('newsletter-message')[0],
@@ -51,7 +55,7 @@
 
                                             setCookie('newsletter-popup', 'closed', {{ settings.newsletter_popup_expire }});
                                         })();
-                                    };
+                                    });
 
                                     var newURL = location.href.split("?")[0];
                                         window.history.pushState('object', document.title, newURL);
@@ -65,7 +69,7 @@
                                 </script>
                             {%- else -%}
                                 <script>
-                                    window.onload = (event) => {
+                                    document.addEventListener("DOMContentLoaded", (event) => {
                                         if (window.location.href.indexOf('newsletter&form_type=customer') > -1) {
                                             var newsletterMessagePopup = (function(){
                                                 var popup = document.getElementById('halo-newsletter-message-popup'),
@@ -86,7 +90,7 @@
                                                 document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
                                             }
                                         }
-                                    };
+                                    });
                                 </script>
                             {%- endif -%}
                             {%- if settings.select_button_submit == 'default' -%}

@@ -20,6 +20,11 @@
     word-break: break-word;
 }
 
+.badge-leaf .halo-productBadges .badge{
+    border-radius: 20px 0px;
+    border: none!important;
+}
+
 .halo-productBadges .badge.sale-badge{
     color: var(--sale-badge-color);
     background-color: var(--sale-badge-bg);
@@ -30,7 +35,7 @@
     background-color: var(--new-badge-bg);
 }
 
-.style-arrows-6 .halo-productBadges .badge.new-badge {
+.style-arrows-6:not(.badge-leaf) .halo-productBadges .badge.new-badge {
     border: 1px solid var(--new-badge-color);
     padding-top: 1px;
     padding-bottom: 2px;
@@ -44,6 +49,18 @@
 .halo-productBadges .badge.custom-badge{
     color: var(--custom-badge-color);
     background-color: var(--custom-badge-bg);
+}
+
+.halo-productBadges .badge.custom-badge:has(svg){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 4px;
+}
+
+.halo-productBadges .badge.custom-badge svg{
+    width: max(calc(var(--badge-line-height) - 8px), 10px);
+    height: max(calc(var(--badge-line-height) - 8px), 10px);
 }
 
 .halo-productBadges .badge.bundle-badge{

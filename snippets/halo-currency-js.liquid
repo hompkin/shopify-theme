@@ -126,12 +126,24 @@
                     active_currency = currencySwitcher.find('.active[data-currency]').html();
                     active_currency_label.html(active_currency);
 
+                if (shopCurrency != cookieCurrency) {
+                    $('.sibarbarBlock-filter-price').addClass('filter-price-hidden');
+                } else {
+                    $('.sibarbarBlock-filter-price').removeClass('filter-price-hidden');
+                }
+
                 currencyItem.on('click', (event) => {
                     event.preventDefault();
 
                     var $target = $(event.currentTarget),
                         label = $('[data-currency-label]'),
                         cur = $target.attr('data-currency');
+
+                    if (shopCurrency != cur) {
+                        $('.sibarbarBlock-filter-price').addClass('filter-price-hidden');
+                    } else {
+                        $('.sibarbarBlock-filter-price').removeClass('filter-price-hidden');
+                    }
 
                     if ($target.hasClass('active')){
                         return false;
@@ -302,7 +314,7 @@
     {%- else -%}
         {%- if enable_auto_currency -%}
             <div id="currencies" style="display: none;">
-                <a class="dropdown-item active " href="#" data-currency="{{ shop.currency }}"><span class="text">{{ shop.currency }}</span></a>
+                <a role="link" aria-disabled="true" class="dropdown-item active" data-currency="{{ shop.currency }}"><span class="text">{{ shop.currency }}</span></a>
             </div>
             {{ "//cdn.shopify.com/s/javascripts/currencies.js" | script_tag }}
             {%- if settings.currency_format_enable -%}

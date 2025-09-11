@@ -1,4 +1,18 @@
-<div class="product-item{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
+{%- liquid
+    if settings.show_vendor
+        assign vendor_img_png = product_card_product.vendor | downcase | replace: ' ', '-' | append: '.png' | prepend : 'vendor-'
+        assign vendor_img_jpg = product_card_product.vendor | downcase | replace: ' ', '-' | append: '.jpg' | prepend : 'vendor-'
+        assign vendor_img_webp = product_card_product.vendor | downcase | replace: ' ', '-' | append: '.webp' | prepend : 'vendor-'
+        if images[vendor_img_webp] != blank
+            assign vendor_img = vendor_img_webp
+        elsif images[vendor_img_png] != blank
+            assign vendor_img = vendor_img_png
+        elsif images[vendor_img_jpg] != blank
+            assign vendor_img = vendor_img_jpg
+        endif
+    endif
+-%}
+<div class="product-item product-item-loading{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
     <div class="card">
         <div class="card-product">
             <div class="card-product__wrapper">
@@ -15,12 +29,18 @@
         </div>
         <div class="card-information">
             <div class="card-information__wrapper text-{{ settings.product_content_text_align }}">
-                {%- if settings.show_vendor -%}
-                    <div class="card-information__group card-information__group-2">
-                      <div class="card-vendor">{{ product_card_product.vendor | link_to_vendor }}</div>
+                <div class="card-information__group card-information__group-2">
+                        {%- if settings.show_vendor -%}
+                        {%- if vendor_img != blank -%}
+                            <a class="vendor-image" href="/collections/vendors?q={{ product_card_product.vendor }}" title="{{ product_card_product.vendor }}">
+                                <img src="{{ vendor_img | file_url }}" alt="{{ product_card_product.vendor }}">
+                            </a>
+                        {%- else -%}
+                            {{ product_card_product.vendor | link_to_vendor: class: 'vendor-text' }}
+                        {%- endif -%}
+                        {%- endif -%}
+                        <a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}" href="{{ product_card_product.url }}">{{ product_card_product.title | escape }}</a>
                     </div>
-                {%- endif -%}
-                <a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}" href="{{ product_card_product.url | within: collection }}">{{ product_card_product.title | escape }}</a>
                 <div class="card-price">{% render 'price', product: product_card_product %}</div>
             </div>
         </div>

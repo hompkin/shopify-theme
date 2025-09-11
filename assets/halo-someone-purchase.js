@@ -3,7 +3,7 @@ class SomeonePurchase extends HTMLElement {
         super();
 
         this.popup = this;
-        
+
         if (this.popup.getElementsByClassName('data-product').length == 0) return;
 
         this.time = this.popup.getAttribute('data-notification-time');
@@ -48,7 +48,7 @@ class SomeonePurchase extends HTMLElement {
                 return c.substring(name.length, c.length);
             }
         }
-        
+
         return '';
     }
 
@@ -76,13 +76,13 @@ class SomeonePurchase extends HTMLElement {
                 image = productItem.getAttribute('data-image'),
                 title = productItem.getAttribute('data-title'),
                 url = productItem.getAttribute('data-url'),
-              
+
                 locals =  popup.getElementsByClassName('data-local'),
                 localLength= locals.length,
                 i = Math.floor(Math.random() * localLength),
                 localItem = locals[i],
                 local = localItem.getAttribute('data-local'),
-              
+
                 times = popup.getElementsByClassName('data-time'),
                 timeLength= times.length,
                 i = Math.floor(Math.random() * timeLength),
@@ -91,9 +91,13 @@ class SomeonePurchase extends HTMLElement {
 
             popup.classList.add('is-active');
 
+            popupImage[0].removeAttribute('role');
+            popupImage[0].removeAttribute('aria-disabled');
             popupImage[0].setAttribute('href', url);
             popupImage[0].innerHTML = '<img src="'+ image +'" alt="'+ title +'" title="'+ title +'"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="external-link" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-external-link fa-w-16 fa-3x"><path d="M440,256H424a8,8,0,0,0-8,8V464a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V112A16,16,0,0,1,48,96H248a8,8,0,0,0,8-8V72a8,8,0,0,0-8-8H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V264A8,8,0,0,0,440,256ZM500,0,364,.34a12,12,0,0,0-12,12v10a12,12,0,0,0,12,12L454,34l.7.71L131.51,357.86a12,12,0,0,0,0,17l5.66,5.66a12,12,0,0,0,17,0L477.29,57.34l.71.7-.34,90a12,12,0,0,0,12,12h10a12,12,0,0,0,12-12L512,12A12,12,0,0,0,500,0Z" class=""></path></svg>';
 
+            popupName[0].removeAttribute('role');
+            popupName[0].removeAttribute('aria-disabled');
             popupName[0].setAttribute('href', url);
             popupName[0].innerHTML = ''+ title +'';
 

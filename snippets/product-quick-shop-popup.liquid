@@ -12,7 +12,7 @@
             {%- endfor -%}
         };</script>
 {%- endif -%}
-<a href="#" class="variants-popup-close" data-cancel-quickshop-popup alt="{{ 'general.common.close' | t }}">{% render 'icon-close' %}{{ 'general.common.close' | t }}</a>
+<a role="link" aria-disabled="true" class="variants-popup-close" data-cancel-quickshop-popup>{% render 'icon-close' %}{{ 'general.common.close' | t }}</a>
 <div class="variants-popup-content text-center" data-quickshop>
     {%- assign formId = id | append: '-' | append: product.id -%}
     <form action="{{ routes.cart_url }}/add" method="post" class="variants" id="swatch-{{ formId }}-{{ sectionId }}-{{ list }}" data-id="product-actions-{{ product.id }}{{ list }}" enctype="multipart/form-data">
@@ -63,6 +63,25 @@
                                             assign enable_variant_image = true
                                             assign background_image = variant.image.src | product_img_url: '40x'
                                         endif
+                                    when 'metaobjects'
+                                        assign metaobject_color = value.swatch.color
+                                        assign metaobject_image = value.swatch.image
+                                        assign has_metaobject = false
+                                        assign has_image = false
+        
+                                        if metaobject_image != blank
+                                            assign background_image = metaobject_image | product_img_url: '120x'
+                                            assign enable_variant_image = true
+                                            assign has_metaobject = true
+                                            assign has_image = true
+                                        elsif metaobject_color != blank
+                                            assign background_color = metaobject_color
+                                            assign enable_variant_image = true
+                                            assign has_metaobject = true
+                                        elsif variant.image
+                                            assign background_image = variant.image.src | product_img_url: '120x'
+                                            assign enable_variant_image = true
+                                        endif
                                 endcase
                             -%}
                             <div class="swatch-element {{ value_2 }}{% if variant.available %} available{% else %} soldout{% endif %}" data-value="{{ value | escape }}">
@@ -70,7 +89,7 @@
                                 <label class="single-label" title="{{ value | escape }}" for="SingleOptionSelector{{ option_index0 }}-{{ value | escape }}-{{ product.id }}-{{ sectionId }}{{ list }}">
                                     <span
                                         class="pattern"
-                                        style="background-color: {{ value | split: ' ' | last | handle }};{% if enable_variant_image %}{% if swatch_type == 'metafields' %}{% if color_codes %} background: {{ background_color }}{% else %} background: url({{ background_image }}); background-size: cover;{% endif %}{% else %} background-image: url({{ background_image }});{% endif %}{% endif %}"
+                                        style="background-color: {{ value | split: ' ' | last | handle }};{% if enable_variant_image %}{% if swatch_type == 'metafields' %}{% if color_codes %} background: {{ background_color }};{% else %} background: url({{ background_image }}); background-size: cover;{% endif %}{% elsif has_metaobject and swatch_type == 'metaobjects' %}{% if has_image %}background: url({{ background_image }}); background-size: cover;{% else %}background: {{ background_color }};{% endif %}{% else %} background-image: url({{ background_image }});{% endif %}{% endif %}"
                                     ></span>
                                 </label>
                             </div>
@@ -98,7 +117,7 @@
                                 <input class="single-option" type="radio" name="SingleOptionSelector-{{ option_index0 }}-{{ product.id }}-{{ sectionId }}{{ list }}" data-index="option{{ option_index }}" value="{{ value | escape }}" id="SingleOptionSelector{{ option_index0 }}-{{ value | escape }}-{{ product.id }}-{{ sectionId }}{{ list }}"{% unless variant.available %} disabled{% endunless %}>
                                 <label class="single-label" title="{{ value | escape }}" for="SingleOptionSelector{{ option_index0 }}-{{ value | escape }}-{{ product.id }}-{{ sectionId }}{{ list }}">{{ value }}</label>
                                 {%- if settings.show_notify_form -%}
-                                    <a class="single-action clearfix" href="#" data-open-notify-popup data-variant-id><span class="text">{{ 'notify_form.general.label' | t }}</span></a>
+                                    <a role="link" aria-disabled="true" class="single-action clearfix" data-open-notify-popup data-variant-id><span class="text">{{ 'notify_form.general.label' | t }}</span></a>
                                 {%- endif -%}
                             </div>
                         {% endunless %}

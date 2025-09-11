@@ -424,6 +424,20 @@
 /* END: Product Info */
 /* END: Lookbook Card style */
 
+.slick-next .products-counter-number .counter {
+    font-size: calc(var(--font-body-size) - 2px);
+}
+
+.special-banner__products--grid.products-grid+.products-counter-number {
+    display: none;
+}
+
+.special-banner__item--product .title{
+    font-size: var(--fontsize_title);
+    color: var(--color_title);
+    line-height: 1.3;
+}
+
 @media (max-width: 1024px) {
     .special-banner__collection {
         display: inline-block;
@@ -494,6 +508,9 @@
     }
     .special-banner__products--grid.slick-slider .slick-dots {
         bottom: -5px;
+    }
+    .special-banner__item--product .title{
+        font-size: var(--fontsize_title_mb);
     }
 }
 @media (max-width: 320px) {
@@ -569,7 +586,6 @@
   
     .special-banner__lookbook {
         position: absolute;
-        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
@@ -577,9 +593,26 @@
         width: 73%;
     }
 
+    .special-banner__item--collection_banner+.special-banner__item--lookbook_banner .special-banner__lookbook {
+        position: initial;
+        transform: none;
+    }
+
     .special-banner__img_box.is-sticky {
         position: sticky;
         top: 0;
+    }
+
+    body:has(.shopify-section-header-hidden [data-sticky-type="on_scroll"]) .special-banner__img_box.is-sticky{
+        top: 0!important;
+    }
+
+    .special-banner__img_box.is-sticky .special-banner__img{
+        padding-top: 100vh!important;
+    }
+
+    .special-banner__img_box.is-sticky .special-banner__img img{
+        object-fit: cover;
     }
 }
 @media (min-width: 1200px) {
@@ -593,7 +626,7 @@
     }
     
     .special-banner__item--product .title {
-        margin: 45px 0 40px 0;
+        margin: var(--pd_top_title) 0 var(--mg_bottom_title) 0;
     }
     
     .special-banner__product {
@@ -653,7 +686,6 @@
     }
 }
 @media (min-width: 1600px) {
-     width: 100%;
 }
 @media (min-width: 768px) and (max-width: 1024px) {
     .special-banner__product {

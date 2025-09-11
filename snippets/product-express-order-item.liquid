@@ -11,7 +11,7 @@
         <div class="column col-img text-center">
             <div class="product-top">
                 <div class="product-image{% if product.images.size > 1 and settings.image_swap %} image-swap{% endif %}">
-                    <a href="{{ product.url | within: collection }}" class="product-grid-image" data-collections-related="/collections/{{collection.handle}}?view=related">
+                    <a href="{{ product.url }}" class="product-grid-image" data-collections-related="/collections/{{collection.handle}}?view=related">
                         {%- assign img_pr = product.featured_image.src | product_img_url: '200x' -%}
                         {%- assign img_0 = product.images[0].src | product_img_url: '200x' -%}
                         {%- assign img_1 = product.images[1].src | product_img_url: '200x' -%}
@@ -42,7 +42,7 @@
             <div class="product-vendor">{{ product.vendor | link_to_vendor }}</div>
             {%- endif -%}
 
-            <a class="product-title" href="{{ product.url | within: collection }}"><span class="text">{{ product.title | escape }}{% if variant_selected != blank %} <span data-change-title> - {{ variant_selected }}</span>{% endif %}</span></a>
+            <a class="product-title" href="{{ product.url }}"><span class="text">{{ product.title | escape }}{% if variant_selected != blank %} <span data-change-title> - {{ variant_selected }}</span>{% endif %}</span></a>
         </div>
         <div class="column col-price text-center">
             <div class="card-price">

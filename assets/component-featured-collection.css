@@ -170,9 +170,9 @@
         margin-bottom: 0px;
     }
 
-    .featured-collection-block .slider--tablet {
+    /* .featured-collection-block .slider--tablet {
         overflow: hidden;
-    }
+    } */
 }
 
 @media(max-width: 551px) {

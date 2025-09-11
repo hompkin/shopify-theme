@@ -14,7 +14,7 @@
                 -%}
                 <div class="sticky-left">
                     <div class="sticky-image" data-image-sticky-add-to-cart>
-                        <img srcset="{{ image | img_url: '1200x' }}" src="{{ image | img_url: '1200x' }}" alt="{{ image.alt | default: shop.name | escape }}" sizes="1200px" loading="lazy">
+                        <img srcset="{{ image | img_url: '1200x' }}" src="{{ image | img_url: '1200x' }}" alt="{{ image.alt | default: shop.name | escape }}" sizes="1200px"{% if settings.enable_lazyload %} loading="lazy"{% endif %}>
                     </div>
                     {% if sticky_atc_layout == '1' %}
                         <div class="sticky-info">
@@ -124,14 +124,12 @@
                             {%- endif -%}
                                 <input type="hidden" name="id" value="{{ current_variant.id }}">
                                 {%- if current_variant.available -%}
-                                    {%- if show_qty -%}
-                                        {% render 'product-quantity',
-                                            current_variant: current_variant,
-                                            qty_style: qty_style,
-                                            check_hidden: false,
-                                            quantity_stt: 3
-                                        %}
-                                    {%- endif -%}
+                                    {% render 'product-quantity',
+                                        current_variant: current_variant,
+                                        qty_style: qty_style,
+                                        check_hidden: false,
+                                        quantity_stt: 3
+                                    %}
                                     {%- if current_variant.inventory_management -%}
                                         {%- assign first_inventory = current_variant.inventory_quantity -%}
                                         <button
@@ -174,14 +172,12 @@
                         {% endform %}
                         {% if sticky_atc_layout == '1' %}
                             <div class="empty-add-cart-button-wrapper">
-                                    {%- if show_qty -%}
-                                        {% render 'product-quantity',
-                                            current_variant: current_variant,
-                                            qty_style: qty_style,
-                                            check_hidden: false,
-                                            quantity_stt: 3
-                                        %}
-                                    {%- endif -%}
+                                    {% render 'product-quantity',
+                                        current_variant: current_variant,
+                                        qty_style: qty_style,
+                                        check_hidden: false,
+                                        quantity_stt: 3
+                                    %}
                                     <button
                                         class="product-form__submit button button--primary{% if first_inventory == 0 %} button-text-change{% endif %}"
                                         id="show-sticky-product">
@@ -198,7 +194,7 @@
                     </div>
                     {%- if settings.show_wishlist -%}
                         <div class="sticky-wishlist clearfix">
-                            <a data-wishlist href="#" data-wishlist-handle="{{ product.handle }}" data-product-id="{{ product.id }}">
+                            <a role="link" aria-disabled="true" data-wishlist data-wishlist-handle="{{ product.handle }}" data-product-id="{{ product.id }}">
                                 <span class="visually-hidden">
                                     {{ 'wishlist.general.add' | t }}
                                 </span>
@@ -230,14 +226,14 @@
                                 {%- when 'image' -%}
                                     <div class="productView-thumbnail filter-{{ media.alt | handle }}" data-media-id="{{ section.id }}-{{ media.id }}">
                                         <div class="productView-thumbnail-link animated-loading" data-image="{{ media | img_url: 'original' }}">
-                                            <img src="{{ media | img_url: 'master' }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
+                                            <img src="{{ media | img_url: 'master' }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} />
                                         </div>
                                     </div>
                                 {%- when 'external_video' -%}
                                     {%- if video_layout == 'thumbnail' -%}
                                         <div class="productView-thumbnail filter-{{ media.alt | handle }}" data-media-id="{{ section.id }}-{{ media.id }}">
                                             <div class="productView-thumbnail-link animated-loading">
-                                                <img src="{{ media | img_url: 'compact' }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
+                                                <img src="{{ media | img_url: 'compact' }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} />
                                             </div>
                                             <div class="productView-thumbnail-icon">
                                                 {% render 'icon-video' %}
@@ -248,7 +244,7 @@
                                     {%- if video_layout == 'thumbnail' -%}
                                         <div class="productView-thumbnail filter-{{ media.alt | handle }}" data-media-id="{{ section.id }}-{{ media.id }}">
                                             <div class="productView-thumbnail-link animated-loading">
-                                                <img src="{{ media | media_tag | split: 'src="' | last | split: '">' | first }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
+                                                <img src="{{ media | media_tag | split: 'src="' | last | split: '">' | first }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} />
                                             </div>
                                             <div class="productView-thumbnail-icon">
                                                 {% render 'icon-video' %}
@@ -258,7 +254,7 @@
                                 {%- when 'model' -%}
                                     <div class="productView-thumbnail" data-media-id="{{ section.id }}-{{ media.id }}">
                                         <div class="productView-thumbnail-link animated-loading">
-                                            <img src="{{ media | media_tag | split: 'poster="' | last | split: '">' | first }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
+                                            <img src="{{ media | media_tag | split: 'poster="' | last | split: '">' | first }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} />
                                         </div>
                                         <div class="productView-thumbnail-icon">
                                             {% render 'icon-3d-model' %}

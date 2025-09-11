@@ -5,7 +5,7 @@
 <div class="featured-collection-block section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="featured-collection-{{section.id}}">
         <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1170' %}container-1170{% elsif section.settings.container == '1770' %}container-1770{% else %}container{% endif %}">
             {% if section.settings.featured_collection_block_title != blank %}
-                <div class="halo-block-header text-{{ section.settings.title_align }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">   
+                <div class="halo-block-header text-{{ section.settings.title_align }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                     <h3 class="title">
                         <span class="text">
                         {{ section.settings.featured_collection_block_title }}
@@ -46,11 +46,11 @@
                                     </a>
                                 {% else %}
                                     <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="image-zoom">
-                                        {% if block.settings.enable_absolute %}
-                                            <div class="not_img" style="--height_not_img: 200px">370 x 200px</div>
-                                        {% else %}
-                                            <div class="not_img" style="--height_not_img: 440px">370 x 440px</div>
-                                        {% endif %}
+                                        {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                                        {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+                                        <div class="placeholder" style="--height_placeholder: {% if block.settings.enable_absolute %}200px{% else %}440px{% endif %};">
+                                            {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                                        </div>
                                     </a>
                                 {% endif %}
                             </div>
@@ -61,7 +61,7 @@
                                             style="--color-text-style: {{ block.settings.color_title }};
                                                 --fontsize-text-style: {{ block.settings.fontsize_title | append: 'px' }}">
                                             <a {% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} class="link_title">
-                                                {{ block.settings.title }}            
+                                                {{ block.settings.title }}
                                             </a>
                                         </h3>
                                     {%- endif -%}
@@ -69,8 +69,8 @@
                                         style="--color-text-style: {{ block.settings.color_des }};
                                             --color-text-hover-style: {{ block.settings.color_hover_des }};
                                             --fontsize-text-style: {{ block.settings.fontsize_des | append: 'px' }}">
-                                        {%- assign assign collection = block.settings.collection.links -%} 
-                                        
+                                        {%- assign assign collection = block.settings.collection.links -%}
+
                                         {% for link in collection %}
                                             <li><a {% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %}><span>{{ link.title }}</span></a></li>
                                         {% endfor %}
@@ -290,11 +290,10 @@
         "id": "padding_full_width",
         "label": "t:sections.layout.container.padding_full_width",
         "min": 0,
-        "max": 50,
+        "max": 100,
         "step": 5,
         "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 0,
-        "info": "t:sections.layout.container.info_full_width"
+        "default": 0
     },
     {
         "type": "select",
@@ -318,6 +317,131 @@
             "value": "4",
             "label": "4"
         }]
+    },
+    {
+        "type" : "color",
+        "id" : "featured_collection_bg",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_color_2",
+        "default" : "#f5f5f5"
+    },
+    {
+        "type" : "color_background",
+        "id" : "featured_collection_bg_gradient",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+    },
+    {
+        "type" : "image_picker",
+        "id" : "featured_collection_bg_image",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_image"
+    },
+    {
+        "type": "header",
+        "content": "t:sections.image-banner.blocks.image.settings.content.section_header"
+    },
+    {
+        "type": "text",
+        "id": "featured_collection_block_title",
+        "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
+        "default": "Top Categories"
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_border_title",
+        "label": "t:settings_schema.typography.settings.typography.title_enable_border",
+        "default": false
+    },
+    {
+        "type" : "color",
+        "id" : "color_title",
+        "label": "t:settings_schema.typography.settings.typography.title_color",
+        "default" : "#202020"
+    },
+    {
+        "type": "range",
+        "id": "fontsize_title",
+        "label": "t:settings_schema.typography.settings.typography.title_font_size",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+        "default": 40
+    },
+    {
+        "type": "range",
+        "id": "fontsize_title_mb",
+        "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+        "default": 22
+    },
+    {
+        "type" : "text",
+        "id" : "featured_collection_block_btn_text",
+        "label" : "t:settings_schema.typography.settings.typography.button_text"
+    },
+    {
+        "type" : "url",
+        "id" : "featured_collection_block_btn_link",
+        "label" : "t:settings_schema.typography.settings.typography.button_link"
+    },
+    {
+        "type" : "color",
+        "id" : "btn_color",
+        "label": "t:settings_schema.typography.settings.typography.button_color",
+        "default" : "#3c3c3c"
+    },
+    {
+        "type": "range",
+        "id": "fontsize_btn",
+        "label": "t:settings_schema.typography.settings.typography.button_font_size",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+        "default": 16
+    },
+    {
+        "type": "liquid",
+        "id" : "btn_icon",
+        "label" : "t:settings_schema.typography.settings.typography.button_icon",
+        "info" : "Go to this link [find your icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
+    },
+    {
+        "type": "color",
+        "id" : "btn_icon_color",
+        "label" : "t:settings_schema.typography.settings.typography.button_icon_color",
+        "default" : "#eb492f"
+    },
+    {
+        "type": "select",
+        "id": "title_align",
+        "label": "t:sections.general.settings.alignment.label__1",
+        "options": [
+        {
+            "value": "left",
+            "label": "t:settings_schema.typography.settings.type_button_font.left"
+        },
+        {
+            "value": "center",
+            "label": "t:settings_schema.typography.settings.type_button_font.center"
+        },
+        {
+            "value": "right",
+            "label": "t:settings_schema.typography.settings.type_button_font.right"
+        }],
+        "default": "center"
+    },
+    {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.typography.layout_mobile"
+    },
+    {
+        "id": "featured_collection_block_swipe_on_mobile",
+        "type": "checkbox",
+        "default": false,
+        "label": "t:sections.featured-collection.settings.swipe_on_mobile.label"
     },
     {
         "type": "header",
@@ -365,7 +489,7 @@
         "max": 100,
         "step": 5,
         "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 10
+        "default": 50
     },
     {
         "type": "range",
@@ -375,7 +499,7 @@
         "max": 100,
         "step": 5,
         "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 10
+        "default": 50
     },
     {
         "type": "range",
@@ -385,124 +509,7 @@
         "max": 100,
         "step": 5,
         "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 10
-    },
-    {
-        "type" : "color",
-        "id" : "featured_collection_bg",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_color",
-        "default" : "#f5f5f5"
-    },
-    {
-        "type" : "color_background",
-        "id" : "featured_collection_bg_gradient",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-    },
-    {
-        "type" : "image_picker",
-        "id" : "featured_collection_bg_image",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_image"
-    },
-    {
-        "type": "text",
-        "id": "featured_collection_block_title",
-        "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
-        "default": "Top Categories"
-    },
-    {
-        "type": "checkbox",
-        "id": "enable_border_title",
-        "label": "t:settings_schema.typography.settings.typography.title_enable_border",
-        "default": false
-    },
-    {
-        "type" : "color",
-        "id" : "color_title",
-        "label": "t:sections.layout.color.color_title",
-        "default" : "#202020"
-    },
-    {
-        "type": "range",
-        "id": "fontsize_title",
-        "label": "t:sections.layout.fontsize.fontsize_title.label",
-        "min": 10,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 40
-    },
-    {
-        "type": "range",
-        "id": "fontsize_title_mb",
-        "label": "t:sections.layout.fontsize.fontsize_title.label_mb",
-        "min": 10,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 22
-    },
-    {
-        "type" : "text",
-        "id" : "featured_collection_block_btn_text",
-        "label" : "t:settings_schema.typography.settings.typography.button_text"
-    },
-    {
-        "type" : "url",
-        "id" : "featured_collection_block_btn_link",
-        "label" : "t:settings_schema.typography.settings.typography.button_link"
-    },
-    {
-        "type" : "color",
-        "id" : "btn_color",
-        "label": "t:settings_schema.typography.settings.typography.button_color",
-        "default" : "#3c3c3c"
-    },
-    {
-        "type": "range",
-        "id": "fontsize_btn",
-        "label": "t:settings_schema.typography.settings.typography.button_font_size",
-        "min": 10,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 16
-    },
-    {
-        "type": "textarea",
-        "id" : "btn_icon",
-        "label" : "t:settings_schema.typography.settings.typography.button_icon",
-        "info" : "Go to this link [Find your Icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
-    },
-    {
-        "type": "color",
-        "id" : "btn_icon_color",
-        "label" : "t:settings_schema.typography.settings.typography.button_icon_color",
-        "default" : "#eb492f"
-    },
-    {
-        "type": "select",
-        "id": "title_align",
-        "label": "t:sections.product_block.settings.general.label__7",
-        "options": [
-        {
-            "value": "left",
-            "label": "t:sections.product_block.settings.general.options__7"
-        },
-        {
-            "value": "center",
-            "label": "t:sections.product_block.settings.general.options__8"
-        },
-        {
-            "value": "right",
-            "label": "t:sections.product_block.settings.general.options__9"
-        }],
-        "default": "center"
-    },
-    {
-        "id": "featured_collection_block_swipe_on_mobile",
-        "type": "checkbox",
-        "default": false,
-        "label": "t:sections.featured-collection.settings.swipe_on_mobile.label"
+        "default": 50
     }
     ],
     "blocks": [
@@ -513,7 +520,8 @@
                 {
                     "type": "link_list",
                     "id": "collection",
-                    "label": "t:sections.featured-collection.settings.swipe_on_mobile.category"
+                    "label": "t:sections.footer.blocks.link_list.name",
+                    "info": "t:sections.featured-collection.settings.swipe_on_mobile.info"
                 },
                 {
                     "type": "image_picker",
@@ -523,19 +531,19 @@
                 {
                     "type": "select",
                     "id": "content_align",
-                    "label": "t:sections.product_block.settings.general.label__7",
+                    "label": "t:sections.general.settings.alignment.label__1",
                     "options": [
                     {
                         "value": "left",
-                        "label": "t:sections.product_block.settings.general.options__7"
+                        "label": "t:settings_schema.typography.settings.type_button_font.left"
                     },
                     {
                         "value": "center",
-                        "label": "t:sections.product_block.settings.general.options__8"
+                        "label": "t:settings_schema.typography.settings.type_button_font.center"
                     },
                     {
                         "value": "right",
-                        "label": "t:sections.product_block.settings.general.options__9"
+                        "label": "t:settings_schema.typography.settings.type_button_font.right"
                     }],
                     "default": "center"
                 },
@@ -547,13 +555,13 @@
                 {
                     "type" : "color",
                     "id" : "color_title",
-                    "label": "t:sections.layout.color.color_title",
+                    "label": "t:settings_schema.typography.settings.typography.title_color",
                     "default" : "#232323"
                 },
                 {
                     "type": "range",
                     "id": "fontsize_title",
-                    "label": "t:sections.layout.fontsize.fontsize_title.label",
+                    "label": "t:settings_schema.typography.settings.typography.title_font_size",
                     "min": 10,
                     "max": 50,
                     "step": 1,
@@ -563,19 +571,19 @@
                 {
                     "type" : "color",
                     "id" : "color_des",
-                    "label": "t:sections.layout.color.color_des",
+                    "label": "t:settings_schema.colors.settings.colors_link.label__1",
                     "default" : "#3c3c3c"
                 },
                 {
                     "type" : "color",
                     "id" : "color_hover_des",
-                    "label": "t:settings_schema.typography.settings.typography.des_color_hover",
+                    "label": "t:settings_schema.colors.settings.colors_link.label__2",
                     "default" : "#4dac8b"
                 },
                 {
                     "type": "range",
                     "id": "fontsize_des",
-                    "label": "t:sections.layout.fontsize.fontsize_des.label",
+                    "label": "t:sections.collection_lookbook.blocks.collection.link.link_fs",
                     "min": 10,
                     "max": 50,
                     "step": 1,
@@ -583,56 +591,10 @@
                     "default": 14
                 },
                 {
-                    "type" : "color",
-                    "id" : "color_button",
-                    "label": "t:settings_schema.colors.settings.colors_name.color",
-                    "default" : "#fff"
-                },
-                {
-                    "type" : "color",
-                    "id" : "border_color_button",
-                    "label": "t:settings_schema.colors.settings.colors_name.border_color",
-                    "default" : "#4d4a46"
-                },
-                {
-                    "type" : "color",
-                    "id" : "bg_color_button",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
-                    "default" : "#4d4a46"
-                },
-                {
-                    "type" : "color_background",
-                    "id" : "bg_color_gradient_button",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-                },
-                {
-                    "type" : "color",
-                    "id" : "color_button_hover",
-                    "label": "t:settings_schema.colors.settings.colors_name.color_hover",
-                    "default" : "#fff"
-                },
-                {
-                    "type" : "color",
-                    "id" : "border_color_button_hover",
-                    "label": "t:settings_schema.colors.settings.colors_name.border_hover",
-                    "default" : "#4d4a46"
-                },
-                {
-                    "type" : "color",
-                    "id" : "bg_color_button_hover",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_hover",
-                    "default" : "#4d4a46"
-                },
-                {
-                    "type" : "color_background",
-                    "id" : "bg_color_gradient_button_hover",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_hover_gradient"
-                },
-                {
                     "type": "text",
                     "id" : "btn_icon",
                     "label" : "t:settings_schema.typography.settings.typography.button_icon",
-                    "info" : "Go to this link [Find your Icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
+                    "info" : "Go to this link [find your icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
                 },
                 {
                     "type": "text",
@@ -643,6 +605,52 @@
                   "type" : "url",
                   "id" : "link",
                   "label" : "t:settings_schema.typography.settings.typography.button_link"
+                },
+                {
+                    "type" : "color",
+                    "id" : "color_button",
+                    "label": "t:settings_schema.typography.settings.typography.button_color",
+                    "default" : "#fff"
+                },
+                {
+                    "type" : "color",
+                    "id" : "border_color_button",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_border",
+                    "default" : "#4d4a46"
+                },
+                {
+                    "type" : "color",
+                    "id" : "bg_color_button",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_bg",
+                    "default" : "#4d4a46"
+                },
+                {
+                    "type" : "color_background",
+                    "id" : "bg_color_gradient_button",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient"
+                },
+                {
+                    "type" : "color",
+                    "id" : "color_button_hover",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_color_hover",
+                    "default" : "#fff"
+                },
+                {
+                    "type" : "color",
+                    "id" : "border_color_button_hover",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_border_hover",
+                    "default" : "#4d4a46"
+                },
+                {
+                    "type" : "color",
+                    "id" : "bg_color_button_hover",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_bg_hover",
+                    "default" : "#4d4a46"
+                },
+                {
+                    "type" : "color_background",
+                    "id" : "bg_color_gradient_button_hover",
+                    "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient_hover"
                 }
             ]
         }

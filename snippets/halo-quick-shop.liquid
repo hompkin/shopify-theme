@@ -100,7 +100,7 @@
                           alt="{{ media.alt | escape }}"
                           title="{{ media.alt | escape }}"
                           sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                          loading="lazy"
+                         {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                           data-sizes="auto">
                       </div>
                       <div class="productView-video youtube">
@@ -114,7 +114,7 @@
                           alt="{{ media.alt | escape }}"
                           title="{{ media.alt | escape }}"
                           sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                          loading="lazy"
+                         {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                           data-sizes="auto">
                       </div>
                       <div
@@ -146,7 +146,7 @@
                         alt="{{ media.alt | escape }}"
                         title="{{ media.alt | escape }}"
                         sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                        loading="lazy"
+                       {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                         data-sizes="auto">
                     </div>
                     <div class="productView-video mp4" data-mp4>
@@ -299,7 +299,7 @@
                             alt="{{ media.preview_image.alt | escape }}"
                             title="{{ media.preview_image.alt | escape }}"
                             sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                            loading="lazy"
+                           {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                             data-sizes="auto"
                             data-main-image
                             width="{{ media.preview_image.width }}"
@@ -329,7 +329,7 @@
                               alt="{{ media.alt | escape }}"
                               title="{{ media.alt | escape }}"
                               sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                              loading="lazy"
+                             {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                               data-sizes="auto">
                           </div>
                           <div class="productView-video youtube">
@@ -343,7 +343,7 @@
                               alt="{{ media.alt | escape }}"
                               title="{{ media.alt | escape }}"
                               sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                              loading="lazy"
+                             {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                               data-sizes="auto">
                           </div>
                           <div class="productView-video vimeo" data-vimeo>
@@ -373,7 +373,7 @@
                             alt="{{ media.alt | escape }}"
                             title="{{ media.alt | escape }}"
                             sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                            loading="lazy"
+                           {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                             data-sizes="auto">
                         </div>
                         <div class="productView-video mp4" data-mp4>
@@ -688,12 +688,31 @@
                                     assign enable_variant_image = true
                                     assign background_image = variant.image.src | product_img_url: '40x'
                                   endif
+                                when 'metaobjects'
+                                    assign metaobject_color = value.swatch.color
+                                    assign metaobject_image = value.swatch.image
+                                    assign has_metaobject = false
+                                    assign has_image = false
+    
+                                    if metaobject_image != blank
+                                        assign background_image = metaobject_image | product_img_url: '120x'
+                                        assign enable_variant_image = true
+                                        assign has_metaobject = true
+                                        assign has_image = true
+                                    elsif metaobject_color != blank
+                                        assign background_color = metaobject_color
+                                        assign enable_variant_image = true
+                                        assign has_metaobject = true
+                                    elsif variant.image
+                                        assign background_image = variant.image.src | product_img_url: '120x'
+                                        assign enable_variant_image = true
+                                    endif
                               endcase
                             -%}
                             <label class="product-form__label {% if variant.available %} available{% else %} soldout{% endif %}" for="option-quick-view-{{ product.id }}-{{ option.name }}-{{ forloop.index0 }}">
                               <span
                                 class="pattern"
-                                style="background-color: {{ value | split: ' ' | last | handle }};{% if enable_variant_image %}{% if swatch_type == 'metafields' %}{% if color_codes %} background: {{ background_color }}{% else %} background: url({{ background_image }}); background-size: cover;{% endif %}{% else %} background-image: url({{ background_image }});{% endif %}{% endif %}"
+                                style="background-color: {{ value | split: ' ' | last | handle }};{% if enable_variant_image %}{% if swatch_type == 'metafields' %}{% if color_codes %} background: {{ background_color }};{% else %} background: url({{ background_image }}); background-size: cover;{% endif %}{% elsif has_metaobject and swatch_type == 'metaobjects' %}{% if has_image %}background: url({{ background_image }}); background-size: cover;{% else %}background: {{ background_color }};{% endif %}{% else %} background-image: url({{ background_image }});{% endif %}{% endif %}"
                               ></span>
                             </label>
                           {%- else -%}
@@ -782,10 +801,7 @@
                       <label class="form-label quantity__label hiddenLabels" for="quantity-quick-view-{{ product.id }}">
                         {{ 'products.product.quantity.label' | t }}
                       </label>
-                      <a
-                        href="#"
-                        data-minus-quantity-cart=""
-                        class="minus btn-quantity"></a>
+                      <a role="link" aria-disabled="true" class="minus btn-quantity" data-minus-quantity-cart=""></a>
                       <input
                         class="form-input quantity__input quantity"
                         type="number"
@@ -798,10 +814,7 @@
                         data-product="{{ product.id }}"
                         data-price="{{ current_variant.price }}"
                         data-inventory-quantity="{{ current_variant.inventory_quantity }}">
-                      <a
-                        href="#"
-                        data-plus-quantity-cart=""
-                        class="plus btn-quantity"></a>
+                      <a role="link" aria-disabled="true" class="plus btn-quantity" data-plus-quantity-cart=""></a>
                     </quantity-quick-shop-input>
                   </cart-update-quantity>
                   <div class="productView-action{% unless settings.show_wishlist %} productView-action-2{% endunless %}">

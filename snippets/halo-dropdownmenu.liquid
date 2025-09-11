@@ -1,4 +1,4 @@
-<li class="menu-lv-item menu-lv-1 text-left no-megamenu{% if link.links != blank %} dropdown{% endif %}{% if sale_item_lv1 contains title %} menu-sale{% endif %}">
+<li class="menu-lv-item menu-lv-1 text-left no-megamenu{% if link.links != blank %} dropdown{% endif %}{% if sale_item_lv1 contains title %} menu-sale{% endif %}"{% if settings.enable_following_cursor and settings.following_cursor_style == 'default' %} no-effect-cursor{% endif %}>
 {%- if link.links != blank -%}<a class="menu-lv-1__action  header__menu-item list-menu__item link focus-inset menu_mobile_link link-effect"{% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %}><span class="text{%- if link.child_active %} header__active-menu-item{% endif %} p-relative">{{ link.title | escape }}</span>
         <span class="icon-dropdown" data-toggle-menu-mb="">{% render 'icon-caret-right' %}</span>
         {%- if new_label_1 contains title -%}
@@ -59,7 +59,7 @@
         {%- endfor -%}
     </ul>
 {%- else -%}
-    <a {% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %} class="menu-lv-1__action header__menu-item header__menu-item list-menu__item link link--text focus-inset link-effect"{% if link.current %} aria-current="page"{% endif %}><span class="text{%- if link.current %} header__active-menu-item{% endif %} p-relative">{{ link.title | escape }}</span>
+    <a {% if link.url == blank %} role="link" aria-disabled="true"{% else %} href="{{ link.url }}"{% endif %} class="menu-lv-1__action header__menu-item list-menu__item link link--text focus-inset link-effect"{% if link.current %} aria-current="page"{% endif %}><span class="text{%- if link.current %} header__active-menu-item{% endif %} p-relative">{{ link.title | escape }}</span>
         {%- if new_label_1 contains title -%}
             <span class="label new-label">{{ 'general.navigation.new_label' | t }}</span>
         {%- elsif sale_label_1 contains title -%}

@@ -33,7 +33,7 @@
     -%}
 
     <div class="custom-map{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="custom-map-{{ section.id }}">
-    	<div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%} container-full{% else %}container{% endif %}">
+    	<div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
     		{%- if block_title != blank or block_text != blank or btn_text != blank -%}
                 <div class="block-header">
                     <h2 class="title text-{{ block_align }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: 1;"{% endif %}>
@@ -160,14 +160,127 @@
                         "label": "t:sections.layout.container.option4"
                     },
                     {
-                        "value": "fullwidth",
-                        "label": "t:sections.layout.container.option2"
-                    },
-                    {
                         "value": "1770",
                         "label": "t:sections.layout.container.option3"
+                    },
+                    {
+                        "value": "fullwidth",
+                        "label": "t:sections.layout.container.option2"
                     }
                 ]
+            },
+            {
+                "type": "text",
+                "id": "block_title",
+                "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
+                "default": "Google Map"
+            },
+            {
+                "type": "text",
+                "id": "block_text",
+                "label": "t:sections.image-banner.blocks.image.settings.content.label__16",
+                "default": "Give customers details about the banner image(s) or content on the template."
+            },
+            {
+                "type": "select",
+                "id": "block_align",
+                "label": "t:sections.image-banner.blocks.image.settings.content.label__7",
+                "options": [
+                {
+                    "value": "left",
+                    "label": "t:settings_schema.typography.settings.type_button_font.left"
+                },
+                {
+                    "value": "center",
+                    "label": "t:settings_schema.typography.settings.type_button_font.center"
+                },
+                {
+                    "value": "right",
+                    "label": "t:settings_schema.typography.settings.type_button_font.right"
+                }],
+                "default": "center"
+            },
+            {
+                "type": "range",
+                "id": "block_max_width",
+                "label": "t:sections.custom_map.settings.label__1",
+                "default": 400,
+                "min": 100,
+                "max": 1000,
+                "step": 10,
+                "unit": "t:sections.general.settings.padding.unit",
+                "info": "t:sections.custom_map.settings.info"
+            },
+            {
+                "type": "text",
+                "id": "btn_text",
+                "label": "t:settings_schema.typography.settings.typography.button_text",
+                "default": "Find A Store"
+            },
+            {
+                "type": "color",
+                "id": "btn_text_color",
+                "label": "t:settings_schema.typography.settings.typography.button_color"
+            },
+            {
+                "type": "color",
+                "id": "btn_border_color",
+                "label": "t:sections.rich-text.blocks.button.settings.button_border"
+            },
+            {
+                "type": "color",
+                "id": "btn_bg_color",
+                "label": "t:sections.rich-text.blocks.button.settings.button_bg"
+            },
+            {
+                "type": "color_background",
+                "id": "btn_bg_color_gradient",
+                "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient"
+            },
+            {
+                "type": "color",
+                "id": "btn_text_color_hover",
+                "label": "t:sections.rich-text.blocks.button.settings.button_color_hover"
+            },
+            {
+                "type": "color",
+                "id": "btn_border_color_hover",
+                "label": "t:sections.rich-text.blocks.button.settings.button_border_hover"
+            },
+            {
+                "type": "color",
+                "id": "btn_bg_color_hover",
+                "label": "t:sections.rich-text.blocks.button.settings.button_bg_hover"
+            },
+            {
+                "type": "color_background",
+                "id": "btn_bg_color_hover_gradient",
+                "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient_hover"
+            },
+            {
+                "type": "range",
+                "id": "btn_max_width",
+                "label": "t:sections.custom_map.settings.button.label__8",
+                "default": 205,
+                "min": 100,
+                "max": 500,
+                "step": 5,
+                "unit": "t:sections.general.settings.padding.unit"
+            },
+            {
+                "type": "url",
+                "id": "btn_link",
+                "label": "t:settings_schema.typography.settings.typography.button_link"
+            },
+            {
+                "type": "header",
+                "content": "t:sections.custom_map.settings.header__2"
+            },
+            {
+                "type": "html",
+                "id": "block_content",
+                "label": "t:sections.custom_map.settings.map_iframe",
+                "info": "t:sections.custom_map.settings.info__1"
             },
             {
                 "type": "header",
@@ -236,120 +349,7 @@
                 "step": 5,
                 "unit": "t:sections.layout.mg_desktop.unit",
                 "default": 50
-            },
-            {
-                "type": "text",
-                "id": "block_title",
-                "label": "t:sections.image-banner.blocks.image.settings.content.label__1",
-                "default": "Google Map"
-            },
-            {
-                "type": "text",
-                "id": "block_text",
-                "label": "t:sections.image-banner.blocks.image.settings.content.label__16",
-                "default": "Give customers details about the banner image(s) or content on the template."
-            },
-            {
-                "type": "select",
-                "id": "block_align",
-                "label": "t:sections.general.settings.block-title.label__3",
-                "options": [
-                {
-                    "value": "left",
-                    "label": "t:settings_schema.typography.settings.typography.left"
-                },
-                {
-                    "value": "center",
-                    "label": "t:settings_schema.typography.settings.typography.center"
-                },
-                {
-                    "value": "right",
-                    "label": "t:settings_schema.typography.settings.typography.right"
-                }],
-                "default": "center"
-            },
-            {
-                "type": "range",
-                "id": "block_max_width",
-                "label": "t:sections.custom_map.settings.label__1",
-                "default": 400,
-                "min": 100,
-                "max": 1000,
-                "step": 10,
-                "unit": "t:sections.general.settings.padding.unit",
-                "info": "t:sections.custom_map.settings.info"
-            },
-            {
-                "type": "text",
-                "id": "btn_text",
-                "label": "t:settings_schema.typography.settings.typography.button_text",
-                "default": "Find A Store"
-            },
-            {
-                "type": "color",
-                "id": "btn_text_color",
-                "label": "t:settings_schema.colors.settings.colors_name.color"
-            },
-            {
-                "type": "color",
-                "id": "btn_border_color",
-                "label": "t:settings_schema.colors.settings.colors_name.border_color"
-            },
-            {
-                "type": "color",
-                "id": "btn_bg_color",
-                "label": "t:settings_schema.colors.settings.colors_name.background_color"
-            },
-            {
-                "type": "color_background",
-                "id": "btn_bg_color_gradient",
-                "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-            },
-            {
-                "type": "color",
-                "id": "btn_text_color_hover",
-                "label": "t:settings_schema.colors.settings.colors_name.color_hover"
-            },
-            {
-                "type": "color",
-                "id": "btn_border_color_hover",
-                "label": "t:settings_schema.colors.settings.colors_name.border_hover"
-            },
-            {
-                "type": "color",
-                "id": "btn_bg_color_hover",
-                "label": "t:settings_schema.colors.settings.colors_name.background_hover"
-            },
-            {
-                "type": "color_background",
-                "id": "btn_bg_color_hover_gradient",
-                "label": "t:settings_schema.colors.settings.colors_name.background_hover_gradient"
-            },
-            {
-                "type": "range",
-                "id": "btn_max_width",
-                "label": "t:sections.custom_map.settings.button.label__8",
-                "default": 205,
-                "min": 100,
-                "max": 500,
-                "step": 5,
-                "unit": "t:sections.general.settings.padding.unit"
-            },
-            {
-                "type": "url",
-                "id": "btn_link",
-                "label": "t:sections.custom_map.settings.button.label__9"
-            },
-            {
-                "type": "header",
-                "content": "t:sections.custom_map.settings.header__2"
-            },
-            {
-                "type": "html",
-                "id": "block_content",
-                "label": "t:sections.custom_map.settings.map_iframe"
             }
-            
 		],
         "presets": [
             {

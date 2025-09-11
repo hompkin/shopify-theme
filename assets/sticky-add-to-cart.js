@@ -48,7 +48,14 @@ class StickyAddToCart extends HTMLElement {
 
     onScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const offsetScroll = $(this.stickyBounds).offset().top + $(this.stickyBounds).outerHeight(true) + 100;
+        let offsetScroll;
+
+        if (this.stickyBounds != null) {
+            offsetScroll = $(this.stickyBounds).offset().top + $(this.stickyBounds).outerHeight(true) + 100;
+        } else {
+            offsetScroll = 0;
+        }
+
         const winHeight = window.innerHeight;
         const docHeight = document.body.clientHeight;
 
@@ -69,6 +76,7 @@ class StickyAddToCart extends HTMLElement {
 
                 this.sticky.style.top = 'auto';
                 this.sticky.style.bottom = `${height}px`;
+                document.querySelector('.quick-order-list__total')?.style.setProperty('bottom', `${height + this.offsetHeight}px`);
             }
             else if (this.sticky.classList.contains('style-2')) {
                 if(document.body.classList.contains('scroll-up')){
@@ -90,6 +98,7 @@ class StickyAddToCart extends HTMLElement {
             }
         } else{
             requestAnimationFrame(this.hide.bind(this));
+            if(this.sticky.classList.contains('style-1')) document.querySelector('.quick-order-list__total')?.style.setProperty('bottom', '0px');
         }
 
         this.currentScrollTop = scrollTop;
@@ -238,6 +247,11 @@ class VariantStickyAddToCart extends HTMLElement {
 
                 if (source && destination) {
                     destination.innerHTML = source.innerHTML;
+                }
+
+                if (this.checkNeedToConvertCurrency()) {
+                    let currencyCode = document.getElementById('currencies')?.querySelector('.active')?.getAttribute('data-currency');
+                    Currency.convertAll(window.shop_currency, currencyCode, 'span.money', 'money_format');
                 }
 
                 document.getElementById(`product-price-${this.dataset.product}`)?.classList.remove('visibility-hidden');
@@ -731,8 +745,10 @@ class VariantStickyAddToCart extends HTMLElement {
             this.item.removeClass('isChecked');
             quantityInput.attr('data-price', this.currentVariant?.price);
             quantityInput.attr('disabled', true);
-            addButton.setAttribute('disabled', true);
-            addButton.textContent = text;
+            if (addButton != null){
+                addButton.setAttribute('disabled', true);
+                addButton.textContent = text;
+            }
             stickyButton.setAttribute('disabled', true);
             stickyButton.textContent = text;
 
@@ -751,8 +767,21 @@ class VariantStickyAddToCart extends HTMLElement {
               
                 subTotal = qty * price;
                 subTotal = Shopify.formatMoney(subTotal, window.money_format);
-                if (window.currencyFormatted) subTotal = $(subTotal).text();
-               
+                subTotal = extractContent(subTotal);
+
+                const moneySpan = document.createElement('span')
+                moneySpan.classList.add(window.currencyFormatted ? 'money' : 'money-subtotal')
+                moneySpan.innerText = subTotal
+                document.body.appendChild(moneySpan)
+
+                if (this.checkNeedToConvertCurrency()) {
+                    let currencyCode = document.getElementById('currencies')?.querySelector('.active')?.getAttribute('data-currency');
+                    Currency.convertAll(window.shop_currency, currencyCode, 'span.money', 'money_format');
+                }
+
+                subTotal = moneySpan.innerText
+                $(moneySpan).remove()
+
                 if (window.subtotal.style == '1') {
                     const pdView_subTotal = document.querySelector('.productView-subtotal .money') || document.querySelector('.productView-subtotal .money-subtotal');
                     
@@ -786,6 +815,20 @@ class VariantStickyAddToCart extends HTMLElement {
             } else {
                 subTotal = Shopify.formatMoney(price, window.money_format);
                 if (window.currencyFormatted) subTotal = $(subTotal).text();
+
+                const moneySpan = document.createElement('span')
+                moneySpan.classList.add(window.currencyFormatted ? 'money' : 'money-subtotal')
+                moneySpan.innerText = subTotal
+                document.body.appendChild(moneySpan)
+
+                if (this.checkNeedToConvertCurrency()) {
+                    let currencyCode = document.getElementById('currencies')?.querySelector('.active')?.getAttribute('data-currency');
+                    Currency.convertAll(window.shop_currency, currencyCode, 'span.money', 'money_format');
+                }
+
+                subTotal = moneySpan.innerText
+                $(moneySpan).remove()
+
                 if (this.currentVariant.available && maxValue <= 0 && this.currentVariant.inventory_management == "shopify") {
                     text = window.variantStrings.preOrder;
                 } else {
@@ -796,8 +839,10 @@ class VariantStickyAddToCart extends HTMLElement {
             this.item.addClass('isChecked');
             quantityInput.attr('data-price', this.currentVariant?.price);
             quantityInput.attr('disabled', false);
-            addButton.removeAttribute('disabled');
-            addButton.textContent = text;
+            if (addButton != null){
+                addButton.removeAttribute('disabled');
+                addButton.textContent = text;
+            }
             stickyButton.removeAttribute('disabled');
             stickyButton.textContent = text;
 
@@ -817,6 +862,18 @@ class VariantStickyAddToCart extends HTMLElement {
                 thisStickyPrice.addClass('has-compare-price');
                 if (thisComparePrice.length) {
                     thisComparePrice.attr('data-compare-price', compare_at_price);
+
+                    const compare_at_price_sticky = Shopify.formatMoney(compare_at_price, window.money_format);
+                    const comparePrice_sticky = extractContent(compare_at_price_sticky);
+                    thisComparePrice.text(comparePrice_sticky);
+                    
+                    if (this.checkNeedToConvertCurrency()) {
+                        let currencyCode = document.getElementById('currencies')?.querySelector('.active')?.getAttribute('data-currency');
+                        Currency.convertAll(window.shop_currency, currencyCode, 'span.money', 'money_format');
+                    }
+
+                    thisStickyPrice.prepend(`<s class="money-compare-price" data-compare-price="${compare_at_price}"><span class="money"></span></s>`);
+                    thisComparePrice.remove();
                 } else {
                     thisStickyPrice.prepend(`<s class="money-compare-price" data-compare-price="${compare_at_price}"><span class="money"></span></s>`);
                 }
@@ -824,9 +881,9 @@ class VariantStickyAddToCart extends HTMLElement {
                 thisStickyPrice.removeClass('has-compare-price');
                 thisComparePrice.remove();
             }
-
             
             const stickyComparePrice = $('[data-sticky-add-to-cart] .money-compare-price .money');
+
             if (subTotal != 0 && stickyComparePrice.length && window.subtotal.show) {
                 let comparePrice = $('[data-sticky-add-to-cart] .money-compare-price').data('compare-price'),
                     qty = quantityInput.val() || 1;
@@ -845,6 +902,15 @@ class VariantStickyAddToCart extends HTMLElement {
     getVariantData() {
         this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
         return this.variantData;
+    }
+
+    checkNeedToConvertCurrency() {
+        var currencyItem = $('.dropdown-item[data-currency]');
+        if (currencyItem.length) {
+            return (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency;
+        } else {
+            return;
+        }
     }
 }
 

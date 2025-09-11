@@ -1,10 +1,12 @@
 .blog-posts-slider .halo-block-content {
     --gap: 100px;
-
     display: flex;
     gap: var(--gap);
-
     transition: opacity var(--duration-default) ease-in-out;
+}
+
+.style-arrows-8 .blog-posts-slider .halo-block-content {
+    --gap: 76px;
 }
 
 .blog-posts-slider .halo-block-header {
@@ -13,14 +15,22 @@
     max-width: 300px;
 }
 
+.style-arrows-8 .blog-posts-slider .halo-block-header {
+    padding-top: 125px;
+}
+
 .blog-posts-slider .halo-block-header .title {
     display: block;
-    margin-bottom: 34px;
+    margin-bottom: var(--title-margin-bottom);
     line-height: 1;
 }
 
 .blog-posts-slider .halo-block-header .rte {
-    margin-bottom: 40px;
+    margin-bottom: var(--des-margin-bottom);
+}
+
+.style-arrows-8 .blog-posts-slider .halo-block-header .rte {
+    line-height: 27.2px
 }
 
 .blog-posts-slider .halo-block-header .title::before {
@@ -35,7 +45,7 @@
     color: var(--color-button-style);
     background: var(--bg-button-style);
     border: 1px solid var(--border-button-style);
-    max-width: 190px;
+    max-width: var(--button-width-style);
     margin-left: 0;
 }
 
@@ -50,6 +60,10 @@
 }
 
 .blog-posts-slider .halo-block-content .slick-list {
+    padding: 0 10.86% 0 0 !important;
+}
+
+.style-arrows-8 .blog-posts-slider .halo-block-content .slick-list {
     padding: 0 10.86% 0 0 !important;
 }
 
@@ -195,6 +209,17 @@
     .blog-posts-slider .container-full .halo-block-content .content-block {
         padding-left: 10px;
     }
+
+    .style-arrows-8 .blog-posts-slider .halo-block-content .article-card__title {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .style-arrows-8 .blog-posts-slider .halo-block-content .article-card__des {
+        max-width: 80%;
+    }
 }
 
 @media (min-width: 1025px) {
@@ -210,6 +235,12 @@
 
     .btn_1_br_outside .blog-posts-slider .halo-block-header .button:hover:after {
         border: 1px solid var(--border-button-hover-style);
+    }
+
+    .blog-posts-slider .halo-block-content .article-card__title:hover .text {
+        text-decoration: underline;
+        text-underline-offset: 0.3em;
+        text-decoration-thickness: 2px;
     }
 }
 

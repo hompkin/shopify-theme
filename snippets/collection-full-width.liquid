@@ -9,29 +9,30 @@
     assign padding_bottom_mobile = section.settings.mg_bottom_mobile | append: 'px'
     assign container = section.settings.container
     assign has_sidebar = false
-    assign show_sidebar = section.settings.show_sidebar
     assign show_filter = section.settings.show_filter
-    assign sidebar_type = section.settings.sidebar_type
-    assign sidebar_position = section.settings.sidebar_position
-    assign sidebar_collapse = section.settings.sidebar_collapse
-    assign sidebar_collapse_default = section.settings.sidebar_collapse_default
-    if show_sidebar
-        if show_filter
-            assign has_sidebar = true
-            assign filter_swatch = section.settings.filter_swatch
-            assign filter_swatch_type = section.settings.filter_swatch_type
-            assign filter_rectangle = section.settings.filter_rectangle
-        elsif section.blocks.size > 0
-            assign has_sidebar = true
-        endif
-        if has_sidebar
-            assign sidebar_heading_font = section.settings.sidebar_heading_font
-            assign sidebar_heading_font_size = section.settings.sidebar_heading_font_size
-            assign sidebar_heading_font_weight = section.settings.sidebar_heading_font_weight
-            assign sidebar_heading_text_transform = section.settings.sidebar_heading_text_transform
-            assign enable_sticky = section.settings.enable_sticky
-            assign sidebar_layout = section.settings.sidebar_layout
-        endif
+    if show_filter
+        assign has_sidebar = true
+        assign filter_swatch = section.settings.filter_swatch
+        assign filter_swatch_type = section.settings.filter_swatch_type
+        assign filter_rectangle = section.settings.filter_rectangle
+    endif
+    for block in section.blocks
+        case block.type
+            when 'filter' 'category', 'product_block', 'image', 'text'
+                assign has_sidebar = true
+        endcase
+    endfor
+    if has_sidebar
+        assign sidebar_type = section.settings.sidebar_type
+        assign sidebar_position = section.settings.sidebar_position
+        assign sidebar_collapse = section.settings.sidebar_collapse
+        assign sidebar_collapse_default = section.settings.sidebar_collapse_default
+        assign sidebar_heading_font = section.settings.sidebar_heading_font
+        assign sidebar_heading_font_size = section.settings.sidebar_heading_font_size
+        assign sidebar_heading_font_weight = section.settings.sidebar_heading_font_weight
+        assign sidebar_heading_text_transform = section.settings.sidebar_heading_text_transform
+        assign enable_sticky = section.settings.enable_sticky
+        assign sidebar_layout = section.settings.sidebar_layout
     endif
     assign sort_by = collection.sort_by | default: collection.default_sort_by
     assign sort_options = collection.sort_options
@@ -84,7 +85,7 @@
     @media (max-width: 1024px) {#CollectionSection-{{ section.id }}{padding-top: {{ padding_top_tablet }};padding-bottom: {{ padding_bottom_tablet }}}}
     @media (max-width: 550px) {#CollectionSection-{{ section.id }}{padding-top: {{ padding_top_mobile }};padding-bottom: {{ padding_bottom_mobile }}}}
 </style>
-<div data-section-id="{{ section.id }}" data-section-type="collection" id="CollectionSection-{{ section.id }}" data-section="{{ section.id }}" class="collection-full-width">
+<div class="collection-full-width" data-section-id="{{ section.id }}" data-section-type="collection" id="CollectionSection-{{ section.id }}" data-section="{{ section.id }}">
     {%- if settings.layout != '4' or sidebar_type != 'horizontal' -%}
         <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
     {%- endif -%}
@@ -120,10 +121,8 @@
                         {%- liquid
                             if collection.image
                                 assign image = collection.image
-                                assign preview_img = collection.image
                             else
                                 assign image = block.settings.image
-                                assign preview_img = block.settings.image
                             endif
                             assign description = collection.description
                             assign show_description = block.settings.show_collection_description
@@ -198,6 +197,7 @@
                                             product_card_product: product,
                                             media_size: image_ratio,
                                             portrait_aspect_ratio: portrait_aspect_ratio,
+                                            complementary_product_button_atc: true,
                                             serial: forloop.index,
                                             sectionId: section.id,
                                             show_list: true,

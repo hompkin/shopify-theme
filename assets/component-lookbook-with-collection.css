@@ -18,6 +18,13 @@
     display: none;
 }
 
+.collection-lookbook .collection-lookbook-des {
+    color: var(--des-color);
+    margin-bottom: var(--des-mg-bottom);
+    font-size: var(--des-fs);
+    line-height: 1;
+}
+
 .collection-lookbook .collection-lookbook-link {
     color: var(--link-color);
     margin-top: var(--link-mg-top);
@@ -441,15 +448,6 @@
     text-align: right;
 }
 /* END: Product Info */
-
-.collection-lookbook .not_img {
-    aspect-ratio: 42 / 57;
-    height: unset;
-    line-height: unset;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 /* START: Dot Style */
 .collection-lookbook .lookbook-image-item .select-icon,

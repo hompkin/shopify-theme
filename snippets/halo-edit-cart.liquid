@@ -19,10 +19,10 @@
                     assign image = product.featured_image.src
                 endif
             -%} 
-            <a class="product-edit-image card-media--adapt" href="{{ product.url | within: collection }}"
+            <a class="product-edit-image card-media--adapt" href="{{ product.url }}"
                     style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;"
             >
-                <img srcset="{{ image | img_url: '270x' }}" src="{{ image | img_url: '270x' }}" alt="{{ product.title | escape }}" sizes="270px" loading="lazy">
+                <img srcset="{{ image | img_url: '270x' }}" src="{{ image | img_url: '270x' }}" alt="{{ product.title | escape }}" sizes="270px"{% if settings.enable_lazyload %} loading="lazy"{% endif %}>
             </a>
             <a href="javascript:void(0)" class="product-edit-remove" data-edit-cart-remove>
                 {% render 'icon-close' %}
@@ -46,9 +46,9 @@
                     {{ 'products.product.quantity.label' | t }}:
                 </label>
                 <div class="update-quantity__group">
-                    <a href="#" data-minus-quantity-cart="" class="minus btn-quantity"></a>
+                    <a role="link" aria-disabled="true" class="minus btn-quantity" data-minus-quantity-cart=""></a>
                     <input class="form-input quantity__input" type="number" id="edit-quantity-{{ product.id }}" name="quantity" min="1" value="1" pattern="[0-9]*" {% if current_variant.inventory_management != null and current_variant.inventory_quantity > 0 %} data-quantity="{{ current_variant.inventory_quantity }}"{% endif %}>
-                    <a href="#" data-plus-quantity-cart="" class="plus btn-quantity"></a>
+                    <a role="link" aria-disabled="true" class="plus btn-quantity" data-plus-quantity-cart=""></a>
                 </div>
                 <span class="quantity__message"></span>
             </quantity-edit-cart-input>
@@ -157,12 +157,31 @@
                                                                 assign enable_variant_image = true
                                                                 assign background_image = variant.image.src | product_img_url: '40x'
                                                             endif
+                                                        when 'metaobjects'
+                                                            assign metaobject_color = value.swatch.color
+                                                            assign metaobject_image = value.swatch.image
+                                                            assign has_metaobject = false
+                                                            assign has_image = false
+                            
+                                                            if metaobject_image != blank
+                                                                assign background_image = metaobject_image | product_img_url: '120x'
+                                                                assign enable_variant_image = true
+                                                                assign has_metaobject = true
+                                                                assign has_image = true
+                                                            elsif metaobject_color != blank
+                                                                assign background_color = metaobject_color
+                                                                assign enable_variant_image = true
+                                                                assign has_metaobject = true
+                                                            elsif variant.image
+                                                                assign background_image = variant.image.src | product_img_url: '120x'
+                                                                assign enable_variant_image = true
+                                                            endif
                                                     endcase
                                                 -%}
                                                 <label class="product-form__label {{ option_stock }}" for="option-edit-{{ product.id }}-{{ option.name }}-{{ forloop.index0 }}">
                                                     <span
                                                         class="pattern"
-                                                        style="background-color: {{ value | split: ' ' | last | handle }};{% if enable_variant_image %}{% if swatch_type == 'metafields' %}{% if color_codes %} background: {{ background_color }}{% else %} background: url({{ background_image }}); background-size: cover;{% endif %}{% else %} background-image: url({{ background_image }});{% endif %}{% endif %}"
+                                                        style="background-color: {{ value | split: ' ' | last | handle }};{% if enable_variant_image %}{% if swatch_type == 'metafields' %}{% if color_codes %} background: {{ background_color }};{% else %} background: url({{ background_image }}); background-size: cover;{% endif %}{% elsif has_metaobject and swatch_type == 'metaobjects' %}{% if has_image %}background: url({{ background_image }}); background-size: cover;{% else %}background: {{ background_color }};{% endif %}{% else %} background-image: url({{ background_image }});{% endif %}{% endif %}"
                                                     ></span>
                                                 </label>
                                             {%- else -%}   

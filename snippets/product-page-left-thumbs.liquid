@@ -10,7 +10,6 @@
     assign mg_bottom_mobile = section.settings.mg_bottom_mobile
     assign main_image_position = section.settings.main_image_position
     assign main_image_show_custom_cursor = section.settings.main_image_show_custom_cursor
-    assign count_color = section.settings.count_color
     assign icon_color = section.settings.icon_color
     assign thumnail_layout = section.settings.thumnail_layout
     assign main_image_arrows_desktop = section.settings.main_image_arrows_desktop
@@ -22,7 +21,7 @@
     assign show_thumbnail_mobile = section.settings.show_thumbnail_mobile
     assign max_thumbnail_to_show = section.settings.thumbnail_to_show
     assign current_variant = product.selected_or_first_available_variant
-    assign variantCount = product.variants | size
+    assign variant_count = product.variants | size
     assign featured_media_aspect_ratio = product.featured_media.aspect_ratio
     if product.featured_media.aspect_ratio == nil
         assign featured_media_aspect_ratio = 1
@@ -36,9 +35,8 @@
     assign show_badge = section.settings.show_badge
     assign show_hot_stock = settings.show_hot_stock
     if show_hot_stock
-        assign productMaxStock = settings.hot_stock_limit | plus: 0
+        assign product_max_stock = settings.hot_stock_limit | plus: 0
     endif
-    assign show_qty = section.settings.show_qty
     assign show_subtotal = section.settings.show_subtotal
     assign subtotal_style = section.settings.subtotal_style
     assign show_subtotal_text = false
@@ -69,28 +67,11 @@
     endif
     assign first_3d_model = product.media | where: "media_type", "model" | first
     assign has_product_combo = false
-
     assign has_sidebar = false
-    assign show_sidebar = section.settings.show_sidebar
     assign sidebar_type = 'vertical'
     assign sidebar_position = section.settings.sidebar_position
     assign sidebar_collapse = section.settings.sidebar_collapse
     assign sidebar_collapse_default = section.settings.sidebar_collapse_default
-    if show_sidebar
-        if sidebar_type == 'vertical'
-            if section.blocks.size > 0
-                assign has_sidebar = true
-            endif
-        endif
-    endif
-    if has_sidebar
-        assign sidebar_heading_font = section.settings.sidebar_heading_font
-        assign sidebar_heading_font_size = section.settings.sidebar_heading_font_size
-        assign sidebar_heading_font_weight = section.settings.sidebar_heading_font_weight
-        assign sidebar_heading_text_transform = section.settings.sidebar_heading_text_transform
-        assign enable_sticky = section.settings.enable_sticky
-        assign sidebar_layout = section.settings.sidebar_layout
-    endif
     assign has_breadcrumb = false
     for block in section.blocks
         case block.type
@@ -127,11 +108,11 @@
                     assign show_compare_color_drop_drap = block.settings.show_compare_color_drop_drap
                     assign product_swatch_option = settings.swatch | downcase
                     assign compare_layout = block.settings.compare_layout
-                    assign isColor = false
+                    assign is_color = false
                     for option in product.options_with_values
                         assign option_name = option.name | downcase
                         if product_swatch_option contains option_name
-                            assign isColor = true
+                            assign is_color = true
                             assign index = forloop.index0
                             if option.values.size > 1
                                 assign show_compare_color = true
@@ -147,6 +128,8 @@
                         assign size_chart_image_type = block.settings.size_chart_image_type
                     elsif size_chart_type == 'custom_image'
                         assign size_chart_image = block.settings.size_chart_image
+                    elsif size_chart_type == 'custom_page'
+                        assign size_chart_page = block.settings.size_chart_page
                     endif
                     if size_chart_type == 'product_type'
                         if size_chart_image_type == 'jpg'
@@ -174,6 +157,10 @@
                         if size_chart_image != blank
                             assign has_size_chart = true
                         endif
+                    elsif size_chart_type == 'custom_page'
+                        if size_chart_page != blank
+                            assign has_size_chart = true
+                        endif
                     endif
                 endif
             when 'buy_buttons'
@@ -198,6 +185,7 @@
                 assign complementary_product_arrows = block.settings.complementary_product_arrows
                 assign complementary_product_dots = block.settings.complementary_product_dots
                 assign complementary_product_layout = block.settings.complementary_product_layout
+                assign complementary_product_button_atc = block.settings.complementary_product_button_atc
                 if complementary_product_layout == "1"
                     assign complementary_product_limit_1 = block.settings.complementary_product_limit_1
                 endif
@@ -205,27 +193,31 @@
                     assign complementary_product_limit_2 = block.settings.complementary_product_limit_2
                     assign complementary_product_object = block.settings.complementary_product_object
                 endif
+            when 'category', 'product_block', 'image', 'policies'
+                assign has_sidebar = true
         endcase
     endfor
-
-    if show_qty
-        if check_block_qty
-            if check_block_buttons
-                if qty_layout == '1'
-                    assign check_show_qty = 'show_qty_1'
-                elsif qty_layout == '2'
-                    assign check_show_qty = 'show_qty_2'
-                endif
-            else
+    if has_sidebar
+        assign sidebar_heading_font = section.settings.sidebar_heading_font
+        assign sidebar_heading_font_size = section.settings.sidebar_heading_font_size
+        assign sidebar_heading_font_weight = section.settings.sidebar_heading_font_weight
+        assign sidebar_heading_text_transform = section.settings.sidebar_heading_text_transform
+        assign enable_sticky = section.settings.enable_sticky
+        assign sidebar_layout = section.settings.sidebar_layout
+    endif
+    if check_block_qty
+        if check_block_buttons
+            if qty_layout == '1'
                 assign check_show_qty = 'show_qty_1'
+            elsif qty_layout == '2'
+                assign check_show_qty = 'show_qty_2'
             endif
         else
-            assign check_show_qty = 'show_qty_0'
+            assign check_show_qty = 'show_qty_1'
         endif
     else
         assign check_show_qty = 'show_qty_0'
     endif
-
     if show_share
         if check_block_title and check_block_buttons
             assign check_show_share = share_layout
@@ -244,36 +236,33 @@
         endif
     endif
 
-    assign show_customization_option = settings.show_customization_option
-    if show_customization_option
-        assign has_customization_option = false
-        assign customization_option_type = settings.customization_option_type
-        assign customization_option_hidden = settings.customization_option_hidden
-        if customization_option_type == 'all'
-            assign has_customization_option = true
-        elsif customization_option_type == 'tag'
-            assign customization_option_tags = settings.customization_option_tags | downcase | strip | split: ","
-            for tag in customization_option_tags
-                assign tagtitle = tag | strip
-                assign productTag = product.tags | downcase
-                if productTag contains tagtitle
+    assign has_customization_option = false
+    assign customization_option_type = settings.customization_option_type
+    assign customization_option_hidden = settings.customization_option_hidden
+    if customization_option_type == 'all'
+        assign has_customization_option = true
+    elsif customization_option_type == 'tag'
+        assign customization_option_tags = settings.customization_option_tags | downcase | strip | split: ","
+        for tag in customization_option_tags
+            assign tagtitle = tag | strip
+            assign product_tag = product.tags | downcase
+            if product_tag contains tagtitle
+                assign has_customization_option = true
+            endif
+        endfor
+    elsif customization_option_type == 'collection'
+        assign customization_option_collection = settings.customization_option_collection | downcase | handle
+        if customization_option_collection != blank
+            for collection in product.collections
+                assign collection_title = collection.title | downcase | handle
+                if collection_title == customization_option_collection
                     assign has_customization_option = true
                 endif
             endfor
-        elsif customization_option_type == 'collection'
-            assign customization_option_collection = settings.customization_option_collection | downcase | handle
-            if customization_option_collection != blank
-                for collection in product.collections
-                    assign collection_title = collection.title | downcase | handle
-                    if collection_title == customization_option_collection
-                        assign has_customization_option = true
-                    endif
-                endfor
-            endif
         endif
-        assign customization_option_1 = settings.customization_option_1
-        assign customization_option_2 = settings.customization_option_2
     endif
+    assign customization_option_1 = settings.customization_option_1
+    assign customization_option_2 = settings.customization_option_2
 -%}
 
 {%- if first_3d_model -%}
@@ -283,17 +272,15 @@
     <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'component-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
+{%- if product.quantity_price_breaks_configured? -%}
+    {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 <style type="text/css">
     #ProductSection-{{ section.id }} .productView-thumbnail .productView-thumbnail-link:after{
         padding-bottom: {{ portrait_aspect_ratio }};
-    }
-
-    #ProductSection-{{ section.id }} .cursor-wrapper .counter {
-        color: {{ count_color }};
-    }
-
-    #ProductSection-{{ section.id }} .cursor-wrapper .counter #count-image:before {
-        background-color: {{ count_color }};
     }
 
     #ProductSection-{{ section.id }} .custom-cursor__inner .arrow:before,
@@ -496,7 +483,7 @@
                                     {%- for media in product.media -%}
                                         {%- case media.media_type -%}
                                             {%- when 'image' -%}
-                                                <div class="productView-image productView-image-{{ media_size }}{% if show_variant_image_group %} filter-{{ media.alt | escape | downcase | replace: ' ', '-' }}{% endif %} fit-{{ media_fit }}" data-index="{{ forloop.index }}">
+                                                <div class="productView-image productView-image-{{ media_size }}{% if show_variant_image_group %} filter-{{ media.alt | escape | downcase | replace: ' ', '-' | replace: '(', '-' | replace: ')', '-' }}{% endif %} fit-{{ media_fit }}" data-index="{{ forloop.index }}">
                                                     <div class="productView-img-container product-single__media" data-media-id="{{ media.id }}"
                                                         {% unless media_fit == 'unset' %}
                                                             {% if product.featured_media %}
@@ -526,7 +513,7 @@
                                                                 sizes="(min-width: 2000px) 1500px, (min-width: 1200px) 1200px, (min-width: 768px) calc((100vw - 30px) / 2), calc(100vw - 20px)"
                                                                 width="{{ media.width }}"
                                                                 height="{{ media.height }}"
-                                                                loading="lazy"
+                                                               {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                                                                 data-sizes="auto"
                                                                 data-main-image
                                                                 data-index="{{ forloop.index }}"
@@ -557,7 +544,7 @@
                                                                         alt="{{ media.alt | escape }}"
                                                                         title="{{ media.alt | escape }}"
                                                                         sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                                                                        loading="lazy"
+                                                                       {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                                                                         data-sizes="auto"
                                                                     >
                                                                 </div>
@@ -572,7 +559,7 @@
                                                                         alt="{{ media.alt | escape }}"
                                                                         title="{{ media.alt | escape }}"
                                                                         sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                                                                        loading="lazy"
+                                                                       {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                                                                         data-sizes="auto"
                                                                     >
                                                                 </div>
@@ -604,7 +591,7 @@
                                                                     alt="{{ media.alt | escape }}"
                                                                     title="{{ media.alt | escape }}"
                                                                     sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                                                                    loading="lazy"
+                                                                   {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                                                                     data-sizes="auto"
                                                                 >
                                                             </div>
@@ -638,7 +625,7 @@
                                                                     {% if media.preview_image.width >= 1100 %}{{ media.preview_image | img_url: '1100x' }} 1100w{% endif %}"
                                                                 src="{{ media | img_url: '550x550' }}"
                                                                 sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                                                                loading="lazy"
+                                                               {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                                                                 width="576"
                                                                 height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
                                                                 alt="{{ media.preview_image.alt | escape }}"
@@ -707,7 +694,7 @@
                                         {% render 'icon-zoom-1' %}
                                     </div>
                                 {%- endif -%}
-                                {%- if show_compare_color and isColor and compare_layout == '2' -%}
+                                {%- if show_compare_color and is_color and compare_layout == '2' -%}
                                     <div class="productView-compareColor style-{{ compare_layout }}">
                                         <button type="button" class="link" aria-label="{{ 'compare_color.general.title' | t }}" data-open-compare-color-popup>
                                             <span class="visually-hidden">
@@ -724,16 +711,16 @@
                                         {%- for media in product.media -%}
                                             {%- case media.media_type -%}
                                                 {%- when 'image' -%}
-                                                    <div class="productView-thumbnail{% if show_variant_image_group %} filter-{{ media.alt | escape | downcase | replace: ' ', '-' }}{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
+                                                    <div class="productView-thumbnail{% if show_variant_image_group %} filter-{{ media.alt | escape | downcase | replace: ' ', '-' | replace: '(', '-' | replace: ')', '-' }}{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
                                                         <a class="productView-thumbnail-link animated-loading" href="javascript:void(0)" data-image="{{ media | img_url: 'large' }}">
-                                                            <img src="{%- if thumnail_layout == '3' -%}{{ media | img_url: 'large' }}{% else %}{{ media | img_url: 'medium' }}{% endif %}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
+                                                            <img src="{%- if thumnail_layout == '3' -%}{{ media | img_url: 'large' }}{% else %}{{ media | img_url: 'medium' }}{% endif %}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} />
                                                         </a>
                                                     </div>
                                                 {%- when 'external_video' -%}
                                                     {%- if video_layout == 'thumbnail' -%}
                                                         <div class="productView-thumbnail" data-media-id="{{ section.id }}-{{ media.id }}">
                                                             <div class="productView-thumbnail-link animated-loading">
-                                                                <img src="{%- if thumnail_layout == '3' -%}{{ media | img_url: 'large' }}{% else %}{{ media | img_url: 'medium' }}{% endif %}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
+                                                                <img src="{%- if thumnail_layout == '3' -%}{{ media | img_url: 'large' }}{% else %}{{ media | img_url: 'medium' }}{% endif %}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} />
                                                             </div>
                                                             <div class="productView-thumbnail-icon">
                                                                 {% render 'icon-video' %}
@@ -744,7 +731,7 @@
                                                     {%- if video_layout == 'thumbnail' -%}
                                                         <div class="productView-thumbnail" data-media-id="{{ section.id }}-{{ media.id }}">
                                                             <div class="productView-thumbnail-link animated-loading">
-                                                                <img src="{{ media | media_tag | split: 'src="' | last | split: '">' | first }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
+                                                                <img src="{{ media | media_tag | split: 'src="' | last | split: '">' | first }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} />
                                                             </div>
                                                             <div class="productView-thumbnail-icon">
                                                                 {% render 'icon-video' %}
@@ -754,7 +741,7 @@
                                                 {%- when 'model' -%}
                                                     <div class="productView-thumbnail" data-media-id="{{ section.id }}-{{ media.id }}">
                                                         <div class="productView-thumbnail-link animated-loading">
-                                                            <img src="{{ media | media_tag | split: 'poster="' | last | split: '">' | first }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}" loading="lazy" />
+                                                            <img src="{{ media | media_tag | split: 'poster="' | last | split: '">' | first }}" alt="{{ media.alt | escape }}" title="{{ media.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} />
                                                         </div>
                                                         <div class="productView-thumbnail-icon">
                                                             {% render 'icon-3d-model' %}
@@ -930,6 +917,11 @@
                                                         price_class: 'price--medium'
                                                     -%}
                                                 </div>
+                                                {%- if product.quantity_price_breaks_configured? -%}
+                                                    <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
+                                                        <span>{{ 'products.product.volume_pricing.note' | t }}</span>
+                                                    </div>
+                                                {%- endif -%}
                                             {% endif %}
                                         </div>
                                     {%- when 'countdown' -%}
@@ -969,7 +961,7 @@
                                                 {% render 'product-variant',
                                                     block: block,
                                                     product: product,
-                                                    variantCount: variantCount,
+                                                    variantCount: variant_count,
                                                     current_variant: current_variant,
                                                     picker_type: picker_type,
                                                     show_variant_image_group: show_variant_image_group
@@ -996,9 +988,9 @@
                                             {% render 'product-hot-stock',
                                                 block: block,
                                                 product: product,
-                                                variantCount: variantCount,
+                                                variantCount: variant_count,
                                                 show_hot_stock: show_hot_stock,
-                                                productMaxStock: productMaxStock,
+                                                productMaxStock: product_max_stock,
                                                 current_variant: current_variant
                                             %}
                                         {% endunless %}
@@ -1037,8 +1029,9 @@
                                                     product: product,
                                                     show_size_chart: show_size_chart,
                                                     has_size_chart: has_size_chart,
+                                                    size_chart_page: size_chart_page,
                                                     show_compare_color: show_compare_color,
-                                                    isColor: isColor,
+                                                    isColor: is_color,
                                                     compare_layout: compare_layout
                                                 %}
                                             </div>
@@ -1049,15 +1042,167 @@
                                                 <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                                                     style="--spacing-top: {{ spacing_top | append: 'px' }};
                                                     --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
-                                                >
-                                                    <div class="quantity_selector">
-                                                        {% render 'product-quantity',
-                                                            current_variant: current_variant,
-                                                            qty_style: qty_style,
-                                                            check_hidden: false,
-                                                            quantity_stt: 2
-                                                        %}
+                                                >   
+                                                    {%- if product.quantity_price_breaks_configured? -%}
+                                                    <div class="wrapper-price-volumn">
+                                                    {%- endif -%}
+                                                        <div class="quantity_selector">
+                                                            {% render 'product-quantity',
+                                                                current_variant: current_variant,
+                                                                qty_style: qty_style,
+                                                                check_hidden: false,
+                                                                quantity_stt: 2
+                                                            %}
+                                                        </div>
+                                                        {%- if product.quantity_price_breaks_configured? -%}
+                                                            <price-per-item
+                                                                id="Price-Per-Item-{{ section.id }}"
+                                                                data-section-id="{{ section.id }}"
+                                                                data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                                                                >
+                                                                {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
+                                                                  {%- assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price -%}
+                                                                  <div class="price-per-item">
+                                                                    {%- if variant_price_compare -%}
+                                                                      <dl class="price-per-item--current">
+                                                                        <dt class="visually-hidden">
+                                                                          {{ 'products.product.price.regular_price' | t }}
+                                                                        </dt>
+                                                                        <dd>
+                                                                          <s class="variant-item__old-price">
+                                                                            {{ variant_price_compare | money_with_currency }}
+                                                                          </s>
+                                                                        </dd>
+                                                                      </dl>
+                                                                    {%- endif -%}
+                                                                    {%- if current_qty_for_volume_pricing < volume_pricing_array.last.minimum_quantity -%}
+                                                                      {%- assign variant_price = product.selected_or_first_available_variant.price
+                                                                        | money_with_currency
+                                                                      -%}
+                                                                      <span class="price-per-item--current">
+                                                                        {{- 'products.product.volume_pricing.price_at_each' | t: price: variant_price -}}
+                                                                      </span>
+                                                                    {%- else -%}
+                                                                      {%- for price_break in volume_pricing_array -%}
+                                                                        {%- if current_qty_for_volume_pricing >= price_break.minimum_quantity -%}
+                                                                          {%- assign price_break_price = price_break.price | money_with_currency -%}
+                                                                          <span class="price-per-item--current">
+                                                                            {{-
+                                                                              'products.product.volume_pricing.price_at_each'
+                                                                              | t: price: price_break_price
+                                                                            -}}
+                                                                          </span>
+                                                                          {%- break -%}
+                                                                        {%- endif -%}
+                                                                      {%- endfor -%}
+                                                                    {%- endif -%}
+                                                                  </div>
+                                                                {%- else -%}
+                                                                  {%- assign variant_price = product.selected_or_first_available_variant.price
+                                                                    | money_with_currency
+                                                                  -%}
+                                                                  {%- assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price -%}
+                                                                  <div class="price-per-item">
+                                                                    {%- if variant_price_compare -%}
+                                                                      <dl class="price-per-item--current">
+                                                                        <dt class="visually-hidden">
+                                                                          {{ 'products.product.price.regular_price' | t }}
+                                                                        </dt>
+                                                                        <dd>
+                                                                          <s class="variant-item__old-price">
+                                                                            {{ variant_price_compare | money_with_currency }}
+                                                                          </s>
+                                                                        </dd>
+                                                                        <dt class="visually-hidden">
+                                                                          {{ 'products.product.price.sale_price' | t }}
+                                                                        </dt>
+                                                                        <dd>
+                                                                          <span class="price-per-item--current">
+                                                                            {{- 'products.product.volume_pricing.price_at_each' | t: price: variant_price -}}
+                                                                          </span>
+                                                                        </dd>
+                                                                      </dl>
+                                                                    {%- else -%}
+                                                                      <span class="price-per-item--current">
+                                                                        {{- 'products.product.volume_pricing.price_at_each' | t: price: variant_price -}}
+                                                                      </span>
+                                                                    {%- endif -%}
+                                                                  </div>
+                                                                {%- endif -%}
+                                                            </price-per-item>
+                                                        {%- endif -%}
+                                                    {%- if product.quantity_price_breaks_configured? -%}
                                                     </div>
+                                                    {%- endif -%}
+                                                    {%- if product.quantity_price_breaks_configured? -%}
+                                                        <div class="quantity__rules caption" id="Quantity-Rules-{{ section.id }}">
+                                                            {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
+                                                              <span class="divider">
+                                                                {{-
+                                                                  'products.product.quantity.multiples_of'
+                                                                  | t: quantity: product.selected_or_first_available_variant.quantity_rule.increment
+                                                                -}}
+                                                              </span>
+                                                            {%- endif -%}
+                                                            {%- if product.selected_or_first_available_variant.quantity_rule.min > 1 -%}
+                                                              <span class="divider">
+                                                                {{-
+                                                                  'products.product.quantity.minimum_of'
+                                                                  | t: quantity: product.selected_or_first_available_variant.quantity_rule.min
+                                                                -}}
+                                                              </span>
+                                                            {%- endif -%}
+                                                            {%- if product.selected_or_first_available_variant.quantity_rule.max != null -%}
+                                                              <span class="divider">
+                                                                {{-
+                                                                  'products.product.quantity.maximum_of'
+                                                                  | t: quantity: product.selected_or_first_available_variant.quantity_rule.max
+                                                                -}}
+                                                              </span>
+                                                            {%- endif -%}
+                                                        </div>
+                                                        <volume-pricing class="parent-display" id="Volume-{{ section.id }}">
+                                                          {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
+                                                            <span class="caption-large">{{ 'products.product.volume_pricing.title' | t }}</span>
+                                                            <ul class="list-unstyled">
+                                                              <li>
+                                                                <span>{{ product.selected_or_first_available_variant.quantity_rule.min }}+</span>
+                                                                {%- assign price = product.selected_or_first_available_variant.price
+                                                                  | money_with_currency
+                                                                -%}
+                                                                <span data-text="{{ 'products.product.volume_pricing.price_at_each' | t: price: variant_price }}">
+                                                                  {{- 'sections.quick_order_list.each' | t: money: price -}}
+                                                                </span>
+                                                              </li>
+                                                              {%- for price_break in product.selected_or_first_available_variant.quantity_price_breaks -%}
+                                                                {%- assign price_break_price = price_break.price | money_with_currency -%}
+                                                                <li class="{%- if forloop.index >= 3 -%}show-more-item hidden{%- endif -%}">
+                                                                  <span>
+                                                                    {{- price_break.minimum_quantity -}}
+                                                                    <span aria-hidden="true">+</span></span
+                                                                  >
+                                                                  <span data-text="{{ 'products.product.volume_pricing.price_at_each' | t: price: price_break_price }}">
+                                                                    {{- 'sections.quick_order_list.each' | t: money: price_break_price -}}
+                                                                  </span>
+                                                                </li>
+                                                              {%- endfor -%}
+                                                            </ul>
+                                                            {%- if product.selected_or_first_available_variant.quantity_price_breaks.size >= 3 -%}
+                                                                <show-more-button>
+                                                                    <button
+                                                                      class="button-show-more link underlined-link"
+                                                                      id="Show-More-{{ section.id }}"
+                                                                      type="button"
+                                                                    >
+                                                                      <span class="label-show-more label-text"
+                                                                        ><span aria-hidden="true">+ </span>{{ 'general.button_load_more.default' | t }}
+                                                                      </span>
+                                                                    </button>
+                                                                </show-more-button>
+                                                            {%- endif -%}
+                                                          {%- endif -%}
+                                                        </volume-pricing>
+                                                    {%- endif -%}
                                                     {%- if show_subtotal and subtotal_style == '1' -%}
                                                         <div class="productView-subtotal">
                                                             <span class="text">{{ 'sections.cart.subtotal' | t | append: ': ' }}</span>
@@ -1189,7 +1334,7 @@
                                                     show_size_chart: show_size_chart,
                                                     has_size_chart: has_size_chart,
                                                     show_compare_color: show_compare_color,
-                                                    isColor: isColor,
+                                                    isColor: is_color,
                                                     compare_layout: compare_layout,
                                                     has_perks: has_perks,
                                                     product_combo: product_combo
@@ -1204,7 +1349,7 @@
                                             --spacing-bottom: {{ spacing_bottom | append: 'px' }};
                                             "
                                         >
-                                            <complementary-products class="productView-complementary complementary-products style-{{ complementary_product_layout }} no-js-hidden" id="complementary-product-data" data-complementary-product data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=10&intent=complementary">
+                                            <complementary-products class="productView-complementary complementary-products style-{{ complementary_product_layout }}{% if complementary_product_button_atc %} complementary_product_button_atc{% endif %} no-js-hidden" id="complementary-product-data" data-complementary-product data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=10&intent=complementary">
                                                 {%- if recommendations.performed and recommendations.products_count > 0 -%}
                                                     {%- if complementary_product_title -%}
                                                         <div class="complementary-products-title">
@@ -1233,6 +1378,7 @@
                                                                             product_card_product: product,
                                                                             media_size: image_ratio,
                                                                             portrait_aspect_ratio: portrait_aspect_ratio,
+                                                                            complementary_product_button_atc: complementary_product_button_atc,
                                                                             serial: forloop.index,
                                                                             sectionId: section.id,
                                                                             show_list: true,
@@ -1261,11 +1407,12 @@
                                         {% render block %}
                                     {%- when 'delivery_time' -%}
                                         {%- liquid
-                                            assign icon = block.settings.icon
+                                            assign delivery_time_icon = block.settings.delivery_time_icon
                                             assign txt = block.settings.txt
                                             assign hr = block.settings.hr
                                             assign min = block.settings.min
                                             assign frm_day = block.settings.frm_day
+                                            assign exclude_day_from = block.settings.exclude_day_from
                                             assign exclude_day = block.settings.exclude_day
                                             assign d_start = block.settings.d_start
                                             assign d_end = block.settings.d_end
@@ -1278,14 +1425,28 @@
                                             <delivery-time class="productView-dlvr d-none"
                                                 data-delivery-time 
                                                 data-frm-day="{{frm_day}}"
+                                                data-exclude-day-from="{{exclude_day_from}}" 
                                                 data-exclude-day="{{exclude_day}}" 
                                                 data-estimate-start="{{d_start}}" 
                                                 data-estimate-end="{{d_end}}" 
                                                 data-time="{{time}}"
-                                                style="--color-text: {{block.settings.color_title}};--font-size: {{block.settings.fontsize_text}}px;"
+                                                style="--color-text: {{block.settings.color_title}};--font-size: {{block.settings.fontsize_text}}px;--icon-size: {{block.settings.delivery_time_icon_size}}px;"
                                             >
-                                                {%- if icon != blank -%}
-                                                    <span class="productView-dlvr__icon">{{icon}}</span>
+                                                {%- if delivery_time_icon != 'none' -%}
+                                                    <span class="productView-dlvr__icon">
+                                                        {%- case delivery_time_icon -%}
+                                                            {%-  when '1' -%}
+                                                                {% render 'icon-delivery-01' %}
+                                                            {%-  when '2' -%}
+                                                                {% render 'icon-delivery-02' %}
+                                                            {%-  when '3' -%}
+                                                                {% render 'icon-delivery-03' %}
+                                                            {%-  when '4' -%}
+                                                                {% render 'icon-delivery-04' %}
+                                                            {%-  when '5' -%}
+                                                                {% render 'icon-delivery-05' %}
+                                                        {%- endcase -%}
+                                                    </span>
                                                 {%- endif -%}
                                                 <span class="productView-dlvr__text">
                                                     {%- capture remainHTML -%}<span data-hour-delivery class="productView-dlvr__remaining"><span class="productView-dlvr__remaining-hr"></span> {{hr}} <span class="productView-dlvr__remaining-mins"></span> {{min}}</span>{%- endcapture -%}
@@ -1319,26 +1480,15 @@
                     {% render 'halo-sticky-add-to-cart',
                         product: product,
                         current_variant: current_variant,
-                        variantCount: variantCount,
+                        variantCount: variant_count,
                         show_vendor: show_sticky_vendor,
                         sticky_atc_layout: sticky_atc_layout,
                         container: container,
-                        show_qty: show_qty,
+                        check_show_qty: check_show_qty,
                         qty_style: qty_style,
                         subtotal: subtotal,
                         sticky_add_to_cart_always_mb: sticky_add_to_cart_always_mb
                     %}
-                    {% comment %} {% render 'halo-sticky-add-to-cart-mobile',
-                        product: product,
-                        current_variant: current_variant,
-                        variantCount: variantCount,
-                        show_vendor: show_sticky_vendor,
-                        sticky_atc_layout: sticky_atc_layout,
-                        container: container,
-                        show_qty: show_qty,
-                        qty_style: qty_style,
-                        subtotal: subtotal
-                    %} {% endcomment %}
                 {%- endif -%}
             {%- endunless -%}
         </div>
@@ -1348,6 +1498,21 @@
     {% endunless %}
     <div class="productView-bottom{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger{% if tab_layout_mobile == 'popup' %} animate--fade-in{% else %} animate--slide-in{% endif %}{% endif %}">
         <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
+            {%- if section.settings.show_quick_order_list -%}
+                {{ 'component-price.css' | asset_url | stylesheet_tag }}
+                {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+                {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
+
+                {% render 'quick-order-list',
+                    product: product,
+                    show_image: section.settings.show_image,
+                    show_sku: section.settings.show_sku
+                %}
+
+                <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+                <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+                <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+            {%- endif -%}
             {%- if show_tab and tab_layout == 'horizontal' -%}
                 {% render 'halo-product-tab',
                     product: product,
@@ -1365,11 +1530,12 @@
     {% render 'halo-size-chart-popup',
         product: product,
         size_chart_type: size_chart_type,
-        size_chart_image: size_chart_image
+        size_chart_image: size_chart_image,
+        size_chart_page: size_chart_page
     %}
 {%- endif -%}
 
-{%- if show_compare_color and isColor -%}
+{%- if show_compare_color and is_color -%}
     {% render 'halo-compare-color-popup',
         product: product,
         show_compare_color_drop_drap: show_compare_color_drop_drap,

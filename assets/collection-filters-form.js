@@ -125,20 +125,21 @@ class CollectionFiltersForm extends HTMLElement {
 
         sidebarBlocks.forEach((element) => {
             const htmlElement = document.querySelector(`.js-filter[data-index="${element.dataset.index}"]`)
+            if (htmlElement == null) return
             htmlElement.innerHTML = element.innerHTML;
 
-            const currentSideblockData = storedExpandedAndCollapsedHeight.find(item => item.index === element.dataset.index)
+            const currentSideblockData = storedExpandedAndCollapsedHeight?.find(item => item.index === element.dataset.index)
             const facetList = htmlElement.querySelector('.facets__list')
             const hiddenItems = facetList.querySelectorAll('.list-menu__item.d-none')
             const showMoreButton = htmlElement.querySelector('[data-show-more-btn]')
             const showMoreContent = showMoreButton?.querySelector('[data-show-more-content]')
 
+            if (currentSideblockData == null) return
             hiddenItems.forEach(item => item.classList.remove('d-none'))
             showMoreButton?.addEventListener('click', CollectionFiltersForm.toggleShowMore)
             facetList.dataset.collapsedHeight = currentSideblockData.collapsedHeight
 
             if (showMoreContent == null) return
-
             if (currentSideblockData.showingMore) {
                 facetList.style.maxHeight = currentSideblockData.extendedHeight + 'px'
                 htmlElement.classList.add('show-more')
@@ -154,6 +155,7 @@ class CollectionFiltersForm extends HTMLElement {
     static renderPriceFilter(priceFilterBlock) {
         if (priceFilterBlock) {
             const htmlElement = document.querySelector(`.js-filter[data-index="${priceFilterBlock.dataset.index}"]`)
+            if (htmlElement == null) return
             htmlElement.innerHTML = priceFilterBlock.innerHTML
 
             const debouncedOnClick = debounce((event) => {
@@ -359,6 +361,8 @@ class CollectionFiltersForm extends HTMLElement {
         }
 
         $('.productListing .card .swatch-label.is-active').trigger('click');
+
+        window.sharedFunctions?.swapHoverVideoProductCard();
     }
 
     static checkNeedToConvertCurrency() {
@@ -386,8 +390,22 @@ class CollectionFiltersForm extends HTMLElement {
         const facetsToRender = Array.from(facetDetailsElements).filter(element => !matchesIndex(element));
         const countsToRender = Array.from(facetDetailsElements).find(matchesIndex);
 
+        // Remove filters that are no longer returned from the server
+        const facetDetailsElementsFromDom = document.querySelectorAll('#CollectionFiltersForm .js-filter');
+        Array.from(facetDetailsElementsFromDom).forEach((currentElement) => {
+            const existsInFetched = Array.from(facetDetailsElements).some(({ dataset }) => currentElement.dataset.index === dataset.index);
+            if (!existsInFetched) {
+                currentElement.remove();
+            }
+        });
+
         facetsToRender.forEach((element) => {
-            document.querySelector(`.js-filter[data-index="${element.dataset.index}"]`).innerHTML = element.innerHTML;
+            const targetElement = document.querySelector(`.js-filter[data-index="${element.dataset.index}"]`);
+            if (targetElement) {
+                targetElement.innerHTML = element.innerHTML;
+            } else {
+                document.querySelector('#CollectionFiltersForm').appendChild(element);
+            }
         });
         if (document.querySelector(`.facets__reset[data-index="${indexTarget}"]`)) {
             document.querySelector(`.facets__reset[data-index="${indexTarget}"]`).style.display = 'block';
@@ -509,7 +527,7 @@ class CollectionFiltersForm extends HTMLElement {
                         mediaView.querySelector('.grid-2').classList.add('active');
                         mediaViewMobile.querySelector('.grid-2').classList.add('active');
                     }
-                } else if (windowWidth < 1599 && windowWidth > 1100) {
+                } else if (windowWidth < 1300 && windowWidth > 1100) {
                     if (column == 5 || column == 4) {
                         column = 3;
                         viewMode.classList.remove('active');
@@ -517,7 +535,7 @@ class CollectionFiltersForm extends HTMLElement {
                         mediaView.querySelector('.grid-3').classList.add('active');
                         mediaViewMobile.querySelector('.grid-3').classList.add('active');
                     }
-                } else if (windowWidth < 1700 && windowWidth >= 1599) {
+                } else if (windowWidth < 1700 && windowWidth >= 1300) {
                     if (column == 5) {
                         column = 4;
                         viewMode.classList.remove('active');
@@ -739,13 +757,19 @@ class PriceRange extends HTMLElement {
     }
 
     rangeSliderPrice() {
+        let width;
+        if($(window).width() > 1024){
+            width = $(this).parents('.facets-vertical .sidebarBlock').length ? $(this).parents('.facets-vertical .sidebarBlock').find('.sidebarBlock-headingWrapper').width() : this.offsetWidth;
+        } else{
+            width = $(this).parents('.sidebarBlock').find('.sidebarBlock-headingWrapper').width();
+        }
+
         let rangeS = this.querySelectorAll("input[type=range]"),
             numberS = this.querySelectorAll("input[type=number]"),
             isFireFox = typeof InstallTrigger !== 'undefined',
             lowerSlider = rangeS[0],
             upperSlider = rangeS[1],
-            slide = this.querySelector("input[type=range]").max/100 * (22/(this.offsetWidth/100));
-
+            slide = this.querySelector("input[type=range]").max/100 * (22/(width/100));
         
         lowerSlider.oninput = () => {
             let slide1 = Math.floor(rangeS[0].value),
@@ -817,7 +841,12 @@ class PriceRange extends HTMLElement {
         const range = this.querySelector("input[type=range]");
         const priceSlideRangeContainer = this.querySelector('.facets__price--slide');
         const max = range.max;
-        const width = priceSlideRangeContainer.clientWidth;
+        let width;
+        if($(window).width() > 1024){
+            width = $(this).parents('.facets-vertical .sidebarBlock').length ? $(this).parents('.facets-vertical .sidebarBlock').find('.sidebarBlock-headingWrapper').width() : priceSlideRangeContainer.clientWidth;
+        } else{
+            width = $(this).parents('.sidebarBlock').find('.sidebarBlock-headingWrapper').width();
+        }
 
         const leftSpace = (parseInt(value1) / parseInt(max)) * width + 'px'
         const rightSpace = (width - (parseInt(value2) / parseInt(max)) * width) + 'px'

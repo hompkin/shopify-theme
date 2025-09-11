@@ -37,6 +37,10 @@
   margin: 20px 0 0 0;
   max-width: 340px;
 }
+  
+.template-cart:has(.halo-cart-content .cart-content-empty) .cart-countdown.hidden-when-empty {
+    display: none;
+}
 
 .cart-countdown .icon {
   display: none;

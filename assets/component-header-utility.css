@@ -107,6 +107,14 @@
     min-height: 22px;
 }
 
+.header-utility .header__icon--wishlist .wishlist-count-bubble{
+	top: -9px;
+    right: -12px;
+    font-size: var(--cart-font-size);
+    background-color: var(--wishlist-bg-item);
+    color: var(--wishlist-color-item);
+}
+
 .header-utility .header__icon{
 	text-align: center;
 }

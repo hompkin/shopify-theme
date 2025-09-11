@@ -51,6 +51,12 @@
 
 .article-card__des {
     margin-bottom: var(--margin-bottom);
+    font-size: var(--blog-info-font-size);
+    font-weight: var(--blog-info-font-weight);
+    font-family: var(--blog-info-font);
+    line-height: var(--blog-info-line-height);
+    letter-spacing: var(--blog-info-letter-spacing);
+    text-transform: var(--blog-info-text-transform);
 }
 
 .article-card__footer {
@@ -116,6 +122,12 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         word-wrap: break-word;
+    }
+}
+
+@media (max-width: 1024px){
+    .article-card__info {
+        padding-top: 23px;
     }
 }
 

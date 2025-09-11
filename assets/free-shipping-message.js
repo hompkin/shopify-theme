@@ -38,7 +38,16 @@ class FreeShippingMeter extends HTMLElement {
     }
 
     calculateProgress(cart) {
-        const cartTotalPrice = parseInt(cart.total_price) / 100;
+        let totalPrice = cart.total_price;
+        if ($('body').hasClass('setup_shipping_delivery')) {
+            const giftCardItems = $(".cart-item[data-price-gift-card], .previewCartItem[data-price-gift-card]");
+            if (giftCardItems.length > 0) {
+                giftCardItems.each(function() {
+                    totalPrice -= parseFloat($(this).attr("data-price-gift-card"));
+                });
+            }
+        }
+        const cartTotalPrice = parseInt(totalPrice) / 100;
         const cartTotalPriceFormatted = cartTotalPrice.toFixed(2);
         const cartTotalPriceRounded = parseFloat(cartTotalPriceFormatted);
 
@@ -111,8 +120,10 @@ class FreeShippingMeter extends HTMLElement {
 
             this.messageElement.innerHTML = text;
 
-            if ((window.show_multiple_currencies && typeof Currency != 'undefined' && Currency.currentCurrency != shopCurrency) || window.show_auto_currency) {
-                Currency.convertAll(window.shop_currency, $('#currencies .active').attr('data-currency'), 'span.money', 'money_format');
+            if($('.dropdown-item[data-currency]').length){
+                if ((window.show_multiple_currencies && typeof Currency != 'undefined' && Currency.currentCurrency != shopCurrency) || window.show_auto_currency) {
+                    Currency.convertAll(window.shop_currency, $('#currencies .active').attr('data-currency'), 'span.money', 'money_format');
+                }
             }
         }, 400)
     }
