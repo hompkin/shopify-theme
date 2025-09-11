@@ -272,8 +272,9 @@
         "19ab1d9f-74b2-4c76-bf2e-1bc749e5c2a3"
       ],
       "custom_css": [
-        "@media (min-width: 551px) {[data-vertical=\"sidebar\"] .tab-content .toggle-content {width: 666px; max-width: 66vw; }}",
-        "@media only screen and (min-width: 768px) {/* Container for each region */ .region-container {width: 100%; }}"
+        "@media (min-width: 551px) {[data-vertical=\"sidebar\"] .tab-content .toggle-content {width: 760px; max-width: 66vw; }}",
+        "@media only screen and (min-width: 768px) {/* Container for each region */ .region-container {width: 100%; }}",
+        ".sprout-product-badge-container {font-size: 16px;}"
       ],
       "settings": {
         "container": "1770",
@@ -320,7 +321,7 @@
         "tab_layout": "horizontal",
         "tab_layout_mobile": "popup",
         "icon_style_layout": "style_2",
-        "title_font_size": 16,
+        "title_font_size": 18,
         "title_font_size_mb": 15,
         "font_weight_title": "600",
         "title_text_transform": "capitalize",
