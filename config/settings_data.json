@@ -341,9 +341,10 @@
     "product_vendor_color": "#232323",
     "product_title_color": "#232323",
     "product_title_color_hover": "{{ shop.brand.colors.secondary[0].background }}",
-    "product_price_color": "#d62828",
-    "product_price_sale_color": "#d62828",
+    "product_price_color": "#fc8508",
+    "product_price_sale_color": "#fc8508",
     "product_price_compare_color": "#888888",
+    "product_countdown_color": "#fc8508",
     "product_swatch_border": "#e8e8e8",
     "product_swatch_border_active": "{{ shop.brand.colors.secondary[0].background }}",
     "product_hot_stock_color": "#d62828",
@@ -491,7 +492,6 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "enable_announcement": true,
           "layout": "slider",
           "enable_close": true,
           "color_text": "#b05d5d",
