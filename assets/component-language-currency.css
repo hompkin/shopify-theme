@@ -9,6 +9,14 @@ body.lang-currency-sidebar-show .halo-language-currency-sidebar{
     visibility: visible;
 }
 
+customer-language-currency.halo-sidebar.halo-sidebar-right{
+    display: none;
+}
+
+body.lang-currency-sidebar-show customer-language-currency.halo-language-currency-sidebar{
+    display: block;
+}
+
 .halo-language-currency-sidebar .halo-sidebar-wrapper{
     padding-top: 10px;
 }

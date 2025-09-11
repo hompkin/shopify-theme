@@ -17,6 +17,7 @@
     assign show_page_title = section.settings.show_page_title
     assign page_title_alignment = section.settings.page_title_alignment
     assign container = section.settings.container
+    assign padding_full_width = section.settings.padding_full_width
     assign show_faqs_filter = section.settings.show_faqs_filter
     assign faqs_text = section.settings.faqs_text
     assign faqs_message_heading = section.settings.faqs_message_heading
@@ -44,7 +45,7 @@
 -%}
 
 <faqs-item data-section-id="{{ section.id }}" data-section-type="faqs" id="FaqsSection-{{ section.id }}" data-section="{{ section.id }}">
-    <div class="faq-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%} container-full{% else %}container{% endif %}">
+    <div class="faq-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
         {%- if show_breadcrumb -%}
             {% render 'breadcrumb', alignment: breadcrumb_alignment %}
         {%- endif -%}
@@ -103,7 +104,7 @@
                                 <div class="faqs-icon-container">
                                     {% if message_method_icon_1 != blank %}
                                         <{% if message_method_link_1 != blank %}a href={{ message_method_link_1.url }}{% else %}div{% endif %} class='message-icon-1 message-icon'>
-                                            <img src="{{ message_method_icon_1 | image_url }}" width="{{ message_method_icon_1.width }}" height="{{ message_method_icon_2.height }}" loading="lazy"/>
+                                            <img src="{{ message_method_icon_1 | image_url }}" width="{{ message_method_icon_1.width }}" height="{{ message_method_icon_2.height }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %}/>
                                             {% if message_method_text_1 != blank %}
                                                 <span class="message-icon-text-1">{{ message_method_text_1 }}</span>
                                             {% endif %}
@@ -111,7 +112,7 @@
                                     {% endif %}
                                     {% if message_method_icon_2 != blank %}
                                         <{% if message_method_link_2 != blank %}a href={{ message_method_link_2.url }}{% else %}div{% endif %} class='message-icon-2 message-icon'>
-                                            <img src="{{ message_method_icon_2 | image_url }}" width="{{ message_method_icon_1.width }}" height="{{ message_method_icon_2.height }}" loading="lazy"/>
+                                            <img src="{{ message_method_icon_2 | image_url }}" width="{{ message_method_icon_1.width }}" height="{{ message_method_icon_2.height }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %}/>
                                             {% if message_method_text_2 != blank %}
                                                 <span class="message-icon-text-2">{{ message_method_text_2 }}</span>
                                             {% endif %}
@@ -214,6 +215,13 @@
     }
 
     @media (min-width: 1025px) {
+        {% if container == 'fullwidth' %}
+            #FaqsSection-{{ section.id }} > .container-full {
+                padding-left: {{ padding_full_width | append: 'px' }};
+                padding-right: {{ padding_full_width | append: 'px' }};
+            }
+        {% endif %}
+
         #FaqsSection-{{ section.id }} .breadcrumb-container {
             position: relative;
         }
@@ -237,8 +245,38 @@
         "settings":
         [
             {
-                "type": "header",
-                "content": "t:settings_schema.general.name"
+                "type": "select",
+                "id": "container",
+                "label": "t:sections.layout.container.option",
+                "default": "container",
+                "options": [
+                    {
+                        "value": "container",
+                        "label": "t:sections.layout.container.option1"
+                    },
+                    {
+                        "value": "1170",
+                        "label": "t:sections.layout.container.option4"
+                    },
+                    {
+                        "value": "1770",
+                        "label": "t:sections.layout.container.option3"
+                    },
+                    {
+                        "value": "fullwidth",
+                        "label": "t:sections.layout.container.option2"
+                    }
+                ]
+            },
+            {
+                "type": "range",
+                "id": "padding_full_width",
+                "label": "t:sections.layout.container.padding_full_width",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                "default": 0
             },
             {
                 "type": "checkbox",
@@ -253,22 +291,22 @@
                 "options": [
                 {
                     "value": "left",
-                    "label": "t:sections.general.settings.breadcrumb.options__1"
+                    "label": "t:settings_schema.typography.settings.type_button_font.left"
                 },
                 {
                     "value": "center",
-                    "label": "t:sections.general.settings.breadcrumb.options__2"
+                    "label": "t:settings_schema.typography.settings.type_button_font.center"
                 },
                 {
                     "value": "right",
-                    "label": "t:sections.general.settings.breadcrumb.options__3"
+                    "label": "t:settings_schema.typography.settings.type_button_font.right"
                 }],
                 "default": "left"
             },
             { 
                 "type": "color",
                 "id": "breadcrumb_bg",
-                "label": "t:settings_schema.colors.settings.colors_name.background_color"
+                "label": "t:settings_schema.colors.settings.colors_name.background_color_2"
             },
             {
                 "type": "color_background",
@@ -299,109 +337,17 @@
                 "options": [
                 {
                     "value": "left",
-                    "label": "t:sections.general.settings.page-title.options__1"
+                    "label": "t:settings_schema.typography.settings.type_button_font.left"
                 },
                 {
                     "value": "center",
-                    "label": "t:sections.general.settings.page-title.options__2"
+                    "label": "t:settings_schema.typography.settings.type_button_font.center"
                 },
                 {
                     "value": "right",
-                    "label": "t:sections.general.settings.page-title.options__3"
+                    "label": "t:settings_schema.typography.settings.type_button_font.right"
                 }],
                 "default": "left"
-            },
-            {
-                "type": "select",
-                "id": "container",
-                "label": "t:sections.layout.container.option",
-                "default": "container",
-                "options": [
-                    {
-                        "value": "container",
-                        "label": "t:sections.layout.container.option1"
-                    },
-                    {
-                        "value": "1170",
-                        "label": "t:sections.layout.container.option4"
-                    },
-                    {
-                        "value": "fullwidth",
-                        "label": "t:sections.layout.container.option2"
-                    },
-                    {
-                        "value": "1770",
-                        "label": "t:sections.layout.container.option3"
-                    }
-                ]
-            },
-            {
-                "type": "header",
-                "content": "t:sections.layout.margin_top"
-            },
-            {
-                "type": "range",
-                "id": "mg_top_desktop",
-                "label": "t:sections.layout.mg_desktop.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_top_tablet",
-                "label": "t:sections.layout.mg_tablet.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_top_mobile",
-                "label": "t:sections.layout.mg_mobile.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "header",
-                "content": "t:sections.layout.margin_bottom"
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_desktop",
-                "label": "t:sections.layout.mg_desktop.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_tablet",
-                "label": "t:sections.layout.mg_tablet.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
-            },
-            {
-                "type": "range",
-                "id": "mg_bottom_mobile",
-                "label": "t:sections.layout.mg_mobile.label",
-                "min": 0,
-                "max": 100,
-                "step": 5,
-                "unit": "t:sections.layout.mg_desktop.unit",
-                "default": 50
             },
             {
                 "type": "header",
@@ -414,7 +360,7 @@
                 "default": true
             },
             {
-                "type" : "textarea",
+                "type" : "liquid",
                 "id" : "faqs_text",
                 "label" : "t:sections.image-banner.blocks.image.settings.content.label__16",
                 "default": "Below FAQ are some common concerns of our clients before purchasing the theme, if you have other questions, please just send it to example@domain.com."
@@ -430,7 +376,7 @@
                 "default": "Need Help?"
             },
             {
-                "type": "textarea",
+                "type": "liquid",
                 "id": "faqs_message_text",
                 "label": "t:sections.image-banner.blocks.image.settings.content.label__16"
             },
@@ -530,6 +476,74 @@
                 "type": "color_background",
                 "id": "contact_color_bg_gradient_hover",
                 "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient_hover"
+            },
+            {
+                "type": "header",
+                "content": "t:settings_schema.typography.settings.type_button_font.padding_top"
+            },
+            {
+                "type": "range",
+                "id": "mg_top_desktop",
+                "label": "t:sections.layout.mg_desktop.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_top_tablet",
+                "label": "t:sections.layout.mg_tablet.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_top_mobile",
+                "label": "t:sections.layout.mg_mobile.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "header",
+                "content": "t:settings_schema.typography.settings.type_button_font.padding_bottom"
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_desktop",
+                "label": "t:sections.layout.mg_desktop.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_tablet",
+                "label": "t:sections.layout.mg_tablet.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_mobile",
+                "label": "t:sections.layout.mg_mobile.label",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
             }
         ],
         "blocks": [
@@ -538,10 +552,6 @@
                 "name" : "t:sections.main_faqs.blocks.paragraph.name",
                 "settings":
                 [
-                    {
-                        "type": "header",
-                        "content": "t:sections.main_faqs.blocks.paragraph.settings.header__1"
-                    },
                     {
                         "type" : "text",
                         "id" : "title",

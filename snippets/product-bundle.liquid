@@ -138,7 +138,7 @@
                                                 {{ 'products.product.bundle_block.total_price' | t }}
                                             </span>
                                             {%- if bundle_discount_rate > 0 -%}
-                                            
+
                                                 <span class="bundle-price" data-bundle-product-price data-bundle-discount-rate="{{ bundle_discount_rate }}">
                                                     {%- assign compensation = 1 | minus: bundle_discount_rate -%}
                                                     {{ cart.total_price | times: compensation | money }}

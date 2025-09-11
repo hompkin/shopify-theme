@@ -17,6 +17,10 @@
     line-height: 1.2;
 }
 
+.style-arrows-7 .price dd {
+    margin: 0 5px 0 0;
+}
+
 .price .price__last:last-of-type {
     margin: 0;
 }
@@ -41,6 +45,15 @@
     align-items: center;
 }
 
+.price-style-2.price--on-sale .price__sale {
+    flex-direction: row-reverse;
+    column-gap: 8px;
+}
+
+.price-style-2.price--on-sale .price__sale .price__compare {
+    margin: 0;
+}
+
 .card .card-information__wrapper.text-center .price--on-sale .price__sale.show_saved_price {
     justify-content: center;
 }
@@ -51,6 +64,7 @@
 }
 
 .price-item{
+    display: inline-flex;
     font-size: var(--product-price-font-size);
     letter-spacing: var(--product-price-letter-spacing);
     font-weight: var(--product-price-font-weight);
@@ -60,12 +74,18 @@
 .price-item .text{
     display: inline-block;
     vertical-align: middle;
+    font-family: var(--product-price-font);
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);
     color: var(--product-compare-price-color);
     letter-spacing: 0;
     line-height: var(--product-price-line-height);
     margin: -4px 0px 0 0;
+}
+
+.style-arrows-7 .price-item .text{
+   margin: -2px 2px 0 0;
+   text-transform: lowercase;
 }
 
 .price-item .money{

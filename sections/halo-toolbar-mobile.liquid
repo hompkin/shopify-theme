@@ -29,12 +29,10 @@
                 {%- if icon != blank or text != blank -%}
 
                     <li class="list-item{% if action_icon == 'account' %}{% unless shop.customer_accounts_enabled %} customer_accounts_disable{% endunless %}{% endif %}" style="--font-size: {{ font_size }}; --font-weight: {{ font_weight }}; --icon-size: {{ icon_size }}">
-                        <a {% unless is_contained %}href="{{ routes.account_login_url }}"{% endunless %}{% if link == blank %} role="link" aria-disabled="true"{% else %} href="{{ link }}"{% endif %} {% if block.type == 'content' %}data-bar-{{block.type}}{% elsif block.type == 'action' %}{% if action_icon == 'cart' %}{% if settings.show_quick_cart %}data-cart-sidebar{% else %}href="{{ routes.cart_url }}" class="list-item-cart"{% endif %}{% elsif action_icon == 'search' %}data-search-mobile{% elsif action_icon == 'account' %}{% if is_contained %}data-open-auth-sidebar{% endif %}{% endif %}{% endif %}><span class="icon">{{icon}}</span> <span class="text">{{text}}</span>
+                        <a {% if action_icon == 'account' %}{% unless is_contained %}href="{{ routes.account_login_url }}"{% endunless %}{% endif %}{% if link == blank %} role="link" aria-disabled="true"{% else %} href="{{ link }}"{% endif %} {% if block.type == 'content' %}data-bar-{{block.type}}{% elsif block.type == 'action' %}{% if action_icon == 'cart' %}{% if settings.show_quick_cart %}data-cart-sidebar{% else %}href="{{ routes.cart_url }}" class="list-item-cart"{% endif %}{% elsif action_icon == 'search' %}data-search-mobile{% elsif action_icon == 'account' %}{% if is_contained %}data-open-auth-sidebar{% endif %}{% endif %}{% endif %}><span class="icon">{{icon}}</span> <span class="text">{{text}}</span>
                             {%- if action_icon == 'cart' -%}
                                 <div class="cart-count-bubble" style="--color-bubble: {{ section.settings.bg_color }}; --bg-bubble: {{ section.settings.color_icon }}">
-                                    {%- if cart.item_count < 100 -%}
-                                        <span class="text" aria-hidden="true" data-cart-count>{{ cart.item_count }}</span>
-                                    {%- endif -%}
+                                    <span class="text" aria-hidden="true" data-cart-count>{%- if cart.item_count < 100 -%}{{ cart.item_count }}{%- else -%}{{ 'sections.cart.item_99' | t }}{%- endif -%}</span>
                                     <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
                                 </div>
                             {%- endif -%}
@@ -112,7 +110,7 @@
         "min": 8,
         "max": 20,
         "step": 1,
-        "unit": "t:sections.footer.settings.footer_top.pdtop_footer_top.unit",
+        "unit": "t:settings_schema.typography.settings.font_size.unit",
         "default": 12
     },
     {
@@ -153,7 +151,7 @@
         "min": 10,
         "max": 30,
         "step": 1,
-        "unit": "t:sections.footer.settings.footer_top.pdtop_footer_top.unit",
+        "unit": "t:settings_schema.typography.settings.font_size.unit",
         "default": 20
     },
     {
@@ -175,7 +173,7 @@
     {
         "type" : "color",
         "id" : "bg_color",
-        "label": "t:settings_schema.colors.settings.colors_name.background_color",
+        "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
         "default" : "#fff"
     },
     {
@@ -190,7 +188,7 @@
             "name": "t:sections.sticky_toolbar_mobile.blocks.link.name",
             "settings": [
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "icon",
                     "label": "t:sections.image-banner.blocks.image.settings.content.label__17_1"
                 },
@@ -211,7 +209,7 @@
             "name": "t:sections.sticky_toolbar_mobile.blocks.content.name",
             "settings": [
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "icon",
                     "label": "t:sections.image-banner.blocks.image.settings.content.label__17_1"
                 },
@@ -221,7 +219,7 @@
                     "label": "t:sections.image-banner.blocks.image.settings.content.label__16"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "content",
                     "label": "t:sections.image-banner.blocks.image.settings.content.label__18"
                 }
@@ -232,7 +230,7 @@
             "name": "t:sections.sticky_toolbar_mobile.blocks.action.name",
             "settings": [
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "icon",
                     "label": "t:sections.image-banner.blocks.image.settings.content.label__17_1"
                 },

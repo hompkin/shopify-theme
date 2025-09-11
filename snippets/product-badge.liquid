@@ -25,12 +25,18 @@
 
     if settings.show_custom_badge
         assign custom_badge = false
+        assign custom_badge_text = product.metafields.custom.custom_badge
+       
         for tag in product.tags
             assign tag_handle = tag | handle
             if tag_handle == 'label'
                 assign custom_badge = true
             endif
         endfor
+
+        if custom_badge_text
+            assign custom_badge = true
+        endif
     endif
 
     if settings.show_bundle_badge
@@ -62,7 +68,7 @@
     endif
 -%}
 {%- if sale_badge or sold_out_badge or custom_badge or bundle_badge or new_badge -%}
-    <div class="{{ class }}{% if sale_badge_type == 'discount' or sale_badge_type == 'text_discount' %} has-badge-js{% endif %} badge-{{ position }} halo-productBadges halo-productBadges--{{ position }} date-{{ date_minus }} date1-{{ date_difference }}"
+    <div class="{{ class }}{% if sale_badge_type == 'discount' or sale_badge_type == 'text_discount' %} has-badge-js{% endif %} badge-{{ position }} halo-productBadges halo-productBadges--{{ position }} date-{{ date_minus }} date1-{{ date_difference }}{% unless sale_badge %} sale_badge_disable{% endunless %}"
         {% if sale_badge_type == 'text_discount' or sale_badge_type == 'text' %}data-text-sale-badge="{{ 'products.product.on_sale' | t }}"{% endif %}
         {% if sale_badge_type == 'discount' %}data-text-sale-badge="- "{% endif %}
         data-new-badge-number="{{ new_badge_limit }}"
@@ -135,7 +141,11 @@
         {%- endif -%}
         {%- if custom_badge -%}
             <span class="badge custom-badge" aria-hidden="true">
-                {{ 'products.product.custom' | t }}
+                {%- if custom_badge_text -%}
+                    {{ custom_badge_text }}
+                {%- else -%}
+                    {{ 'products.product.custom' | t }}
+                {%- endif -%}
             </span>
         {%- endif -%}
         {%- if bundle_badge -%}

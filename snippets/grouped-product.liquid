@@ -19,13 +19,13 @@
         {%- assign product_form_combo_id = 'product-form-combo-' | append: product.id -%}
         {%- form 'product', product, id: product_form_combo_id, class: 'combo-form' -%}
             <div class="bundle-product-wrapper has-halo-block-loader">
-                <div class="bundle-product-list combo-item-list">
+                <div class="bundle-product-list combo-item-list {{forloop.first}}">
                     {%- for handle in handle_metafields limit: 10 -%}
                         {%- liquid
                             assign handle_bundle = handle | strip
                             assign product = all_products[handle_bundle]
                         -%}
-                        {%- render 'product-combo-item', product: product, product_style: product_style, image_ratio: image_ratio, portrait_aspect_ratio: portrait_aspect_ratio, first: false, picker_type: picker_type -%}
+                        {%- render 'product-combo-item', product: product, product_style: product_style, image_ratio: image_ratio, portrait_aspect_ratio: portrait_aspect_ratio, first: false, picker_type: picker_type, forloop1: forloop -%}
                     {%- endfor -%}
                 </div>
                 <div class="bundle-product-right">
@@ -58,7 +58,7 @@
                         </div>
                         {%- if settings.show_wishlist -%}
                             <div class="productView-wishlist clearfix">
-                                <a data-wishlist href="#" data-wishlist-handle="{{ product.handle }}" data-product-id="{{ product.id }}"><span class="visually-hidden">{{ 'wishlist.general.add' | t }}</span>{% render 'icon-heart' %}</a>
+                                <a role="link" aria-disabled="true" data-wishlist data-wishlist-handle="{{ product_main.handle }}" data-product-id="{{ product_main.id }}"><span class="visually-hidden">{{ 'wishlist.general.add' | t }}</span>{% render 'icon-heart' %}</a>
                             </div>
                         {%- endif -%}
                         {%- if check_show_share == '2' -%}

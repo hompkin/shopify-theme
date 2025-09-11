@@ -1,11 +1,39 @@
 {{ 'component-special-banner.css' | asset_url | stylesheet_tag }}
-<div class="special-banner{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="--p-top: {{ section.settings.padding_top }}px; --p-bottom: {{ section.settings.padding_bottom }}px">
-    <div class="container-{{ section.settings.container }}">
+
+{%- liquid 
+
+    assign section_bg = section.settings.section_bg
+    assign section_bg_gradient = section.settings.section_bg_gradient
+    assign section_bg_image = section.settings.section_bg_image
+
+    assign mg_top_desktop = section.settings.mg_top_desktop
+    assign mg_top_tablet = section.settings.mg_top_tablet
+    assign mg_top_mobile = section.settings.mg_top_mobile
+
+    assign mg_bottom_desktop = section.settings.mg_bottom_desktop
+    assign mg_bottom_tablet = section.settings.mg_bottom_tablet
+    assign mg_bottom_mobile = section.settings.mg_bottom_mobile
+-%}
+
+<style>
+    .section-block-{{section.id}} {padding-top: {{ mg_top_mobile | append: 'px' }};padding-bottom: {{ mg_bottom_mobile | append: 'px' }}}
+    @media (min-width: 768px) and (max-width: 1199px) {.section-block-{{section.id}} {padding-top: {{ mg_top_tablet | append: 'px' }};padding-bottom: {{ mg_bottom_tablet | append: 'px' }}}}
+    @media (min-width: 1200px) {.section-block-{{section.id}} {padding-top: {{ mg_top_desktop | append: 'px' }};padding-bottom: {{ mg_bottom_desktop | append: 'px' }}}}
+
+    {%- if section_bg_image != blank %}
+        .section-block-{{section.id}}{background: url({{ section_bg_image | img_url: '1920x' }});background-repeat: repeat-x;background-size: cover}
+    {%- else -%}
+        .section-block-{{section.id}}{background: {% if section_bg_gradient != blank %}{{ section_bg_gradient }}{% else %}{{ section_bg }}{% endif %}}
+    {%- endif -%}
+</style>
+
+<div class="special-banner section-block-{{section.id}}" style="--p-top: {{ section.settings.padding_top }}px; --p-bottom: {{ section.settings.padding_bottom }}px">
+    <div class="container-{{ section.settings.container }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
         <div class="special-banner__wrapper">
             {%- for block in section.blocks -%}
                 {%-  case block.type  -%}
                     {%- when 'image_rotating_text' -%}
-                        {%-  liquid 
+                        {%-  liquid
                             assign image = block.settings.image
                             assign rotating_text = block.settings.rotating_text
                             assign link = block.settings.link
@@ -13,7 +41,7 @@
                         {%- if image != blank or rotating_text != blank -%}
                             <div class="special-banner__item special-banner__item--{{ block.type }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" sticky-special-banner>
                                 <div class="special-banner__img_box{% if block.settings.image_behavior != 'none' %} animate--{{ block.settings.image_behavior }} o-hidden{% endif %}">
-                                    <div class="special-banner__img image-zoom adaptive_height image{% if image == blank %} no-image{% endif %}" style="padding-top: {% if image != blank %}{% unless image.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: image.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: image.aspect_ratio | times: 100 }}%{% endunless %}{% else %}112.63157894736842%{% endif %}">
+                                    <div class="special-banner__img image-zoom adaptive_height image" style="padding-top: {% if image != blank %}{% unless image.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: image.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: image.aspect_ratio | times: 100 }}%{% endunless %}{% endif %}">
                                         {%- if image != blank -%}
                                             <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{%- if image.width < 320 -%}{{ image | image_url: width: image.width }} 320w,{%- endif -%}
                                                 {%- if image.width >= 320 -%}{{ image | image_url: width: 375 }} 375w,{%- endif -%}
@@ -29,6 +57,10 @@
                                                 {% unless image.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image.presentation.focal_point }}"{% endunless %}
                                             >
                                             {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
+                                        {%- else -%}
+                                            <div class="placeholder" style="--height_placeholder: clamp(550px, calc(1070 /1920 * 100vw), 1070px);">
+                                                {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                            </div>
                                         {%- endif -%}
                                         {%- if rotating_text != blank -%}
                                             <div class="special-banner__rotatingText position--{{ block.settings.position }}" style="--color: {{ block.settings.rotating_text_color }}; --letter-spacing: {{ block.settings.letter_spacing }}px">
@@ -43,7 +75,7 @@
                             </div>
                         {%- endif -%}
                     {%- when 'image_with_text' -%}
-                        {%-  liquid 
+                        {%-  liquid
                             assign image = block.settings.image
                             assign link = block.settings.link
                             assign heading = block.settings.heading
@@ -70,7 +102,9 @@
                                         >
                                         {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                                     {%- else -%}
-                                        <div class="not_img" style="--height_not_img: 1070px">950 x 1070px</div>
+                                        <div class="placeholder" style="--height_placeholder: clamp(550px, calc(1070 /1920 * 100vw), 1070px);">
+                                            {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        </div>
                                     {%- endif -%}
                                     {%- if heading != blank or desc != blank or btn_txt != blank -%}
                                         <div class="special-banner__content p-absolute left-0 right-0 text-{{block.settings.text_align}}{% if content_align == 'top' %} special-banner__content_top top-0{% elsif content_align == 'center' %} special-banner__content_center middle-y{% else %} special-banner__content_bottom bottom-0{% endif %}" style="--text-color: {{ block.settings.text_color }}">
@@ -94,7 +128,7 @@
                     {%- when 'collection_banner' -%}
                         <div class="special-banner__item special-banner__item--{{ block.type }} d-flex flex-jc-center flex-align-center p-relative{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                             <div class="special-banner__collection d-flex" style="--font-size: {{block.settings.fontsize_heading | append: 'px'}};--font-size-mb: {{block.settings.fontsize_heading_mb | append: 'px'}};--line-height: {{block.settings.fontsize_heading | plus: 8 | append: 'px'}}; --line-height-mb: {{block.settings.fontsize_heading_mb | plus: 8 | append: 'px'}};--font-size-btn: {{block.settings.fontsize_btn | append: 'px'}}">
-                                {%-  liquid 
+                                {%-  liquid
                                     assign image_1 = block.settings.image_1
                                     assign image_2 = block.settings.image_2
                                 -%}
@@ -117,7 +151,9 @@
                                     {%- if block.settings.btn_lnk_1 != blank -%}</a>{%- endif -%}
                                         {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                                     {%- else -%}
-                                        <div class="not_img" style="--height_not_img: 450px">320 x 450px</div>
+                                        <div class="placeholder" style="--height_placeholder: 450px;">
+                                            {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        </div>
                                     {%- endif -%}
                                     {%- if block.settings.heading_1 != blank -%}
                                     <h3 class="heading mt-25 mb-20{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">{%- if block.settings.btn_lnk_1 != blank -%}<a href="{{block.settings.btn_lnk_1}}" class="link-effect p-relative">{%- endif -%}<span class="text">{{ block.settings.heading_1 }}</span>{%- if block.settings.btn_lnk_1 != blank -%}</a>{%- endif -%}</h3>
@@ -152,7 +188,9 @@
                                         {%- if block.settings.btn_lnk_2 != blank -%}</a>{%- endif -%}
                                         {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
                                     {%- else -%}
-                                        <div class="not_img" style="--height_not_img: 450px">320 x 450px</div>
+                                        <div class="placeholder" style="--height_placeholder: 450px;">
+                                            {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        </div>
                                     {%- endif -%}
                                     {%- if block.settings.heading_2 != blank -%}
                                     <h3 class="heading mt-25 mb-20{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">{%- if block.settings.btn_lnk_2 != blank -%}<a href="{{block.settings.btn_lnk_2}}" class="link-effect p-relative">{%- endif -%}<span class="text">{{ block.settings.heading_2 }}</span>{%- if block.settings.btn_lnk_2 != blank -%}</a>{%- endif -%}</h3>
@@ -202,168 +240,172 @@
                             assign lookbook_style = block.settings.lookbook_style
                             assign check_lookbook = true
                         -%}
-                    {%- if image_1 != blank or image_2 != blank or image_3 != blank -%}
-                    <div class="special-banner__item special-banner__item--{{ block.type }} d-flex flex-jc-center flex-align-center p-relative{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
-                        {%- if check_lookbook -%}
-                            {%- if product_1_1 != blank or product_1_2 != blank or product_2_1 != blank or product_2_2 != blank or product_3_1 != blank or product_3_2 != blank -%}
-                                {%- assign check_lookbook = false -%}
-                                <script src="{{ 'lookbook-script.js' | asset_url }}" defer="defer"></script>
+                        <div class="special-banner__item special-banner__item--{{ block.type }} d-flex flex-jc-center flex-align-center p-relative{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+                            {%- if check_lookbook -%}
+                                {%- if product_1_1 != blank or product_1_2 != blank or product_2_1 != blank or product_2_2 != blank or product_3_1 != blank or product_3_2 != blank -%}
+                                    {%- assign check_lookbook = false -%}
+                                    <script src="{{ 'lookbook-script.js' | asset_url }}" defer="defer"></script>
+                                {%- endif -%}
                             {%- endif -%}
-                        {%- endif -%}
-                        <div class="special-banner__lookbook lookbook-carousel{% if block.settings.lookbook_counter_number %} enable_counter_number{% endif %}" style="--font-size: {{block.settings.fontsize_heading | append: 'px'}};--font-size-mb: {{block.settings.fontsize_heading_mb | append: 'px'}};--line-height: {{block.settings.fontsize_heading | plus: 8 | append: 'px'}}; --line-height-mb: {{block.settings.fontsize_heading_mb | plus: 8 | append: 'px'}};--icon_color: {{block.settings.icon_color}}" data-item-to-show="1" data-item-dots="false" data-item-dots-mb="true" data-item-arrows="true" data-item-arrows-mb="false">
-                            <div class="special-banner__lb_item special-banner__lb_item_1 d-inline-block w-100{% if block.settings.image_behavior != 'none' %} animate--{{ block.settings.image_behavior }} o-hidden{% endif %}">
-                                {%- if image_1 != blank -%}
-                                {% if settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %}
-                                <div class="image-animation">
-                                {% endif %}
-                                    <div class="lookbook-img p-relative image-zoom image">
-                                        {%- if block.settings.lnk_1 != blank -%}<a href="{{block.settings.lnk_1}}" class="link">{%- endif -%}
-                                        <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{%- if image_1.width < 320 -%}{{ image_1 | image_url: width: image_1.width }} 320w,{%- endif -%}
-                                            {%- if image_1.width >= 320 -%}{{ image_1 | image_url: width: 375 }} 375w,{%- endif -%}
-                                            {%- if image_1.width >= 750 -%}{{ image_1 | image_url: width: 750 }} 750w,{%- endif -%}
-                                            {%- if image_1.width >= 1100 -%}{{ image_1 | image_url: width: 1100 }} 1100w,{%- endif -%}
-                                            {%- if image_1.width >= 1370 -%}{{ image_1 | image_url: width: 1370 }} 1370w,{%- endif -%}
-                                            {%- if image_1.width >= 1500 -%}{{ image_1 | image_url: width: 1500 }} 1500w,{%- endif -%}
-                                            {%- if image_1.width >= 1780 -%}{{ image_1 | image_url: width: 1780 }} 1780w,{%- endif -%}
-                                            {%- if image_1.width >= 2000 -%}{{ image_1 | image_url: width: 2000 }} 2000w,{%- endif -%}
-                                            {%- if image_1.width >= 2800 -%}{{ image_1 | image_url: width: 2800 }} 2800w{%- endif -%}"
-                                            sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_1 | image_url: width: 750 }}"{% endunless %} alt="{{ image_1.alt | escape }}" width="{{ image_1.width }}" height="{{ image_1.width | divided_by: image_1.aspect_ratio | round}}" 
-                                            {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
-                                            {% unless image_1.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_1.presentation.focal_point }}"{% endunless %}
-                                        >
-                                        {%- if block.settings.lnk_1 != blank -%}</a>{%- endif -%}
-                                        {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
+                            <div class="special-banner__lookbook lookbook-carousel{% if block.settings.lookbook_counter_number %} enable_counter_number{% endif %}" style="--font-size: {{block.settings.fontsize_heading | append: 'px'}};--font-size-mb: {{block.settings.fontsize_heading_mb | append: 'px'}};--line-height: {{block.settings.fontsize_heading | plus: 8 | append: 'px'}}; --line-height-mb: {{block.settings.fontsize_heading_mb | plus: 8 | append: 'px'}};--icon_color: {{block.settings.icon_color}}" data-item-to-show="1" data-item-dots="false" data-item-dots-mb="true" data-item-arrows="true" data-item-arrows-mb="false">
+                                <div class="special-banner__lb_item special-banner__lb_item_1 d-inline-block w-100{% if block.settings.image_behavior != 'none' %} animate--{{ block.settings.image_behavior }} o-hidden{% endif %}">
+                                    {%- if image_1 != blank -%}
+                                    {% if settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %}
+                                    <div class="image-animation">
+                                    {% endif %}
+                                        <div class="lookbook-img p-relative image-zoom image">
+                                            {%- if block.settings.lnk_1 != blank -%}<a href="{{block.settings.lnk_1}}" class="link">{%- endif -%}
+                                            <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{%- if image_1.width < 320 -%}{{ image_1 | image_url: width: image_1.width }} 320w,{%- endif -%}
+                                                {%- if image_1.width >= 320 -%}{{ image_1 | image_url: width: 375 }} 375w,{%- endif -%}
+                                                {%- if image_1.width >= 750 -%}{{ image_1 | image_url: width: 750 }} 750w,{%- endif -%}
+                                                {%- if image_1.width >= 1100 -%}{{ image_1 | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                                {%- if image_1.width >= 1370 -%}{{ image_1 | image_url: width: 1370 }} 1370w,{%- endif -%}
+                                                {%- if image_1.width >= 1500 -%}{{ image_1 | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                                {%- if image_1.width >= 1780 -%}{{ image_1 | image_url: width: 1780 }} 1780w,{%- endif -%}
+                                                {%- if image_1.width >= 2000 -%}{{ image_1 | image_url: width: 2000 }} 2000w,{%- endif -%}
+                                                {%- if image_1.width >= 2800 -%}{{ image_1 | image_url: width: 2800 }} 2800w{%- endif -%}"
+                                                sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_1 | image_url: width: 750 }}"{% endunless %} alt="{{ image_1.alt | escape }}" width="{{ image_1.width }}" height="{{ image_1.width | divided_by: image_1.aspect_ratio | round}}" 
+                                                {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
+                                                {% unless image_1.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_1.presentation.focal_point }}"{% endunless %}
+                                            >
+                                            {%- if block.settings.lnk_1 != blank -%}</a>{%- endif -%}
+                                            {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
 
-                                        {%- if product_1_1 != blank or product_1_2 != blank -%}
+                                            {%- if product_1_1 != blank or product_1_2 != blank -%}
+                                                <lookbook-wrapper>
+                                                {%- if product_1_1 != blank -%}
+                                                    {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_1_1, left: left_1_1, product: product_1_1, num: 1 %}
+                                                {% endif %}
+                                                {%- if product_1_2 != blank -%}
+                                                    {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_1_2, left: left_1_2, product: product_1_2, num: 2 %}
+                                                {%- endif -%}
+                                                </lookbook-wrapper>
+                                            {%- endif -%}
+                                        </div>
+                                    {% if settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %}
+                                    </div>
+                                    {% endif %}
+                                    {%- else -%}
+                                        <div class="placeholder" style="--height_placeholder: 770px;">
+                                            {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        </div>
+                                    {%- endif -%}
+
+                                    {%- if block.settings.heading_1 != blank -%}
+                                    <h3 class="heading mt-25 mb-0 text-center">{%- if block.settings.lnk_1 != blank -%}<a href="{{block.settings.lnk_1}}" class="link-effect p-relative">{%- endif -%}<span class="text">{{ block.settings.heading_1 }}</span>{%- if block.settings.lnk_1 != blank -%}</a>{%- endif -%}</h3>
+                                    {%- endif -%}
+                                </div>
+                                <div class="special-banner__lb_item special-banner__lb_item_2 d-inline-block w-100{% if block.settings.image_behavior != 'none' %} animate--{{ block.settings.image_behavior }} o-hidden{% endif %}">
+                                    {%- if image_2 != blank -%}
+                                        <div class="lookbook-img p-relative image-zoom image">
+                                        {%- if block.settings.lnk_2 != blank -%}<a href="{{block.settings.lnk_2}}" class="link">{%- endif -%}
+                                            <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{%- if image_2.width < 320 -%}{{ image_2 | image_url: width: image_2.width }} 320w,{%- endif -%}
+                                                {%- if image_2.width >= 320 -%}{{ image_2 | image_url: width: 375 }} 375w,{%- endif -%}
+                                                {%- if image_2.width >= 750 -%}{{ image_2 | image_url: width: 750 }} 750w,{%- endif -%}
+                                                {%- if image_2.width >= 1100 -%}{{ image_2 | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                                {%- if image_2.width >= 1370 -%}{{ image_2 | image_url: width: 1370 }} 1370w,{%- endif -%}
+                                                {%- if image_2.width >= 1500 -%}{{ image_2 | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                                {%- if image_2.width >= 1780 -%}{{ image_2 | image_url: width: 1780 }} 1780w,{%- endif -%}
+                                                {%- if image_2.width >= 2000 -%}{{ image_2 | image_url: width: 2000 }} 2000w,{%- endif -%}
+                                                {%- if image_2.width >= 2800 -%}{{ image_2 | image_url: width: 2800 }} 2800w{%- endif -%}"
+                                                sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_2 | image_url: width: 320 }}"{% endunless %} alt="{{ image_2.alt | escape }}" width="{{ image_2.width }}" height="{{ image_2.width | divided_by: image_2.aspect_ratio | round}}" class="lazyload" 
+                                                {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
+                                                {% unless image_2.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_2.presentation.focal_point }}"{% endunless %}
+                                            >
+                                            {%- if block.settings.lnk_2 != blank -%}</a>{%- endif -%}
+                                            {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
+
+                                            {%- if product_2_1 != blank or product_2_2 != blank -%}
                                             <lookbook-wrapper>
-                                            {%- if product_1_1 != blank -%}
-                                                {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_1_1, left: left_1_1, product: product_1_1, num: 1 %}
+                                            {%- if product_2_1 != blank -%}
+                                                {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_2_1, left: left_2_1, product: product_2_1, num: 3 %}
                                             {% endif %}
-                                            {%- if product_1_2 != blank -%}
-                                                {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_1_2, left: left_1_2, product: product_1_2, num: 2 %}
+                                            {%- if product_2_2 != blank -%}
+                                                {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_2_2, left: left_2_2, product: product_2_2, num: 4 %}
                                             {%- endif -%}
                                             </lookbook-wrapper>
                                         {%- endif -%}
-                                    </div>
-                                {% if settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %}    
+                                        </div>
+                                    {%- else -%}
+                                        <div class="placeholder" style="--height_placeholder: 770px;">
+                                            {{ 'collection-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        </div>
+                                    {%- endif -%}
+                                    {%- if block.settings.heading_2 != blank -%}
+                                    <h3 class="heading mt-25 mb-0 text-center">{%- if block.settings.lnk_2 != blank -%}<a href="{{block.settings.lnk_2}}" class="link-effect p-relative">{%- endif -%}<span class="text">{{ block.settings.heading_2 }}</span>{%- if block.settings.lnk_2 != blank -%}</a>{%- endif -%}</h3>
+                                    {%- endif -%}
                                 </div>
-                                {% endif %}
-                                {%- else -%}
-                                    <div class="not_img" style="--height_not_img: 770px">670 x 770px</div>
-                                {%- endif -%}
-
-                                {%- if block.settings.heading_1 != blank -%}
-                                <h3 class="heading mt-25 mb-0 text-center">{%- if block.settings.lnk_1 != blank -%}<a href="{{block.settings.lnk_1}}" class="link-effect p-relative">{%- endif -%}<span class="text">{{ block.settings.heading_1 }}</span>{%- if block.settings.lnk_1 != blank -%}</a>{%- endif -%}</h3>
-                                {%- endif -%}
-                            </div>
-                            <div class="special-banner__lb_item special-banner__lb_item_2 d-inline-block w-100{% if block.settings.image_behavior != 'none' %} animate--{{ block.settings.image_behavior }} o-hidden{% endif %}">
-                                {%- if image_2 != blank -%}
-                                    <div class="lookbook-img p-relative image-zoom image">
-                                    {%- if block.settings.lnk_2 != blank -%}<a href="{{block.settings.lnk_2}}" class="link">{%- endif -%}
-                                        <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{%- if image_2.width < 320 -%}{{ image_2 | image_url: width: image_2.width }} 320w,{%- endif -%}
-                                            {%- if image_2.width >= 320 -%}{{ image_2 | image_url: width: 375 }} 375w,{%- endif -%}
-                                            {%- if image_2.width >= 750 -%}{{ image_2 | image_url: width: 750 }} 750w,{%- endif -%}
-                                            {%- if image_2.width >= 1100 -%}{{ image_2 | image_url: width: 1100 }} 1100w,{%- endif -%}
-                                            {%- if image_2.width >= 1370 -%}{{ image_2 | image_url: width: 1370 }} 1370w,{%- endif -%}
-                                            {%- if image_2.width >= 1500 -%}{{ image_2 | image_url: width: 1500 }} 1500w,{%- endif -%}
-                                            {%- if image_2.width >= 1780 -%}{{ image_2 | image_url: width: 1780 }} 1780w,{%- endif -%}
-                                            {%- if image_2.width >= 2000 -%}{{ image_2 | image_url: width: 2000 }} 2000w,{%- endif -%}
-                                            {%- if image_2.width >= 2800 -%}{{ image_2 | image_url: width: 2800 }} 2800w{%- endif -%}"
-                                            sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_2 | image_url: width: 320 }}"{% endunless %} alt="{{ image_2.alt | escape }}" width="{{ image_2.width }}" height="{{ image_2.width | divided_by: image_2.aspect_ratio | round}}" class="lazyload" 
+                                <div class="special-banner__lb_item special-banner__lb_item_3 d-inline-block w-100{% if block.settings.image_behavior != 'none' %} animate--{{ block.settings.image_behavior }} o-hidden{% endif %}">
+                                    {%- if image_3 != blank -%}
+                                        <div class="lookbook-img p-relative image-zoom image">
+                                        {%- if block.settings.lnk_3 != blank -%}<a href="{{block.settings.lnk_3}}" class="link">{%- endif -%}
+                                        <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{%- if image_3.width < 320 -%}{{ image_3 | image_url: width: image_3.width }} 320w,{%- endif -%}
+                                            {%- if image_3.width >= 320 -%}{{ image_3 | image_url: width: 375 }} 375w,{%- endif -%}
+                                            {%- if image_3.width >= 750 -%}{{ image_3 | image_url: width: 750 }} 750w,{%- endif -%}
+                                            {%- if image_3.width >= 1100 -%}{{ image_3 | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                            {%- if image_3.width >= 1370 -%}{{ image_3 | image_url: width: 1370 }} 1370w,{%- endif -%}
+                                            {%- if image_3.width >= 1500 -%}{{ image_3 | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                            {%- if image_3.width >= 1780 -%}{{ image_3 | image_url: width: 1780 }} 1780w,{%- endif -%}
+                                            {%- if image_3.width >= 2000 -%}{{ image_3 | image_url: width: 2000 }} 2000w,{%- endif -%}
+                                            {%- if image_3.width >= 2800 -%}{{ image_3 | image_url: width: 2800 }} 2800w{%- endif -%}"
+                                            sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_3 | image_url: width: 320 }}"{% endunless %} alt="{{ image_3.alt | escape }}" width="{{ image_3.width }}" height="{{ image_3.width | divided_by: image_3.aspect_ratio | round}}" class="lazyload" 
                                             {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
-                                            {% unless image_2.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_2.presentation.focal_point }}"{% endunless %}
+                                            {% unless image_3.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_3.presentation.focal_point }}"{% endunless %}
                                         >
-                                        {%- if block.settings.lnk_2 != blank -%}</a>{%- endif -%}
+                                        {%- if block.settings.lnk_3 != blank -%}</a>{%- endif -%}
                                         {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
-
-                                        {%- if product_2_1 != blank or product_2_2 != blank -%}
                                         <lookbook-wrapper>
-                                        {%- if product_2_1 != blank -%}
-                                            {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_2_1, left: left_2_1, product: product_2_1, num: 3 %}
-                                        {% endif %}
-                                        {%- if product_2_2 != blank -%}
-                                            {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_2_2, left: left_2_2, product: product_2_2, num: 4 %}
-                                        {%- endif -%}
+                                            {%- if product_3_1 != blank -%}
+                                                {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_3_1, left: left_3_1, product: product_3_1, num: 5 %}
+                                            {% endif %}
+                                            {%- if product_3_2 != blank -%}
+                                                {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_3_2, left: left_3_2, product: product_3_2, num: 6 %}
+                                            {%- endif -%}
                                         </lookbook-wrapper>
+                                        </div>
+                                    {%- else -%}
+                                        <div class="placeholder" style="--height_placeholder: 770px;">
+                                            {{ 'collection-apparel-3' | placeholder_svg_tag: 'placeholder-svg' }}
+                                        </div>
                                     {%- endif -%}
-                                    </div>
-                                {%- else -%}
-                                    <div class="not_img" style="--height_not_img: 770px">670 x 770px</div>
-                                {%- endif -%}
-                                {%- if block.settings.heading_2 != blank -%}
-                                <h3 class="heading mt-25 mb-0 text-center">{%- if block.settings.lnk_2 != blank -%}<a href="{{block.settings.lnk_2}}" class="link-effect p-relative">{%- endif -%}<span class="text">{{ block.settings.heading_2 }}</span>{%- if block.settings.lnk_2 != blank -%}</a>{%- endif -%}</h3>
-                                {%- endif -%}
+                                    {%- if block.settings.heading_3 != blank -%}
+                                    <h3 class="heading mt-25 mb-0 text-center">{%- if block.settings.lnk_3 != blank -%}<a href="{{block.settings.lnk_3}}" class="link-effect p-relative">{%- endif -%}<span class="text">{{ block.settings.heading_3 }}</span>{%- if block.settings.lnk_3 != blank -%}</a>{%- endif -%}</h3>
+                                    {%- endif -%}
+                                </div>
                             </div>
-                            <div class="special-banner__lb_item special-banner__lb_item_3 d-inline-block w-100{% if block.settings.image_behavior != 'none' %} animate--{{ block.settings.image_behavior }} o-hidden{% endif %}">
-                                {%- if image_3 != blank -%}
-                                    <div class="lookbook-img p-relative image-zoom image">
-                                    {%- if block.settings.lnk_3 != blank -%}<a href="{{block.settings.lnk_3}}" class="link">{%- endif -%}
-                                    <img {% if settings.enable_lazyload %}data-{% endif %}srcset="{%- if image_3.width < 320 -%}{{ image_3 | image_url: width: image_3.width }} 320w,{%- endif -%}
-                                        {%- if image_3.width >= 320 -%}{{ image_3 | image_url: width: 375 }} 375w,{%- endif -%}
-                                        {%- if image_3.width >= 750 -%}{{ image_3 | image_url: width: 750 }} 750w,{%- endif -%}
-                                        {%- if image_3.width >= 1100 -%}{{ image_3 | image_url: width: 1100 }} 1100w,{%- endif -%}
-                                        {%- if image_3.width >= 1370 -%}{{ image_3 | image_url: width: 1370 }} 1370w,{%- endif -%}
-                                        {%- if image_3.width >= 1500 -%}{{ image_3 | image_url: width: 1500 }} 1500w,{%- endif -%}
-                                        {%- if image_3.width >= 1780 -%}{{ image_3 | image_url: width: 1780 }} 1780w,{%- endif -%}
-                                        {%- if image_3.width >= 2000 -%}{{ image_3 | image_url: width: 2000 }} 2000w,{%- endif -%}
-                                        {%- if image_3.width >= 2800 -%}{{ image_3 | image_url: width: 2800 }} 2800w{%- endif -%}"
-                                        sizes="50vw"{% unless settings.enable_lazyload %} src="{{ image_3 | image_url: width: 320 }}"{% endunless %} alt="{{ image_3.alt | escape }}" width="{{ image_3.width }}" height="{{ image_3.width | divided_by: image_3.aspect_ratio | round}}" class="lazyload" 
-                                        {%- if settings.enable_lazyload -%}class="lazyload" {% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{%- endif -%}
-                                        {% unless image_3.presentation.focal_point == '50.0% 50.0%' %}style="object-position: {{ image_3.presentation.focal_point }}"{% endunless %}
-                                    >
-                                    {%- if block.settings.lnk_3 != blank -%}</a>{%- endif -%}
-                                    {%- if settings.enable_lazyload -%}<span class="data-lazy-loading"></span>{%- endif -%}
-                                    <lookbook-wrapper>
-                                        {%- if product_3_1 != blank -%}
-                                            {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_3_1, left: left_3_1, product: product_3_1, num: 5 %}
-                                        {% endif %}
-                                        {%- if product_3_2 != blank -%}
-                                            {% render 'lookbook-modal-wrapper', lookbook_style: lookbook_style, top: top_3_2, left: left_3_2, product: product_3_2, num: 6 %}
+                            {%- if block.settings.lookbook_counter_number -%}
+                                {%- if image_1 != blank -%}
+                                    {%- if image_2 != blank -%}
+                                        {%- if image_3 != blank -%}
+                                            {%- assign lookbook_total = 3 -%}
+                                        {%- else -%}
+                                            {%- assign lookbook_total = 2 -%}
                                         {%- endif -%}
-                                    </lookbook-wrapper>
-                                    </div>
-                                {%- else -%}
-                                    <div class="not_img" style="--height_not_img: 770px">670 x 770px</div>
-                                {%- endif -%}
-                                {%- if block.settings.heading_3 != blank -%}
-                                <h3 class="heading mt-25 mb-0 text-center">{%- if block.settings.lnk_3 != blank -%}<a href="{{block.settings.lnk_3}}" class="link-effect p-relative">{%- endif -%}<span class="text">{{ block.settings.heading_3 }}</span>{%- if block.settings.lnk_3 != blank -%}</a>{%- endif -%}</h3>
-                                {%- endif -%}
-                            </div>
-                        </div>
-                        {%- if block.settings.lookbook_counter_number -%}
-                            {%- if image_1 != blank -%}
-                                {%- if image_2 != blank -%}
-                                    {%- if image_3 != blank -%}
-                                        {%- assign lookbook_total = 3 -%}
                                     {%- else -%}
-                                        {%- assign lookbook_total = 2 -%}
+                                        {%- if image_3 != blank -%}
+                                            {%- assign lookbook_total = 2 -%}
+                                        {%- else -%}
+                                            {%- assign lookbook_total = 1 -%}
+                                        {%- endif -%}
                                     {%- endif -%}
                                 {%- else -%}
-                                    {%- if image_3 != blank -%}
-                                        {%- assign lookbook_total = 2 -%}
+                                    {%- if image_2 != blank -%}
+                                        {%- if image_3 != blank -%}
+                                            {%- assign lookbook_total = 2 -%}
+                                        {%- else -%}
+                                            {%- assign lookbook_total = 1 -%}
+                                        {%- endif -%}
                                     {%- else -%}
-                                        {%- assign lookbook_total = 1 -%}
+                                        {%- if image_3 != blank -%}
+                                            {%- assign lookbook_total = 1 -%}
+                                        {%- endif -%}
                                     {%- endif -%}
                                 {%- endif -%}
-                            {%- else -%}
-                                {%- if image_2 != blank -%}
-                                    {%- if image_3 != blank -%}
-                                        {%- assign lookbook_total = 2 -%}
-                                    {%- else -%}
-                                        {%- assign lookbook_total = 1 -%}
-                                    {%- endif -%}
-                                {%- else -%}
-                                    {%- if image_3 != blank -%}
-                                        {%- assign lookbook_total = 1 -%}
-                                    {%- endif -%}
-                                {%- endif -%}
+                                <div class="products-counter-number"> 
+                                    <div class="counter"><span id="count-image">1</span>/{{lookbook_total}}</div>
+                                </div>
                             {%- endif -%}
-                            <div class="products-counter-number"> 
-                                <div class="counter"><span id="count-image">1</span>/{{lookbook_total}}</div>
-                            </div>
-                        {%- endif -%}
-                    </div>
-                    {%- endif -%}
+                        </div>
                     {%- when 'product' -%}
                         <div class="special-banner__item special-banner__item--{{ block.type }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                             {%- liquid 
@@ -382,6 +424,11 @@
                                 endif
 
                                 assign layout = block.settings.layout
+                                assign fontsize_title = block.settings.fontsize_title
+                                assign fontsize_title_mb = block.settings.fontsize_title_mb
+                                assign pd_top_title = block.settings.pd_top_title
+                                assign mg_bottom_title = block.settings.mg_bottom_title
+                                assign color_title = block.settings.color_title
                                 assign product_layout = 'grid'
                                 if layout == 'slider'
                                     assign product_layout = 'carousel'
@@ -389,10 +436,10 @@
 
                                 assign product_counter_number = block.settings.product_counter_number
                             -%}
-                            <h3 class="title center">
+                            <h3 class="title center" style="--fontsize_title:{{ fontsize_title }}px;--fontsize_title_mb:{{ fontsize_title_mb }}px;--pd_top_title:{{ pd_top_title }}px;--mg_bottom_title:{{ mg_bottom_title }}px;--color_title:{{ color_title }};">
                                 <span class="text">{{ block.settings.title }}</span>
                             </h3>
-                            <div class="special-banner__product" data-product-block data-limit="{{ limit }}" data-layout="{{ layout }}" sectionId="{{ section.id }}" data-collection="{{ collection }}" data-image-ratio="{{ image_ratio }}" data-swipe="false" hasCountdown=true>
+                            <div class="special-banner__product" data-product-block data-limit="{{ limit }}" data-layout="{{ layout }}" sectionId="{{ section.id }}" data-collection="{{ collection }}" data-image-ratio="{{ image_ratio }}" data-swipe="false" hasCountdown="true"{% if block.settings.enable_custom_color %} style="--product-title-color : {{ block.settings.product_title_color }};--product-title-color-hover : {{ block.settings.product_title_color_hover }};--product-vendor-color : {{ block.settings.product_vendor_color }};--product-price-color : {{ block.settings.product_price_color }};--product-sale-price-color : {{ block.settings.product_price_sale_color }};--product-compare-price-color : {{ block.settings.product_price_compare_color }};"{% endif %}>
                                 <div class="special-banner__products--{{ layout }} products-{{ product_layout }}{% if product_layout == 'carousel' %}{% if product_counter_number %} enable_counter_number{% endif %}{% endif %}" data-item-to-show="1" data-item-dots="false" data-item-dots-mb="true" data-item-arrows="true" data-item-arrows-mb="false">
                                     {%- if collection.products[0] != nil -%}
                                         {%- liquid 
@@ -408,7 +455,7 @@
                                         {%- endfor -%}
                                     {%- else -%}
                                         <div class="product{% if swipe %} slider__slide grid__item{% endif %}">
-                                            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                            {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
                                             {% render 'product-card-placeholder', index: current %}
                                         </div>
                                     {%- endif -%}
@@ -477,28 +524,88 @@
                 ]
             },
             {
+                "type" : "color",
+                "id" : "section_bg",
+                "label" : "t:settings_schema.colors.settings.colors_name.background_color_2",
+                "default" : "#fff"
+            },
+            {
+                "type" : "color_background",
+                "id" : "section_bg_gradient",
+                "label" : "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+            },
+            {
+                "type" : "image_picker",
+                "id" : "section_bg_image",
+                "label" : "t:settings_schema.colors.settings.colors_name.background_image"
+            },
+            {
                 "type": "header",
-                "content": "t:sections.main-product.settings.general.spacing"
+                "content": "t:sections.layout.margin_top"
             },
             {
                 "type": "range",
-                "id": "padding_top",
+                "id": "mg_top_desktop",
+                "label": "t:sections.layout.mg_desktop.label",
                 "min": 0,
-                "max": 100,
-                "step": 1,
-                "unit": "px",
-                "label": "t:sections.main-list-collections.settings.spacing.mg_top",
-                "default": 0
+                "max": 150,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
             },
             {
                 "type": "range",
-                "id": "padding_bottom",
+                "id": "mg_top_tablet",
+                "label": "t:sections.layout.mg_tablet.label",
                 "min": 0,
-                "max": 100,
-                "step": 1,
-                "unit": "px",
-                "label": "t:sections.main-list-collections.settings.spacing.mg_bottom",
-                "default": 0
+                "max": 150,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_top_mobile",
+                "label": "t:sections.layout.mg_mobile.label",
+                "min": 0,
+                "max": 150,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "header",
+                "content": "t:sections.layout.margin_bottom"
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_desktop",
+                "label": "t:sections.layout.mg_desktop.label",
+                "min": 0,
+                "max": 150,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_tablet",
+                "label": "t:sections.layout.mg_tablet.label",
+                "min": 0,
+                "max": 150,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
+            },
+            {
+                "type": "range",
+                "id": "mg_bottom_mobile",
+                "label": "t:sections.layout.mg_mobile.label",
+                "min": 0,
+                "max": 150,
+                "step": 5,
+                "unit": "t:sections.layout.mg_desktop.unit",
+                "default": 50
             }
         ],
         "blocks": [
@@ -509,7 +616,7 @@
                     {
                         "type" : "image_picker",
                         "id" : "image",
-                        "label" : "t:sections.image-banner.blocks.image.settings.image.label__1"
+                        "label" : "t:sections.header.settings.mega_menu.banner__img"
                     },
                     {
                         "type": "url",
@@ -554,7 +661,7 @@
                     {
                         "type": "color",
                         "id": "rotating_text_color",
-                        "label": "t:settings_schema.colors.settings.colors_name.color",
+                        "label": "t:settings_schema.typography.settings.typography.text_color",
                         "default": "#ffffff"
                     },
                     {
@@ -570,19 +677,19 @@
                     {
                         "type": "select",
                         "id": "position",
-                        "label": "t:sections.product_block.settings.general.label__7",
+                        "label": "t:sections.general.settings.alignment.label__1",
                         "options": [
                         {
                             "value": "left",
-                            "label": "t:sections.product_block.settings.general.options__7"
+                            "label": "t:settings_schema.typography.settings.type_button_font.left"
                         },
                         {
                             "value": "center",
-                            "label": "t:sections.product_block.settings.general.options__8"
+                            "label": "t:settings_schema.typography.settings.type_button_font.center"
                         },
                         {
                             "value": "right",
-                            "label": "t:sections.product_block.settings.general.options__9"
+                            "label": "t:settings_schema.typography.settings.type_button_font.right"
                         }],
                         "default": "right"
                     }
@@ -595,7 +702,7 @@
                     {
                         "type" : "image_picker",
                         "id" : "image",
-                        "label" : "t:sections.image-banner.blocks.image.settings.image.label__1"
+                        "label" : "t:sections.header.settings.mega_menu.banner__img"
                     },
                     {
                         "type": "url",
@@ -639,21 +746,21 @@
                         "options": [
                         {
                             "value": "left",
-                            "label": "t:sections.image-banner.blocks.image.settings.content.options__6"
+                            "label": "t:settings_schema.typography.settings.type_button_font.left"
                         },
                         {
                             "value": "center",
-                            "label": "t:sections.image-banner.blocks.image.settings.content.options__7"
+                            "label": "t:settings_schema.typography.settings.type_button_font.center"
                         },
                         {
                             "value": "right",
-                            "label": "t:sections.image-banner.blocks.image.settings.content.options__8"
+                            "label": "t:settings_schema.typography.settings.type_button_font.right"
                         }]
                     },
                     {
                         "type": "select",
                         "id": "content_align",
-                        "label": "t:sections.image-banner.blocks.image.settings.content.label__9",
+                        "label": "t:sections.slide-show.blocks.image.slider_layout.alignment.option",
                         "default": "bottom",
                         "options": [
                         {
@@ -662,7 +769,7 @@
                         },
                         {
                             "value": "center",
-                            "label": "t:sections.image-banner.blocks.image.settings.content.options__7"
+                            "label": "t:settings_schema.typography.settings.type_button_font.center"
                         },
                         {
                             "value": "bottom",
@@ -688,7 +795,7 @@
                     {
                         "type": "range",
                         "id": "fontsize_heading_mb",
-                        "label": "t:sections.rich-text.blocks.heading.settings.heading_size.fz_mb",
+                        "label": "t:sections.slide-show.blocks.image.slider_content.font_size_heading_mb",
                         "min": 10,
                         "max": 100,
                         "step": 1,
@@ -698,12 +805,12 @@
                     {
                         "type": "richtext",
                         "id": "desc",
-                        "label": "t:settings_schema.newsletter_popup.settings.general.label__7"
+                        "label": "t:sections.image-banner.blocks.image.settings.content.label__2"
                     },
                     {
                         "type": "range",
                         "id": "fontsize_desc",
-                        "label": "t:sections.layout.fontsize.fontsize_des.label",
+                        "label": "t:settings_schema.typography.settings.typography.des_font_size",
                         "min": 10,
                         "max": 50,
                         "step": 1,
@@ -729,7 +836,7 @@
                     {
                         "type": "color",
                         "id": "text_color",
-                        "label": "t:settings_schema.colors.settings.colors_name.color",
+                        "label": "t:settings_schema.typography.settings.typography.text_color",
                         "default": "#ffffff"
                     }
                 ]
@@ -751,7 +858,7 @@
                     {
                         "type": "range",
                         "id": "fontsize_heading_mb",
-                        "label": "t:sections.rich-text.blocks.heading.settings.heading_size.fz_mb",
+                        "label": "t:sections.slide-show.blocks.image.slider_content.font_size_heading_mb",
                         "min": 10,
                         "max": 100,
                         "step": 1,
@@ -761,7 +868,7 @@
                     {
                         "type": "range",
                         "id": "fontsize_desc",
-                        "label": "t:sections.layout.fontsize.fontsize_des.label",
+                        "label": "t:settings_schema.typography.settings.typography.des_font_size",
                         "min": 10,
                         "max": 50,
                         "step": 1,
@@ -780,12 +887,12 @@
                     },
                     {
                         "type": "header",
-                        "content": "t:sections.policies_block.settings.setting_block.item_1"
+                        "content": "t:sections.image-banner.blocks.customImg.settings.item_1"
                     },
                     {
                         "type" : "image_picker",
                         "id" : "image_1",
-                        "label" : "t:sections.image-banner.blocks.image.settings.image.label__1"
+                        "label" : "t:sections.header.settings.mega_menu.banner__img"
                     },
                     {
                         "type": "text",
@@ -796,7 +903,7 @@
                     {
                         "type": "richtext",
                         "id": "desc_1",
-                        "label": "t:settings_schema.newsletter_popup.settings.general.label__7",
+                        "label": "t:sections.image-banner.blocks.image.settings.content.label__2",
                         "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
                     },
                     {
@@ -812,12 +919,12 @@
                     },
                     {
                         "type": "header",
-                        "content": "t:sections.policies_block.settings.setting_block.item_2"
+                        "content": "t:sections.image-banner.blocks.customImg.settings.item_2"
                     },
                     {
                         "type" : "image_picker",
                         "id" : "image_2",
-                        "label" : "t:sections.image-banner.blocks.image.settings.image.label__1"
+                        "label" : "t:sections.header.settings.mega_menu.banner__img"
                     },
                     {
                         "type": "text",
@@ -828,7 +935,7 @@
                     {
                         "type": "richtext",
                         "id": "desc_2",
-                        "label": "t:settings_schema.newsletter_popup.settings.general.label__7",
+                        "label": "t:sections.image-banner.blocks.image.settings.content.label__2",
                         "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
                     },
                     {
@@ -840,7 +947,7 @@
                     {
                         "type": "url",
                         "id": "btn_lnk_2",
-                        "label": "t:settings_schema.typography.settings.typography.button_link"
+                        "label": "t:settings_schema.before_you_leave.settings.back_to_store.label__3"
                     }
                 ]
             },
@@ -861,7 +968,7 @@
                     {
                         "type": "range",
                         "id": "fontsize_heading_mb",
-                        "label": "t:sections.rich-text.blocks.heading.settings.heading_size.fz_mb",
+                        "label": "t:sections.slide-show.blocks.image.slider_content.font_size_heading_mb",
                         "min": 10,
                         "max": 100,
                         "step": 1,
@@ -882,11 +989,11 @@
                         "options": [
                             {
                                 "value": "1",
-                                "label": "t:settings_schema.typography.settings.typography.style_1"
+                                "label": "t:sections.main_lookbook_page.settings.style_1"
                             },
                             {
                                 "value": "2",
-                                "label": "t:settings_schema.typography.settings.typography.style_2"
+                                "label": "t:sections.main_lookbook_page.settings.style_2"
                             }
                         ]
                     },
@@ -898,12 +1005,12 @@
                     },
                     {
                         "type": "header",
-                        "content": "t:sections.policies_block.settings.setting_block.item_1"
+                        "content": "t:sections.image-banner.blocks.customImg.settings.item_1"
                     },
                     {
                         "type" : "image_picker",
                         "id" : "image_1",
-                        "label" : "t:sections.image-banner.blocks.image.settings.image.label__1"
+                        "label" : "t:sections.header.settings.mega_menu.banner__img"
                     },
                     {
                         "type": "text",
@@ -976,12 +1083,12 @@
                     },
                     {
                         "type": "header",
-                        "content": "t:sections.policies_block.settings.setting_block.item_2"
+                        "content": "t:sections.image-banner.blocks.customImg.settings.item_2"
                     },
                     {
                         "type" : "image_picker",
                         "id" : "image_2",
-                        "label" : "t:sections.image-banner.blocks.image.settings.image.label__1"
+                        "label" : "t:sections.header.settings.mega_menu.banner__img"
                     },
                     {
                         "type": "text",
@@ -1054,12 +1161,12 @@
                     },
                     {
                         "type": "header",
-                        "content": "t:sections.policies_block.settings.setting_block.item_3"
+                        "content": "t:sections.image-banner.blocks.customImg.settings.item_3"
                     },
                     {
                         "type" : "image_picker",
                         "id" : "image_3",
-                        "label" : "t:sections.image-banner.blocks.image.settings.image.label__1"
+                        "label" : "t:sections.header.settings.mega_menu.banner__img"
                     },
                     {
                         "type": "text",
@@ -1162,6 +1269,72 @@
                 "name": "t:settings_schema.product_card.settings.product_badge.unit__2",
                 "settings": [
                     {
+                        "type": "text",
+                        "id": "title",
+                        "label": "t:settings_schema.general.settings.gdpr_cookie_consent.label__3",
+                        "default": "FEATURED PRODUCTS"
+                    },
+                    {
+                        "type": "range",
+                        "id": "fontsize_title",
+                        "label": "t:settings_schema.typography.settings.typography.title_font_size",
+                        "min": 10,
+                        "max": 50,
+                        "step": 1,
+                        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                        "default": 18
+                    },
+                    {
+                        "type": "range",
+                        "id": "fontsize_title_mb",
+                        "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
+                        "min": 10,
+                        "max": 50,
+                        "step": 1,
+                        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                        "default": 16
+                    },
+                    {
+                        "type": "range",
+                        "id": "pd_top_title",
+                        "label": "t:settings_schema.typography.settings.typography.title_margin_top",
+                        "min": 10,
+                        "max": 100,
+                        "step": 5,
+                        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+                        "default": 45
+                    },
+                    {
+                        "type": "range",
+                        "id": "mg_bottom_title",
+                        "label": "t:settings_schema.typography.settings.typography.title_margin_bottom",
+                        "min": 0,
+                        "max": 50,
+                        "step": 1,
+                        "unit": "t:sections.layout.mg_desktop.unit",
+                        "default": 40
+                    },
+                    {
+                        "type" : "color",
+                        "id" : "color_title",
+                        "label": "t:settings_schema.typography.settings.typography.title_color",
+                        "default" : "#232323"
+                    },
+                    {
+                        "type": "collection",
+                        "id": "collection",
+                        "label": "t:settings_schema.typography.settings.typography.collection"
+                    },
+                    {
+                        "type": "range",
+                        "id": "limit",
+                        "label": "t:settings_schema.quick_search.settings.general.label__2",
+                        "min": 1,
+                        "max": 10,
+                        "step": 1,
+                        "default": 2
+                    },
+                    {
                         "type": "select",
                         "id": "layout",
                         "label": "t:sections.product_block.settings.product_block_layout.option",
@@ -1178,31 +1351,59 @@
                         ]
                     },
                     {
-                        "type": "text",
-                        "id": "title",
-                        "label": "t:settings_schema.general.settings.gdpr_cookie_consent.label__3",
-                        "default": "FEATURED PRODUCTS"
-                    },
-                    {
-                        "type": "collection",
-                        "id": "collection",
-                        "label": "t:settings_schema.typography.settings.typography.collection"
-                    },
-                    {
-                        "type": "range",
-                        "id": "limit",
-                        "label": "t:sections.product_block.settings.product_block_limit",
-                        "min": 1,
-                        "max": 10,
-                        "step": 1,
-                        "default": 2
-                    },
-                    {
                         "type": "checkbox",
                         "id": "product_counter_number",
                         "label": "t:sections.product_block.settings.slider.enable_counter_number",
                         "default": false,
                         "info": "t:sections.special_banner.settings.info"
+                    },
+                    {
+                        "type": "checkbox",
+                        "id": "enable_custom_color",
+                        "label": "t:sections.product_block.settings.layout_card.enable_custom_color",
+                        "default": false
+                    },
+                    {
+                        "type": "color",
+                        "id": "product_vendor_color",
+                        "label": "t:sections.main-product.settings.general.vendor",
+                        "default": "#010101",
+                        "visible_if": "{{ block.settings.enable_custom_color }}"
+                    },
+                    {
+                        "type": "color",
+                        "id": "product_title_color",
+                        "label": "t:sections.product_block.settings.general.label__6",
+                        "default": "#505050",
+                        "visible_if": "{{ block.settings.enable_custom_color }}"
+                    },
+                    {
+                        "type": "color",
+                        "id": "product_title_color_hover",
+                        "label": "t:settings_schema.product_card.settings.product_title.label__7",
+                        "default": "#505050",
+                        "visible_if": "{{ block.settings.enable_custom_color }}"
+                    },
+                    {
+                        "type": "color",
+                        "id": "product_price_color",
+                        "label": "t:sections.main-product.settings.price.name",
+                        "default": "#010101",
+                        "visible_if": "{{ block.settings.enable_custom_color }}"
+                    },
+                    {
+                        "type": "color",
+                        "id": "product_price_sale_color",
+                        "label": "t:settings_schema.product_card.settings.product_price.label__3",
+                        "default": "#D12442",
+                        "visible_if": "{{ block.settings.enable_custom_color }}"
+                    },
+                    {
+                        "type": "color",
+                        "id": "product_price_compare_color",
+                        "label": "t:settings_schema.product_card.settings.product_price.label__4",
+                        "default": "#808080",
+                        "visible_if": "{{ block.settings.enable_custom_color }}"
                     }
                 ]
             }

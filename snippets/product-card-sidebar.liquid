@@ -21,26 +21,27 @@
         endif
     endfor
 -%}
-<div class="product-item product-item-custom{% if settings.disable_product_card_border %} disable_product_card_border{% endif %}{% if settings.enable_custom_layout_card %} enable_custom_layout_card{% endif %}{% if settings.disable_product_card_border and settings.enable_custom_layout_card %} enable_custom_content{% endif %}" data-product-id="product-{{ product_card_product.id }}" data-json-product='{{ product_card_product | json }}'>
-    <div class="card">
+<div class="product-item product-item-custom{% if settings.disable_product_card_border %} disable_product_card_border{% endif %}{% if settings.enable_custom_layout_card %} enable_custom_layout_card{% endif %}{% if settings.disable_product_card_border and settings.enable_custom_layout_card %} enable_custom_content{% endif %}{% if settings.enable_custom_position_swatch_layout_card_1 %} enable_custom_position_swatch{% endif %}" data-product-id="product-{{ product_card_product.id }}" data-json-product='{{ product_card_product | json }}'>
+    <div class="card{% if card_list_class %} style-card--list{% endif %}">
         <div class="card-product{% if product_card_product.featured_media == nil %} card--text-only card--soft{% endif %}">
-            <a class="card-media" href="{{ product_card_product.url | within: collection }}">
+            <a class="card-media" href="{{ product_card_product.url }}">
                 {%- if product_card_product.featured_media -%}
                     {%- if variant_img != blank -%}
                         {% assign image = variant_img %}
                     {%- else -%}
                         {% assign image = product_card_product.images[0].src %}
                     {%- endif -%}
-                    <img srcset="{{ image | img_url: '95x' }}" src="{{ image | img_url: '95x' }}" sizes="95px" alt="{{ image.alt | escape }}" loading="lazy" class="motion-reduce">
+                    <img srcset="{{ image | img_url: '150x' }}" src="{{ image | img_url: '150x' }}" sizes="150px" alt="{{ image.alt | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} class="motion-reduce">
                 {%- else -%}
-                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture -%}
+                    {%- assign placeholder_image = 'product-apparel-' | append: current -%}
+                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
                 {%- endif -%}
             </a>
         </div>
         <div class="card-information">
             <div class="card-information__wrapper text-left">
-                <a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}{% if variant_selected != blank %} card-title-change{% endif %}" href="{{ product_card_product.url | within: collection }}">
+                <a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}{% if variant_selected != blank %} card-title-change{% endif %}" href="{{ product_card_product.url }}">
                     <span class="text">{{ product_card_product.title | escape }}{% if variant_selected != blank %} <span data-change-title> - {{ variant_selected }}</span>{% endif %}</span>
                 </a>
                 <div class="card-price">
@@ -49,18 +50,14 @@
                         price_class: ''
                     %}
                 </div>
-                {%- if settings.show_swatch and isColor -%}
-                    {% render 'product-swatch',
-                        product: product_card_product,
-                        index: index
-                    %}
-                {%- endif -%}
-                {% comment %} <a class="card-button" href="{{ product_card_product.url | within: collection }}">{{ 'products.product.details' | t }}</a> {% endcomment %}
-                {%- if settings.show_action -%}
-                    <div class="card-action">
-                        {% render 'add-to-cart-form-sidebar', product: product_card_product, id: 'form', position: position, sectionId: sectionId %}
-                    </div>
-                {%- endif -%}
+                {% unless card_list_class %}
+                    {%- if settings.show_swatch and isColor -%}
+                        {% render 'product-swatch',
+                            product: product_card_product,
+                            index: index
+                        %}
+                    {%- endif -%}
+                {% endunless %}
             </div>
         </div>
     </div>

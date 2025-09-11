@@ -116,8 +116,25 @@ body.quickshop-popup-show .background-overlay {
 #halo-quickshop-popup-option-3 .product-form__label .text {
     min-width: 30px;
     height: 30px;
-    line-height: 28px;
+    line-height: 30px;
     padding: 0 5px;
+}
+
+#halo-quickshop-popup-option-3 .halo-productBadges .badge {
+    font-size: min(var(--badge-font-size), 18px);
+    line-height: min(var(--badge-line-height), 26px);
+}
+
+#halo-quickshop-popup-option-3 .halo-productBadges{
+    top: min(var(--badge-postion-top), 5px);
+}
+
+#halo-quickshop-popup-option-3 .halo-productBadges--left{
+    left: min(var(--badge-postion-left-right), 5px);
+}
+
+#halo-quickshop-popup-option-3 .halo-productBadges--right{
+    right: min(var(--badge-postion-left-right), 5px);
 }
 
 #halo-quickshop-popup-option-3 .product-form__input:not(.product-form__swatch) .product-form__label .text {
@@ -161,7 +178,8 @@ body.quickshop-popup-show .background-overlay {
 #halo-quickshop-popup-option-3 .productView-nav .slick-arrow {
     border: none;
     border-radius: 0;
-    height: 40px;
+    height: 50px;
+    width: 50px;
 }
 
 #halo-quickshop-popup-option-3 .productView-nav .slick-arrow.slick-prev {

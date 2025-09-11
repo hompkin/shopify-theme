@@ -29,7 +29,7 @@
             </div>
         {%- endif -%}
         <div class="bundle-product-image">
-            <a href="{{ product.url | within: collection }}" class="bundle-product-media bundle-product-media--{{ image_ratio }}"
+            <a href="{{ product.url }}" class="bundle-product-media bundle-product-media--{{ image_ratio }}"
                 {% if product.featured_media %}
                     {% if image_ratio == 'adapt' %}
                         style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"
@@ -68,19 +68,20 @@
                         src="{{ product.featured_media | img_url: '533x' }}"
                         sizes="(min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                         alt="{{ product.featured_media.alt | escape }} {{product.featured_media.width}}"
-                        loading="lazy"
+                       {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                         class="motion-reduce"
                     >
                 {%- else -%}
-                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture -%}
+                    {%- assign placeholder_image = 'product-apparel-' | append: current -%}
+                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
                 {%- endif -%}
             </a>
             {%- if product_style == '1' -%}
                 {%- if variantCount > 1 -%}
-                    <a href="#" class="button bundle-product-toogle button-2" role="button" tabindex="0">
+                    <button type="button" aria-label="{{ 'products.product.select_options' | t }}" class="button bundle-product-toogle button-2" role="button" tabindex="0">
                         {{ 'products.product.select_options' | t }}
-                    </a>
+                    </button>
                 {%- endif -%}
             {%- endif -%}
         </div>
@@ -113,7 +114,7 @@
                 </div>
             {%- else -%}
                 <div class="bundle-product-title">
-                    <a class="product-title" href="{{ product.url | within: collection }}">
+                    <a class="product-title" href="{{ product.url }}">
                         {{ product.title | split: '|' | first }}
                         {%- if variantCount > 1 and settings.enable_swatch_name -%}
                             <span data-bundle-product-title> - {{ current_variant.title }}</span>
@@ -131,7 +132,7 @@
                             <span class="old-price">
                                 {{ product.variants[0].compare_at_price | money }}
                             </span>
-                           
+
                         </div>
                     {%- else -%}
                         <div class="price-regular">
@@ -144,9 +145,9 @@
             </div>
             {%- if product_style == '2' or product_style == '3' -%}
                 {%- if variantCount > 1 -%}
-                    <a href="#" class="button bundle-product-toogle button-2" role="button" tabindex="0">
+                    <button type="button" aria-label="{{ 'products.product.select_options' | t }}" class="button bundle-product-toogle button-2" role="button" tabindex="0">
                         {{ 'products.product.select_options' | t }}
-                    </a>
+                    </button>
                 {%- endif -%}
             {%- endif -%}
         </div>

@@ -37,7 +37,7 @@ body.quick-view-show.cart-sidebar-show .halo-cart-sidebar {
 }
 
 body.quick-view-show.cart-sidebar-show .background-overlay {
-    z-index: 101;
+    z-index: 102;
 }
 
 body.quick-view-show .halo-quick-view-popup {
@@ -63,7 +63,6 @@ body.quick-view-show .halo-quick-view-popup {
 .halo-quick-view-popup .halo-quickView .productView-title {
     line-height: 30px;
     position: relative;
-    top: -7px;
     margin-bottom: 5px;
 }
 

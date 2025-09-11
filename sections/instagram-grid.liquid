@@ -4,19 +4,19 @@
 <noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- liquid
-    assign mg_top_desktop = section.settings.mg_top_desktop | append: 'px' 
-    assign mg_top_tablet = section.settings.mg_top_tablet | append: 'px' 
-    assign mg_top_mobile = section.settings.mg_top_mobile | append: 'px' 
-    assign mg_bottom_desktop = section.settings.mg_bottom_desktop | append: 'px' 
-    assign mg_bottom_tablet = section.settings.mg_bottom_tablet | append: 'px' 
-    assign mg_bottom_mobile = section.settings.mg_bottom_mobile | append: 'px' 
+    assign mg_top_desktop = section.settings.mg_top_desktop | append: 'px'
+    assign mg_top_tablet = section.settings.mg_top_tablet | append: 'px'
+    assign mg_top_mobile = section.settings.mg_top_mobile | append: 'px'
+    assign mg_bottom_desktop = section.settings.mg_bottom_desktop | append: 'px'
+    assign mg_bottom_tablet = section.settings.mg_bottom_tablet | append: 'px'
+    assign mg_bottom_mobile = section.settings.mg_bottom_mobile | append: 'px'
     assign container = section.settings.container
-    assign padding_full_width = section.settings.padding_full_width | append: 'px' 
-    assign section_title = section.settings.section_title   
+    assign padding_full_width = section.settings.padding_full_width | append: 'px'
+    assign section_title = section.settings.section_title
     assign section_title_font_size = section.settings.section_title_font_size | append: 'px'
     assign section_title_font_size_mb = section.settings.section_title_font_size_mb | append: 'px'
-    assign section_title_color = section.settings.section_title_color 
-    assign section_title_font_weight = section.settings.section_title_font_weight 
+    assign section_title_color = section.settings.section_title_color
+    assign section_title_font_weight = section.settings.section_title_font_weight
     assign section_title_margin_top = section.settings.section_title_margin_top | append: 'px'
     assign section_description = section.settings.section_description
     assign section_description_font_size = section.settings.section_description_font_size | append: 'px'
@@ -29,51 +29,67 @@
     assign button_style = section.settings.button_style
     assign button_font_size = section.settings.button_font_size | append: 'px'
     assign button_width = section.settings.button_width | append: 'px'
-    assign button_text_color = section.settings.button_text_color  
-    assign button_border_color = section.settings.button_border_color  
-    assign button_background_color = section.settings.button_background_color  
-    assign button_gradient_color = section.settings.button_gradient_color  
-    assign button_text_color_hover = section.settings.button_text_color_hover  
-    assign button_border_color_hover = section.settings.button_border_color_hover  
-    assign button_background_color_hover = section.settings.button_background_color_hover  
-    assign button_gradient_color_hover = section.settings.button_gradient_color_hover  
-    assign button_text_transform = section.settings.button_text_transform  
+    assign button_text_color = section.settings.button_text_color
+    assign button_border_color = section.settings.button_border_color
+    assign button_background_color = section.settings.button_background_color
+    assign button_gradient_color = section.settings.button_gradient_color
+    assign button_text_color_hover = section.settings.button_text_color_hover
+    assign button_border_color_hover = section.settings.button_border_color_hover
+    assign button_background_color_hover = section.settings.button_background_color_hover
+    assign button_gradient_color_hover = section.settings.button_gradient_color_hover
+    assign button_text_transform = section.settings.button_text_transform
     assign button_font_weight = section.settings.button_font_weight
     assign button_margin_top = section.settings.button_margin_top | append: 'px'
     assign content_width = section.settings.content_width | append: 'px'
     assign content_gap = section.settings.content_gap | append: 'px'
 -%}
 <div class="instagram-grid-section section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="instagram-grid-section-{{section.id}}">
-  <div class="{% if container == 'fullwidth' %}container-full{% elsif container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% else %}container{% endif %}">
-    <div class="section-wrapper" style="--section-header-width: {{ content_width }}; --section-wrapper-gap: {{ content_gap }}">
-        <div class="section-header">
-            {%- if section_title != blank -%}
-                <h3 class="title{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--fade-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: 0;{% endif %}--title-font-size: {{ section_title_font_size }}; --title-font-size-mb: {{ section_title_font_size_mb }}; --title-font-weight: {{ section_title_font_weight }}; --title-color: {% if section_title_color != blank %}{{ section_title_color }}{% endif %}; --title-margin-top: {{ section_title_margin_top }}"><span class="text">{{ section_title }}</span></h3>   
-            {%- endif -%}
-            {%- if section_description != blank -%}
-                <div class="description{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--fade-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: 1;{% endif %}--description-font-size: {{ section_description_font_size }}; --description-font-size-mb: {{ section_description_font_size_mb }}; --description-color: {% if section_description_color != blank %}{{ section_description_color }}{% endif %}; --description-font-weight: {{ section_description_font_weight }}; --description-margin-top: {{ section_description_margin_top }}">{{ section_description }}</div>
-            {%- endif -%}
-            {%- if button_text != blank -%}
-                {% if settings.banner_animation == 'effect_fade_up' %}
-                <div class="scroll-trigger animate--slide-in" style="--animation-order: 2;">
-                {% endif %}  
-                    <{% if button_link %}a href="{{ button_link }}"{% else %}button{% endif %} class="button {% if button_style == 'button' %}custom-button{% else %}link{% endif %}" style="--button-width: {{ button_width }}; --button-font-size: {{ button_font_size }}; --button-text-color: {% if button_text_color != blank %}{{ button_text_color }}{% endif %}; --button-border-color: {% if button_border_color != blank %}{{ button_border_color }}{% endif %}; --button-background: {% if button_gradient_color != blank %}{{ button_gradient_color }}{% elsif button_background_color != blank %}{{ button_background_color }}{% endif %}; --button-text-color-hover: {% if button_text_color_hover != blank %}{{ button_text_color_hover }}{% endif %}; --button-border-color-hover: {% if button_border_color_hover != blank %}{{ button_border_color_hover }}{% endif %}; --button-background-hover: {% if button_gradient_color_hover != blank %}{{ button_gradient_color_hover }}{% elsif button_background_color_hover != blank %}{{ button_background_color_hover }}{% endif %}; --button-text-transform: {{ button_text_transform }}; --button-font-weight: {{ button_font_weight }}; --button-margin-top: {{ button_margin_top }}">{{ button_text }}</{% if button_link != blank %}a{% else %}button{% endif %}>
-                {% if settings.banner_animation == 'effect_fade_up' %}
-                </div>
-                {% endif %}
-            {%- endif -%}
+    <div class="{% if container == 'fullwidth' %}container-full{% elsif container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% else %}container{% endif %}">
+        <div class="section-wrapper" style="--section-header-width: {{ content_width }}; --section-wrapper-gap: {{ content_gap }}">
+            <div class="section-header">
+                {%- if section_title != blank -%}
+                    <h3 class="title{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--fade-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: 0;{% endif %}--title-font-size: {{ section_title_font_size }}; --title-font-size-mb: {{ section_title_font_size_mb }}; --title-font-weight: {{ section_title_font_weight }}; --title-color: {% if section_title_color != blank %}{{ section_title_color }}{% endif %}; --title-margin-top: {{ section_title_margin_top }}"><span class="text">{{ section_title }}</span></h3>
+                {%- endif -%}
+                {%- if section_description != blank -%}
+                    <div class="description{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--fade-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: 1;{% endif %}--description-font-size: {{ section_description_font_size }}; --description-font-size-mb: {{ section_description_font_size_mb }}; --description-color: {% if section_description_color != blank %}{{ section_description_color }}{% endif %}; --description-font-weight: {{ section_description_font_weight }}; --description-margin-top: {{ section_description_margin_top }}">{{ section_description }}</div>
+                {%- endif -%}
+                {%- if button_text != blank -%}
+                    {% if settings.banner_animation == 'effect_fade_up' %}
+                    <div class="scroll-trigger animate--slide-in" style="--animation-order: 2;">
+                    {% endif %}
+                        <{% if button_link %}a href="{{ button_link }}"{% else %}button{% endif %} class="button {% if button_style == 'button' %}custom-button{% else %}link{% endif %}" style="--button-width: {{ button_width }}; --button-font-size: {{ button_font_size }}; --button-text-color: {% if button_text_color != blank %}{{ button_text_color }}{% endif %}; --button-border-color: {% if button_border_color != blank %}{{ button_border_color }}{% endif %}; --button-background: {% if button_gradient_color != blank %}{{ button_gradient_color }}{% elsif button_background_color != blank %}{{ button_background_color }}{% endif %}; --button-text-color-hover: {% if button_text_color_hover != blank %}{{ button_text_color_hover }}{% endif %}; --button-border-color-hover: {% if button_border_color_hover != blank %}{{ button_border_color_hover }}{% endif %}; --button-background-hover: {% if button_gradient_color_hover != blank %}{{ button_gradient_color_hover }}{% elsif button_background_color_hover != blank %}{{ button_background_color_hover }}{% endif %}; --button-text-transform: {{ button_text_transform }}; --button-font-weight: {{ button_font_weight }}; --button-margin-top: {{ button_margin_top }}">{{ button_text }}</{% if button_link != blank %}a{% else %}button{% endif %}>
+                    {% if settings.banner_animation == 'effect_fade_up' %}
+                    </div>
+                    {% endif %}
+                {%- endif -%}
+            </div>
+            <div class="section-content">
+                {%- for block in section.blocks -%}
+                    {%- assign preview_img = block.settings.image -%}
+                    {%- if preview_img != blank -%}
+                    <div class="instagram-item{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
+                        <a class="adaptive_height image-zoom fancybox" rel="gallery1" href="{{ preview_img | img_url: 'master' }}" data-fancybox="instagram-grid-images" style="padding-top: {% unless preview_img.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 120 | append: '%' }}{% else %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 100 | append: '%' }}{% endunless %}"><img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} class="lazyload"{% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
+                            {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}</a>
+                    </div>
+                    {%- else -%}
+                        <div class="instagram-item{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
+                            {% if settings.banner_animation == 'effect_fade_up' %}
+                            <div class="scroll-trigger animate--slide-in" data-cascade style="--animation-order: {{ forloop.index }};">
+                            {% endif %}
+                                {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                                {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+                                <div class="placeholder" style="--height_placeholder: 230px;">
+                                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                                </div>
+                            {% if settings.banner_animation == 'effect_fade_up' %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    {%- endif -%}
+                {%- endfor -%}
+            </div>
         </div>
-        <div class="section-content">
-            {%- for block in section.blocks -%} 
-                {%- assign preview_img = block.settings.image -%}
-                <div class="instagram-item{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
-                    <a class="adaptive_height image-zoom fancybox" rel="gallery1" href="{{ preview_img | img_url: 'master' }}" data-fancybox="images" style="padding-top: {% unless preview_img.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 120 | append: '%' }}{% else %}{{ 1 | divided_by: preview_img.aspect_ratio | times: 100 | append: '%' }}{% endunless %}"><img {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ preview_img | img_url: 'master' }}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: 'master' }}"{% endunless %} alt="{{ image.alt | default: shop.name | escape }}"{% unless settings.enable_layout_rtl %} loading="lazy"{% endunless %}{% if settings.enable_lazyload %} class="lazyload"{% endif %}{% unless preview_img.presentation.focal_point == '50.0% 50.0%' %} style="object-position: {{ preview_img.presentation.focal_point }}"{% endunless %}>
-                        {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}</a>    
-                </div>
-            {%- endfor -%}
-        </div>  
     </div>
-  </div>
 </div>
 <script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
 <style>
@@ -127,76 +143,7 @@
             "max": 100,
             "step": 5,
             "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 0,
-            "info": "t:sections.layout.container.info_full_width"
-        },
-        {
-            "type": "header",
-            "content": "t:sections.layout.margin_top"
-        },
-        {
-            "type": "range",
-            "id": "mg_top_desktop",
-            "label": "t:sections.layout.mg_desktop.label",
-            "min": 0,
-            "max": 100,
-            "step": 5,
-            "unit": "t:sections.layout.mg_desktop.unit",
-            "default": 50
-        },
-        {
-            "type": "range",
-            "id": "mg_top_tablet",
-            "label": "t:sections.layout.mg_tablet.label",
-            "min": 0,
-            "max": 100,
-            "step": 5,
-            "unit": "t:sections.layout.mg_desktop.unit",
-            "default": 50
-        },
-        {
-            "type": "range",
-            "id": "mg_top_mobile",
-            "label": "t:sections.layout.mg_mobile.label",
-            "min": 0,
-            "max": 100,
-            "step": 5,
-            "unit": "t:sections.layout.mg_desktop.unit",
-            "default": 50
-        },
-        {
-            "type": "header",
-            "content": "t:sections.layout.margin_bottom"
-        },
-        {
-            "type": "range",
-            "id": "mg_bottom_desktop",
-            "label": "t:sections.layout.mg_desktop.label",
-            "min": 0,
-            "max": 100,
-            "step": 5,
-            "unit": "t:sections.layout.mg_desktop.unit",
-            "default": 50
-        },
-        {
-            "type": "range",
-            "id": "mg_bottom_tablet",
-            "label": "t:sections.layout.mg_tablet.label",
-            "min": 0,
-            "max": 100,
-            "step": 5,
-            "unit": "t:sections.layout.mg_desktop.unit",
-            "default": 50
-        },
-        {
-            "type": "range",
-            "id": "mg_bottom_mobile",
-            "label": "t:sections.layout.mg_mobile.label",
-            "min": 0,
-            "max": 100,
-            "step": 5,
-            "unit": "t:sections.layout.mg_desktop.unit",
-            "default": 50
+            "default": 0
         },
         {
             "type": "header",
@@ -268,7 +215,7 @@
         {
             "type": "range",
             "id": "section_title_margin_top",
-            "label": "t:sections.main-sidebar.blocks.lookbook_banner.settings.general.margin_top_title",
+            "label": "t:settings_schema.typography.settings.typography.title_margin_top",
             "default": 0,
             "min": 0,
             "max": 100,
@@ -276,9 +223,9 @@
             "unit": "px"
         },
         {
-            "type": "textarea",
+            "type": "liquid",
             "id": "section_description",
-            "label": "t:sections.rich-text.blocks.text.settings.text.label",
+            "label": "t:sections.image-banner.blocks.image.settings.content.label__2",
             "default": "Enter your email below to receive special offers, exclusive discounts and many more!"
         },  
         {
@@ -335,13 +282,13 @@
         {
             "type": "color",    
             "id": "section_description_color",
-            "label": "t:sections.layout.color.color_des",
+            "label": "t:settings_schema.typography.settings.typography.des_color",
             "default": "#191919"
         },
         {
             "type": "range",
             "id": "section_description_margin_top",
-            "label": "t:sections.main-sidebar.blocks.lookbook_banner.settings.general.margin_top_des",
+            "label": "t:settings_schema.typography.settings.typography.des_margin_top",
             "default": 25,
             "min": 0,
             "max": 100,
@@ -351,7 +298,7 @@
         {
             "type" : "text",
             "id" : "button_text",
-            "label" : "t:sections.spotlight_block.blocks.image.button",
+            "label" : "t:settings_schema.typography.settings.typography.button_text",
             "default" : "Subscribe"
         },
         {
@@ -398,48 +345,48 @@
         {
             "type" : "color",
             "id" : "button_text_color",
-            "label": "t:settings_schema.colors.settings.colors_name.color",
+            "label": "t:settings_schema.typography.settings.typography.button_color",
             "default" : "#fff"
         },
         {
             "type" : "color",
             "id" : "button_border_color",
-            "label": "t:settings_schema.colors.settings.colors_name.border_color",
+            "label": "t:sections.rich-text.blocks.button.settings.button_border",
             "default" : "#232323"
         },
         {
             "type" : "color",
             "id" : "button_background_color",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color",
+            "label": "t:sections.rich-text.blocks.button.settings.button_bg",
             "default" : "#232323"
         },
         {
             "type" : "color_background",
             "id" : "button_gradient_color",
-            "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+            "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient"
         },
         {
             "type" : "color",
             "id" : "button_text_color_hover",
-            "label": "t:settings_schema.colors.settings.colors_name.color_hover",
+            "label": "t:sections.rich-text.blocks.button.settings.button_color_hover",
             "default" : "#fff"
         },
         {
             "type" : "color",
             "id" : "button_border_color_hover",
-            "label": "t:settings_schema.colors.settings.colors_name.border_hover",
+            "label": "t:sections.rich-text.blocks.button.settings.button_border_hover",
             "default" : "#232323"
         },
         {
             "type" : "color",
             "id" : "button_background_color_hover",
-            "label": "t:settings_schema.colors.settings.colors_name.background_hover",
+            "label": "t:sections.rich-text.blocks.button.settings.button_bg_hover",
             "default" : "#232323"
         },
         {
             "type" : "color_background",
             "id" : "button_gradient_color_hover",
-            "label": "t:settings_schema.colors.settings.colors_name.background_hover_gradient"
+            "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient_hover"
         },
         {
             "type": "select",
@@ -519,11 +466,80 @@
             "type": "range",
             "id": "content_gap",
             "label": "t:settings_schema.typography.settings.typography.grid_gap",
+            "info": "t:sections.instagram_grid.settings.info__1",
             "min": 0,
             "max": 300,
             "step": 5, 
             "default": 230,
             "unit": "px"
+        },
+        {
+            "type": "header",
+            "content": "t:sections.layout.margin_top"
+        },
+        {
+            "type": "range",
+            "id": "mg_top_desktop",
+            "label": "t:sections.layout.mg_desktop.label",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "t:sections.layout.mg_desktop.unit",
+            "default": 50
+        },
+        {
+            "type": "range",
+            "id": "mg_top_tablet",
+            "label": "t:sections.layout.mg_tablet.label",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "t:sections.layout.mg_desktop.unit",
+            "default": 50
+        },
+        {
+            "type": "range",
+            "id": "mg_top_mobile",
+            "label": "t:sections.layout.mg_mobile.label",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "t:sections.layout.mg_desktop.unit",
+            "default": 50
+        },
+        {
+            "type": "header",
+            "content": "t:sections.layout.margin_bottom"
+        },
+        {
+            "type": "range",
+            "id": "mg_bottom_desktop",
+            "label": "t:sections.layout.mg_desktop.label",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "t:sections.layout.mg_desktop.unit",
+            "default": 50
+        },
+        {
+            "type": "range",
+            "id": "mg_bottom_tablet",
+            "label": "t:sections.layout.mg_tablet.label",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "t:sections.layout.mg_desktop.unit",
+            "default": 50
+        },
+        {
+            "type": "range",
+            "id": "mg_bottom_mobile",
+            "label": "t:sections.layout.mg_mobile.label",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "t:sections.layout.mg_desktop.unit",
+            "default": 50
         }
         ],
     "blocks": [
@@ -546,7 +562,27 @@
     ],  
     "presets": [    
     {
-        "name": "t:sections.instagram_grid.name"
+        "name": "t:sections.instagram_grid.name",
+        "blocks": [
+            {
+                "type": "instagram"
+            },
+            {
+                "type": "instagram"
+            },
+            {
+                "type": "instagram"
+            },
+            {
+                "type": "instagram"
+            },
+            {
+                "type": "instagram"
+            },
+            {
+                "type": "instagram"
+            }
+        ]
     }],
     "disabled_on": {
         "groups": ["header"]

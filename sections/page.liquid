@@ -2,26 +2,30 @@
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 
 <div class="page section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
-  <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
-    <h2 class="page-title" style="--color-heading-style: {{ section.settings.heading_color }};
-                      --fontsize-heading-style: {{ section.settings.heading_size | append: 'px' }};
-                      --heading-size-mb-style: {{ section.settings.heading_size_mb | append: 'px' }}">
-      {%- if section.settings.page.title != blank -%}
-        {{ section.settings.page.title | escape }}
-      {%- else -%}
-        {{ 'templates.search.page' | t }}
-      {%- endif -%}
-    </h2>
-    <div class="rte">
-      {%- if section.settings.page.content != blank -%}
-        {{ section.settings.page.content }}
-      {%- else -%}
-        <div class='page-placeholder-wrapper placeholder'>
-          {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
+    <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
+        <h2 class="page-title"
+            style="
+                --color-heading-style: {{ section.settings.heading_color }};
+                --fontsize-heading-style: {{ section.settings.heading_size | append: 'px' }};
+                --heading-size-mb-style: {{ section.settings.heading_size_mb | append: 'px' }}
+            "
+        >
+            {%- if section.settings.page.title != blank -%}
+                {{ section.settings.page.title | escape }}
+            {%- else -%}
+                {{ 'templates.search.page' | t }}
+            {%- endif -%}
+        </h2>
+        <div class="rte">
+            {%- if section.settings.page.content != blank -%}
+                {{ section.settings.page.content }}
+            {%- else -%}
+                <div class="page-placeholder-wrapper placeholder">
+                    {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
+                </div>
+            {%- endif -%}
         </div>
-      {%- endif -%}
     </div>
-  </div>
 </div>
 
 <style>
@@ -78,14 +82,14 @@
 
 {% schema %}
 {
-  "name": "t:sections.main-page.name",
-  "tag": "section",
-  "class": "section",
-  "settings": [
+    "name": "t:sections.main-page.name",
+    "tag": "section",
+    "class": "section",
+    "settings": [
     {
-      "type": "page",
-      "id": "page",
-      "label": "t:sections.main-page.name"
+        "type": "page",
+        "id": "page",
+        "label": "t:sections.main-page.name"
     },
     {
         "type": "header",
@@ -97,36 +101,63 @@
         "label": "t:sections.layout.container.option",
         "default": "container",
         "options": [
-            {
-                "value": "container",
-                "label": "t:sections.layout.container.option1"
-            },
-            {
-                "value": "1170",
-                "label": "t:sections.layout.container.option4"
-            },
-            {
-                "value": "1770",
-                "label": "t:sections.layout.container.option3"
-            },
-            {
-                "value": "fullwidth",
-                "label": "t:sections.layout.container.option2"
-            }
-        ]
+        {
+            "value": "container",
+            "label": "t:sections.layout.container.option1"
+        },
+        {
+            "value": "1170",
+            "label": "t:sections.layout.container.option4"
+        },
+        {
+            "value": "1770",
+            "label": "t:sections.layout.container.option3"
+        },
+        {
+            "value": "fullwidth",
+            "label": "t:sections.layout.container.option2"
+        }]
     },
     {
         "type": "range",
         "id": "padding_full_width",
         "label": "t:sections.layout.container.padding_full_width",
         "min": 0,
-        "max": 50,
+        "max": 100,
         "step": 5,
         "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 0,
-        "info": "t:sections.layout.container.info_full_width"
+        "default": 0
     },
-   
+    {
+        "type": "header",
+        "content": "t:sections.main-page.title"
+    },
+    {
+        "type": "range",
+        "id": "heading_size",
+        "label": "t:settings_schema.typography.settings.typography.title_font_size",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 30
+    },
+    {
+        "type": "range",
+        "id": "heading_size_mb",
+        "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 24
+    },
+    {
+        "type" : "color",
+        "id" : "heading_color",
+        "label" : "t:settings_schema.typography.settings.typography.title_color",
+        "default" : "#000"
+    },
     {
         "type": "header",
         "content": "t:sections.layout.margin_top"
@@ -194,45 +225,13 @@
         "step": 1,
         "unit": "t:sections.layout.mg_desktop.unit",
         "default": 50
-    },
+    }],
+    "presets": [
     {
-        "type": "header",
-        "content": "t:sections.main-page.title"
-    },
-    {
-        "type": "range",
-        "id": "heading_size",
-        "label": "t:sections.rich-text.blocks.heading.settings.heading_size.label",
-        "min": 0,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 30
-    },
-    {
-        "type": "range",
-        "id": "heading_size_mb",
-        "label": "t:sections.rich-text.blocks.heading.settings.heading_size.fz_mb",
-        "min": 0,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 24
-    },
-    {
-        "type" : "color",
-        "id" : "heading_color",
-        "label" : "t:sections.rich-text.blocks.heading.settings.heading_size.color",
-        "default" : "#000"
+        "name": "t:sections.main-page.name"
+    }],
+    "disabled_on": {
+        "groups": ["header"]
     }
-  ],
-  "presets": [
-    {
-      "name": "t:sections.main-page.name"
-    }
-  ],
-  "disabled_on": {
-    "groups": ["header"]
-  }
 }
 {% endschema %}

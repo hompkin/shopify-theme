@@ -26,10 +26,42 @@ class NewsletterPopup extends HTMLElement {
             this.setClosePopup.bind(this)
         );
 
-        this.querySelector('#ContactPopup').addEventListener(
+        this.querySelector('#ContactPopup')?.addEventListener(
             'submit',
             this.setClosePopup.bind(this)
         );
+
+        this.dismissLabel = this.querySelector('label[for="dismiss"]');
+        if (this.dismissLabel) {
+        this.dismissLabel.addEventListener(
+            'click',
+            this.setClosePopup.bind(this)
+        );
+        }
+
+        if(this.classList.contains('style-2')){
+            this.copyButton = this.querySelector('.button-code--copy');
+            if(this.copyButton){
+                this.copyButton.addEventListener('click', () => {
+                    this.inputField = this.querySelector('.code__input .field__input');
+                    this.tooltip = this.copyButton.querySelector('.tooltip');
+                    navigator.clipboard.writeText(this.inputField.value).then(() => {
+                    this.tooltip.textContent =  this.tooltip.dataset.success_message;
+                    });
+                });
+            }
+
+            $('.halo-newsletter-popup.style-2 .products-grid:has(.product:nth-child(3))')?.slick({
+                infinite: true,
+                arrows: true,
+                dots: false,
+                nextArrow: window.arrows.icon_next,
+                prevArrow: window.arrows.icon_prev,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                rtl: window.rtl_slick
+            });
+        }
     }
 
     setCookie(cname, cvalue, exdays) {

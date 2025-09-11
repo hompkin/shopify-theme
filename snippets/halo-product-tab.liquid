@@ -200,6 +200,8 @@
 {%- endif -%}
 {%- if tab_layout_mobile == 'vertical' and tab_layout == 'vertical' -%}
 <script defer="defer">
-	document.querySelector('.tabs-contents-vertical .tab-content .toggleLink').classList.remove('is-open');
+	if (window.innerWidth < 551) {
+		document.querySelector('.tabs-contents-vertical .tab-content .toggleLink').classList.remove('is-open');
+	}
 </script>
 {%- endif -%}

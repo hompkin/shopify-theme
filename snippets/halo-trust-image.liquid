@@ -5,7 +5,7 @@
 			{%- if settings[image] != blank -%}
                 <li>
                     {%- assign img =  settings[image] -%}
-                    <img srcset="{{ img | img_url: 'master' }}" src="{{ img | img_url: 'master' }}" loading="lazy" alt="{{ img.alt | default: shop.name | escape }}"></li>
+                    <img srcset="{{ img | img_url: 'master' }}" src="{{ img | img_url: 'master' }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} alt="{{ img.alt | default: shop.name | escape }}"></li>
             {%- endif -%}
 		{%- endfor -%}
 	{%- else -%}
@@ -14,7 +14,7 @@
 			{%- if settings[image] != blank -%}
                 <li>
                     {%- assign img =  settings[image] -%}
-                    <img srcset="{{ img | img_url: 'master' }}" src="{{ img | img_url: 'master' }}" loading="lazy" alt="{{ img.alt | default: shop.name | escape }}"></li>
+                    <img srcset="{{ img | img_url: 'master' }}" src="{{ img | img_url: 'master' }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %} alt="{{ img.alt | default: shop.name | escape }}"></li>
             {%- endif -%}
 		{%- endfor -%}
 	{%- endif -%}

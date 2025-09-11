@@ -133,6 +133,14 @@ slider-component {
     .slider-arrows .slider-button.slider-button--next {
         right: 5px;
     }
+
+    .style-arrows-8 .slider-arrows .slider-button.slider-button--prev {
+        left: -5px;
+    }
+
+    .style-arrows-8 .slider-arrows .slider-button.slider-button--next {
+        right: -5px;
+    }
 }
 
 @media (max-width: 767px) {

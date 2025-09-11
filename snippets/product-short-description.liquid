@@ -3,6 +3,7 @@
     assign fontsize_text = block.settings.fontsize_text
     assign color_text = block.settings.color_text
     assign word_number = block.settings.word_number
+    assign show_short_description = block.settings.show_short_description
 -%}
 {% if product.metafields.c_f.short_description %}
     {%- liquid
@@ -14,6 +15,10 @@
         style="--color-text: {{ color_text }};
         --fontsize-text: {{ fontsize_text | append: 'px' }}"
     >
-        {{ desc | strip_html | truncatewords: word_number }}
+        {% if show_short_description %}
+            {{ desc | strip_html | truncatewords: word_number }}
+        {%- else -%}
+            {{ desc }}
+        {%- endif -%}
     </div>
 {%- endif -%}

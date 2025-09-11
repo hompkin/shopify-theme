@@ -26,7 +26,7 @@
 -%}
 
 <div data-section-id="{{ section.id }}" data-section-type="wishlist" id="WishlistSection-{{ section.id }}" data-section="{{ section.id }}">
-    <div class="wishlist-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%} container-full{% else %}container{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+    <div class="wishlist-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
         {%- if show_breadcrumb -%}
             {% render 'breadcrumb', alignment: breadcrumb_alignment %}
         {%- endif -%}
@@ -37,7 +37,7 @@
         {%- endif -%}
         <div class="halo-page-content halo-wishlist-content">
             <div class="wishlist-table-wrapper{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
-                <div class="product-listing" data-wishlist-container> 
+                <div class="product-listing" data-wishlist-container>
                     <wishlist-view class="wishlist-items-container" data-default-desktop-col="{{ default_layout_desktop }}">
                         <div class="toolbar">
                             <label class="toolbar-label">
@@ -49,20 +49,20 @@
                                 <span class="toolbar-icon icon-mode icon-mode-grid grid-3" data-col="3" role="button" aria-label="Grid 3" tabindex="0"></span>
                                 <span class="toolbar-icon icon-mode icon-mode-grid grid-4" data-col="4" role="button" aria-label="Grid 4" tabindex="0"></span>
                                 <span class="toolbar-icon icon-mode icon-mode-grid grid-5" data-col="5" role="button" aria-label="Grid 5" tabindex="0"></span>
-                            </div>  
-                        </div>  
+                            </div>
+                        </div>
                         <div class="wishlist-items-display" data-wishlist-items-display></div>
                         <div class="wishlist-items-display grid show productList" data-wishlist-items-grid-display></div>
-                    </wishlist-view>   
-                </div>  
-            </div>  
+                    </wishlist-view>
+                </div>
+            </div>
             <div class="wishlist-footer pagination-right{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" data-wishlist-footer>
                 <a class="wishlist-share link link-underline" href="mailto:?subject= {{ page.title | strip_html }}&amp;body=" data-wishlist-share>
                     <div class="mail-icon-container">
                         {% render 'icon-mail' %}
                     </div>
                     <span class="text">
-                        {{ 'wishlist.general.share' | t }}            
+                        {{ 'wishlist.general.share' | t }}
                     </span>
                 </a>
                 <ul class="pagination__list list-unstyled" role="list"  id="wishlist-paginate"></ul>
@@ -70,55 +70,6 @@
         </div>
     </div>
 </div>
-
-<template id="product-wishlist-template{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
-    <div class="wishlist-row" data-wishlist-added="" data-product-id='' data-wishlist-row>
-        <div class="wishlist-rowItem wishlist-image text-left">
-            <div class="item">
-                <a class="item-image" href="" data-wishlist-image-link>
-                    <img srcset="" alt="" data-wishlist-image/>
-                </a>
-            </div>
-        </div>
-        <div class="wishlist-rowItem wishlist-meta text-left">
-            <div class="item">
-                <div class="item-info">
-                    <a class="item-title link link-underline" href="" data-wishlist-title-link>
-                        <span class="text" data-wishlist-title></span>
-                    </a>
-                </div>
-                <a class="item-vendor" href="" data-wishlist-vendor></a>
-                <div class="item-description" data-wishlist-description></div>
-            </div>
-        </div>
-        <div class="wishlist-rowItem wishlist-price text-left">
-            <div class="item-price">
-                <span class="money" data-wishlist-price></span>
-            </div>
-        </div>
-        <div class="wishlist-rowItem wishlist-add text-center">
-            <form 
-                action="/cart/add" 
-                method="post" 
-                class="variants" 
-                id="" 
-                data-id="" 
-                enctype="multipart/form-data"
-                data-wishlist-add-form
-            >   
-            </form>
-        </div>
-        <div class="wishlist-rowItem wishlist-remove text-center">
-            <a class="item-remove wishlist-added" href="#" data-wishlist-handle="" data-wishlist="" data-product-id="" data-wishlist-remove-item>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                    <path   
-                        d="M 38.982422 6.9707031 A 2.0002 2.0002 0 0 0 37.585938 7.5859375 L 24 21.171875 L 10.414062 7.5859375 A 2.0002 2.0002 0 0 0 8.9785156 6.9804688 A 2.0002 2.0002 0 0 0 7.5859375 10.414062 L 21.171875 24 L 7.5859375 37.585938 A 2.0002 2.0002 0 1 0 10.414062 40.414062 L 24 26.828125 L 37.585938 40.414062 A 2.0002 2.0002 0 1 0 40.414062 37.585938 L 26.828125 24 L 40.414062 10.414062 A 2.0002 2.0002 0 0 0 38.982422 6.9707031 z"
-                    ></path>
-                </svg>
-            </a>
-        </div>
-    </div>
-</template>
 
 <script>
     class WishlistView extends HTMLElement {
@@ -247,19 +198,22 @@
                         console.error(err);
                         showWarning(err.message);
                     }
-                } else {    
-                    this.wishlistContainer.classList.add('is-empty').innerHTML = `\
-                        <div class="wishlist-content-empty text-center">\
-                            <span class="wishlist-content-text">${window.wishlist.empty}</span>\
-                            <div class="wishlist-content-actions">\
-                                <a class="button button-2 button-continue" href="${window.routes.collection_all}">\
-                                    ${window.wishlist.continue_shopping}\
-                                </a>\
-                            </div>\
-                        </div>\
-                    ` ;
+                } else {
+                    if (this.wishlistContainer) {
+                        this.wishlistContainer.classList.add('is-empty');
+                        this.wishlistContainer.innerHTML = `
+                            <div class="wishlist-content-empty text-center">
+                                <span class="wishlist-content-text">${window.wishlist.empty}</span>
+                                <div class="wishlist-content-actions">
+                                    <a class="button button-2 button-continue" href="${window.routes.collection_all}">
+                                        ${window.wishlist.continue_shopping}
+                                    </a>
+                                </div>
+                            </div>
+                        ` ;
+                    }
 
-                    this.wishlistFooter.style.display = 'none';
+                    if (this.wishlistFooter) this.wishlistFooter.style.display = 'none';
                 }   
             } else {
                 alert('Sorry! No web storage support..');
@@ -270,7 +224,7 @@
             const defaultDesktopCol = parseInt(this.dataset.defaultDesktopCol);
             const maxCol = this.getMaxColOnSize();
             const defaultCol = defaultDesktopCol <= maxCol ? defaultDesktopCol : maxCol;
-                
+
             this.viewCols.find(viewCol => parseInt(viewCol.dataset.col) === defaultCol ).click();
         }
 
@@ -294,13 +248,12 @@
                     item.addEventListener('click', e => {
                         e.target.closest('.product').remove();
                     })
-                    
+
                     if (index >= 3) {
                         item.closest('.product').display = 'none';
                     }
                 }
 
-                
             } catch (err) {
                 console.error(err);
                 showWarning(err.message);
@@ -311,11 +264,11 @@
             let paggingTpl;
 
             if (window.pagination.style === 1) {
-                paggingTpl = '<li class="pagination-arrow prev disabled style-1"><a href="#" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"><svg class="icon thin-arrow" viewBox="0 0 50 50"><path d="M 11.957031 13.988281 C 11.699219 14.003906 11.457031 14.117188 11.28125 14.308594 L 1.015625 25 L 11.28125 35.691406 C 11.527344 35.953125 11.894531 36.0625 12.242188 35.976563 C 12.589844 35.890625 12.867188 35.625 12.964844 35.28125 C 13.066406 34.933594 12.972656 34.5625 12.71875 34.308594 L 4.746094 26 L 48 26 C 48.359375 26.003906 48.695313 25.816406 48.878906 25.503906 C 49.058594 25.191406 49.058594 24.808594 48.878906 24.496094 C 48.695313 24.183594 48.359375 23.996094 48 24 L 4.746094 24 L 12.71875 15.691406 C 13.011719 15.398438 13.09375 14.957031 12.921875 14.582031 C 12.753906 14.203125 12.371094 13.96875 11.957031 13.988281 Z"></path></svg></span></a></li>';
+                paggingTpl = '<li class="pagination-arrow prev disabled style-1"><a role="link" aria-disabled="true" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"><svg class="icon thin-arrow" viewBox="0 0 50 50"><path d="M 11.957031 13.988281 C 11.699219 14.003906 11.457031 14.117188 11.28125 14.308594 L 1.015625 25 L 11.28125 35.691406 C 11.527344 35.953125 11.894531 36.0625 12.242188 35.976563 C 12.589844 35.890625 12.867188 35.625 12.964844 35.28125 C 13.066406 34.933594 12.972656 34.5625 12.71875 34.308594 L 4.746094 26 L 48 26 C 48.359375 26.003906 48.695313 25.816406 48.878906 25.503906 C 49.058594 25.191406 49.058594 24.808594 48.878906 24.496094 C 48.695313 24.183594 48.359375 23.996094 48 24 L 4.746094 24 L 12.71875 15.691406 C 13.011719 15.398438 13.09375 14.957031 12.921875 14.582031 C 12.753906 14.203125 12.371094 13.96875 11.957031 13.988281 Z"></path></svg></span></a></li>';
             } else if (window.pagination.style === 2) {
-                paggingTpl = '<li class="pagination-arrow prev disabled style-2"><a href="#" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"></svg></span></a></li>';
+                paggingTpl = '<li class="pagination-arrow prev disabled style-2"><a role="link" aria-disabled="true" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"></svg></span></a></li>';
             } else {
-                paggingTpl = '<li class="pagination-arrow prev disabled style-3"><a href="#" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"></svg><span class="arrow-text">'+ window.pagination.prev +'</span></a></li>';
+                paggingTpl = '<li class="pagination-arrow prev disabled style-3"><a role="link" aria-disabled="true" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"></svg><span class="arrow-text">'+ window.pagination.prev +'</span></a></li>';
             }
 
             for (let i = 0; i < totalPages; i++) {
@@ -325,11 +278,11 @@
             }
 
             if (window.pagination.style === 1) {
-                paggingTpl += '<li class="pagination-arrow next style-1"><a href="#" class="pagination__item pagination__item--next pagination__item-arrow link"><svg class="icon thin-arrow" viewBox="0 0 50 50"><path d="M 11.957031 13.988281 C 11.699219 14.003906 11.457031 14.117188 11.28125 14.308594 L 1.015625 25 L 11.28125 35.691406 C 11.527344 35.953125 11.894531 36.0625 12.242188 35.976563 C 12.589844 35.890625 12.867188 35.625 12.964844 35.28125 C 13.066406 34.933594 12.972656 34.5625 12.71875 34.308594 L 4.746094 26 L 48 26 C 48.359375 26.003906 48.695313 25.816406 48.878906 25.503906 C 49.058594 25.191406 49.058594 24.808594 48.878906 24.496094 C 48.695313 24.183594 48.359375 23.996094 48 24 L 4.746094 24 L 12.71875 15.691406 C 13.011719 15.398438 13.09375 14.957031 12.921875 14.582031 C 12.753906 14.203125 12.371094 13.96875 11.957031 13.988281 Z"></path></svg></span></a></li>';
+                paggingTpl += '<li class="pagination-arrow next style-1"><a role="link" aria-disabled="true" class="pagination__item pagination__item--next pagination__item-arrow link"><svg class="icon thin-arrow" viewBox="0 0 50 50"><path d="M 11.957031 13.988281 C 11.699219 14.003906 11.457031 14.117188 11.28125 14.308594 L 1.015625 25 L 11.28125 35.691406 C 11.527344 35.953125 11.894531 36.0625 12.242188 35.976563 C 12.589844 35.890625 12.867188 35.625 12.964844 35.28125 C 13.066406 34.933594 12.972656 34.5625 12.71875 34.308594 L 4.746094 26 L 48 26 C 48.359375 26.003906 48.695313 25.816406 48.878906 25.503906 C 49.058594 25.191406 49.058594 24.808594 48.878906 24.496094 C 48.695313 24.183594 48.359375 23.996094 48 24 L 4.746094 24 L 12.71875 15.691406 C 13.011719 15.398438 13.09375 14.957031 12.921875 14.582031 C 12.753906 14.203125 12.371094 13.96875 11.957031 13.988281 Z"></path></svg></span></a></li>';
             } else if (window.pagination.style === 2) {
-                paggingTpl += '<li class="pagination-arrow next style-2"><a href="#" class="pagination__item pagination__item--next pagination__item-arrow link"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"></svg></span></a></li>';
+                paggingTpl += '<li class="pagination-arrow next style-2"><a role="link" aria-disabled="true" class="pagination__item pagination__item--next pagination__item-arrow link"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"></svg></span></a></li>';
             } else {
-                paggingTpl += '<li class="pagination-arrow next style-3"><a href="#" class="pagination__item pagination__item--next pagination__item-arrow link"><span class="arrow-text">' + window.pagination.next +'</span><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"></svg></span></a></li>';
+                paggingTpl += '<li class="pagination-arrow next style-3"><a role="link" aria-disabled="true" class="pagination__item pagination__item--next pagination__item-arrow link"><span class="arrow-text">' + window.pagination.next +'</span><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"></svg></span></a></li>';
             }
 
             return paggingTpl;
@@ -337,7 +290,7 @@
 
         wishlistPagination() {
             const wishlistList = localStorage.getItem('wishlistItem') ? JSON.parse(localStorage.getItem('wishlistItem')) : [];
-            
+
             this.wlpaggingContainer.setAttribute('data-current-page', 1);
             while (this.wlpaggingContainer.firstChild) {
                 this.wlpaggingContainer.removeChild(this.wlpaggingContainer.firstChild);
@@ -362,7 +315,7 @@
             this.paginateToPages();
 
             this.gridViewContainer.classList.add('is-loaded');
-        }   
+        }
 
         paginateToPages(nextPageNumber = null) {
             const children = [...this.gridViewContainer.children];
@@ -374,10 +327,10 @@
                     }
                     else {
                         element.style.display = 'block';
-                    }   
+                    }
                 })
                 return;
-            } 
+            }
 
             children.forEach((element, index) => {
                 if (index >= (nextPageNumber - 1) * 3 && index < nextPageNumber * 3) {
@@ -385,7 +338,7 @@
                 }
                 else {
                     element.style.display = 'none';
-                }   
+                }
             })
 
             if (nextPageNumber === 1) {
@@ -401,7 +354,7 @@
                 this.wlpaggingContainer.querySelector('.next').classList.remove('disabled');
             }
         }
-        
+
         removeAndAddPaginationButtonEvents() {
             $(this.wlpaggingContainer).off('click.wl-pagging').on('click.wl-pagging', 'li a', e => {
                 e.preventDefault();
@@ -416,7 +369,7 @@
                     pageNumber = curPage - 1;
                     if (pageNumber <= 0) pageNumber = 1;
                 }
-                
+
                 if (isNext) {
                     pageNumber = curPage + 1;
                     if (pageNumber > this.totalPages) pageNumber = this.totalPages;
@@ -461,7 +414,7 @@
             }
         }
     }
-    
+
     customElements.define('wishlist-view', WishlistView);
 </script>
 
@@ -472,7 +425,7 @@
     }
 
     #WishlistSection-{{ section.id }} .wishlist-footer .wishlist-share {
-        display: flex; 
+        display: flex;
         align-items: center;
         gap: 15px;
     }
@@ -499,7 +452,7 @@
         #WishlistSection-{{ section.id }} .breadcrumb-container {
             position: relative;
         }
-        
+
         #WishlistSection-{{ section.id }} .breadcrumb::after {
             content: "";
             position: absolute;
@@ -519,10 +472,6 @@
         "settings":
         [
             {
-                "type": "header",
-                "content": "t:sections.main_wishlist.settings.header__1"
-            },
-            {
                 "type": "checkbox",
                 "id": "show_breadcrumb",
                 "label": "t:sections.general.settings.breadcrumb.label__1",
@@ -535,15 +484,15 @@
                 "options": [
                     {
                         "value": "left",
-                        "label": "t:sections.general.settings.breadcrumb.options__1"
+                        "label": "t:settings_schema.typography.settings.type_button_font.left"
                     },
                     {
                         "value": "center",
-                        "label": "t:sections.general.settings.breadcrumb.options__2"
+                        "label": "t:settings_schema.typography.settings.type_button_font.center"
                     },
                     {
                         "value": "right",
-                        "label": "t:sections.general.settings.breadcrumb.options__3"
+                        "label": "t:settings_schema.typography.settings.type_button_font.right"
                     }
                 ],
                 "default": "left"
@@ -551,7 +500,7 @@
             { 
                 "type": "color",
                 "id": "breadcrumb_bg",
-                "label": "t:settings_schema.colors.settings.colors_name.background_color"
+                "label": "t:settings_schema.colors.settings.colors_name.background_color_2"
             },
             {
                 "type": "color_background",
@@ -582,15 +531,15 @@
                 "options": [
                     {
                         "value": "left",
-                        "label": "t:sections.general.settings.page-title.options__1"
+                        "label": "t:settings_schema.typography.settings.type_button_font.left"
                     },
                     {
                         "value": "center",
-                        "label": "t:sections.general.settings.page-title.options__2"
+                        "label": "t:settings_schema.typography.settings.type_button_font.center"
                     },
                     {
                         "value": "right",
-                        "label": "t:sections.general.settings.page-title.options__3"
+                        "label": "t:settings_schema.typography.settings.type_button_font.right"
                     }
                 ],
                 "default": "center"
@@ -620,8 +569,36 @@
                 ]
             },
             {
+                "type": "select",
+                "id": "default_layout_desktop",
+                "label": "t:sections.main-collection-product-grid.settings.product.label__2",
+                "default": "3",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "t:sections.main-collection-product-grid.settings.product.options__1"
+                    },
+                    {
+                        "value": "2",
+                        "label": "t:sections.main-collection-product-grid.settings.product.options__2"
+                    },
+                    {
+                        "value": "3",
+                        "label": "t:sections.main-collection-product-grid.settings.product.options__3"
+                    },
+                    {
+                        "value": "4",
+                        "label": "t:sections.main-collection-product-grid.settings.product.options__4"
+                    },
+                    {
+                        "value": "5",
+                        "label": "t:sections.main-collection-product-grid.settings.product.options__5"
+                    }
+                ]
+            },
+            {
                 "type": "header",
-                "content": "t:sections.layout.margin_top"
+                "content": "t:settings_schema.typography.settings.type_button_font.padding_top"
             },
             {
                 "type": "range",
@@ -655,7 +632,7 @@
             },
             {
                 "type": "header",
-                "content": "t:sections.layout.margin_bottom"
+                "content": "t:settings_schema.typography.settings.type_button_font.padding_bottom"
             },
             {
                 "type": "range",
@@ -686,34 +663,6 @@
                 "step": 5,
                 "unit": "t:sections.layout.mg_desktop.unit",
                 "default": 50
-            },
-            {
-                "type": "select",
-                "id": "default_layout_desktop",
-                "label": "t:sections.main-collection-product-grid.settings.product.label__2",
-                "default": "3",
-                "options": [
-                    {
-                        "value": "1",
-                        "label": "t:sections.main-collection-product-grid.settings.product.options__1"
-                    },
-                    {
-                        "value": "2",
-                        "label": "t:sections.main-collection-product-grid.settings.product.options__2"
-                    },
-                    {
-                        "value": "3",
-                        "label": "t:sections.main-collection-product-grid.settings.product.options__3"
-                    },
-                    {
-                        "value": "4",
-                        "label": "t:sections.main-collection-product-grid.settings.product.options__4"
-                    },
-                    {
-                        "value": "5",
-                        "label": "t:sections.main-collection-product-grid.settings.product.options__5"
-                    }
-                ]
             }
         ]
     }

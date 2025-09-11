@@ -50,7 +50,7 @@
     width: 100%;
 }
 
-.large-lookbook-banner .lookbook-image-item {
+.large-lookbook-banner:has(.lookbook-image-item+.lookbook-image-item) .lookbook-image-item {
     margin: 0 var(--slide-spacing);
     opacity: 0;
 }
@@ -462,10 +462,6 @@
 /* END: View More */
 
 /* START: Miscallenous */
-.large-lookbook-banner .not_img {
-    width: var(--width_not_img);
-}
-
 .large-lookbook-banner .slick-arrow.slick-next {
     right: var(--next-slick-pos) !important;
 }

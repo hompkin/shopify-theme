@@ -191,6 +191,14 @@
             cursor: none !important;
         }
 
+        body.cursor-fixed__show [no-effect-cursor] * {
+            cursor: pointer !important;
+        }
+
+        body.cursor-fixed__show:has([no-effect-cursor]:hover) cursor-fixed .cursor {
+            transform: scale(0) !important;
+        }
+
         body.cursor-fixed__show .button > span {
             pointer-events: none;
         }
@@ -202,6 +210,7 @@
         .cursor-fixed__parallax-target.on-hover .list-social__link {
             overflow: visible;
         }
+
         .cursor-fixed__parallax-target.on-hover .list-social__link:after {
             content: "";
             position: absolute;
@@ -210,14 +219,16 @@
             bottom: 0;
             left: 0;
             transform: scale(1.8);
-        } 
-        .cursor-fixed__parallax-target.on-hover .button.button--style-diagonal-swipe:before, 
+        }
+
+        .cursor-fixed__parallax-target.on-hover .button.button--style-diagonal-swipe:before,
         .cursor-fixed__parallax-target.on-hover .shopify-challenge__button:before {
             transform: translate(0);
             transition: transform var(--duration-long) ease-out;
             z-index: 1;
         }
-        .cursor-fixed__parallax-target.on-hover .button, 
+
+        .cursor-fixed__parallax-target.on-hover .button,
         .cursor-fixed__parallax-target.on-hover .shopify-challenge__button {
             color: rgba(var(--button-color-text-hover),1);
             border-color: rgba(var(--button-color-background-hover),1);

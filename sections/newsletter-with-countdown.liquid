@@ -254,7 +254,7 @@
     {
       "type": "select",
       "id": "text_font_weight",
-      "label": "t:settings_schema.typography.settings.font_weight.label",
+      "label": "t:settings_schema.typography.settings.typography.text_font_weight",
       "default": "600",
       "options": [
         {
@@ -443,7 +443,7 @@
     {
       "type": "text",
       "id": "button_label",
-      "label": "t:sections.spotlight_block.blocks.image.button",
+      "label": "t:settings_schema.typography.settings.typography.button_text",
       "default": "Subscribe"
     },
     {
@@ -469,48 +469,48 @@
     {
       "type": "color",
       "id": "button_text_color",
-      "label": "t:settings_schema.colors.settings.colors_name.color",
+      "label": "t:settings_schema.typography.settings.typography.button_color",
       "default": "#fff"
     },
     {
       "type": "color",
       "id": "button_border_color",
-      "label": "t:settings_schema.colors.settings.colors_name.border_color",
+      "label": "t:sections.rich-text.blocks.button.settings.button_border",
       "default": "#232323"
     },
     {
       "type": "color",
       "id": "button_background_color",
-      "label": "t:settings_schema.colors.settings.colors_name.background_color",
+      "label": "t:sections.rich-text.blocks.button.settings.button_bg",
       "default": "#232323"
     },
     {
       "type": "color_background",
       "id": "button_gradient_color",
-      "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+      "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient"
     },
     {
       "type": "color",
       "id": "button_text_color_hover",
-      "label": "t:settings_schema.colors.settings.colors_name.color_hover",
+      "label": "t:sections.rich-text.blocks.button.settings.button_color_hover",
       "default": "#fff"
     },
     {
       "type": "color",
       "id": "button_border_color_hover",
-      "label": "t:settings_schema.colors.settings.colors_name.border_hover",
+      "label": "t:sections.rich-text.blocks.button.settings.button_border_hover",
       "default": "#232323"
     },
     {
       "type": "color",
       "id": "button_background_color_hover",
-      "label": "t:settings_schema.colors.settings.colors_name.background_hover",
+      "label": "t:sections.rich-text.blocks.button.settings.button_bg_hover",
       "default": "#232323"
     },
     {
       "type": "color_background",
       "id": "button_gradient_color_hover",
-      "label": "t:settings_schema.colors.settings.colors_name.background_hover_gradient"
+      "label": "t:sections.rich-text.blocks.button.settings.button_bg_gradient_hover"
     },
     {
       "type": "text",
@@ -600,19 +600,56 @@
       "max": 100,
       "step": 5,
       "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-      "default": 0,
-      "info": "t:sections.layout.container.info_full_width"
+      "default": 0
     },
     {
       "id": "background",
       "type": "color",
-      "label": "t:settings_schema.colors.settings.colors_name.background_color",
+      "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
       "default": "#fff"
     },
     {
       "id": "background_gradient",
       "type": "color_background",
       "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image-banner.blocks.image.settings.content.label__18"
+    },
+    {
+      "type": "select",
+      "id": "justify_section_content",
+      "label": "t:settings_schema.typography.settings.typography.justify_content_desktop",
+      "default": "center",
+      "options": [
+        {
+          "label": "t:sections.image-banner.blocks.smallImg.settings.style.justify_content.option_1",
+          "value": "space-between"
+        },
+        {
+          "label": "t:sections.image-banner.blocks.smallImg.settings.style.justify_content.option_2",
+          "value": "flex-start"
+        },
+        {
+          "label": "t:sections.image-banner.blocks.smallImg.settings.style.justify_content.option_3",
+          "value": "flex-end"
+        },
+        {
+          "label": "t:sections.image-banner.blocks.smallImg.settings.style.justify_content.option_4",
+          "value": "center"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "section_item_distance",
+      "label": "t:settings_schema.typography.settings.typography.grid_gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+      "default": 20
     },
     {
       "type": "header",
@@ -681,46 +718,8 @@
       "step": 5,
       "unit": "t:sections.layout.mg_desktop.unit",
       "default": 50
-    },
-    {
-      "type": "header",
-      "content": "t:sections.image-banner.blocks.image.settings.content.label__18"
-    },
-    {
-      "type": "select",
-      "id": "justify_section_content",
-      "label": "t:sections.image-banner.blocks.smallImg.settings.style.justify_content.label",
-      "default": "center",
-      "info": "t:sections.slide-show.blocks.image.info_enable_custom_position",
-      "options": [
-        {
-          "label": "t:sections.image-banner.blocks.smallImg.settings.style.justify_content.option_1",
-          "value": "space-between"
-        },
-        {
-          "label": "t:sections.image-banner.blocks.smallImg.settings.style.justify_content.option_2",
-          "value": "flex-start"
-        },
-        {
-          "label": "t:sections.image-banner.blocks.smallImg.settings.style.justify_content.option_3",
-          "value": "flex-end"
-        },
-        {
-          "label": "t:sections.image-banner.blocks.smallImg.settings.style.justify_content.option_4",
-          "value": "center"
-        }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "section_item_distance",
-      "label": "t:settings_schema.typography.settings.typography.grid_gap",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-      "default": 20
-    }],
+    }
+    ],
   "presets": [
     {
       "name": "t:sections.newsletter_with_countdown.name",

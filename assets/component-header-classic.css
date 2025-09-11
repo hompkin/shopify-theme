@@ -121,6 +121,13 @@
     fill: var(--text-color);
 }
 
+.header-classic__item .header__icon.header__icon--wishlist .wishlist-count-bubble {
+    position: relative;
+    margin-left: 8px;
+    background-color: var(--wishlist-bg-item);
+    color: var(--wishlist-color-item);
+}
+
 .header-classic__item .header__icon + .header__icon {
     margin-left: 25px;
 }

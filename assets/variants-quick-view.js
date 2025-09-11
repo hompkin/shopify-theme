@@ -321,7 +321,14 @@ class VariantQuickViewSelects extends HTMLElement {
 
     checkNeedToConvertCurrency() {
         if (typeof Currency == 'undefined') return window.show_auto_currency;
-        return (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency;
+
+        var currencyItem = $('.dropdown-item[data-currency]');
+
+        if (currencyItem.length) {
+            return (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency;
+        } else {
+            return;
+        }
     }
 
     checkQuantityWhenVariantChange() {
@@ -471,7 +478,14 @@ class QuantityQuickViewInput extends HTMLElement {
 
     checkNeedToConvertCurrency() {
         if (typeof Currency == 'undefined') return window.show_auto_currency;
-        return (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency;
+        
+        var currencyItem = $('.dropdown-item[data-currency]');
+
+        if (currencyItem.length) {
+            return (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency;
+        } else {
+            return;
+        }
     }
 }
 

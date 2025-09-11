@@ -22,7 +22,7 @@ class ProductTabs extends HTMLElement {
                // document.getElementById("href-customer-reviews-id").click();
              }
           );
-  
+
          document.getElementById("ryviu-widget-total-id")?.addEventListener(
             'click',
              function() {
@@ -141,14 +141,9 @@ class ProductTabs extends HTMLElement {
             } else {
                 $this.classList.add('is-open');
                 if ((this.isVerticalPopup && window.innerWidth > 550) || ($this.classList.contains('sidebar-mobile') && window.innerWidth <= 550)) {
-                    if($this.matches('.sidebar-mobile') && window.innerWidth <= 550) {
-                        document.body.classList.add('tab-popup-sidebar-show');
-                        $thisContent.classList.add('is-show');
-                        document.body.classList.add('tab-popup-show');
-                    }else {
-                        $thisContent.classList.add('is-show');
-                        document.body.classList.add('tab-popup-show');
-                    }
+                    document.body.classList.add('tab-popup-sidebar-show');
+                    $thisContent.classList.add('is-show');
+                    document.body.classList.add('tab-popup-show');
                 } else {
                     $($thisContent).slideDown('slow');
                 }

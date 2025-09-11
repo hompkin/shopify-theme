@@ -37,6 +37,19 @@
         endif
     endfor
 
+    if settings.show_vendor
+        assign vendor_img_png = product_card_product.vendor | downcase | replace: ' ', '-' | append: '.png' | prepend : 'vendor-'
+        assign vendor_img_jpg = product_card_product.vendor | downcase | replace: ' ', '-' | append: '.jpg' | prepend : 'vendor-'
+        assign vendor_img_webp = product_card_product.vendor | downcase | replace: ' ', '-' | append: '.webp' | prepend : 'vendor-'
+        if images[vendor_img_webp] != blank
+            assign vendor_img = vendor_img_webp
+        elsif images[vendor_img_png] != blank
+            assign vendor_img = vendor_img_png
+        elsif images[vendor_img_jpg] != blank
+            assign vendor_img = vendor_img_jpg
+        endif
+    endif
+
     assign media_size = settings.product_block_image_ratio
     if media_size == 'portrait'
         assign portrait_aspect_ratio = settings.portrait_height
@@ -80,8 +93,6 @@
     assign has_video = product_card_product.media | where: 'media_type','video'
 
     assign show_price = settings.show_price
-
-    assign custom_fields = product_card_product.metafields.custom.product_variant_custom
 -%}
 <div class="product-item{% if sold_out %} sold-out{% endif %}{% if sold_out and settings.show_notify_form %} has-notify{% endif %}" data-product-id="{{ product_card_product.id }}" data-json-product='{"id": {{product_card_product.id}},"handle": "{{product_card_product.handle}}","media": {{product.media | json | escape}},"variants": {{ product_card_product.variants | json | escape}}}'>
     <div class="card{% if product_card_product.media[0].media_type == 'video' %} has-first-video{% endif %}">
@@ -120,7 +131,7 @@
 
                 {%- if settings.show_action or settings.show_compare -%}
                     <div class="card-action{% if settings.show_compare and settings.product_compare_type == 'default' %} has-compare{% endif %}{% if settings.show_product_marquee %} has-marquee{% endif %}">
-                        {%- if settings.show_action -%}
+                        {%- if settings.show_action and complementary_product_button_atc -%}
                             {% render 'add-to-cart-form', product: product_card_product, id: 'form', position: position, sectionId: sectionId %}
                         {%- endif -%}
                         <div class="card-action-bottom">
@@ -141,7 +152,16 @@
                 {%- if settings.show_vendor -%}
                     <div class="card-information__group card-information__group-2{% if show_wishlist %} has-wishlist{% endif %}">
                         {%- if settings.show_vendor -%}
-                            <div class="card-vendor"><span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span> {{ product_card_product.vendor | link_to_vendor: class: 'vendor-text' }}</div>
+                            <div class="card-vendor">
+                                <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span> 
+                                {%- if vendor_img != blank -%}
+                                    <a class="vendor-image" href="/collections/vendors?q={{ product_card_product.vendor }}" title="{{ product_card_product.vendor }}">
+                                        <img src="{{ vendor_img | file_url }}" alt="{{ product_card_product.vendor }}">
+                                    </a>
+                                {%- else -%}
+                                    {{ product_card_product.vendor | link_to_vendor: class: 'vendor-text' }}
+                                {%- endif -%}
+                             </div>
                         {%- endif -%}
                         {%- if show_wishlist -%}
                             <div class="card-product__group-item card-wishlist">
@@ -151,22 +171,18 @@
                     </div>
                 {%- endif -%}
 
-                {%- if settings.enable_combined_products_listing and custom_fields != blank -%}
-                    {% render 'combined-products-listing', product: product %}
-                {%- else -%}
-                    {%- if isColor -%}
-                        {%- unless settings.show_swatch -%}
-                        <div class="hidden">
-                        {%- endunless -%}
-                            {% render 'product-swatch',
-                                product: product_card_product,
-                                index: index,
-                                variant_selected: variant_selected
-                            %}
-                        {%- unless settings.show_swatch -%}
-                        </div>
-                        {%- endunless -%}
-                    {%- endif -%}
+                {%- if isColor -%}
+                    {%- unless settings.show_swatch -%}
+                    <div class="hidden">
+                    {%- endunless -%}
+                        {% render 'product-swatch',
+                            product: product_card_product,
+                            index: index,
+                            variant_selected: variant_selected
+                        %}
+                    {%- unless settings.show_swatch -%}
+                    </div>
+                    {%- endunless -%}
                 {%- endif -%}
                
                 <h3 class="card__heading"><a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}{% if variant_selected != blank %} card-title-change{% endif %}" href="{{ product_card_product.url }}" data-product-title="{{ product_card_product.title | escape }}" data-product-url="{{ product_card_product.url }}">{{ product_card_product.title | escape }}{% if variant_selected != blank %} <span data-change-title> {% if settings.style_text_color_varriant == '01' %}-{% endif %} {{ variant_selected }}</span>{% endif %}</a></h3>
@@ -213,7 +229,7 @@
                     {%- endif -%}
                 </div>
                 
-                {%- if settings.show_action -%}
+                {%- if settings.show_action and complementary_product_button_atc -%}
                     {% render 'add-to-cart-form-category-list', product: product_card_product, id: 'form', list: 'list', position: position, sectionId: sectionId %}
                 {%- endif -%}
 

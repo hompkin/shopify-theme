@@ -11,11 +11,13 @@
                     dataArrowsMB = self.data('arrows-mb'),
                     dataDots = self.data('dots'),
                     dataDotsMB = self.data('dots-mb'),
-                    dataSwipe = self.data('swipe');
+                    dataSwipe = self.data('swipe'),
+                    dataCenterMode = self.data('center-mode');
                     
                 if ((dataSwipe == 'list' || dataSwipe == 'scroll') && window.innerWidth < 768) return;
                 self.slick({
                     infinite: true,
+                    centerMode: false,
                     speed: 1000, 
                     arrows: dataArrows,
                     dots: dataDots,
@@ -28,7 +30,25 @@
                         {
                             breakpoint: 1024,
                             settings: {
-                                slidesToShow: 2,
+                                get slidesToShow() {
+                                    if(dataCenterMode){
+                                        return this.slidesToShow = dataRowsMb;
+                                    } else {
+                                        return this.slidesToShow = 2;
+                                    }
+                                },
+                                get centerMode() {
+                                    if(dataCenterMode){
+                                        return this.centerMode = true;
+                                    } else {
+                                        return this.centerMode = false;
+                                    }
+                                },
+                                get centerPadding() {
+                                    if(dataCenterMode){
+                                        return this.centerPadding = '137px';
+                                    }
+                                },
                                 arrows: dataArrowsMB,
                                 dots: dataDotsMB
                             }
@@ -37,6 +57,18 @@
                             breakpoint: 768,
                             settings: {
                                 slidesToShow: dataRowsMb,
+                                get centerMode() {
+                                    if(dataCenterMode){
+                                        return this.centerMode = true;
+                                    } else {
+                                        return this.centerMode = false;
+                                    }
+                                },
+                                get centerPadding() {
+                                    if(dataCenterMode){
+                                        return this.centerPadding = '0px';
+                                    }
+                                },
                                 arrows: dataArrowsMB,
                                 dots: dataDotsMB
                             }

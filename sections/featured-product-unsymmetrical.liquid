@@ -1,4 +1,5 @@
 {{ 'component-featured-product-unsymmetrical.css' | asset_url | stylesheet_tag }}
+
 {%- liquid
     assign container = section.settings.container
     assign collection = section.settings.product_block_collection
@@ -13,6 +14,7 @@
     assign spacing_top_dots = section.settings.spacing_top_dots
     assign column = section.settings.product_block_show
 -%}
+
 <style>
     {%- liquid
         assign product_bg = section.settings.product_bg
@@ -48,7 +50,7 @@
 
         assign padding_full_width = section.settings.padding_full_width
         assign position_vertical_arrow = section.settings.position_vertical_arrow
-        
+
         assign headingLineHeight = settings.type_heading_line_height
 
     -%}
@@ -153,15 +155,17 @@
         body.layout_rtl .section-block-{{section.id}} .container-full .halo-block-header {padding-left: 10px; padding-right: 0; text-align: center;}
     }
 </style>
-<div class="featured-product-unsymmetrical section-block-{{section.id}}">
+
+<div class="featured-product-unsymmetrical section-block-{{section.id}}" >
     <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
-        <div class="halo-block-content halo-block-unsymmetrical" 
+        <div class="halo-block-content halo-block-unsymmetrical"
+            sectionId="{{ section.id }}"
             data-product-block
-            data-limit="{{ limit }}" 
-            data-layout="grid" 
-            {% if collection != blank %} 
+            data-limit="{{ limit }}"
+            data-layout="grid"
+            {% if collection != blank %}
                 data-collection="{{ collection }}"
-                data-image-ratio="{{ image_ratio }}" 
+                data-image-ratio="{{ image_ratio }}"
             {% endif %}
         >
             {%- if block_title != blank -%}
@@ -184,7 +188,7 @@
                 data-item-dots="{{ enable_dots }}"
                 data-item-arrows="{{ enable_arrows }}"
                 style="--featured-item-distance: {{ item_distance }}"
-            >   
+            >
                 {%- for tag in current_tags -%}
                     {%- if tag contains 'limit=' -%}
                         {%- assign limit = tag | remove: 'limit=' -%}
@@ -192,7 +196,6 @@
                         {%- assign image_ratio = tag | remove: 'imageRatio=' -%}
                     {%- endif -%}
                 {%- endfor -%}
-                    
                 {%- if collection.products[0] != nil -%}
                     {%- for product in collection.products limit: limit -%}
                         <div class="product">
@@ -202,7 +205,7 @@
                 {%- else -%}
                     {%- for product in (1..limit) -%}
                         <div class="product">
-                            {%- capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture -%}
+                            {%- capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture -%}
                             {% render 'product-card-placeholder', index: current %}
                         </div>
                     {%- endfor -%}
@@ -234,23 +237,22 @@
         "label": "t:sections.layout.container.option",
         "default": "container",
         "options": [
-            {
-                "value": "container",
-                "label": "t:sections.layout.container.option1"
-            },
-            {
-                "value": "1170",
-                "label": "t:sections.layout.container.option4"
-            },
-            {
-                "value": "1770",
-                "label": "t:sections.layout.container.option3"
-            },
-            {
-                "value": "fullwidth",
-                "label": "t:sections.layout.container.option2"
-            }
-        ]
+        {
+            "value": "container",
+            "label": "t:sections.layout.container.option1"
+        },
+        {
+            "value": "1170",
+            "label": "t:sections.layout.container.option4"
+        },
+        {
+            "value": "1770",
+            "label": "t:sections.layout.container.option3"
+        },
+        {
+            "value": "fullwidth",
+            "label": "t:sections.layout.container.option2"
+        }]
     },
     {
         "type": "range",
@@ -260,81 +262,12 @@
         "max": 100,
         "step": 5,
         "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 0,
-        "info": "t:sections.layout.container.info_full_width"
-    },
-    {
-        "type": "header",
-        "content": "t:sections.layout.margin_top"
-    },
-    {
-        "type": "range",
-        "id": "mg_top_desktop",
-        "label": "t:sections.layout.mg_desktop.label",
-        "min": 0,
-        "max": 200,
-        "step": 5,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 50
-    },
-    {
-        "type": "range",
-        "id": "mg_top_tablet",
-        "label": "t:sections.layout.mg_tablet.label",
-        "min": 0,
-        "max": 100,
-        "step": 5,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 50
-    },
-    {
-        "type": "range",
-        "id": "mg_top_mobile",
-        "label": "t:sections.layout.mg_mobile.label",
-        "min": 0,
-        "max": 100,
-        "step": 5,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 50
-    },
-    {
-        "type": "header",
-        "content": "t:sections.layout.margin_bottom"
-    },
-    {
-        "type": "range",
-        "id": "mg_bottom_desktop",
-        "label": "t:sections.layout.mg_desktop.label",
-        "min": 0,
-        "max": 200,
-        "step": 5,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 50
-    },
-    {
-        "type": "range",
-        "id": "mg_bottom_tablet",
-        "label": "t:sections.layout.mg_tablet.label",
-        "min": 0,
-        "max": 100,
-        "step": 5,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 50
-    },
-    {
-        "type": "range",
-        "id": "mg_bottom_mobile",
-        "label": "t:sections.layout.mg_mobile.label",
-        "min": 0,
-        "max": 100,
-        "step": 5,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 50
+        "default": 0
     },
     {
         "type" : "color",
         "id" : "product_bg",
-        "label": "t:settings_schema.colors.settings.colors_name.background_color",
+        "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
         "default" : "#fff"
     },
     {
@@ -348,10 +281,27 @@
         "label" : "t:settings_schema.colors.settings.colors_name.background_image"
     },
     {
+        "type": "collection",
+        "id": "product_block_collection",
+        "label": "t:settings_schema.typography.settings.typography.collection"
+    },
+    {
+        "type": "range",
+        "id": "product_block_limit",
+        "label": "t:settings_schema.quick_search.settings.general.label__2",
+        "min": 3,
+        "max": 20,
+        "step": 1,
+        "default": 8
+    },
+    {
+        "type": "header",
+        "content": "t:sections.image-banner.blocks.image.settings.content.section_header"
+    },
+    {
         "type": "checkbox",
         "id": "enable_heading_sticky",
         "label": "t:settings_schema.typography.settings.typography.enable_heading_sticky",
-        "info": "t:sections.slide-show.blocks.image.info_enable_custom_position",
         "default": false
     },
     {
@@ -363,7 +313,7 @@
     {
         "type": "range",
         "id": "fontsize_title",
-        "label": "t:sections.layout.fontsize.fontsize_title.label",
+        "label": "t:settings_schema.typography.settings.typography.title_font_size",
         "min": 10,
         "max": 100,
         "step": 1,
@@ -383,7 +333,7 @@
     {
         "type": "range",
         "id": "fontsize_title_mb",
-        "label": "t:sections.layout.fontsize.fontsize_title.label_mb",
+        "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
         "min": 10,
         "max": 50,
         "step": 1,
@@ -393,7 +343,7 @@
     {
         "type": "range",
         "id": "mg_bottom_title",
-        "label": "t:sections.layout.mg_bottom_title.label",
+        "label": "t:settings_schema.typography.settings.typography.title_margin_bottom",
         "min": 0,
         "max": 50,
         "step": 1,
@@ -403,7 +353,7 @@
     {
         "type": "range",
         "id": "mg_bottom_title_mb",
-        "label": "t:sections.layout.mg_bottom_title.label_mb",
+        "label": "t:settings_schema.typography.settings.typography.title_mg_bottom_mobile",
         "min": 0,
         "max": 50,
         "step": 1,
@@ -413,7 +363,7 @@
     {
         "type" : "color",
         "id" : "color_title",
-        "label": "t:sections.layout.color.color_title",
+        "label": "t:settings_schema.typography.settings.typography.title_color",
         "default" : "#232323"
     },
     {
@@ -427,19 +377,18 @@
         "label": "t:settings_schema.typography.settings.typography.view_all_align",
         "default": "center",
         "options": [
-            {
-                "value": "left",
-                "label": "t:settings_schema.typography.settings.typography.left"
-            },
-            {
-                "value": "center",
-                "label": "t:settings_schema.typography.settings.typography.center"
-            },
-            {
-                "value": "right",
-                "label": "t:settings_schema.typography.settings.typography.right"
-            }
-        ]
+        {
+            "value": "left",
+            "label": "t:settings_schema.typography.settings.type_button_font.left"
+        },
+        {
+            "value": "center",
+            "label": "t:settings_schema.typography.settings.type_button_font.center"
+        },
+        {
+            "value": "right",
+            "label": "t:settings_schema.typography.settings.type_button_font.right"
+        }]
     },
     {
         "type": "select",
@@ -510,10 +459,10 @@
         "default" : "#3c3c3c"
     },
     {
-        "type": "textarea",
+        "type": "liquid",
         "id": "icon_view_all",
         "label": "t:settings_schema.typography.settings.typography.view_all_icon",
-        "info" : "Go to this link [Find your Icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
+        "info" : "Go to this link [find your icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
     },
     {
         "type" : "color",
@@ -524,35 +473,21 @@
     {
         "type": "select",
         "id": "title_align",
-        "label": "t:sections.product_block.settings.general.label__7",
+        "label": "t:sections.general.settings.alignment.label__1",
         "options": [
         {
             "value": "left",
-            "label": "t:sections.product_block.settings.general.options__7"
+            "label": "t:settings_schema.typography.settings.type_button_font.left"
         },
         {
             "value": "center",
-            "label": "t:sections.product_block.settings.general.options__8"
+            "label": "t:settings_schema.typography.settings.type_button_font.center"
         },
         {
             "value": "right",
-            "label": "t:sections.product_block.settings.general.options__9"
+            "label": "t:settings_schema.typography.settings.type_button_font.right"
         }],
         "default": "center"
-    },
-    {
-        "type": "collection",
-        "id": "product_block_collection",
-        "label": "t:settings_schema.typography.settings.typography.collection"
-    },
-    {
-        "type": "range",
-        "id": "product_block_limit",
-        "label": "t:sections.product_block.settings.product_block_limit",
-        "min": 3,
-        "max": 20,
-        "step": 1,
-        "default": 8
     },
     {
         "type": "header",
@@ -619,12 +554,16 @@
         {
             "value": "3.5",
             "label": "3.5"
-        },  
+        },
         {
             "value": "4",
             "label": "4"
         }],
         "default": "2.5"
+    },
+    {
+        "type": "paragraph",
+        "content": "t:sections.collection_lookbook.settings.content_3"
     },
     {
         "type": "checkbox",
@@ -659,11 +598,78 @@
         "id": "scroll_thumb_hover_color",
         "label": "t:sections.product_block.settings.scroll.scroll_thumb_hover_color",
         "default": "#444"
+    },
+    {
+        "type": "header",
+        "content": "t:sections.layout.margin_top"
+    },
+    {
+        "type": "range",
+        "id": "mg_top_desktop",
+        "label": "t:sections.layout.mg_desktop.label",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 50
+    },
+    {
+        "type": "range",
+        "id": "mg_top_tablet",
+        "label": "t:sections.layout.mg_tablet.label",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 50
+    },
+    {
+        "type": "range",
+        "id": "mg_top_mobile",
+        "label": "t:sections.layout.mg_mobile.label",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 50
+    },
+    {
+        "type": "header",
+        "content": "t:sections.layout.margin_bottom"
+    },
+    {
+        "type": "range",
+        "id": "mg_bottom_desktop",
+        "label": "t:sections.layout.mg_desktop.label",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 50
+    },
+    {
+        "type": "range",
+        "id": "mg_bottom_tablet",
+        "label": "t:sections.layout.mg_tablet.label",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 50
+    },
+    {
+        "type": "range",
+        "id": "mg_bottom_mobile",
+        "label": "t:sections.layout.mg_mobile.label",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 50
     }],
     "presets": [
-        {
-            "name": "t:sections.product_block.settings.header__2.feature_product_unsymmetrical"
-        }
-    ]
+    {
+        "name": "t:sections.product_block.settings.header__2.feature_product_unsymmetrical"
+    }]
 }
 {% endschema %}

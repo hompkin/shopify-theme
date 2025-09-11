@@ -87,6 +87,15 @@
 	margin: 0;
 }
 
+.header-single-line .header__icon--wishlist .wishlist-count-bubble {
+    top: -8px;
+    right: 2px;
+    line-height: 23px;
+	font-size: var(--wishlist-font-size);
+    background-color: var(--wishlist-bg-item);
+    color: var(--wishlist-color-item);
+}
+
 .header-single-line .header__icon {
 	text-align: center;
 }
@@ -144,6 +153,7 @@
 .header-single-line__content .header__search .search-modal__form .search__button {
 	padding: 11px 12px 11px 12px;
 	min-height: 48px;
+	box-sizing: border-box;
 }
 
 .header-single-line__content .header__search .search-modal__form .search__button svg {

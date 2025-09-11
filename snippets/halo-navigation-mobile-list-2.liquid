@@ -54,9 +54,11 @@
                             {% endif %}
                         >
                             {%- if item_image != blank -%}
-                                <img srcset="{{ item_image | img_url: 'master' }}" src="{{ item_image | img_url: 'master' }}" alt="{{ item_image.alt | default: shop.name | escape }}" loading="lazy">
+                                <img srcset="{{ item_image | img_url: 'master' }}" src="{{ item_image | img_url: 'master' }}" alt="{{ item_image.alt | default: shop.name | escape }}"{% if settings.enable_lazyload %} loading="lazy"{% endif %}>
                             {%- else -%}
-                                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+                                {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+                                {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
                             {%- endif -%}
                         </span>
                     </a>

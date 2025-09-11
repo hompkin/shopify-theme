@@ -33,7 +33,7 @@
                           {% assign logo = settings[i-lang_unit] %}
                         {% endif %}
                     {%- endfor -%}
-                    <li class="disclosure__item" tabindex="-1"><a role="button" class="link link--text disclosure__link d-flex flex-align-center{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}" {% if language.iso_code==localization.language.iso_code %} aria-current="true" {% endif %} data-value="{{ language.iso_code }}"><span class="icon">{{ logo }}</span><span class="text">{{ language.iso_code }}</span></a></li>
+                    <li class="disclosure__item" tabindex="-1"><a role="link" aria-disabled="true" class="link link--text disclosure__link d-flex flex-align-center{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}" {% if language.iso_code==localization.language.iso_code %} aria-current="true" {% endif %} data-value="{{ language.iso_code }}"><span class="icon">{{ logo }}</span><span class="text">{{ language.iso_code }}</span></a></li>
                   {%- endfor -%}
               </ul>
           </div>

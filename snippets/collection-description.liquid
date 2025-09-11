@@ -144,93 +144,106 @@
     @media (max-width: 767px) {#HeaderCollectionSection-{{ section.id }} [data-sub-collection-show-more] {margin-left: -15px;margin-right: -15px}#HeaderCollectionSection-{{ section.id }} .collection-sub-list .item {padding-left: 10px; padding-right: 10px}}
 </style>
 <script type="text/javascript">
-	window.addEventListener('load', () => {
-		const collectionLinksElement = document.querySelector('[data-collection-links]')
-		const collectionLinksList = [...collectionLinksElement.querySelectorAll('ul li.item')]
-		const firstLink = collectionLinksList[0]
-		const lastLink = collectionLinksList.pop()
+  window.addEventListener('load', () => {
+      const collectionLinksElement = document.querySelector('[data-collection-links]');
+      if (collectionLinksElement) {
+          const collectionLinksList = [...collectionLinksElement.querySelectorAll('ul li.item')];
+          if (collectionLinksList.length > 0) {
+              const firstLink = collectionLinksList[0];
+              const lastLink = collectionLinksList[collectionLinksList.length - 1];
 
-		collectionLinksElement.classList.add('initialized')
+              collectionLinksElement.classList.add('initialized');
 
-		const scrollToLastObserver = new IntersectionObserver((entries) => {
-			if (entries[0].isIntersecting) {
-				collectionLinksElement.classList.add('disable-last')
-			} else {
-				collectionLinksElement.classList.remove('disable-last')
-			}
-		}, {
-			threshold: 0.6
-		})
-		
-		const scrollToFirstObserver = new IntersectionObserver((entries) => {
-			if (entries[0].isIntersecting) {
-				collectionLinksElement.classList.add('disable-first')
-			} else {
-				collectionLinksElement.classList.remove('disable-first')
-			}
-		}, {
-			threshold: 0.6
-		})
-    window.read_description = { more: `{{ 'sections.collection_template.read_more' | t }}`, less: `{{ 'sections.collection_template.read_less' | t }}` };
-
-    function checkOverflow() {
-        const subCollection = document.querySelector('[data-sub-collection-show-more]');
-        const readMoreButtons = document.querySelectorAll('[data-show-more-sub-collection]');
-        const item = subCollection.querySelector('.item');
-        const mgBot = parseInt(getComputedStyle(item).getPropertyValue('margin-bottom').split('px')[0]);
-        
-        if (subCollection.clientHeight < subCollection.scrollHeight - mgBot) {
-          readSubCollectionToggle();
-          document.querySelector('.collection-info-item.sub-collection').classList.remove('no-show-more');
-        } else {
-          // readMoreButtons.forEach(button => button.remove());
-        }
-    }
-        
-    function readSubCollectionToggle() {
-      const readMoreButtons = document.querySelectorAll('[data-show-more-sub-collection]');
-
-      if (readMoreButtons.length > 0) {
-        readMoreButtons.forEach(button => {
-          button.addEventListener('click', e => {
-              event.preventDefault();
-              event.stopPropagation();
-
-              var $this = event.target,
-                  textShowMore = $this.getAttribute('data-show-more-text'),
-                  textShowLess = $this.getAttribute('data-show-less-text'),
-                  desMax = $this.closest('.button-show-more').dataset.desMax
-                  desMaxMb = $this.closest('.button-show-more').dataset.desMaxMb;
-                  
-              if($this.classList.contains('is-less')) {
-                  $this.closest('.button-show-more').classList.remove('is-less');
-                  $this.classList.remove('is-less');
-                  $this.closest('.button-show-more').classList.add('is-show');
-                  $this.classList.add('is-show');
-                  $this.innerText = textShowMore;
-                  if (window.innerWidth > 1024) {
-                    document.querySelector('[data-sub-collection-show-more]').style.setProperty('--max-height', `${desMax}`);
+              const scrollToLastObserver = new IntersectionObserver((entries) => {
+                  if (entries[0].isIntersecting) {
+                      collectionLinksElement.classList.add('disable-last');
                   } else {
-                    document.querySelector('[data-sub-collection-show-more]').style.setProperty('--max-height-mb', `${desMaxMb}`);
+                      collectionLinksElement.classList.remove('disable-last');
                   }
-              } else {
-                  $this.closest('.button-show-more').classList.remove('is-show');
-                  $this.classList.remove('is-show');
-                  $this.closest('.button-show-more').classList.add('is-less');
-                  $this.classList.add('is-less');
-                  $this.innerText = textShowLess;
-                  if (window.innerWidth > 1024) {
-                    document.querySelector('[data-sub-collection-show-more]').style.setProperty('--max-height', 'unset');
+              }, {
+                  threshold: 0.6
+              });
+
+              const scrollToFirstObserver = new IntersectionObserver((entries) => {
+                  if (entries[0].isIntersecting) {
+                      collectionLinksElement.classList.add('disable-first');
                   } else {
-                    document.querySelector('[data-sub-collection-show-more]').style.setProperty('--max-height-mb', 'unset');
+                      collectionLinksElement.classList.remove('disable-first');
+                  }
+              }, {
+                  threshold: 0.6
+              });
+
+              // Ensure the links exist before observing
+              if (firstLink) scrollToFirstObserver.observe(firstLink);
+              if (lastLink) scrollToLastObserver.observe(lastLink);
+          }
+      }
+
+      window.read_description = {
+          more: `{{ 'sections.collection_template.read_more' | t }}`,
+          less: `{{ 'sections.collection_template.read_less' | t }}`
+      };
+
+      function checkOverflow() {
+          const subCollection = document.querySelector('[data-sub-collection-show-more]');
+          if (subCollection) {
+              const readMoreButtons = document.querySelectorAll('[data-show-more-sub-collection]');
+              const item = subCollection.querySelector('.item');
+              if (item) {
+                  const mgBot = parseInt(getComputedStyle(item).getPropertyValue('margin-bottom').split('px')[0]);
+
+                  if (subCollection.clientHeight < subCollection.scrollHeight - mgBot) {
+                      readSubCollectionToggle();
+                      document.querySelector('.collection-info-item.sub-collection').classList.remove('no-show-more');
                   }
               }
-          })
-        })
+          }
       }
-    }
-    checkOverflow();
-		scrollToLastObserver.observe(lastLink)
-		scrollToFirstObserver.observe(firstLink)
-	})
+
+      function readSubCollectionToggle() {
+          const readMoreButtons = document.querySelectorAll('[data-show-more-sub-collection]');
+          if (readMoreButtons.length > 0) {
+              readMoreButtons.forEach(button => {
+                  button.addEventListener('click', event => {
+                      event.preventDefault();
+                      event.stopPropagation();
+
+                      var $this = event.target,
+                          textShowMore = $this.getAttribute('data-show-more-text'),
+                          textShowLess = $this.getAttribute('data-show-less-text'),
+                          desMax = $this.closest('.button-show-more').dataset.desMax,
+                          desMaxMb = $this.closest('.button-show-more').dataset.desMaxMb;
+
+                      if ($this.classList.contains('is-less')) {
+                          $this.closest('.button-show-more').classList.remove('is-less');
+                          $this.classList.remove('is-less');
+                          $this.closest('.button-show-more').classList.add('is-show');
+                          $this.classList.add('is-show');
+                          $this.innerText = textShowMore;
+                          if (window.innerWidth > 1024) {
+                              document.querySelector('[data-sub-collection-show-more]').style.setProperty('--max-height', `${desMax}`);
+                          } else {
+                              document.querySelector('[data-sub-collection-show-more]').style.setProperty('--max-height-mb', `${desMaxMb}`);
+                          }
+                      } else {
+                          $this.closest('.button-show-more').classList.remove('is-show');
+                          $this.classList.remove('is-show');
+                          $this.closest('.button-show-more').classList.add('is-less');
+                          $this.classList.add('is-less');
+                          $this.innerText = textShowLess;
+                          if (window.innerWidth > 1024) {
+                              document.querySelector('[data-sub-collection-show-more]').style.setProperty('--max-height', 'unset');
+                          } else {
+                              document.querySelector('[data-sub-collection-show-more]').style.setProperty('--max-height-mb', 'unset');
+                          }
+                      }
+                  });
+              });
+          }
+      }
+
+      // Initial call to check overflow
+      checkOverflow();
+  });
 </script>

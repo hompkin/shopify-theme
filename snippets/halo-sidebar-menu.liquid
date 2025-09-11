@@ -40,7 +40,7 @@
             </div>
           {%- endif -%}
           {%- if settings.show_wishlist -%}
-              <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset last-link"><span class="icon-wrapper">{% render 'icon-wishlist' %}</span><span class="title">{{ 'wishlist.general.title' | t }}</span></a>
+              <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset last-link"><span class="icon-wrapper">{% render 'icon-wishlist' %}</span><span class="title">{{ 'wishlist.general.title' | t }}</span>{% if settings.show_wishlist_number_sidebar %}(<span class="text" aria-hidden="true" data-wishlist-count></span>){% endif %}</a>
           {%- endif -%}
           <div class="wrapper-links"></div>
         </div>

@@ -365,6 +365,7 @@ body.toolbar-modal-open {
         background: var(--bg-white);
         z-index: 99;
         box-shadow: 0 0 0 1px rgb(0, 0, 0, .06), 0 1px 2px 0 rgb(0, 0, 0, .1);
+        transition: top .2s;
         animation-name: appear-down;
         animation-duration: .5s;
         animation-fill-mode: both;
@@ -432,7 +433,7 @@ body.toolbar-modal-open {
         min-width: unset;
         max-height: unset;
         max-width: unset;
-        background-color: none;
+        background-color: transparent;
         border: none;
         width: 75px;
         justify-content: flex-end;

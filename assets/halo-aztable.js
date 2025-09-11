@@ -3,6 +3,11 @@ class AZTable extends HTMLElement {
         super();
         this.azTable = document.getElementById('haloAZTable');
         this.azWrapper = document.getElementById('haloAZWrapper');
+        this.azTableMega = document.querySelectorAll('.megamenu_style_4 .azbrandsTable a');
+
+        this.azTableMega.forEach((azButtonMega) => {
+            azButtonMega.addEventListener('click', this.activeBrand.bind(this));
+        });
 
         if(!this.azTable || !this.azWrapper) return;
         if(this.azTable.querySelector('a')){
@@ -22,8 +27,8 @@ class AZTable extends HTMLElement {
         this.activeBrand();
     }
 
-    activeBrand() {
-        const hash = window.location.hash.slice(1),
+    activeBrand(event) {
+        let hash = event ? event.target.innerHTML.toLowerCase() : window.location.hash.slice(1),
             brand = document.querySelector(`[data-href="${hash}"]`);
         if (hash != undefined && hash != '' && !brand.closest('li').matches('.disable')) brand.click();
     }

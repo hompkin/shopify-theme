@@ -47,6 +47,7 @@
                     <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
                     <input type="hidden" name="quantity" value="1" />
                     <button class="button button-ATC" type="submit" data-form-id="#{{ id }}-{{ product.id }}-{{ sectionId }}" data-btn-addToCart{% if settings.product_card_layout == '08' %} title="{{ 'products.product.add_to_cart' | t }}"{% endif %}>
+                        {% if showIcon %}<span class="button-icon"></span>{% endif %}
                         {%- unless settings.product_card_layout == '06' -%}
                             {%- if settings.product_card_layout == '08' -%}
                                 {% render 'icon-cart-08' %}
@@ -59,6 +60,7 @@
                     </button>
                 {%- else -%}
                     <a class="button button-ATC" href="{{ product.url }}" data-quickshop-popup data-product-handle="{{ product.handle }}"{% if settings.product_card_layout == '08' %} title="{{ 'products.product.quick_shop' | t }}"{% endif %}>
+                        {% if showIcon %}<span class="button-icon"></span>{% endif %}
                         {%- unless settings.product_card_layout == '06' -%}
                             {%- if settings.product_card_layout == '08' -%}
                                 {% render 'icon-cart-08' %}
@@ -72,6 +74,7 @@
                   {%- endif -%}
             {%- else -%}
                 <a class="button button-ATC" href="{{ product.url }}"{% if settings.product_card_layout == '08' %} title="{{ 'products.product.select_options' | t }}"{% endif %}>
+                    {% if showIcon %}<span class="button-icon"></span>{% endif %}
                     {%- unless settings.product_card_layout == '06' -%}
                         {%- if settings.product_card_layout == '08' -%}
                             {% render 'icon-cart-08' %}
@@ -92,6 +95,7 @@
             -%}
             {%- if current_variant_grid.inventory_management -%}
                 <button type="submit" name="add" data-btn-addToCart data-available="{{ allowOutStockSale }}" class="product-form__submit button button--primary an-{{ atc_animation }}{% if first_inventory_grid == 0 %} button-text-change{% else %}{% if show_subtotal_text %} button-text-change{% endif %}{% endif %}" id="product-add-to-cart-{{ product.id }}">
+                    {% if showIcon %}<span class="button-icon"></span>{% endif %}
                     {%- if first_inventory_grid > 0 -%}
                         {%- if show_subtotal_text and subtotal_style == '2' -%}
                             {%- assign subtotal = subtotal | strip_html -%}
@@ -117,6 +121,7 @@
                 </button>
             {%- else -%}
                 <button type="submit" name="add" data-btn-addToCart class="product-form__submit button button--secondary an-{{ atc_animation }}{% if show_subtotal_text %} button-text-change{% endif %}" id="product-add-to-cart-{{ product.id }}">
+                    {% if showIcon %}<span class="button-icon"></span>{% endif %}
                     {%- if show_subtotal_text and subtotal_style == '2' -%}
                         {%- assign subtotal = subtotal | strip_html -%}
                         {{ 'products.product.sub_total' | t : value : subtotal }}

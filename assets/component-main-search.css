@@ -38,15 +38,6 @@
 } 
 
 /* styling the filter icon in search page */
-.search-container  .toolbar-item {
-    display: none;
-    position: relative;
-    z-index: 2;
-    font-size: 0;
-    letter-spacing: 0;
-	margin-bottom: 30px;
-}
-
 .search-container  .toolbar-item .toolbar-icon {
     display: inline-block;
     vertical-align: middle;
@@ -182,6 +173,14 @@
 
 .collection.resultListing.productShowMore+#main-page-article-grid {
 	margin-top: 0;
+}
+
+.template-search.product-card-layout-01 .product-item.enable_custom_position_swatch .wrapper-price-swatch {
+	display: block;
+}
+
+.template-search.product-card-layout-01 .product-item.enable_custom_position_swatch .card-price {
+	margin-bottom: 12px;
 }
 
 @media screen and (max-width: 1024px) {

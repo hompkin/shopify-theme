@@ -13,13 +13,13 @@
 
 .halo-product-bundle {
     display: block;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
 }
 
 @media (min-width: 1025px){
     .halo-product-bundle {
       display: block;
-      margin-bottom: 35px; 
+      margin-bottom: 35px;
       padding-left:74px;
       padding-right:74px;
   }
@@ -575,6 +575,10 @@
 
 .bundle-product-list .bundle-product-item:not(.isChecked) {
     opacity: 0.6;
+}
+
+.bundle-product-list .bundle-product-item:not(.isChecked) .bundle-product-toogle {
+    pointer-events: none;
 }
 
 .bundle-product-list:not(.slick-initialized){

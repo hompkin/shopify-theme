@@ -57,9 +57,11 @@ class VariantEditCartSelects extends HTMLElement {
         }
 
         this.updateAddToCartButton();
-
-        if (window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) {
-            Currency.convertAll(window.shop_currency, $('#currencies .active').attr('data-currency'), 'span.money', 'money_format');
+        
+        if($('.dropdown-item[data-currency]').length){
+            if ((window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency) {
+                Currency.convertAll(window.shop_currency, $('#currencies .active').attr('data-currency'), 'span.money', 'money_format');
+            }
         }
     }
 

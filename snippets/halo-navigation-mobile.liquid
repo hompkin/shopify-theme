@@ -34,7 +34,6 @@
                                             assign check_menu = true
                                             assign style = menuItem.settings.style
                                             assign column = menuItem.settings.column
-                                           
                                             assign show_banner = menuItem.settings.show_banner
                                             if show_banner
                                                 assign show_banner_1 = menuItem.settings.show_banner_1
@@ -175,13 +174,13 @@
                                                         {%- if show_banner -%}
                                                             <div class="menu-drawer__block menu-drawer__banner">
                                                                 {%- if show_banner_1 -%}
-                                                                    <div class="menu-drawer__banner-item">    
+                                                                    <div class="menu-drawer__banner-item">
                                                                         <div class="banner">
                                                                             <a {% if banner_url_1 == blank %} role="link" aria-disabled="true"{% else %} href="{{ banner_url_1 }}"{% endif %} class="image">
                                                                                 {%- if banner_1 != blank -%}
                                                                                     <img srcset="{{ banner_1 | img_url: 'master' }} 1x, {{ banner_1 | img_url: 'master', scale: 2 }} 2x"
                                                                                     src="{{ banner_1 | img_url: 'master' }}"
-                                                                                    loading="lazy"
+                                                                                   {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                                                                                     alt="{{ banner_1.alt | default: shop.name | escape }}">
                                                                                 {%- else -%}
                                                                                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -209,7 +208,7 @@
                                                                                 {%- if banner_2 != blank -%}
                                                                                     <img srcset="{{ banner_2 | img_url: 'master' }} 1x, {{ banner_2 | img_url: 'master', scale: 2 }} 2x"
                                                                                     src="{{ banner_2 | img_url: 'master' }}"
-                                                                                    loading="lazy"
+                                                                                   {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                                                                                     alt="{{ banner_2.alt | default: shop.name | escape }}">
                                                                                 {%- else -%}
                                                                                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -237,7 +236,7 @@
                                                                                 {%- if banner_3 != blank -%}
                                                                                     <img srcset="{{ banner_3 | img_url: 'master' }} 1x, {{ banner_3 | img_url: 'master', scale: 2 }} 2x"
                                                                                     src="{{ banner_3 | img_url: 'master' }}"
-                                                                                    loading="lazy"
+                                                                                   {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                                                                                     alt="{{ banner_3.alt | default: shop.name | escape }}">
                                                                                 {%- else -%}
                                                                                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -265,7 +264,7 @@
                                                                                 {%- if banner_4 != blank -%}
                                                                                     <img srcset="{{ banner_4 | img_url: 'master' }} 1x, {{ banner_4 | img_url: 'master', scale: 2 }} 2x"
                                                                                     src="{{ banner_4 | img_url: 'master' }}"
-                                                                                    loading="lazy"
+                                                                                   {% if settings.enable_lazyload %} loading="lazy"{% endif %}
                                                                                     alt="{{ banner_4.alt | default: shop.name | escape }}">
                                                                                 {%- else -%}
                                                                                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -379,7 +378,7 @@
                     <ul class="list list-social list-unstyled" role="list">
                         {%- if settings.social_twitter_link != blank -%}
                             <li class="list-social__item">
-                                <a {% if settings.social_twitter_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_twitter_link }}"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                                <a {% if settings.social_twitter_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_twitter_link }}" target="_blank"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
                                     {%- render 'icon-twitter' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
                                 </a>
@@ -387,7 +386,7 @@
                         {%- endif -%}
                         {%- if settings.social_facebook_link != blank -%}
                             <li class="list-social__item">
-                                <a {% if settings.social_facebook_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_facebook_link }}"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                                <a {% if settings.social_facebook_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_facebook_link }}" target="_blank"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
                                     {%- render 'icon-facebook' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
                                 </a>
@@ -395,7 +394,7 @@
                         {%- endif -%}
                         {%- if settings.social_pinterest_link != blank -%}
                             <li class="list-social__item">
-                                <a {% if settings.social_pinterest_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_pinterest_link }}"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                                <a {% if settings.social_pinterest_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_pinterest_link }}" target="_blank"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
                                     {%- render 'icon-pinterest' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
                                 </a>
@@ -403,7 +402,7 @@
                         {%- endif -%}
                         {%- if settings.social_instagram_link != blank -%}
                             <li class="list-social__item">
-                                <a {% if settings.social_instagram_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_instagram_link }}"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                                <a {% if settings.social_instagram_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_instagram_link }}" target="_blank"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
                                     {%- render 'icon-instagram' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
                                 </a>
@@ -411,7 +410,7 @@
                         {%- endif -%}
                         {%- if settings.social_tumblr_link != blank -%}
                             <li class="list-social__item">
-                                <a {% if settings.social_tumblr_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_tumblr_link }}"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                                <a {% if settings.social_tumblr_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_tumblr_link }}" target="_blank"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
                                     {%- render 'icon-tumblr' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
                                 </a>
@@ -419,7 +418,7 @@
                         {%- endif -%}
                         {%- if settings.social_snapchat_link != blank -%}
                             <li class="list-social__item">
-                                <a {% if settings.social_snapchat_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_snapchat_link }}"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                                <a {% if settings.social_snapchat_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_snapchat_link }}" target="_blank"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
                                     {%- render 'icon-snapchat' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
                                 </a>
@@ -427,7 +426,7 @@
                         {%- endif -%}
                         {%- if settings.social_youtube_link != blank -%}
                             <li class="list-social__item">
-                                <a {% if settings.social_youtube_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_youtube_link }}"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                                <a {% if settings.social_youtube_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_youtube_link }}" target="_blank"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
                                     {%- render 'icon-youtube' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
                                 </a>
@@ -435,7 +434,7 @@
                         {%- endif -%}
                         {%- if settings.social_vimeo_link != blank -%}
                             <li class="list-social__item">
-                                <a {% if settings.social_vimeo_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_vimeo_link }}"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
+                                <a {% if settings.social_vimeo_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ settings.social_vimeo_link }}" target="_blank"{% endif %} class="link link--text list-social__link" aria-describedby="a11y-external-message">
                                     {%- render 'icon-vimeo' -%}
                                     <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
                                 </a>

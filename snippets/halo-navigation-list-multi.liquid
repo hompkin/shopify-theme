@@ -84,7 +84,13 @@
                             assign banner_5 = menuItem.settings.banner_5
                             assign banner_url_5 = menuItem.settings.banner_url_5
                         endif
-                    
+
+                        assign show_banner_6 = menuItem.settings.show_banner_6
+                        if show_banner_6
+                            assign banner_6 = menuItem.settings.banner_6
+                            assign banner_url_6 = menuItem.settings.banner_url_6
+                        endif
+
                         assign show_az_brand = menuItem.settings.show_az_brand
                         if show_az_brand
                             assign az_brand_title = menuItem.settings.az_brand_title
@@ -147,6 +153,9 @@
                 show_banner_5: show_banner_5,
                 banner_5: banner_5,
                 banner_url_5: banner_url_5,
+                show_banner_6: show_banner_6,
+                banner_6: banner_6,
+                banner_url_6: banner_url_6,
                 show_az_brand: show_az_brand,
                 az_brand_title: az_brand_title,
                 az_brand_link_text: az_brand_link_text,

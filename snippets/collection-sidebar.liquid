@@ -82,6 +82,17 @@
                     {%- endif -%}
                     {%- for filter in results.filters -%}
                         {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
+                        {%- assign presentation = filter.presentation | default: default_presentation -%}
+
+                        {%-liquid
+                            if presentation == 'image'
+                                assign show_more_number = 12
+                                assign visual_layout_class = 'facets-layout facets-layout-grid facets-layout-grid--' | append: presentation
+                            else
+                                assign show_more_number = 10
+                                assign visual_layout_class = 'facets-layout facets-layout-list facets-layout-list--' | append: presentation
+                            endif
+                        -%}
                         {%- case filter.type -%}
                             {%- when 'list' -%}
                                 {%- liquid
@@ -89,7 +100,7 @@
                                     assign filterLabelAll = section.settings.filter_label_all | default: 'More filters'
                                     
                                     if filterLabel == filterLabelAll
-                                        assign filter_hidden_tag_list = section.settings.filter_hidden_tag_list | split: ','
+                                        assign filter_hidden_tag_list = section.settings.filter_hidden_tag_list | escape | append: ',' | prepend: ','
                                     endif
                                 -%}
                                 {%- if filterLabel == filterLabelAll and filter_by_tags.size > 0 -%}
@@ -101,14 +112,14 @@
                                     {%- for block in filter_by_tags -%}
                                         {%- liquid
                                             assign listTagHeading = block.settings.heading | default: filterLabel
-                                            assign listTags = block.settings.list_tags | split: ','
+                                            assign listTags = block.settings.list_tags | escape | append: ',' | prepend: ','
                                             assign listTagsRender = ''
                                             for value in filter.values
-                                                assign item = value.value
+                                                assign item = value.value | escape | append: ','
                                                 unless listTagsRender contains item
                                                     if listTags contains item
-                                                        assign listTagsRender = listTagsRender | append: item | append: ','
-                                                        assign listRemainingTags = listRemainingTags | append: item | append: ','
+                                                        assign listTagsRender = listTagsRender | append: item
+                                                        assign listRemainingTags = listRemainingTags | append: item
                                                     endif
                                                 endunless
                                             endfor
@@ -117,7 +128,7 @@
                                             {%- liquid
                                                 assign countTag = countTag | plus: 1
                                                 assign listTagsRenderSize = listTagsRender | split: ',' | size
-                                                assign listTagsRender = listTagsRender | split: ','
+                                                assign listTagsRender = listTagsRender
                                                 assign countTagActive = 0
                                                 for value in filter.active_values
                                                     if listTagsRender contains value.value
@@ -151,15 +162,17 @@
                                                                 {{ listTagHeading | escape }}
                                                             </button>
                                                         {%- endif -%}
-                                                        <ul class="facets__list custom-scrollbar list-unstyled {% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}" role="list" data-max-items="{{ maxItemToShow }}" data-name="{{ listTagHeading | escape }}">
+
+                                                        <ul data-list-tags="{{listTags}}" data-tags-render="{{listTagsRender}}" class="facets__list custom-scrollbar list-unstyled {% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}" role="list" data-max-items="{{ maxItemToShow }}" data-name="{{ listTagHeading | escape }}">
                                                             {%- liquid
                                                                 assign label = listTagHeading | downcase | handle
                                                                 assign valueIndex = 0
                                                             -%}
                                                             {%- for value in filter.values -%}
-                                                                {%- if listTagsRender contains value.value -%}
+                                                                {%- assign item = value.value | append: ',' -%}
+                                                                {%- if listTagsRender contains item -%}
                                                                     {%- assign valueIndex = valueIndex | plus: 1 -%}
-                                                                    <li class="list-menu__item facets__item {% if valueIndex > maxItemToShow and section.settings.filter_display_type == 'show-more' %}d-none{% endif %}{% if filter_swatch contains label %} facets__item--swatch{% elsif filter_rectangle contains label %} facets__item--rectangle{% endif %}">
+                                                                    <li data-value="{{value.value}}" class="list-menu__item facets__item {% if valueIndex > maxItemToShow and section.settings.filter_display_type == 'show-more' %}d-none{% endif %}{% if filter_swatch contains label %} facets__item--swatch{% elsif filter_rectangle contains label %} facets__item--rectangle{% endif %}">
                                                                         <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" id="Filter-{{ filter.label | escape | handleize }}-{{ indexTag | append: forloop.index }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}>
                                                                         {%- if filter_swatch contains label -%}
                                                                             <label for="Filter-{{ filter.label | escape | handleize }}-{{ indexTag | append: forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}" title="{{ value.label | escape }}">
@@ -208,7 +221,7 @@
                                                 {%- if sidebar_type != 'horizontal' and show_collapse != 'slide' -%}
                                                     {%- if section.settings.filter_display_type == 'show-more' -%}
                                                         {%- if listTagsRenderSize > maxItemToShow -%}
-                                                            <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
+                                                            <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}"{% if sidebar_collapse == 'expand' %} style="display: flex;"{% endif %}>
                                                                 <span class="icon-container">{% render 'icon-show-more' %}</span>
                                                                 <span class="btn-text"><span data-show-more-content>{{ 'sections.collection_template.show_all' | t }}</span></span>
                                                             </div>
@@ -223,7 +236,7 @@
                                             {%- liquid
                                                 assign listTagsRenderSize = listRemainingTags | split: ',' | size
                                                 assign listTagsRenderSize = filter.values.size | minus: listTagsRenderSize
-                                                assign listRemainingTags = listRemainingTags | split: ','
+                                                assign listRemainingTags = listRemainingTags
                                                 assign listAllTags = filter.values | map: 'value'
                                                 assign forloopIndex = countTag | plus: 1
                                                 assign countTagActive = 0
@@ -266,7 +279,8 @@
                                                                 assign valueIndex = 0
                                                             -%}
                                                             {%- for value in filter.values -%}
-                                                                {%- unless listRemainingTags contains value.value -%}
+                                                                {%- assign item = value.value | append: ',' -%}
+                                                                {%- unless listRemainingTags contains item -%}
                                                                     {%- if filter_hidden_tag_list == blank -%}
                                                                         {%- assign valueIndex = valueIndex | plus: 1 -%}
                                                                         <li class="list-menu__item facets__item {% if valueIndex > maxItemToShow and section.settings.filter_display_type == 'show-more' %}d-none{% endif %}{% if filter_swatch contains label %} facets__item--swatch{% elsif filter_rectangle contains label %} facets__item--rectangle{% endif %}">
@@ -284,7 +298,7 @@
                                                                             {%- endif -%}
                                                                         </li>
                                                                     {%- else -%}
-                                                                        {%- unless filter_hidden_tag_list contains value.value -%}
+                                                                        {%- unless filter_hidden_tag_list contains item -%}
                                                                             {%- assign valueIndex = valueIndex | plus: 1 -%}
                                                                             <li class="list-menu__item facets__item {% if valueIndex > maxItemToShow and section.settings.filter_display_type == 'show-more' %}d-none{% endif %}{% if filter_swatch contains label %} facets__item--swatch{% elsif filter_rectangle contains label %} facets__item--rectangle{% endif %}">
                                                                                 <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" id="Filter-{{ filter.label | escape | handleize }}-{{ indexTag | append: forloop.index }}-remain" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}>
@@ -335,7 +349,7 @@
                                                 {%- if sidebar_type != 'horizontal' and show_collapse != 'slide' -%}
                                                     {%- if section.settings.filter_display_type == 'show-more' -%}
                                                         {%- if listTagsRenderSize > maxItemToShow -%}
-                                                            <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
+                                                            <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}"{% if sidebar_collapse == 'expand' %} style="display: flex;"{% endif %}>
                                                                 <span class="icon-container">{% render 'icon-show-more' %}</span>
                                                                 <span class="btn-text"><span data-show-more-content>{{ 'sections.collection_template.show_all' | t }}</span></span>
                                                             </div>
@@ -420,7 +434,7 @@
                                             {%- if sidebar_type != 'horizontal' and show_collapse != 'slide' -%}
                                                 {%- if section.settings.filter_display_type == 'show-more' -%}
                                                     {%- if filter.values.size > maxItemToShow -%}
-                                                        <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
+                                                        <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}"{% if sidebar_collapse == 'expand' %} style="display: flex;"{% endif %}>
                                                             <span class="icon-container">{% render 'icon-show-more' %}</span>
                                                             <span class="btn-text"><span data-show-more-content>{{ 'sections.collection_template.show_all' | t }}</span></span>
                                                         </div>
@@ -455,22 +469,76 @@
                                                         {{ filter.label | escape }}
                                                     </button>
                                                 {%- endif -%}
-                                                <ul class="facets__list custom-scrollbar list-unstyled {% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}" role="list" data-max-items="{{ maxItemToShow }}">
+                                                <ul class="{{ visual_layout_class }} facets__list custom-scrollbar list-unstyled {% if show_collapse == 'slide' %} sidebarBlock-slide__content-list{% endif %}" role="list" data-max-items="{{ maxItemToShow }}">
                                                     {%- liquid
                                                         assign label = filter.label | downcase | handle
+                                                        assign filter_swatch_layout = section.settings.filter_swatch_layout
                                                     -%}
                                                     {%- for value in filter.values -%}
-                                                        <li class="list-menu__item facets__item {% if forloop.index > maxItemToShow and section.settings.filter_display_type == 'show-more' %}d-none{% endif %}{% if filter_swatch contains label %} facets__item--swatch{% elsif filter_rectangle contains label %} facets__item--rectangle{% endif %}">
-                                                            <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" id="Filter-{{ filter.label | escape }}-{{ forloop.index }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}>
-                                                            {%- if filter_swatch contains label -%}
-                                                                <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}" title="{{ value.label | escape }}">
-                                                                    <span class="pattern{% if value.value == 'white' or value.value == 'White' %} pattern--white{% endif %}" style="{% if filter_swatch_type == 'png' %}background-color: {{ value.value | split: ' ' | last | handle }};background-image: url({{ value.value | strip | handleize | handle | append: '.' | append: file_extension | file_url }}){% else %}background-color: {{ value.value | split: ' ' | last | handle }}{% endif %}"></span>
-                                                                    <span class="visually-hidden">{{ value.label | escape }}</span>
-                                                                </label>
-                                                            {%- elsif filter_rectangle contains label -%}
-                                                                <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}"><span class="text">{{ value.label | escape }}</span></label>
+                                                        {%- capture label_class -%}
+                                                        facets__label{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}
+                                                        {%- endcapture -%}
+
+                                                        {%- capture text_value -%}
+                                                            <span class="facet-checkbox__text" aria-hidden="true">
+                                                              <span class="facet-checkbox__text-label">{{- value.label | escape }}</span>{% if filter_swatch_layout == 'count' %} ({{- value.count -}}){% endif %}
+                                                            </span>
+                                                            <span class="visually-hidden">
+                                                              {{- value.label | escape }} (
+                                                                {%- if value.count == '1' -%}
+                                                                    {{- 'sections.collection_template.product_count_simple.one' | t: count: value.count -}}
+                                                                {%- else -%}
+                                                                    {{- 'sections.collection_template.product_count_simple.other' | t: count: value.count -}}
+                                                                {%- endif -%}
+                                                              )
+                                                            </span>
+
+                                                          {%- endcapture -%}
+
+                                                        <li class="{% if presentation == 'swatch' %}facets__item--swatch {% endif %}list-menu__item facets__item {% if forloop.index > maxItemToShow and section.settings.filter_display_type == 'show-more' %}d-none{% endif %}{% if filter_swatch contains label %} facets__item--swatch{% elsif filter_rectangle contains label %} facets__item--rectangle{% endif %}">
+                                                            {%- if presentation == 'swatch' -%}
+                                                                <div class="{{ label_class }}{% unless filter_swatch_layout == 'color' %} show-color-name{% endunless %}">
+                                                                    <div class="swatch-input-wrapper d-flex flex-jc-center">
+                                                                        {% render 'swatch-input',
+                                                                        id: input_id,
+                                                                        type: 'checkbox',
+                                                                        name: value.param_name,
+                                                                        value: value.value,
+                                                                        product_form_id: 'CollectionFiltersForm',
+                                                                        swatch: value.swatch,
+                                                                        checked: value.active,
+                                                                        disabled: is_disabled,
+                                                                        filter_swatch_layout: filter_swatch_layout
+                                                                        %}
+                                                                    </div>
+                                                                    {%- unless filter_swatch_layout == 'color' -%}
+                                                                        {{ text_value }}
+                                                                    {%- else -%}
+                                                                        <span class="visually-hidden">{{ value.label | escape }}</span>
+                                                                    {%- endunless -%}
+                                                                </div>
                                                             {%- else -%}
-                                                                <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %} form-label--checkbox">{{ value.label | escape }}<span class="count">({{ value.count }})</span></label>
+                                                                {%- if filter_swatch contains label -%}
+                                                                    <div class="{{ label_class }}{% unless filter_swatch_layout == 'color' %} show-color-name{% endunless %}">
+                                                                        <div class="swatch-input-wrapper d-flex flex-jc-center">
+                                                                            <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" id="Filter-{{ filter.label | escape }}-{{ forloop.index }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                                                                            <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="{% unless filter_swatch_layout == 'color' %}swatch-input__label{% else %}facet-checkbox{% endunless %}{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}" title="{{ value.label | escape }}">
+                                                                                <span class="{% unless filter_swatch_layout == 'color' %}swatch {% endunless %}pattern{% if value.value == 'white' or value.value == 'White' %} pattern--white{% endif %}" style="{% if filter_swatch_type == 'png' %}background-color: {{ value.value | split: ' ' | last | handle }};background-image: url({{ value.value | strip | handleize | handle | append: '.' | append: file_extension | file_url }}){% else %}background-color: {{ value.value | split: ' ' | last | handle }}{% endif %}"></span>
+                                                                            </label>
+                                                                        </div>
+                                                                        {%- unless filter_swatch_layout == 'color' -%}
+                                                                            {{ text_value }}
+                                                                        {%- else -%}
+                                                                            <span class="visually-hidden">{{ value.label | escape }}</span>
+                                                                        {%- endunless -%}
+                                                                    </div>
+                                                                {%- elsif filter_rectangle contains label -%}
+                                                                    <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" id="Filter-{{ filter.label | escape }}-{{ forloop.index }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                                                                    <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}"><span class="text">{{ value.label | escape }}</span></label>
+                                                                {%- else -%}
+                                                                    <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" id="Filter-{{ filter.label | escape }}-{{ forloop.index }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                                                                    <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %} form-label--checkbox">{{ value.label | escape }}<span class="count">({{ value.count }})</span></label>
+                                                                {%- endif -%}
                                                             {%- endif -%}
                                                         </li>
                                                     {%- endfor -%}
@@ -503,7 +571,7 @@
                                         {%- if sidebar_type != 'horizontal' and show_collapse != 'slide' -%}
                                             {%- if section.settings.filter_display_type == 'show-more' -%}
                                                 {%- if filter.values.size > maxItemToShow -%}
-                                                    <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}">
+                                                    <div class="show-more--list_tags" data-show-more-btn="{{ filter.label | downcase }}"{% if sidebar_collapse == 'expand' %} style="display: flex;"{% endif %}>
                                                         <span class="icon-container">{% render 'icon-show-more' %}</span>
                                                         <span class="btn-text"><span data-show-more-content>{{ 'sections.collection_template.show_all' | t }}</span></span>
                                                     </div>

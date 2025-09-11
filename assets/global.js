@@ -363,7 +363,7 @@ Shopify.addItem = function(variant_id, quantity, $target, callback, input = null
             } 
             
             Shopify.onError(XMLHttpRequest, textStatus, message);
-            target?.classList.remove('is-loading');
+            $target.removeClass('is-loading');
         }
     };
     $.ajax(params);
@@ -623,6 +623,12 @@ class ProductScroller extends HTMLElement {
         this.dragParent = this.querySelector('[data-drag-parent]');
 
         this.initDragToScroll();
+
+        this.container.setAttribute('style','--width: ' + this.container.clientWidth + 'px;');
+
+        window.addEventListener('resize', () => {
+            this.container.setAttribute('style','--width: ' + this.container.clientWidth + 'px;');
+        });
     }
 
     initDragToScroll() {
@@ -1009,3 +1015,143 @@ function allowTransparent() {
 document.addEventListener('DOMContentLoaded', function () {
     checkTransparentHeader();
 });
+
+const PUB_SUB_EVENTS = {
+    cartUpdate: 'cart-update',
+    quantityUpdate: 'quantity-update',
+    optionValueSelectionChange: 'option-value-selection-change',
+    variantChange: 'variant-change',
+    cartError: 'cart-error',
+};
+
+let subscribers = {};
+
+function subscribe(eventName, callback) {
+    if (subscribers[eventName] === undefined) {
+        subscribers[eventName] = [];
+    }
+
+    subscribers[eventName] = [...subscribers[eventName], callback];
+
+    return function unsubscribe() {
+        subscribers[eventName] = subscribers[eventName].filter((cb) => {
+            return cb !== callback;
+        });
+    };
+}
+
+function publish(eventName, data) {
+    if (subscribers[eventName]) {
+        subscribers[eventName].forEach((callback) => {
+            callback(data);
+        });
+    }
+}
+
+class BulkAdd extends HTMLElement {
+    constructor() {
+        super();
+        this.queue = [];
+        this.requestStarted = false;
+        this.ids = [];
+    }
+
+    startQueue(id, quantity) {
+        this.queue.push({ id, quantity });
+        const interval = setInterval(() => {
+            if (this.queue.length > 0) {
+                if (!this.requestStarted) {
+                    this.sendRequest(this.queue);
+                }
+            } else {
+                clearInterval(interval);
+            }
+        }, 250);
+    }
+
+    sendRequest(queue) {
+        this.requestStarted = true;
+        const items = {};
+        queue.forEach((queueItem) => {
+            items[parseInt(queueItem.id)] = queueItem.quantity;
+        });
+        this.queue = this.queue.filter((queueElement) => !queue.includes(queueElement));
+        const quickBulkElement = this.closest('quick-order-list') || this.closest('quick-add-bulk');
+        quickBulkElement.updateMultipleQty(items);
+    }
+
+    resetQuantityInput(id) {
+        const input = this.querySelector(`#Quantity-${id}`);
+        input.value = input.getAttribute('value');
+        this.isEnterPressed = false;
+    }
+
+    setValidity(event, index, message) {
+        event.target.setCustomValidity(message);
+        event.target.reportValidity();
+        this.resetQuantityInput(index);
+        event.target.select();
+    }
+
+    validateQuantity(event) {
+        const inputValue = parseInt(event.target.value);
+        const index = event.target.dataset.index;
+
+        if (inputValue < event.target.dataset.min) {
+            this.setValidity(event, index, window.quickOrderListStrings.min_error.replace('[min]', event.target.dataset.min));
+        } else if (inputValue > parseInt(event.target.max)) {
+            this.setValidity(event, index, window.quickOrderListStrings.max_error.replace('[max]', event.target.max));
+        } else if (inputValue % parseInt(event.target.step) != 0) {
+            this.setValidity(event, index, window.quickOrderListStrings.step_error.replace('[step]', event.target.step));
+        } else {
+            event.target.setCustomValidity('');
+            event.target.reportValidity();
+            this.startQueue(index, inputValue);
+        }
+    }
+
+    getSectionsUrl() {
+        if (window.pageNumber) {
+            return `${window.location.pathname}?page=${window.pageNumber}`;
+        } else {
+            return `${window.location.pathname}`;
+        }
+    }
+
+    getSectionInnerHTML(html, selector) {
+        return new DOMParser().parseFromString(html, 'text/html').querySelector(selector).innerHTML;
+    }
+}
+
+if (!customElements.get('bulk-add')) {
+    customElements.define('bulk-add', BulkAdd);
+}
+
+class SearchForm extends HTMLElement {
+    constructor() {
+      super();
+      this.input = this.querySelector('input[type="search"]');
+
+      if (this.input) {
+        this.input.form.addEventListener('reset', this.onFormReset.bind(this));
+        this.input.addEventListener('input', debounce((event) => {
+          this.onChange(event);
+        }, 300).bind(this))
+      }
+    }
+
+    shouldResetForm() {
+      return !document.querySelector('[aria-selected="true"] a')
+    }
+
+    onFormReset(event) {
+      // Prevent default so the form reset doesn't set the value gotten from the url on page load
+      event.preventDefault();
+      // Don't reset if the user has selected an element on the predictive search dropdown
+      if (this.shouldResetForm()) {
+        this.input.value = '';
+        this.input.focus();
+      }
+    }
+  }
+  customElements.define('search-form', SearchForm);

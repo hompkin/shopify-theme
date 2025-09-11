@@ -1,7 +1,7 @@
 (function ($) {
 	var halo = {
 	    initLargeLookbookSlider: function() {
-	        var largeLookbookSliders = $('[data-large-lookbook-slider]');
+	        var largeLookbookSliders = $('[data-large-lookbook-slider]:has(.lookbook-image-item+.lookbook-image-item)');
 	        largeLookbookSliders.each(function () {
 	            var self = $(this)
 

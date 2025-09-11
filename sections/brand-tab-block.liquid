@@ -1,12 +1,13 @@
 {% if section.blocks.size > 0 %}
 <link rel="stylesheet" href="{{ 'component-brand-tab-block.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-brand-tab-block.css' | asset_url | stylesheet_tag }}</noscript>
+
 {%- assign numer_lg = section.settings.brand_item_limit -%}
 <div class="brand-tab-block section-block-{{section.id}}{% if section.settings.layout_style == 'style_02' %} style_02{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="brands-{{section.id}}">
     <div class="brands-block">
         <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1170' %}container-1170{% elsif section.settings.container == '1770' %}container-1770{% else %}container{% endif %}">
             {% if section.settings.brand_title != blank %}
-                <div class="halo-block-header text-{{ section.settings.title_align }}{% if section.settings.view_all != blank %} viewAll--{{ section.settings.view_all_align }}{% endif %}">   
+                <div class="halo-block-header text-{{ section.settings.title_align }}{% if section.settings.view_all != blank %} viewAll--{{ section.settings.view_all_align }}{% endif %}">
                     <h3 class="title{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                         <span class="text">
                         {{ section.settings.brand_title }}
@@ -15,7 +16,7 @@
                     {% if section.settings.brand_des != blank %}
                     <div class="rte subtext-brand{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
                         {{ section.settings.brand_des }}
-                    </div>        
+                    </div>
                     {% endif %}
                     {% if section.settings.view_all != blank %}
                         <a class="view_all{% if section.settings.enable_border_view_all %} has-border{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if section.settings.link_view_all == blank %} role="link" aria-disabled="true"{% else %} href="{{ section.settings.link_view_all }}"{% endif %} title="{{section.settings.view_all}}" 
@@ -57,7 +58,7 @@
                             {% endfor %}
                         </ul>
                 {% endcase %}
-                <div class="tab-panel-content"> 
+                <div class="tab-panel-content">
                     {% for block in section.blocks %}
                         {%- liquid
                             assign link_size = block.settings.menu.links | size
@@ -87,37 +88,41 @@
                                     if forloop.index > numer_lg
                                         assign class_hidden = class_hidden | append: ' hidden-lg'
                                     endif
-
                                     assign results_count = results_count | plus: 1
                                 -%}
-                                
                                 <div class="halo-item {{ class_hidden }}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" style="{% if settings.banner_animation == 'effect_fade_up' %}--animation-order: {{ forloop.index }};{% endif %}--items-grid-gap-style: {{ block.settings.items_grid_gap | append: 'px' }}">
-                                    <div class="wrapper-item{% if block.settings.enable_title %} has-content{% endif %}" 
-                                        style="--items-spacing-tb-style: {{ block.settings.items_spacing_tb | append: 'px' }};
-                                               --items-spacing-lr-style: {{ block.settings.items_spacing_lr | append: 'px' }};
-                                               --items-bg-color-style: {{ block.settings.items_bg_color }};
-                                               --items-border-color-style: {{ block.settings.items_border_color }};
-                                               --items-border-radius-style: {{ block.settings.items_border_radius | append: 'px' }};
-                                               --image-border-radius-style: {{ block.settings.image_border_radius | append: '%' }};
-                                               --image-max-width-style: {{ block.settings.image_width | append: 'px' }};
-                                               --image-min-height-style: {{ block.settings.image_height | append: 'px' }}">
+                                    <div class="wrapper-item{% if block.settings.enable_title %} has-content{% endif %}"
+                                        style="
+                                            --items-spacing-tb-style: {{ block.settings.items_spacing_tb | append: 'px' }};
+                                            --items-spacing-lr-style: {{ block.settings.items_spacing_lr | append: 'px' }};
+                                            --items-bg-color-style: {{ block.settings.items_bg_color }};
+                                            --items-border-color-style: {{ block.settings.items_border_color }};
+                                            --items-border-radius-style: {{ block.settings.items_border_radius | append: 'px' }};
+                                            --image-border-radius-style: {{ block.settings.image_border_radius | append: '%' }};
+                                            --image-max-width-style: {{ block.settings.image_width | append: 'px' }};
+                                            --image-min-height-style: {{ block.settings.image_height | append: 'px' }}
+                                        "
+                                    >
                                             <div class="wrapper-image">
                                                 <a title="{{ link.title }}" href="{{ link.url }}" class="image-zoom">
-                                                    {% if block.settings.show_tab_image %} 
+                                                    {% if block.settings.show_tab_image %}
                                                         <img data-srcset="{{ link.title | handle | append: '.png' | file_url }}" alt="{{ link.title }}" class="lazyload" />
                                                         {% if settings.enable_lazyload %}<span class="data-lazy-loading"></span>{% endif %}
                                                     {% else %}
                                                         <h3 class="title">{{ link.title }}</h3>
                                                     {% endif %}
-                                                </a>    
-                                            </div>   
+                                                </a>
+                                            </div>
                                             {% if block.settings.enable_title %}
                                                 <div class="wrapper-content">
-                                                    <a class="btb-title" href="{{ link.url }}" title="{{ link.title }}" style="
-                                                    --fontsize-title-style: {{ block.settings.fontsize_title | append: 'px' }}; 
-                                                    --fontweight-title-style: {{ block.settings.fontweight_title }}; 
-                                                    --title-color-style: {{ block.settings.title_color }};
-                                                    --title-color-hover-style: {{ block.settings.title_color_hover }}">
+                                                    <a class="btb-title" href="{{ link.url }}" title="{{ link.title }}"
+                                                        style="
+                                                            --fontsize-title-style: {{ block.settings.fontsize_title | append: 'px' }};
+                                                            --fontweight-title-style: {{ block.settings.fontweight_title }};
+                                                            --title-color-style: {{ block.settings.title_color }};
+                                                            --title-color-hover-style: {{ block.settings.title_color_hover }}
+                                                        "
+                                                    >
                                                         <span>{{ link.title }}</span>
                                                     </a>
                                                 </div>
@@ -126,10 +131,12 @@
                                 </div>
                             {% endfor %}
                             </div>
-                            <button type="button" aria-label="{% if section.settings.brand_button_text != blank %}{{ section.settings.brand_button_text | split: '|' | first }}{% else %}{{ 'general.button_load_more.default' | t }}{% endif %}" class="btn button {{ class_btn }}{% if results_count <= numer_lg %} hidden-desktop{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" data-load-more-block data-buttonMore="{{ section.settings.brand_button_text }}" data-buttonLess="{{ section.settings.brand_button_text_less }}" data-rowlg={{numer_lg}} data-results="{{ results_count }}">
-                                {{ section.settings.brand_button_icon }}
-                                <span>{{ section.settings.brand_button_text }}</span>
-                            </button>
+                            {%- if section.settings.brand_button_text != blank or brand_button_text_less != blank or section.settings.brand_button_icon != blank -%}
+                                <button type="button" aria-label="{% if section.settings.brand_button_text != blank %}{{ section.settings.brand_button_text | split: '|' | first }}{% else %}{{ 'general.button_load_more.default' | t }}{% endif %}" class="btn button {{ class_btn }}{% if results_count <= numer_lg %} hidden-desktop{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" data-load-more-block data-buttonMore="{{ section.settings.brand_button_text }}" data-buttonLess="{{ section.settings.brand_button_text_less }}" data-rowlg={{numer_lg}} data-results="{{ results_count }}">
+                                    {{ section.settings.brand_button_icon }}
+                                    <span>{{ section.settings.brand_button_text }}</span>
+                                </button>
+                            {%- endif -%}
                         </div>
                     {% endfor %}
                 </div>
@@ -224,10 +231,6 @@
         margin-bottom: {{ mg_bottom_des | append: 'px' }};
     }
 
-    .section-block-{{section.id}} .halo-item .not_img{
-        font-size: 16px;
-    }
-
     .section-block-{{section.id}} .halo-item .text b{
         display: inherit;
         position: relative;
@@ -248,6 +251,10 @@
         font-size: {{ fontsize_tab | append: 'px' }};
         background: {{ bg_color_tab }};
         border-color: {{ color_border_tab }} !important;
+        {%- if bg_color_tab != blank and bg_color_tab != 'rgba(0,0,0,0)' -%}
+            padding-left: 10px;
+            padding-right: 10px;
+        {%- endif -%}
     }
 
     .section-block-{{section.id}} li.active [tab-title-action] {
@@ -420,11 +427,392 @@
         "id": "padding_full_width",
         "label": "t:sections.layout.container.padding_full_width",
         "min": 0,
-        "max": 50,
+        "max": 100,
         "step": 5,
         "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 0,
-        "info": "t:sections.layout.container.info_full_width"
+        "default": 0
+    },
+    {
+        "type": "checkbox",
+        "id": "display_brand_border",
+        "label": "t:settings_schema.typography.settings.typography.border_enable",
+        "default": true
+    },
+    {
+        "type" : "color",
+        "id" : "brand_bg",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_color",
+        "default" : "#f5f5f5"
+    },
+    {
+        "type" : "color_background",
+        "id" : "brand_bg_gradient",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_color_gradient"
+    },
+    {
+        "type" : "image_picker",
+        "id" : "brand_bg_image",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_image"
+    },
+    {
+        "type": "select",
+        "id": "layout_style",
+        "label": "t:settings_schema.typography.settings.typography.style_layout",
+        "default": "style_01",
+        "options": [
+        {
+            "value": "style_01",
+            "label": "t:settings_schema.typography.settings.typography.text_on_the_right"
+        },
+        {
+            "value": "style_02",
+            "label": "t:settings_schema.typography.settings.typography.text_below_image"
+        }]
+    },
+    {
+        "type": "text",
+        "id": "brand_title",
+        "label": "t:sections.image-banner.blocks.image.settings.content.label__1"
+    },
+    {
+        "type" : "color",
+        "id" : "color_title",
+        "label": "t:settings_schema.typography.settings.typography.title_color",
+        "default" : "#232323"
+    },
+    {
+        "type": "range",
+        "id": "fontsize_title",
+        "label": "t:settings_schema.typography.settings.typography.title_font_size",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+        "default": 16
+    },
+    {
+        "type": "range",
+        "id": "fontsize_title_mb",
+        "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+        "default": 16
+    },
+    {
+        "type": "range",
+        "id": "mg_bottom_title",
+        "label": "t:settings_schema.typography.settings.typography.title_margin_bottom",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 12
+    },
+    {
+        "type" : "liquid",
+        "id" : "brand_des",
+        "label" : "t:sections.image-banner.blocks.image.settings.content.label__2"
+    },
+    {
+        "type" : "color",
+        "id" : "color_des",
+        "label": "t:settings_schema.typography.settings.typography.des_color",
+        "default" : "#3c3c3c"
+    },
+    {
+        "type": "range",
+        "id": "fontsize_des",
+        "label": "t:settings_schema.typography.settings.typography.des_font_size",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+        "default": 16
+    },
+    {
+        "type": "range",
+        "id": "mg_bottom_des",
+        "label": "t:settings_schema.typography.settings.typography.des_margin_bottom",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 0
+    },
+    {
+        "type": "select",
+        "id": "title_align",
+        "label": "t:sections.general.settings.alignment.label__1",
+        "options": [
+        {
+            "value": "left",
+            "label": "t:settings_schema.typography.settings.type_button_font.left"
+        },
+        {
+            "value": "center",
+            "label": "t:settings_schema.typography.settings.type_button_font.center"
+        },
+        {
+            "value": "right",
+            "label": "t:settings_schema.typography.settings.type_button_font.right"
+        }],
+        "default": "center"
+    },
+    {
+        "type": "text",
+        "id": "view_all",
+        "label": "t:settings_schema.typography.settings.typography.view_all"
+    },
+    {
+        "type": "select",
+        "id": "view_all_align",
+        "label": "t:settings_schema.typography.settings.typography.view_all_align",
+        "default": "center",
+        "options": [
+            {
+                "value": "left",
+                "label": "t:settings_schema.typography.settings.type_button_font.left"
+            },
+            {
+                "value": "center",
+                "label": "t:settings_schema.typography.settings.type_button_font.center"
+            },
+            {
+                "value": "right",
+                "label": "t:settings_schema.typography.settings.type_button_font.right"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "font_weight_view_all",
+        "label": "t:settings_schema.typography.settings.typography.view_all_font_weight",
+        "default": "400",
+        "options": [
+        {
+            "value": "400",
+            "label": "t:settings_schema.typography.settings.font_weight.options__1"
+        },
+        {
+            "value": "500",
+            "label": "t:settings_schema.typography.settings.font_weight.options__2"
+        },
+        {
+            "value": "600",
+            "label": "t:settings_schema.typography.settings.font_weight.options__3"
+        },
+        {
+            "value": "700",
+            "label": "t:settings_schema.typography.settings.font_weight.options__4"
+        },
+        {
+            "value": "800",
+            "label": "t:settings_schema.typography.settings.font_weight.options__5"
+        },
+        {
+            "value": "900",
+            "label": "t:settings_schema.typography.settings.font_weight.options__6"
+        }]
+    },
+    {
+        "type": "range",
+        "id": "mg_bottom_view",
+        "label": "t:sections.layout.mg_bottom_view.label",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 30
+    },
+    {
+        "type" : "checkbox",
+        "id" : "enable_border_view_all",
+        "label": "t:settings_schema.typography.settings.typography.view_all_enable_border",
+        "default" : true
+    },
+    {
+        "type": "url",
+        "id": "link_view_all",
+        "label": "t:settings_schema.typography.settings.typography.view_all_link"
+    },
+    {
+        "type" : "color",
+        "id" : "color_view_all",
+        "label": "t:settings_schema.typography.settings.typography.view_all_color",
+        "default" : "#3c3c3c"
+    },
+    {
+        "type": "liquid",
+        "id": "icon_view_all",
+        "label": "t:settings_schema.typography.settings.typography.view_all_icon",
+        "info" : "Go to this link [find your icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
+    },
+    {
+        "type" : "color",
+        "id" : "color_view_all_icon",
+        "label": "t:settings_schema.typography.settings.typography.view_all_icon_color",
+        "default" : "#eb492f"
+    },
+    {
+        "type": "range",
+        "id": "brand_item_limit",
+        "label": "t:sections.brand_tab.settings.layout_block.maximum_brands_to_show",
+        "min": 4,
+        "max": 24,
+        "step": 1,
+        "default": 18
+    },
+    {
+        "type": "select",
+        "id": "brand_rows",
+        "label": "t:sections.instagram.settings.images_per_row.option",
+        "options": [
+            {
+                "value": "4",
+                "label": "t:sections.brand.settings.brand_rows.option4"
+            },
+            {
+                "value": "5",
+                "label": "t:sections.brand.settings.brand_rows.option5"
+            },
+            {
+                "value": "6",
+                "label": "t:sections.brand.settings.brand_rows.option6"
+            }
+        ],
+        "default": "5"
+    },
+    {
+        "type": "header",
+        "content": "t:sections.brand_tab.settings.layout_block.header"
+    },
+    {
+        "type": "paragraph",
+        "content": "t:sections.product_block.settings.general.label__6"
+    },
+    {
+        "type": "select",
+        "id": "title_tab_style",
+        "label": "t:settings_schema.typography.settings.typography.select_style",
+        "default": "style_01",
+        "options": [
+        {
+            "value": "style_01",
+            "label": "t:settings_schema.typography.settings.typography.title_with_border_below"
+        },
+        {
+            "value": "style_02",
+            "label": "t:settings_schema.typography.settings.typography.title_with_border_around"
+        }]
+    },
+    {
+        "type": "range",
+        "id": "fontsize_tab",
+        "label": "t:settings_schema.typography.settings.font_size.label",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+        "default": 16
+    },
+    {
+        "type": "range",
+        "id": "fontsize_tab_mb",
+        "label": "t:settings_schema.typography.settings.font_size.label_mb",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+        "default": 16
+    },
+    {
+        "type": "range",
+        "id": "mg_bottom_title_tab",
+        "label": "t:settings_schema.product_card.settings.product_title.label__8",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "t:sections.layout.mg_desktop.unit",
+        "default": 15
+    },
+    {
+        "type" : "color",
+        "id" : "color_tab",
+        "label" : "t:settings_schema.typography.settings.typography.text_color",
+        "default" : "#202020"
+    },
+    {
+        "type" : "color",
+        "id" : "color_border_tab",
+        "label" : "t:settings_schema.colors.settings.colors_name.border_color"
+    },
+    {
+        "type" : "color",
+        "id" : "bg_color_tab",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_color_2"
+    },
+    {
+        "type" : "color",
+        "id" : "color_active",
+        "label" : "t:settings_schema.typography.settings.typography.text_color_hover"
+    }, 
+    {
+        "type" : "color",
+        "id" : "border_active",
+        "label" : "t:settings_schema.colors.settings.colors_name.border_hover",
+        "default" : "#ea4226"
+    },
+    {
+        "type" : "color",
+        "id" : "bg_color_active",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_hover"
+    },
+    {
+        "type": "paragraph",
+        "content": "t:settings_schema.typography.settings.typography.button"
+    },
+    {
+        "type": "text",
+        "id": "brand_button_text",
+        "label": "t:settings_schema.typography.settings.typography.button_more",
+        "default": "Show More"
+    },
+    {
+        "type": "text",
+        "id": "brand_button_text_less",
+        "label": "t:settings_schema.typography.settings.typography.button_less",
+        "default": "Show Less"
+    },
+    {
+        "type": "liquid",
+        "id": "brand_button_icon",
+        "label": "t:settings_schema.typography.settings.typography.button_icon",
+        "info" : "Go to this link [find your icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
+    },
+    {
+        "type" : "color",
+        "id" : "button_color",
+        "label" : "t:sections.header.settings.header_top.label__4",
+        "default" : "#ffffff"
+    }, 
+    {
+        "type" : "color",
+        "id" : "button_border_color",
+        "label" : "t:settings_schema.colors.settings.colors_name.border_color",
+        "default" : "#4dac8b"
+    },
+    {
+        "type" : "color",
+        "id" : "button_bg_color",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_color_2",
+        "default" : "#4dac8b"
+    },
+    {
+        "type" : "color_background",
+        "id" : "button_bg_gradient",
+        "label" : "t:settings_schema.colors.settings.colors_name.background_color_gradient"
     },
     {
         "type": "header",
@@ -493,380 +881,6 @@
         "step": 5,
         "unit": "t:sections.layout.mg_desktop.unit",
         "default": 50
-    },
-    {
-        "type": "checkbox",
-        "id": "display_brand_border",
-        "label": "t:settings_schema.typography.settings.typography.border_enable",
-        "default": true
-    },
-    {
-        "type" : "color",
-        "id" : "brand_bg",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_color",
-        "default" : "#f5f5f5"
-    },
-    {
-        "type" : "color_background",
-        "id" : "brand_bg_gradient",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_color_gradient"
-    },
-    {
-        "type" : "image_picker",
-        "id" : "brand_bg_image",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_image"
-    },
-    {
-        "type": "select",
-        "id": "layout_style",
-        "label": "t:settings_schema.typography.settings.typography.layout_style",
-        "default": "style_01",
-        "options": [
-        {
-            "value": "style_01",
-            "label": "t:settings_schema.typography.settings.typography.style_1"
-        },
-        {
-            "value": "style_02",
-            "label": "t:settings_schema.typography.settings.typography.style_2"
-        }]
-    },
-    {
-        "type": "text",
-        "id": "brand_title",
-        "label": "t:sections.image-banner.blocks.image.settings.content.label__1"
-    },
-    {
-        "type" : "color",
-        "id" : "color_title",
-        "label": "t:sections.layout.color.color_title",
-        "default" : "#232323"
-    },
-    {
-        "type": "range",
-        "id": "fontsize_title",
-        "label": "t:sections.layout.fontsize.fontsize_title.label",
-        "min": 10,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 16
-    },
-    {
-        "type": "range",
-        "id": "fontsize_title_mb",
-        "label": "t:sections.layout.fontsize.fontsize_title.label_mb",
-        "min": 10,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 16
-    },
-    {
-        "type": "range",
-        "id": "mg_bottom_title",
-        "label": "t:sections.layout.mg_bottom_title.label",
-        "min": 0,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 12
-    },
-    {
-        "type" : "textarea",
-        "id" : "brand_des",
-        "label" : "t:sections.image-banner.blocks.image.settings.content.label__2"
-    },
-    {
-        "type" : "color",
-        "id" : "color_des",
-        "label": "t:sections.layout.color.color_des",
-        "default" : "#3c3c3c"
-    },
-    {
-        "type": "range",
-        "id": "fontsize_des",
-        "label": "t:sections.layout.fontsize.fontsize_des.label",
-        "min": 10,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 16
-    },
-    {
-        "type": "range",
-        "id": "mg_bottom_des",
-        "label": "t:sections.featured_blog.settings.settings_item.margin_bottom_des",
-        "min": 0,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 0
-    },
-    {
-        "type": "select",
-        "id": "title_align",
-        "label": "t:sections.product_block.settings.general.label__7",
-        "options": [
-        {
-            "value": "left",
-            "label": "t:sections.product_block.settings.general.options__7"
-        },
-        {
-            "value": "center",
-            "label": "t:sections.product_block.settings.general.options__8"
-        },
-        {
-            "value": "right",
-            "label": "t:sections.product_block.settings.general.options__9"
-        }],
-        "default": "center"
-    },
-    {
-        "type": "text",
-        "id": "view_all",
-        "label": "t:settings_schema.typography.settings.typography.view_all"
-    },
-    {
-        "type": "select",
-        "id": "view_all_align",
-        "label": "t:settings_schema.typography.settings.typography.view_all_align",
-        "default": "center",
-        "options": [
-            {
-                "value": "left",
-                "label": "t:settings_schema.typography.settings.typography.left"
-            },
-            {
-                "value": "center",
-                "label": "t:settings_schema.typography.settings.typography.center"
-            },
-            {
-                "value": "right",
-                "label": "t:settings_schema.typography.settings.typography.right"
-            }
-        ]
-    },
-    {
-        "type": "select",
-        "id": "font_weight_view_all",
-        "label": "t:settings_schema.typography.settings.typography.view_all_font_weight",
-        "default": "400",
-        "options": [
-        {
-            "value": "400",
-            "label": "t:settings_schema.typography.settings.font_weight.options__1"
-        },
-        {
-            "value": "500",
-            "label": "t:settings_schema.typography.settings.font_weight.options__2"
-        },
-        {
-            "value": "600",
-            "label": "t:settings_schema.typography.settings.font_weight.options__3"
-        },
-        {
-            "value": "700",
-            "label": "t:settings_schema.typography.settings.font_weight.options__4"
-        },
-        {
-            "value": "800",
-            "label": "t:settings_schema.typography.settings.font_weight.options__5"
-        },
-        {
-            "value": "900",
-            "label": "t:settings_schema.typography.settings.font_weight.options__6"
-        }]
-    },
-    {
-        "type": "range",
-        "id": "mg_bottom_view",
-        "label": "t:sections.layout.mg_bottom_view.label",
-        "min": 0,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 30
-    },
-    {
-        "type" : "checkbox",
-        "id" : "enable_border_view_all",
-        "label": "t:settings_schema.typography.settings.typography.view_all_enable_border",
-        "default" : true
-    },
-    {
-        "type": "url",
-        "id": "link_view_all",
-        "label": "t:settings_schema.typography.settings.typography.view_all_link"
-    },
-    {
-        "type" : "color",
-        "id" : "color_view_all",
-        "label": "t:settings_schema.typography.settings.typography.view_all_color",
-        "default" : "#3c3c3c"
-    },
-    {
-        "type": "textarea",
-        "id": "icon_view_all",
-        "label": "t:settings_schema.typography.settings.typography.view_all_icon",
-        "info" : "Go to this link [Find your Icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
-    },
-    {
-        "type" : "color",
-        "id" : "color_view_all_icon",
-        "label": "t:settings_schema.typography.settings.typography.view_all_icon_color",
-        "default" : "#eb492f"
-    },
-    {
-        "type": "range",
-        "id": "brand_item_limit",
-        "label": "t:sections.brand_tab.settings.layout_block.maximum_brands_to_show",
-        "min": 4,
-        "max": 24,
-        "step": 1,
-        "default": 18
-    },
-    {
-        "type": "select",
-        "id": "brand_rows",
-        "label": "t:sections.brand.settings.brand_rows.option",
-        "options": [
-            {
-                "value": "4",
-                "label": "t:sections.brand.settings.brand_rows.option4"
-            },
-            {
-                "value": "5",
-                "label": "t:sections.brand.settings.brand_rows.option5"
-            },
-            {
-                "value": "6",
-                "label": "t:sections.brand.settings.brand_rows.option6"
-            }
-        ],
-        "default": "5"
-    },
-    {
-        "type": "header",
-        "content": "t:sections.brand_tab.settings.layout_block.header"
-    },
-    {
-        "type": "select",
-        "id": "title_tab_style",
-        "label": "t:settings_schema.typography.settings.typography.title_style",
-        "default": "style_01",
-        "options": [
-        {
-            "value": "style_01",
-            "label": "t:settings_schema.typography.settings.typography.style_1"
-        },
-        {
-            "value": "style_02",
-            "label": "t:settings_schema.typography.settings.typography.style_2"
-        }]
-    },
-    {
-        "type": "range",
-        "id": "fontsize_tab",
-        "label": "t:settings_schema.typography.settings.typography.title_font_size",
-        "min": 10,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 16
-    },
-    {
-        "type": "range",
-        "id": "fontsize_tab_mb",
-        "label": "t:settings_schema.typography.settings.typography.title_font_size_mb",
-        "min": 10,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-        "default": 16
-    },
-    {
-        "type": "range",
-        "id": "mg_bottom_title_tab",
-        "label": "t:sections.layout.mg_bottom_title.label",
-        "min": 0,
-        "max": 50,
-        "step": 1,
-        "unit": "t:sections.layout.mg_desktop.unit",
-        "default": 15
-    },
-    {
-        "type" : "color",
-        "id" : "color_tab",
-        "label" : "t:settings_schema.colors.settings.colors_name.color",
-        "default" : "#202020"
-    },
-    {
-        "type" : "color",
-        "id" : "color_border_tab",
-        "label" : "t:settings_schema.colors.settings.colors_name.border_color"
-    },
-    {
-        "type" : "color",
-        "id" : "bg_color_tab",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_color"
-    },
-    {
-        "type" : "color",
-        "id" : "color_active",
-        "label" : "t:settings_schema.colors.settings.colors_name.color_hover"
-    }, 
-    {
-        "type" : "color",
-        "id" : "border_active",
-        "label" : "t:settings_schema.colors.settings.colors_name.border_hover",
-        "default" : "#ea4226"
-    },
-    {
-        "type" : "color",
-        "id" : "bg_color_active",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_hover"
-    },
-    {
-        "type": "text",
-        "id": "brand_button_text",
-        "label": "t:settings_schema.typography.settings.typography.button_more",
-        "default": "Show More"
-    },
-    {
-        "type": "text",
-        "id": "brand_button_text_less",
-        "label": "t:settings_schema.typography.settings.typography.button_less",
-        "default": "Show Less"
-    },
-    {
-        "type": "textarea",
-        "id": "brand_button_icon",
-        "label": "t:settings_schema.typography.settings.typography.button_icon",
-        "info" : "Go to this link [Find your Icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
-    },
-    {
-        "type" : "color",
-        "id" : "button_color",
-        "label" : "t:settings_schema.colors.settings.colors_name.color",
-        "default" : "#ffffff"
-    }, 
-    {
-        "type" : "color",
-        "id" : "button_border_color",
-        "label" : "t:settings_schema.colors.settings.colors_name.border_color",
-        "default" : "#4dac8b"
-    },
-    {
-        "type" : "color",
-        "id" : "button_bg_color",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_color",
-        "default" : "#4dac8b"
-    },
-    {
-        "type" : "color_background",
-        "id" : "button_bg_gradient",
-        "label" : "t:settings_schema.colors.settings.colors_name.background_color_gradient"
     }
     ],
     "blocks": [
@@ -877,16 +891,17 @@
             {
                 "type": "text",
                 "id": "title",
-                "label": "t:sections.brand_tab.blocks.tab.title"
+                "label": "t:sections.product_block.settings.general.label__6"
             },
             {
                 "type": "link_list",
                 "id": "menu",
-                "label": "t:sections.brand_tab.blocks.tab.menu"
+                "label": "t:sections.mobile_menu.settings.general.label__11",
+                "info": "t:sections.brand_tab.blocks.tab.info"
             },
             {
                 "type": "header",
-                "content": "t:settings_schema.typography.settings.typography.item"
+                "content": "t:sections.mobile_menu.blocks.menu-1.name"
             },
             {
                 "type": "range",
@@ -913,7 +928,7 @@
                 "id": "items_spacing_lr",
                 "label": "t:settings_schema.typography.settings.typography.item_padding_left_right",
                 "min": 0,
-                "max": 100,
+                "max": 50,
                 "step": 1,
                 "unit": "t:sections.layout.fontsize.fontsize_title.unit",
                 "default": 10
@@ -961,7 +976,7 @@
             {
                 "type" : "color",
                 "id" : "items_bg_color",
-                "label" : "t:settings_schema.colors.settings.colors_name.background_color"
+                "label" : "t:settings_schema.colors.settings.colors_name.background_color_2"
             },
             {
                 "type" : "color",
@@ -1038,7 +1053,53 @@
     ],
     "presets": [
         {
-            "name": "t:sections.brand_tab.presets.name"
+            "name": "t:sections.brand_tab.presets.name",
+            "blocks": [
+            {
+                "type": "tab",
+                "settings": {
+                    "title": "Shop by Popular Car Brands",
+                    "menu": "main-menu",
+                    "items_grid_gap": 7.5,
+                    "items_spacing_tb": 30,
+                    "items_spacing_lr": 10,
+                    "items_border_radius": 5,
+                    "image_width": 145,
+                    "image_height": 15,
+                    "image_border_radius": 0,
+                    "items_bg_color": "",
+                    "items_border_color": "#d0d0d0",
+                    "enable_title": false,
+                    "fontsize_title": 18,
+                    "fontweight_title": "500",
+                    "title_color": "#202020",
+                    "title_color_hover": "#202020",
+                    "show_tab_image": false
+                }
+            },
+            {
+                "type": "tab",
+                "settings": {
+                    "title": "Shop by Popular Car Models",
+                    "menu": "main-menu",
+                    "items_grid_gap": 7.5,
+                    "items_spacing_tb": 30,
+                    "items_spacing_lr": 10,
+                    "items_border_radius": 5,
+                    "image_width": 145,
+                    "image_height": 15,
+                    "image_border_radius": 0,
+                    "items_bg_color": "",
+                    "items_border_color": "#d0d0d0",
+                    "enable_title": false,
+                    "fontsize_title": 18,
+                    "fontweight_title": "500",
+                    "title_color": "#202020",
+                    "title_color_hover": "#202020",
+                    "show_tab_image": false
+                }
+            }
+            ]
         }
     ]
 }

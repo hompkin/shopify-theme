@@ -37,6 +37,19 @@
         endif
     endfor
 
+    if settings.show_vendor
+        assign vendor_img_png = product_card_product.vendor | downcase | replace: ' ', '-' | append: '.png' | prepend : 'vendor-'
+        assign vendor_img_jpg = product_card_product.vendor | downcase | replace: ' ', '-' | append: '.jpg' | prepend : 'vendor-'
+        assign vendor_img_webp = product_card_product.vendor | downcase | replace: ' ', '-' | append: '.webp' | prepend : 'vendor-'
+        if images[vendor_img_webp] != blank
+            assign vendor_img = vendor_img_webp
+        elsif images[vendor_img_png] != blank
+            assign vendor_img = vendor_img_png
+        elsif images[vendor_img_jpg] != blank
+            assign vendor_img = vendor_img_jpg
+        endif
+    endif
+
     assign media_size = settings.product_block_image_ratio
     if media_size == 'portrait'
         assign portrait_aspect_ratio = settings.portrait_height
@@ -75,8 +88,6 @@
     assign has_video = product_card_product.media | where: 'media_type','video'
 
     assign show_price = settings.show_price
-
-    assign custom_fields = product_card_product.metafields.custom.product_variant_custom
 -%}
 <div class="product-item" data-product-id="{{ product_card_product.id }}" data-json-product='{"id": {{product_card_product.id}},"handle": "{{product_card_product.handle}}","media": {{product.media | json | escape}},"variants": {{ product_card_product.variants | json | escape }}}'>
     <div class="card{% if product_card_product.media[0].media_type == 'video' %} has-first-video{% endif %}">
@@ -125,18 +136,6 @@
                                 </button>
                             </div>
                         {%- endif -%}
-                        {% if settings.show_wishlist_card_mb %}
-                          <div class="card-product__group-item card-wishlist{% if settings.show_wishlist_card_mb %} show-mb{% endif %}">
-                            <button type="button" title="{{ 'wishlist.general.add' | t }}" class="wishlist-icon" data-wishlist data-wishlist-handle="{{ product_card_product.handle }}" data-product-id="{{ product_card_product.id }}">
-                                <span class="visually-hidden">{{ 'wishlist.general.add' | t }}</span>
-                                <span class="text">
-                                    {{ 'wishlist.general.add' | t }}
-                                </span>
-                                {% render 'icon-heart-2' %}
-                                {% if settings.show_wishlist_full_icon %}{% render 'icon-heart-add' %}{% endif %}
-                            </button>
-                          </div>
-                        {% endif %}
                         {%- if show_compare -%}
                             {% render 'product-compare'.
                                 product: product_card_product,
@@ -150,17 +149,10 @@
                 <div class="card-group-abs-center">
                     {%- if show_wishlist -%}
                         <div class="card-product__group-item card-wishlist">
-                            <button type="button" title="{{ 'wishlist.general.add' | t }}" class="wishlist-icon" data-wishlist data-wishlist-handle="{{ product_card_product.handle }}" data-product-id="{{ product_card_product.id }}">
-                                <span class="visually-hidden">{{ 'wishlist.general.add' | t }}</span>
-                                <span class="text">
-                                    {{ 'wishlist.general.add' | t }}
-                                </span>
-                                {% render 'icon-heart-2' %}
-                                {% if settings.show_wishlist_full_icon %}{% render 'icon-heart-add' %}{% endif %}
-                            </button>
+                            <button type="button" title="{{ 'wishlist.general.add' | t }}" class="wishlist-icon" data-wishlist data-wishlist-handle="{{ product_card_product.handle }}" data-product-id="{{ product_card_product.id }}"><span class="text">{{ 'wishlist.general.add' | t }}</span> {% render 'icon-heart-2' %}{% if settings.show_wishlist_full_icon %}{% render 'icon-heart-add' %}{% endif %}</button>
                         </div>
                     {%- endif -%}
-                    {%- if settings.show_action -%}
+                    {%- if settings.show_action and complementary_product_button_atc -%}
                         <div class="card-action">
                             {% render 'add-to-cart-form',
                                 product: product_card_product,
@@ -198,7 +190,13 @@
                     <div class="card-information__group card-information__group-2">
                         <div class="card-vendor">
                             <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-                            {{ product_card_product.vendor | link_to_vendor: class: 'vendor-text' }}
+                            {%- if vendor_img != blank -%}
+                                <a class="vendor-image" href="/collections/vendors?q={{ product_card_product.vendor }}" title="{{ product_card_product.vendor }}">
+                                    <img src="{{ vendor_img | file_url }}" alt="{{ product_card_product.vendor }}">
+                                </a>
+                            {%- else -%}
+                                {{ product_card_product.vendor | link_to_vendor: class: 'vendor-text' }}
+                            {%- endif -%}
                         </div>
                     </div>
                 {%- endif -%}
@@ -244,22 +242,18 @@
                 {%- endif -%}
             </div>
 
-            {%- if settings.enable_combined_products_listing and custom_fields != blank -%}
-                {% render 'combined-products-listing', product: product %}
-            {%- else -%}
-                {%- if isColor -%}
-                    {%- unless settings.show_swatch -%}
-                    <div class="hidden">
-                    {%- endunless -%}
-                        {% render 'product-swatch',
-                            product: product_card_product,
-                            index: index,
-                            variant_selected: variant_selected
-                        %}
-                    {%- unless settings.show_swatch -%}
-                    </div>
-                    {%- endunless -%}
-                {%- endif -%}
+            {%- if isColor -%}
+                {%- unless settings.show_swatch -%}
+                <div class="hidden">
+                {%- endunless -%}
+                    {% render 'product-swatch',
+                        product: product_card_product,
+                        index: index,
+                        variant_selected: variant_selected
+                    %}
+                {%- unless settings.show_swatch -%}
+                </div>
+                {%- endunless -%}
             {%- endif -%}
 
             {% if settings.display_text_size %}
@@ -269,7 +263,7 @@
                 {% endif %}
             {% endif %}
 
-            {%- if settings.show_action -%}
+            {%- if settings.show_action and complementary_product_button_atc -%}
                 {% render 'add-to-cart-form-category-list',
                     product: product_card_product,
                     id: 'form',

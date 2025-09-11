@@ -6,12 +6,21 @@ class DeferredMedia extends HTMLElement {
 
     loadContent() {
         if (!this.getAttribute('loaded')) {
+            const templateContent = this.querySelector('template').content.cloneNode(true);
             const content = document.createElement('div');
-            content.appendChild(this.querySelector('template').content.firstElementChild.cloneNode(true));
+            content.appendChild(templateContent);
 
             this.setAttribute('loaded', true);
             window.pauseAllMedia();
-            return this.appendChild(content.querySelector('video, model-viewer, iframe'));
+            
+            const elements = content.querySelectorAll('video, model-viewer, iframe');
+            elements.forEach(element => {
+                if (window.innerWidth < 551){
+                    element.classList.contains('slide-mb') && this.appendChild(element);
+                } else{
+                    element.classList.contains('slide-pc') && this.appendChild(element);
+                }
+            });
         }
     }
 }

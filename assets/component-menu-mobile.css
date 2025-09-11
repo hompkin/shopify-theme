@@ -985,7 +985,8 @@ body.menu-open .halo-sidebar.halo-sidebar-menu {
     transition: unset;
 }
 
-.section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .header-mobile__item .icon {
+.section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .header-mobile__item .icon,
+.section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .header-mobile__item svg.icon path {
     fill: var(--color-transparent);
 }
 
@@ -1064,11 +1065,13 @@ body.menu-open .halo-sidebar.halo-sidebar-menu {
     }
 
     .has-menu-vertical .site-nav-mobile.nav .menu-heading-mobile .title {
+      font-size: var(--font-body-size);
       opacity: 0.5;
       transition: 0.4s opacity ease-out;
     }
     
     .has-menu-vertical .site-nav-mobile.nav .menu-heading-mobile .title.is-active {
+      font-size: calc(var(--font-body-size) + 2px);
       opacity: 1;
     }
 

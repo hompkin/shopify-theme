@@ -383,6 +383,19 @@
     margin-top: 15px;
 }
 
+.cart-actions .dynamic-checkout__content {
+    margin: 10px 0;
+}
+
+.cart-actions .dynamic-checkout__content shopify-accelerated-checkout {
+  --shopify-accelerated-checkout-button-border-radius: 0px;
+
+}
+
+.cart-actions .dynamic-checkout__content shopify-accelerated-checkout-cart {
+  --shopify-accelerated-checkout-button-border-radius: 0px;
+}
+
 /* START: Cart Style Dropdown */
 .cart-total.cart-total-coupon accordion-block .cart-coupon-code {
     padding-bottom: 0;
@@ -451,6 +464,19 @@
 @media (max-width: 767px) {
     .cart--totals-title:after {
         height: 1px;
+    }
+}
+
+@media (max-width: 551px) {
+    .cart-actions .dynamic-checkout__content shopify-accelerated-checkout {
+        --shopify-accelerated-checkout-button-block-size: 42px;
+        --shopify-accelerated-checkout-button-inline-size: 42px;
+
+    }
+
+    .cart-actions .dynamic-checkout__content shopify-accelerated-checkout-cart {
+        --shopify-accelerated-checkout-button-block-size: 42px;
+        --shopify-accelerated-checkout-button-inline-size: 42px;
     }
 }
 

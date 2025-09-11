@@ -22,6 +22,8 @@
                                                 </div>
                                             </div>
                                         {% endif %}
+                                    {% elsif settings.enable_currencies %}
+                                    {{ "jquery.currencies.min.js" | asset_url | script_tag }}
                                     {%- endif -%}
                                     <div class="custom-text-01" style="--color: {{ block.settings.customer_text_01_color }}">{{ block.settings.customer_text_01 }}</div>
                                 </div>
@@ -122,7 +124,7 @@
     "settings": [
         {
             "type": "paragraph",
-            "content": "*You should only activate \/ use \"Header\" you want, don't use the redundant headers which may not optimize for performance."
+            "content": "*You should only activate\/use \"Header\" you want, don't use the redundant headers which may not optimize for performance."
         },
         {
             "type": "select",
@@ -161,11 +163,10 @@
             "id": "padding_full_width",
             "label": "t:sections.layout.container.padding_full_width",
             "min": 0,
-            "max": 75,
+            "max": 100,
             "step": 5,
             "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-            "default": 0,
-            "info": "t:sections.layout.container.info_full_width"
+            "default": 0
         }
     ],
     "blocks": [
@@ -193,7 +194,7 @@
                 {
                     "type": "color",
                     "id": "bg_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#293355"
                 },
                 {
@@ -219,7 +220,7 @@
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.header.settings.header_top.customer_content_text_01"
+                    "content": "t:sections.header.settings.header_top.first_content"
                 },
                 {
                     "type": "richtext",
@@ -230,12 +231,12 @@
                 {
                     "type": "color",
                     "id": "customer_text_01_color",
-                    "label": "t:sections.header.settings.header_top.label__4",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
                     "default": "#fff"
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.header.settings.header_top.customer_content_text_02"
+                    "content": "t:sections.header.settings.header_top.second_content"
                 },
                 {
                     "type": "richtext",
@@ -246,18 +247,18 @@
                 {
                     "type": "color",
                     "id": "customer_text_02_color_1",
-                    "label": "t:sections.header.settings.header_top.label__2",
+                    "label": "t:sections.header.settings.header_top.first_text_color",
                     "default": "#fff"
                 },
                 {
                     "type": "color",
                     "id": "customer_text_02_color_2",
-                    "label": "t:sections.header.settings.header_top.label__3",
+                    "label": "t:sections.header.settings.header_top.second_text_color",
                     "default": "#cad3f1"
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.main-product.settings.general.spacing"
+                    "content": "t:sections.main-product.settings.general.block_spacing"
                 },
                 {
                     "type": "range",
@@ -266,7 +267,7 @@
                     "max": 50,
                     "step": 1,
                     "unit": "px",
-                    "label": "t:sections.main-list-collections.settings.spacing.mg_top",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
                     "default": 8
                 },
                 {
@@ -276,7 +277,7 @@
                     "max": 50,
                     "step": 1,
                     "unit": "px",
-                    "label": "t:sections.main-list-collections.settings.spacing.mg_bottom",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
                     "default": 8
                 }
             ]
@@ -305,7 +306,7 @@
                 {
                     "type": "color",
                     "id": "bg_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#fff"
                 },
                 {
@@ -324,7 +325,7 @@
                 {
                     "type": "image_picker",
                     "id": "logo",
-                    "label": "t:settings_schema.quick_view.settings.header__2.content"
+                    "label": "t:sections.header.settings.mega_menu.banner__img"
                 },
                 {
                     "type": "range",
@@ -341,14 +342,15 @@
                     "content": "t:sections.header.settings.menu_tab.label__3"
                 },
                 {
-                    "type": "textarea",
+                    "type": "liquid",
                     "id": "logo_text",
-                    "label": "t:sections.header.settings.logo.label__7"
+                    "label": "t:settings_schema.typography.settings.typography.text_svg_icon",
+                    "info": "t:settings_schema.typography.settings.typography.logo_icon_info"
                 },
                 {
                     "type": "range",
                     "id": "logo_font_size",
-                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_size",
                     "min": 15,
                     "max": 60,
                     "step": 1,
@@ -358,7 +360,7 @@
                 {
                     "type": "select",
                     "id": "logo_font_weight",
-                    "label": "t:settings_schema.typography.settings.font_weight.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_weight",
                     "default": "900",
                     "options": [
                     {
@@ -393,6 +395,10 @@
                     "default": "uppercase",
                     "options": [
                     {
+                        "value": "none",
+                        "label": "t:settings_schema.typography.settings.text_transform.options__1"
+                    },
+                    {
                         "value": "capitalize",
                         "label": "t:settings_schema.typography.settings.text_transform.options__2"
                     },
@@ -413,7 +419,7 @@
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.header.settings.header_top.customer_content_text_01"
+                    "content": "t:settings_schema.general.settings.gdpr_cookie_consent.label__4"
                 },
                 {
                     "type": "richtext",
@@ -424,7 +430,7 @@
                 {
                     "type": "color",
                     "id": "customer_text_03_color",
-                    "label": "t:sections.header.settings.header_top.label__4",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
                     "default": "#ba7a2d"
                 },
                 {
@@ -451,7 +457,7 @@
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.main-product.settings.general.spacing"
+                    "content": "t:sections.main-product.settings.general.block_spacing"
                 },
                 {
                     "type": "range",
@@ -460,7 +466,7 @@
                     "max": 50,
                     "step": 1,
                     "unit": "px",
-                    "label": "t:sections.main-list-collections.settings.spacing.mg_top",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
                     "default": 19
                 },
                 {
@@ -470,7 +476,7 @@
                     "max": 50,
                     "step": 1,
                     "unit": "px",
-                    "label": "t:sections.main-list-collections.settings.spacing.mg_bottom",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
                     "default": 20
                 }
             ]

@@ -134,9 +134,11 @@ class QuickSearch extends HTMLElement {
                             searchResultsWidget?.classList.add('is-hidden');
                             searchResults.classList.remove('is-hidden');
                             searchResults.classList.add('is-show');
-                            if ((window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency) {
-                                Currency.convertAll(window.shop_currency, $('#currencies .active').attr('data-currency'), 'span.money', 'money_format');
-                            };
+                            if($('.dropdown-item[data-currency]').length){
+                                if ((window.show_multiple_currencies && Currency.currentCurrency != shopCurrency) || window.show_auto_currency) {
+                                    Currency.convertAll(window.shop_currency, $('#currencies .active').attr('data-currency'), 'span.money', 'money_format');
+                                };
+                            }
                         }
                     });
                 } else {

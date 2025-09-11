@@ -41,7 +41,7 @@ class CursorFixed extends HTMLElement {
         this.onLeaveButton();
         this.onEnterDrawerOverlay();
         this.onLeaveDrawerOverlay();
-      } 
+      }
     }
   }
 
@@ -60,7 +60,7 @@ class CursorFixed extends HTMLElement {
     gsap.to(this, 0.15, {
       opacity: 0,
     });
-  } 
+  }
 
   moveOnSite(){
     gsap.to(this, 0.15, {
@@ -91,12 +91,12 @@ class CursorFixed extends HTMLElement {
 
     if(this.classList.contains("on-overlay")) this.classList.remove("on-overlay")
   }
-  
+
   onEnterDefault(){
     gsap.to(this.cursorInner, 0.15, {
       opacity:0
     });
-    
+
     gsap.to(this.cursorOuter, 0.15, {
       scale: 2,
     });
@@ -106,7 +106,7 @@ class CursorFixed extends HTMLElement {
     gsap.to(this.cursorInner, 0.15, {
       opacity:1
     });
-    
+
     gsap.to(this.cursorOuter, 0.15, {
       scale: 1,
     });
@@ -141,7 +141,7 @@ class CursorFixed extends HTMLElement {
     const iconHeader = document.querySelectorAll(".header__iconItem, .header__icon")
     iconHeader.forEach(icon => {
       icon.addEventListener("pointerenter", (e) => {
-        this.onEnterDefault()
+        this.onEnterDefault();
       });
     })
   }
@@ -214,10 +214,9 @@ class CursorFixed extends HTMLElement {
 
   parallaxIt(e, parent, movement) {
     const rect = parent.getBoundingClientRect();
-    
+
     this.mouse.x = e.clientX - rect.left;
     this.mouse.y = e.clientY - rect.top;
-  
 
     gsap.to(parent, 0.3, {
       x: ((this.mouse.x - rect.width / 2) / rect.width) * movement,
@@ -232,12 +231,12 @@ class CursorFixed extends HTMLElement {
 
     this.pos.x += (this.mouse.x - this.pos.x) * this.ratio;
     this.pos.y += (this.mouse.y - this.pos.y) * this.ratio;
-    
-    gsap.to(this.cursorInner, { 
+
+    gsap.to(this.cursorInner, {
       duration: 0.15,
       x: this.pos.x,
       y: this.pos.y,
-      xPercent: -50, 
+      xPercent: -50,
       yPercent: -50,
     });
 
@@ -245,7 +244,7 @@ class CursorFixed extends HTMLElement {
       duration: 0.4,
       x: this.pos.x,
       y: this.pos.y,
-      xPercent: -50, 
+      xPercent: -50,
       yPercent: -50,
     });
   }

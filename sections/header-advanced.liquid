@@ -24,7 +24,7 @@
 
 <header class="header header-advanced header-advanced--{{ section.settings.layout }}" style="--bor-top-color: {% if section.settings.border_top != blank and section.settings.border_top != 'rgba(0,0,0,0)' %}5px solid {{ section.settings.border_top }}{% else %}none{% endif %}">
     {%- for block in section.blocks -%}
-        <div class="header-advanced__item{% if block.type == 'group_2' %} header-advanced__logo-position--{{ block.settings.logo_position }}{% endif %}" style="--bg-color: {% if block.settings.gradient != blank %}{{ block.settings.gradient }}{% else %}{{ block.settings.background }}{% endif %}; --spacing-l-r: {{ block.settings.padding_full_width }}px; --padding-top: {{ block.settings.padding_top }}px; --padding-bottom: {{ block.settings.padding_bottom }}px;{% if block.type == 'group_2' %} --logo-width: {{ block.settings.logo_width }}px{% endif %}">
+        <div class="header-advanced__item{% if block.type == 'group_2' %} header-advanced__logo-position--{{ block.settings.logo_position }}{% endif %}{% if  block.settings.show_on_mb %} show-mb{% endif %}" style="--bg-color: {% if block.settings.gradient != blank %}{{ block.settings.gradient }}{% else %}{{ block.settings.background }}{% endif %}; --spacing-l-r: {{ block.settings.padding_full_width }}px; --padding-top: {{ block.settings.padding_top }}px; --padding-bottom: {{ block.settings.padding_bottom }}px;{% if block.type == 'group_2' %} --logo-width: {{ block.settings.logo_width }}px;{% endif %}--logo_mg_left: {{ block.settings.logo_mg_left }}px;">
             <div class="container container-{{ block.settings.container }}">
                 <div class="header-advanced__content">
                     {%- case block.type -%}
@@ -41,7 +41,11 @@
                                                 {%-  when '3' -%}
                                                     {% render 'icon-phone' %}
                                             {%- endcase -%}
+                                            {% if block.settings.use_typewriter %}
+                                            <type-writer class="typing-comma" data-period="2000" data-type='["{{ block.settings.custom_text_1 | replace: "<p>" | replace: "</p>" }}"]'></type-writer>
+                                            {% else %}
                                             {{ block.settings.custom_text_1 }}
+                                            {% endif %}
                                         </div>
                                     {%- endif -%}
                                     {%- if block.settings.custom_text_2 != blank -%}
@@ -52,7 +56,7 @@
                                                 {%-  when '2' -%}
                                                     {% render 'icon-mail-2' %}
                                                 {%-  when '3' -%}
-                                                    {% render 'icon-mail-1' %}
+                                                    {% render 'icon-mail' %}
                                             {%- endcase -%}
                                             {{ block.settings.custom_text_2 }}
                                         </div>
@@ -70,22 +74,29 @@
                                 <div class="header-advanced__col">
                                     {%- if block.settings.custom_text_4 != blank -%}
                                         <div class="header-advanced__customText" style="--text-size: {{ block.settings.text_size_4 }}px; --text-color: {{ block.settings.color_4 }}">
+                                            {%- if block.settings.icon_4 != blank -%}{{ block.settings.icon_4 }}{%- endif -%}
                                             {{ block.settings.custom_text_4 }}
                                         </div>
                                     {%- endif -%}
                                     {%- if block.settings.show_language_currency -%}
-                                        <div class="header-advanced__lanCur" style="--lan-cur-color: {{ block.settings.language_currency_color }}">
+                                        <div class="header-advanced__lanCur style-{{ block.settings.language_currency_style }}{% if block.settings.hide_flag %} hide-flag-icon{% endif %}" style="--lan-cur-color: {{ block.settings.language_currency_color }};{% if block.settings.language_currency_style == '2' %}--font-body-size:14px;{% endif %}">
                                             <div class="header-language_currency">
                                                 <div class="top-language-currency{% if settings.enable_currencies %} enable-currency{% endif %}">
+                                                    {%- if block.settings.language_currency_style == '2' -%}
+                                                    {% assign show-symbol = true %}
+                                                    {%- endif -%} 
                                                     {%- if settings.enable_multilang_shopify -%}
                                                         {% render 'halo-top-language' %}
                                                     {%- endif -%}
                                                     {%- if settings.enable_currencies -%}
-                                                        {% render 'halo-top-currency' %}
+                                                        {% render 'halo-top-currency',
+                                                            show-symbol: show-symbol %}
                                                     {%- endif -%}
                                                 </div>
                                             </div>
                                         </div>
+                                    {% elsif settings.enable_currencies %}
+                                    {{ "jquery.currencies.min.js" | asset_url | script_tag }}
                                     {%- endif -%}
                                 </div>
                             {%- endif -%}
@@ -162,9 +173,7 @@
                                                 {% render 'icon-cart-03' %}
                                                 <div class="header-advanced-textRight">
                                                     <div class="cart-count-bubble">
-                                                        {%- if cart.item_count < 100 -%}
-                                                            <span class="text" aria-hidden="true" data-cart-count>{{ cart.item_count }}</span>
-                                                        {%- endif -%}
+                                                        <span class="text" aria-hidden="true" data-cart-count>{%- if cart.item_count < 100 -%}{{ cart.item_count }}{%- else -%}{{ 'sections.cart.item_99' | t }}{%- endif -%}</span>
                                                         <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
                                                     </div>
                                                     <span class="cart-text">{{ 'general.cart.cart' | t }}</span>
@@ -173,8 +182,14 @@
                                         </div>
                                     {%- endif -%}
                                     {%- if settings.show_wishlist and block.settings.show_wishlist -%}
-                                        <div class="header__iconItem header__group header-advanced-wishlist" style="--color: {{ block.settings.wishlist_color }}">
-                                            <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset">{% render 'icon-heart-2' %} <span class="wishlist-text">{{ 'wishlist.general.wishlist' | t }}</span></a>
+                                        <div class="header__iconItem header__group header-advanced-wishlist" style="--color: {{ block.settings.wishlist_color }};--wishlist-bg-item: {{ block.settings.wishlist_bg_item }}; --wishlist-color-item: {{ block.settings.wishlist_color_item }};--cart-item-font-size: {{ block.settings.cart_item_font_size }}px">
+                                            <a href="{% if settings.link_wishlist != blank %}{{ settings.link_wishlist }}{% else %}{{ pages['wish-list'].url }}{% endif %}" class="header__icon header__icon--wishlist link link--text focus-inset">
+                                                {% render 'icon-heart-2' %} 
+                                                <span class="wishlist-text{% if block.settings.show_wishlist_number %} show_wishlist_number{% endif %}">{{ 'wishlist.general.wishlist' | t }}</span>
+                                                {%- if block.settings.show_wishlist_number -%}
+                                                    <div class="wishlist-count-bubble"><span class="text" aria-hidden="true" data-wishlist-count></span><span class="visually-hidden">{{ 'wishlist.general.wishlist' | t }}</span></div>
+                                                {%- endif -%}
+                                            </a>
                                         </div>
                                     {%- endif -%}
                                     {%- if block.settings.show_account -%}
@@ -264,7 +279,7 @@
     "settings": [
         {
             "type": "paragraph",
-            "content": "*You should only activate \/ use \"Header\" you want, don't use the redundant headers which may not optimize for performance."
+            "content": "*You should only activate\/use \"Header\" you want, don't use the redundant headers which may not optimize for performance."
         },
         {
             "type": "select",
@@ -296,7 +311,7 @@
                 {
                     "type": "select",
                     "id": "container",
-                    "label": "t:sections.layout.container.option",
+                    "label": "t:sections.layout.container.block_width",
                     "default": "1170",
                     "options": [
                         {
@@ -330,16 +345,15 @@
                     "id": "padding_full_width",
                     "label": "t:sections.layout.container.padding_full_width",
                     "min": 0,
-                    "max": 75,
+                    "max": 100,
                     "step": 5,
                     "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                    "default": 0,
-                    "info": "t:sections.layout.container.info_full_width"
+                    "default": 0
                 },
                 {
                     "type": "color",
                     "id": "background",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#f7f8fa"
                 },
                 {
@@ -349,7 +363,7 @@
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.header.settings.header_top.customer_content_text_01"
+                    "content": "t:sections.header.settings.header_top.first_content"
                 },
                 {
                     "type": "select",
@@ -378,13 +392,18 @@
                 {
                     "type": "richtext",
                     "id": "custom_text_1",
-                    "label": "t:sections.header.settings.header_top.customer_service_text",
+                    "label": "t:settings_schema.typography.settings.typography.text",
                     "default": "<p>Toll-free: <a href=\"tel:091%20234-567\">(091) 123-4567<\/a><\/p>"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "use_typewriter",
+                    "label": "t:sections.header.settings.header_top.label__7"
                 },
                 {
                     "type": "range",
                     "id": "text_size_1",
-                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_size",
                     "min": 10,
                     "max": 30,
                     "step": 1,
@@ -398,8 +417,13 @@
                     "default": "#06142e"
                 },
                 {
+                    "type": "checkbox",
+                    "id": "show_on_mb",
+                    "label": "t:sections.header.settings.header_top.label__8"
+                },
+                {
                     "type": "header",
-                    "content": "t:sections.header.settings.header_top.customer_content_text_02"
+                    "content": "t:sections.header.settings.header_top.second_content"
                 },
                 {
                     "type": "select",
@@ -428,13 +452,13 @@
                 {
                     "type": "richtext",
                     "id": "custom_text_2",
-                    "label": "t:sections.header.settings.header_top.customer_service_text",
+                    "label": "t:settings_schema.typography.settings.typography.text",
                     "default": "<p><a href=\"tel:09120234-567\" target=\"_blank\" title=\"mailto:email@domain.com\">email@domain.com<\/a><\/p>"
                 },
                 {
                     "type": "range",
                     "id": "text_size_2",
-                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_size",
                     "min": 10,
                     "max": 30,
                     "step": 1,
@@ -449,18 +473,18 @@
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.header.settings.header_top.customer_content_text_03"
+                    "content": "t:sections.header.settings.header_top.third_content"
                 },
                 {
                     "type": "richtext",
                     "id": "custom_text_3",
-                    "label": "t:sections.header.settings.header_top.customer_service_text",
+                    "label": "t:settings_schema.typography.settings.typography.text",
                     "default": "<p><strong>Free Shipping Over $99*<\/strong><\/p>"
                 },
                 {
                     "type": "range",
                     "id": "text_size_3",
-                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_size",
                     "min": 10,
                     "max": 30,
                     "step": 1,
@@ -475,18 +499,24 @@
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.header.settings.header_top.customer_content_text_04"
+                    "content": "t:sections.header.settings.header_top.fourth_content"
+                },
+                {
+                    "type": "liquid",
+                    "id": "icon_4",
+                    "label": "t:sections.spotlight_block.settings.icon",
+                    "info": "t:settings_schema.typography.settings.typography.view_all_info"
                 },
                 {
                     "type": "richtext",
                     "id": "custom_text_4",
-                    "label": "t:sections.header.settings.header_top.customer_service_text",
+                    "label": "t:settings_schema.typography.settings.typography.text",
                     "default": "<ul><li><a href=\"\/pages\/faqs\" title=\"\/pages\/faqs\">Theme FAQs<\/a><\/li><li><a href=\"\/pages\/contact-us-1\" title=\"\/pages\/contact-us-1\">Need Help?<\/a><\/li><\/ul>"
                 },
                 {
                     "type": "range",
                     "id": "text_size_4",
-                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_size",
                     "min": 10,
                     "max": 30,
                     "step": 1,
@@ -510,6 +540,28 @@
                     "default": true
                 },
                 {
+                    "type": "select",
+                    "id": "language_currency_style",
+                    "label": "Style",
+                    "default": "1",
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": "Style 1"
+                        },
+                        {
+                            "value": "2",
+                            "label": "Style 2"
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "id": "hide_flag",
+                    "label": "Hide flag icon",
+                    "info": "Only for style 2"
+                },
+                {
                     "type": "color",
                     "id": "language_currency_color",
                     "label": "t:sections.header.settings.header_top.label__4",
@@ -517,7 +569,7 @@
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.main-product.settings.general.spacing"
+                    "content": "t:sections.main-product.settings.general.block_spacing"
                 },
                 {
                     "type": "range",
@@ -526,7 +578,7 @@
                     "max": 100,
                     "step": 1,
                     "unit": "px",
-                    "label": "t:sections.main-list-collections.settings.spacing.mg_top",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
                     "default": 5
                 },
                 {
@@ -536,7 +588,7 @@
                     "max": 100,
                     "step": 1,
                     "unit": "px",
-                    "label": "t:sections.main-list-collections.settings.spacing.mg_bottom",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
                     "default": 5
                 }
             ]
@@ -549,7 +601,7 @@
                 {
                     "type": "select",
                     "id": "container",
-                    "label": "t:sections.layout.container.option",
+                    "label": "t:sections.layout.container.block_width",
                     "default": "1170",
                     "options": [
                         {
@@ -583,16 +635,15 @@
                     "id": "padding_full_width",
                     "label": "t:sections.layout.container.padding_full_width",
                     "min": 0,
-                    "max": 75,
+                    "max": 100,
                     "step": 5,
                     "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-                    "default": 0,
-                    "info": "t:sections.layout.container.info_full_width"
+                    "default": 0
                 },
                 {
                     "type": "color",
                     "id": "background",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#ffffff"
                 },
                 {
@@ -646,14 +697,25 @@
                     "default": 145
                 },
                 {
-                    "type": "textarea",
+                    "type": "range",
+                    "id": "logo_mg_left",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "unit": "t:sections.header.settings.logo_width.unit",
+                    "label": "t:sections.general.settings.page-content.mg_left",
+                    "default": 35
+                },
+                {
+                    "type": "liquid",
                     "id": "logo_text",
-                    "label": "t:sections.header.settings.logo.label__7"
+                    "label": "t:settings_schema.typography.settings.typography.text_svg_icon",
+                    "info": "t:settings_schema.typography.settings.typography.logo_icon_info"
                 },
                 {
                     "type": "range",
                     "id": "logo_font_size",
-                    "label": "t:settings_schema.typography.settings.font_size.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_size",
                     "min": 15,
                     "max": 60,
                     "step": 1,
@@ -663,7 +725,7 @@
                 {
                     "type": "select",
                     "id": "logo_font_weight",
-                    "label": "t:settings_schema.typography.settings.font_weight.label",
+                    "label": "t:settings_schema.typography.settings.typography.text_font_weight",
                     "default": "900",
                     "options": [
                     {
@@ -697,6 +759,10 @@
                     "label": "t:settings_schema.typography.settings.text_transform.label",
                     "default": "uppercase",
                     "options": [
+                    {
+                        "value": "none",
+                        "label": "t:settings_schema.typography.settings.text_transform.options__1"
+                    },
                     {
                         "value": "capitalize",
                         "label": "t:settings_schema.typography.settings.text_transform.options__2"
@@ -735,25 +801,25 @@
                 {
                     "type": "color",
                     "id": "search_color",
-                    "label": "t:sections.header.settings.header_top.search_color_text",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
                     "default": "#767676"
                 },
                 {
                     "type": "color",
                     "id": "bg_search_color",
-                    "label": "t:settings_schema.colors.settings.colors_name.background_color",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
                     "default": "#F7F8FA"
                 },
                 {
                     "type": "color",
                     "id": "search_icon_color",
-                    "label": "t:sections.header.settings.header_top.search_color_icon",
+                    "label": "t:settings_schema.typography.settings.typography.icon_color",
                     "default": "#06142e"
                 },
                 {
                     "type": "color",
                     "id": "search_icon_bg",
-                    "label": "t:sections.header.settings.header_top.search_color_bg_icon",
+                    "label": "t:sections.slide-show.blocks.image.slider_look.dots_bg_color",
                     "default": "#f7c34a"
                 },
                 {
@@ -768,7 +834,7 @@
                     "max": 50,
                     "step": 1,
                     "unit": "t:sections.header.settings.logo_width.unit",
-                    "label": "t:sections.header.settings.header_top.search_border_radius",
+                    "label": "t:settings_schema.typography.settings.type_button_font.border_radius",
                     "default": 5
                 },
                 {
@@ -826,6 +892,24 @@
                     "default": "#06142e"
                 },
                 {
+                    "type": "checkbox",
+                    "id": "show_wishlist_number",
+                    "label": "t:sections.header.settings.header_icons.label__6",
+                    "default": false
+                },
+                {
+                    "type": "color",
+                    "id": "wishlist_color_item",
+                    "label": "t:settings_schema.typography.settings.typography.text_color",
+                    "default": "#ffffff"
+                },
+                {
+                    "type": "color",
+                    "id": "wishlist_bg_item",
+                    "label": "t:settings_schema.colors.settings.colors_name.background_color_2",
+                    "default": "#232323"
+                },
+                {
                     "type": "header",
                     "content": "Customer"
                 },
@@ -843,7 +927,7 @@
                 },
                 {
                     "type": "header",
-                    "content": "t:sections.main-product.settings.general.spacing"
+                    "content": "t:sections.main-product.settings.general.block_spacing"
                 },
                 {
                     "type": "range",
@@ -852,7 +936,7 @@
                     "max": 100,
                     "step": 1,
                     "unit": "px",
-                    "label": "t:sections.main-list-collections.settings.spacing.mg_top",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_top",
                     "default": 19
                 },
                 {
@@ -862,7 +946,7 @@
                     "max": 100,
                     "step": 1,
                     "unit": "px",
-                    "label": "t:sections.main-list-collections.settings.spacing.mg_bottom",
+                    "label": "t:settings_schema.typography.settings.type_button_font.padding_bottom",
                     "default": 19
                 }
             ]

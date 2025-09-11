@@ -12,8 +12,8 @@
 	{%- if preview_img.width >= 198 -%}
 	    ,{{ preview_img | img_url: '198x' }} 198w
 	{%- endif -%}
-	{%- if preview_img.width >= 205 -%}
-	    ,{{ preview_img | img_url: '205x' }} 205w
+	{%- if preview_img.width >= 204 -%}
+	    ,{{ preview_img | img_url: '204x' }} 204w
 	{%- endif -%}
 	{%- if preview_img.width >= 210 -%}
 	    ,{{ preview_img | img_url: '210x' }} 210w
@@ -134,4 +134,4 @@
 	{%- endif -%}
 {%- else -%}
 	{{ preview_img | img_url: 'master' }}
-{%- endif -%}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: '533x' }}"{% endunless %} sizes="(min-width: 1100px) {{preview_img.width | append: 'px'}}, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)" alt="{{ preview_img.alt | escape }}" size="{{ preview_img.width }}" {% unless enable_rtl %}loading="lazy"{% endunless %} class="{% if class %}motion-reduce{% endif %}{% if settings.enable_lazyload %} lazyload{% endif %}"
+{%- endif -%}" {% unless settings.enable_lazyload %}src="{{ preview_img | img_url: '533x' }}"{% else %}{% unless enable_rtl %} loading="lazy"{% endunless %}{% endunless %} sizes="(min-width: 1100px) {{preview_img.width | append: 'px'}}, (min-width: 750px) calc((100vw - 30px) / 2), calc((100vw - 20px) / 2)" alt="{{ preview_img.alt | escape }}" size="{{ preview_img.width }}" class="{% if class %}motion-reduce{% endif %}{% if settings.enable_lazyload %} lazyload{% endif %}"

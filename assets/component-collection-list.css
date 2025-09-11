@@ -6,9 +6,9 @@
     pointer-events: none;
 }
 
-.collection-infinite-scroll .button[disabled] {
+/*.collection-infinite-scroll .button[disabled] {
     display: none;
-}
+}*/
 
 .collection-countdown {
     display: -webkit-box;

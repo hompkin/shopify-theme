@@ -1,5 +1,5 @@
 <div class="halo-sidebar halo-sidebar-left halo-sidebar_search" id="search-form-mobile">
-    <a href="#" class="halo-sidebar-close" data-search-close-sidebar alt="{{ 'general.common.close' | t }}">{% render 'icon-close' %}{{ 'general.common.close' | t }}</a>
+    <a role="link" aria-disabled="true" class="halo-sidebar-close" data-search-close-sidebar>{% render 'icon-close' %}{{ 'general.common.close' | t }}</a>
     <div class="halo-sidebar-header text-left"><span class="title">{{ 'general.search.search' | t }}</span></div>
     <div class="halo-sidebar-wrapper custom-scrollbar">
         <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}" data-product-to-show="{{ settings.quick_search_to_show }}">

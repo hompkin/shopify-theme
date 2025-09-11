@@ -35,7 +35,7 @@
                                         {%- for field in form.errors -%}
                                             <li>
                                                 {%- if field == 'form' -%}
-                                                    {{ form.errors.messages[field] }}
+                                                    {{ form.errors.messages[field] | split: '&lt;' | first }} <a href="/account/login#recover">{{ form.errors.messages[field] | split: '&gt;' | last | split: '&lt;' | first }}</a>
                                                 {%- else -%}
                                                   <a href="#RegisterForm-{{ field }}" class="link link-underline">
                                                     <span class="text">
@@ -197,8 +197,7 @@
       "max": 100,
       "step": 5,
       "unit": "t:sections.layout.fontsize.fontsize_title.unit",
-      "default": 0,
-      "info": "t:sections.layout.container.info_full_width"
+      "default": 0
   }
   ]
 }

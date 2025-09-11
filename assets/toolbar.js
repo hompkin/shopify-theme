@@ -37,6 +37,10 @@ class Toolbar extends HTMLElement {
             window.addEventListener('load', () => {
                 this.debouncedOnResizeMediaQuery();
             });
+        } else{
+            if (window.innerWidth < 1100) {
+                this.initViewModeLayout(2);
+            }
         }
 
         if(this.querySelector('[data-limited-view]')){
@@ -336,7 +340,7 @@ class Toolbar extends HTMLElement {
                         this.mediaView.querySelector('.grid-2').classList.add('active');
                         this.mediaViewMobile.querySelector('.grid-2').classList.add('active');
                     }
-                } else if (windowWidth < 1299 && windowWidth > 1100) {
+                } else if (windowWidth < 1300 && windowWidth > 1100) {
                     if (column == 5 || column == 4) {
                         column = 3;
                         viewMode.classList.remove('active');
@@ -344,7 +348,7 @@ class Toolbar extends HTMLElement {
                         this.mediaView.querySelector('.grid-3').classList.add('active');
                         this.mediaViewMobile.querySelector('.grid-3').classList.add('active');
                     }
-                } else if (windowWidth < 1700 && windowWidth >= 1299) {
+                } else if (windowWidth < 1700 && windowWidth >= 1300) {
                     if (column == 5) {
                         column = 4;
                         viewMode.classList.remove('active');
@@ -390,93 +394,95 @@ class Toolbar extends HTMLElement {
     }
     
     changeBannerPositions(column) {
-        const collectionProductGrid = document.getElementById('main-collection-product-grid')
-        const productLists = [...collectionProductGrid.querySelectorAll('.product')]
-        const banner1 = productLists.find(product => product.dataset.productBanner == 1)
-        const banner2 = productLists.find(product => product.dataset.productBanner == 2)
-        const banner3 = productLists.find(product => product.dataset.productBanner == 3)
-        const bannerLists = [banner1, banner2, banner3]
+        const collectionProductGrid = document.getElementById('main-collection-product-grid');
+        const productLists = [...collectionProductGrid?.querySelectorAll('.product')];
+        
+        // Check if productLists has items and banner elements are found
+        const banner1 = productLists.find(product => product?.dataset?.productBanner == 1);
+        const banner2 = productLists.find(product => product?.dataset?.productBanner == 2);
+        const banner3 = productLists.find(product => product?.dataset?.productBanner == 3);
+        const bannerLists = [banner1, banner2, banner3].filter(banner => banner); // Filter out any null values
 
-        const getCurrentPosition = (banner) => {
-            const currentIndex = productLists.indexOf(banner) 
-
-            return {
-                bannerNumber: banner.dataset.productBanner,
-                currentIndex,
-                originalIndex: parseInt(banner.dataset.firstPosition)
-            }
+        // If no banners exist, stop the function execution
+        if (bannerLists.length === 0) {
+            console.warn('No banners found to reposition.');
+            return;
         }
 
+        const getCurrentPosition = (banner) => {
+            const currentIndex = productLists.indexOf(banner);
+            return {
+                bannerNumber: banner?.dataset?.productBanner,
+                currentIndex,
+                originalIndex: parseInt(banner?.dataset?.firstPosition)
+            };
+        };
+
         const getNextPosition = (info) => {
-            let nextPosition = info.currentIndex
-            
+            let nextPosition = info.currentIndex;
             switch (column) {
                 case 2: {
                     if (info.bannerNumber == 1) {
-                        nextPosition = 2
+                        nextPosition = 2;
                     } else if (info.bannerNumber == 2) {
-                        nextPosition = 5
+                        nextPosition = 5;
                     } else if (info.bannerNumber == 3) {
-                        nextPosition = 8
+                        nextPosition = 8;
                     }
-                    collectionProductGrid.classList.add('banner-full-width')
-                    break
+                    collectionProductGrid?.classList.add('banner-full-width');
+                    break;
                 }
-
                 case 3: {
-                    if (info.bannerNumber == 3 ) {
-                        nextPosition = info.originalIndex
+                    if (info.bannerNumber == 3) {
+                        nextPosition = info.originalIndex;
                     } else {
-                        nextPosition = info.originalIndex - 1
+                        nextPosition = info.originalIndex - 1;
                     }
-                    break
-                } 
-
-                case 4: {
-                    nextPosition = info.originalIndex
-                    break
+                    break;
                 }
-
+                case 4: {
+                    nextPosition = info.originalIndex;
+                    break;
+                }
                 case 5: {
-                    if (info.bannerNumber == 3 ) {
-                        nextPosition = info.originalIndex + 3
+                    if (info.bannerNumber == 3) {
+                        nextPosition = info.originalIndex + 3;
                     } else {
-                        nextPosition = info.originalIndex + 1
+                        nextPosition = info.originalIndex + 1;
                     }
-                    break
-                } 
-
+                    break;
+                }
                 default: {
-                    collectionProductGrid.classList.remove('banner-full-width')
+                    collectionProductGrid?.classList.remove('banner-full-width');
                 }
             }
-
             return {
                 bannerNumber: info.bannerNumber,
                 originalIndex: info.originalIndex,
                 currentIndex: nextPosition
-            }
-        }
+            };
+        };
 
         const clearBanner = () => {
-            collectionProductGrid.removeChild(banner1)
-            collectionProductGrid.removeChild(banner2)
-            collectionProductGrid.removeChild(banner3)
-        }
+            bannerLists.forEach(banner => {
+                collectionProductGrid?.removeChild(banner);
+            });
+        };
 
         const setBannerPosition = (nextInfo) => {
-            const clearedList = [...collectionProductGrid.querySelectorAll('.product')]
-            let productBefore = clearedList[nextInfo.currentIndex]
+            const clearedList = [...collectionProductGrid?.querySelectorAll('.product')];
+            let productBefore = clearedList[nextInfo.currentIndex];
 
-            const bannerToAppend = bannerLists.find(banner => banner.dataset.productBanner == nextInfo.bannerNumber)
-            collectionProductGrid.insertBefore(bannerToAppend, productBefore)
-        }
-        
-        const bannersInfo = bannerLists.map(getCurrentPosition) 
-        const bannersNextInfo = bannersInfo.map(getNextPosition)
-        clearBanner()
-        bannersNextInfo.forEach(setBannerPosition)
+            const bannerToAppend = bannerLists.find(banner => banner?.dataset?.productBanner == nextInfo.bannerNumber);
+            collectionProductGrid?.insertBefore(bannerToAppend, productBefore);
+        };
+
+        const bannersInfo = bannerLists.map(getCurrentPosition);
+        const bannersNextInfo = bannersInfo.map(getNextPosition);
+        clearBanner();
+        bannersNextInfo.forEach(setBannerPosition);
     }
+
 
     initViewModeLayout(column) {
         const productListing = document.getElementById('CollectionProductGrid').querySelector('.productListing');
@@ -638,11 +644,16 @@ class Toolbar extends HTMLElement {
             if (scrollTop > offsetScroll) {
                 requestAnimationFrame(this.showSticky.bind(this));
 
-                if(document.querySelector('.section-header-navigation').classList.contains('shopify-section-header-show')){
-                    var height = document.querySelector('.header-mobile').offsetHeight;
-                    this.style.top = `${height}px`;
-                } else if(document.querySelector('.section-header-mobile').classList.contains('shopify-section-header-hidden')) {
-                    this.style.top = 0;
+                const headerMobile = document.querySelector('.header-mobile');
+                if (headerMobile) {
+                    const stickyType = headerMobile.dataset.stickyType;
+                    const height = headerMobile.offsetHeight;
+                    const isNavVisible = document.querySelector('.section-header-mobile')?.classList.contains('shopify-section-header-show');
+                    const isMobileHidden = document.querySelector('.section-header-mobile')?.classList.contains('shopify-section-header-hidden');
+
+                    this.style.top = (stickyType === "always" || (stickyType === "on_scroll" && isNavVisible)) ? `${height}px`
+                                : (stickyType === "on_scroll" && isMobileHidden) ? "0"
+                                : "0";
                 }
             } else{
                 requestAnimationFrame(this.hideSticky.bind(this));
