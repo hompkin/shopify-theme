@@ -2040,7 +2040,7 @@ s.price-item.price-item--regular {
 }
 .productView-payment .shopify-payment-button [data-testid="ShopifyPay-button"],
 .productView-payment .shopify-payment-button .shopify-payment-button__button--unbranded {
-  padding-top: 13px !important;
+  padding-top: 10px !important;
   padding-bottom: 13px !important;
   height: auto;
 }
