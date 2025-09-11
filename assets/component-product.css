@@ -1802,7 +1802,7 @@ s.price-item.price-item--regular {
     border-width: var(--btn-2-border-width);
     padding-top: var(--btn-2-padding-top);
     padding-bottom: var(--btn-2-padding-bottom);
-    box-shadow: var(--btn-2-horizontal-length) var(--btn-2-vertical-length) var(--btn-2-blur-radius) var(--btn-2-spread) var(--btn-2-all-bg-opacity) var(--btn-2-inset);
+    /*box-shadow: var(--btn-2-horizontal-length) var(--btn-2-vertical-length) var(--btn-2-blur-radius) var(--btn-2-spread) var(--btn-2-all-bg-opacity) var(--btn-2-inset);*/
 }
 
 .productView-options .product-form__input .form__label [data-header-option] {
