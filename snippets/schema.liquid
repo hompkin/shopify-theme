@@ -159,17 +159,7 @@
     </script>
 {%- elsif page_type == 'article' -%}
     <script type="application/ld+json">
-    {
-        "@context": "http://schema.org/",
-        "@type": "Article",
-        "name": "{{ article.title }}",
-        "description": "{{ article.content | split: '[lang2]' | first | strip_html }}",
-        "author": "{{ article.author }}",
-        "image": "{{ article | img_url: '1024x1024' }}",
-        "headline": "{{ blog.title }}",
-        "datePublished": "{{ article.created_at | date: format: 'abbreviated_date' }}",
-        "dateModified": "{{ article.published_at | date: '%Y-%m-%d' }}"
-    }
+        {{ article | structured_data }}
     </script>
     <script type="application/ld+json">
     {
