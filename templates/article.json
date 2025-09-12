@@ -15,7 +15,6 @@
         "bced6fd1-310d-4026-8786-1f886c51eec2": {
           "type": "category",
           "settings": {
-            "show_block": false,
             "heading": "Categories",
             "type": "1_level",
             "link_list": ""
@@ -24,7 +23,6 @@
         "96861bf3-10df-4b31-82bd-61aee2e9bc30": {
           "type": "recent_post",
           "settings": {
-            "show_block": true,
             "heading": "Recent Post",
             "number": 3
           }
@@ -47,39 +45,14 @@
         "441f2329-1d0c-4d63-bcff-c7281f41bf54": {
           "type": "product_block",
           "settings": {
-            "show_block": true,
+            "heading": "Featured Products",
             "position": "content",
             "column": "4",
-            "heading": "Featured Products",
             "product_block_collection": "{{ article.metafields.custom.product_collection.value }}",
             "product_block_layout": "grid",
             "product_block_limit": 12,
             "product_block_dots": false,
             "product_block_arrows": true
-          }
-        },
-        "71176645-a609-4ff4-90ca-dc2dedabac94": {
-          "type": "image",
-          "settings": {
-            "show_block": false,
-            "heading": "",
-            "link": ""
-          }
-        },
-        "f1a4c4f6-e343-45a5-93ed-33109f5942ea": {
-          "type": "image",
-          "settings": {
-            "show_block": false,
-            "heading": "",
-            "link": ""
-          }
-        },
-        "c04b7f25-8b25-4edb-a6fc-ed43934d98b4": {
-          "type": "text",
-          "settings": {
-            "show_block": false,
-            "heading": "Custom Block",
-            "text": "<p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... or whatever you like.</p>\n<p>There are many similar sample content placeholders across the store. All editable from admin panel.</p>"
           }
         },
         "9ffcbc70-f507-4049-874d-4e9915e05726": {
@@ -276,15 +249,14 @@
         "96861bf3-10df-4b31-82bd-61aee2e9bc30",
         "block_quote_eUHcyR",
         "441f2329-1d0c-4d63-bcff-c7281f41bf54",
-        "71176645-a609-4ff4-90ca-dc2dedabac94",
-        "f1a4c4f6-e343-45a5-93ed-33109f5942ea",
-        "c04b7f25-8b25-4edb-a6fc-ed43934d98b4",
         "9ffcbc70-f507-4049-874d-4e9915e05726",
         "ce82dddb-aa2f-428e-bd37-3e033250c238",
         "73becaeb-c487-4f3b-93aa-39f4bef40c07",
         "df6f199c-e8b4-46e7-8d3f-12e6302e295c"
       ],
       "settings": {
+        "container": "1170",
+        "padding_full_width": 0,
         "show_breadcrumb": true,
         "breadcrumb_alignment": "left",
         "breadcrumb_bg": "rgba(0,0,0,0)",
@@ -293,14 +265,6 @@
         "breadcrumb_gradient_mb": "",
         "show_page_title": true,
         "page_title_alignment": "left",
-        "container": "1170",
-        "mg_top_desktop": 0,
-        "mg_top_tablet": 0,
-        "mg_top_mobile": 0,
-        "mg_bottom_desktop": 0,
-        "mg_bottom_tablet": 0,
-        "mg_bottom_mobile": 0,
-        "show_sidebar": true,
         "show_collapse": false,
         "enable_sticky": false,
         "sidebar_layout": "layout_1",
@@ -331,7 +295,13 @@
         "info_font_weight": "400",
         "info_text_transform": "capitalize",
         "info_font_style": "normal",
-        "info_color": "#999999"
+        "info_color": "#999999",
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0
       }
     }
   },
