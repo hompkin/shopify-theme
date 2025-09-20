@@ -12,6 +12,9 @@
     "banner": {
       "type": "main-collection-banner",
       "settings": {
+        "container": "1770",
+        "padding_full_width": 0,
+        "layout": "1",
         "show_breadcrumb": true,
         "breadcrumb_alignment": "left",
         "breadcrumb_color": "#999999",
@@ -22,15 +25,12 @@
         "breadcrumb_gradient_mb": "",
         "show_page_title": true,
         "page_title_alignment": "left",
-        "container": "1770",
-        "padding_full_width": 0,
         "mg_top_desktop": 0,
         "mg_top_tablet": 0,
         "mg_top_mobile": 0,
         "mg_bottom_desktop": 0,
         "mg_bottom_tablet": 0,
-        "mg_bottom_mobile": 0,
-        "layout": "1"
+        "mg_bottom_mobile": 0
       }
     },
     "product-grid": {
@@ -60,7 +60,6 @@
           "type": "category",
           "disabled": true,
           "settings": {
-            "show_block": false,
             "heading": "Categories",
             "type": "1_level",
             "link_list": ""
@@ -84,8 +83,8 @@
         },
         "3978fd59-b580-49e1-9893-38d762f48f10": {
           "type": "product_block",
+          "disabled": true,
           "settings": {
-            "show_block": false,
             "heading": "Featured Products",
             "product_block_collection": "collection-home-1-2",
             "product_block_layout": "slider",
@@ -98,7 +97,6 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "show_block": true,
             "heading": "",
             "link": ""
           }
@@ -107,7 +105,6 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "show_block": true,
             "heading": "",
             "link": ""
           }
@@ -116,7 +113,6 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "show_block": false,
             "heading": "Custom Block",
             "text": "<p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... or whatever you like.</p>\n\n<p>There are many similar sample content placeholders across the store. All editable from admin panel.</p>"
           }
@@ -134,17 +130,10 @@
       ],
       "custom_css": [],
       "settings": {
-        "colors_bg": "rgba(0,0,0,0)",
-        "colors_bg_gradient": "",
         "container": "1770",
         "padding_full_width": 0,
-        "mg_top_desktop": 0,
-        "mg_top_tablet": 0,
-        "mg_top_mobile": 0,
-        "mg_bottom_desktop": 0,
-        "mg_bottom_tablet": 0,
-        "mg_bottom_mobile": 0,
-        "show_sidebar": true,
+        "colors_bg": "rgba(0,0,0,0)",
+        "colors_bg_gradient": "",
         "sidebar_collapse": "collapse",
         "enable_sticky": false,
         "sidebar_layout": "layout_1",
@@ -158,6 +147,7 @@
         "show_filter": true,
         "filter_swatch": "",
         "filter_swatch_type": "color",
+        "filter_swatch_layout": "color",
         "filter_rectangle": "",
         "filter_display_type": "show-more",
         "max_item_per_filter": 10,
@@ -183,7 +173,13 @@
         "product_space_between_vert_desk": 30,
         "product_space_between_vert_mb": 16,
         "product_space_between_horiz_desk": 60,
-        "product_space_between_horiz_mb": 30
+        "product_space_between_horiz_mb": 30,
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0
       }
     },
     "product-recently-viewed": {
@@ -232,7 +228,6 @@
         "scroll_track_bg": "#f1f1f1",
         "scroll_thumb_color": "#000000",
         "scroll_thumb_hover_color": "#444444",
-        "enable_hover_drag_icon": true,
         "enable_layout_special": false,
         "bg_card": "#ffffff",
         "padding_card": 15,
