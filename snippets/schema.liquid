@@ -279,12 +279,18 @@
             "name": "Home",
             "item": "{{ url }}"
         },
-        {%- if collection -%}
+        {%- liquid
+            assign breadcrumb_collection = collection
+            if breadcrumb_collection == blank and product.collections.size > 0
+                assign breadcrumb_collection = product.collections.first
+            endif
+        -%}
+        {%- if breadcrumb_collection -%}
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "{{ collection.title }}",
-                "item": "{{ url }}/{{ collection.handle }}"
+                "name": "{{ breadcrumb_collection.title }}",
+                "item": "{{ url }}/{{ breadcrumb_collection.handle }}"
             },
             {
                 "@type": "ListItem",
