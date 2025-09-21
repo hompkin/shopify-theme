@@ -10,13 +10,8 @@
     -%}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org/",
-        {%- if fa_variant_count != 1 -%}
-            "@type": "ProductGroup",
-            "productGroupID": "{{ product.id }}",
-        {%- else -%}
-            "@type": "Product",
-        {%- endif -%}
+        "@context": "http://schema.org/",
+        "@type": "Product",
         "name": "{{ product.title | strip_html | escape }}",
         "url": "{{ url }}{{ product.url }}",
         {%- if product.variants.first.sku != blank -%}
@@ -33,97 +28,250 @@
         {%- if product.variants.first.barcode.size == 14 -%}
             "gtin14": {{ product.variants.first.barcode }},
         {%- endif -%}
-        "@id": "/products/{{ product.handle }}#product",
+        "productID": "{{ product.id }}",
         "brand": {
             "@type": "Brand",
             "name": "{{ product.vendor | escape }}"
         },
-        {% if product.description != blank %}
-            "description": "{{ product.description | strip_html | escape | strip_newlines }}",
-        {% else %}
-            "description": "{{ product.title | strip_html | escape }}",
+        "seller": {
+            "@type": "Organization",
+            "name": "{{ shop.name }}.com"
+        },
+        {% assign ryviu = product.metafields.ryviu %}
+        {% if ryviu %}
+            {%- assign aggregateRating = ryviu.product_reviews_info | split: ";" -%}
+            {%- assign r_avg = aggregateRating[1] | plus: 0 -%}
+            {%- assign r_count = aggregateRating[0] | plus: 0 -%}
+            {%- if r_count > 0 -%}       
+                "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "{{ r_avg }}",
+                "reviewCount": "{{ r_count }}"
+                },
+            {%- endif -%}
         {% endif %}
-        "image": "https:{{ product.featured_image.src | img_url: 'original' }}",
-        {%- if product.variants and fa_variant_count != 1 -%}
-            "hasVariant": [
-            {% for variant in product.variants %}
-                {%- assign fa_count = fa_count | plus: 1 -%}
-                {
-                    "@id": "/products/{{ product.handle }}?variant={{ variant.id }}#variant",
-                    "@type": "Product",
-                    {%- if variant.image -%}
-                        {%- assign variant_image_size = variant.image.width | append: 'x' -%}
-                        "image": "https:{{ variant.image.src | img_url: variant_image_size }}",
-                    {%- else -%}
-                        "image": "https:{{ product.featured_image.src | img_url: 'original' }}",
-                    {%- endif -%}
-                    {%- if variant.title != 'Default Title' -%}
-                        "name": "{{ product.title | strip_html | escape }} - {{ variant.title | escape }}",
-                    {%- else -%}
-                        "name": "{{ variant.title | strip_html | escape }}",
-                    {%- endif -%}
-                    "offers": {
-                        "@id": "/products/{{ product.handle }}?variant={{ variant.id }}#offer",
+        "description": "{% if product.description != blank %}{{ product.description | strip_html | escape | strip_newlines }}{% else %}{{ product.metafields.global.description_tag | escape }}{% endif %}",
+        {% assign image_urls = '' %}
+        {% for image in product.images %}
+          {% assign image_url = image.src | img_url: 'original' | prepend: 'https:' %}
+          {% if forloop.first %}
+            {% assign image_urls = image_url %}
+          {% else %}
+            {% assign image_urls = image_urls | append: ',' | append: image_url %}
+          {% endif %}
+        {% endfor %}
+        {% assign image_array = image_urls | split: ',' %}
+        "image": [
+        {% for image_url in image_array %}
+            "{{ image_url }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+        ],
+
+        {%- if product.variants -%}
+            {%- assign fa_count = fa_count | plus: 1 -%}
+            "offers": {% if product.variants.size > 1 %}[{% endif %}
+            {
+                "@type": "Offer",
+                "priceCurrency": "{{ cart.currency.iso_code }}",
+                "price": "{{ fa_current_variant.price | divided_by: 100.00 | json }}",
+                "itemCondition": "http://schema.org/NewCondition",
+                "availability": "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+                "url": "{{ url }}{{ fa_current_variant.url }}",
+                {%- if fa_current_variant.image -%}
+                {% assign variant_image_size = fa_current_variant.image.width | append: 'x' %}
+                "image": "https:{{ fa_current_variant.image.src | img_url: variant_image_size }}",
+                {%- else -%}
+                "image": "https:{{ product.featured_image.src | img_url: 'original' }}",
+                {%- endif -%}
+
+                {%- if fa_current_variant.barcode.size == 12 -%}
+                    "gtin12": {{ fa_current_variant.barcode }},
+                {%- endif -%}
+                {%- if fa_current_variant.barcode.size == 13 -%}
+                    "gtin13": {{ fa_current_variant.barcode }},
+                {%- endif -%}
+                {%- if fa_current_variant.barcode.size == 14 -%}
+                    "gtin14": {{ fa_current_variant.barcode }},
+                {%- endif -%}
+
+                {%- if fa_current_variant.sku != blank -%}
+                    "sku": "{{ fa_current_variant.sku }}",
+                {%- else -%}
+                    "sku": "{{ fa_current_variant.id }}",
+                {%- endif -%}
+
+                "priceValidUntil": "{{ 'now' | date: '%s' | plus: 7776000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}",
+                "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "{{ localization.country.iso_code }}",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnFees": "https://schema.org/FreeReturn",
+                    "returnMethod": "https://schema.org/ReturnByMail"
+                },
+                "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                        "@type": "MonetaryAmount",
+                        "value": "0",
+                        "currency": "{{ cart.currency.iso_code }}"
+                    },
+                    "shippingDestination": [
+                        {
+                            "@type": "DefinedRegion",
+                            "name": "{{ localization.country.name }}",
+                            "addressCountry": "{{ localization.country.iso_code }}"
+                        }
+                    ]
+                },
+                "returnPolicy": {
+                    "@type": "ReturnPolicy",
+                    "returnFee": {
+                        "@type": "MonetaryAmount",
+                        "currency": "{{ cart.currency.iso_code }}",
+                        "value": 0
+                    },
+                    "refundType": "FullRefund",
+                    "returnMethod": "MailReturn"
+                }
+            }{%- if product.variants.size != 1 -%},
+            {%- endif -%}
+            {%- for variant in product.variants -%}
+                {%- if variant != product.selected_or_first_available_variant -%}
+                    {%- assign fa_count = fa_count | plus: 1 -%}
+                    {
                         "@type": "Offer",
                         "priceCurrency": "{{ cart.currency.iso_code }}",
                         "price": "{{ variant.price | divided_by: 100.00 | json }}",
-                        "itemCondition": "https://schema.org/NewCondition",
-                        "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+                        "itemCondition": "http://schema.org/NewCondition",
+                        "availability": "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
                         "url": "{{ url }}{{ variant.url }}",
+                        {%- if variant.image -%}
+                            {%- assign variant_image_size = variant.image.width | append: 'x' -%}
+                            "image": "http:{{ variant.image.src | img_url: variant_image_size }}",
+                        {%- else -%}
+                            "image": "https:{{ product.featured_image.src | img_url: 'original' }}",
+                        {%- endif -%}
+
                         {%- if variant.barcode.size == 12 -%}
-                            "gtin12": {{ variant.barcode | json }},
+                            "gtin12": {{ variant.barcode }},
                         {%- endif -%}
                         {%- if variant.barcode.size == 13 -%}
-                            "gtin13": {{ variant.barcode | json }},
+                            "gtin13": {{ variant.barcode }},
                         {%- endif -%}
                         {%- if variant.barcode.size == 14 -%}
-                            "gtin14": {{ variant.barcode | json }},
+                            "gtin14": {{ variant.barcode }},
                         {%- endif -%}
+
                         {%- if variant.sku != blank -%}
                             "sku": "{{ variant.sku }}",
                         {%- else -%}
                             "sku": "{{ variant.id }}",
                         {%- endif -%}
-                        "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}"
-                    }
 
-                }{%- if fa_count != fa_variant_count -%},{%- endif -%}
-            {% endfor %}
-            ]
-        {%- else -%}
-            {%- for variant in product.variants -%}
-                "offers":
-                {
-                    "@id": "/products/{{ product.handle }}?variant={{ variant.id }}#offer",
-                    "@type": "Offer",
-                    "priceCurrency": "{{ cart.currency.iso_code }}",
-                    "price": "{{ variant.price | divided_by: 100.00 | json }}",
-                    "itemCondition": "https://schema.org/NewCondition",
-                    "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
-                    "url": "{{ url }}{{ variant.url }}",
-                    {%- if variant.barcode.size == 12 -%}
-                        "gtin12": {{ variant.barcode | json }},
+                        "priceValidUntil": "{{ 'now' | date: '%s' | plus: 7776000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}",
+                        "hasMerchantReturnPolicy": {
+                            "@type": "MerchantReturnPolicy",
+                            "applicableCountry": "{{ localization.country.iso_code }}",
+                            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                            "merchantReturnDays": 30,
+                            "returnFees": "https://schema.org/FreeReturn",
+                            "returnMethod": "https://schema.org/ReturnByMail"
+                        },
+                        "shippingDetails": {
+                            "@type": "OfferShippingDetails",
+                            "shippingRate": {
+                                "@type": "MonetaryAmount",
+                                "value": "0",
+                                "currency": "{{ cart.currency.iso_code }}"
+                            },
+                            "shippingDestination": [
+                                {
+                                    "@type": "DefinedRegion",
+                                    "name": "{{ localization.country.name }}",
+                                    "addressCountry": "{{ localization.country.iso_code }}"
+                                }
+                            ]
+                        },
+                        "returnPolicy": {
+                            "@type": "ReturnPolicy",
+                            "returnFee": {
+                                "@type": "MonetaryAmount",
+                                "currency": "{{ cart.currency.iso_code }}",
+                                "value": 0
+                            },
+                            "refundType": "FullRefund",
+                            "returnMethod": "MailReturn"
+                        }
+                    }
+                    {%- if fa_count < fa_variant_count -%}
+                        {%- unless forloop.last %},{% endunless -%}
                     {%- endif -%}
-                    {%- if variant.barcode.size == 13 -%}
-                        "gtin13": {{ variant.barcode | json }},
-                    {%- endif -%}
-                    {%- if variant.barcode.size == 14 -%}
-                        "gtin14": {{ variant.barcode | json }},
-                    {%- endif -%}
-                    {%- if variant.sku != blank -%}
-                        "sku": "{{ variant.sku }}",
-                    {%- else -%}
-                        "sku": "{{ variant.id }}",
-                    {%- endif -%}
-                    "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}"
-                }
+                {%- endif -%}
             {%- endfor -%}
+            {% if product.variants.size > 1 %}]{% endif %}
         {%- endif -%}
     }
     </script>
+    {%- liquid
+        assign first_video = null
+        for media in product.media
+            if media.media_type == 'video' or media.media_type == 'external_video'
+                assign first_video = media
+                break
+            endif
+        endfor
+    -%}
+    {%- if first_video -%}
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "{{ product.title | strip_html | escape }}",
+            "description": "{% if product.description != blank %}{{ product.description | strip_html | escape | strip_newlines }}{% else %}{{ product.metafields.global.description_tag | escape }}{% endif %}",
+            {%- if product.featured_image -%}
+                "thumbnailUrl": "{{ product.featured_image | img_url: 'master' | prepend: 'https:' }}",
+            {%- endif -%}
+            "uploadDate": "{{ product.created_at | date: '%Y-%m-%dT%H:%M:%S+08:00' }}",
+            {%- if first_video.media_type == 'video' and first_video.duration -%}
+                {%- liquid
+                    assign duration_seconds = first_video.duration | divided_by: 1000
+                    assign hours = duration_seconds | divided_by: 3600
+                    assign remaining_seconds = duration_seconds | modulo: 3600
+                    assign minutes = remaining_seconds | divided_by: 60
+                    assign seconds = remaining_seconds | modulo: 60
+                    assign duration_string = 'PT'
+                    if hours > 0
+                        assign duration_string = duration_string | append: hours | append: 'H'
+                    endif
+                    if minutes > 0
+                        assign duration_string = duration_string | append: minutes | append: 'M'
+                    endif
+                    if seconds > 0 or duration_string == 'PT'
+                        assign duration_string = duration_string | append: seconds | append: 'S'
+                    endif
+                -%}
+                "duration": "{{ duration_string }}",
+            {%- endif -%}
+            {%- if first_video.media_type == 'video' -%}
+                {%- for source in first_video.sources -%}
+                    {%- if forloop.first -%}
+                        "contentUrl": "{{ source.url }}"
+                    {%- endif -%}
+                {%- endfor -%}
+            {%- elsif first_video.media_type == 'external_video' -%}
+                {%- if first_video.host == 'youtube' -%}
+                    "contentUrl": "https://www.youtube.com/watch?v={{ first_video.external_id }}"
+                {%- elsif first_video.host == 'vimeo' -%}
+                    "contentUrl": "https://vimeo.com/{{ first_video.external_id }}"
+                {%- endif -%}
+            {%- endif -%}
+        }
+        </script>
+    {%- endif -%}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org/",
+        "@context": "http://schema.org/",
         "@type": "BreadcrumbList",
         "itemListElement": [{
             "@type": "ListItem",
@@ -141,14 +289,14 @@
             {
                 "@type": "ListItem",
                 "position": 3,
-                "name": "{{ product.title }}",
+                "name": "{{ product.title | strip_html | escape }}",
                 "item": "{{ canonical_url }}"
             }
         {%- else -%}
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "{{ product.title }}",
+                "name": "{{ product.title | strip_html | escape }}",
                 "item": "{{ canonical_url }}"
             }
         {%- endif -%}]
@@ -160,7 +308,7 @@
     </script>
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org/",
+        "@context": "http://schema.org/",
         "@type": "BreadcrumbList",
         "itemListElement": [{
             "@type": "ListItem",
@@ -179,7 +327,7 @@
 {%- elsif page_type == 'collection' and collection.handle -%}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org/",
+        "@context": "http://schema.org/",
         "@type": "CollectionPage",
         "name": "{{ collection.title }}",
         "url": "{{ canonical_url }}",
@@ -188,7 +336,7 @@
     </script>
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org/",
+        "@context": "http://schema.org/",
         "@type": "BreadcrumbList",
         "itemListElement": [{
             "@type": "ListItem",
