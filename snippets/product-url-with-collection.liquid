@@ -1,0 +1,17 @@
+{%- comment -%}
+    Generates a product URL with collection context if available
+    
+    Accepts:
+    - product: {Object} Product Liquid object
+    - collection: {Object} Collection Liquid object (optional)
+    
+    Usage:
+    {% render 'product-url-with-collection', product: product, collection: collection %}
+    {% assign product_url = product_url_with_collection %}
+{%- endcomment -%}
+
+{%- if collection and collection.handle -%}
+    {%- assign product_url_with_collection = product.url | within: collection -%}
+{%- else -%}
+    {%- assign product_url_with_collection = product.url -%}
+{%- endif -%}

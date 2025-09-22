@@ -16,6 +16,13 @@
     assign product_swatch_option = settings.swatch | downcase
     assign isColor = false
     assign variant_img = ''
+    
+    # Generate product URL with collection context
+    if collection and collection.handle
+        assign product_url_with_collection = product_card_product.url | within: collection
+    else
+        assign product_url_with_collection = product_card_product.url
+    endif
     for option in product_card_product.options_with_values
         assign option_name = option.name | downcase
         if product_swatch_option contains option_name
@@ -120,7 +127,7 @@
                         has_video: has_video,
                         loading: loading
                     %}
-                    <a class="card-link" href="{{ product_card_product.url }}" title="{{ product_card_product.title | escape }}"></a>
+                    <a class="card-link" href="{{ product_url_with_collection }}" title="{{ product_card_product.title | escape }}"></a>
                 </div>
 
                 {%- if product_action_group -%}
@@ -201,7 +208,7 @@
                     </div>
                 {%- endif -%}
                
-                <a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}{% if variant_selected != blank %} card-title-change{% endif %}" href="{{ product_card_product.url }}" data-product-title="{{ product_card_product.title | escape }}" data-product-url="{{ product_card_product.url }}">
+                <a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}{% if variant_selected != blank %} card-title-change{% endif %}" href="{{ product_url_with_collection }}" data-product-title="{{ product_card_product.title | escape }}" data-product-url="{{ product_url_with_collection }}">
                     <span class="text">
                         {{ product_card_product.title | escape }}
                         {% if variant_selected != blank %}
