@@ -17,8 +17,10 @@
         "9da20430-b562-46f1-9f28-e5592eeec567": {
           "type": "announcement",
           "settings": {
+            "type": "html",
             "text": "<p>Free Shipping on All Orders</p>",
-            "btn_color": "#f84248",
+            "text_rich": "<p>Welcome to our store</p>",
+            "btn_color": "#f50911",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
             "btn_bg_color_gradient": ""
@@ -29,11 +31,10 @@
         "9da20430-b562-46f1-9f28-e5592eeec567"
       ],
       "settings": {
-        "enable_announcement": true,
         "layout": "scroll",
         "enable_close": false,
         "color_text": "#ffffff",
-        "bg_color_text": "#acacac",
+        "bg_color_text": "#232323",
         "bg_color_text_gradient": "",
         "font_size_text": 14,
         "font_style_text": "italic",
@@ -41,7 +42,11 @@
         "arrow_active": false,
         "content_max_width": 38,
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top_tablet": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom": 0,
+        "padding_bottom_tablet": 0,
+        "padding_bottom_mobile": 0
       }
     },
     "d128316a-9eef-4ad8-9e41-3e9614db5ae2": {
@@ -81,6 +86,9 @@
             "customer_color": "#232323",
             "show_wishlist": true,
             "wishlist_color": "#232323",
+            "show_wishlist_number": false,
+            "wishlist_color_item": "#ffffff",
+            "wishlist_bg_item": "#232323",
             "show_cart": true,
             "cart_color": "#232323",
             "cart_color_item": "#ffffff",
@@ -176,6 +184,7 @@
             "show_search": false,
             "show_customer": false,
             "show_wishlist": false,
+            "show_wishlist_number": false,
             "show_cart": false,
             "text_font_size": 14,
             "show_language_currency_sticky": false,
@@ -183,13 +192,16 @@
             "show_customer_sticky": false,
             "show_wishlist_sticky": false,
             "show_cart_sticky": true,
+            "cart_icon": "1",
             "header_icons_color": "#232323",
             "header_icons_color_hover": "#232323",
             "header_icons_border_color": "rgba(0,0,0,0)",
             "header_icons_border_sticky_color": "rgba(0,0,0,0)",
             "cart_count_bubble_color": "#ffffff",
             "cart_count_bubble_bg": "#000000",
-            "cart_count_bubble_bg_gradient": ""
+            "cart_count_bubble_bg_gradient": "",
+            "wishlist_color_item": "#ffffff",
+            "wishlist_bg_item": "#232323"
           }
         }
       },
@@ -207,7 +219,8 @@
         "sticky_header_width": "full",
         "enable_transparent": false,
         "transparent_color": "#ffffff",
-        "transparent_color_hover": "#ffffff"
+        "transparent_color_hover": "#ffffff",
+        "border_color": "rgba(0,0,0,0)"
       }
     },
     "header-mobile": {
@@ -223,6 +236,8 @@
         "163e2cb5-14f2-4af6-9ac3-77193c082f53": {
           "type": "search",
           "settings": {
+            "icon": "1",
+            "popup_action": false,
             "color": "#232323"
           }
         },
@@ -235,7 +250,8 @@
             "logo_font_size": 20,
             "logo_font_weight": "900",
             "logo_text_transform": "uppercase",
-            "logo_color": "#232323"
+            "logo_color": "#232323",
+            "alignment": "center"
           }
         },
         "20dae707-64c0-4ea3-a05e-561cae9836d8": {
@@ -250,6 +266,7 @@
           "type": "cart",
           "settings": {
             "icon": "2",
+            "show_cart_count_bubble": true,
             "color": "#232323",
             "color_bubble": "#ffffff",
             "bg_bubble": "#232323"
