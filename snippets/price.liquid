@@ -72,6 +72,7 @@
                 {%- assign saved_price = compare_at_price | minus: price | money -%}
                 <div class="price__saved"><span class="price-item price-item--saved">{{'products.product.price.saved_price_html' | t: price: saved_price }}</span></div>
             {%- endif -%}
+            
           <!-- add taxfree by changelcai -->
           {% if price_class == 'price--medium' %}
            <!--  <img id="tex_free_id" alt="tex free icon" style="margin-left:8px; max-height: 100%; height: 25px;display: inline-block;vertical-align: middle;" src="https://cdn.shopify.com/s/files/1/0609/3094/9367/files/tax-free.png?v=1712417253"> -->
