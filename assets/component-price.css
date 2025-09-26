@@ -1,3 +1,37 @@
+/* 增加保价css by changelcai */
+.right-other[data-v-693915a3] {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 12px 0 0;
+}
+
+.right-other .right-border[data-v-693915a3] {
+    border-right: 1px solid #eeeeee;
+}
+
+.right-other .other-info-text[data-v-693915a3] {
+    color: #3c3c3c;
+    font-family: var(--font-body-family);
+    font-size: var(--font-body-size);
+    margin-left: 6px;
+}
+
+.right-other .other-info[data-v-693915a3] {
+    padding-right: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.right-other .other-info.other-info-left[data-v-693915a3] {
+    margin-left: 16px;
+}
+
+.right-other .other-info .other-img-icon[data-v-693915a3] {
+    width: 20px;
+    display: block;
+}
+
 .price {
     align-items: center;
     display: flex;
@@ -42,7 +76,7 @@
     display: flex !important;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-items:center;
 }
 
 .price-style-2.price--on-sale .price__sale {
@@ -65,10 +99,12 @@
 
 .price-item{
     display: inline-flex;
+    align-items: center;
     font-size: var(--product-price-font-size);
     letter-spacing: var(--product-price-letter-spacing);
     font-weight: var(--product-price-font-weight);
-    line-height: var(--product-price-line-height);
+    color: var(--product-price-color);
+    line-height:1.6;
 }
 
 .price-item .text{
@@ -79,8 +115,7 @@
     font-weight: var(--font-weight-normal);
     color: var(--product-compare-price-color);
     letter-spacing: 0;
-    line-height: var(--product-price-line-height);
-    margin: -4px 0px 0 0;
+    margin-right: 4px;
 }
 
 .style-arrows-7 .price-item .text{
@@ -119,7 +154,7 @@
 
 .price-item--sale {
     color: var(--product-sale-price-color);
-    line-height:1.3;
+    line-height:1.6;
 }
 
 .price.price--on-sale .price-item--sale .money{
@@ -151,16 +186,6 @@
   .price-item--sale {
     font-size: 18px;
   }
-}
-
-.price__last.price_percent{
-    margin-right: 0;
-}
-
-.price__label_sale.price__label_percent {
-    line-height: var(--product-price-line-height);
-    clip-path: unset;
-    height: initial;
 }
 
 .price__label_sale.price__label_percent .label_sale:not(.label_sale_percent){
