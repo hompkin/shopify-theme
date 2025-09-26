@@ -755,7 +755,7 @@ class VariantSelects extends HTMLElement {
             priceCompare = document.querySelector(".productView-product .price__compare").getAttribute('data-compare'),
             priceLast = document.querySelector(".productView-product .price__sale .price__last").getAttribute('data-last'),
             percentSale = Math.round(((priceCompare - priceLast) / priceCompare) * 100);
-        console.log(">>>>>>>>", priceCompare, priceLast, percentSale)
+            
         function renderSpan(text1, text2) {
             let spanElement = document.createElement('span');
             spanElement.classList.add('badge', 'sale-badge');

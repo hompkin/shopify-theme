@@ -6,7 +6,7 @@
     - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
     - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
     - price_class: {String} Adds a price class to the price element (optional)
-
+    - show_unit: {Boolean} show price unit (optional)
     Usage:
     {% render 'price', product: product %}
 {%- endcomment -%}
@@ -20,8 +20,9 @@
     assign compare_at_price = target.compare_at_price
     assign price = target.price | default: 1999
     assign available = target.available | default: false
+    assign showUnit = show_unit | default: false
 
-    if settings.currency_format_enable
+    if settings.currency_format_enable and showUnit
         assign money_price = price | money_with_currency
     else
         assign money_price = price | money
@@ -59,22 +60,26 @@
                     <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
                 </dt>
             {%- endcomment -%}
-            <dd class="price__last"><span class="price-item price-item--sale">{{ money_price }}</span></dd>
-            <dd class="price__compare" data-compare="{{compare_at_price}}"><s class="price-item price-item--regular">{% if settings.currency_format_enable %}{{ compare_at_price | money_with_currency }}{% else %}{{ compare_at_price | money }}{% endif %}</s></dd>
+
+            <dd class="price__compare" data-compare="{{compare_at_price}}"><s class="price-item price-item--regular">{% if settings.currency_format_enable and showUnit %}{{ compare_at_price | money_with_currency }}{% else %}{{ compare_at_price | money }}{% endif %}</s></dd>
             {%- comment -%}
                 <dt>
                     <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
                 </dt>
             {%- endcomment -%}
-
+            <dd class="price__last{% if settings.show_price_percent %} price_percent{% endif %}" data-last="{{price}}"><span class="price-item price-item--sale">{{ money_price }}</span></dd>
             {%- if settings.show_saved_price and price != nil and price != blank and compare_at_price != nil and compare_at_price != blank -%}
                 {%- assign saved_price = compare_at_price | minus: price | money -%}
                 <div class="price__saved"><span class="price-item price-item--saved">{{'products.product.price.saved_price_html' | t: price: saved_price }}</span></div>
             {%- endif -%}
+          <!-- add taxfree by changelcai -->
+          {% if price_class == 'price--medium' %}
+           <!--  <img id="tex_free_id" alt="tex free icon" style="margin-left:8px; max-height: 100%; height: 25px;display: inline-block;vertical-align: middle;" src="https://cdn.shopify.com/s/files/1/0609/3094/9367/files/tax-free.png?v=1712417253"> -->
+          {% endif %}
 
             {%- if settings.show_price_percent -%}
             <dd class="price__label_sale price__label_percent">
-                {%- liquid 
+                 {%- liquid
                     assign list_compare = product.variants | where: 'compare_at_price'
                     assign compare = 0
                     for variant in list_compare
@@ -97,3 +102,22 @@
         </small>
     </dl>
 </div>
+
+{%- comment -%}
+{% if price_class == 'price--medium' %}
+  <!-- 增加保价 by changelcai -->
+  <div data-v-693915a3="" class="right-other">
+  	<div data-v-693915a3="" class="other-info right-border">
+  	    <img data-v-693915a3="" src="data:image/webp;base64,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" alt="thirty-day-receipt" class="other-img-icon">
+  	  {%- assign title = shop.metaobjects.delivery_time['expedited-shipping-service'].config.value.title_price_match -%}
+      <span data-v-693915a3="" class="other-info-text">{{ title }}</span>
+  	</div>
+  	<div data-v-693915a3="" class="other-info other-info-left">
+  	    <img data-v-693915a3="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAgCAYAAABpRpp6AAAAAXNSR0IArs4c6QAAA2NJREFUWEftl89LW1kUx7/nJRMMliEB8cei2t73/JG66ELqqJvSX9A26GLAVbsptosRCgoF/RN0URQGZtPpZqbdtbQodtHfLa1mBGFQUhWvYXb+AHmCbTGxySk3jaKZJO8lLzpl8G7vOd/zyTf3nnseGYbRnUgkfgWg4QCXpmmdUsoH+ZYkIcQvAG4T0Q/5JhcSz8wuAFQwcCFFneTouv6QmX8+BHbiYq7cQ4f3y9ltXSHE3wBOAogCSGSqR0TjPp+vY2pq6nP6Pu03YLr+LuCcpYnoTWlpaXB6evrT7sADB94+wy6X60pZWdmjdOq1tbWaeDz+lJmPAnjr9XqD4XD443bcfwacq63V1dWJeDz+OgX9zuv1XtqG/i6BlZv19fXHt7a2XgOoJqL3brf70vz8/MYOcGdnp2tmZsaX75l2uVzR3X+ZVX4+ba2hoeFYLBZT0DXqIrrd7os7wEKISQCnrApm2I9rmnZNSvmnndx8gJVeIBCoiUajCvoYEYV2gHVd/4OZg3aKpsXEAHRFIpEndnJ1Xb/JzLc8Hs/pubm5f+zkCCGqAahYOvAzbAcwU4wQIq4mykPgQh20yjt02Mohp/v/X4eZmQzDuMHMXQAaU06FieiulPIOEXE+7hWqZ8vhQCBQFYvF7jPzmSxj4CuPx3NldnZ2yQ60Ez1L4JQTz5n5bFVVFfr6+tDS0pLkCoVCGBwcxNLSEojopZTyvJXTTvX2ADc1Nf3ri9k0zesAfqusrMTY2Bh8vr1jxvr6OoLBIJaXl9Vv6Pb7/b/nctmpnmmam8mHQ9d1NcadzlZseHgY7e3tGbdHR0fR09Nj5zTsxDjVU8CPAVxOr8rMbvV2T0xMoLy8PCPU6uoqWltb1R4T0Zdc5MXSy/o067q+wcxHxsfHUVFRkZFlZWUFbW1t6hxvLC4u/pgLuFh6WYGFECEAPw0NDaGjoyMjy8jICHp7e9XeX5FI5NuNzLKKpZcV2DCM64lE4o5yV106v9+/B8U0zeSlUy5rmnZDSpnz0hVLLytwqg09Y+ZzCrq/vx/Nzc1J6MnJSQwMDCRhieiFlPKCzbbmWC/neNnY2Fi5ubl5T0FneThelJSUXA2Hw8neZrWKoWc5Dyuna2tru1JP84kU1Af1NC8sLNy1cjZD93Gk9xXkMhMQFA3mogAAAABJRU5ErkJggg==" alt="free-shipping" class="other-img-icon">
+  	  {%- assign title = shop.metaobjects.delivery_time['expedited-shipping-service'].config.value.title_free_shipping -%}
+      <span data-v-693915a3="" class="other-info-text">{{ title }}</span>
+  	</div>
+  </div>
+{%- endif -%}
+
+{%- endcomment -%}
