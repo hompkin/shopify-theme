@@ -42,7 +42,7 @@
     {%- endcomment -%}
     {%- liquid
         assign matched_color = nil
-        if request.page_type == 'collection' and isColor
+        if request.page_type == 'collection'
             assign last_segment = canonical_url | split: '/' | last | split: '?' | first
             assign url_tokens = last_segment | downcase | split: '-'
             assign colors = 'beige,white,black,brown,gray,blue,green,pink,red,yellow,orange,purple,gold,silver' | split: ','
@@ -53,14 +53,39 @@
                 endif
             endfor
             if matched_color
-                for v in product_card_product.variants
-                    assign v_color = v.options[position] | downcase
-                    if v_color contains matched_color and v.image != null
-                        assign variant_img = v.image
-                        assign variant_selected = v.options[position]
-                        break
-                    endif
-                endfor
+                if isColor
+                    for v in product_card_product.variants
+                        assign v_color = v.options[position] | downcase
+                        if v_color contains matched_color and v.image != null
+                            assign variant_img = v.image
+                            assign variant_selected = v.options[position]
+                            break
+                        endif
+                    endfor
+                else
+                    for v in product_card_product.variants
+                        assign v_title = v.title | downcase
+                        assign found = false
+                        if v_title contains matched_color
+                            assign found = true
+                        else
+                            for ov in v.options
+                                if ov != blank and ov | downcase contains matched_color
+                                    assign found = true
+                                    assign variant_selected = ov
+                                    break
+                                endif
+                            endfor
+                        endif
+                        if found and v.image != null
+                            assign variant_img = v.image
+                            if variant_selected == blank
+                                assign variant_selected = v.title
+                            endif
+                            break
+                        endif
+                    endfor
+                endif
             endif
         endif
     -%}
