@@ -161,8 +161,10 @@
                         {% endif %}
                         {% if variant_img != '' %}
                           <span>variant_img_set=true</span>
+                          <span>variant_img_url={{ variant_img | image_url }}</span>
                         {% else %}
                           <span>variant_img_set=false</span>
+                          <span>featured_media_url={{ product_card_product.featured_media | image_url }}</span>
                         {% endif %}
                       </div>
                     {%- if collection -%}
