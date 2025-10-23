@@ -59,11 +59,8 @@
             assign o1 = variant.option1 | downcase
             assign o2 = variant.option2 | downcase
             assign o3 = variant.option3 | downcase
-            assign match_o1 = o1 contains preferred_color
-            assign match_o2 = o2 contains preferred_color
-            assign match_o3 = o3 contains preferred_color
-            if match_o1 or match_o2 or match_o3
-                if variant.image != null
+            if variant.image != null
+                if o1 contains preferred_color or o2 contains preferred_color or o3 contains preferred_color
                     assign variant_img = variant.image
                     assign found_img = true
                     break
