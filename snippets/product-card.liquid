@@ -36,6 +36,49 @@
             assign variant_selected = nil
         endif
     endfor
+
+    assign handle_source = ''
+    if collection
+        assign handle_source = collection.handle
+    else
+        assign handle_source = request.path | split: '/' | last
+    endif
+    assign tokens = handle_source | downcase | split: '-'
+    assign color_list = 'beige,white,black,brown,gray,blue,green,pink,red,yellow,orange,purple,gold,silver' | split: ','
+    assign preferred_color = ''
+    for t in tokens
+        if color_list contains t
+            assign preferred_color = t
+            break
+        endif
+    endfor
+
+    if preferred_color != ''
+        assign found_img = false
+        for variant in product_card_product.variants
+            assign o1 = variant.option1 | downcase
+            assign o2 = variant.option2 | downcase
+            assign o3 = variant.option3 | downcase
+            if (o1 contains preferred_color or o2 contains preferred_color or o3 contains preferred_color) and variant.image != null
+                assign variant_img = variant.image
+                assign found_img = true
+                break
+            endif
+        endfor
+        if found_img == false
+            for m in product_card_product.media
+                if m.media_type == 'image'
+                    assign alt = m.alt | downcase
+                    if alt contains preferred_color
+                        assign variant_img = m
+                        assign found_img = true
+                        break
+                    endif
+                endif
+            endfor
+        endif
+    endif
+
     assign aggregateRating = ryviu.product_reviews_info | split: ";" 
     assign r_avg = aggregateRating[1] | plus: 0
     assign r_count = aggregateRating[0] | plus: 0
