@@ -90,6 +90,11 @@
         endif
     -%}
 
+    {%- comment -%}
+        DEBUG product-card url color:
+        matched_color={{ matched_color }} | last_segment={{ last_segment }} | url_tokens={{ url_tokens | join: ',' }} | isColor={{ isColor }} | position={{ position }} | variant_selected={{ variant_selected }} | variant_img_id={% if variant_img != blank %}{{ variant_img.id }}{% else %}nil{% endif %}
+    {%- endcomment -%}
+
     assign media_size = settings.product_block_image_ratio
     if media_size == 'portrait'
         assign portrait_aspect_ratio = settings.portrait_height
@@ -130,7 +135,7 @@
     assign show_price = settings.show_price
     assign custom_fields = product_card_product.metafields.custom.product_variant_custom
 -%}
-<div class="product-item{% if settings.enable_background_button_card %} enable_background_button_card{% endif %}{% if settings.enable_custom_layout_card_1%} enable_custom_layout_card_1{% endif %}" data-product-id="{{ product_card_product.id }}" data-json-product='{"id": {{product_card_product.id}},"handle": "{{product_card_product.handle}}","media": {{product.media | json | escape}},"variants": {{ product_card_product.variants | json | escape}}}'>
+<div class="product-item{% if settings.enable_background_button_card %} enable_background_button_card{% endif %}{% if settings.enable_custom_layout_card_1%} enable_custom_layout_card_1{% endif %}" data-product-id="{{ product_card_product.id }}" data-json-product='{"id": {{product_card_product.id}},"handle": "{{product_card_product.handle}}","media": {{product.media | json | escape}},"variants": {{ product_card_product.variants | json | escape}}}' data-debug-color="{{ matched_color }}" data-url-last-segment="{{ last_segment }}" data-url-tokens="{{ url_tokens | join: ',' }}" data-iscolor="{{ isColor }}" data-color-position="{{ position }}" data-variant-selected="{{ variant_selected }}" data-variant-img-id="{% if variant_img != blank %}{{ variant_img.id }}{% else %}nil{% endif %}">
     <div class="card{% if product_card_product.media[0].media_type == 'video' %} has-first-video{% endif %}">
         <div class="card-product{% if product_card_product.featured_media == nil %} card--text-only card--soft{% endif %}">
             <div class="card-product__wrapper">
