@@ -145,6 +145,7 @@
     "swatch_width": 40,
     "swatch_height": 40,
     "swatch_border_radius": 0,
+    "swatch": "Color|カラー|色|",
     "swatch_type": "variant_image",
     "swatch_color_width": 66,
     "swatch_color_height": 66,
