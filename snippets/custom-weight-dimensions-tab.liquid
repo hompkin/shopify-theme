@@ -62,19 +62,22 @@
             {% if wd_variants_images and wd_variants_images[current_variant.sku] %}
               <div class="horizen-line">&nbsp</div>
               {% assign wd_variants_images_attrs = wd_variants_images[current_variant.sku] %}
-              {% if attr contains 'http' %}
-                <img class="img" src="{{ attr }}" loading="lazy" alt="{{ product.title | escape }} Dimensions" width="100%" height="100%" >
-              {% else %}
-                {%- for media in product.media -%}
-                  {% assign preview_image_url = media.preview_image | img_url: 'master' %}
-                  {% assign preview_filename = preview_image_url | split:'?' | first | split:'/' | last | split:'.' | first | split:'_' | first | escape %}
-                  
-                  {%- if media.media_type == 'image' and preview_filename == attr_filename -%}
-                    <img class="img" src="{{ preview_image_url }}" loading="lazy" alt="{{ media.alt | escape }}" width="100%" height="100%" >
-                    {% break; %}
-                  {%- endif -%}
-                {%- endfor -%}
-              {% endif %}
+              {% for attr in wd_variants_images_attrs %}
+                {% if attr contains 'https://' %}
+                  <img class="img" src="{{ attr }}" loading="lazy" alt="{{ product.title | escape }} Dimensions" width="100%" height="100%" >
+                {% else %}
+                  {% assign attr_filename = attr | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
+                  {%- for media in product.media -%}
+                    {% assign preview_image_url = media.preview_image | img_url: 'master' %}
+                    {% assign preview_filename = preview_image_url | split:'?' | first | split:'/' | last | split:'.' | first | split:'_' | first | escape %}
+                    
+                    {%- if media.media_type == 'image' and preview_filename == attr_filename -%}
+                      <img class="img" src="{{ preview_image_url }}" loading="lazy" alt="{{ media.alt | escape }}" width="100%" height="100%" >
+                      {% break; %}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {% endif %}
+              {%- endfor -%}
             {% endif %}
           </div>
         {% endif %}
