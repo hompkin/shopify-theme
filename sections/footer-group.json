@@ -17,7 +17,13 @@
         "3c71eb67-386f-4ca9-93b5-6a9071eaf804": {
           "type": "newsletter",
           "settings": {
+            "newsletter_content_direction": "column",
+            "newsletter_form_justify_content": "center",
+            "spacing_tb": 75,
+            "custom_width": false,
+            "width": "",
             "section_title": "Deals, Inspiration and Trends",
+            "special_text": "",
             "section_title_font_size": 22,
             "section_title_font_size_mb": 17,
             "section_title_font_weight": "700",
@@ -26,21 +32,27 @@
             "section_title_color": "#000000",
             "mg_bottom_title": 12,
             "mg_bottom_title_mb": 12,
+            "section_subtitle": "",
+            "section_subtitle_font_size": 16,
+            "section_subtitle_font_size_mb": 24,
+            "section_subtitle_font_weight": "400",
+            "section_subtitle_text_transform": "none",
+            "section_subtitle_font_style": "normal",
+            "section_subtitle_color": "#191919",
+            "mg_bottom_subtitle": 0,
+            "mg_bottom_subtitle_mb": 0,
+            "show_between_input_button": false,
             "section_description": "<p>Learn more about special offers, promotions, events and more.</p>",
             "section_description_font_size": 17,
             "section_description_font_size_mb": 17,
             "section_description_font_weight": "400",
             "section_description_color": "#666666",
             "margin_bottom_des": 32,
-            "des_line_height": 20,
-            "show_input_field": true,
-            "input_style": "style_1",
-            "input_width": 380,
-            "input_border_radius": 1,
-            "input_text_font_size": 17,
+            "button_style": "text",
             "button_text": "Subscribe",
             "button_font_size": 17,
             "button_width": 170,
+            "button_border_radius": 0,
             "button_text_color": "{{ shop.brand.colors.primary[0].background }}",
             "button_border_color": "{{ shop.brand.colors.secondary[0].background }}",
             "button_background_color": "{{ shop.brand.colors.secondary[0].background }}",
@@ -51,14 +63,21 @@
             "button_gradient_color_hover": "",
             "button_text_transform": "capitalize",
             "button_font_weight": "600",
+            "show_box_shadow_button": false,
+            "shadow_color_button": "rgba(0,0,0,0)",
+            "show_input_field": true,
+            "input_style": "style_1",
             "input_placeholder": "Your email address",
+            "input_text_font_size": 17,
+            "input_width": 380,
+            "input_border_radius": 1,
             "input_placeholder_color": "#666666",
             "input_background_color": "rgba(0,0,0,0)",
             "input_border_color": "#000000",
             "form_gap": 10,
-            "newsletter_content_direction": "column",
-            "newsletter_form_justify_content": "center",
-            "input_width_behavior": "auto"
+            "input_width_behavior": "auto",
+            "show_box_shadow_input": false,
+            "shadow_color_input": "rgba(0,0,0,0)"
           }
         }
       },
@@ -73,16 +92,17 @@
         "padding_full_width": 0,
         "background": "{{ shop.brand.colors.secondary[0].foreground }}",
         "background_gradient": "",
+        "enable_parallax": true,
+        "section_text_align": "center",
+        "justify_section_content": "center",
+        "section_item_distance": 20,
+        "enable_social_media_below": false,
         "mg_top_desktop": 70,
         "mg_top_tablet": 30,
         "mg_top_mobile": 70,
         "mg_bottom_desktop": 50,
         "mg_bottom_tablet": 50,
-        "mg_bottom_mobile": 0,
-        "section_text_align": "center",
-        "justify_section_content": "center",
-        "section_item_distance": 20,
-        "enable_social_media_below": false
+        "mg_bottom_mobile": 0
       }
     },
     "d227442f-0f49-489a-b209-b0553d2a0159": {
@@ -92,6 +112,10 @@
           "type": "text",
           "settings": {
             "custom_width": "8",
+            "show_border_left": false,
+            "border_left_color": "#ffffff",
+            "show_border_right": false,
+            "border_right_color": "#ffffff",
             "heading": "",
             "logo_margin_bottom": 28,
             "subtext": "",
@@ -107,7 +131,6 @@
             "icon_size": 16,
             "icon_color": "",
             "content_spacing": 1,
-            "mg_bottom": 0,
             "enable_custom_position_icon": false,
             "show_social": false,
             "social_heading": "",
@@ -125,7 +148,8 @@
             "social_border_color_hover": "#ffffff",
             "social_background_color_hover": "#ffffff",
             "social_background_color_gradient_hover": "",
-            "social_box_hover_color": "#ffffff"
+            "social_box_hover_color": "#ffffff",
+            "mg_bottom": 0
           }
         },
         "sections--14855161806899__d227442f-0f49-489a-b209-b0553d2a0159-16765219510f754497-0": {
@@ -133,7 +157,7 @@
           "settings": {
             "custom_width": "22",
             "heading": "Shop",
-            "menu": "bathtubs",
+            "menu": "main-menu",
             "mg_bottom": 0
           }
         },
@@ -159,6 +183,10 @@
           "type": "text",
           "settings": {
             "custom_width": "26",
+            "show_border_left": false,
+            "border_left_color": "#ffffff",
+            "show_border_right": false,
+            "border_right_color": "#ffffff",
             "heading": "Contact us",
             "logo_margin_bottom": 28,
             "subtext": "",
@@ -174,7 +202,6 @@
             "icon_size": 17,
             "icon_color": "#000000",
             "content_spacing": 6,
-            "mg_bottom": 0,
             "enable_custom_position_icon": false,
             "show_social": true,
             "social_heading": "",
@@ -192,7 +219,8 @@
             "social_border_color_hover": "{{ shop.brand.colors.secondary[0].foreground }}",
             "social_background_color_hover": "#ffffff",
             "social_background_color_gradient_hover": "",
-            "social_box_hover_color": "#232323"
+            "social_box_hover_color": "#232323",
+            "mg_bottom": 0
           }
         },
         "9b087943-9d42-4617-bc02-1686d5190641": {
@@ -208,6 +236,7 @@
             "show_copyright": true,
             "show_shop_name": false,
             "enable_layout_grid": true,
+            "text_fontsize": 14,
             "copyright_content": "<p>Copyright © 2024 Hompkin. All Rights Reserved.</p>",
             "copyright_content_color": "#666666",
             "shop_name": "",
@@ -257,9 +286,10 @@
         "padding_full_width": 0,
         "type_footer_heading": "font_1",
         "type_footer_heading_font_size": 16,
+        "type_footer_heading_line_height": 20,
         "type_footer_heading_font_weight": "600",
         "type_footer_heading_text_transform": "uppercase",
-        "type_footer_heading_line_height": 20,
+        "type_footer_heading_margin_bottom": 12,
         "type_footer_heading_letter_spacing": ".02em",
         "type_footer_link": "font_1",
         "type_footer_link_font_size": 16,
@@ -284,6 +314,7 @@
         "footer_top_color_link": "#000000",
         "footer_top_color_link_hover": "#000000",
         "show_border_item": false,
+        "space_border_item": 65,
         "footer_border_item": "#808080"
       }
     }
