@@ -138,7 +138,7 @@
         "sections--14682829619277__00c92468-4e6c-42f1-85ad-ba2b3977ed37-1680867093b1fbc19d-1": {
           "type": "main_menu",
           "settings": {
-            "menu": "bathtubs",
+            "menu": "main-menu",
             "menu_top_spacing": 10,
             "menu_bottom_spacing": 24,
             "grid_gap_menu_item": 12,
