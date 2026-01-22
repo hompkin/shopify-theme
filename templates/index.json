@@ -147,12 +147,12 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/restaurant.jpg",
-            "title": "Dining Room",
+            "title": "Kitchen & Dining Room",
             "color_text": "#000",
             "color_text_hover": "#ffa000",
             "description": "",
             "color_des": "#3c3c3c",
-            "link": "shopify://collections/dining-sets"
+            "link": "shopify://collections/kitchen-dining"
           }
         },
         "image_hn6M3Y": {
