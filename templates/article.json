@@ -46,7 +46,7 @@
           "type": "block_quote",
           "settings": {
             "enable_bg_color": true,
-            "bg_color_content": "#fafafa",
+            "bg_color_content": "#ffffff",
             "title": "",
             "color_title": "#232323",
             "fontsize_title": 14,
