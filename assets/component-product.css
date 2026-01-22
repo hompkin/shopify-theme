@@ -294,6 +294,10 @@
     left: 75px;
 }
 
+.productView-image-wrapper {
+    margin-bottom: auto;
+}
+
 .productView-image-wrapper .productView-nav.productView-nav-gallery:not(.slick-initialized) {
     white-space: normal;
     margin-left: -5px;
