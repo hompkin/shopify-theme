@@ -265,7 +265,7 @@
 }
 
 .articleBlockQuote-content.has-bg {
-  padding: 30px 35px;
+  padding: 15px;
   background-color: var(--quote-bg-color-content);
 }
 
