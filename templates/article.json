@@ -66,7 +66,7 @@
             "product_block_collection": "{{ article.metafields.custom.product_collection.value }}",
             "product_block_layout": "grid",
             "product_block_limit": 12,
-            "product_block_dots": false,
+            "product_block_dots": true,
             "product_block_arrows": true
           }
         },
