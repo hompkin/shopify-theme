@@ -16,6 +16,58 @@
     },
     "b2b_MyrhcC": {
       "type": "b2b",
+      "blocks": {
+        "faq_item_Nfmezy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the Hompkin Trade Program?",
+            "answer": "The Hompkin Trade Program is tailored for interior design professionals, retailers, and commercial buyers who seek premium furniture at competitive trade prices. Members gain exclusive access to factory-direct rates, curated product collections, and personalized support for large or specialized projects."
+          }
+        },
+        "faq_item_8B8Yb4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Who is eligible to join the Trade Program?",
+            "answer": "We invite professionals and businesses in design, construction, and hospitality sectors to apply, including:  \n<br>• Interior designers and decorators  \n<br>• Architects and developers  \n<br>• Hotel and restaurant owners  \n<br>• Retail and commercial space operators  \n<br>• Real estate and property managers  \n<br>• Event and staging specialists"
+          }
+        },
+        "faq_item_U3BEzc": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What advantages do Trade Members enjoy?",
+            "answer": "Hompkin Trade Members benefit from a suite of exclusive privileges:  \n<br>• Wholesale &amp; Bulk Savings — Competitive trade pricing plus additional discounts on large orders.  \n<br>• Early Access — Be the first to explore new collections and limited editions.  \n<br>• Dedicated Guidance — Account managers available for product advice, quotes, and project assistance.  \n<br>• Custom Project Support — Personalized furniture solutions for branded or large-scale projects."
+          }
+        },
+        "faq_item_yqNgyA": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I place an order to maximize savings?",
+            "answer": "Orders can be placed online or through your dedicated account manager. For large-scale or customized projects, working directly with your account manager ensures the most competitive pricing and access to exclusive collections."
+          }
+        },
+        "faq_item_PKKALH": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What support is available to Trade Members?",
+            "answer": "Hompkin provides dedicated account managers to help with product recommendations, detailed quotes, project consultation, and ongoing assistance throughout your order process."
+          }
+        },
+        "faq_item_ieHmd3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do Trade Members benefit from shipping and logistics?",
+            "answer": "Members enjoy priority shipping, bulk order discounts, and streamlined global delivery coordination."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_Nfmezy",
+        "faq_item_8B8Yb4",
+        "faq_item_U3BEzc",
+        "faq_item_yqNgyA",
+        "faq_item_PKKALH",
+        "faq_item_ieHmd3"
+      ],
       "name": "B2B Application",
       "settings": {
         "display_hero": true,
