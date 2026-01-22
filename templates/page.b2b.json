@@ -114,8 +114,8 @@
         "contact_info_email": "support@hompkin.com",
         "contact_info_livechat": "Chat Online",
         "contact_info_phone": "",
-        "contact_info_phone_number": "+1 (555) 000-0000",
-        "contact_info_hours": "Mon-Fri from 8am to 5pm",
+        "contact_info_phone_number": "",
+        "contact_info_hours": "",
         "display_faq": true,
         "faq_title": "Frequently Asked Questions"
       }
