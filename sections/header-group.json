@@ -66,7 +66,7 @@
         "sections--14682829619277__d128316a-9eef-4ad8-9e41-3e9614db5ae2-16808670863a7d2551-1": {
           "type": "text",
           "settings": {
-            "customer_service_text": "<ul><li><a href=\"/pages/b2b\" title=\"B2B\">B2B</a></li><li><a href=\"/pages/about-hompkin\" target=\"_blank\" title=\"About Hompkin\">ABOUT US</a></li><li><a href=\"/pages/contact-us\" target=\"_blank\" title=\"Contact Us\">CONTACT US</a></li></ul>",
+            "customer_service_text": "<ul><li><a href=\"/pages/about-hompkin\" target=\"_blank\" title=\"About Hompkin\">ABOUT US</a></li><li><a href=\"/pages/contact-us\" target=\"_blank\" title=\"Contact Us\">CONTACT US</a></li><li><a href=\"/pages/b2b\" title=\"B2B\">B2B</a></li></ul>",
             "text_color": "#2d2d2d"
           }
         },
