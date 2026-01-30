@@ -12,6 +12,14 @@
     "main": {
       "type": "main-article",
       "blocks": {
+        "recent_tag_h9AR4t": {
+          "type": "recent_tag",
+          "settings": {
+            "heading": "Blog Tags",
+            "show_tag_count": false,
+            "number": 10
+          }
+        },
         "bced6fd1-310d-4026-8786-1f886c51eec2": {
           "type": "category",
           "disabled": true,
@@ -261,6 +269,7 @@
         }
       },
       "block_order": [
+        "recent_tag_h9AR4t",
         "bced6fd1-310d-4026-8786-1f886c51eec2",
         "96861bf3-10df-4b31-82bd-61aee2e9bc30",
         "block_quote_eUHcyR",
