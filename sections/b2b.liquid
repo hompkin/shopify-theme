@@ -498,6 +498,17 @@
 
           <div class="col-12">
             <div class="form-group">
+              <label for="b2bInterestedProducts">
+                <span {% if settings.enable_multilang %}data-translate="b2b.form.interested_products"{% endif %}>
+                  {{ section.settings.label_interested_products | default: 'Products of Interest' }}
+                </span>
+              </label>
+              <textarea rows="4" name="contact[interested_products]" id="b2bInterestedProducts" placeholder="{{ section.settings.placeholder_interested_products }}"></textarea>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
               <label for="b2bProjectDetails">
                 <span {% if settings.enable_multilang %}data-translate="b2b.form.project_details"{% endif %}>
                   {{ section.settings.label_project_details | default: 'Project Details & Requirements' }}
@@ -2333,6 +2344,18 @@ function openChat() {
       "type": "text",
       "id": "placeholder_quantity",
       "label": "Quantity Placeholder"
+    },
+    {
+      "type": "text",
+      "id": "label_interested_products",
+      "label": "Products of Interest Label",
+      "default": "Products of Interest"
+    },
+    {
+      "type": "textarea",
+      "id": "placeholder_interested_products",
+      "label": "Products of Interest Placeholder",
+      "default": "Please provide product links or names you are interested in (optional)"
     },
     {
       "type": "text",
