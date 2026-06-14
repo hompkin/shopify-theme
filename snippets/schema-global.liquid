@@ -1,0 +1,41 @@
+{%- comment -%}
+  站点级结构化数据：Organization + WebSite(SearchAction)。
+  在 layout/theme.liquid 的 <head> 渲染，全站每页输出（含首页）。
+  现有 schema.liquid 已覆盖 Product / Article / CollectionPage / BreadcrumbList，本文件只补这两块。
+  logo 用已上传的 hompkin-logo.png；如更换品牌 logo，请更新下方 org_logo。
+{%- endcomment -%}
+{%- assign org_logo = 'https://cdn.shopify.com/s/files/1/0628/5987/0358/files/hompkin-logo.png?v=1757071692' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  "url": "{{ shop.url }}/",
+  "logo": {{ org_logo | json }},
+  "sameAs": [
+    {%- assign sep = '' -%}
+    {%- if settings.social_facebook_link != blank -%}{{ sep }}{{ settings.social_facebook_link | json }}{%- assign sep = ',' -%}{%- endif -%}
+    {%- if settings.social_instagram_link != blank -%}{{ sep }}{{ settings.social_instagram_link | json }}{%- assign sep = ',' -%}{%- endif -%}
+    {%- if settings.social_pinterest_link != blank -%}{{ sep }}{{ settings.social_pinterest_link | json }}{%- assign sep = ',' -%}{%- endif -%}
+    {%- if settings.social_youtube_link != blank -%}{{ sep }}{{ settings.social_youtube_link | json }}{%- assign sep = ',' -%}{%- endif -%}
+    {%- if settings.social_tiktok_link != blank -%}{{ sep }}{{ settings.social_tiktok_link | json }}{%- assign sep = ',' -%}{%- endif -%}
+    {%- if settings.social_twitter_link != blank -%}{{ sep }}{{ settings.social_twitter_link | json }}{%- assign sep = ',' -%}{%- endif -%}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ shop.name | json }},
+  "url": "{{ shop.url }}/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ shop.url }}/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>

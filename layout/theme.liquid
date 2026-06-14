@@ -31,6 +31,7 @@
             <meta name="description" content="{{ page_description | escape }}">
         {%- endif -%}
         {% render 'meta-tags' %}
+        {% render 'schema-global' %}
         {{ content_for_header }}
         {% render 'variable' %}
         {% render 'global-style' %}
