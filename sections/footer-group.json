@@ -104,7 +104,7 @@
             "phone_text": "",
             "email_icon": "envelope_icon",
             "show_email_icon": false,
-            "email_text": "<p>Email: <a href=\"https://hompkin.com/pages/contact-us\" target=\"_blank\" title=\"support@hompkin.com\">support@hompkin.com</a></p>",
+            "email_text": "<p>Email: <a href=\"mailto:support@hompkin.com\" target=\"_blank\" title=\"mailto:support@hompkin.com\">support@hompkin.com</a></p>",
             "icon_size": 17,
             "icon_color": "#000000",
             "content_spacing": 6,
