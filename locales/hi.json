@@ -178,6 +178,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "संबंधित लेख",
+      "show_more": "और दिखाएँ",
+      "show_less": "कम दिखाएँ",
       "blog": "ब्लॉग",
       "read_more_title": "और पढ़ें: {{ title }}",
       "read_more": "विवरण देखें",

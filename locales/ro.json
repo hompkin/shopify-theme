@@ -178,6 +178,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "Articole conexe",
+      "show_more": "Afișează mai mult",
+      "show_less": "Afișează mai puțin",
       "blog": "Blog",
       "read_more_title": "Citeşte mai mult: {{ title }}",
       "read_more": "Vezi detalii",

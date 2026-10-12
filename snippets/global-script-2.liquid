@@ -1,5 +1,9 @@
+{%- if request.page_type == 'product' -%}
+    {{ 'custom-product-metafields.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 <script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'custom-product-metafields.js' | asset_url }}" defer="defer"></script>
 
 {%- if settings.show_calculator_free_shipping_message -%}
     <script src="{{ 'free-shipping-message.js' | asset_url }}" defer="defer"></script>

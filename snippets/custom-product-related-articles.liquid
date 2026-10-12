@@ -1,0 +1,35 @@
+{%- liquid
+  assign related_articles = product.metafields.custom.related_articles.value
+  assign valid_count = 0
+  for article in related_articles
+    if article.title != blank and article.url != blank
+      assign valid_count = valid_count | plus: 1
+    endif
+  endfor
+  assign articles_id = 'related-articles-' | append: section_id | append: '-' | append: product.id
+-%}
+{%- if valid_count > 0 -%}
+  <div class="product-related-articles">
+    <span class="text">{{ 'blogs.article.related_articles' | t }}</span>
+    <div class="articles-list" id="{{ articles_id }}">
+      {%- assign valid_index = 0 -%}
+      {%- for article in related_articles -%}
+        {%- if article.title != blank and article.url != blank -%}
+          {%- assign valid_index = valid_index | plus: 1 -%}
+          <a href="{{ article.url | escape }}" target="_blank" rel="noopener" class="article-link{% if valid_index > 5 %} related-article-extra{% endif %}">
+            <svg class="article-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+            <span>{{ article.title | escape }}</span>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if valid_count > 5 -%}
+      <button type="button" class="related-articles-toggle" aria-expanded="false" aria-controls="{{ articles_id }}">
+        <span class="toggle-label-more"><span aria-hidden="true">＋ </span>{{ 'blogs.article.show_more' | t }}</span>
+        <span class="toggle-label-less"><span aria-hidden="true">－ </span>{{ 'blogs.article.show_less' | t }}</span>
+      </button>
+    {%- endif -%}
+  </div>
+{%- endif -%}

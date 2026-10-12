@@ -187,6 +187,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "Relaterte artikler",
+      "show_more": "Vis mer",
+      "show_less": "Vis mindre",
       "blog": "Blogg",
       "read_more_title": "Les mer: {{ title }}",
       "read_more": "Se detaljer",

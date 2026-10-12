@@ -5070,7 +5070,7 @@
                             player;
 
                         currentSlide = $(slick.$slider).find('.slick-current');
-                        player = currentSlide.find('video').get(0);
+                        player = currentSlide.find('video:not([data-custom-product-video-player])').get(0);
 
                         if (player != undefined) {
                             player.pause();
@@ -5082,7 +5082,7 @@
                             player;
 
                         currentSlide = $(slick.$slider).find('.slick-current');
-                        player = currentSlide.find('video').get(0);
+                        player = currentSlide.find('video:not([data-custom-product-video-player])').get(0);
 
                         if (player != undefined) {
                             player.play();
@@ -5249,6 +5249,7 @@
                 }
 
                 const filter = (list) => {
+                    if (sliderNav.find('[data-custom-product-video]').length) list += ',.custom-product-video-slide,.custom-product-video-thumbnail';
                     switch (pageLayout) {
                         case 'gallery':
                             sliderNav
@@ -5642,7 +5643,7 @@
 
             const gridItems = document.querySelectorAll(".productView-image");
             gridItems.forEach(el => {
-                if (el?.querySelector('.productView-video')) return;
+                if (el?.querySelector('.productView-video, [data-custom-product-video]')) return;
                 el.addEventListener("mouseenter", handleMouseEnter);
                 el.addEventListener("mouseleave", handleMouseLeave);
             });

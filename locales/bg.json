@@ -178,6 +178,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "Свързани статии",
+      "show_more": "Покажи още",
+      "show_less": "Покажи по-малко",
       "blog": "Блог",
       "read_more_title": "Прочетете повече: {{ title }}",
       "read_more": "Вижте подробности",

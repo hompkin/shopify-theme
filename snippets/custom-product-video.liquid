@@ -1,0 +1,36 @@
+{% comment %}JSON media: { video, image, alt? }. Index is shared by the gallery and thumbnails.{% endcomment %}
+{%- liquid
+  assign media_id = section_id | append: '-custom-video-' | append: index
+  assign video_alt = media.alt | default: product.title
+  assign video_ratio = aspect_ratio | default: 1
+  assign padding = 1.0 | divided_by: video_ratio | times: 100 | append: '%'
+  if media_size == 'square'
+    assign padding = '100%'
+  elsif media_size == 'portrait'
+    assign padding = portrait_aspect_ratio
+  endif
+-%}
+{%- if thumbnail -%}
+  <div class="productView-thumbnail custom-product-video-thumbnail" data-media-id="{{ media_id }}">
+    <div class="productView-thumbnail-link">
+      {%- if media.image != blank -%}
+        <img src="{{ media.image | escape }}" alt="{{ video_alt | escape }}" loading="lazy" width="160" height="160">
+      {%- endif -%}
+    </div>
+    <div class="productView-thumbnail-icon">{% render 'icon-video' %}</div>
+  </div>
+{%- else -%}
+  <div class="productView-image productView-image-{{ media_size }} fit-{{ media_fit }} custom-product-video-slide" data-index="{{ index }}">
+    <div class="productView-img-container product-single__media custom-product-video" data-media-id="{{ media_id }}" data-custom-product-video style="--custom-video-padding: {{ padding }};">
+      <button class="custom-product-video-poster" type="button" aria-label="{{ 'general.common.video' | t | escape }}">
+        {%- if media.image != blank -%}
+          <img src="{{ media.image | escape }}" alt="{{ video_alt | escape }}" loading="lazy" width="1600" height="1600">
+        {%- endif -%}
+        <span class="custom-product-video-play">{% render 'icon-video' %}</span>
+      </button>
+      <template>
+        <video data-custom-product-video-player src="{{ media.video | escape }}"{% if media.image != blank %} poster="{{ media.image | escape }}"{% endif %} muted loop controls playsinline preload="none" aria-label="{{ video_alt | escape }}"></video>
+      </template>
+    </div>
+  </div>
+{%- endif -%}

@@ -187,6 +187,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "Kapcsolódó cikkek",
+      "show_more": "Több megjelenítése",
+      "show_less": "Kevesebb mutatása",
       "blog": "Blog",
       "read_more_title": "Bővebben: {{ title }}",
       "read_more": "Részletek megtekintése",

@@ -32,6 +32,43 @@
     assign media_fit = section.settings.media_fit
     assign product_image_popup = section.settings.product_image_popup
     assign video_layout = section.settings.video_layout
+
+    # Metafield entries are plain JSON objects, not Shopify media drops.
+    assign custom_videos = product.metafields.custom.product_videos.value
+    assign gallery_media = product.media
+    assign cv_insert_index = 1
+    for native_media in product.media
+        if native_media.media_type == 'video' or native_media.media_type == 'external_video'
+            assign cv_insert_index = forloop.index
+        endif
+    endfor
+    if cv_insert_index > product.media.size
+        assign cv_insert_index = product.media.size
+    endif
+    assign valid_custom_videos = '' | split: ','
+    for custom_video in custom_videos
+        if custom_video.video != blank
+            assign video_entry = custom_videos | slice: forloop.index0, 1
+            assign valid_custom_videos = valid_custom_videos | concat: video_entry
+        endif
+    endfor
+    if valid_custom_videos.size > 0
+        assign gallery_head = product.media | slice: 0, cv_insert_index
+        assign gallery_tail_length = product.media.size | minus: cv_insert_index
+        assign gallery_tail = product.media | slice: cv_insert_index, gallery_tail_length
+        assign gallery_media = gallery_head | concat: valid_custom_videos | concat: gallery_tail
+    endif
+    # Native popup videos do not occupy slides or thumbnails.
+    if video_layout == 'popup'
+        assign inline_gallery_media = '' | split: ','
+        for gallery_item in gallery_media
+            unless gallery_item.media_type == 'video' or gallery_item.media_type == 'external_video'
+                assign gallery_entry = gallery_media | slice: forloop.index0, 1
+                assign inline_gallery_media = inline_gallery_media | concat: gallery_entry
+            endunless
+        endfor
+        assign gallery_media = inline_gallery_media
+    endif
     assign show_badge = section.settings.show_badge
     assign show_hot_stock = settings.show_hot_stock
     if show_hot_stock
@@ -418,7 +455,7 @@
         </div>
     {% endif %}
     <div class="productView-container {% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
-        <div class="productView halo-productView layout-{{ thumnail_layout }} positionMainImage--{{ main_image_position }}{% if product.media.size == 0 %} productView-no-media{% endif %}{% if show_sticky_info %} productView-sticky{% endif %}{% if main_image_enable_parallax_mb %} productView-parallax-mobile{%endif %}{% if has_sidebar %} has-left-sidebar sidebar--layout_{{ sidebar_type }}{% endif %}" data-product-handle="{{ product.handle }}">
+        <div class="productView halo-productView layout-{{ thumnail_layout }} positionMainImage--{{ main_image_position }}{% if gallery_media.size == 0 %} productView-no-media{% endif %}{% if show_sticky_info %} productView-sticky{% endif %}{% if main_image_enable_parallax_mb %} productView-parallax-mobile{%endif %}{% if has_sidebar %} has-left-sidebar sidebar--layout_{{ sidebar_type }}{% endif %}" data-product-handle="{{ product.handle }}">
             {%- if has_sidebar -%}
                 {{ 'component-main-sidebar.css' | asset_url | stylesheet_tag }}
                 <div class="toolbar-wrapper toolbar-mobile">
@@ -478,10 +515,10 @@
                                     data-arrows-desk="{{ main_image_arrows_desktop }}"
                                     data-arrows-mobi="{{ main_image_arrows_mobile }}"
                                     data-counter-mobi="{{ main_image_counter_mobile }}"
-                                    data-media-count="{{ product.media.size }}"
+                                    data-media-count="{{ gallery_media.size }}"
                                 >
                                     <!-- 去除展示尺寸图 by changelcai -->
-                                    {%- for media in product.media -%}
+                                    {%- for media in gallery_media -%}
                                         {% assign filename = media | img_url: 'master' | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
                                         {% assign startsWith = 'size' %}
                                         {% assign checkArray = filename | split:startsWith %}
@@ -657,21 +694,25 @@
                                                     </button>
                                                 </div>
                                             {%- else -%}
-                                                <div class="productView-image productView-image-{{ media_size }}">
-                                                    <div class="productView-img-container product-single__media" data-media-id="{{ media.id }}"
-                                                        {% if media_size == 'adapt' %}
-                                                            style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"
-                                                        {% elsif media_size == 'square' %}
-                                                            style="padding-bottom: 100%;"
-                                                        {% elsif media_size == 'portrait' %}
-                                                            {% if portrait_aspect_ratio != blank %}
-                                                                style="padding-bottom: {{ portrait_aspect_ratio }};"
+                                                {%- if media.video != blank -%}
+                                                    {% render 'custom-product-video', media: media, section_id: section.id, index: forloop.index, media_size: media_size, aspect_ratio: featured_media_aspect_ratio, portrait_aspect_ratio: portrait_aspect_ratio, media_fit: media_fit %}
+                                                {%- else -%}
+                                                    <div class="productView-image productView-image-{{ media_size }}">
+                                                        <div class="productView-img-container product-single__media" data-media-id="{{ media.id }}"
+                                                            {% if media_size == 'adapt' %}
+                                                                style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"
+                                                            {% elsif media_size == 'square' %}
+                                                                style="padding-bottom: 100%;"
+                                                            {% elsif media_size == 'portrait' %}
+                                                                {% if portrait_aspect_ratio != blank %}
+                                                                    style="padding-bottom: {{ portrait_aspect_ratio }};"
+                                                                {% endif %}
                                                             {% endif %}
-                                                        {% endif %}
-                                                    >
-                                                        {{ media | media_tag }}
+                                                        >
+                                                            {{ media | media_tag }}
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                {%- endif -%}
                                         {%- endcase -%}
                                     {%- endfor -%}
                                 </div>
@@ -716,7 +757,7 @@
                             {%- if thumnail_layout != '4' -%}
                                 <div class="productView-thumbnail-wrapper{% unless show_thumbnail_mobile %} is-hidden-mobile{% endunless %}">
                                     <div class="productView-for clearfix" data-max-thumbnail-to-show="{{ max_thumbnail_to_show}}">
-                                        {%- for media in product.media -%}
+                                        {%- for media in gallery_media -%}
                                         <!-- 去除展示尺寸图 by changelcai -->
                                             {% assign filename = media | img_url: 'master' | split:'?' | first | split:'/' | last | split:'.' | first | escape %}
                                             {% assign startsWith = 'size' %}
@@ -763,11 +804,15 @@
                                                         </div>
                                                     </div>
                                                 {%- else -%}
-                                                    <div class="productView-thumbnail" data-media-id="{{ section.id }}-{{ media.id }}">
-                                                        <div class="productView-thumbnail-link animated-loading">
-                                                            {{ media | media_tag }}
+                                                    {%- if media.video != blank -%}
+                                                        {% render 'custom-product-video', media: media, section_id: section.id, index: forloop.index, thumbnail: true %}
+                                                    {%- else -%}
+                                                        <div class="productView-thumbnail" data-media-id="{{ section.id }}-{{ media.id }}">
+                                                            <div class="productView-thumbnail-link animated-loading">
+                                                                {{ media | media_tag }}
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    {%- endif -%}
                                             {%- endcase -%}
                                         {%- endfor -%}
                                     </div>

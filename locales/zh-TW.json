@@ -187,6 +187,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "相關文章",
+      "show_more": "顯示更多",
+      "show_less": "顯示較少",
       "blog": "部落格",
       "read_more_title": "閱讀更多：{{ title }}",
       "read_more": "查看詳細資訊",

@@ -178,6 +178,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "Susiję straipsniai",
+      "show_more": "Rodyti daugiau",
+      "show_less": "Rodyti mažiau",
       "blog": "Dienoraštis",
       "read_more_title": "Skaityti daugiau: {{ title }}",
       "read_more": "Peržiūrėkite išsamią informaciją",

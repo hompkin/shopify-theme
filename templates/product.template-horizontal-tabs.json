@@ -107,13 +107,6 @@
             "product_tab_key_metafield": ""
           }
         },
-        "faebbc78-6094-4bc0-a917-80dbfbf5ef3c": {
-          "type": "review",
-          "settings": {
-            "open_tab_mobile": false,
-            "title": "Review"
-          }
-        },
         "d98e243b-3682-495a-965a-1c7f7d460880": {
           "type": "variant_picker",
           "settings": {
@@ -187,7 +180,6 @@
         "bd066b80-c8e3-4f3e-8280-b27fbf6e9423",
         "3d9ea84d-5527-4bce-abe6-5debef3ec955",
         "b9d6eb19-10f4-41f8-bfdc-ea10e8b3182a",
-        "faebbc78-6094-4bc0-a917-80dbfbf5ef3c",
         "d98e243b-3682-495a-965a-1c7f7d460880",
         "8d491270-946a-4115-9867-b4900418a5ed",
         "3a434369-4091-4df4-b9e8-a0ddca29ce49",

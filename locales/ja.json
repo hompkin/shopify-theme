@@ -187,6 +187,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "関連記事",
+      "show_more": "もっと見る",
+      "show_less": "表示を減らす",
       "blog": "ブログ",
       "read_more_title": "続きを読む： {{ title }}",
       "read_more": "詳細を見る",

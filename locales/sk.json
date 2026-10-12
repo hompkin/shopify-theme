@@ -178,6 +178,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "Súvisiace články",
+      "show_more": "Zobraziť viac",
+      "show_less": "Zobraziť menej",
       "blog": "Blog",
       "read_more_title": "Prečítajte si viac: {{ title }}",
       "read_more": "Zobraziť podrobnosti",

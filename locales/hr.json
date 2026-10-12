@@ -178,6 +178,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "Povezani članci",
+      "show_more": "Prikaži više",
+      "show_less": "Prikaži manje",
       "blog": "Blog",
       "read_more_title": "Pročitaj više: {{ title }}",
       "read_more": "Pogledajte detalje",

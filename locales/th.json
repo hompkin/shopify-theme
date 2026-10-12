@@ -187,6 +187,9 @@
   },
   "blogs": {
     "article": {
+      "related_articles": "บทความที่เกี่ยวข้อง",
+      "show_more": "แสดงมากขึ้น",
+      "show_less": "แสดงน้อยลง",
       "blog": "บล็อก",
       "read_more_title": "อ่านเพิ่มเติม: {{ title }}",
       "read_more": "ดูรายละเอียด",
