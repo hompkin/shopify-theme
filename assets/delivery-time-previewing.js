@@ -62,15 +62,21 @@ async function getUserDeliveryLocation() {
     if (location) {
       return location;
     } else {
-      const locResponse = await fetch(
-        `https://service-e9wt99ba-1252698119.hk.tencentapigw.cn/release/get-location`
-      );
+      const locResponse = await fetch("https://ip.hompkin.com/");
+      if (!locResponse.ok) {
+        return null;
+      }
       const json = await locResponse.json();
-      const zipcode = json.zipcode;
-      const city = json.city;
-      console.log(`fetch zipcode=${zipcode} city=${city}`);
-      setCookieJson(cacheKey, json, 12);
-      return json;
+      if (json.status !== "success" || !json.countryCode) {
+        return null;
+      }
+      const location = {
+        country_code2: json.countryCode,
+        zipcode: json.zip || "",
+        city: json.city || ""
+      };
+      setCookieJson(cacheKey, location, 12);
+      return location;
     }
   } catch (error) {
     console.error("Error fetching IP or location data:", error);
@@ -100,7 +106,11 @@ function removeBefore(inputString, index) {
 
 function loadUserDeliveryTime(country_options, params) {
   getUserDeliveryLocation().then((json) => {
-    refreshView(country_options, params, json);
+    refreshView(country_options, params, json || {
+      country_code2: "",
+      zipcode: "",
+      city: ""
+    });
   });
 }
 
